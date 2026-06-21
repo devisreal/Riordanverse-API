@@ -1,0 +1,53 @@
+[project]
+name = "pj-fandom-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "asgiref==3.11.1",
+    "attrs==26.1.0",
+    "certifi==2026.4.22",
+    "charset-normalizer==3.4.7",
+    "colorama==0.4.6",
+    "defusedxml==0.7.1",
+    "django==6.0.5",
+    "django-cors-headers==4.9.0",
+    "django-environ==0.14.0",
+    "django-filter==25.2",
+    "django-multiselectfield==1.0.1",
+    "django-redis>=7.0.0",
+    "django-watson==1.6.3",
+    "djangorestframework==3.17.1",
+    "djangorestframework-api-key==3.1.0",
+    "drf-spectacular==0.29.0",
+    "idna==3.14",
+    "inflection==0.5.1",
+    "jsonschema==4.26.0",
+    "jsonschema-specifications==2025.9.1",
+    "markdown==3.10.2",
+    "markdown-it-py==4.2.0",
+    "mdurl==0.1.2",
+    "multidict==6.7.1",
+    "packaging==26.2",
+    "psycopg2-binary==2.9.12",
+    "pygments==2.20.0",
+    "pysocks==1.7.1",
+    "python-dotenv==1.2.2",
+    "pyyaml==6.0.3",
+    "referencing==0.37.0",
+    "requests==2.33.1",
+    "requests-toolbelt==1.0.0",
+    "rich==15.0.0",
+    "rpds-py==2026.5.1",
+    "setuptools==82.0.1",
+    "sqlparse==0.5.5",
+    "tzdata==2026.2",
+    "uritemplate==4.2.0",
+    "urllib3==2.7.0",
+]
+
+[dependency-groups]
+dev = [
+    "django-extensions>=4.1",
+]
