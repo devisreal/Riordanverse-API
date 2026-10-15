@@ -140,7 +140,7 @@ REST_FRAMEWORK = {
     # CachedHasAPIKey wraps rest_framework_api_key's HasAPIKey with a
     # Redis-backed lookup so we don't hit Postgres on every request.
     'DEFAULT_PERMISSION_CLASSES': [
-        'apps.access.permissions.CachedHasAPIKey',
+        'apps.core.permissions.CachedHasAPIKey',
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
