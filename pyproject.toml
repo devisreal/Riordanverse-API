@@ -12,6 +12,7 @@ dependencies = [
     "colorama==0.4.6",
     "defusedxml==0.7.1",
     "django==6.1.2",
+    "django-autoslug>=1.9.9",
     "django-cors-headers==4.9.0",
     "django-environ==0.14.0",
     "django-filter==26.2",
