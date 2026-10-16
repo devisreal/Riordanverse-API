@@ -9,7 +9,7 @@ from apps.images.models import BaseImageLink
 class Book(BaseModel):
     """A novel, companion work, or other book in the Riordanverse."""
 
-    slug = AutoSlugField(populate_from='title', unique=True, editable=True)
+    slug = AutoSlugField(populate_from='title', unique=True, editable=False)
     title = models.CharField(max_length=255)
     series = models.CharField(
         max_length=50,
