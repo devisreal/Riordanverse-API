@@ -178,3 +178,4 @@ API.md
 .idea/
 .codex/
 docs/
+*.rdb
