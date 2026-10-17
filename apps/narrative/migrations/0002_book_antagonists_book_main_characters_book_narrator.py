@@ -7,7 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('characters', '__first__'),
+        ('characters', '0001_initial'),
         ('narrative', '0001_initial'),
     ]
 

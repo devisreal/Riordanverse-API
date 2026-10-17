@@ -10,10 +10,9 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('characters', '__first__'),
         ('images', '0001_initial'),
         ('items', '__first__'),
-        ('narrative', '0002_book_antagonists_book_main_characters_book_narrator'),
+        ('narrative', '0001_initial'),
     ]
 
     operations = [
@@ -166,15 +165,6 @@ class Migration(migrations.Migration):
                 (
                     'books_appeared_in',
                     models.ManyToManyField(blank=True, related_name='gods', to='narrative.book'),
-                ),
-                (
-                    'children_demigods',
-                    models.ManyToManyField(
-                        blank=True,
-                        help_text='Named demigod children.',
-                        related_name='divine_parent_god',
-                        to='characters.character',
-                    ),
                 ),
                 (
                     'first_appearance_book',

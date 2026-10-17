@@ -24,10 +24,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+# items.Weapon is the only remaining unresolved model relation until the items app lands.
+SILENCED_SYSTEM_CHECKS = ['fields.E300', 'fields.E307']
 
-SILENCED_SYSTEM_CHECKS = [
-    # Temporary — unresolved until feature/characters-app lands
-    'fields.E300',
-    'fields.E307',
-]
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
