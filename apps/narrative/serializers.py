@@ -100,6 +100,7 @@ class ProphecyListSerializer(serializers.ModelSerializer):
 
     delivered_by_slug = serializers.SerializerMethodField()
     fulfilled_in_slug = serializers.SerializerMethodField()
+    prophecy_lines = serializers.SerializerMethodField()
 
     class Meta:
         model = Prophecy
@@ -123,8 +124,6 @@ class ProphecyListSerializer(serializers.ModelSerializer):
         if obj.text:
             return [line.strip() for line in obj.text.splitlines() if line.strip()]
         return []
-
-    prophecy_lines = serializers.SerializerMethodField()
 
 
 class ProphecyDetailSerializer(serializers.ModelSerializer):
