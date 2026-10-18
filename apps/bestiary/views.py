@@ -78,3 +78,19 @@ class CreatureDetailView(generics.RetrieveAPIView):
     queryset = Creature.objects.prefetch_related('notable_members').all()
     serializer_class = CreatureDetailSerializer
     lookup_field = 'slug'
+
+
+class CreatureMemberListView(generics.ListAPIView):
+    """GET /api/v1/creatures/<slug>/members/"""
+
+    def get_queryset(self):
+        from apps.bestiary.models import Creature
+        from apps.characters.models import Character
+
+        get_object_or_404(Creature, slug=self.kwargs['slug'])
+        return Character.objects.filter(creature_species__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.characters.serializers import CharacterListSerializer
+
+        return CharacterListSerializer
