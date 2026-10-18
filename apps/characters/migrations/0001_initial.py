@@ -12,7 +12,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ('divinities', '0001_initial'),
         ('images', '0001_initial'),
-        ('items', '__first__'),
         ('narrative', '0001_initial'),
     ]
 
@@ -282,12 +281,6 @@ class Migration(migrations.Migration):
                         blank=True,
                         help_text='Named siblings (divine and mortal).',
                         to='characters.character',
-                    ),
-                ),
-                (
-                    'weapons',
-                    models.ManyToManyField(
-                        blank=True, related_name='wielded_by', to='items.weapon'
                     ),
                 ),
             ],
