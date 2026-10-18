@@ -1,8 +1,8 @@
 import django_filters
 
-from apps.core.choices import BOOK_TYPE_CHOICES, SERIES_CHOICES
+from apps.core.choices import BOOK_TYPE_CHOICES, EVENT_TYPE_CHOICES, SERIES_CHOICES
 from apps.core.filters import StrictChoiceFilter
-from apps.narrative.models import Book
+from apps.narrative.models import Book, Event, Prophecy, Quest
 
 
 class BookFilter(django_filters.FilterSet):
@@ -12,3 +12,66 @@ class BookFilter(django_filters.FilterSet):
     class Meta:
         model = Book
         fields = ('series', 'book_type')
+
+
+class ProphecyFilter(django_filters.FilterSet):
+    fulfilled_in = django_filters.CharFilter(
+        field_name='fulfilled_in__slug',
+        help_text='Filter by book slug e.g. ?fulfilled_in=the-last-olympian',
+    )
+    subject = django_filters.CharFilter(
+        field_name='subject__slug',
+        help_text='Filter by character slug e.g. ?subject=percy-jackson',
+    )
+    book = django_filters.CharFilter(
+        field_name='books_relevant_to__slug',
+    )
+
+    class Meta:
+        model = Prophecy
+        fields = ('fulfilled_in', 'subject', 'book')
+
+
+class QuestFilter(django_filters.FilterSet):
+    book = django_filters.CharFilter(
+        field_name='book__slug',
+        help_text='Filter by book slug e.g. ?book=the-sea-of-monsters',
+    )
+    led_by = django_filters.CharFilter(
+        field_name='led_by__slug',
+        help_text='Filter by character slug e.g. ?led_by=percy-jackson',
+    )
+    participant = django_filters.CharFilter(
+        field_name='participants__slug',
+        help_text='Filter by participant slug e.g. ?participant=annabeth-chase',
+    )
+
+    class Meta:
+        model = Quest
+        fields = ('book', 'led_by', 'participant')
+
+
+class EventFilter(django_filters.FilterSet):
+    event_type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES)
+    book = django_filters.CharFilter(field_name='book__slug')
+    location = django_filters.CharFilter(field_name='location__slug')
+    participant_character = django_filters.CharFilter(
+        field_name='participant_characters__slug',
+    )
+    participant_god = django_filters.CharFilter(
+        field_name='participant_gods__slug',
+    )
+    participant_titan = django_filters.CharFilter(
+        field_name='participant_titans__slug',
+    )
+
+    class Meta:
+        model = Event
+        fields = (
+            'event_type',
+            'book',
+            'location',
+            'participant_character',
+            'participant_god',
+            'participant_titan',
+        )

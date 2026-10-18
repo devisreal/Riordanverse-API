@@ -1,7 +1,7 @@
 from autoslug import AutoSlugField
 from django.db import models
 
-from apps.core.choices import BOOK_TYPE_CHOICES, SERIES_CHOICES
+from apps.core.choices import BOOK_TYPE_CHOICES, EVENT_TYPE_CHOICES, SERIES_CHOICES
 from apps.core.models import BaseModel
 from apps.images.models import BaseImageLink
 
@@ -90,3 +90,264 @@ class BookImage(BaseImageLink):
         )
         verbose_name = 'Book Image'
         verbose_name_plural = 'Book Images'
+
+
+# ---------------------------------------------------------------------------
+# Prophecy
+# ---------------------------------------------------------------------------
+
+
+class Prophecy(BaseModel):
+    """
+    An Oracle prophecy from the series.
+
+    text is stored as a plain TextField with natural newlines.
+    The serializer returns both:
+    - text: the raw string (for storage, admin, and completeness)
+    - prophecy_lines: text split by newline into a list (for frontend rendering)
+
+    This avoids any client-side string splitting while keeping the Admin
+    experience natural — just type the prophecy with line breaks.
+    """
+
+    slug = AutoSlugField(populate_from='title', unique=True, editable=False)
+    title = models.CharField(
+        max_length=255,
+        help_text='e.g. "The Great Prophecy"',
+    )
+    text = models.TextField(
+        help_text=(
+            'Full prophecy text. Use natural line breaks — the API will '
+            'return both the raw text and a split list via prophecy_lines.'
+        ),
+    )
+    oracle_type = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text='e.g. "Oracle of Delphi"',
+    )
+    delivered_by = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='prophecies_delivered',
+        help_text='The Oracle or character who delivered this prophecy.',
+    )
+    subject = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='prophecies_about',
+        help_text='Characters this prophecy is about.',
+    )
+    fulfilled_in = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='prophecies_fulfilled',
+        help_text='Book in which this prophecy was fulfilled.',
+    )
+    books_relevant_to = models.ManyToManyField(
+        'narrative.Book',
+        blank=True,
+        related_name='prophecies',
+    )
+    interpretation_notes = models.TextField(
+        blank=True,
+        null=True,
+        help_text='How the prophecy was ultimately interpreted and fulfilled.',
+    )
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['title']  # noqa: RUF012
+        verbose_name = 'Prophecy'
+        verbose_name_plural = 'Prophecies'
+
+    def __str__(self):
+        return self.title
+
+
+# ---------------------------------------------------------------------------
+# Quest
+# ---------------------------------------------------------------------------
+
+
+class Quest(BaseModel):
+    """
+    A named quest undertaken in V1.
+
+    prophecy is a OneToOneField to Prophecy. Both models are defined in
+    the same app, so Django resolves this within the same migration.
+
+    casualties tracks characters who died during this quest specifically,
+    separate from their overall status field on Character.
+    """
+
+    slug = AutoSlugField(populate_from='title', unique=True, editable=False)
+    title = models.CharField(
+        max_length=255,
+        help_text='e.g. "The Quest for Zeus\'s Lightning Bolt"',
+    )
+    book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='quests',
+    )
+    prophecy = models.OneToOneField(
+        Prophecy,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='quest',
+        help_text='The Oracle prophecy that initiated this quest.',
+    )
+    led_by = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='quests_led',
+    )
+    participants = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='quests_participated_in',
+    )
+    objective = models.TextField(
+        blank=True,
+        null=True,
+        help_text='What the quest is trying to achieve.',
+    )
+    outcome = models.TextField(
+        blank=True,
+        null=True,
+        help_text='What actually happened.',
+    )
+    initiated_by = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='Who or what started the quest e.g. "Oracle of Delphi".',
+    )
+    locations_visited = models.ManyToManyField(
+        'locations.Location',
+        blank=True,
+        related_name='quests_visited',
+    )
+    monsters_encountered = models.ManyToManyField(
+        'bestiary.Monster',
+        blank=True,
+        related_name='quests_encountered_in',
+    )
+    items_recovered = models.ManyToManyField(
+        'items.Weapon',
+        blank=True,
+        related_name='quests_recovered_in',
+        help_text='Magical items found or returned during this quest.',
+    )
+    casualties = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='quests_died_in',
+        help_text='Characters who died during this quest.',
+    )
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['book__book_number', 'title']  # noqa: RUF012
+        verbose_name = 'Quest'
+        verbose_name_plural = 'Quests'
+
+    def __str__(self):
+        return self.title
+
+
+# ---------------------------------------------------------------------------
+# Event
+# ---------------------------------------------------------------------------
+
+
+class Event(BaseModel):
+    """
+    A named battle or significant event in the lore.
+
+    Participants are split into four separate M2M fields (Option A) —
+    one per entity type — rather than JSONField slugs. This keeps them
+    queryable and consistent with the rest of the data model.
+
+    participant_monsters was added beyond API.md's original spec to
+    cover events like the Battle of Manhattan where named monsters
+    (Lydian Drakon, Typhon) are key participants.
+    """
+
+    slug = AutoSlugField(populate_from='name', unique=True, editable=False)
+    name = models.CharField(max_length=255)
+    event_type = models.CharField(
+        max_length=20,
+        choices=EVENT_TYPE_CHOICES,
+        default='battle',
+        db_column='type',
+    )
+    book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='events',
+    )
+    location = models.ForeignKey(
+        'locations.Location',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='events',
+    )
+
+    # Participants — four separate M2M fields (Option A, confirmed)
+    participant_characters = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='events_participated_in',
+    )
+    participant_gods = models.ManyToManyField(
+        'divinities.God',
+        blank=True,
+        related_name='events_participated_in',
+    )
+    participant_titans = models.ManyToManyField(
+        'divinities.Titan',
+        blank=True,
+        related_name='events_participated_in',
+    )
+    participant_monsters = models.ManyToManyField(
+        'bestiary.Monster',
+        blank=True,
+        related_name='events_participated_in',
+        help_text='Named monsters participating in this event (extension beyond API.md spec).',
+    )
+
+    casualties = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='events_died_in',
+    )
+    outcome = models.TextField(blank=True, null=True)
+    significance = models.TextField(
+        blank=True,
+        null=True,
+        help_text='Why this event matters in the lore.',
+    )
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['book__book_number', 'name']  # noqa: RUF012
+        verbose_name = 'Event'
+        verbose_name_plural = 'Events'
+
+    def __str__(self):
+        return self.name

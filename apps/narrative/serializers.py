@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from apps.images.serializers import ImageListSerializer
-from apps.narrative.models import Book
+from apps.narrative.models import Book, Event, Prophecy, Quest
 
 
 def get_primary_image(book):
@@ -40,6 +40,8 @@ class BookDetailSerializer(serializers.ModelSerializer):
     narrator_slug = serializers.SerializerMethodField()
     main_character_slugs = serializers.SerializerMethodField()
     antagonist_slugs = serializers.SerializerMethodField()
+    quest_count = serializers.SerializerMethodField()
+    event_count = serializers.SerializerMethodField()
     series_display = serializers.CharField(source='get_series_display', read_only=True)
     book_type_display = serializers.CharField(source='get_book_type_display', read_only=True)
 
@@ -61,6 +63,8 @@ class BookDetailSerializer(serializers.ModelSerializer):
             'narrator_slug',
             'main_character_slugs',
             'antagonist_slugs',
+            'quest_count',
+            'event_count',
             'primary_image',
             'wiki_url',
             'created_at',
@@ -78,3 +82,272 @@ class BookDetailSerializer(serializers.ModelSerializer):
 
     def get_antagonist_slugs(self, obj):
         return list(obj.antagonists.values_list('slug', flat=True))
+
+    def get_quest_count(self, obj):
+        return obj.quests.count()
+
+    def get_event_count(self, obj):
+        return obj.events.count()
+
+
+# ---------------------------------------------------------------------------
+# Prophecy
+# ---------------------------------------------------------------------------
+
+
+class ProphecyListSerializer(serializers.ModelSerializer):
+    """Lightweight — for list views."""
+
+    delivered_by_slug = serializers.SerializerMethodField()
+    fulfilled_in_slug = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Prophecy
+        fields = (
+            'id',
+            'slug',
+            'title',
+            'oracle_type',
+            'delivered_by_slug',
+            'fulfilled_in_slug',
+            'prophecy_lines',
+        )
+
+    def get_delivered_by_slug(self, obj):
+        return obj.delivered_by.slug if obj.delivered_by else None
+
+    def get_fulfilled_in_slug(self, obj):
+        return obj.fulfilled_in.slug if obj.fulfilled_in else None
+
+    def get_prophecy_lines(self, obj):
+        if obj.text:
+            return [line.strip() for line in obj.text.splitlines() if line.strip()]
+        return []
+
+    prophecy_lines = serializers.SerializerMethodField()
+
+
+class ProphecyDetailSerializer(serializers.ModelSerializer):
+    """Full detail — returns both raw text and split prophecy_lines."""
+
+    delivered_by_slug = serializers.SerializerMethodField()
+    fulfilled_in_slug = serializers.SerializerMethodField()
+    subject_slugs = serializers.SerializerMethodField()
+    books_relevant_to_slugs = serializers.SerializerMethodField()
+    prophecy_lines = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Prophecy
+        fields = (
+            'id',
+            'slug',
+            'title',
+            'text',
+            'prophecy_lines',
+            'oracle_type',
+            'delivered_by_slug',
+            'subject_slugs',
+            'fulfilled_in_slug',
+            'books_relevant_to_slugs',
+            'interpretation_notes',
+            'description',
+            'wiki_url',
+            'created_at',
+            'updated_at',
+        )
+
+    def get_delivered_by_slug(self, obj):
+        return obj.delivered_by.slug if obj.delivered_by else None
+
+    def get_fulfilled_in_slug(self, obj):
+        return obj.fulfilled_in.slug if obj.fulfilled_in else None
+
+    def get_subject_slugs(self, obj):
+        return list(obj.subject.values_list('slug', flat=True))
+
+    def get_books_relevant_to_slugs(self, obj):
+        return list(obj.books_relevant_to.values_list('slug', flat=True))
+
+    def get_prophecy_lines(self, obj):
+        if obj.text:
+            return [line.strip() for line in obj.text.splitlines() if line.strip()]
+        return []
+
+
+# ---------------------------------------------------------------------------
+# Quest
+# ---------------------------------------------------------------------------
+
+
+class QuestListSerializer(serializers.ModelSerializer):
+    """Lightweight — for list views."""
+
+    book_slug = serializers.SerializerMethodField()
+    led_by_slug = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Quest
+        fields = (
+            'id',
+            'slug',
+            'title',
+            'book_slug',
+            'led_by_slug',
+            'initiated_by',
+            'objective',
+        )
+
+    def get_book_slug(self, obj):
+        return obj.book.slug if obj.book else None
+
+    def get_led_by_slug(self, obj):
+        return obj.led_by.slug if obj.led_by else None
+
+
+class QuestDetailSerializer(serializers.ModelSerializer):
+    """Full detail."""
+
+    book_slug = serializers.SerializerMethodField()
+    led_by_slug = serializers.SerializerMethodField()
+    prophecy_slug = serializers.SerializerMethodField()
+    participant_slugs = serializers.SerializerMethodField()
+    casualty_slugs = serializers.SerializerMethodField()
+    location_slugs = serializers.SerializerMethodField()
+    monster_slugs = serializers.SerializerMethodField()
+    item_slugs = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Quest
+        fields = (
+            'id',
+            'slug',
+            'title',
+            'book_slug',
+            'prophecy_slug',
+            'led_by_slug',
+            'participant_slugs',
+            'objective',
+            'outcome',
+            'initiated_by',
+            'location_slugs',
+            'monster_slugs',
+            'item_slugs',
+            'casualty_slugs',
+            'description',
+            'wiki_url',
+            'created_at',
+            'updated_at',
+        )
+
+    def get_book_slug(self, obj):
+        return obj.book.slug if obj.book else None
+
+    def get_led_by_slug(self, obj):
+        return obj.led_by.slug if obj.led_by else None
+
+    def get_prophecy_slug(self, obj):
+        return obj.prophecy.slug if obj.prophecy else None
+
+    def get_participant_slugs(self, obj):
+        return list(obj.participants.values_list('slug', flat=True))
+
+    def get_casualty_slugs(self, obj):
+        return list(obj.casualties.values_list('slug', flat=True))
+
+    def get_location_slugs(self, obj):
+        return list(obj.locations_visited.values_list('slug', flat=True))
+
+    def get_monster_slugs(self, obj):
+        return list(obj.monsters_encountered.values_list('slug', flat=True))
+
+    def get_item_slugs(self, obj):
+        return list(obj.items_recovered.values_list('slug', flat=True))
+
+
+# ---------------------------------------------------------------------------
+# Event
+# ---------------------------------------------------------------------------
+
+
+class EventListSerializer(serializers.ModelSerializer):
+    """Lightweight — for list views."""
+
+    book_slug = serializers.SerializerMethodField()
+    location_slug = serializers.SerializerMethodField()
+    event_type_display = serializers.CharField(source='get_event_type_display', read_only=True)
+
+    class Meta:
+        model = Event
+        fields = (
+            'id',
+            'slug',
+            'name',
+            'event_type',
+            'event_type_display',
+            'book_slug',
+            'location_slug',
+            'significance',
+        )
+
+    def get_book_slug(self, obj):
+        return obj.book.slug if obj.book else None
+
+    def get_location_slug(self, obj):
+        return obj.location.slug if obj.location else None
+
+
+class EventDetailSerializer(serializers.ModelSerializer):
+    """Full detail."""
+
+    book_slug = serializers.SerializerMethodField()
+    location_slug = serializers.SerializerMethodField()
+    event_type_display = serializers.CharField(source='get_event_type_display', read_only=True)
+    participant_character_slugs = serializers.SerializerMethodField()
+    participant_god_slugs = serializers.SerializerMethodField()
+    participant_titan_slugs = serializers.SerializerMethodField()
+    participant_monster_slugs = serializers.SerializerMethodField()
+    casualty_slugs = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Event
+        fields = (
+            'id',
+            'slug',
+            'name',
+            'event_type',
+            'event_type_display',
+            'book_slug',
+            'location_slug',
+            'participant_character_slugs',
+            'participant_god_slugs',
+            'participant_titan_slugs',
+            'participant_monster_slugs',
+            'casualty_slugs',
+            'outcome',
+            'significance',
+            'description',
+            'wiki_url',
+            'created_at',
+            'updated_at',
+        )
+
+    def get_book_slug(self, obj):
+        return obj.book.slug if obj.book else None
+
+    def get_location_slug(self, obj):
+        return obj.location.slug if obj.location else None
+
+    def get_participant_character_slugs(self, obj):
+        return list(obj.participant_characters.values_list('slug', flat=True))
+
+    def get_participant_god_slugs(self, obj):
+        return list(obj.participant_gods.values_list('slug', flat=True))
+
+    def get_participant_titan_slugs(self, obj):
+        return list(obj.participant_titans.values_list('slug', flat=True))
+
+    def get_participant_monster_slugs(self, obj):
+        return list(obj.participant_monsters.values_list('slug', flat=True))
+
+    def get_casualty_slugs(self, obj):
+        return list(obj.casualties.values_list('slug', flat=True))
