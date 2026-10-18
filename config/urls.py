@@ -8,4 +8,6 @@ urlpatterns = [
     path('api/v1/', include('apps.divinities.urls')),
     path('api/v1/', include('apps.characters.urls')),
     path('api/v1/', include('apps.items.urls')),
+    path('api/v1/', include('apps.bestiary.urls')),
+    path('api/v1/', include('apps.locations.urls')),
 ]
