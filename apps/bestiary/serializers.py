@@ -1,0 +1,137 @@
+# ruff: noqa: RUF012
+
+from rest_framework import serializers
+
+from apps.bestiary.models import Creature, Monster
+from apps.images.serializers import ImageListSerializer
+
+
+class MonsterListSerializer(serializers.ModelSerializer):
+    """Lightweight — for list views."""
+
+    primary_image = serializers.SerializerMethodField()
+    monster_type_display = serializers.CharField(source='get_monster_type_display', read_only=True)
+    allegiance_display = serializers.CharField(source='get_allegiance_display', read_only=True)
+
+    class Meta:
+        model = Monster
+        fields = [
+            'id',
+            'slug',
+            'name',
+            'aliases',
+            'monster_type',
+            'monster_type_display',
+            'allegiance',
+            'allegiance_display',
+            'can_reform',
+            'disguise_form',
+            'primary_image',
+        ]
+
+    def get_primary_image(self, obj):
+        primary = obj.images.filter(is_primary=True).select_related('image').first()
+        return ImageListSerializer(primary.image).data if primary else None
+
+
+class MonsterDetailSerializer(serializers.ModelSerializer):
+    """Full detail — for single monster retrieval."""
+
+    primary_image = serializers.SerializerMethodField()
+    monster_type_display = serializers.CharField(source='get_monster_type_display', read_only=True)
+    allegiance_display = serializers.CharField(source='get_allegiance_display', read_only=True)
+    defeated_by_slugs = serializers.SerializerMethodField()
+    first_appearance_book_slug = serializers.SerializerMethodField()
+    books_appeared_in_slugs = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Monster
+        fields = [
+            'id',
+            'slug',
+            'name',
+            'aliases',
+            'monster_type',
+            'monster_type_display',
+            'allegiance',
+            'allegiance_display',
+            'origin_myth',
+            'physical_description',
+            'abilities',
+            'weaknesses',
+            'notable_victims',
+            'can_reform',
+            'reform_time',
+            'reform_location',
+            'spoils_of_war',
+            'parent_entity',
+            'disguise_form',
+            'defeated_by_slugs',
+            'description',
+            'first_appearance_book_slug',
+            'books_appeared_in_slugs',
+            'primary_image',
+            'wiki_url',
+            'created_at',
+            'updated_at',
+        ]
+
+    def get_primary_image(self, obj):
+        primary = obj.images.filter(is_primary=True).select_related('image').first()
+        return ImageListSerializer(primary.image).data if primary else None
+
+    def get_defeated_by_slugs(self, obj):
+        return list(obj.defeated_by.values_list('slug', flat=True))
+
+    def get_first_appearance_book_slug(self, obj):
+        return obj.first_appearance_book.slug if obj.first_appearance_book else None
+
+    def get_books_appeared_in_slugs(self, obj):
+        return list(obj.books_appeared_in.values_list('slug', flat=True))
+
+
+class CreatureListSerializer(serializers.ModelSerializer):
+    """Lightweight — for list views."""
+
+    alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
+
+    class Meta:
+        model = Creature
+        fields = [
+            'id',
+            'slug',
+            'name',
+            'alignment',
+            'alignment_display',
+            'habitat',
+            'origin',
+        ]
+
+
+class CreatureDetailSerializer(serializers.ModelSerializer):
+    """Full detail — for single creature/species retrieval."""
+
+    alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
+    notable_member_slugs = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Creature
+        fields = [
+            'id',
+            'slug',
+            'name',
+            'description',
+            'origin',
+            'alignment',
+            'alignment_display',
+            'habitat',
+            'abilities',
+            'weaknesses',
+            'notable_member_slugs',
+            'wiki_url',
+            'created_at',
+            'updated_at',
+        ]
+
+    def get_notable_member_slugs(self, obj):
+        return list(obj.notable_members.values_list('slug', flat=True))

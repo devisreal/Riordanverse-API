@@ -1,1 +1,238 @@
-# Create your models here.
+# ruff: noqa: RUF012
+
+from autoslug import AutoSlugField
+from django.db import models
+
+from apps.core.choices import (
+    MONSTER_ALLEGIANCE_CHOICES,
+    MONSTER_TYPE_CHOICES,
+)
+from apps.core.models import BaseModel
+from apps.images.models import BaseImageLink
+
+CREATURE_ALIGNMENT_CHOICES = (
+    ('olympian', 'Olympian Aligned'),
+    ('titan', 'Titan Aligned'),
+    ('neutral', 'Neutral'),
+    ('independent', 'Independent'),
+    ('varies', 'Varies'),
+)
+
+
+# ---------------------------------------------------------------------------
+# Monster
+# ---------------------------------------------------------------------------
+
+
+class Monster(BaseModel):
+    """
+    Named individual monsters encountered in V1.
+
+    Covers everything from Medusa and the Minotaur to Typhon and Kampê.
+    Distinct from Creature which models species/types rather than individuals.
+
+    aliases and abilities use JSONField per important-notes.md note 1.
+    defeated_by is M2M → Character — monsters in V1 are always defeated
+    by named characters, not gods directly.
+    """
+
+    slug = AutoSlugField(populate_from='name', unique=True, editable=False)
+    name = models.CharField(max_length=255)
+
+    # JSONField per important-notes.md note 1
+    aliases = models.JSONField(
+        default=list,
+        help_text='["Aunty Em"] for Medusa, ["Dr. Thorn"] for the Manticore',
+    )
+
+    monster_type = models.CharField(
+        max_length=20,
+        choices=MONSTER_TYPE_CHOICES,
+        default='chimeric',
+        db_column='type',
+    )
+    allegiance = models.CharField(
+        max_length=20,
+        choices=MONSTER_ALLEGIANCE_CHOICES,
+        default='independent',
+    )
+
+    origin_myth = models.TextField(
+        blank=True,
+        null=True,
+        help_text='The original Greek myth origin story.',
+    )
+    physical_description = models.TextField(
+        blank=True,
+        null=True,
+        help_text='Physical appearance as described in the series.',
+    )
+
+    # JSONField per important-notes.md note 1
+    abilities = models.JSONField(
+        default=list,
+        help_text='["petrifying gaze", "flight"]',
+    )
+    weaknesses = models.JSONField(
+        default=list,
+        help_text='["mirrors", "celestial bronze"]',
+    )
+    notable_victims = models.JSONField(
+        default=list,
+        help_text='["Bianca di Angelo", "Lee Fletcher"]',
+    )
+
+    # Reform mechanics
+    can_reform = models.BooleanField(
+        default=True,
+        help_text='Whether this monster reforms after death.',
+    )
+    reform_time = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text='e.g. "months", "days", "instantly"',
+    )
+    reform_location = models.CharField(
+        max_length=150,
+        blank=True,
+        null=True,
+        default='Tartarus',
+    )
+
+    spoils_of_war = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='Trophy left behind on death e.g. Nemean Lion pelt.',
+    )
+    parent_entity = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='Mythological parentage e.g. "Phorcys and Ceto" for Medusa.',
+    )
+    disguise_form = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='Human disguise used e.g. "Middle Eastern woman running garden centre".',
+    )
+
+    # Defeated by — M2M → Character
+    defeated_by = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='monsters_defeated',
+        help_text='Characters who ultimately defeat this monster in V1.',
+    )
+
+    # Books
+    first_appearance_book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='monsters_first_appearing',
+    )
+    books_appeared_in = models.ManyToManyField(
+        'narrative.Book',
+        blank=True,
+        related_name='monsters',
+    )
+
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Monster'
+        verbose_name_plural = 'Monsters'
+
+    def __str__(self):
+        return self.name
+
+
+# ---------------------------------------------------------------------------
+# Creature / Species
+# ---------------------------------------------------------------------------
+
+
+class Creature(BaseModel):
+    """
+    Species/type catalogue — not individual monsters but named creature types.
+
+    e.g. Satyr, Centaur, Harpy, Fury, Cyclops, Pegasus.
+
+    notable_members links to named Characters of this species.
+    abilities and weaknesses use JSONField per important-notes.md note 1.
+
+    No image join table in V1 — species entries are reference data.
+    Image support can be added in V2 if needed.
+    """
+
+    slug = AutoSlugField(populate_from='name', unique=True, editable=False)
+    name = models.CharField(max_length=150)
+    description = models.TextField(blank=True, null=True)
+    origin = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='Greek mythological origin.',
+    )
+    alignment = models.CharField(
+        max_length=20,
+        choices=CREATURE_ALIGNMENT_CHOICES,
+        default='neutral',
+    )
+    habitat = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='e.g. "forests", "sea", "Underworld"',
+    )
+
+    # JSONField per important-notes.md note 1
+    abilities = models.JSONField(default=list)
+    weaknesses = models.JSONField(default=list)
+
+    # Named individuals of this species
+    notable_members = models.ManyToManyField(
+        'characters.Character',
+        blank=True,
+        related_name='creature_species',
+        help_text='Named characters who are members of this species.',
+    )
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Creature / Species'
+        verbose_name_plural = 'Creatures / Species'
+
+    def __str__(self):
+        return self.name
+
+
+# ---------------------------------------------------------------------------
+# Image join table — Monster only
+# ---------------------------------------------------------------------------
+
+
+class MonsterImage(BaseImageLink):
+    """Join table linking Monster to Image."""
+
+    monster = models.ForeignKey(
+        Monster,
+        on_delete=models.CASCADE,
+        related_name='images',
+    )
+
+    class Meta(BaseImageLink.Meta):
+        constraints = [
+            models.UniqueConstraint(
+                fields=['monster'],
+                condition=models.Q(is_primary=True),
+                name='unique_primary_monster_image',
+            )
+        ]
+        verbose_name = 'Monster Image'
+        verbose_name_plural = 'Monster Images'
