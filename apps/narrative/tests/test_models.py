@@ -1,6 +1,8 @@
+from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from tests.factories import (
+from apps.narrative.models import Quest
+from tests.makers import (
     make_book,
     make_character,
     make_event,
@@ -30,6 +32,18 @@ class ProphecyModelTests(TestCase):
         self.prophecy.subject.add(character)
         self.assertIn(character, self.prophecy.subject.all())
 
+    def test_books_relevant_to_can_span_multiple_books_without_quest_link(self):
+        books = [
+            make_book(title=f'PJO Book {number}', book_number=number) for number in range(1, 6)
+        ]
+        self.prophecy.books_relevant_to.add(*books)
+
+        self.assertEqual(
+            set(self.prophecy.books_relevant_to.values_list('slug', flat=True)),
+            {book.slug for book in books},
+        )
+        self.assertFalse(Quest.objects.filter(prophecy=self.prophecy).exists())
+
 
 class QuestModelTests(TestCase):
     def setUp(self):
@@ -58,6 +72,14 @@ class QuestModelTests(TestCase):
         self.quest.save()
         self.assertEqual(self.quest.prophecy, prophecy)
 
+    def test_prophecy_cannot_be_linked_to_multiple_quests(self):
+        prophecy = make_prophecy(title='Lightning Bolt Prophecy')
+        self.quest.prophecy = prophecy
+        self.quest.save()
+
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            make_quest(title='Second Quest', prophecy=prophecy)
+
 
 class EventModelTests(TestCase):
     def setUp(self):
@@ -80,7 +102,7 @@ class EventModelTests(TestCase):
         self.assertIn(character, self.event.participant_characters.all())
 
     def test_participant_gods_m2m(self):
-        from tests.factories import make_god
+        from tests.makers import make_god
 
         god = make_god(name='Poseidon')
         self.event.participant_gods.add(god)

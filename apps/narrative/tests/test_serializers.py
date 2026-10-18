@@ -7,7 +7,7 @@ from apps.narrative.serializers import (
     ProphecyListSerializer,
     QuestDetailSerializer,
 )
-from tests.factories import (
+from tests.makers import (
     make_book,
     make_character,
     make_event,
@@ -103,7 +103,7 @@ class EventSerializerTests(TestCase):
         self.assertEqual(data['participant_character_slugs'], [])
 
     def test_participant_god_slugs_populated(self):
-        from tests.factories import make_god
+        from tests.makers import make_god
 
         god = make_god(name='Poseidon')
         self.event.participant_gods.add(god)

@@ -1,7 +1,7 @@
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from tests.factories import make_cabin, make_character, make_faction, make_god
+from tests.makers import make_cabin, make_character, make_faction, make_god
 
 
 class CabinModelTests(TestCase):

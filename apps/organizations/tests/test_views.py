@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from tests.factories import make_cabin, make_faction, make_god
+from tests.makers import make_cabin, make_faction, make_god
 
 
 class CabinViewTests(BaseAPITestCase):

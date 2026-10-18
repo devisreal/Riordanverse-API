@@ -6,7 +6,7 @@ from apps.organizations.serializers import (
     FactionDetailSerializer,
     FactionListSerializer,
 )
-from tests.factories import make_cabin, make_character, make_faction, make_god
+from tests.makers import make_cabin, make_character, make_faction, make_god
 
 
 class CabinSerializerTests(TestCase):

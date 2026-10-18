@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from tests.factories import (
+from tests.makers import (
     make_book,
     make_character,
     make_event,
