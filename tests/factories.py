@@ -18,6 +18,33 @@ def make_book(**kwargs):
     return Book.objects.create(**defaults)
 
 
+def make_prophecy(**kwargs):
+    from apps.narrative.models import Prophecy
+
+    defaults = {
+        'title': 'Test Prophecy',
+        'text': 'A hero shall rise\nAnd face the darkest night',
+    }
+    defaults.update(kwargs)
+    return Prophecy.objects.create(**defaults)
+
+
+def make_quest(**kwargs):
+    from apps.narrative.models import Quest
+
+    defaults = {'title': 'Test Quest'}
+    defaults.update(kwargs)
+    return Quest.objects.create(**defaults)
+
+
+def make_event(**kwargs):
+    from apps.narrative.models import Event
+
+    defaults = {'name': 'Test Event', 'event_type': 'battle'}
+    defaults.update(kwargs)
+    return Event.objects.create(**defaults)
+
+
 def make_god(**kwargs):
     from apps.divinities.models import God
 

@@ -1,0 +1,159 @@
+from django.urls import reverse
+
+from apps.core.tests.base import BaseAPITestCase
+from tests.factories import (
+    make_book,
+    make_character,
+    make_event,
+    make_prophecy,
+    make_quest,
+)
+
+
+class ProphecyViewTests(BaseAPITestCase):
+    def setUp(self):
+        super().setUp()
+        self.prophecy = make_prophecy(
+            title='The Great Prophecy',
+            text='A half-blood of the eldest gods\nShall reach sixteen against all odds',
+        )
+
+    def test_list_returns_200(self):
+        response = self.client.get(reverse('prophecy-list'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_list_returns_data_envelope(self):
+        response = self.client.get(reverse('prophecy-list'))
+        self.assertIn('data', response.data)
+
+    def test_detail_returns_200(self):
+        response = self.client.get(
+            reverse('prophecy-detail', kwargs={'slug': 'the-great-prophecy'})
+        )
+        self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_404_for_unknown(self):
+        response = self.client.get(reverse('prophecy-detail', kwargs={'slug': 'no-such-prophecy'}))
+        self.assertEqual(response.status_code, 404)
+
+    def test_detail_returns_prophecy_lines(self):
+        response = self.client.get(
+            reverse('prophecy-detail', kwargs={'slug': 'the-great-prophecy'})
+        )
+        self.assertIn('prophecy_lines', response.data)
+        self.assertIsInstance(response.data['prophecy_lines'], list)
+        self.assertEqual(len(response.data['prophecy_lines']), 2)
+
+    def test_detail_returns_raw_text(self):
+        response = self.client.get(
+            reverse('prophecy-detail', kwargs={'slug': 'the-great-prophecy'})
+        )
+        self.assertIn('text', response.data)
+        self.assertIn('\n', response.data['text'])
+
+
+class QuestViewTests(BaseAPITestCase):
+    def setUp(self):
+        super().setUp()
+        self.book = make_book(title='The Lightning Thief', book_number=1)
+        self.leader = make_character(name='Percy Jackson')
+        self.quest = make_quest(
+            title="Quest for Zeus's Lightning Bolt",
+            book=self.book,
+            led_by=self.leader,
+        )
+
+    def test_list_returns_200(self):
+        response = self.client.get(reverse('quest-list'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_200(self):
+        response = self.client.get(reverse('quest-detail', kwargs={'slug': self.quest.slug}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_404_for_unknown(self):
+        response = self.client.get(reverse('quest-detail', kwargs={'slug': 'no-such-quest'}))
+        self.assertEqual(response.status_code, 404)
+
+    def test_filter_by_book(self):
+        response = self.client.get(reverse('quest-list'), {'book': 'the-lightning-thief'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_led_by(self):
+        response = self.client.get(reverse('quest-list'), {'led_by': 'percy-jackson'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_participants_sub_resource(self):
+        annabeth = make_character(name='Annabeth Chase')
+        self.quest.participants.add(annabeth)
+        response = self.client.get(
+            reverse('quest-participant-list', kwargs={'slug': self.quest.slug})
+        )
+        self.assertEqual(response.status_code, 200)
+        slugs = [c['slug'] for c in response.data['data']]
+        self.assertIn('annabeth-chase', slugs)
+
+
+class EventViewTests(BaseAPITestCase):
+    def setUp(self):
+        super().setUp()
+        self.book = make_book(title='The Last Olympian', book_number=5)
+        self.event = make_event(
+            name='Battle of Manhattan',
+            event_type='battle',
+            book=self.book,
+        )
+
+    def test_list_returns_200(self):
+        response = self.client.get(reverse('event-list'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_200(self):
+        response = self.client.get(reverse('event-detail', kwargs={'slug': 'battle-of-manhattan'}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_filter_by_event_type(self):
+        response = self.client.get(reverse('event-list'), {'event_type': 'battle'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_invalid_event_type_returns_400(self):
+        response = self.client.get(reverse('event-list'), {'event_type': 'not-a-type'})
+        self.assertEqual(response.status_code, 400)
+
+    def test_filter_by_book(self):
+        response = self.client.get(reverse('event-list'), {'book': 'the-last-olympian'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+
+class BookSubResourceViewTests(BaseAPITestCase):
+    def setUp(self):
+        super().setUp()
+        self.book = make_book(title='The Lightning Thief', book_number=1)
+        self.character = make_character(name='Percy Jackson')
+        self.character.books_appeared_in.add(self.book)
+
+    def test_book_characters_returns_200(self):
+        response = self.client.get(reverse('book-character-list', kwargs={'slug': self.book.slug}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_characters_contains_character(self):
+        response = self.client.get(reverse('book-character-list', kwargs={'slug': self.book.slug}))
+        slugs = [c['slug'] for c in response.data['data']]
+        self.assertIn('percy-jackson', slugs)
+
+    def test_book_quests_returns_200(self):
+        make_quest(title='Test Quest', book=self.book)
+        response = self.client.get(reverse('book-quest-list', kwargs={'slug': self.book.slug}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_monsters_returns_200(self):
+        response = self.client.get(reverse('book-monster-list', kwargs={'slug': self.book.slug}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_locations_returns_200(self):
+        response = self.client.get(reverse('book-location-list', kwargs={'slug': self.book.slug}))
+        self.assertEqual(response.status_code, 200)
