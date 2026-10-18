@@ -11,7 +11,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('images', '0001_initial'),
-        ('items', '__first__'),
         ('narrative', '0001_initial'),
     ]
 
@@ -174,12 +173,6 @@ class Migration(migrations.Migration):
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name='gods_first_appearing',
                         to='narrative.book',
-                    ),
-                ),
-                (
-                    'weapons',
-                    models.ManyToManyField(
-                        blank=True, related_name='associated_gods', to='items.weapon'
                     ),
                 ),
             ],
