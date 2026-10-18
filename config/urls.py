@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.urls import include, path
 
+from apps.core.views import HealthLiveView, HealthReadyView
+
 urlpatterns = [
+    path('health/live/', HealthLiveView.as_view(), name='health-live'),
+    path('health/ready/', HealthReadyView.as_view(), name='health-ready'),
     path('admin/', admin.site.urls),
     path('auth/', include('apps.access.urls')),
     path('api/v1/', include('apps.narrative.urls')),

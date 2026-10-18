@@ -2,16 +2,17 @@
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.throttling import AnonRateThrottle
 from rest_framework.views import APIView
 
 from apps.access.models import ConsumerAPIKey
 from apps.access.serializers import KeyRequestSerializer, KeyResponseSerializer
+from apps.core.throttles import CacheFallbackAnonRateThrottle
 
 
-class KeyRequestThrottle(AnonRateThrottle):
-    """Limit self-service key requests by client IP."""
+class KeyRequestThrottle(CacheFallbackAnonRateThrottle):
+    """Limit self-service key requests by client IP, even during Redis outages."""
 
+    scope = 'key_request'
     rate = '5/hour'
 
 
