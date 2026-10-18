@@ -1,8 +1,13 @@
+import logging
+
 from django.core.cache import cache
 from rest_framework.permissions import BasePermission
 from rest_framework_api_key.permissions import HasAPIKey
 
 from apps.access.models import ConsumerAPIKey
+from apps.core.cache_utils import CACHE_UNAVAILABLE_EXCEPTIONS
+
+logger = logging.getLogger(__name__)
 
 CACHE_PREFIX = 'api_key:'
 CACHE_TTL = 60 * 5
@@ -22,7 +27,11 @@ class CachedHasAPIKey(BasePermission):
             return False
 
         cache_key = f'{CACHE_PREFIX}{prefix}'
-        cached = cache.get(cache_key)
+        try:
+            cached = cache.get(cache_key)
+        except CACHE_UNAVAILABLE_EXCEPTIONS:
+            logger.warning('Redis unavailable for API-key validation; checking PostgreSQL.')
+            cached = None
         if cached is not None:
             return cached
 
@@ -30,5 +39,8 @@ class CachedHasAPIKey(BasePermission):
         # Do not cache failures: otherwise an invalid attempt using a real
         # prefix could poison the cache and deny the legitimate key holder.
         if is_valid:
-            cache.set(cache_key, True, CACHE_TTL)
+            try:
+                cache.set(cache_key, True, CACHE_TTL)
+            except CACHE_UNAVAILABLE_EXCEPTIONS:
+                logger.warning('Redis unavailable; API-key validation succeeded without caching.')
         return is_valid
