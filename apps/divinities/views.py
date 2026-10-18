@@ -134,3 +134,35 @@ class TitanImageListView(_EntityImageListView):
     def get_links_queryset(self):
         self.get_entity()
         return TitanImage.objects.filter(titan__slug=self.kwargs[self.entity_slug_kwarg])
+
+
+class GodChildrenListView(generics.ListAPIView):
+    """GET /api/v1/gods/<slug>/children/"""
+
+    def get_queryset(self):
+        from apps.characters.models import Character
+        from apps.divinities.models import God
+
+        get_object_or_404(God, slug=self.kwargs['slug'])
+        return Character.objects.filter(divine_parent__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.characters.serializers import CharacterListSerializer
+
+        return CharacterListSerializer
+
+
+class GodWeaponListView(generics.ListAPIView):
+    """GET /api/v1/gods/<slug>/weapons/"""
+
+    def get_queryset(self):
+        from apps.divinities.models import God
+        from apps.items.models import Weapon
+
+        get_object_or_404(God, slug=self.kwargs['slug'])
+        return Weapon.objects.filter(associated_gods__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.items.serializers import WeaponListSerializer
+
+        return WeaponListSerializer

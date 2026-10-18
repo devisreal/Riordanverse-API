@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics
 
@@ -76,3 +77,35 @@ class FactionDetailView(generics.RetrieveAPIView):
     )
     serializer_class = FactionDetailSerializer
     lookup_field = 'slug'
+
+
+class CabinCamperListView(generics.ListAPIView):
+    """GET /api/v1/cabins/<slug>/campers/"""
+
+    def get_queryset(self):
+        from apps.characters.models import Character
+        from apps.organizations.models import Cabin
+
+        get_object_or_404(Cabin, slug=self.kwargs['slug'])
+        return Character.objects.filter(cabin__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.characters.serializers import CharacterListSerializer
+
+        return CharacterListSerializer
+
+
+class FactionMemberListView(generics.ListAPIView):
+    """GET /api/v1/factions/<slug>/members/"""
+
+    def get_queryset(self):
+        from apps.characters.models import Character
+        from apps.organizations.models import Faction
+
+        get_object_or_404(Faction, slug=self.kwargs['slug'])
+        return Character.objects.filter(factions__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.characters.serializers import CharacterListSerializer
+
+        return CharacterListSerializer

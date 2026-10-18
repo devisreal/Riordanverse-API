@@ -4,6 +4,8 @@ from apps.characters.views import (
     CharacterDetailView,
     CharacterImageListView,
     CharacterListView,
+    CharacterQuestListView,
+    CharacterWeaponListView,
 )
 
 urlpatterns = [
@@ -13,5 +15,15 @@ urlpatterns = [
         'characters/<slug:slug>/images/',
         CharacterImageListView.as_view(),
         name='character-image-list',
+    ),
+    path(
+        'characters/<slug:slug>/weapons/',
+        CharacterWeaponListView.as_view(),
+        name='character-weapon-list',
+    ),
+    path(
+        'characters/<slug:slug>/quests/',
+        CharacterQuestListView.as_view(),
+        name='character-quest-list',
     ),
 ]
