@@ -8,10 +8,20 @@ from apps.narrative.models import Book, Event, Prophecy, Quest
 class BookFilter(django_filters.FilterSet):
     series = StrictChoiceFilter(choices=SERIES_CHOICES)
     book_type = StrictChoiceFilter(choices=BOOK_TYPE_CHOICES)
+    parent_collection = django_filters.CharFilter(
+        field_name='parent_collection__slug',
+        help_text='Filter by parent collection slug e.g. ?parent-collection=the-demigod-files',
+    )
 
     class Meta:
         model = Book
-        fields = ('series', 'book_type')
+        fields = ('series', 'book_type', 'parent_collection')
+
+    def __init__(self, data=None, *args, **kwargs):
+        if data is not None and 'parent-collection' in data:
+            data = data.copy()
+            data['parent_collection'] = data['parent-collection']
+        super().__init__(data, *args, **kwargs)
 
 
 class ProphecyFilter(django_filters.FilterSet):

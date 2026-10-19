@@ -38,6 +38,14 @@ class Book(BaseModel):
         null=True,
         help_text='Description of the end-of-summer camp bead for this year.',
     )
+    parent_collection = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='included_stories',
+        help_text='Parent anthology or collection for an individual short story.',
+    )
 
     narrator = models.ForeignKey(
         'characters.Character',

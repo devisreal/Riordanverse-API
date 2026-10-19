@@ -39,8 +39,10 @@ class BookDetailView(generics.RetrieveAPIView):
     """GET /api/v1/books/<slug>/"""
 
     queryset = (
-        Book.objects.prefetch_related('images__image', 'main_characters', 'antagonists')
-        .select_related('narrator')
+        Book.objects.prefetch_related(
+            'images__image', 'main_characters', 'antagonists', 'included_stories'
+        )
+        .select_related('narrator', 'parent_collection')
         .all()
     )
     serializer_class = BookDetailSerializer

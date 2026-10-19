@@ -9,6 +9,14 @@ def get_primary_image(book):
     return ImageListSerializer(link.image).data if link else None
 
 
+class BookSummarySerializer(serializers.ModelSerializer):
+    """Compact reference used for parent and included-story relationships."""
+
+    class Meta:
+        model = Book
+        fields = ('id', 'slug', 'title', 'book_type', 'published_date')
+
+
 class BookListSerializer(serializers.ModelSerializer):
     """Lightweight representation for book collection responses."""
 
@@ -44,6 +52,8 @@ class BookDetailSerializer(serializers.ModelSerializer):
     event_count = serializers.SerializerMethodField()
     series_display = serializers.CharField(source='get_series_display', read_only=True)
     book_type_display = serializers.CharField(source='get_book_type_display', read_only=True)
+    parent_collection = BookSummarySerializer(read_only=True)
+    included_stories = BookSummarySerializer(many=True, read_only=True)
 
     class Meta:
         model = Book
@@ -57,6 +67,8 @@ class BookDetailSerializer(serializers.ModelSerializer):
             'book_type',
             'book_type_display',
             'published_date',
+            'parent_collection',
+            'included_stories',
             'synopsis',
             'short_description',
             'camp_bead_description',

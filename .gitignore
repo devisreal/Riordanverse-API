@@ -179,3 +179,4 @@ API.md
 .codex/
 docs/
 *.rdb
+.DS_Store

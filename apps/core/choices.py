@@ -20,6 +20,7 @@ BOOK_TYPE_CHOICES = (
     ('novel', 'Novel'),
     ('companion_book', 'Companion Book'),
     ('short_story_collection', 'Short Story Collection'),
+    ('short_story', 'Short Story'),
     ('myth_anthology', 'Myth Anthology'),
     ('graphic_novel', 'Graphic Novel'),
 )
