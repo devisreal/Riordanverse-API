@@ -328,16 +328,47 @@ class DivineRelationship(models.Model):
                 ),
                 name='divine_rel_exactly_one_to',
             ),
-            # Prevent duplicate relationship records
+            # Split uniqueness by entity pairing because nullable FKs are
+            # distinct under ordinary SQL UNIQUE constraints.
             models.UniqueConstraint(
-                fields=[
-                    'from_god',
-                    'from_titan',
-                    'to_god',
-                    'to_titan',
-                    'relationship_type',
-                ],
-                name='unique_divine_relationship',
+                fields=['from_god', 'to_god', 'relationship_type'],
+                condition=models.Q(
+                    from_god__isnull=False,
+                    from_titan__isnull=True,
+                    to_god__isnull=False,
+                    to_titan__isnull=True,
+                ),
+                name='unique_dr_god_god',
+            ),
+            models.UniqueConstraint(
+                fields=['from_god', 'to_titan', 'relationship_type'],
+                condition=models.Q(
+                    from_god__isnull=False,
+                    from_titan__isnull=True,
+                    to_god__isnull=True,
+                    to_titan__isnull=False,
+                ),
+                name='unique_dr_god_titan',
+            ),
+            models.UniqueConstraint(
+                fields=['from_titan', 'to_god', 'relationship_type'],
+                condition=models.Q(
+                    from_god__isnull=True,
+                    from_titan__isnull=False,
+                    to_god__isnull=False,
+                    to_titan__isnull=True,
+                ),
+                name='unique_dr_titan_god',
+            ),
+            models.UniqueConstraint(
+                fields=['from_titan', 'to_titan', 'relationship_type'],
+                condition=models.Q(
+                    from_god__isnull=True,
+                    from_titan__isnull=False,
+                    to_god__isnull=True,
+                    to_titan__isnull=False,
+                ),
+                name='unique_dr_titan_titan',
             ),
         ]
 
