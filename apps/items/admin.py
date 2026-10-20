@@ -27,7 +27,9 @@ class WeaponAdmin(admin.ModelAdmin):
     raw_id_fields = (
         'owner_primary_character',
         'owner_primary_god',
+        'owner_primary_titan',
         'forged_by',
+        'forged_by_character',
         'first_appearance_book',
     )
     filter_horizontal = ('books_appeared_in',)

@@ -222,12 +222,17 @@ WEAPON_TYPE_CHOICES = (
 # ---------------------------------------------------------------------------
 MATERIAL_CHOICES = (
     ('celestial_bronze', 'Celestial Bronze'),
+    ('composite', 'Composite'),
+    ('flint', 'Flint'),
+    ('gold', 'Gold'),
+    ('other', 'Other'),
     ('stygian_iron', 'Stygian Iron'),
     ('imperial_gold', 'Imperial Gold'),
     ('mortal_steel', 'Mortal Steel'),
     ('silver', 'Silver'),
     ('divine_material', 'Divine Material'),
     ('enchanted', 'Enchanted'),
+    ('wood', 'Wood'),
 )
 
 # ---------------------------------------------------------------------------

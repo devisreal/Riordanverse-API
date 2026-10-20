@@ -15,17 +15,18 @@ class Weapon(BaseModel):
     The distinction between a weapon and a magical item is handled by
     weapon_type — e.g. sword, dagger vs. magical_item, artifact.
 
-    Owner polymorphism uses two separate nullable FKs (Option B):
+    Owner polymorphism uses three separate nullable FKs:
     - owner_primary_character → characters.Character
     - owner_primary_god → divinities.God
-    A CheckConstraint prevents both being set simultaneously.
-    Both null is valid for unclaimed artifacts.
+    - owner_primary_titan → divinities.Titan
+    A CheckConstraint prevents more than one from being set simultaneously.
+    All null is valid for unclaimed artifacts.
 
     owner_history is a JSONField for narrative flavour — not queryable
     via filter but surfaced in the detail response.
 
-    forged_by is FK → God only. forged_by_notes handles exceptions
-    such as "Cyclopes under Hephaestus's direction".
+    Forgers can be either a God or Character; forged_by_notes handles
+    non-entity forgers such as Cyclopes under Hephaestus's direction.
     """
 
     slug = AutoSlugField(populate_from='name', unique=True, editable=False)
@@ -93,6 +94,14 @@ class Weapon(BaseModel):
         related_name='owned_weapons',
         help_text='Current primary owner if a God.',
     )
+    owner_primary_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='owned_weapons',
+        help_text='Current primary owner if a Titan.',
+    )
 
     # Structured JSONField — narrative flavour, not filterable
     owner_history = models.JSONField(
@@ -112,7 +121,15 @@ class Weapon(BaseModel):
         null=True,
         blank=True,
         related_name='forged_weapons',
-        help_text='God who forged or created this weapon. FK to God only.',
+        help_text='God who forged or created this weapon.',
+    )
+    forged_by_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='forged_weapons',
+        help_text='Character who forged or created this weapon.',
     )
     forged_by_notes = models.CharField(
         max_length=255,
@@ -147,14 +164,29 @@ class Weapon(BaseModel):
         verbose_name = 'Weapon / Magical Item'
         verbose_name_plural = 'Weapons & Magical Items'
         constraints = [
-            # At most one primary owner — both null is valid (unclaimed)
-            # but both set simultaneously is not
+            models.CheckConstraint(
+                condition=(
+                    ~models.Q(
+                        owner_primary_character__isnull=False,
+                        owner_primary_god__isnull=False,
+                    )
+                    & ~models.Q(
+                        owner_primary_character__isnull=False,
+                        owner_primary_titan__isnull=False,
+                    )
+                    & ~models.Q(
+                        owner_primary_god__isnull=False,
+                        owner_primary_titan__isnull=False,
+                    )
+                ),
+                name='weapon_owner_primary_at_most_one_set',
+            ),
             models.CheckConstraint(
                 condition=~models.Q(
-                    owner_primary_character__isnull=False,
-                    owner_primary_god__isnull=False,
+                    forged_by__isnull=False,
+                    forged_by_character__isnull=False,
                 ),
-                name='weapon_owner_primary_not_both_set',
+                name='weapon_forged_by_at_most_one_set',
             ),
         ]
 

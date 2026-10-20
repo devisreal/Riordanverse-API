@@ -1,6 +1,7 @@
 # ruff: noqa: RUF012
 
 import django_filters
+from django.db.models import Q
 
 from apps.core.choices import MATERIAL_CHOICES, WEAPON_TYPE_CHOICES
 from apps.core.filters import StrictChoiceFilter
@@ -21,10 +22,19 @@ class WeaponFilter(django_filters.FilterSet):
         field_name='owner_primary_god__slug',
         help_text='Filter by god owner slug e.g. ?owner_god=poseidon',
     )
-    forged_by = django_filters.CharFilter(
-        field_name='forged_by__slug',
-        help_text='Filter by forger slug e.g. ?forged_by=hephaestus',
+    owner_titan = django_filters.CharFilter(
+        field_name='owner_primary_titan__slug',
+        help_text='Filter by Titan owner slug e.g. ?owner_titan=kronos',
     )
+    forged_by = django_filters.CharFilter(
+        method='filter_forged_by',
+        help_text='Filter by God or character forger slug e.g. ?forged_by=hephaestus',
+    )
+
+    def filter_forged_by(self, queryset, name, value):
+        return queryset.filter(
+            Q(forged_by__slug=value) | Q(forged_by_character__slug=value)
+        ).distinct()
 
     # Boolean filters
     transforms = django_filters.BooleanFilter()
@@ -43,6 +53,7 @@ class WeaponFilter(django_filters.FilterSet):
             'material',
             'owner_character',
             'owner_god',
+            'owner_titan',
             'forged_by',
             'transforms',
             'passes_through_mortals',
