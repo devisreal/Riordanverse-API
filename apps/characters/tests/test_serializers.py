@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
-from tests.makers import make_character, make_god, make_power, make_titan
+from tests.makers import make_book, make_character, make_god, make_power, make_titan
 
 
 class CharacterListSerializerTests(TestCase):
@@ -45,6 +45,23 @@ class CharacterDetailSerializerTests(TestCase):
         data = CharacterDetailSerializer(self.character).data
         self.assertEqual(len(data['powers']), 1)
         self.assertEqual(data['powers'][0]['name'], 'Hydrokinesis')
+
+    def test_power_classification_and_first_book_are_serialized(self):
+        book = make_book(title='The Lightning Thief', book_number=1)
+        power = self.character.powers.first()
+        power.type = 'offensive'
+        power.is_passive = True
+        power.is_book_specific = True
+        power.first_demonstrated_book = book
+        power.display_order = 2
+        power.save()
+
+        serialized = CharacterDetailSerializer(self.character).data['powers'][0]
+        self.assertEqual(serialized['type'], 'offensive')
+        self.assertTrue(serialized['is_passive'])
+        self.assertTrue(serialized['is_book_specific'])
+        self.assertEqual(serialized['first_demonstrated_book'], 'the-lightning-thief')
+        self.assertEqual(serialized['display_order'], 2)
 
     def test_sibling_slugs_empty_by_default(self):
         data = CharacterDetailSerializer(self.character).data

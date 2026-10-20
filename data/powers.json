@@ -1,0 +1,248 @@
+[
+  {
+    "character_slug": "percy-jackson",
+    "name": "Hydrokinesis",
+    "power_type": "offensive",
+    "source": "divine_parent",
+    "divine_parent_slug": "poseidon",
+    "description": "Ability to mentally control, manipulate, solidify, and direct water currents, waves, and water pressure.",
+    "scope": [
+      "water",
+      "sea",
+      "ocean",
+      "ice",
+      "steam"
+    ],
+    "limitations": "Requires proximity to moisture or extreme physical exertion to draw underground water.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-lightning-thief",
+    "display_order": 0
+  },
+  {
+    "character_slug": "percy-jackson",
+    "name": "Personal Hurricane",
+    "power_type": "offensive",
+    "source": "divine_parent",
+    "divine_parent_slug": "poseidon",
+    "description": "Summons a surrounding miniature hurricane of water, rushing wind, and lightning sparks.",
+    "scope": [
+      "storm",
+      "water",
+      "wind"
+    ],
+    "limitations": "Extremely exhausting to maintain.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-last-olympian",
+    "display_order": 1
+  },
+  {
+    "character_slug": "percy-jackson",
+    "name": "Curse of Achilles Invulnerability",
+    "power_type": "defensive",
+    "source": "blessing",
+    "divine_parent_slug": null,
+    "description": "Nigh-invulnerable skin acquired by bathing in the River Styx.",
+    "scope": [
+      "invulnerability",
+      "combat"
+    ],
+    "limitations": "Instant death if struck on the small of his back (Achilles spot).",
+    "is_passive": true,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-last-olympian",
+    "display_order": 2
+  },
+  {
+    "character_slug": "thalia-grace",
+    "name": "Electrokinesis",
+    "power_type": "offensive",
+    "source": "divine_parent",
+    "divine_parent_slug": "zeus",
+    "description": "Ability to generate, channel, and direct static electricity and electrical lightning discharges.",
+    "scope": [
+      "lightning",
+      "electricity"
+    ],
+    "limitations": "Requires grounding and drains stamina.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-titans-curse",
+    "display_order": 0
+  },
+  {
+    "character_slug": "nico-di-angelo",
+    "name": "Necromancy & Undead Command",
+    "power_type": "offensive",
+    "source": "divine_parent",
+    "divine_parent_slug": "hades",
+    "description": "Ability to summon skeletal warriors, communicate with shades/ghosts, and command Underworld spirits.",
+    "scope": [
+      "undead",
+      "spirits",
+      "underworld"
+    ],
+    "limitations": "Requires graveyard soil or Stygian iron for massive army summons.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-battle-of-the-labyrinth",
+    "display_order": 0
+  },
+  {
+    "character_slug": "nico-di-angelo",
+    "name": "Shadow Travel",
+    "power_type": "utility",
+    "source": "divine_parent",
+    "divine_parent_slug": "hades",
+    "description": "Ability to step into darkness/shadows and teleport vast distances across the mortal world or Underworld.",
+    "scope": [
+      "shadows",
+      "teleportation"
+    ],
+    "limitations": "Causes extreme physical fatigue and risk of fading into shadows permanently if overused.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-last-olympian",
+    "display_order": 1
+  },
+  {
+    "character_slug": "grover-underwood",
+    "name": "Panic Scream",
+    "power_type": "offensive",
+    "source": "blessing",
+    "divine_parent_slug": null,
+    "description": "Emits the ancient primal shout of Pan that induces overwhelming terror and frenzy in enemy forces.",
+    "scope": [
+      "panic",
+      "nature",
+      "audio"
+    ],
+    "limitations": "Drains satyr vitality and can only be used during severe crisis.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-battle-of-the-labyrinth",
+    "display_order": 0
+  },
+  {
+    "character_slug": "annabeth-chase",
+    "name": "Strategic Genius & Architectural Intuition",
+    "power_type": "utility",
+    "source": "divine_parent",
+    "divine_parent_slug": "athena",
+    "description": "Hyper-analytical mind capable of instant battle tactics, complex structural analysis, and solving ancient puzzles.",
+    "scope": [
+      "strategy",
+      "architecture",
+      "intellect"
+    ],
+    "limitations": "Non-magical; subject to hubris.",
+    "is_passive": true,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-lightning-thief",
+    "display_order": 0
+  },
+  {
+    "character_slug": "clarisse-la-rue",
+    "name": "Ares Combat Frenzy & Intimidation",
+    "power_type": "offensive",
+    "source": "divine_parent",
+    "divine_parent_slug": "ares",
+    "description": "Superhuman battle prowess, weapon mastery, and aura of fear that inspires allies and terrifies foes.",
+    "scope": [
+      "combat",
+      "frenzy"
+    ],
+    "limitations": "Can cause rash and reckless tactical decisions.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-last-olympian",
+    "display_order": 0
+  },
+  {
+    "character_slug": "silena-beauregard",
+    "name": "Charmspeak & Persuasion",
+    "power_type": "utility",
+    "source": "divine_parent",
+    "divine_parent_slug": "aphrodite",
+    "description": "Vocal persuasion that subtly compels listeners to agree or comply with spoken commands.",
+    "scope": [
+      "persuasion",
+      "mind_control"
+    ],
+    "limitations": "Less effective on strong-willed target entities.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-last-olympian",
+    "display_order": 0
+  },
+  {
+    "character_slug": "charles-beckendorf",
+    "name": "Pyrokinesis & Forge Mastery",
+    "power_type": "utility",
+    "source": "divine_parent",
+    "divine_parent_slug": "hephaestus",
+    "description": "High resistance to fire/heat and innate mastery over metalworking, mechanics, and explosives.",
+    "scope": [
+      "fire_resistance",
+      "crafting",
+      "mechanics"
+    ],
+    "limitations": "Requires raw materials and tools for complex mechanical creations.",
+    "is_passive": true,
+    "is_book_specific": false,
+    "first_demonstrated_book": "the-demigod-files",
+    "display_order": 0
+  },
+  {
+    "character_slug": "heracles",
+    "name": "Superhuman Strength & Invulnerability",
+    "power_type": "offensive",
+    "source": "divine_parent",
+    "divine_parent_slug": "zeus",
+    "description": "Colossal physical power capable of lifting mountains, wrestling divine beasts, and overpowering giants.",
+    "scope": [
+      "strength",
+      "invulnerability"
+    ],
+    "limitations": "Prone to fits of divine rage.",
+    "is_passive": true,
+    "is_book_specific": false,
+    "first_demonstrated_book": "percy-jacksons-greek-heroes",
+    "display_order": 0
+  },
+  {
+    "character_slug": "bellerophon",
+    "name": "Equestrian Mastery",
+    "power_type": "utility",
+    "source": "divine_parent",
+    "divine_parent_slug": "poseidon",
+    "description": "Innate ability to communicate with, calm, and master mythical equine creatures like Pegasus.",
+    "scope": [
+      "animals",
+      "equine"
+    ],
+    "limitations": "Requires Athena's golden bridle to tame wild Pegasus initially.",
+    "is_passive": true,
+    "is_book_specific": false,
+    "first_demonstrated_book": "percy-jacksons-greek-heroes",
+    "display_order": 0
+  },
+  {
+    "character_slug": "celedon",
+    "name": "Hypnotic Vocal Enchantment",
+    "power_type": "utility",
+    "source": "creation",
+    "divine_parent_slug": null,
+    "description": "Enchanted vocal singing that places mortals, demigods, and monsters into a helpless trance of applause.",
+    "scope": [
+      "audio",
+      "hypnosis"
+    ],
+    "limitations": "Blocked by earplugs or divine music.",
+    "is_passive": false,
+    "is_book_specific": false,
+    "first_demonstrated_book": "percy-jackson-and-the-singer-of-apollo",
+    "display_order": 0
+  }
+]

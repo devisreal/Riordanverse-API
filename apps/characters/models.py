@@ -243,6 +243,28 @@ class Character(BaseModel):
         return self.name
 
 
+POWER_SOURCE_CHOICES = (
+    ('divine_parent', 'Divine Parent'),
+    ('blessing', 'Blessing'),
+    ('curse', 'Curse'),
+    ('training', 'Training'),
+    ('item_granted', 'Item Granted'),
+    ('creation', 'Creation'),
+)
+
+POWER_TYPE_CHOICES = (
+    ('offensive', 'Offensive'),
+    ('defensive', 'Defensive'),
+    ('utility', 'Utility'),
+    ('perception', 'Perception / Senses'),
+    ('communication', 'Communication'),
+    ('healing', 'Healing'),
+    ('summoning', 'Summoning'),
+    ('transformation', 'Transformation'),
+    ('passive', 'Passive / Always Active'),
+)
+
+
 class Power(models.Model):
     """
     A named ability belonging to a Character.
@@ -268,10 +290,15 @@ class Power(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField(blank=True, null=True)
     source = models.CharField(
-        max_length=50,
+        max_length=20,
+        choices=POWER_SOURCE_CHOICES,
         blank=True,
         null=True,
-        help_text='e.g. "divine_parent", "blessing", "artifact"',
+    )
+    type = models.CharField(
+        max_length=20,
+        choices=POWER_TYPE_CHOICES,
+        default='utility',
     )
     # scope and limitations stored as JSONField per important-notes.md note 1
     scope = models.JSONField(
@@ -279,9 +306,19 @@ class Power(models.Model):
         help_text='["water", "sea", "ocean"]',
     )
     limitations = models.CharField(max_length=255, blank=True, null=True)
+    is_passive = models.BooleanField(default=False)
+    is_book_specific = models.BooleanField(default=False)
+    first_demonstrated_book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='powers_first_demonstrated',
+    )
+    display_order = models.PositiveIntegerField(default=0)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['display_order', 'name']
         verbose_name = 'Power'
         verbose_name_plural = 'Powers'
 

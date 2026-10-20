@@ -12,9 +12,23 @@ def _primary_image(character):
 
 
 class PowerSerializer(serializers.ModelSerializer):
+    first_demonstrated_book = serializers.SlugRelatedField(read_only=True, slug_field='slug')
+
     class Meta:
         model = Power
-        fields = ('id', 'name', 'description', 'source', 'scope', 'limitations')
+        fields = (
+            'id',
+            'name',
+            'description',
+            'source',
+            'type',
+            'scope',
+            'limitations',
+            'is_passive',
+            'is_book_specific',
+            'first_demonstrated_book',
+            'display_order',
+        )
 
 
 class CharacterListSerializer(serializers.ModelSerializer):

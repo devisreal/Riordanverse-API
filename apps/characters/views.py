@@ -20,7 +20,7 @@ class CharacterListView(generics.ListAPIView):
             'books_appeared_in',
             'siblings',
             'weapons',
-            'powers',
+            'powers__first_demonstrated_book',
         )
         .select_related(
             'divine_parent',
@@ -47,7 +47,7 @@ class CharacterDetailView(generics.RetrieveAPIView):
             'books_appeared_in',
             'siblings',
             'weapons',
-            'powers',
+            'powers__first_demonstrated_book',
         )
         .select_related(
             'divine_parent',
