@@ -1,0 +1,223 @@
+[
+  {
+    "name": "Kronos",
+    "expected_slug": "kronos",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "imprisoned",
+    "alignment": "kronos_army",
+    "domains": [
+      "time",
+      "harvest",
+      "king of titans"
+    ],
+    "weapon_or_power": [
+      "adamantine scythe",
+      "time manipulation"
+    ],
+    "role_in_series": "Supreme antagonist of V1.",
+    "prison_location": "Tartarus / Scattered",
+    "description": "Titan Lord of Time and King of Titans who overthrew Ouranos with an adamantine scythe.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Atlas",
+    "expected_slug": "atlas",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "imprisoned",
+    "alignment": "kronos_army",
+    "domains": [
+      "endurance",
+      "heavens",
+      "astronomy"
+    ],
+    "weapon_or_power": [
+      "javelin",
+      "immense physical strength",
+      "holding the sky"
+    ],
+    "role_in_series": "General of the Titan Army in Book 3. Tricks Artemis into holding the sky until Percy forces Atlas back under the weight.",
+    "prison_location": "Mount Tamalpais (holding up the sky)",
+    "description": "Elder Titan of Endurance and Astronomy. Father of Zoë Nightshade and Calypso. Condemned to hold up the sky.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ]
+  },
+  {
+    "name": "Hyperion",
+    "expected_slug": "hyperion",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "transformed",
+    "alignment": "kronos_army",
+    "domains": [
+      "light",
+      "the east",
+      "sunlight"
+    ],
+    "weapon_or_power": [
+      "golden armor",
+      "flame sword",
+      "solar radiation combustion"
+    ],
+    "role_in_series": "Titan general who commands Kronos's vanguard forces during the Battle of Manhattan. Defeated by Percy and Grover's nature magic.",
+    "prison_location": "Central Park (turned into a maple tree)",
+    "description": "Elder Titan of Light and the East. Encased in blazing golden armor; turned into a large maple tree by Grover Underwood's satyr song.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Iapetus",
+    "expected_slug": "iapetus",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "alive",
+    "alignment": "neutral",
+    "domains": [
+      "mortality",
+      "the west"
+    ],
+    "weapon_or_power": [
+      "spear",
+      "life force drain"
+    ],
+    "role_in_series": "Attacks Percy and Thalia in the Underworld in The Demigod Files. After falling into the River Lethe, loses his memory and becomes friendly janitor 'Bob'.",
+    "prison_location": null,
+    "description": "Elder Titan of Mortality ('The Piercer'). Memory-wiped by the River Lethe in The Demigod Files and renamed 'Bob'.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Oceanus",
+    "expected_slug": "oceanus",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "alive",
+    "alignment": "kronos_army",
+    "domains": [
+      "ocean",
+      "encircling sea"
+    ],
+    "weapon_or_power": [
+      "serpent horn",
+      "tsunami creation"
+    ],
+    "role_in_series": "Leads the underwater campaign against Poseidon's realm in Book 5, forcing Poseidon to defend his palace instead of helping Olympus.",
+    "prison_location": null,
+    "description": "Elder Titan of the Ocean. Has a bull-horned head and fish-tail body. Retreated into the deep ocean after Kronos fell.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Prometheus",
+    "expected_slug": "prometheus",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "alive",
+    "alignment": "kronos_army",
+    "domains": [
+      "forethought",
+      "crafty counsel",
+      "fire for humanity"
+    ],
+    "weapon_or_power": [
+      "foresight",
+      "diplomacy",
+      "Pandora's Pithos"
+    ],
+    "role_in_series": "Serves as parley envoy for Kronos in Book 5. Offers Percy Pandora's Jar (Elpis) to surrender Manhattan.",
+    "prison_location": null,
+    "description": "Younger Titan of Forethought who gave fire to mankind. Sided cautiously with Kronos in V1 as a diplomat.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Koios",
+    "expected_slug": "koios",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "imprisoned",
+    "alignment": "kronos_army",
+    "domains": [
+      "intellect",
+      "the north",
+      "heavenly axis"
+    ],
+    "weapon_or_power": [
+      "celestial power",
+      "prophecy"
+    ],
+    "role_in_series": "Mentioned as escaping Tartarus during Kronos's rise.",
+    "prison_location": "Tartarus",
+    "description": "Elder Titan of Intellect and the North ('Polus'). Grandfather of Apollo and Artemis.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Krios",
+    "expected_slug": "krios",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "alive",
+    "alignment": "kronos_army",
+    "domains": [
+      "constellations",
+      "the south"
+    ],
+    "weapon_or_power": [
+      "ram horn armor",
+      "starry aura"
+    ],
+    "role_in_series": "Guarded Mount Othrys in San Francisco while Atlas and Kronos marched east.",
+    "prison_location": null,
+    "description": "Elder Titan of Constellations and the South. Wears ram horn armor.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Rhea",
+    "expected_slug": "rhea",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "motherhood",
+      "fertility",
+      "mountain wilds"
+    ],
+    "weapon_or_power": [
+      "maternal magic",
+      "stealth"
+    ],
+    "role_in_series": "Mother of the original 6 Olympians who tricked Kronos with a wrapped stone to save baby Zeus.",
+    "prison_location": null,
+    "description": "Elder Titaness of Motherhood and Queen of Titans. Saved Zeus from Kronos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  }
+]
