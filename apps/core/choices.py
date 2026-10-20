@@ -184,6 +184,16 @@ MONSTER_TYPE_CHOICES = (
     ('nature_spirit', 'Nature Spirit'),
     ('shapeshifter', 'Shapeshifter'),
     ('mechanical', 'Mechanical'),
+    ('bovine_humanoid', 'Bovine Humanoid'),
+    ('fury', 'Fury'),
+    ('hybrid_monster', 'Hybrid Monster'),
+    ('swamp_hydra', 'Swamp Hydra'),
+    ('manticore', 'Manticore'),
+    ('mythic_beast', 'Mythic Beast'),
+    ('dragon', 'Dragon'),
+    ('ancient_dragon_jailer', 'Ancient Dragon Jailer'),
+    ('empousa', 'Empousa'),
+    ('drakon', 'Drakon'),
 )
 
 # ---------------------------------------------------------------------------

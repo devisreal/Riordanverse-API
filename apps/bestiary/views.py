@@ -20,7 +20,14 @@ class MonsterListView(generics.ListAPIView):
     """GET /api/v1/monsters/"""
 
     queryset = (
-        Monster.objects.prefetch_related('images__image', 'defeated_by', 'books_appeared_in')
+        Monster.objects.prefetch_related(
+            'images__image',
+            'defeated_by',
+            'defeated_by_gods',
+            'defeats__defeated_by',
+            'defeats__book',
+            'books_appeared_in',
+        )
         .select_related('first_appearance_book')
         .all()
     )
@@ -35,7 +42,14 @@ class MonsterDetailView(generics.RetrieveAPIView):
     """GET /api/v1/monsters/<slug>/"""
 
     queryset = (
-        Monster.objects.prefetch_related('images__image', 'defeated_by', 'books_appeared_in')
+        Monster.objects.prefetch_related(
+            'images__image',
+            'defeated_by',
+            'defeated_by_gods',
+            'defeats__defeated_by',
+            'defeats__book',
+            'books_appeared_in',
+        )
         .select_related('first_appearance_book')
         .all()
     )

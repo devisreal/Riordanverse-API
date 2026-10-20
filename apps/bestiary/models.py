@@ -32,8 +32,8 @@ class Monster(BaseModel):
     Distinct from Creature which models species/types rather than individuals.
 
     aliases and abilities use JSONField per important-notes.md note 1.
-    defeated_by is M2M → Character — monsters in V1 are always defeated
-    by named characters, not gods directly.
+    Character defeat events are stored through MonsterDefeat; God links remain
+    separate until God defeat events receive their own event model.
     """
 
     slug = AutoSlugField(populate_from='name', unique=True, editable=False)
@@ -46,7 +46,7 @@ class Monster(BaseModel):
     )
 
     monster_type = models.CharField(
-        max_length=20,
+        max_length=30,
         choices=MONSTER_TYPE_CHOICES,
         default='chimeric',
         db_column='type',
@@ -119,12 +119,19 @@ class Monster(BaseModel):
         help_text='Human disguise used e.g. "Middle Eastern woman running garden centre".',
     )
 
-    # Defeated by — M2M → Character
+    # Defeat events — M2M → Character through MonsterDefeat
     defeated_by = models.ManyToManyField(
         'characters.Character',
+        through='MonsterDefeat',
+        blank=True,
+        related_name='+',
+        help_text='Characters who defeat or decisively subdue this monster.',
+    )
+    defeated_by_gods = models.ManyToManyField(
+        'divinities.God',
         blank=True,
         related_name='monsters_defeated',
-        help_text='Characters who ultimately defeat this monster in V1.',
+        help_text='Gods who ultimately defeat this monster.',
     )
 
     # Books
@@ -150,6 +157,46 @@ class Monster(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class MonsterDefeat(models.Model):
+    """A distinct event in which a Character defeats or subdues a Monster."""
+
+    monster = models.ForeignKey(
+        Monster,
+        on_delete=models.CASCADE,
+        related_name='defeats',
+    )
+    defeated_by = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        related_name='monsters_defeated',
+    )
+    book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        help_text='Which book this defeat occurred in. Null for mythological backstory.',
+    )
+    method = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text='e.g. "Blinded with a sharpened stake", "Decapitated with Riptide"',
+    )
+    is_myth = models.BooleanField(
+        default=False,
+        help_text='True for mythological backstory defeats vs. series events.',
+    )
+
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'Monster Defeat'
+        verbose_name_plural = 'Monster Defeats'
+
+    def __str__(self):
+        return f'{self.defeated_by} defeated {self.monster}'
 
 
 # ---------------------------------------------------------------------------

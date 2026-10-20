@@ -3245,5 +3245,65 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
     ]
+  },
+  {
+    "name": "Odysseus",
+    "expected_slug": "odysseus",
+    "aliases": [
+      "Nobody",
+      "King of Ithaca",
+      "Raider of Cities"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 30,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Laertes and Anticlea",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Hubris (deadly pride / inability to resist boasting his true name to Polyphemus)",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "weathered dark hair and beard",
+      "eye_color": "brown",
+      "build": "cunning, athletic, battle-tested",
+      "height": "average",
+      "notable_features": [
+        "sharpened glowing wooden stake",
+        "escaped under the belly of a ram"
+      ]
+    },
+    "personality_traits": [
+      "cunning",
+      "resourceful",
+      "tactical",
+      "proud",
+      "eloquent"
+    ],
+    "special_states": [],
+    "quote": "My name is Nobody.",
+    "description": "Legendary King of Ithaca and Greek hero who engineered the Trojan Horse, blinded the Cyclops Polyphemus using the alias 'Nobody', and spent ten years navigating the Sea of Monsters to return home.",
+    "lore_notes": "Great-grandson of Hermes. His blinding of Polyphemus created an enduring grudge among Cyclopes toward heroes using the name 'Nobody' [1, 2].",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes",
+      "the-sea-of-monsters"
+    ]
   }
 ]

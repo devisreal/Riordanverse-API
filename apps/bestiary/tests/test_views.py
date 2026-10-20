@@ -1,7 +1,8 @@
 from django.urls import reverse
 
+from apps.bestiary.models import MonsterDefeat
 from apps.core.tests.base import BaseAPITestCase
-from tests.makers import make_character, make_creature, make_monster
+from tests.makers import make_book, make_character, make_creature, make_god, make_monster
 
 
 class MonsterListViewTests(BaseAPITestCase):
@@ -37,12 +38,36 @@ class MonsterListViewTests(BaseAPITestCase):
 
     def test_filter_by_defeated_by(self):
         percy = make_character(name='Percy Jackson')
-        self.monster.defeated_by.add(percy)
+        MonsterDefeat.objects.create(monster=self.monster, defeated_by=percy)
         response = self.client.get(reverse('monster-list'), {'defeated_by': 'percy-jackson'})
         self.assertEqual(len(response.data['data']), 1)
 
-    def test_invalid_monster_type_returns_400(self):
+    def test_filter_by_defeat_book(self):
+        percy = make_character(name='Percy Jackson')
+        book = make_book(title='The Sea of Monsters', book_number=2)
+        MonsterDefeat.objects.create(monster=self.monster, defeated_by=percy, book=book)
+        MonsterDefeat.objects.create(
+            monster=self.monster,
+            defeated_by=percy,
+            book=book,
+            method='A separate decisive subdual',
+        )
+        response = self.client.get(reverse('monster-list'), {'defeated_in_book': book.slug})
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_defeated_by_god(self):
+        zeus = make_god(name='Zeus')
+        self.monster.defeated_by_gods.add(zeus)
+        response = self.client.get(reverse('monster-list'), {'defeated_by_god': 'zeus'})
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_extended_monster_type(self):
+        make_monster(name='Dragon', monster_type='dragon')
         response = self.client.get(reverse('monster-list'), {'monster_type': 'dragon'})
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_invalid_monster_type_returns_400(self):
+        response = self.client.get(reverse('monster-list'), {'monster_type': 'not-a-type'})
         self.assertEqual(response.status_code, 400)
 
 
