@@ -24,6 +24,10 @@ class LocationFilter(django_filters.FilterSet):
         field_name='controlled_by_character__slug',
         help_text='Filter by character slug e.g. ?controlled_by_character=luke-castellan',
     )
+    controlled_by_monster = django_filters.CharFilter(
+        field_name='controlled_by_monster__slug',
+        help_text='Filter by monster slug e.g. ?controlled_by_monster=polyphemus',
+    )
 
     book = django_filters.CharFilter(
         field_name='books_appeared_in__slug',
@@ -38,5 +42,6 @@ class LocationFilter(django_filters.FilterSet):
             'controlled_by_god',
             'controlled_by_titan',
             'controlled_by_character',
+            'controlled_by_monster',
             'book',
         ]

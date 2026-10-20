@@ -1,7 +1,7 @@
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from tests.makers import make_character, make_god, make_location, make_titan
+from tests.makers import make_character, make_god, make_location, make_monster, make_titan
 
 
 class LocationModelTests(TestCase):
@@ -27,6 +27,7 @@ class LocationModelTests(TestCase):
         self.assertEqual(self.location.controlled_by_god, hades)
         self.assertIsNone(self.location.controlled_by_titan)
         self.assertIsNone(self.location.controlled_by_character)
+        self.assertIsNone(self.location.controlled_by_monster)
 
     def test_constraint_rejects_god_and_titan(self):
         hades = make_god(name='Hades')
@@ -56,6 +57,42 @@ class LocationModelTests(TestCase):
                 name='Contested Land',
                 controlled_by_titan=kronos,
                 controlled_by_character=luke,
+            )
+
+    def test_controlled_by_monster(self):
+        echidna = make_monster(name='Echidna')
+        self.location.controlled_by_monster = echidna
+        self.location.save()
+        self.assertEqual(self.location.controlled_by_monster, echidna)
+
+    def test_constraint_rejects_god_and_monster(self):
+        hades = make_god(name='Hades')
+        medusa = make_monster(name='Medusa')
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            make_location(
+                name='Contested Land',
+                controlled_by_god=hades,
+                controlled_by_monster=medusa,
+            )
+
+    def test_constraint_rejects_titan_and_monster(self):
+        kronos = make_titan(name='Kronos')
+        medusa = make_monster(name='Medusa')
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            make_location(
+                name='Contested Land',
+                controlled_by_titan=kronos,
+                controlled_by_monster=medusa,
+            )
+
+    def test_constraint_rejects_character_and_monster(self):
+        luke = make_character(name='Luke Castellan')
+        medusa = make_monster(name='Medusa')
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            make_location(
+                name='Contested Land',
+                controlled_by_character=luke,
+                controlled_by_monster=medusa,
             )
 
     def test_all_controllers_null_is_valid(self):

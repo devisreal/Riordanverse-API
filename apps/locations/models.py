@@ -16,6 +16,7 @@ class Location(BaseModel):
     - controlled_by_god → divinities.God
     - controlled_by_titan → divinities.Titan
     - controlled_by_character → characters.Character
+    - controlled_by_monster → bestiary.Monster
     A CheckConstraint prevents more than one being set simultaneously.
     All null is valid for unclaimed, natural, or contested locations.
 
@@ -88,6 +89,14 @@ class Location(BaseModel):
         related_name='controlled_locations',
         help_text='Character who rules or inhabits this location.',
     )
+    controlled_by_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='controlled_locations',
+        help_text='Monster who rules or inhabits this location.',
+    )
 
     # Books
     books_appeared_in = models.ManyToManyField(
@@ -117,6 +126,18 @@ class Location(BaseModel):
                 & ~(
                     models.Q(controlled_by_titan__isnull=False)
                     & models.Q(controlled_by_character__isnull=False)
+                )
+                & ~(
+                    models.Q(controlled_by_god__isnull=False)
+                    & models.Q(controlled_by_monster__isnull=False)
+                )
+                & ~(
+                    models.Q(controlled_by_titan__isnull=False)
+                    & models.Q(controlled_by_monster__isnull=False)
+                )
+                & ~(
+                    models.Q(controlled_by_character__isnull=False)
+                    & models.Q(controlled_by_monster__isnull=False)
                 ),
                 name='location_controlled_by_at_most_one',
             ),
