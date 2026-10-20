@@ -1,13 +1,16 @@
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from apps.narrative.models import Quest
+from apps.narrative.models import ProphecySubject, Quest
 from tests.makers import (
     make_book,
     make_character,
     make_event,
+    make_god,
+    make_monster,
     make_prophecy,
     make_quest,
+    make_titan,
 )
 
 
@@ -31,6 +34,29 @@ class ProphecyModelTests(TestCase):
         character = make_character(name='Percy Jackson')
         self.prophecy.subject.add(character)
         self.assertIn(character, self.prophecy.subject.all())
+
+    def test_typed_subject_links_support_all_entity_types(self):
+        entities = (
+            ('subject_character', make_character(name='Percy Jackson')),
+            ('subject_god', make_god(name='Ares')),
+            ('subject_titan', make_titan(name='Atlas')),
+            ('subject_monster', make_monster(name='Typhon')),
+        )
+        for field, entity in entities:
+            ProphecySubject.objects.create(prophecy=self.prophecy, **{field: entity})
+        self.assertEqual(self.prophecy.subject_records.count(), 4)
+
+    def test_subject_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            ProphecySubject.objects.create(prophecy=self.prophecy)
+
+    def test_subject_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            ProphecySubject.objects.create(
+                prophecy=self.prophecy,
+                subject_character=make_character(),
+                subject_god=make_god(),
+            )
 
     def test_books_relevant_to_can_span_multiple_books_without_quest_link(self):
         books = [

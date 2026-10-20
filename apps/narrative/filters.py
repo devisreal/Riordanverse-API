@@ -31,7 +31,19 @@ class ProphecyFilter(django_filters.FilterSet):
     )
     subject = django_filters.CharFilter(
         field_name='subject__slug',
-        help_text='Filter by character slug e.g. ?subject=percy-jackson',
+        help_text='Filter by Character subject slug e.g. ?subject=percy-jackson',
+    )
+    subject_god = django_filters.CharFilter(
+        field_name='subject_records__subject_god__slug',
+        help_text='Filter by God subject slug e.g. ?subject_god=ares',
+    )
+    subject_titan = django_filters.CharFilter(
+        field_name='subject_records__subject_titan__slug',
+        help_text='Filter by Titan subject slug e.g. ?subject_titan=atlas',
+    )
+    subject_monster = django_filters.CharFilter(
+        field_name='subject_records__subject_monster__slug',
+        help_text='Filter by Monster subject slug.',
     )
     book = django_filters.CharFilter(
         field_name='books_relevant_to__slug',
@@ -39,7 +51,14 @@ class ProphecyFilter(django_filters.FilterSet):
 
     class Meta:
         model = Prophecy
-        fields = ('fulfilled_in', 'subject', 'book')
+        fields = (
+            'fulfilled_in',
+            'subject',
+            'subject_god',
+            'subject_titan',
+            'subject_monster',
+            'book',
+        )
 
 
 class QuestFilter(django_filters.FilterSet):

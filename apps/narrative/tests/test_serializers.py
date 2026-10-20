@@ -11,8 +11,11 @@ from tests.makers import (
     make_book,
     make_character,
     make_event,
+    make_god,
+    make_monster,
     make_prophecy,
     make_quest,
+    make_titan,
 )
 
 
@@ -70,6 +73,29 @@ class ProphecySerializerTests(TestCase):
         self.prophecy.save()
         data = ProphecyDetailSerializer(self.prophecy).data
         self.assertEqual(data['delivered_by_slug'], 'rachel-dare')
+
+    def test_typed_subjects_and_legacy_character_slugs(self):
+        character = make_character(name='Percy Jackson')
+        god = make_god(name='Ares')
+        titan = make_titan(name='Atlas')
+        monster = make_monster(name='Typhon')
+        self.prophecy.subject.add(character)
+        self.prophecy.subject_records.create(subject_god=god)
+        self.prophecy.subject_records.create(subject_titan=titan)
+        self.prophecy.subject_records.create(subject_monster=monster)
+
+        data = ProphecyDetailSerializer(self.prophecy).data
+
+        self.assertEqual(
+            data['subjects'],
+            [
+                {'type': 'character', 'slug': 'percy-jackson', 'name': 'Percy Jackson'},
+                {'type': 'god', 'slug': 'ares', 'name': 'Ares'},
+                {'type': 'titan', 'slug': 'atlas', 'name': 'Atlas'},
+                {'type': 'monster', 'slug': 'typhon', 'name': 'Typhon'},
+            ],
+        )
+        self.assertEqual(data['subject_slugs'], ['percy-jackson'])
 
 
 class QuestSerializerTests(TestCase):

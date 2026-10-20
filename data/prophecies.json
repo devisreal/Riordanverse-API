@@ -1,0 +1,326 @@
+[
+  {
+    "title": "The Great Prophecy",
+    "expected_slug": "the-great-prophecy",
+    "text": "A half-blood of the eldest gods\nShall reach sixteen against all odds\nAnd see the world in cursed sleep\nA hero's soul, cursed blade shall reap\nA single choice shall end his days\nOlympus to preserve or raze.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": "the-last-olympian",
+    "books_relevant_to_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ],
+    "interpretation_notes": "Delivered originally to May Castellan during her failed attempt to receive the Oracle's spirit. Believed by Chiron and Camp Half-Blood for years to refer strictly to Percy Jackson destroying or saving Olympus. In reality, while Percy reached sixteen and made the single choice to hand Annabeth's cursed dagger to Luke Castellan, it was Luke whose soul was reaped when he sacrificed himself to destroy Kronos.",
+    "description": "The foundational prophecy governing the entire five-book arc of Percy Jackson and the Olympians.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      }
+    ]
+  },
+  {
+    "title": "The Lightning Thief Prophecy",
+    "expected_slug": "the-lightning-thief-prophecy",
+    "text": "You shall go west, and face the god who has turned,\nYou shall find what was stolen, and see it safely returned,\nYou shall be betrayed by one who calls you a friend,\nAnd you shall fail to save what matters most, in the end.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": "the-lightning-thief",
+    "books_relevant_to_slugs": [
+      "the-lightning-thief"
+    ],
+    "interpretation_notes": "Delivered to Percy Jackson in the Attic of the Big House. Percy traveled west to Los Angeles and faced Ares (the turned god). He retrieved Zeus's Master Bolt and Hades's Helm of Darkness. Luke Castellan was the friend who betrayed him. Percy failed to rescue his mother from the Underworld using the pearls, though she saved herself using Medusa's severed head on Gabe Ugliano.",
+    "description": "The prophecy issued for Percy Jackson's first quest to recover the stolen Master Bolt.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "god",
+        "slug": "ares"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "character",
+        "slug": "sally-jackson"
+      }
+    ]
+  },
+  {
+    "title": "The Sea of Monsters Prophecy",
+    "expected_slug": "the-sea-of-monsters-prophecy",
+    "text": "You shall sail the iron ship with warriors of bone,\nYou shall find what you seek and make it your own,\nBut despair for your life entombed within stone,\nAnd fail without friends, to fly home alone.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": "the-sea-of-monsters",
+    "books_relevant_to_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "interpretation_notes": "Delivered to Clarisse La Rue for the Quest for the Golden Fleece. Clarisse commanded the CSS Birmingham (manned by zombie soldiers), retrieved the Fleece from Polyphemus's cave (entombed in stone), and relied on Percy, Annabeth, Tyson, and Grover to escape. Percy sent Clarisse back alone on an airplane with the Fleece to ensure the final line's literal fulfillment.",
+    "description": "Prophecy guiding the quest into the Sea of Monsters to recover the Golden Fleece and heal Thalia's pine tree.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "tyson"
+      }
+    ]
+  },
+  {
+    "title": "The Titan's Curse Prophecy",
+    "expected_slug": "the-titans-curse-prophecy",
+    "text": "Five shall go west to the goddess in chains,\nOne shall be lost in the land without rain,\nThe bane of Olympus shows the trail,\nCampers and Hunters combined prevail,\nThe Titan's curse must one withstand,\nAnd one shall perish by a parent's hand.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": "the-titans-curse",
+    "books_relevant_to_slugs": [
+      "the-titans-curse"
+    ],
+    "interpretation_notes": "Delivered when the mummy of the Oracle walked out of the Big House into the woods. Five companions went west. Bianca di Angelo died in the Junkyard of Hephaestus (land without rain). The Ophiotaurus (bane of Olympus) guided them. Campers and Hunters fought together. Percy held the weight of the sky (the Titan's curse) before Artemis forced Atlas back under it. Zoë Nightshade died from a fatal blow struck by her father Atlas.",
+    "description": "Prophecy issued to Zoë Nightshade for the quest to rescue the goddess Artemis and Annabeth Chase.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "titan",
+        "slug": "atlas"
+      }
+    ]
+  },
+  {
+    "title": "The Labyrinth Prophecy",
+    "expected_slug": "the-labyrinth-prophecy",
+    "text": "You shall delve in the darkness of the endless maze,\nThe dead, the traitor, and the lost one raise.\nYou shall rise or fall by the ghost king's hand,\nThe child of Athena's final stand.\nDestroy with a hero's final breath,\nAnd lose a love to worse than death.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": "the-battle-of-the-labyrinth",
+    "books_relevant_to_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "interpretation_notes": "Delivered to Annabeth Chase. The quest team raised spirits of the dead (via Nico), encountered the traitor Ethan Nakamura, and found the fading god Pan (the lost one). Nico (the ghost king) chose to help the demigods. Daedalus (child of Athena) sacrificed his life (hero's final breath) to destroy the Labyrinth tied to his soul. Annabeth lost Luke to Kronos's demonic possession (worse than death).",
+    "description": "Prophecy given to Annabeth Chase for the quest to navigate Daedalus's subterranean Labyrinth.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "daedalus"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "character",
+        "slug": "ethan-nakamura"
+      }
+    ]
+  },
+  {
+    "title": "The Prophecy of the Seven",
+    "expected_slug": "the-prophecy-of-the-seven",
+    "text": "Seven half-bloods shall answer the call,\nTo storm or fire, the world must fall.\nAn oath to keep with a final breath,\nAnd foes bear arms to the Doors of Death.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "rachel-elizabeth-dare",
+    "fulfilled_in_book_slug": null,
+    "books_relevant_to_slugs": [
+      "the-last-olympian"
+    ],
+    "interpretation_notes": "Spoken by Rachel Elizabeth Dare in a green-mist trance immediately after she accepted the Spirit of Delphi at Camp Half-Blood. Serves as the Second Great Prophecy setting up the Heroes of Olympus series.",
+    "description": "The Second Great Prophecy delivered at the conclusion of the Titan War.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "jason-grace"
+      },
+      {
+        "type": "character",
+        "slug": "piper-mclean"
+      },
+      {
+        "type": "character",
+        "slug": "leo-valdez"
+      },
+      {
+        "type": "character",
+        "slug": "frank-zhang"
+      },
+      {
+        "type": "character",
+        "slug": "hazel-levesque"
+      }
+    ]
+  },
+  {
+    "title": "The Prophecy of the Sword of Hades",
+    "expected_slug": "the-prophecy-of-the-sword-of-hades",
+    "text": "Child of May, beware the shade,\nStolen power, the forged blade.\nThree shall venture to the deep,\nOne shall wake what ought to sleep.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": "percy-jackson-and-the-sword-of-hades",
+    "books_relevant_to_slugs": [
+      "the-demigod-files",
+      "percy-jackson-and-the-sword-of-hades"
+    ],
+    "interpretation_notes": "Delivered to Percy Jackson, Thalia Grace, and Nico di Angelo in The Demigod Files. 'Child of May' refers to Percy (born in August, but summoned in May) or Hermes's son Luke. 'Stolen power' refers to Hades's secret sword equipped with a Key of Death stolen by Ethan Nakamura. 'One shall wake what ought to sleep' refers to Iapetus (Bob) being summoned before being dipped in the River Lethe.",
+    "description": "Prophecy guiding the Underworld mission to recover Hades's secret weapon.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      }
+    ]
+  },
+  {
+    "title": "Prophecy of the Bones of Mother Earth",
+    "expected_slug": "prophecy-of-the-bones-of-mother-earth",
+    "text": "When you leave this place, cover your heads and throw the bones of your mother behind you as you go, and do not look back.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": null,
+    "books_relevant_to_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "interpretation_notes": "Recounted in Percy Jackson's Greek Gods. Deucalion and Pyrrha realized that 'mother' referred to Mother Earth (Gaea) and 'bones' referred to stones. Throwing stones over their shoulders repopulated humanity after the Great Flood.",
+    "description": "Ancient mythic prophecy given to Deucalion and Pyrrha following the Great Flood.",
+    "subjects": []
+  },
+  {
+    "title": "Prophecy of King Acrisius",
+    "expected_slug": "prophecy-of-king-acrisius",
+    "text": "You will never have sons. One day your daughter Danaë will have a son. That boy will kill you and become the next king of Argos.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": null,
+    "books_relevant_to_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "interpretation_notes": "Recounted in Percy Jackson's Greek Heroes. King Acrisius imprisoned Danaë in a bronze tower, but Zeus visited her in a shower of gold, conceiving Perseus. Years later, Perseus accidentally killed Acrisius with an errant discus throw during an athletic contest.",
+    "description": "Mythic prophecy foretelling King Acrisius's death by his grandson Perseus.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "perseus"
+      }
+    ]
+  },
+  {
+    "title": "Prophecy of Psyche's Doom",
+    "expected_slug": "prophecy-of-psyches-doom",
+    "text": "Your daughter shall marry no mortal. She is destined to marry a monster—a fierce, barbaric beast even the gods fear! Dress her for her wedding as you would dress her for her funeral. Take her to the tallest spire of rock in your kingdom. There she shall meet her doom!",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": null,
+    "books_relevant_to_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "interpretation_notes": "Recounted in Percy Jackson's Greek Heroes. Aphrodite sought to punish Psyche for her beauty, but Eros fell in love with Psyche and used the Oracle to have her placed on a mountain peak where Zephyrus carried her to Eros's hidden palace.",
+    "description": "Mythic prophecy regarding Psyche's divine marriage to Eros.",
+    "subjects": []
+  },
+  {
+    "title": "Prophecy of Eurystheus and Hercules",
+    "expected_slug": "prophecy-of-eurystheus-and-hercules",
+    "text": "Go to the city of Tiryns. Serve High King Eurystheus by doing ten great tasks of his choosing.",
+    "oracle_type": "Oracle of Delphi",
+    "delivered_by_slug": "oracle-of-delphi",
+    "fulfilled_in_book_slug": null,
+    "books_relevant_to_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "interpretation_notes": "Recounted in Percy Jackson's Greek Heroes. Delivered to Hercules after Hera drove him to temporary madness. Fulfilling the tasks resulted in the legendary Twelve Labors of Hercules.",
+    "description": "Mythic prophecy binding Hercules to King Eurystheus for his Labors.",
+    "subjects": [
+      {
+        "type": "character",
+        "slug": "heracles"
+      }
+    ]
+  }
+]

@@ -145,9 +145,11 @@ class Prophecy(BaseModel):
     )
     subject = models.ManyToManyField(
         'characters.Character',
+        through='ProphecySubject',
+        through_fields=('prophecy', 'subject_character'),
         blank=True,
         related_name='prophecies_about',
-        help_text='Characters this prophecy is about.',
+        help_text='Character subjects; typed subjects are represented by ProphecySubject.',
     )
     fulfilled_in = models.ForeignKey(
         'narrative.Book',
@@ -176,6 +178,106 @@ class Prophecy(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class ProphecySubject(models.Model):
+    """A typed subject link from a Prophecy to exactly one lore entity."""
+
+    prophecy = models.ForeignKey(
+        Prophecy,
+        on_delete=models.CASCADE,
+        related_name='subject_records',
+    )
+    subject_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+    subject_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+    subject_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+    subject_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        subject_character__isnull=False,
+                        subject_god__isnull=True,
+                        subject_titan__isnull=True,
+                        subject_monster__isnull=True,
+                    )
+                    | models.Q(
+                        subject_character__isnull=True,
+                        subject_god__isnull=False,
+                        subject_titan__isnull=True,
+                        subject_monster__isnull=True,
+                    )
+                    | models.Q(
+                        subject_character__isnull=True,
+                        subject_god__isnull=True,
+                        subject_titan__isnull=False,
+                        subject_monster__isnull=True,
+                    )
+                    | models.Q(
+                        subject_character__isnull=True,
+                        subject_god__isnull=True,
+                        subject_titan__isnull=True,
+                        subject_monster__isnull=False,
+                    )
+                ),
+                name='prophecy_subject_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_character'),
+                condition=models.Q(subject_character__isnull=False),
+                name='prophecy_subject_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_god'),
+                condition=models.Q(subject_god__isnull=False),
+                name='prophecy_subject_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_titan'),
+                condition=models.Q(subject_titan__isnull=False),
+                name='prophecy_subject_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_monster'),
+                condition=models.Q(subject_monster__isnull=False),
+                name='prophecy_subject_unique_monster',
+            ),
+        )
+        verbose_name = 'Prophecy Subject'
+        verbose_name_plural = 'Prophecy Subjects'
+
+    def __str__(self):
+        entity = (
+            self.subject_character or self.subject_god or self.subject_titan or self.subject_monster
+        )
+        return f'{self.prophecy}: {entity}'
 
 
 # ---------------------------------------------------------------------------

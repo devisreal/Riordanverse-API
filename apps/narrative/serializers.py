@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from apps.images.serializers import ImageListSerializer
-from apps.narrative.models import Book, Event, Prophecy, Quest
+from apps.narrative.models import Book, Event, Prophecy, ProphecySubject, Quest
 
 
 def get_primary_image(book):
@@ -138,11 +138,39 @@ class ProphecyListSerializer(serializers.ModelSerializer):
         return []
 
 
+class ProphecySubjectSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ProphecySubject
+        fields = ('type', 'slug', 'name')
+
+    def _entity(self, obj):
+        return obj.subject_character or obj.subject_god or obj.subject_titan or obj.subject_monster
+
+    def get_type(self, obj):
+        for subject_type in ('character', 'god', 'titan', 'monster'):
+            if getattr(obj, f'subject_{subject_type}'):
+                return subject_type
+        return None
+
+    def get_slug(self, obj):
+        entity = self._entity(obj)
+        return entity.slug if entity else None
+
+    def get_name(self, obj):
+        entity = self._entity(obj)
+        return entity.name if entity else None
+
+
 class ProphecyDetailSerializer(serializers.ModelSerializer):
     """Full detail — returns both raw text and split prophecy_lines."""
 
     delivered_by_slug = serializers.SerializerMethodField()
     fulfilled_in_slug = serializers.SerializerMethodField()
+    subjects = ProphecySubjectSerializer(source='subject_records', many=True, read_only=True)
     subject_slugs = serializers.SerializerMethodField()
     books_relevant_to_slugs = serializers.SerializerMethodField()
     prophecy_lines = serializers.SerializerMethodField()
@@ -157,6 +185,7 @@ class ProphecyDetailSerializer(serializers.ModelSerializer):
             'prophecy_lines',
             'oracle_type',
             'delivered_by_slug',
+            'subjects',
             'subject_slugs',
             'fulfilled_in_slug',
             'books_relevant_to_slugs',

@@ -93,6 +93,10 @@ class ProphecyDetailView(generics.RetrieveAPIView):
 
     queryset = Prophecy.objects.prefetch_related(
         'subject',
+        'subject_records__subject_character',
+        'subject_records__subject_god',
+        'subject_records__subject_titan',
+        'subject_records__subject_monster',
         'books_relevant_to',
     ).select_related('delivered_by', 'fulfilled_in')
     serializer_class = ProphecyDetailSerializer

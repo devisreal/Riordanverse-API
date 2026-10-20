@@ -5,8 +5,11 @@ from tests.makers import (
     make_book,
     make_character,
     make_event,
+    make_god,
+    make_monster,
     make_prophecy,
     make_quest,
+    make_titan,
 )
 
 
@@ -50,6 +53,50 @@ class ProphecyViewTests(BaseAPITestCase):
         )
         self.assertIn('text', response.data)
         self.assertIn('\n', response.data['text'])
+
+    def test_detail_includes_typed_subjects(self):
+        god = make_god(name='Ares')
+        titan = make_titan(name='Atlas')
+        self.prophecy.subject_records.create(subject_god=god)
+        self.prophecy.subject_records.create(subject_titan=titan)
+
+        response = self.client.get(reverse('prophecy-detail', kwargs={'slug': self.prophecy.slug}))
+
+        self.assertEqual(
+            response.data['subjects'],
+            [
+                {'type': 'god', 'slug': 'ares', 'name': 'Ares'},
+                {'type': 'titan', 'slug': 'atlas', 'name': 'Atlas'},
+            ],
+        )
+
+    def test_filter_by_character_subject(self):
+        character = make_character(name='Percy Jackson')
+        self.prophecy.subject.add(character)
+        response = self.client.get(reverse('prophecy-list'), {'subject': 'percy-jackson'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_god_subject(self):
+        god = make_god(name='Ares')
+        self.prophecy.subject_records.create(subject_god=god)
+        response = self.client.get(reverse('prophecy-list'), {'subject_god': 'ares'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_titan_subject(self):
+        titan = make_titan(name='Atlas')
+        self.prophecy.subject_records.create(subject_titan=titan)
+        response = self.client.get(reverse('prophecy-list'), {'subject_titan': 'atlas'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_monster_subject(self):
+        monster = make_monster(name='Typhon')
+        self.prophecy.subject_records.create(subject_monster=monster)
+        response = self.client.get(reverse('prophecy-list'), {'subject_monster': 'typhon'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
 
 
 class QuestViewTests(BaseAPITestCase):
