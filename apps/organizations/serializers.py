@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from apps.organizations.models import Cabin, Faction
+from apps.organizations.models import Cabin, Faction, FactionMember
 
 
 class CabinListSerializer(serializers.ModelSerializer):
@@ -116,12 +116,40 @@ class FactionListSerializer(serializers.ModelSerializer):
         return None
 
 
+class FactionMemberSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = FactionMember
+        fields = ['type', 'slug', 'name']
+
+    def _entity(self, obj):
+        return obj.member_character or obj.member_god or obj.member_titan or obj.member_monster
+
+    def get_type(self, obj):
+        for member_type in ('character', 'god', 'titan', 'monster'):
+            if getattr(obj, f'member_{member_type}'):
+                return member_type
+        return None
+
+    def get_slug(self, obj):
+        entity = self._entity(obj)
+        return entity.slug if entity else None
+
+    def get_name(self, obj):
+        entity = self._entity(obj)
+        return entity.name if entity else None
+
+
 class FactionDetailSerializer(serializers.ModelSerializer):
     """Full detail — for single faction retrieval."""
 
     faction_type_display = serializers.CharField(source='get_faction_type_display', read_only=True)
     alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
     leader = serializers.SerializerMethodField()
+    members = FactionMemberSerializer(source='member_records', many=True, read_only=True)
     member_slugs = serializers.SerializerMethodField()
     books_active_in_slugs = serializers.SerializerMethodField()
 
@@ -136,6 +164,7 @@ class FactionDetailSerializer(serializers.ModelSerializer):
             'alignment',
             'alignment_display',
             'leader',
+            'members',
             'member_slugs',
             'books_active_in_slugs',
             'description',

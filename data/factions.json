@@ -1,0 +1,366 @@
+[
+  {
+    "name": "Camp Half-Blood",
+    "expected_slug": "camp-half-blood",
+    "faction_type": "camp",
+    "alignment": "olympian",
+    "leader_character_slug": "chiron",
+    "leader_god_slug": null,
+    "books_active_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ],
+    "description": "The primary Greek demigod training sanctuary on Long Island, led by activities director Chiron and director Dionysus.",
+    "members": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "charles-beckendorf"
+      },
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      },
+      {
+        "type": "character",
+        "slug": "travis-stoll"
+      },
+      {
+        "type": "character",
+        "slug": "connor-stoll"
+      },
+      {
+        "type": "character",
+        "slug": "katie-gardner"
+      },
+      {
+        "type": "character",
+        "slug": "will-solace"
+      },
+      {
+        "type": "character",
+        "slug": "michael-yew"
+      },
+      {
+        "type": "character",
+        "slug": "lee-fletcher"
+      },
+      {
+        "type": "character",
+        "slug": "jake-mason"
+      },
+      {
+        "type": "character",
+        "slug": "malcolm-pace"
+      },
+      {
+        "type": "character",
+        "slug": "castor"
+      },
+      {
+        "type": "character",
+        "slug": "pollux"
+      }
+    ]
+  },
+  {
+    "name": "Titan Army",
+    "expected_slug": "titan-army",
+    "faction_type": "army",
+    "alignment": "titan",
+    "leader_character_slug": "luke-castellan",
+    "leader_god_slug": null,
+    "books_active_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ],
+    "description": "The army assembled by the Titan Lord Kronos and Luke Castellan to overthrow Mount Olympus.",
+    "members": [
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "character",
+        "slug": "ethan-nakamura"
+      },
+      {
+        "type": "character",
+        "slug": "chris-rodriguez"
+      },
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      },
+      {
+        "type": "titan",
+        "slug": "atlas"
+      },
+      {
+        "type": "titan",
+        "slug": "hyperion"
+      },
+      {
+        "type": "titan",
+        "slug": "iapetus"
+      },
+      {
+        "type": "titan",
+        "slug": "oceanus"
+      },
+      {
+        "type": "titan",
+        "slug": "prometheus"
+      },
+      {
+        "type": "titan",
+        "slug": "koios"
+      },
+      {
+        "type": "titan",
+        "slug": "krios"
+      },
+      {
+        "type": "monster",
+        "slug": "kampe"
+      },
+      {
+        "type": "monster",
+        "slug": "dr-thorn"
+      },
+      {
+        "type": "monster",
+        "slug": "kelli"
+      }
+    ]
+  },
+  {
+    "name": "Hunters of Artemis",
+    "expected_slug": "hunters-of-artemis",
+    "faction_type": "order",
+    "alignment": "olympian",
+    "leader_character_slug": "zoe-nightshade",
+    "leader_god_slug": null,
+    "books_active_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ],
+    "description": "An immortal band of maiden archers who serve the goddess Artemis, swearing off romantic relationships to hunt monsters across North America.",
+    "members": [
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "phoebe-hunter"
+      }
+    ]
+  },
+  {
+    "name": "Olympian Council",
+    "expected_slug": "olympian-council",
+    "faction_type": "council",
+    "alignment": "olympian",
+    "leader_character_slug": null,
+    "leader_god_slug": "zeus",
+    "books_active_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The ruling body of twelve major gods governing Mount Olympus and the mortal cosmos.",
+    "members": [
+      {
+        "type": "god",
+        "slug": "zeus"
+      },
+      {
+        "type": "god",
+        "slug": "hera"
+      },
+      {
+        "type": "god",
+        "slug": "poseidon"
+      },
+      {
+        "type": "god",
+        "slug": "demeter"
+      },
+      {
+        "type": "god",
+        "slug": "ares"
+      },
+      {
+        "type": "god",
+        "slug": "athena"
+      },
+      {
+        "type": "god",
+        "slug": "apollo"
+      },
+      {
+        "type": "god",
+        "slug": "artemis"
+      },
+      {
+        "type": "god",
+        "slug": "hephaestus"
+      },
+      {
+        "type": "god",
+        "slug": "aphrodite"
+      },
+      {
+        "type": "god",
+        "slug": "hermes"
+      },
+      {
+        "type": "god",
+        "slug": "dionysus"
+      }
+    ]
+  },
+  {
+    "name": "Council of Cloven Elders",
+    "expected_slug": "council-of-cloven-elders",
+    "faction_type": "council",
+    "alignment": "neutral",
+    "leader_character_slug": "silenus",
+    "leader_god_slug": null,
+    "books_active_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ],
+    "description": "The governing council of elder satyrs at Camp Half-Blood who oversee satyr searchers and the quest for the wild god Pan.",
+    "members": [
+      {
+        "type": "character",
+        "slug": "silenus"
+      },
+      {
+        "type": "character",
+        "slug": "leneus"
+      },
+      {
+        "type": "character",
+        "slug": "maron"
+      }
+    ]
+  },
+  {
+    "name": "Party Ponies",
+    "expected_slug": "party-ponies",
+    "faction_type": "group",
+    "alignment": "olympian",
+    "leader_character_slug": "chiron",
+    "leader_god_slug": null,
+    "books_active_in_slugs": [
+      "the-sea-of-monsters",
+      "the-last-olympian"
+    ],
+    "description": "A wild, paintball-loving clan of centaurs who are Chiron's extended family and ride to the defense of Camp Half-Blood and Manhattan.",
+    "members": [
+      {
+        "type": "character",
+        "slug": "chiron"
+      }
+    ]
+  },
+  {
+    "name": "Underworld Legion",
+    "expected_slug": "underworld-legion",
+    "faction_type": "army",
+    "alignment": "independent",
+    "leader_character_slug": null,
+    "leader_god_slug": "hades",
+    "books_active_in_slugs": [
+      "the-lightning-thief",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ],
+    "description": "The undead army of skeleton soldiers and Underworld guards commanded by Hades.",
+    "members": [
+      {
+        "type": "god",
+        "slug": "hades"
+      },
+      {
+        "type": "god",
+        "slug": "persephone"
+      },
+      {
+        "type": "monster",
+        "slug": "alecto"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      }
+    ]
+  },
+  {
+    "name": "House of Perseus",
+    "expected_slug": "house-of-perseus",
+    "faction_type": "family",
+    "alignment": "independent",
+    "leader_character_slug": "perseus",
+    "leader_god_slug": null,
+    "books_active_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "The royal bloodline of Argos descended from Perseus, Danaë, and King Acrisius.",
+    "members": [
+      {
+        "type": "character",
+        "slug": "perseus"
+      },
+      {
+        "type": "character",
+        "slug": "danae"
+      },
+      {
+        "type": "character",
+        "slug": "acrisius"
+      },
+      {
+        "type": "character",
+        "slug": "polydectes"
+      }
+    ]
+  }
+]

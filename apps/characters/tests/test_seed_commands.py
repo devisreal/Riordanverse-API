@@ -25,7 +25,8 @@ class SeedCharactersCommandTests(TestCase):
             phaethon.special_states,
             ["Struck down by Zeus's lightning bolt to stop the sun chariot from burning the Earth"],
         )
-        self.assertEqual(Character.objects.count(), 54)
+        self.assertEqual(Character.objects.count(), 56)
+        self.assertEqual(Character.objects.get(slug='phoebe-hunter').name, 'Phoebe')
         odysseus = Character.objects.get(slug='odysseus')
         self.assertFalse(odysseus.is_demigod)
         self.assertIsNone(odysseus.divine_parent)
@@ -35,9 +36,9 @@ class SeedCharactersCommandTests(TestCase):
 
         rerun_output = StringIO()
         call_command('seed_characters', stdout=rerun_output)
-        self.assertEqual(Character.objects.count(), 54)
+        self.assertEqual(Character.objects.count(), 56)
         self.assertIn(
-            'Characters seeded: 0 created, 54 updated, 0 errors.', rerun_output.getvalue()
+            'Characters seeded: 0 created, 56 updated, 0 errors.', rerun_output.getvalue()
         )
 
     def test_unresolved_foreign_keys_are_null_and_slug_lists_omit_missing_refs(self):

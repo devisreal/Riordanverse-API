@@ -1,0 +1,277 @@
+[
+  {
+    "number": 1,
+    "expected_slug": "cabin-1-zeus",
+    "deity_slug": "zeus",
+    "is_honorary": false,
+    "is_empty": true,
+    "architecture_description": "Massive mausoleum-like marble box with heavy columns and holographic lightning bolt bronze doors.",
+    "position": "left",
+    "known_camper_slugs": [
+      "thalia-grace"
+    ],
+    "head_counselor_slug": "thalia-grace",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 2,
+    "expected_slug": "cabin-2-hera",
+    "deity_slug": null,
+    "is_honorary": true,
+    "is_empty": true,
+    "architecture_description": "Honorary tribute cabin garlanded with peacocks and pomegranates; empty inside.",
+    "position": "right",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": null
+  },
+  {
+    "number": 3,
+    "expected_slug": "cabin-3-poseidon",
+    "deity_slug": "poseidon",
+    "is_honorary": false,
+    "is_empty": true,
+    "architecture_description": "Rough sea stone studded with coral and seashells, smelling of salty ocean with a saltwater fountain.",
+    "position": "left",
+    "known_camper_slugs": [
+      "percy-jackson"
+    ],
+    "head_counselor_slug": "percy-jackson",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 4,
+    "expected_slug": "cabin-4-demeter",
+    "deity_slug": "demeter",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Flower-covered green exterior with climbing tomato vines and plant life.",
+    "position": "right",
+    "known_camper_slugs": [
+      "katie-gardner"
+    ],
+    "head_counselor_slug": "katie-gardner",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 5,
+    "expected_slug": "cabin-5-ares",
+    "deity_slug": "ares",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Bright red painted walls with barbed wire along the roof perimeter and a boar's head over the door.",
+    "position": "left",
+    "known_camper_slugs": [
+      "clarisse-la-rue"
+    ],
+    "head_counselor_slug": "clarisse-la-rue",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 6,
+    "expected_slug": "cabin-6-athena",
+    "deity_slug": "athena",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Neat silver and gray building packed with architecture blueprints, war maps, and library books.",
+    "position": "right",
+    "known_camper_slugs": [
+      "annabeth-chase",
+      "malcolm-pace"
+    ],
+    "head_counselor_slug": "annabeth-chase",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 7,
+    "expected_slug": "cabin-7-apollo",
+    "deity_slug": "apollo",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Sunny bright gold building filled with musical instruments and archery equipment.",
+    "position": "left",
+    "known_camper_slugs": [
+      "lee-fletcher",
+      "michael-yew",
+      "will-solace"
+    ],
+    "head_counselor_slug": "michael-yew",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 8,
+    "expected_slug": "cabin-8-artemis",
+    "deity_slug": null,
+    "is_honorary": true,
+    "is_empty": true,
+    "architecture_description": "Silver-toned archery-themed cabin; empty except when the Hunters of Artemis visit.",
+    "position": "right",
+    "known_camper_slugs": [
+      "zoe-nightshade",
+      "bianca-di-angelo",
+      "phoebe-hunter"
+    ],
+    "head_counselor_slug": "zoe-nightshade",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 9,
+    "expected_slug": "cabin-9-hephaestus",
+    "deity_slug": "hephaestus",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Industrial forge-like building with smokestacks, fireproof walls, gears, and machine parts.",
+    "position": "left",
+    "known_camper_slugs": [
+      "charles-beckendorf",
+      "jake-mason"
+    ],
+    "head_counselor_slug": "charles-beckendorf",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 10,
+    "expected_slug": "cabin-10-aphrodite",
+    "deity_slug": "aphrodite",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Glamorous pink cabin with heart-shaped mirrors, beauty supplies, and perfume scents.",
+    "position": "right",
+    "known_camper_slugs": [
+      "silena-beauregard"
+    ],
+    "head_counselor_slug": "silena-beauregard",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 11,
+    "expected_slug": "cabin-11-hermes",
+    "deity_slug": "hermes",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Default overcrowded cabin with a caduceus over the door, accepting all unclaimed campers.",
+    "position": "left",
+    "known_camper_slugs": [
+      "luke-castellan",
+      "travis-stoll",
+      "connor-stoll",
+      "chris-rodriguez",
+      "ethan-nakamura"
+    ],
+    "head_counselor_slug": "travis-stoll",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 12,
+    "expected_slug": "cabin-12-dionysus",
+    "deity_slug": "dionysus",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Wrapped in lush grapevines with a green-lit interior.",
+    "position": "right",
+    "known_camper_slugs": [
+      "castor",
+      "pollux"
+    ],
+    "head_counselor_slug": "pollux",
+    "added_in_book_slug": null
+  },
+  {
+    "number": 13,
+    "expected_slug": "cabin-13-hades",
+    "deity_slug": "hades",
+    "is_honorary": false,
+    "is_empty": true,
+    "architecture_description": "Solid obsidian with heavy columns, green Greek fire torches burning 24/7, and a skull over the door.",
+    "position": "left",
+    "known_camper_slugs": [
+      "nico-di-angelo"
+    ],
+    "head_counselor_slug": "nico-di-angelo",
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 14,
+    "expected_slug": "cabin-14-iris",
+    "deity_slug": "iris",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Rainbow-colored tie-dye building with wind chimes.",
+    "position": "right",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 15,
+    "expected_slug": "cabin-15-hypnos",
+    "deity_slug": "hypnos",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Dark, quiet cabin smelling of poppies where campers sleep constantly.",
+    "position": "left",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 16,
+    "expected_slug": "cabin-16-nemesis",
+    "deity_slug": "nemesis",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Balance-themed cabin decorated with scales and measuring rods.",
+    "position": "right",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 17,
+    "expected_slug": "cabin-17-nike",
+    "deity_slug": "nike",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Filled with athletic equipment and victory trophies.",
+    "position": "left",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 18,
+    "expected_slug": "cabin-18-hebe",
+    "deity_slug": "hebe",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Youthful, playful cabin decor.",
+    "position": "right",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 19,
+    "expected_slug": "cabin-19-tyche",
+    "deity_slug": "tyche",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Decorated with lucky charms and wheel of fortune imagery.",
+    "position": "left",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  },
+  {
+    "number": 20,
+    "expected_slug": "cabin-20-hecate",
+    "deity_slug": "hecate",
+    "is_honorary": false,
+    "is_empty": false,
+    "architecture_description": "Mysterious cabin built with magical stone inscriptions and crossroads motifs.",
+    "position": "right",
+    "known_camper_slugs": [],
+    "head_counselor_slug": null,
+    "added_in_book_slug": "the-last-olympian"
+  }
+]

@@ -884,7 +884,7 @@
     ]
   },
   {
-    "name": "Zoë Nightshade",
+    "name": "Zo\u00eb Nightshade",
     "expected_slug": "zoe-nightshade",
     "aliases": [
       "Lieutenant of Artemis",
@@ -1337,7 +1337,7 @@
     "greek_or_roman": "greek",
     "age_first_appearance": 18,
     "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Danaë",
+    "mortal_parent_name": "Dana\u00eb",
     "mortal_parent_ref_slug": "danae",
     "sibling_slugs": [
       "heracles",
@@ -1502,7 +1502,7 @@
     ],
     "quote": "Bring me another labor!",
     "description": "Greatest ancient Greek demigod who performed Twelve Labors, wore the Nemean Lion pelt, and was elevated to godhood.",
-    "lore_notes": "Zoë Nightshade gave him Riptide, but Heracles took all the credit without mentioning her.",
+    "lore_notes": "Zo\u00eb Nightshade gave him Riptide, but Heracles took all the credit without mentioning her.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes",
@@ -2601,8 +2601,8 @@
     ],
     "special_states": [],
     "quote": "I remember the power of boulders!",
-    "description": "The last surviving Hekatonkheir (Hundred-Handed One). Rescued from Alcatraz, he slays Kampê during the Battle of the Labyrinth.",
-    "lore_notes": "Forged boulders to hurl Kampê into the abyss.",
+    "description": "The last surviving Hekatonkheir (Hundred-Handed One). Rescued from Alcatraz, he slays Kamp\u00ea during the Battle of the Labyrinth.",
+    "lore_notes": "Forged boulders to hurl Kamp\u00ea into the abyss.",
     "first_appearance_book_slug": "the-battle-of-the-labyrinth",
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
@@ -3077,7 +3077,7 @@
     ]
   },
   {
-    "name": "Danaë",
+    "name": "Dana\u00eb",
     "expected_slug": "danae",
     "aliases": [
       "Mother of Perseus"
@@ -3182,8 +3182,8 @@
       "Accidentally killed years later by a stray discus thrown by Perseus, fulfilling prophecy"
     ],
     "quote": "Lock her in the bronze tower!",
-    "description": "King of Argos who locked Danaë in a bronze tower after an Oracle foretold his grandson would kill him.",
-    "lore_notes": "Could not escape the prophecy despite trying to kill Danaë and Perseus.",
+    "description": "King of Argos who locked Dana\u00eb in a bronze tower after an Oracle foretold his grandson would kill him.",
+    "lore_notes": "Could not escape the prophecy despite trying to kill Dana\u00eb and Perseus.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
@@ -3239,7 +3239,7 @@
       "Turned to stone when Perseus revealed Medusa's severed head at court"
     ],
     "quote": "Bring me the head of Medusa, boy!",
-    "description": "Evil king of Seriphos who sought to force Danaë into marriage and sent Perseus on a suicide mission for Medusa's head.",
+    "description": "Evil king of Seriphos who sought to force Dana\u00eb into marriage and sent Perseus on a suicide mission for Medusa's head.",
     "lore_notes": "Petrified by Medusa's head when Perseus returned.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
@@ -3269,7 +3269,7 @@
     "affiliation": [
       "neutral"
     ],
-    "fatal_flaw": "Hubris (deadly pride / inability to resist boasting his true name to Polyphemus)",
+    "fatal_flaw": "Hubris (deadly pride)",
     "can_see_through_mist": true,
     "has_adhd": true,
     "has_dyslexia": true,
@@ -3298,12 +3298,125 @@
     ],
     "special_states": [],
     "quote": "My name is Nobody.",
-    "description": "Legendary King of Ithaca and Greek hero who engineered the Trojan Horse, blinded the Cyclops Polyphemus using the alias 'Nobody', and spent ten years navigating the Sea of Monsters to return home.",
-    "lore_notes": "Great-grandson of Hermes. His blinding of Polyphemus created an enduring grudge among Cyclopes toward heroes using the name 'Nobody' [1, 2].",
+    "description": "Legendary King of Ithaca and Greek hero who engineered the Trojan Horse, blinded the Cyclops Polyphemus using the alias 'Nobody', and navigated the Sea of Monsters.",
+    "lore_notes": "Great-grandson of Hermes. His blinding of Polyphemus created an enduring grudge among Cyclopes toward heroes using the name 'Nobody'.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes",
       "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "Phoebe",
+    "expected_slug": "phoebe-hunter",
+    "aliases": [
+      "Phoebe the Hunter"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": 8,
+    "affiliation": [
+      "olympian"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": true,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark",
+      "hair_description": "dark hair tied back",
+      "eye_color": "brown",
+      "build": "athletic archer",
+      "height": "average",
+      "notable_features": [
+        "silver Hunters jacket",
+        "bow and quiver"
+      ]
+    },
+    "personality_traits": [
+      "fierce",
+      "loyal",
+      "suspicious of demigod boys",
+      "skilled tracker"
+    ],
+    "special_states": [
+      "immortal_via_hunters_vow"
+    ],
+    "quote": "Keep your hands off my bow.",
+    "description": "Senior Hunter of Artemis and master tracker who plays a key role in Camp Half-Blood games and quests.",
+    "lore_notes": "Distinguished from Phoebe the Titan. Resides in Cabin 8 when visiting Camp Half-Blood.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Maron",
+    "expected_slug": "maron",
+    "aliases": [],
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 300,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "grey",
+      "hair_description": "curly grey fur and beard",
+      "eye_color": "brown",
+      "build": "elderly satyr",
+      "height": "short",
+      "notable_features": [
+        "goat legs",
+        "pan pipes"
+      ]
+    },
+    "personality_traits": [
+      "conservative",
+      "timid",
+      "nature-focused"
+    ],
+    "special_states": [],
+    "quote": "Pan would never abandon us!",
+    "description": "Elderly satyr and member of the Council of Cloven Elders alongside Silenus and Leneus.",
+    "lore_notes": "Member of the Council of Cloven Elders that presided over Grover Underwood's search for Pan.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
     ]
   }
 ]

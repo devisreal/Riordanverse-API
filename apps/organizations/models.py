@@ -27,11 +27,15 @@ FACTION_ALIGNMENT_CHOICES = (
 def _cabin_slug(instance):
     """
     Produces slugs like 'cabin-3-poseidon'.
-    Falls back to 'cabin-{number}' for honorary cabins with no deity.
+    Honorary cabins 2 and 8 retain the explicit Hera/Artemis slugs even though
+    they have no deity FK. Other cabins without a deity use 'cabin-{number}'.
     deity must be set before the first save when present.
     """
     if instance.deity:
         return f'cabin-{instance.number}-{instance.deity.slug}'
+    honorary_deities = {2: 'hera', 8: 'artemis'}
+    if instance.is_honorary and instance.number in honorary_deities:
+        return f'cabin-{instance.number}-{honorary_deities[instance.number]}'
     return f'cabin-{instance.number}'
 
 
@@ -49,8 +53,8 @@ class Cabin(BaseModel):
     when the minor gods were granted their own cabins.
 
     slug is produced by _cabin_slug: 'cabin-3-poseidon'.
-    For honorary cabins (Hera #2, Artemis #8) with no deity,
-    the slug falls back to 'cabin-{number}'.
+    Honorary cabins 2 and 8 use the explicit slugs 'cabin-2-hera' and
+    'cabin-8-artemis' despite having no deity FK.
     """
 
     slug = AutoSlugField(
@@ -76,7 +80,9 @@ class Cabin(BaseModel):
     )
     is_empty = models.BooleanField(
         default=False,
-        help_text='Whether this cabin currently has any campers.',
+        help_text=(
+            'Whether this cabin lacks full-time, year-round demigod residents in the historical series state.'
+        ),
     )
     architecture_description = models.TextField(
         blank=True,
@@ -96,7 +102,7 @@ class Cabin(BaseModel):
         'characters.Character',
         blank=True,
         related_name='cabin',
-        help_text='Named characters who live in this cabin.',
+        help_text='Named characters historically associated with this cabin, including seasonal or visiting campers.',
     )
     head_counselor = models.ForeignKey(
         'characters.Character',
@@ -104,7 +110,7 @@ class Cabin(BaseModel):
         null=True,
         blank=True,
         related_name='counselor_of_cabin',
-        help_text='Current head counselor of this cabin.',
+        help_text='Primary historical series head counselor for this cabin.',
     )
 
     # When this cabin was added
@@ -142,8 +148,8 @@ class Faction(BaseModel):
     A CheckConstraint prevents both being set simultaneously.
     Both null is valid for collective or leaderless factions.
 
-    members is M2M → Character only — god members are modelled through
-    their affiliation field on the God model rather than here.
+    members are represented by FactionMember and may be Characters, Gods,
+    Titans, or Monsters.
     """
 
     slug = AutoSlugField(populate_from='name', unique=True, editable=False)
@@ -178,12 +184,14 @@ class Faction(BaseModel):
         help_text='God leader of this faction.',
     )
 
-    # Members — Character only
+    # Character members retain the legacy M2M accessor; FactionMember carries all types.
     members = models.ManyToManyField(
         'characters.Character',
+        through='FactionMember',
+        through_fields=('faction', 'member_character'),
         blank=True,
         related_name='factions',
-        help_text='Named character members of this faction.',
+        help_text='Character members of this faction; all member types are in FactionMember.',
     )
 
     books_active_in = models.ManyToManyField(
@@ -211,3 +219,103 @@ class Faction(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class FactionMember(models.Model):
+    """A typed membership link from a Faction to exactly one lore entity."""
+
+    faction = models.ForeignKey(
+        Faction,
+        on_delete=models.CASCADE,
+        related_name='member_records',
+    )
+    member_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='faction_memberships',
+    )
+    member_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='faction_memberships',
+    )
+    member_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='faction_memberships',
+    )
+    member_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='faction_memberships',
+    )
+
+    class Meta:
+        ordering = ['id']
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        member_character__isnull=False,
+                        member_god__isnull=True,
+                        member_titan__isnull=True,
+                        member_monster__isnull=True,
+                    )
+                    | models.Q(
+                        member_character__isnull=True,
+                        member_god__isnull=False,
+                        member_titan__isnull=True,
+                        member_monster__isnull=True,
+                    )
+                    | models.Q(
+                        member_character__isnull=True,
+                        member_god__isnull=True,
+                        member_titan__isnull=False,
+                        member_monster__isnull=True,
+                    )
+                    | models.Q(
+                        member_character__isnull=True,
+                        member_god__isnull=True,
+                        member_titan__isnull=True,
+                        member_monster__isnull=False,
+                    )
+                ),
+                name='faction_member_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('faction', 'member_character'),
+                condition=models.Q(member_character__isnull=False),
+                name='faction_member_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('faction', 'member_god'),
+                condition=models.Q(member_god__isnull=False),
+                name='faction_member_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('faction', 'member_titan'),
+                condition=models.Q(member_titan__isnull=False),
+                name='faction_member_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('faction', 'member_monster'),
+                condition=models.Q(member_monster__isnull=False),
+                name='faction_member_unique_monster',
+            ),
+        ]
+        verbose_name = 'Faction Member'
+        verbose_name_plural = 'Faction Members'
+
+    def __str__(self):
+        entity = (
+            self.member_character or self.member_god or self.member_titan or self.member_monster
+        )
+        return f'{self.faction}: {entity}'

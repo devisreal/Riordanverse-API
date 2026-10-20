@@ -99,6 +99,9 @@ class Command(BaseCommand):
             name = entry.get('name', 'unknown')
             try:
                 defaults = {field: entry[field] for field in SCALAR_FIELDS if field in entry}
+                expected_slug = entry.get('expected_slug')
+                if expected_slug:
+                    defaults['slug'] = expected_slug
 
                 divine_parent_slug = entry.get('divine_parent_slug')
                 god_parent, titan_parent = _resolve_divine_parent(
@@ -116,7 +119,6 @@ class Command(BaseCommand):
                     name=name,
                     defaults=defaults,
                 )
-                expected_slug = entry.get('expected_slug')
                 if expected_slug:
                     by_expected_slug[expected_slug] = character
                     if character.slug != expected_slug:
