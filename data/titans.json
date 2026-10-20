@@ -219,5 +219,33 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
     ]
+  },
+  {
+    "name": "Helios",
+    "expected_slug": "helios",
+    "roman_name": "Sol",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "faded",
+    "alignment": "neutral",
+    "domains": [
+      "The Sun",
+      "Sight",
+      "Sun Chariot"
+    ],
+    "symbols": [
+      "Sun Chariot",
+      "Golden Crown of Rays",
+      "Aureole"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Drove the sun chariot across the sky for ages before fading and surrendering the sun domain to Apollo.",
+    "prison_location": null,
+    "description": "Original Titan of the Sun, son of Hyperion and Theia. Drove the sun chariot across the sky for ages before fading and surrendering the sun domain to Apollo. Father of Phaethon and Circe.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ]
   }
 ]

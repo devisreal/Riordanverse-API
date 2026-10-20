@@ -33,6 +33,7 @@ CHARACTER_TYPE_CHOICES = (
     ('god', 'God'),
     ('titan', 'Titan'),
     ('monster', 'Monster'),
+    ('creature', 'Creature'),
     ('mortal', 'Mortal'),
     ('satyr', 'Satyr'),
     ('centaur', 'Centaur'),
@@ -66,6 +67,8 @@ SPECIES_CHOICES = (
     ('telekhine', 'Telekhine'),
     ('giant', 'Giant'),
     ('automaton', 'Automaton'),
+    ('spirit', 'Spirit'),
+    ('hekatonkheir', 'Hekatonkheir'),
     ('other', 'Other'),
 )
 

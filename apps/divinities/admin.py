@@ -49,4 +49,11 @@ class TitanAdmin(admin.ModelAdmin):
 class DivineRelationshipAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'relationship_type')
     list_filter = ('relationship_type',)
-    raw_id_fields = ('from_god', 'from_titan', 'to_god', 'to_titan')
+    raw_id_fields = (
+        'from_god',
+        'from_titan',
+        'from_character',
+        'to_god',
+        'to_titan',
+        'to_character',
+    )

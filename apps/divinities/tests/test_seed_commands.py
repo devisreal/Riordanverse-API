@@ -7,6 +7,7 @@ from unittest.mock import patch
 from django.core.management import call_command
 from django.test import TestCase
 
+from apps.characters.models import Character
 from apps.divinities.models import DivineRelationship, God, Titan
 from apps.narrative.models import Book
 from tests.makers import make_book, make_god
@@ -19,6 +20,7 @@ class DivinitySeedCommandTests(TestCase):
             'seed_books',
             'seed_gods',
             'seed_titans',
+            'seed_characters',
             'seed_divine_relationships',
         ):
             output = StringIO()
@@ -27,14 +29,33 @@ class DivinitySeedCommandTests(TestCase):
 
         self.assertEqual(Book.objects.count(), 12)
         self.assertEqual(God.objects.count(), 33)
-        self.assertEqual(Titan.objects.count(), 9)
-        self.assertEqual(DivineRelationship.objects.count(), 32)
-        self.assertFalse(any('Warning:' in output for output in outputs))
+        self.assertEqual(Titan.objects.count(), 10)
+        self.assertEqual(DivineRelationship.objects.count(), 34)
+        self.assertEqual(Character.objects.count(), 53)
+        helios = Titan.objects.get(slug='helios')
+        phaethon = Character.objects.get(slug='phaethon')
+        circe = God.objects.get(slug='circe')
+        self.assertEqual(phaethon.divine_parent_titan, helios)
+        self.assertTrue(
+            DivineRelationship.objects.filter(
+                from_titan=helios,
+                to_character=phaethon,
+                relationship_type='parent_of',
+            ).exists()
+        )
+        self.assertTrue(
+            DivineRelationship.objects.filter(
+                from_titan=helios,
+                to_god=circe,
+                relationship_type='parent_of',
+            ).exists()
+        )
+        self.assertFalse(any('[WARN]' in output for output in outputs))
 
         rerun_relationships = StringIO()
         call_command('seed_divine_relationships', stdout=rerun_relationships)
 
-        self.assertEqual(DivineRelationship.objects.count(), 32)
+        self.assertEqual(DivineRelationship.objects.count(), 34)
         self.assertIn('Exists:', rerun_relationships.getvalue())
 
     def test_seeded_rhea_relationships_are_typed_as_titan(self):
@@ -42,6 +63,7 @@ class DivinitySeedCommandTests(TestCase):
             'seed_books',
             'seed_gods',
             'seed_titans',
+            'seed_characters',
             'seed_divine_relationships',
         ):
             call_command(command, stdout=StringIO())
@@ -52,6 +74,34 @@ class DivinitySeedCommandTests(TestCase):
             6,
         )
         self.assertTrue(rhea.relationships_as_from.filter(relationship_type='child_of').exists())
+
+
+class MissingRelationshipEntityWarningTests(TestCase):
+    def test_unresolved_entity_warns_and_skips_only_the_relationship(self):
+        data = [
+            {
+                'from_type': 'titan',
+                'from_slug': 'missing-titan',
+                'to_type': 'character',
+                'to_slug': 'missing-character',
+                'relationship_type': 'parent_of',
+            }
+        ]
+
+        with TemporaryDirectory() as temp_dir:
+            data_file = Path(temp_dir) / 'divine_relationships.json'
+            data_file.write_text(json.dumps(data), encoding='utf-8')
+            output = StringIO()
+            with patch(
+                'apps.divinities.management.commands.seed_divine_relationships.DATA_FILE',
+                data_file,
+            ):
+                call_command('seed_divine_relationships', stdout=output)
+
+        self.assertEqual(DivineRelationship.objects.count(), 0)
+        self.assertEqual(output.getvalue().count('[WARN]'), 2)
+        self.assertIn("Unresolved titan 'missing-titan'", output.getvalue())
+        self.assertIn("Unresolved character 'missing-character'", output.getvalue())
 
 
 class MissingBookSlugWarningTests(TestCase):

@@ -80,6 +80,14 @@ class Character(BaseModel):
         related_name='demigod_children',
         help_text='Olympian or minor god parent. Null for mortals and satyrs.',
     )
+    divine_parent_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='character_children',
+        help_text='Titan parent when the divine parent is not a God record.',
+    )
     mortal_parent_name = models.CharField(
         max_length=255,
         blank=True,
@@ -221,6 +229,15 @@ class Character(BaseModel):
         ordering = ['name']
         verbose_name = 'Character'
         verbose_name_plural = 'Characters'
+        constraints = [
+            models.CheckConstraint(
+                condition=~(
+                    models.Q(divine_parent__isnull=False)
+                    & models.Q(divine_parent_titan__isnull=False)
+                ),
+                name='character_single_divine_parent',
+            )
+        ]
 
     def __str__(self):
         return self.name

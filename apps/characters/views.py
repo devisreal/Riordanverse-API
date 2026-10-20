@@ -24,6 +24,7 @@ class CharacterListView(generics.ListAPIView):
         )
         .select_related(
             'divine_parent',
+            'divine_parent_titan',
             'mortal_parent_ref',
             'empathy_link',
             'first_appearance_book',
@@ -50,6 +51,7 @@ class CharacterDetailView(generics.RetrieveAPIView):
         )
         .select_related(
             'divine_parent',
+            'divine_parent_titan',
             'mortal_parent_ref',
             'empathy_link',
             'first_appearance_book',

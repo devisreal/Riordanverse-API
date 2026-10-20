@@ -47,8 +47,10 @@ class GodDetailView(generics.RetrieveAPIView):
             'weapons',
             'relationships_as_from__to_god',
             'relationships_as_from__to_titan',
+            'relationships_as_from__to_character',
             'relationships_as_to__from_god',
             'relationships_as_to__from_titan',
+            'relationships_as_to__from_character',
         )
         .select_related('first_appearance_book')
         .all()
@@ -115,8 +117,10 @@ class TitanDetailView(generics.RetrieveAPIView):
             'books_appeared_in',
             'relationships_as_from__to_god',
             'relationships_as_from__to_titan',
+            'relationships_as_from__to_character',
             'relationships_as_to__from_god',
             'relationships_as_to__from_titan',
+            'relationships_as_to__from_character',
         )
         .select_related('first_appearance_book')
         .all()

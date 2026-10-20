@@ -222,5 +222,19 @@
     "to_type": "titan",
     "to_slug": "rhea",
     "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "character",
+    "to_slug": "phaethon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "god",
+    "to_slug": "circe",
+    "relationship_type": "parent_of"
   }
 ]

@@ -72,7 +72,8 @@ def make_titan(**kwargs):
 
 
 def make_divine_relationship(from_entity, to_entity, relationship_type='parent_of', **kwargs):
-    """Create a relationship between God/Titan entities."""
+    """Create a relationship between God, Titan, or Character entities."""
+    from apps.characters.models import Character
     from apps.divinities.models import DivineRelationship, God, Titan
 
     data = {'relationship_type': relationship_type}
@@ -80,15 +81,19 @@ def make_divine_relationship(from_entity, to_entity, relationship_type='parent_o
         data['from_god'] = from_entity
     elif isinstance(from_entity, Titan):
         data['from_titan'] = from_entity
+    elif isinstance(from_entity, Character):
+        data['from_character'] = from_entity
     else:
-        raise TypeError('from_entity must be a God or Titan instance')
+        raise TypeError('from_entity must be a God, Titan, or Character instance')
 
     if isinstance(to_entity, God):
         data['to_god'] = to_entity
     elif isinstance(to_entity, Titan):
         data['to_titan'] = to_entity
+    elif isinstance(to_entity, Character):
+        data['to_character'] = to_entity
     else:
-        raise TypeError('to_entity must be a God or Titan instance')
+        raise TypeError('to_entity must be a God, Titan, or Character instance')
 
     data.update(kwargs)
     return DivineRelationship.objects.create(**data)

@@ -3,6 +3,7 @@
 from django.db.models import Q
 from rest_framework import serializers
 
+from apps.characters.models import Character
 from apps.divinities.models import DivineRelationship, God, Titan
 from apps.images.serializers import ImageListSerializer
 
@@ -10,20 +11,39 @@ from apps.images.serializers import ImageListSerializer
 def _relationship_filters(obj):
     if isinstance(obj, God):
         return Q(from_god=obj), Q(to_god=obj)
-    return Q(from_titan=obj), Q(to_titan=obj)
+    if isinstance(obj, Titan):
+        return Q(from_titan=obj), Q(to_titan=obj)
+    return Q(from_character=obj), Q(to_character=obj)
 
 
 def _relationship_entity(rel, side):
     if side == 'from':
-        entity = rel.from_god or rel.from_titan
+        entity = rel.from_god or rel.from_titan or rel.from_character
     else:
-        entity = rel.to_god or rel.to_titan
+        entity = rel.to_god or rel.to_titan or rel.to_character
+    entity_type = (
+        'god'
+        if isinstance(entity, God)
+        else 'titan'
+        if isinstance(entity, Titan)
+        else 'character'
+        if isinstance(entity, Character)
+        else 'unknown'
+    )
     return {
-        'type': 'god' if isinstance(entity, God) else 'titan',
+        'type': entity_type,
         'slug': entity.slug,
         'name': entity.name,
         'relationship': rel.relationship_type,
     }
+
+
+def _is_from_entity(rel, obj):
+    if isinstance(obj, God):
+        return rel.from_god_id == obj.pk
+    if isinstance(obj, Titan):
+        return rel.from_titan_id == obj.pk
+    return rel.from_character_id == obj.pk
 
 
 def _serialize_entity_relationships(obj, category):
@@ -37,7 +57,7 @@ def _serialize_entity_relationships(obj, category):
         'consorts': Q(relationship_type='consort_of') & (from_filter | to_filter),
     }
     relationships = DivineRelationship.objects.filter(related_filters[category]).select_related(
-        'from_god', 'from_titan', 'to_god', 'to_titan'
+        'from_god', 'from_titan', 'from_character', 'to_god', 'to_titan', 'to_character'
     )
 
     results = []
@@ -47,10 +67,8 @@ def _serialize_entity_relationships(obj, category):
             side = 'from' if rel.relationship_type == 'parent_of' else 'to'
         elif category == 'children':
             side = 'to' if rel.relationship_type == 'parent_of' else 'from'
-        elif isinstance(obj, God):
-            side = 'to' if rel.from_god_id == obj.pk else 'from'
         else:
-            side = 'to' if rel.from_titan_id == obj.pk else 'from'
+            side = 'to' if _is_from_entity(rel, obj) else 'from'
 
         result = _relationship_entity(rel, side)
         key = (result['type'], result['slug'])
@@ -180,11 +198,13 @@ class TitanListSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'roman_name',
             'generation',
             'status',
             'alignment',
             'alignment_display',
             'domains',
+            'symbols',
             'primary_image',
         ]
 
@@ -211,6 +231,7 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'roman_name',
             'mythology',
             'generation',
             'generation_display',
@@ -219,6 +240,7 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'alignment',
             'alignment_display',
             'domains',
+            'symbols',
             'weapon_or_power',
             'role_in_series',
             'prison_location',

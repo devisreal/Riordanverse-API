@@ -83,6 +83,14 @@ class TitanDetailSerializerTests(TestCase):
         data = TitanDetailSerializer(self.kronos).data
         self.assertEqual(data['parents'], [])
 
+    def test_children_include_characters(self):
+        phaethon = make_character(name='Phaethon')
+        make_divine_relationship(from_entity=self.kronos, to_entity=phaethon)
+
+        children = TitanDetailSerializer(self.kronos).data['children']
+        phaethon_child = next(child for child in children if child['slug'] == 'phaethon')
+        self.assertEqual(phaethon_child['type'], 'character')
+
     def test_child_of_relationships_are_serialized_as_parents(self):
         rhea = make_titan(name='Rhea', alignment='neutral')
         ouranos = make_god(name='Ouranos', tier='primordial')

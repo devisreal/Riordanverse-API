@@ -47,7 +47,8 @@ class CharacterListSerializer(serializers.ModelSerializer):
         return _primary_image(obj)
 
     def get_divine_parent_slug(self, obj):
-        return obj.divine_parent.slug if obj.divine_parent else None
+        parent = obj.divine_parent or obj.divine_parent_titan
+        return parent.slug if parent else None
 
 
 class CharacterDetailSerializer(serializers.ModelSerializer):
@@ -126,7 +127,8 @@ class CharacterDetailSerializer(serializers.ModelSerializer):
         return _primary_image(obj)
 
     def get_divine_parent_slug(self, obj):
-        return obj.divine_parent.slug if obj.divine_parent else None
+        parent = obj.divine_parent or obj.divine_parent_titan
+        return parent.slug if parent else None
 
     def get_mortal_parent_ref_slug(self, obj):
         return obj.mortal_parent_ref.slug if obj.mortal_parent_ref else None
