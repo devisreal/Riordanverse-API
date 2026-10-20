@@ -236,5 +236,82 @@
     "to_type": "god",
     "to_slug": "circe",
     "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "helios",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "theia",
+    "to_type": "titan",
+    "to_slug": "helios",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "hyperion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "hyperion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "god",
+    "to_slug": "amphitrite",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "amphitrite",
+    "to_type": "god",
+    "to_slug": "triton",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "boreas",
+    "to_type": "god",
+    "to_slug": "khione",
+    "relationship_type": "parent_of"
   }
 ]

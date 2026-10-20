@@ -13,11 +13,12 @@
     ],
     "weapon_or_power": [
       "adamantine scythe",
-      "time manipulation"
+      "time manipulation",
+      "golden dust aura"
     ],
-    "role_in_series": "Supreme antagonist of V1.",
-    "prison_location": "Tartarus / Scattered",
-    "description": "Titan Lord of Time and King of Titans who overthrew Ouranos with an adamantine scythe.",
+    "role_in_series": "Overarching antagonist of the First Demigod War (V1). Orchestrates the theft of the Master Bolt, reforms from Tartarus, and possesses Luke Castellan to attack Mount Olympus.",
+    "prison_location": "Tartarus (formerly) / Luke Castellan's body",
+    "description": "Titan Lord of Time and King of Titans who overthrew Ouranos with an adamantine scythe. Defeated by his children in the First Titan War and scattered in Tartarus; rises again in Percy Jackson and the Olympians.",
     "first_appearance_book_slug": "the-lightning-thief",
     "books_appeared_in_slugs": [
       "the-lightning-thief",
@@ -26,7 +27,9 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "percy-jacksons-greek-gods"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Atlas",
@@ -51,7 +54,9 @@
     "first_appearance_book_slug": "the-titans-curse",
     "books_appeared_in_slugs": [
       "the-titans-curse"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Hyperion",
@@ -76,7 +81,9 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Iapetus",
@@ -99,7 +106,9 @@
     "first_appearance_book_slug": "the-demigod-files",
     "books_appeared_in_slugs": [
       "the-demigod-files"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Oceanus",
@@ -122,7 +131,9 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Prometheus",
@@ -147,7 +158,9 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Koios",
@@ -171,7 +184,9 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Krios",
@@ -194,7 +209,9 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
   },
   {
     "name": "Rhea",
@@ -202,22 +219,36 @@
     "mythology": "greek",
     "generation": "elder_titan",
     "status": "immortal",
-    "alignment": "neutral",
+    "alignment": "olympian_allied",
     "domains": [
       "motherhood",
       "fertility",
-      "mountain wilds"
+      "earth",
+      "generation"
     ],
     "weapon_or_power": [
-      "maternal magic",
-      "stealth"
+      "maternal earth magic",
+      "prophetic wisdom",
+      "deception"
     ],
-    "role_in_series": "Mother of the original 6 Olympians who tricked Kronos with a wrapped stone to save baby Zeus.",
+    "role_in_series": "Mother of the original six Olympians who tricked Kronos with the swaddled rock to save baby Zeus.",
     "prison_location": null,
-    "description": "Elder Titaness of Motherhood and Queen of Titans. Saved Zeus from Kronos.",
+    "description": "Elder Titaness of Motherhood and Queen of the Titans. Saved baby Zeus by giving Kronos a swaddled rock to swallow instead.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
+    ],
+    "roman_name": "Ops / Magna Mater",
+    "symbols": [
+      "turret crown",
+      "chariot drawn by lions",
+      "swaddled stone"
+    ],
+    "sacred_animals": [
+      "lion"
+    ],
+    "sacred_plants": [
+      "oak tree"
     ]
   },
   {
@@ -229,23 +260,238 @@
     "status": "faded",
     "alignment": "neutral",
     "domains": [
-      "The Sun",
-      "Sight",
-      "Sun Chariot"
+      "sun",
+      "sight",
+      "sun chariot"
     ],
     "symbols": [
-      "Sun Chariot",
-      "Golden Crown of Rays",
-      "Aureole"
+      "sun chariot",
+      "golden crown of rays",
+      "aureole"
     ],
     "weapon_or_power": [],
     "role_in_series": "Drove the sun chariot across the sky for ages before fading and surrendering the sun domain to Apollo.",
     "prison_location": null,
-    "description": "Original Titan of the Sun, son of Hyperion and Theia. Drove the sun chariot across the sky for ages before fading and surrendering the sun domain to Apollo. Father of Phaethon and Circe.",
+    "description": "Original Titan of the Sun, son of Hyperion and Theia. Surrendered the sun chariot to Apollo and faded after his son Phaethon crashed the chariot. Father of Phaethon and Circe.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods",
       "percy-jacksons-greek-heroes"
+    ],
+    "sacred_animals": [
+      "rooster",
+      "white horses"
+    ],
+    "sacred_plants": [
+      "heliotrope"
+    ]
+  },
+  {
+    "name": "Tethys",
+    "expected_slug": "tethys",
+    "roman_name": "Tethys",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "fresh water",
+      "rivers",
+      "springs",
+      "nursing"
+    ],
+    "symbols": [
+      "winged brow",
+      "water vessel"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of fresh water and wife of Oceanus. Mother of the Potamoi (river gods) and Oceanids.",
+    "prison_location": null,
+    "description": "Elder Titaness of fresh water and wife of Oceanus. Mother of the Potamoi (river gods) and Oceanids.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
+  },
+  {
+    "name": "Theia",
+    "expected_slug": "theia",
+    "roman_name": "Theia",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "sight",
+      "shining light",
+      "glittering gems",
+      "gold"
+    ],
+    "symbols": [
+      "shining eye",
+      "golden crown"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of sight and bright sky light. Wife of Hyperion and mother of Helios, Selene, and Eos.",
+    "prison_location": null,
+    "description": "Elder Titaness of sight and bright sky light. Wife of Hyperion and mother of Helios, Selene, and Eos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
+  },
+  {
+    "name": "Themis",
+    "expected_slug": "themis",
+    "roman_name": "Justitia",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "divine law",
+      "natural order",
+      "justice",
+      "custom"
+    ],
+    "symbols": [
+      "scales of justice",
+      "cornucopia"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of divine law and custom. Served as an early counselor to Zeus and guardian of the Delphic Oracle before Apollo.",
+    "prison_location": null,
+    "description": "Elder Titaness of divine law and custom. Served as an early counselor to Zeus and guardian of the Delphic Oracle before Apollo.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
+  },
+  {
+    "name": "Mnemosyne",
+    "expected_slug": "mnemosyne",
+    "roman_name": "Moneta",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "memory",
+      "remembrance",
+      "rote learning"
+    ],
+    "symbols": [
+      "pool of memory",
+      "scroll"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of memory. Mother of the Nine Muses by Zeus.",
+    "prison_location": null,
+    "description": "Elder Titaness of memory. Mother of the Nine Muses by Zeus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
+  },
+  {
+    "name": "Phoebe",
+    "expected_slug": "phoebe",
+    "roman_name": "Phoebe",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "prophecy",
+      "intellect",
+      "bright moon"
+    ],
+    "symbols": [
+      "oracle tripod",
+      "golden crown"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of prophetic intellect and third mistress of the Oracle of Delphi. Mother of Leto and Asteria.",
+    "prison_location": null,
+    "description": "Elder Titaness of prophetic intellect and third mistress of the Oracle of Delphi. Mother of Leto and Asteria.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": []
+  },
+  {
+    "name": "Selene",
+    "expected_slug": "selene",
+    "roman_name": "Luna",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "faded",
+    "alignment": "neutral",
+    "domains": [
+      "moon",
+      "night sky",
+      "lunar chariot"
+    ],
+    "symbols": [
+      "crescent moon",
+      "silver chariot"
+    ],
+    "weapon_or_power": [
+      "silver moon chariot"
+    ],
+    "role_in_series": "Original Titaness of the Moon, sister of Helios. Faded after worship shifted to Artemis.",
+    "prison_location": null,
+    "description": "Original Titaness of the Moon, sister of Helios. Faded after worship shifted to Artemis.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [
+      "white bulls"
+    ],
+    "sacred_plants": []
+  },
+  {
+    "name": "Leto",
+    "expected_slug": "leto",
+    "roman_name": "Latona",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "immortal",
+    "alignment": "olympian_allied",
+    "domains": [
+      "motherhood",
+      "modesty",
+      "protection of young"
+    ],
+    "symbols": [
+      "veil",
+      "date palm"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Titaness daughter of Coeus and Phoebe. Hounded across the earth by Hera before giving birth to Apollo and Artemis on Delos.",
+    "prison_location": null,
+    "description": "Titaness daughter of Coeus and Phoebe. Hounded across the earth by Hera before giving birth to Apollo and Artemis on Delos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [
+      "rooster"
+    ],
+    "sacred_plants": [
+      "date palm",
+      "olive tree"
     ]
   }
 ]

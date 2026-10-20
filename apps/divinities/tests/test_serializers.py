@@ -83,6 +83,15 @@ class TitanDetailSerializerTests(TestCase):
         data = TitanDetailSerializer(self.kronos).data
         self.assertEqual(data['parents'], [])
 
+    def test_sacred_animals_and_plants_are_serialized(self):
+        self.kronos.sacred_animals = ['white horse']
+        self.kronos.sacred_plants = ['heliotrope']
+        self.kronos.save()
+
+        data = TitanDetailSerializer(self.kronos).data
+        self.assertEqual(data['sacred_animals'], ['white horse'])
+        self.assertEqual(data['sacred_plants'], ['heliotrope'])
+
     def test_children_include_characters(self):
         phaethon = make_character(name='Phaethon')
         make_divine_relationship(from_entity=self.kronos, to_entity=phaethon)

@@ -62,6 +62,8 @@ class Command(BaseCommand):
                     'alignment': entry.get('alignment', 'kronos_army'),
                     'domains': entry.get('domains', []),
                     'symbols': entry.get('symbols', []),
+                    'sacred_animals': entry.get('sacred_animals', []),
+                    'sacred_plants': entry.get('sacred_plants', []),
                     'weapon_or_power': entry.get('weapon_or_power', []),
                     'role_in_series': entry.get('role_in_series'),
                     'prison_location': entry.get('prison_location'),

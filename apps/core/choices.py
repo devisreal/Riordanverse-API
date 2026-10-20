@@ -149,6 +149,7 @@ GOD_AFFILIATION_CHOICES = (
     ('neutral', 'Neutral'),
     ('titan_allied', 'Titan Allied'),
     ('chthonic', 'Chthonic'),
+    ('independent', 'Independent'),
 )
 
 # ---------------------------------------------------------------------------

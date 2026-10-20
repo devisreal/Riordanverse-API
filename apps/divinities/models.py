@@ -208,6 +208,8 @@ class Titan(BaseModel):
     # Sacred attributes and powers.
     domains = models.JSONField(default=list)
     symbols = models.JSONField(default=list)
+    sacred_animals = models.JSONField(default=list)
+    sacred_plants = models.JSONField(default=list)
     weapon_or_power = models.JSONField(
         default=list,
         help_text='Notable powers or items.',

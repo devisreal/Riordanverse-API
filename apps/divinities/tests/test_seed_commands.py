@@ -28,14 +28,37 @@ class DivinitySeedCommandTests(TestCase):
             outputs.append(output.getvalue())
 
         self.assertEqual(Book.objects.count(), 12)
-        self.assertEqual(God.objects.count(), 33)
-        self.assertEqual(Titan.objects.count(), 10)
-        self.assertEqual(DivineRelationship.objects.count(), 34)
+        self.assertEqual(God.objects.count(), 37)
+        self.assertEqual(Titan.objects.count(), 17)
+        self.assertEqual(DivineRelationship.objects.count(), 45)
         self.assertEqual(Character.objects.count(), 53)
         helios = Titan.objects.get(slug='helios')
+        tartarus = God.objects.get(slug='tartarus')
+        amphitrite = God.objects.get(slug='amphitrite')
+        poseidon = God.objects.get(slug='poseidon')
+        kronos = Titan.objects.get(slug='kronos')
+        gaea = God.objects.get(slug='gaea')
         phaethon = Character.objects.get(slug='phaethon')
         circe = God.objects.get(slug='circe')
         self.assertEqual(phaethon.divine_parent_titan, helios)
+        self.assertEqual(helios.sacred_animals, ['rooster', 'white horses'])
+        self.assertEqual(helios.sacred_plants, ['heliotrope'])
+        self.assertEqual(Titan.objects.get(slug='rhea').sacred_animals, ['lion'])
+        self.assertEqual(tartarus.tier, 'primordial')
+        self.assertTrue(
+            DivineRelationship.objects.filter(
+                from_god=poseidon,
+                to_god=amphitrite,
+                relationship_type='consort_of',
+            ).exists()
+        )
+        self.assertTrue(
+            DivineRelationship.objects.filter(
+                from_god=gaea,
+                to_titan=kronos,
+                relationship_type='parent_of',
+            ).exists()
+        )
         self.assertTrue(
             DivineRelationship.objects.filter(
                 from_titan=helios,
@@ -55,7 +78,7 @@ class DivinitySeedCommandTests(TestCase):
         rerun_relationships = StringIO()
         call_command('seed_divine_relationships', stdout=rerun_relationships)
 
-        self.assertEqual(DivineRelationship.objects.count(), 34)
+        self.assertEqual(DivineRelationship.objects.count(), 45)
         self.assertIn('Exists:', rerun_relationships.getvalue())
 
     def test_seeded_rhea_relationships_are_typed_as_titan(self):

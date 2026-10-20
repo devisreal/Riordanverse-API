@@ -43,6 +43,18 @@ class TitanModelTests(TestCase):
     def test_domains_default_to_empty_list(self):
         self.assertEqual(self.titan.domains, [])
 
+    def test_sacred_attributes_default_to_empty_lists(self):
+        self.assertEqual(self.titan.sacred_animals, [])
+        self.assertEqual(self.titan.sacred_plants, [])
+
+    def test_sacred_attributes_accept_lists(self):
+        self.titan.sacred_animals = ['white horse']
+        self.titan.sacred_plants = ['heliotrope']
+        self.titan.save()
+        self.titan.refresh_from_db()
+        self.assertEqual(self.titan.sacred_animals, ['white horse'])
+        self.assertEqual(self.titan.sacred_plants, ['heliotrope'])
+
 
 class DivineRelationshipTests(TestCase):
     def setUp(self):

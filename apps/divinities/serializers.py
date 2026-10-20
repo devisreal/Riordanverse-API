@@ -205,6 +205,8 @@ class TitanListSerializer(serializers.ModelSerializer):
             'alignment_display',
             'domains',
             'symbols',
+            'sacred_animals',
+            'sacred_plants',
             'primary_image',
         ]
 
@@ -241,6 +243,8 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'alignment_display',
             'domains',
             'symbols',
+            'sacred_animals',
+            'sacred_plants',
             'weapon_or_power',
             'role_in_series',
             'prison_location',

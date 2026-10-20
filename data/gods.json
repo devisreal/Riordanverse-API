@@ -35,11 +35,11 @@
     "has_cabin": true,
     "is_big_three": true,
     "oath_status": "oath_dissolved",
-    "greek_aspect_personality": "Proud, authoritative, paranoid about losing power.",
-    "roman_aspect_personality": "Regimented Jupiter.",
+    "greek_aspect_personality": "Proud, authoritative, paranoid about losing power, commanding, and easily angered when challenged.",
+    "roman_aspect_personality": "More disciplined, military-focused, and regimented as Jupiter.",
     "roman_only": false,
     "home": "Mount Olympus",
-    "description": "King of the Olympians and God of the Sky. Defeated Kronos with his Master Lightning Bolt forged by Elder Cyclopes.",
+    "description": "The King of the Olympians and God of the Sky who rules Mount Olympus. He wields the Master Lightning Bolt forged by the Elder Cyclopes, which he used to defeat Kronos. He broke the post-WWII Big Three oath by fathering Thalia Grace.",
     "first_appearance_book_slug": "the-lightning-thief",
     "books_appeared_in_slugs": [
       "the-lightning-thief",
@@ -107,7 +107,8 @@
     "domains": [
       "sea",
       "earthquakes",
-      "horses"
+      "horses",
+      "storms"
     ],
     "symbols": [
       "trident",
@@ -129,11 +130,11 @@
     "has_cabin": true,
     "is_big_three": true,
     "oath_status": "oath_dissolved",
-    "greek_aspect_personality": "Powerful and moody like the sea, caring toward his demigod children.",
-    "roman_aspect_personality": "Neptune.",
+    "greek_aspect_personality": "Easygoing like the ocean tide, deeply caring toward his children, but capable of terrible wrath when angered.",
+    "roman_aspect_personality": "Distant and feared as Neptune, god of fresh water and sea storms.",
     "roman_only": false,
-    "home": "The Sea",
-    "description": "God of the Sea, Earthquakes, and Horses. Father of Percy, Tyson, Theseus, and Bellerophon.",
+    "home": "The Sea / Undersea Palace",
+    "description": "God of the Sea, Earthquakes, and Horses. Father of Percy Jackson and Tyson. Wields the powerful Trident and rules the underwater kingdom.",
     "first_appearance_book_slug": "the-lightning-thief",
     "books_appeared_in_slugs": [
       "the-lightning-thief",
@@ -307,7 +308,8 @@
     "symbols": [
       "lyre",
       "sun chariot",
-      "bow and arrow"
+      "bow and arrow",
+      "laurel wreath"
     ],
     "sacred_animals": [
       "raven",
@@ -315,26 +317,30 @@
       "swan"
     ],
     "sacred_plants": [
-      "laurel"
+      "laurel",
+      "hyacinth"
     ],
     "sacred_items": [
       "golden bow",
       "golden lyre",
+      "sun chariot",
       "chryseae automata"
     ],
     "cabin_number": 7,
     "has_cabin": true,
     "is_big_three": false,
     "oath_status": "not_applicable",
-    "greek_aspect_personality": "Flamboyant, vain, loves composing bad haikus, charismatic.",
-    "roman_aspect_personality": "Apollo.",
+    "greek_aspect_personality": "Flamboyant, vain, loves composing bad haikus, charismatic, drives the sun chariot Maserati.",
+    "roman_aspect_personality": "Apollo (kept the same name in Rome), god of prophecy and healing.",
     "roman_only": false,
     "home": "Mount Olympus",
-    "description": "God of the Sun, Music, Archery, and Prophecy. Recruits Percy in The Singer of Apollo to catch a rogue golden Celedon automaton.",
+    "description": "God of the Sun, Archery, Music, and Prophecy. Twin brother of Artemis. Appears as a bright teenager driving the sun chariot. Recruits Percy in The Singer of Apollo to catch a rogue golden Celedon automaton.",
     "first_appearance_book_slug": "the-titans-curse",
     "books_appeared_in_slugs": [
+      "the-lightning-thief",
       "the-titans-curse",
       "the-last-olympian",
+      "the-demigod-files",
       "percy-jackson-and-the-singer-of-apollo",
       "percy-jacksons-greek-gods"
     ]
@@ -594,15 +600,18 @@
     "domains": [
       "underworld",
       "dead",
+      "richness",
       "precious metals"
     ],
     "symbols": [
       "bident",
       "helm of darkness",
-      "pomegranate"
+      "pomegranate",
+      "black ram"
     ],
     "sacred_animals": [
-      "black ram"
+      "black ram",
+      "screech owl"
     ],
     "sacred_plants": [
       "asphodel",
@@ -610,17 +619,18 @@
       "pomegranate"
     ],
     "sacred_items": [
-      "helm of darkness"
+      "helm of darkness",
+      "obsidian throne"
     ],
     "cabin_number": 13,
     "has_cabin": true,
     "is_big_three": true,
     "oath_status": "oath_dissolved",
-    "greek_aspect_personality": "Stern, unforgiving, bitter about exclusion from Olympus.",
-    "roman_aspect_personality": "Pluto.",
+    "greek_aspect_personality": "Bitter about exclusion from Olympus, stern, precise, fiercely proud, resides in his Underworld palace.",
+    "roman_aspect_personality": "Pluto, god of mineral wealth and underground treasures.",
     "roman_only": false,
     "home": "The Underworld",
-    "description": "Lord of the Underworld and God of the Dead. Received the Helm of Darkness from Elder Cyclopes.",
+    "description": "Lord of the Underworld and God of the Dead. Father of Nico and Bianca di Angelo. Received the Helm of Darkness from the Elder Cyclopes and was granted Cabin 13 at Camp Half-Blood after the Second Titan War.",
     "first_appearance_book_slug": "the-lightning-thief",
     "books_appeared_in_slugs": [
       "the-lightning-thief",
@@ -1307,19 +1317,19 @@
   {
     "name": "Chaos",
     "expected_slug": "chaos",
-    "roman_name": null,
+    "roman_name": "Chaos",
     "mythology": "greek",
     "tier": "primordial",
-    "affiliation": "neutral",
+    "affiliation": "independent",
     "status": "immortal",
     "domains": [
-      "origin",
-      "the void",
-      "creation"
+      "origin void",
+      "creation",
+      "primordial space"
     ],
     "symbols": [
-      "void",
-      "chasm"
+      "abyss",
+      "endless void"
     ],
     "sacred_animals": [],
     "sacred_plants": [],
@@ -1328,11 +1338,11 @@
     "has_cabin": false,
     "is_big_three": false,
     "oath_status": "not_applicable",
-    "greek_aspect_personality": "The ancient primordial void from which Earth, Sky, and Night emerged.",
-    "roman_aspect_personality": null,
+    "greek_aspect_personality": "Amorphous, boundless, incomprehensible origin of all matter and divine life.",
+    "roman_aspect_personality": "Chaos Primordialis, the primordial void in Roman tradition.",
     "roman_only": false,
-    "home": "The Primordial Void",
-    "description": "The original primordial state of existence before the creation of the cosmos.",
+    "home": "The Void",
+    "description": "The primordial void from which the first divine beings (Gaea, Tartarus, Ouranos, Erebus, Nyx) emerged at the dawn of creation.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
@@ -1341,17 +1351,19 @@
   {
     "name": "Ouranos",
     "expected_slug": "ouranos",
-    "roman_name": "Uranus",
+    "roman_name": "Caelus",
     "mythology": "greek",
     "tier": "primordial",
-    "affiliation": "neutral",
+    "affiliation": "independent",
     "status": "faded",
     "domains": [
       "sky",
-      "heavens"
+      "heavens",
+      "firmament"
     ],
     "symbols": [
-      "starry sky"
+      "starry sky",
+      "zodiac canopy"
     ],
     "sacred_animals": [],
     "sacred_plants": [],
@@ -1360,11 +1372,11 @@
     "has_cabin": false,
     "is_big_three": false,
     "oath_status": "not_applicable",
-    "greek_aspect_personality": "Tyrannical father of the elder Titans, Cyclopes, and Hekatonkheires, who imprisoned his ugly children in Tartarus.",
-    "roman_aspect_personality": null,
+    "greek_aspect_personality": "Tyrannical, cruel, disgusted by his monstrous offspring, harsh father.",
+    "roman_aspect_personality": "Known as Caelus, personification of the sky.",
     "roman_only": false,
     "home": "The Sky",
-    "description": "Primordial deity of the Sky, husband of Gaea. Overthrown and castrated by Kronos with an adamantine scythe.",
+    "description": "The primordial deity of the Sky and husband of Gaea. Imprisoned his monstrous children in Tartarus until Kronos castrated and overthrew him with the adamantine scythe.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
@@ -1373,22 +1385,28 @@
   {
     "name": "Gaea",
     "expected_slug": "gaea",
-    "roman_name": "Terra",
+    "roman_name": "Terra / Tellus",
     "mythology": "greek",
     "tier": "primordial",
-    "affiliation": "neutral",
+    "affiliation": "independent",
     "status": "immortal",
     "domains": [
       "earth",
-      "nature",
-      "creation"
+      "soil",
+      "creation",
+      "nature"
     ],
     "symbols": [
-      "earth",
-      "fruitful soil"
+      "fruitful soil",
+      "earthly rocks",
+      "greenery"
     ],
-    "sacred_animals": [],
-    "sacred_plants": [],
+    "sacred_animals": [
+      "serpent"
+    ],
+    "sacred_plants": [
+      "fruit trees"
+    ],
     "sacred_items": [
       "adamantine scythe"
     ],
@@ -1396,13 +1414,160 @@
     "has_cabin": false,
     "is_big_three": false,
     "oath_status": "not_applicable",
-    "greek_aspect_personality": "Mother Earth who loves all her children and orchestrated Kronos's rebellion against Ouranos.",
-    "roman_aspect_personality": null,
+    "greek_aspect_personality": "Motherly yet vengeful, protective of her monster children, scheming against tyrannical rulers.",
+    "roman_aspect_personality": "Revered as Terra or Tellus Mater, the fertile earth mother.",
     "roman_only": false,
-    "home": "The Earth",
-    "description": "Primordial goddess of the Earth, mother of Titans, Cyclopes, Giants, and monsters.",
+    "home": "The Earth itself",
+    "description": "Primordial goddess of the Earth, mother of Titans, Cyclopes, Giants, and Hekatonkheires.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Amphitrite",
+    "expected_slug": "amphitrite",
+    "roman_name": "Salacia",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "sea",
+      "calm waters",
+      "sea life"
+    ],
+    "symbols": [
+      "crab claw crown",
+      "dolphin",
+      "trident emblem"
+    ],
+    "sacred_animals": [
+      "dolphin",
+      "seal"
+    ],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Regal, calm, graceful Queen of the Sea, tolerant of Poseidon's mortal affairs.",
+    "roman_aspect_personality": "Known as Salacia, goddess of calm salt waters.",
+    "roman_only": false,
+    "home": "Poseidon's Undersea Palace",
+    "description": "Nereid goddess and Queen of the Sea, wife of Poseidon and mother of Triton.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Boreas",
+    "expected_slug": "boreas",
+    "roman_name": "Aquilon",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "north wind",
+      "winter",
+      "cold air"
+    ],
+    "symbols": [
+      "icicles",
+      "conch shell",
+      "winged boots"
+    ],
+    "sacred_animals": [
+      "stallion"
+    ],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Chilly, stern, blustery lord of the north wind.",
+    "roman_aspect_personality": "Revered as Aquilon.",
+    "roman_only": false,
+    "home": "Thrace / Quebec Palace",
+    "description": "Anemoi god of the North Wind and Winter. Father of Khione, Zethes, and Calais.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Khione",
+    "expected_slug": "khione",
+    "roman_name": "Chione",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "titan_allied",
+    "status": "immortal",
+    "domains": [
+      "snow",
+      "ice",
+      "blizzards"
+    ],
+    "symbols": [
+      "snowflake",
+      "ice dagger"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Cold, arrogant, disdainful of warm demigods and Olympians.",
+    "roman_aspect_personality": "Known as Chione.",
+    "roman_only": false,
+    "home": "Boreas's Ice Palace",
+    "description": "Goddess of Snow and Ice, daughter of Boreas. Viciously opposes the Olympians in favor of cold chaos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Tartarus",
+    "expected_slug": "tartarus",
+    "roman_name": "Tartarus",
+    "mythology": "greek",
+    "tier": "primordial",
+    "affiliation": "independent",
+    "status": "immortal",
+    "domains": [
+      "abyss",
+      "underworld pit",
+      "torment"
+    ],
+    "symbols": [
+      "abyssal chasm",
+      "chains of darkness"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Malevolent, vast, crushing, the embodiment of the cosmic underworld abyss.",
+    "roman_aspect_personality": "Represented identically in Roman mythology.",
+    "roman_only": false,
+    "home": "Beneath Hades",
+    "description": "The primordial god and cosmic abyss beneath the Underworld where monsters reform and slain Titans are imprisoned.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
       "percy-jacksons-greek-gods"
     ]
   }
