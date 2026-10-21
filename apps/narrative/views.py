@@ -188,6 +188,10 @@ class EventDetailView(generics.RetrieveAPIView):
     """GET /api/v1/events/:slug/"""
 
     queryset = Event.objects.prefetch_related(
+        'casualty_records__casualty_character',
+        'casualty_records__casualty_god',
+        'casualty_records__casualty_titan',
+        'casualty_records__casualty_monster',
         'participant_characters',
         'participant_gods',
         'participant_titans',

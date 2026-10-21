@@ -24,7 +24,7 @@ class SeedLocationsCommandTests(TestCase):
         output = StringIO()
         call_command('seed_locations', stdout=output)
 
-        self.assertEqual(Location.objects.count(), 26)
+        self.assertEqual(Location.objects.count(), 27)
         self.assertNotIn('[WARN]', output.getvalue())
 
         gateway_arch = Location.objects.get(slug='gateway-arch')
@@ -44,6 +44,12 @@ class SeedLocationsCommandTests(TestCase):
             'percy-jacksons-greek-heroes',
             seriphos.books_appeared_in.values_list('slug', flat=True),
         )
+        land_without_rain = Location.objects.get(slug='land-without-rain')
+        self.assertEqual(land_without_rain.controlled_by_god.slug, 'hephaestus')
+        self.assertIn(
+            'the-titans-curse',
+            land_without_rain.books_appeared_in.values_list('slug', flat=True),
+        )
         self.assertIn(
             'the-last-olympian',
             Location.objects.get(slug='camp-half-blood').books_appeared_in.values_list(
@@ -53,8 +59,8 @@ class SeedLocationsCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_locations', stdout=rerun)
-        self.assertEqual(Location.objects.count(), 26)
-        self.assertIn('26 updated', rerun.getvalue())
+        self.assertEqual(Location.objects.count(), 27)
+        self.assertIn('27 updated', rerun.getvalue())
 
     def test_seed_uses_explicit_expected_slug(self):
         entry = {

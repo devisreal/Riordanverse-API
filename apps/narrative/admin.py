@@ -4,6 +4,7 @@ from apps.narrative.models import (
     Book,
     BookImage,
     Event,
+    EventCasualty,
     Prophecy,
     ProphecySubject,
     Quest,
@@ -114,6 +115,12 @@ class QuestAdmin(admin.ModelAdmin):
     inlines = (QuestParticipantInline, QuestCasualtyInline)
 
 
+class EventCasualtyInline(admin.TabularInline):
+    model = EventCasualty
+    extra = 0
+    raw_id_fields = ('casualty_character', 'casualty_god', 'casualty_titan', 'casualty_monster')
+
+
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'event_type', 'book', 'location')
@@ -125,6 +132,6 @@ class EventAdmin(admin.ModelAdmin):
         'participant_gods',
         'participant_titans',
         'participant_monsters',
-        'casualties',
     )
     readonly_fields = ('created_at', 'updated_at')
+    inlines = (EventCasualtyInline,)

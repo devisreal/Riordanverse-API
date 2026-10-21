@@ -562,5 +562,27 @@
       "percy-jacksons-greek-heroes"
     ],
     "description": "The rocky Aegean island ruled by King Polydectes where Dictys fished Perseus and Danaë out of the sea, and where Perseus later returned with Medusa's head to petrify the tyrant king."
+  },
+  {
+    "name": "Land Without Rain (Junkyard of the Gods)",
+    "expected_slug": "land-without-rain",
+    "location_type": "crossroads",
+    "real_world_location": "Mojave Desert, California",
+    "mythological_significance": "Disposal grounds for discarded divine items, magical scrap, and failed prototypes created by Hephaestus.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "35.0110, -115.4734",
+    "notable_events": [
+      "Quest to Rescue Artemis",
+      "Destruction of the Talos Automaton",
+      "Sacrifice of Bianca di Angelo"
+    ],
+    "controlled_by_god_slug": "hephaestus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "controlled_by_monster_slug": null,
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "description": "A vast desert junkyard where the gods discard ancient artifacts, magical scrap, and prototype automatons like Talos. Taking any item without permission awakens lethal guardians."
   }
 ]

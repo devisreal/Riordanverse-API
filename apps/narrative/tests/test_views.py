@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from apps.narrative.models import QuestCasualty, QuestParticipant
+from apps.narrative.models import EventCasualty, QuestCasualty, QuestParticipant
 from tests.makers import (
     make_book,
     make_character,
@@ -189,6 +189,25 @@ class EventViewTests(BaseAPITestCase):
     def test_detail_returns_200(self):
         response = self.client.get(reverse('event-detail', kwargs={'slug': 'battle-of-manhattan'}))
         self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_typed_casualties_and_legacy_slugs(self):
+        kampe = make_monster(name='Kampe')
+        EventCasualty.objects.create(event=self.event, casualty_monster=kampe)
+
+        response = self.client.get(reverse('event-detail', kwargs={'slug': self.event.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.data['casualties'],
+            [{'type': 'monster', 'slug': 'kampe', 'name': 'Kampe'}],
+        )
+        self.assertEqual(response.data['casualty_slugs'], [])
+
+    def test_filter_by_monster_casualty(self):
+        EventCasualty.objects.create(event=self.event, casualty_monster=make_monster(name='Kampe'))
+        response = self.client.get(reverse('event-list'), {'casualty_monster': 'kampe'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
 
     def test_filter_by_event_type(self):
         response = self.client.get(reverse('event-list'), {'event_type': 'battle'})

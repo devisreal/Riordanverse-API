@@ -646,8 +646,11 @@ class Event(BaseModel):
 
     casualties = models.ManyToManyField(
         'characters.Character',
+        through='EventCasualty',
+        through_fields=('event', 'casualty_character'),
         blank=True,
         related_name='events_died_in',
+        help_text='Character casualties; typed casualty records support all entity types.',
     )
     outcome = models.TextField(blank=True, null=True)
     significance = models.TextField(
@@ -664,3 +667,102 @@ class Event(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class EventCasualty(models.Model):
+    """A typed casualty link from an Event to exactly one lore entity."""
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='casualty_records')
+    casualty_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+    casualty_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+    casualty_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+    casualty_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        casualty_character__isnull=False,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=False,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=False,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=False,
+                    )
+                ),
+                name='event_casualty_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_character'),
+                condition=models.Q(casualty_character__isnull=False),
+                name='event_casualty_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_god'),
+                condition=models.Q(casualty_god__isnull=False),
+                name='event_casualty_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_titan'),
+                condition=models.Q(casualty_titan__isnull=False),
+                name='event_casualty_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_monster'),
+                condition=models.Q(casualty_monster__isnull=False),
+                name='event_casualty_unique_monster',
+            ),
+        )
+        verbose_name = 'Event Casualty'
+        verbose_name_plural = 'Event Casualties'
+
+    def __str__(self):
+        entity = (
+            self.casualty_character
+            or self.casualty_god
+            or self.casualty_titan
+            or self.casualty_monster
+        )
+        return f'{self.event}: {entity}'

@@ -4,6 +4,7 @@ from apps.images.serializers import ImageListSerializer
 from apps.narrative.models import (
     Book,
     Event,
+    EventCasualty,
     Prophecy,
     ProphecySubject,
     Quest,
@@ -406,9 +407,38 @@ class EventListSerializer(serializers.ModelSerializer):
         return obj.location.slug if obj.location else None
 
 
+class EventCasualtySerializer(serializers.ModelSerializer):
+    """Typed Event casualty with a stable entity type, slug, and display name."""
+
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = EventCasualty
+        fields = ('type', 'slug', 'name')
+
+    def _entity(self, obj):
+        for entity_type in ('character', 'god', 'titan', 'monster'):
+            entity = getattr(obj, f'casualty_{entity_type}')
+            if entity:
+                return entity_type, entity
+        return None, None
+
+    def get_type(self, obj):
+        return self._entity(obj)[0]
+
+    def get_slug(self, obj):
+        return self._entity(obj)[1].slug
+
+    def get_name(self, obj):
+        return self._entity(obj)[1].name
+
+
 class EventDetailSerializer(serializers.ModelSerializer):
     """Full detail."""
 
+    casualties = EventCasualtySerializer(source='casualty_records', many=True, read_only=True)
     book_slug = serializers.SerializerMethodField()
     location_slug = serializers.SerializerMethodField()
     event_type_display = serializers.CharField(source='get_event_type_display', read_only=True)
@@ -432,6 +462,7 @@ class EventDetailSerializer(serializers.ModelSerializer):
             'participant_god_slugs',
             'participant_titan_slugs',
             'participant_monster_slugs',
+            'casualties',
             'casualty_slugs',
             'outcome',
             'significance',

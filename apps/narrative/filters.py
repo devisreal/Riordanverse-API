@@ -123,6 +123,19 @@ class EventFilter(django_filters.FilterSet):
     participant_titan = django_filters.CharFilter(
         field_name='participant_titans__slug',
     )
+    participant_monster = django_filters.CharFilter(
+        field_name='participant_monsters__slug',
+    )
+    casualty = django_filters.CharFilter(field_name='casualties__slug')
+    casualty_god = django_filters.CharFilter(
+        field_name='casualty_records__casualty_god__slug',
+    )
+    casualty_titan = django_filters.CharFilter(
+        field_name='casualty_records__casualty_titan__slug',
+    )
+    casualty_monster = django_filters.CharFilter(
+        field_name='casualty_records__casualty_monster__slug',
+    )
 
     class Meta:
         model = Event
@@ -133,4 +146,9 @@ class EventFilter(django_filters.FilterSet):
             'participant_character',
             'participant_god',
             'participant_titan',
+            'participant_monster',
+            'casualty',
+            'casualty_god',
+            'casualty_titan',
+            'casualty_monster',
         )

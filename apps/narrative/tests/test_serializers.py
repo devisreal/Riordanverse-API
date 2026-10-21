@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from apps.narrative.models import QuestCasualty, QuestParticipant
+from apps.narrative.models import EventCasualty, QuestCasualty, QuestParticipant
 from apps.narrative.serializers import (
     BookDetailSerializer,
     EventDetailSerializer,
@@ -165,6 +165,23 @@ class EventSerializerTests(TestCase):
         self.event.participant_gods.add(god)
         data = EventDetailSerializer(self.event).data
         self.assertIn('poseidon', data['participant_god_slugs'])
+
+    def test_typed_casualties_and_legacy_character_slugs(self):
+        percy = make_character(name='Percy Jackson')
+        kampe = make_monster(name='Kampe')
+        self.event.casualties.add(percy)
+        EventCasualty.objects.create(event=self.event, casualty_monster=kampe)
+
+        data = EventDetailSerializer(self.event).data
+
+        self.assertEqual(
+            data['casualties'],
+            [
+                {'type': 'character', 'slug': 'percy-jackson', 'name': 'Percy Jackson'},
+                {'type': 'monster', 'slug': 'kampe', 'name': 'Kampe'},
+            ],
+        )
+        self.assertEqual(data['casualty_slugs'], ['percy-jackson'])
 
     def test_event_type_display(self):
         data = EventDetailSerializer(self.event).data

@@ -2,6 +2,7 @@ from django.db import IntegrityError, transaction
 from django.test import TestCase
 
 from apps.narrative.models import (
+    EventCasualty,
     ProphecySubject,
     Quest,
     QuestCasualty,
@@ -191,3 +192,28 @@ class EventModelTests(TestCase):
         god = make_god(name='Poseidon')
         self.event.participant_gods.add(god)
         self.assertIn(god, self.event.participant_gods.all())
+
+    def test_typed_casualties_support_all_entity_types_and_preserve_character_m2m(self):
+        entities = (
+            ('casualty_character', make_character(name='Percy Jackson')),
+            ('casualty_god', make_god(name='Ares')),
+            ('casualty_titan', make_titan(name='Atlas')),
+            ('casualty_monster', make_monster(name='Kampe')),
+        )
+        for field, entity in entities:
+            EventCasualty.objects.create(event=self.event, **{field: entity})
+
+        self.assertEqual(self.event.casualty_records.count(), 4)
+        self.assertIn(entities[0][1], self.event.casualties.all())
+
+    def test_casualty_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            EventCasualty.objects.create(event=self.event)
+
+    def test_casualty_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            EventCasualty.objects.create(
+                event=self.event,
+                casualty_character=make_character(),
+                casualty_monster=make_monster(),
+            )
