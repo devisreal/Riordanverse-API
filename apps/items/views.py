@@ -19,7 +19,9 @@ class WeaponListView(generics.ListAPIView):
         .select_related(
             'owner_primary_character',
             'owner_primary_god',
+            'owner_primary_titan',
             'forged_by',
+            'forged_by_character',
             'first_appearance_book',
         )
         .all()
@@ -39,7 +41,9 @@ class WeaponDetailView(generics.RetrieveAPIView):
         .select_related(
             'owner_primary_character',
             'owner_primary_god',
+            'owner_primary_titan',
             'forged_by',
+            'forged_by_character',
             'first_appearance_book',
         )
         .all()

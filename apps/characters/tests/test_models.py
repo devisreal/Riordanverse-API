@@ -85,6 +85,12 @@ class PowerModelTests(TestCase):
     def test_power_belongs_to_character(self):
         self.assertEqual(self.power.character, self.character)
 
+    def test_power_classification_and_lore_defaults(self):
+        self.assertEqual(self.power.type, 'utility')
+        self.assertFalse(self.power.is_passive)
+        self.assertFalse(self.power.is_book_specific)
+        self.assertEqual(self.power.display_order, 0)
+
     def test_character_power_reverse_relation(self):
         self.assertIn(self.power, self.character.powers.all())
 

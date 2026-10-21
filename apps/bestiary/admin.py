@@ -2,7 +2,23 @@
 
 from django.contrib import admin
 
-from apps.bestiary.models import Creature, Monster, MonsterImage
+from apps.bestiary.models import Creature, CreatureMember, Monster, MonsterDefeat, MonsterImage
+
+
+class MonsterDefeatInline(admin.TabularInline):
+    model = MonsterDefeat
+    extra = 0
+    fields = ('defeated_by', 'book', 'method', 'is_myth')
+    ordering = ('id',)
+
+
+@admin.register(MonsterDefeat)
+class MonsterDefeatAdmin(admin.ModelAdmin):
+    list_display = ('monster', 'defeated_by', 'book', 'method', 'is_myth')
+    list_filter = ('is_myth', 'book')
+    search_fields = ('monster__name', 'defeated_by__name', 'method')
+    raw_id_fields = ('monster', 'defeated_by', 'book')
+    list_select_related = ('monster', 'defeated_by', 'book')
 
 
 class MonsterImageInline(admin.TabularInline):
@@ -23,10 +39,16 @@ class MonsterAdmin(admin.ModelAdmin):
     )
     list_filter = ('monster_type', 'allegiance', 'can_reform')
     search_fields = ('name', 'description', 'physical_description', 'disguise_form')
-    filter_horizontal = ('defeated_by', 'books_appeared_in')
+    filter_horizontal = ('defeated_by_gods', 'books_appeared_in')
     raw_id_fields = ('first_appearance_book',)
     readonly_fields = ('created_at', 'updated_at')
-    inlines = [MonsterImageInline]
+    inlines = [MonsterDefeatInline, MonsterImageInline]
+
+
+class CreatureMemberInline(admin.TabularInline):
+    model = CreatureMember
+    extra = 0
+    raw_id_fields = ('member_character', 'member_monster')
 
 
 @admin.register(Creature)
@@ -34,5 +56,5 @@ class CreatureAdmin(admin.ModelAdmin):
     list_display = ('name', 'alignment', 'habitat')
     list_filter = ('alignment',)
     search_fields = ('name', 'description', 'origin')
-    filter_horizontal = ('notable_members',)
     readonly_fields = ('created_at', 'updated_at')
+    inlines = (CreatureMemberInline,)

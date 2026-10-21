@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from apps.locations.serializers import LocationDetailSerializer, LocationListSerializer
-from tests.makers import make_character, make_god, make_location, make_titan
+from tests.makers import make_character, make_god, make_location, make_monster, make_titan
 
 
 class LocationSerializerTests(TestCase):
@@ -25,6 +25,14 @@ class LocationSerializerTests(TestCase):
         data = LocationListSerializer(location).data
         self.assertEqual(data['controlled_by']['type'], 'character')
         self.assertEqual(data['controlled_by']['slug'], 'luke-castellan')
+
+    def test_controlled_by_monster(self):
+        polyphemus = make_monster(name='Polyphemus')
+        location = make_location(name="Polyphemus's Island", controlled_by_monster=polyphemus)
+        data = LocationListSerializer(location).data
+        self.assertEqual(data['controlled_by']['type'], 'monster')
+        self.assertEqual(data['controlled_by']['slug'], 'polyphemus')
+        self.assertEqual(data['controlled_by']['name'], 'Polyphemus')
 
     def test_controlled_by_null(self):
         location = make_location(name='Wild Forest')

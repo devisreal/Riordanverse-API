@@ -12,9 +12,23 @@ def _primary_image(character):
 
 
 class PowerSerializer(serializers.ModelSerializer):
+    first_demonstrated_book = serializers.SlugRelatedField(read_only=True, slug_field='slug')
+
     class Meta:
         model = Power
-        fields = ('id', 'name', 'description', 'source', 'scope', 'limitations')
+        fields = (
+            'id',
+            'name',
+            'description',
+            'source',
+            'type',
+            'scope',
+            'limitations',
+            'is_passive',
+            'is_book_specific',
+            'first_demonstrated_book',
+            'display_order',
+        )
 
 
 class CharacterListSerializer(serializers.ModelSerializer):
@@ -47,7 +61,8 @@ class CharacterListSerializer(serializers.ModelSerializer):
         return _primary_image(obj)
 
     def get_divine_parent_slug(self, obj):
-        return obj.divine_parent.slug if obj.divine_parent else None
+        parent = obj.divine_parent or obj.divine_parent_titan
+        return parent.slug if parent else None
 
 
 class CharacterDetailSerializer(serializers.ModelSerializer):
@@ -126,7 +141,8 @@ class CharacterDetailSerializer(serializers.ModelSerializer):
         return _primary_image(obj)
 
     def get_divine_parent_slug(self, obj):
-        return obj.divine_parent.slug if obj.divine_parent else None
+        parent = obj.divine_parent or obj.divine_parent_titan
+        return parent.slug if parent else None
 
     def get_mortal_parent_ref_slug(self, obj):
         return obj.mortal_parent_ref.slug if obj.mortal_parent_ref else None

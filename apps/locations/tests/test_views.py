@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from tests.makers import make_god, make_location
+from tests.makers import make_god, make_location, make_monster
 
 
 class LocationListViewTests(BaseAPITestCase):
@@ -42,6 +42,15 @@ class LocationListViewTests(BaseAPITestCase):
     def test_filter_by_controlling_god(self):
         response = self.client.get(reverse('location-list'), {'controlled_by_god': 'hades'})
         self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_controlling_monster(self):
+        polyphemus = make_monster(name='Polyphemus')
+        location = make_location(name="Polyphemus's Island", controlled_by_monster=polyphemus)
+        response = self.client.get(
+            reverse('location-list'), {'controlled_by_monster': 'polyphemus'}
+        )
+        self.assertEqual(len(response.data['data']), 1)
+        self.assertEqual(response.data['data'][0]['slug'], location.slug)
 
     def test_invalid_location_type_returns_400(self):
         response = self.client.get(reverse('location-list'), {'location_type': 'space'})

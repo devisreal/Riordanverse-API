@@ -38,6 +38,14 @@ class Book(BaseModel):
         null=True,
         help_text='Description of the end-of-summer camp bead for this year.',
     )
+    parent_collection = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='included_stories',
+        help_text='Parent anthology or collection for an individual short story.',
+    )
 
     narrator = models.ForeignKey(
         'characters.Character',
@@ -137,9 +145,11 @@ class Prophecy(BaseModel):
     )
     subject = models.ManyToManyField(
         'characters.Character',
+        through='ProphecySubject',
+        through_fields=('prophecy', 'subject_character'),
         blank=True,
         related_name='prophecies_about',
-        help_text='Characters this prophecy is about.',
+        help_text='Character subjects; typed subjects are represented by ProphecySubject.',
     )
     fulfilled_in = models.ForeignKey(
         'narrative.Book',
@@ -168,6 +178,106 @@ class Prophecy(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class ProphecySubject(models.Model):
+    """A typed subject link from a Prophecy to exactly one lore entity."""
+
+    prophecy = models.ForeignKey(
+        Prophecy,
+        on_delete=models.CASCADE,
+        related_name='subject_records',
+    )
+    subject_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+    subject_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+    subject_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+    subject_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='prophecy_subject_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        subject_character__isnull=False,
+                        subject_god__isnull=True,
+                        subject_titan__isnull=True,
+                        subject_monster__isnull=True,
+                    )
+                    | models.Q(
+                        subject_character__isnull=True,
+                        subject_god__isnull=False,
+                        subject_titan__isnull=True,
+                        subject_monster__isnull=True,
+                    )
+                    | models.Q(
+                        subject_character__isnull=True,
+                        subject_god__isnull=True,
+                        subject_titan__isnull=False,
+                        subject_monster__isnull=True,
+                    )
+                    | models.Q(
+                        subject_character__isnull=True,
+                        subject_god__isnull=True,
+                        subject_titan__isnull=True,
+                        subject_monster__isnull=False,
+                    )
+                ),
+                name='prophecy_subject_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_character'),
+                condition=models.Q(subject_character__isnull=False),
+                name='prophecy_subject_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_god'),
+                condition=models.Q(subject_god__isnull=False),
+                name='prophecy_subject_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_titan'),
+                condition=models.Q(subject_titan__isnull=False),
+                name='prophecy_subject_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('prophecy', 'subject_monster'),
+                condition=models.Q(subject_monster__isnull=False),
+                name='prophecy_subject_unique_monster',
+            ),
+        )
+        verbose_name = 'Prophecy Subject'
+        verbose_name_plural = 'Prophecy Subjects'
+
+    def __str__(self):
+        entity = (
+            self.subject_character or self.subject_god or self.subject_titan or self.subject_monster
+        )
+        return f'{self.prophecy}: {entity}'
 
 
 # ---------------------------------------------------------------------------
@@ -215,8 +325,11 @@ class Quest(BaseModel):
     )
     participants = models.ManyToManyField(
         'characters.Character',
+        through='QuestParticipant',
+        through_fields=('quest', 'participant_character'),
         blank=True,
         related_name='quests_participated_in',
+        help_text='Character participants; typed participant records support all entity types.',
     )
     objective = models.TextField(
         blank=True,
@@ -252,9 +365,11 @@ class Quest(BaseModel):
     )
     casualties = models.ManyToManyField(
         'characters.Character',
+        through='QuestCasualty',
+        through_fields=('quest', 'casualty_character'),
         blank=True,
         related_name='quests_died_in',
-        help_text='Characters who died during this quest.',
+        help_text='Character casualties; typed casualty records support all entity types.',
     )
     description = models.TextField(blank=True, null=True)
 
@@ -265,6 +380,204 @@ class Quest(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class QuestParticipant(models.Model):
+    """A typed participant link from a Quest to exactly one lore entity."""
+
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='participant_records')
+    participant_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+    participant_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+    participant_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+    participant_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        participant_character__isnull=False,
+                        participant_god__isnull=True,
+                        participant_titan__isnull=True,
+                        participant_monster__isnull=True,
+                    )
+                    | models.Q(
+                        participant_character__isnull=True,
+                        participant_god__isnull=False,
+                        participant_titan__isnull=True,
+                        participant_monster__isnull=True,
+                    )
+                    | models.Q(
+                        participant_character__isnull=True,
+                        participant_god__isnull=True,
+                        participant_titan__isnull=False,
+                        participant_monster__isnull=True,
+                    )
+                    | models.Q(
+                        participant_character__isnull=True,
+                        participant_god__isnull=True,
+                        participant_titan__isnull=True,
+                        participant_monster__isnull=False,
+                    )
+                ),
+                name='quest_participant_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_character'),
+                condition=models.Q(participant_character__isnull=False),
+                name='quest_participant_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_god'),
+                condition=models.Q(participant_god__isnull=False),
+                name='quest_participant_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_titan'),
+                condition=models.Q(participant_titan__isnull=False),
+                name='quest_participant_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_monster'),
+                condition=models.Q(participant_monster__isnull=False),
+                name='quest_participant_unique_monster',
+            ),
+        )
+        verbose_name = 'Quest Participant'
+        verbose_name_plural = 'Quest Participants'
+
+    def __str__(self):
+        entity = (
+            self.participant_character
+            or self.participant_god
+            or self.participant_titan
+            or self.participant_monster
+        )
+        return f'{self.quest}: {entity}'
+
+
+class QuestCasualty(models.Model):
+    """A typed casualty link from a Quest to exactly one lore entity."""
+
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='casualty_records')
+    casualty_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+    casualty_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+    casualty_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+    casualty_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        casualty_character__isnull=False,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=False,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=False,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=False,
+                    )
+                ),
+                name='quest_casualty_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_character'),
+                condition=models.Q(casualty_character__isnull=False),
+                name='quest_casualty_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_god'),
+                condition=models.Q(casualty_god__isnull=False),
+                name='quest_casualty_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_titan'),
+                condition=models.Q(casualty_titan__isnull=False),
+                name='quest_casualty_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_monster'),
+                condition=models.Q(casualty_monster__isnull=False),
+                name='quest_casualty_unique_monster',
+            ),
+        )
+        verbose_name = 'Quest Casualty'
+        verbose_name_plural = 'Quest Casualties'
+
+    def __str__(self):
+        entity = (
+            self.casualty_character
+            or self.casualty_god
+            or self.casualty_titan
+            or self.casualty_monster
+        )
+        return f'{self.quest}: {entity}'
 
 
 # ---------------------------------------------------------------------------
@@ -333,8 +646,11 @@ class Event(BaseModel):
 
     casualties = models.ManyToManyField(
         'characters.Character',
+        through='EventCasualty',
+        through_fields=('event', 'casualty_character'),
         blank=True,
         related_name='events_died_in',
+        help_text='Character casualties; typed casualty records support all entity types.',
     )
     outcome = models.TextField(blank=True, null=True)
     significance = models.TextField(
@@ -351,3 +667,102 @@ class Event(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class EventCasualty(models.Model):
+    """A typed casualty link from an Event to exactly one lore entity."""
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='casualty_records')
+    casualty_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+    casualty_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+    casualty_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+    casualty_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='event_casualty_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        casualty_character__isnull=False,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=False,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=False,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=False,
+                    )
+                ),
+                name='event_casualty_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_character'),
+                condition=models.Q(casualty_character__isnull=False),
+                name='event_casualty_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_god'),
+                condition=models.Q(casualty_god__isnull=False),
+                name='event_casualty_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_titan'),
+                condition=models.Q(casualty_titan__isnull=False),
+                name='event_casualty_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('event', 'casualty_monster'),
+                condition=models.Q(casualty_monster__isnull=False),
+                name='event_casualty_unique_monster',
+            ),
+        )
+        verbose_name = 'Event Casualty'
+        verbose_name_plural = 'Event Casualties'
+
+    def __str__(self):
+        entity = (
+            self.casualty_character
+            or self.casualty_god
+            or self.casualty_titan
+            or self.casualty_monster
+        )
+        return f'{self.event}: {entity}'

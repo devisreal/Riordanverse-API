@@ -1,0 +1,925 @@
+[
+  {
+    "name": "First Titanomachy",
+    "expected_slug": "first-titanomachy",
+    "event_type": "war",
+    "book_slug": "percy-jacksons-greek-gods",
+    "location_slug": "mount-olympus",
+    "outcome": "Olympian victory; Kronos sliced into pieces with his own scythe and cast into Tartarus alongside the elder Titans.",
+    "significance": "Established Olympian rule over the universe, ending the Golden Age of Kronos and ushering in the reign of the Twelve Olympians.",
+    "description": "Ten-year cosmic war fought between the elder Titans led by Kronos and the young Olympian gods led by Zeus, Poseidon, and Hades.",
+    "participants": [
+      {
+        "type": "god",
+        "slug": "zeus"
+      },
+      {
+        "type": "god",
+        "slug": "poseidon"
+      },
+      {
+        "type": "god",
+        "slug": "hades"
+      },
+      {
+        "type": "god",
+        "slug": "hera"
+      },
+      {
+        "type": "god",
+        "slug": "demeter"
+      },
+      {
+        "type": "god",
+        "slug": "hestia"
+      },
+      {
+        "type": "titan",
+        "slug": "kronos"
+      },
+      {
+        "type": "titan",
+        "slug": "hyperion"
+      },
+      {
+        "type": "titan",
+        "slug": "iapetus"
+      },
+      {
+        "type": "titan",
+        "slug": "coeus"
+      },
+      {
+        "type": "titan",
+        "slug": "crius"
+      },
+      {
+        "type": "monster",
+        "slug": "kampe"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "monster",
+        "slug": "kampe"
+      }
+    ]
+  },
+  {
+    "name": "Battle of the St. Louis Arch",
+    "expected_slug": "battle-of-the-st-louis-arch",
+    "event_type": "battle",
+    "book_slug": "the-lightning-thief",
+    "location_slug": "gateway-arch",
+    "outcome": "Percy jumps from the observation deck of the Gateway Arch into the Mississippi River to survive Chimera's venomous fire.",
+    "significance": "First public monster confrontation for Percy; Poseidon proves his active protection by rescuing Percy in the river and sending a nereid message.",
+    "description": "Perilous battle atop the St. Louis Arch where Echidna and the Chimera corner Percy Jackson.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "monster",
+        "slug": "echidna"
+      },
+      {
+        "type": "monster",
+        "slug": "chimera"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Duel at Santa Monica Beach",
+    "expected_slug": "duel-at-santa-monica-beach",
+    "event_type": "battle",
+    "book_slug": "the-lightning-thief",
+    "location_slug": "doa-recording-studios",
+    "outcome": "Percy wounds Ares's heel using a wave-boosted strike with Riptide; Ares surrenders the Helm of Darkness and Master Bolt.",
+    "significance": "First modern duel between a demigod and an Olympian god; exposes Kronos's telepathic manipulation of Ares and Luke Castellan.",
+    "description": "Single-combat duel on the beach between twelve-year-old Percy Jackson and Ares, the God of War.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "god",
+        "slug": "ares"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle of Monster Donut",
+    "expected_slug": "battle-of-monster-donut",
+    "event_type": "battle",
+    "book_slug": "the-sea-of-monsters",
+    "location_slug": "the-sea-of-monsters",
+    "outcome": "Clarisse orders full cannon broadsides from the CSS Birmingham steamship, obliterating the Lernean Hydra.",
+    "significance": "Saved Percy, Annabeth, and Tyson from the Hydra at a deserted Monster Donut shop; united Clarisse's crew with Percy's group.",
+    "description": "Battle in Virginia where Clarisse's ironclad steamship rescues Percy, Annabeth, and Tyson from a multiplying Hydra.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "tyson"
+      },
+      {
+        "type": "monster",
+        "slug": "lernean-hydra"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Clash at C.C.'s Spa and Resort",
+    "expected_slug": "clash-at-ccs-spa-and-resort",
+    "event_type": "battle",
+    "book_slug": "the-sea-of-monsters",
+    "location_slug": "ccs-spa-and-resort",
+    "outcome": "Annabeth uses Hermes's multivitamins to turn Percy back into a human, frees blackbeard's pirate crew, and escapes on the Queen Anne's Revenge.",
+    "significance": "Rescued Percy from Circe's guinea pig potion and secured the pirate ship needed to reach Polyphemus's island.",
+    "description": "Infiltration and escape from Circe's enchanted island spa resort.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle of Polyphemus's Island",
+    "expected_slug": "battle-of-polyphemuses-island",
+    "event_type": "battle",
+    "book_slug": "the-sea-of-monsters",
+    "location_slug": "polyphemuses-island",
+    "outcome": "Percy overpowers Polyphemus; Tyson knocks Polyphemus into the sea; heroes recover the Golden Fleece and escape.",
+    "significance": "Successfully retrieved the Golden Fleece to heal Thalia's pine tree and rescued Grover Underwood from Polyphemus's cave.",
+    "description": "Climactic battle on the island of the Cyclops Polyphemus in the Sea of Monsters.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "tyson"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "monster",
+        "slug": "polyphemus"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Resurrection of Thalia Grace",
+    "expected_slug": "resurrection-of-thalia-grace",
+    "event_type": "political_event",
+    "book_slug": "the-sea-of-monsters",
+    "location_slug": "camp-half-blood",
+    "outcome": "The Golden Fleece purges poison from Thalia's pine tree so thoroughly that Thalia Grace is expelled from the tree in human form.",
+    "significance": "Introduced a second living Big Three demigod child, drastically altering the stakes and timeline of the Great Prophecy.",
+    "description": "The magic of the Golden Fleece restores Thalia Grace to physical life on Half-Blood Hill.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Skirmish at Westover Hall",
+    "expected_slug": "skirmish-at-westover-hall",
+    "event_type": "battle",
+    "book_slug": "the-titans-curse",
+    "location_slug": "westover-hall",
+    "outcome": "Dr. Thorn kidnaps Annabeth over the cliff into the sea; Hunters of Artemis arrive and force Dr. Thorn to retreat.",
+    "significance": "Annabeth captured; Artemis sets out alone to track the monster and is captured, initiating the Quest for Artemis.",
+    "description": "Winter battle at a Maine military school where the manticore Dr. Thorn attacks the heroes while trying to kidnap Bianca and Nico di Angelo.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "god",
+        "slug": "artemis"
+      },
+      {
+        "type": "monster",
+        "slug": "dr-thorn"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle at the Air and Space Museum",
+    "expected_slug": "battle-at-the-air-and-space-museum",
+    "event_type": "battle",
+    "book_slug": "the-titans-curse",
+    "location_slug": "manhattan",
+    "outcome": "Percy feeds freeze-dried astronaut ice cream into the Nemean Lion's mouth, allowing Zoë to shoot silver arrows down its throat; Percy takes the lion pelt.",
+    "significance": "First major victory on the Quest for Artemis; Percy acquires the impervious Nemean Lion coat.",
+    "description": "Skirmish inside the National Air and Space Museum in Washington D.C. against the Nemean Lion and skeleton warriors.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "monster",
+        "slug": "nemean-lion"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Destruction of the Talos Automaton",
+    "expected_slug": "destruction-of-the-talos-automaton",
+    "event_type": "sacrifice",
+    "book_slug": "the-titans-curse",
+    "location_slug": "land-without-rain",
+    "outcome": "Bianca climbs inside the foot maintenance hatch of the giant automaton to sabotage it, destroying it but dying in the collapse.",
+    "significance": "Fulfills the prophecy line 'One shall be lost in the land without rain'; tragic death of Bianca di Angelo in the Junkyard of the Gods.",
+    "description": "Sacrifice in the Junkyard of the Gods in New Mexico where Bianca di Angelo gives her life to destroy a rogue prototype Talos metal giant.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      }
+    ]
+  },
+  {
+    "name": "Battle of Mount Tamalpais",
+    "expected_slug": "battle-of-mount-tamalpais",
+    "event_type": "battle",
+    "book_slug": "the-titans-curse",
+    "location_slug": "mount-tamalpais",
+    "outcome": "Percy temporarily holds the sky so Artemis can fight Atlas; Atlas trapped back beneath the sky; Thalia kicks Luke off cliff; Zoë dies of poison and becomes a constellation.",
+    "significance": "Rescued Artemis and Annabeth; Thalia joins Hunters of Artemis (aging out of Great Prophecy); Zoë Nightshade dies honorably.",
+    "description": "Climactic battle at the Garden of the Hesperides on Mount Tamalpais against Atlas and Luke's forces.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "god",
+        "slug": "artemis"
+      },
+      {
+        "type": "titan",
+        "slug": "atlas"
+      },
+      {
+        "type": "monster",
+        "slug": "ladon"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      }
+    ]
+  },
+  {
+    "name": "Battle of the Goode High School Gymnasium",
+    "expected_slug": "battle-of-goode-high-school-gymnasium",
+    "event_type": "battle",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "location_slug": "manhattan",
+    "outcome": "Annabeth stabs empousa Kelli; gym burns down in flames; Percy flees with Rachel Elizabeth Dare before returning to Camp Half-Blood.",
+    "significance": "Forces Percy to leave mortal school and head to Camp Half-Blood; introduces Rachel Elizabeth Dare to Annabeth and the demigod world.",
+    "description": "Orientation attack at Goode High School by empousai disguised as cheerleaders.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "rachel-elizabeth-dare"
+      },
+      {
+        "type": "monster",
+        "slug": "kelli"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Skirmish at Geryon's Triple G Ranch",
+    "expected_slug": "skirmish-at-geryons-triple-g-ranch",
+    "event_type": "battle",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "location_slug": "triple-g-ranch",
+    "outcome": "Percy shoots an arrow guided by the West Wind that pierces all three of Geryon's hearts; cleans the Stables of Orthrus using river nymph waters.",
+    "significance": "Frees Nico di Angelo from Geryon's control and restores Nico's trust in Percy Jackson.",
+    "description": "Battle at a monster cattle ranch in Texas against three-bodied giant Geryon.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "tyson"
+      },
+      {
+        "type": "monster",
+        "slug": "geryon"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Eruption of Mount St. Helens",
+    "expected_slug": "eruption-of-mount-st-helens",
+    "event_type": "sacrifice",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "location_slug": "mount-st-helens",
+    "outcome": "Percy causes a massive volcanic water explosion inside the smithy forge, blasting himself to Ogygia and triggering Mount St. Helens eruption.",
+    "significance": "Awakened Typhon beneath the volcano; Percy marooned on Ogygia with Calypso; Annabeth believes Percy is dead.",
+    "description": "Explosive battle inside the subterranean forging complex of the Telekhines at Mount St. Helens.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle of the Labyrinth",
+    "expected_slug": "battle-of-the-labyrinth",
+    "event_type": "battle",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "location_slug": "camp-half-blood",
+    "outcome": "Briares crushes Kampê with rock barrage; Daedalus surrenders his soul to Thanatos to permanently collapse the Labyrinth.",
+    "significance": "Saved Camp Half-Blood from subterranean invasion; destroyed Daedalus's Labyrinth permanent structure.",
+    "description": "Massive battle in Camp Half-Blood's clearing when Kronos's invasion force exits the Labyrinth workshops.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "chiron"
+      },
+      {
+        "type": "character",
+        "slug": "briares"
+      },
+      {
+        "type": "character",
+        "slug": "daedalus"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "monster",
+        "slug": "kampe"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "daedalus"
+      }
+    ]
+  },
+  {
+    "name": "Beckendorf's Sacrifice",
+    "expected_slug": "beckendorfs-sacrifice",
+    "event_type": "sacrifice",
+    "book_slug": "the-last-olympian",
+    "location_slug": "princess-andromeda",
+    "outcome": "Princess Andromeda destroyed with Greek fire explosion.",
+    "significance": "Delayed Kronos's invasion fleet but cost the life of Hephaestus counselor Charles Beckendorf.",
+    "description": "Opening battle of Book 5 where Percy and Beckendorf plant Greek fire explosives aboard Kronos's flagship.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "charles-beckendorf"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "titan",
+        "slug": "kronos"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "charles-beckendorf"
+      }
+    ]
+  },
+  {
+    "name": "Percy's Bath in the River Styx",
+    "expected_slug": "percys-bath-in-the-river-styx",
+    "event_type": "quest_event",
+    "book_slug": "the-last-olympian",
+    "location_slug": "the-underworld",
+    "outcome": "Percy successfully bathes in the River Styx while anchoring his soul to Sally Jackson, acquiring invulnerability across his body except for a small spot on his lower back.",
+    "significance": "Gave Percy the Curse of Achilles required to withstand Kronos's titan form in combat.",
+    "description": "Dangerous ritual in the Underworld where Percy Jackson bathes in the River Styx to gain invulnerability.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "sally-jackson"
+      },
+      {
+        "type": "god",
+        "slug": "hades"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle of Williamsburg Bridge",
+    "expected_slug": "battle-of-williamsburg-bridge",
+    "event_type": "battle",
+    "book_slug": "the-last-olympian",
+    "location_slug": "manhattan",
+    "outcome": "Percy slays Minotaur; Michael Yew snaps bridge cables to plunge Kronos's vanguard into the East River; Michael Yew lost in collapse.",
+    "significance": "Halted Kronos's advance into Manhattan from Brooklyn; cost Apollo cabin leader Michael Yew.",
+    "description": "Bridge defense battle where Percy Jackson and Apollo archers hold off Kronos's forces.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "michael-yew"
+      },
+      {
+        "type": "titan",
+        "slug": "kronos"
+      },
+      {
+        "type": "monster",
+        "slug": "minotaur"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "michael-yew"
+      }
+    ]
+  },
+  {
+    "name": "Defeat of the Lydian Drakon",
+    "expected_slug": "defeat-of-the-lydian-drakon",
+    "event_type": "battle",
+    "book_slug": "the-last-olympian",
+    "location_slug": "manhattan",
+    "outcome": "Silena fatally wounded by drakon spit; Clarisse arrives, slays drakon with electric spear Maimer, and reveals Silena's heroic redemption.",
+    "significance": "Slew Kronos's ultimate monster weapon; revealed Silena Beauregard as the spy who redeemed herself by leading Ares cabin into battle.",
+    "description": "High-stakes fight in Central Park against the giant Lydian Drakon.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      },
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "monster",
+        "slug": "lydian-drakon"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      }
+    ]
+  },
+  {
+    "name": "Battle of Manhattan",
+    "expected_slug": "battle-of-manhattan",
+    "event_type": "war",
+    "book_slug": "the-last-olympian",
+    "location_slug": "manhattan",
+    "outcome": "Olympian victory; Luke Castellan regains control of his body and sacrifices himself with Annabeth's cursed dagger to destroy Kronos.",
+    "significance": "Concluded the Second Titan War, leading to the Minor Gods Reform Decree.",
+    "description": "The major battle across Manhattan where Camp Half-Blood demigods held the Empire State Building against Kronos's army.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "character",
+        "slug": "charles-beckendorf"
+      },
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      },
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "ethan-nakamura"
+      },
+      {
+        "type": "character",
+        "slug": "michael-yew"
+      },
+      {
+        "type": "god",
+        "slug": "zeus"
+      },
+      {
+        "type": "god",
+        "slug": "poseidon"
+      },
+      {
+        "type": "god",
+        "slug": "hades"
+      },
+      {
+        "type": "god",
+        "slug": "dionysus"
+      },
+      {
+        "type": "god",
+        "slug": "hephaestus"
+      },
+      {
+        "type": "god",
+        "slug": "hermes"
+      },
+      {
+        "type": "titan",
+        "slug": "kronos"
+      },
+      {
+        "type": "titan",
+        "slug": "hyperion"
+      },
+      {
+        "type": "titan",
+        "slug": "prometheus"
+      },
+      {
+        "type": "monster",
+        "slug": "minotaur"
+      },
+      {
+        "type": "monster",
+        "slug": "lydian-drakon"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "luke-castellan"
+      },
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      },
+      {
+        "type": "character",
+        "slug": "charles-beckendorf"
+      },
+      {
+        "type": "character",
+        "slug": "ethan-nakamura"
+      },
+      {
+        "type": "character",
+        "slug": "michael-yew"
+      }
+    ]
+  },
+  {
+    "name": "The Olympian Council Reform Decree",
+    "expected_slug": "the-olympian-council-reform-decree",
+    "event_type": "political_event",
+    "book_slug": "the-last-olympian",
+    "location_slug": "mount-olympus",
+    "outcome": "Percy rejects personal godhood and demands that the gods claim all demigod children by age 13, build cabins for minor gods and Hades at Camp, and pardon peaceful entities.",
+    "significance": "Fundamentally reformed Olympian divine governance and established Cabins 13–20 at Camp Half-Blood.",
+    "description": "Post-war assembly on Mount Olympus where Percy Jackson demands divine reform instead of godhood.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "god",
+        "slug": "zeus"
+      },
+      {
+        "type": "god",
+        "slug": "poseidon"
+      },
+      {
+        "type": "god",
+        "slug": "hades"
+      },
+      {
+        "type": "god",
+        "slug": "dionysus"
+      },
+      {
+        "type": "god",
+        "slug": "hermes"
+      },
+      {
+        "type": "god",
+        "slug": "apollo"
+      },
+      {
+        "type": "god",
+        "slug": "artemis"
+      },
+      {
+        "type": "god",
+        "slug": "hephaestus"
+      },
+      {
+        "type": "god",
+        "slug": "ares"
+      },
+      {
+        "type": "god",
+        "slug": "athena"
+      },
+      {
+        "type": "god",
+        "slug": "hera"
+      },
+      {
+        "type": "god",
+        "slug": "demeter"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle of Brooklyn Bridge",
+    "expected_slug": "battle-of-brooklyn-bridge",
+    "event_type": "battle",
+    "book_slug": "the-demigod-files",
+    "location_slug": "manhattan",
+    "outcome": "Clarisse overcomes Phobos's fear magic; Percy and Clarisse defeat Phobos and Deimos, recovering Ares's war chariot.",
+    "significance": "Bonded Clarisse and Percy as allies; restored Ares's chariot before sunset.",
+    "description": "Fight on the Brooklyn Bridge against Phobos and Deimos to recover Ares's stolen war chariot.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "name": "Battle of Times Square",
+    "expected_slug": "battle-of-times-square",
+    "event_type": "battle",
+    "book_slug": "percy-jackson-and-the-singer-of-apollo",
+    "location_slug": "manhattan",
+    "outcome": "Percy uses Grover's music distraction and wet mortar from a billboard site to trap the golden Celedon automaton.",
+    "significance": "Recaptured Apollo's golden singer in time for his Mount Olympus concert.",
+    "description": "Chaotic urban battle in Times Square against a runaway golden singing automaton.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "god",
+        "slug": "apollo"
+      },
+      {
+        "type": "character",
+        "slug": "celedon"
+      }
+    ],
+    "casualties": []
+  }
+]

@@ -51,6 +51,12 @@ class WeaponListSerializer(serializers.ModelSerializer):
                 'slug': obj.owner_primary_god.slug,
                 'name': obj.owner_primary_god.name,
             }
+        if obj.owner_primary_titan:
+            return {
+                'type': 'titan',
+                'slug': obj.owner_primary_titan.slug,
+                'name': obj.owner_primary_titan.name,
+            }
         return None
 
 
@@ -61,6 +67,7 @@ class WeaponDetailSerializer(serializers.ModelSerializer):
     weapon_type_display = serializers.CharField(source='get_weapon_type_display', read_only=True)
     material_display = serializers.SerializerMethodField()
     owner_primary = serializers.SerializerMethodField()
+    forged_by = serializers.SerializerMethodField()
     forged_by_slug = serializers.SerializerMethodField()
     first_appearance_book_slug = serializers.SerializerMethodField()
     books_appeared_in_slugs = serializers.SerializerMethodField()
@@ -83,6 +90,7 @@ class WeaponDetailSerializer(serializers.ModelSerializer):
             'passes_through_mortals',
             'owner_primary',
             'owner_history',
+            'forged_by',
             'forged_by_slug',
             'forged_by_notes',
             'origin_story',
@@ -115,10 +123,29 @@ class WeaponDetailSerializer(serializers.ModelSerializer):
                 'slug': obj.owner_primary_god.slug,
                 'name': obj.owner_primary_god.name,
             }
+        if obj.owner_primary_titan:
+            return {
+                'type': 'titan',
+                'slug': obj.owner_primary_titan.slug,
+                'name': obj.owner_primary_titan.name,
+            }
+        return None
+
+    def get_forged_by(self, obj):
+        if obj.forged_by:
+            return {'type': 'god', 'slug': obj.forged_by.slug, 'name': obj.forged_by.name}
+        if obj.forged_by_character:
+            return {
+                'type': 'character',
+                'slug': obj.forged_by_character.slug,
+                'name': obj.forged_by_character.name,
+            }
         return None
 
     def get_forged_by_slug(self, obj):
-        return obj.forged_by.slug if obj.forged_by else None
+        if obj.forged_by:
+            return obj.forged_by.slug
+        return obj.forged_by_character.slug if obj.forged_by_character else None
 
     def get_first_appearance_book_slug(self, obj):
         return obj.first_appearance_book.slug if obj.first_appearance_book else None

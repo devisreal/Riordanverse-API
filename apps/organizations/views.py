@@ -3,12 +3,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics
 
 from apps.organizations.filters import CabinFilter, FactionFilter
-from apps.organizations.models import Cabin, Faction
+from apps.organizations.models import Cabin, Faction, FactionMember
 from apps.organizations.serializers import (
     CabinDetailSerializer,
     CabinListSerializer,
     FactionDetailSerializer,
     FactionListSerializer,
+    FactionMemberSerializer,
 )
 
 
@@ -71,7 +72,14 @@ class FactionDetailView(generics.RetrieveAPIView):
     """GET /api/v1/factions/<slug>/"""
 
     queryset = (
-        Faction.objects.prefetch_related('members', 'books_active_in')
+        Faction.objects.prefetch_related(
+            'members',
+            'member_records__member_character',
+            'member_records__member_god',
+            'member_records__member_titan',
+            'member_records__member_monster',
+            'books_active_in',
+        )
         .select_related('leader_character', 'leader_god')
         .all()
     )
@@ -98,14 +106,10 @@ class CabinCamperListView(generics.ListAPIView):
 class FactionMemberListView(generics.ListAPIView):
     """GET /api/v1/factions/<slug>/members/"""
 
+    serializer_class = FactionMemberSerializer
+
     def get_queryset(self):
-        from apps.characters.models import Character
-        from apps.organizations.models import Faction
-
         get_object_or_404(Faction, slug=self.kwargs['slug'])
-        return Character.objects.filter(factions__slug=self.kwargs['slug']).distinct()
-
-    def get_serializer_class(self):
-        from apps.characters.serializers import CharacterListSerializer
-
-        return CharacterListSerializer
+        return FactionMember.objects.filter(faction__slug=self.kwargs['slug']).select_related(
+            'member_character', 'member_god', 'member_titan', 'member_monster'
+        )

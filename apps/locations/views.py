@@ -16,7 +16,12 @@ class LocationListView(generics.ListAPIView):
 
     queryset = (
         Location.objects.prefetch_related('images__image', 'books_appeared_in')
-        .select_related('controlled_by_god', 'controlled_by_titan', 'controlled_by_character')
+        .select_related(
+            'controlled_by_god',
+            'controlled_by_titan',
+            'controlled_by_character',
+            'controlled_by_monster',
+        )
         .all()
     )
     serializer_class = LocationListSerializer
@@ -31,7 +36,12 @@ class LocationDetailView(generics.RetrieveAPIView):
 
     queryset = (
         Location.objects.prefetch_related('images__image', 'books_appeared_in')
-        .select_related('controlled_by_god', 'controlled_by_titan', 'controlled_by_character')
+        .select_related(
+            'controlled_by_god',
+            'controlled_by_titan',
+            'controlled_by_character',
+            'controlled_by_monster',
+        )
         .all()
     )
     serializer_class = LocationDetailSerializer

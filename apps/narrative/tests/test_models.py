@@ -1,13 +1,22 @@
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from apps.narrative.models import Quest
+from apps.narrative.models import (
+    EventCasualty,
+    ProphecySubject,
+    Quest,
+    QuestCasualty,
+    QuestParticipant,
+)
 from tests.makers import (
     make_book,
     make_character,
     make_event,
+    make_god,
+    make_monster,
     make_prophecy,
     make_quest,
+    make_titan,
 )
 
 
@@ -31,6 +40,29 @@ class ProphecyModelTests(TestCase):
         character = make_character(name='Percy Jackson')
         self.prophecy.subject.add(character)
         self.assertIn(character, self.prophecy.subject.all())
+
+    def test_typed_subject_links_support_all_entity_types(self):
+        entities = (
+            ('subject_character', make_character(name='Percy Jackson')),
+            ('subject_god', make_god(name='Ares')),
+            ('subject_titan', make_titan(name='Atlas')),
+            ('subject_monster', make_monster(name='Typhon')),
+        )
+        for field, entity in entities:
+            ProphecySubject.objects.create(prophecy=self.prophecy, **{field: entity})
+        self.assertEqual(self.prophecy.subject_records.count(), 4)
+
+    def test_subject_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            ProphecySubject.objects.create(prophecy=self.prophecy)
+
+    def test_subject_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            ProphecySubject.objects.create(
+                prophecy=self.prophecy,
+                subject_character=make_character(),
+                subject_god=make_god(),
+            )
 
     def test_books_relevant_to_can_span_multiple_books_without_quest_link(self):
         books = [
@@ -65,6 +97,59 @@ class QuestModelTests(TestCase):
         annabeth = make_character(name='Annabeth Chase')
         self.quest.participants.add(annabeth)
         self.assertIn(annabeth, self.quest.participants.all())
+
+    def test_typed_participants_support_all_entity_types_and_keep_character_m2m(self):
+        character = make_character(name='Annabeth Chase')
+        god = make_god(name='Apollo')
+        titan = make_titan(name='Atlas')
+        monster = make_monster(name='Typhon')
+        for field, entity in (
+            ('participant_character', character),
+            ('participant_god', god),
+            ('participant_titan', titan),
+            ('participant_monster', monster),
+        ):
+            QuestParticipant.objects.create(quest=self.quest, **{field: entity})
+
+        self.assertEqual(self.quest.participant_records.count(), 4)
+        self.assertIn(character, self.quest.participants.all())
+
+    def test_participant_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            QuestParticipant.objects.create(quest=self.quest)
+
+    def test_participant_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            QuestParticipant.objects.create(
+                quest=self.quest,
+                participant_character=make_character(),
+                participant_god=make_god(),
+            )
+
+    def test_typed_casualties_support_all_entity_types(self):
+        entities = (
+            ('casualty_character', make_character(name='Annabeth Chase')),
+            ('casualty_god', make_god(name='Apollo')),
+            ('casualty_titan', make_titan(name='Atlas')),
+            ('casualty_monster', make_monster(name='Typhon')),
+        )
+        for field, entity in entities:
+            QuestCasualty.objects.create(quest=self.quest, **{field: entity})
+
+        self.assertEqual(self.quest.casualty_records.count(), 4)
+        self.assertIn(entities[0][1], self.quest.casualties.all())
+
+    def test_casualty_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            QuestCasualty.objects.create(quest=self.quest)
+
+    def test_casualty_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            QuestCasualty.objects.create(
+                quest=self.quest,
+                casualty_character=make_character(),
+                casualty_monster=make_monster(),
+            )
 
     def test_prophecy_onetoone(self):
         prophecy = make_prophecy(title='Lightning Bolt Prophecy')
@@ -107,3 +192,28 @@ class EventModelTests(TestCase):
         god = make_god(name='Poseidon')
         self.event.participant_gods.add(god)
         self.assertIn(god, self.event.participant_gods.all())
+
+    def test_typed_casualties_support_all_entity_types_and_preserve_character_m2m(self):
+        entities = (
+            ('casualty_character', make_character(name='Percy Jackson')),
+            ('casualty_god', make_god(name='Ares')),
+            ('casualty_titan', make_titan(name='Atlas')),
+            ('casualty_monster', make_monster(name='Kampe')),
+        )
+        for field, entity in entities:
+            EventCasualty.objects.create(event=self.event, **{field: entity})
+
+        self.assertEqual(self.event.casualty_records.count(), 4)
+        self.assertIn(entities[0][1], self.event.casualties.all())
+
+    def test_casualty_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            EventCasualty.objects.create(event=self.event)
+
+    def test_casualty_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            EventCasualty.objects.create(
+                event=self.event,
+                casualty_character=make_character(),
+                casualty_monster=make_monster(),
+            )

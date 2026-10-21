@@ -1,0 +1,1574 @@
+[
+  {
+    "name": "Zeus",
+    "expected_slug": "zeus",
+    "roman_name": "Jupiter",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "sky",
+      "lightning",
+      "thunder",
+      "heavens",
+      "justice"
+    ],
+    "symbols": [
+      "lightning bolt",
+      "eagle",
+      "bull",
+      "oak tree"
+    ],
+    "sacred_animals": [
+      "eagle",
+      "bull"
+    ],
+    "sacred_plants": [
+      "oak tree"
+    ],
+    "sacred_items": [
+      "master lightning bolt",
+      "aegis"
+    ],
+    "cabin_number": 1,
+    "has_cabin": true,
+    "is_big_three": true,
+    "oath_status": "oath_dissolved",
+    "greek_aspect_personality": "Proud, authoritative, paranoid about losing power, commanding, and easily angered when challenged.",
+    "roman_aspect_personality": "More disciplined, military-focused, and regimented as Jupiter.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "The King of the Olympians and God of the Sky who rules Mount Olympus. He wields the Master Lightning Bolt forged by the Elder Cyclopes, which he used to defeat Kronos. He broke the post-WWII Big Three oath by fathering Thalia Grace.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-titans-curse",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Hera",
+    "expected_slug": "hera",
+    "roman_name": "Juno",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "marriage",
+      "family",
+      "women",
+      "queen of gods"
+    ],
+    "symbols": [
+      "peacock",
+      "pomegranate",
+      "diadem",
+      "cuckoo"
+    ],
+    "sacred_animals": [
+      "peacock",
+      "cuckoo"
+    ],
+    "sacred_plants": [
+      "pomegranate",
+      "willow"
+    ],
+    "sacred_items": [
+      "golden crown",
+      "royal scepter"
+    ],
+    "cabin_number": 2,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Regal, unforgiving toward demigods and her husband's unfaithfulness, fiercely protective of ideal family structures.",
+    "roman_aspect_personality": "Militaristic protector of Rome as Juno Moneta.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Queen of the Gods and Goddess of Marriage and Family. Her cabin at Camp Half-Blood is purely honorary as she has no demigod children.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Poseidon",
+    "expected_slug": "poseidon",
+    "roman_name": "Neptune",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "sea",
+      "earthquakes",
+      "horses",
+      "storms"
+    ],
+    "symbols": [
+      "trident",
+      "fish",
+      "dolphin",
+      "horse"
+    ],
+    "sacred_animals": [
+      "horse",
+      "dolphin"
+    ],
+    "sacred_plants": [
+      "celery"
+    ],
+    "sacred_items": [
+      "trident"
+    ],
+    "cabin_number": 3,
+    "has_cabin": true,
+    "is_big_three": true,
+    "oath_status": "oath_dissolved",
+    "greek_aspect_personality": "Easygoing like the ocean tide, deeply caring toward his children, but capable of terrible wrath when angered.",
+    "roman_aspect_personality": "Distant and feared as Neptune, god of fresh water and sea storms.",
+    "roman_only": false,
+    "home": "The Sea / Undersea Palace",
+    "description": "God of the Sea, Earthquakes, and Horses. Father of Percy Jackson and Tyson. Wields the powerful Trident and rules the underwater kingdom.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Demeter",
+    "expected_slug": "demeter",
+    "roman_name": "Ceres",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "agriculture",
+      "harvest",
+      "fertility",
+      "grains"
+    ],
+    "symbols": [
+      "cornucopia",
+      "wheat",
+      "bread",
+      "torch"
+    ],
+    "sacred_animals": [
+      "serpent",
+      "pig"
+    ],
+    "sacred_plants": [
+      "wheat",
+      "barley",
+      "poppy"
+    ],
+    "sacred_items": [
+      "cornucopia"
+    ],
+    "cabin_number": 4,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Obsessed with healthy eating and cereal, loving but overbearing mother to Persephone.",
+    "roman_aspect_personality": "Ceres, guardian of agriculture and laws.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Goddess of Agriculture, Harvest, and Grains. Mother of Persephone and divine parent to the demigods in Cabin 4.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Ares",
+    "expected_slug": "ares",
+    "roman_name": "Mars",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "war",
+      "violence",
+      "courage",
+      "bloodshed"
+    ],
+    "symbols": [
+      "spear",
+      "helmet",
+      "dog",
+      "vulture"
+    ],
+    "sacred_animals": [
+      "dog",
+      "vulture",
+      "boar"
+    ],
+    "sacred_plants": [
+      "woodbine"
+    ],
+    "sacred_items": [
+      "spear",
+      "bronze shield",
+      "leather motorcycle jacket"
+    ],
+    "cabin_number": 5,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Aggressive, hot-tempered, loves chaos and conflict, appears as a biker with flame sunglasses.",
+    "roman_aspect_personality": "Disciplined military strategist and revered father of Rome as Mars Ultor.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "God of War and Bloodshed. Father of Clarisse La Rue and former pawn of Kronos during the Master Bolt theft in Book 1.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Athena",
+    "expected_slug": "athena",
+    "roman_name": "Minerva",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "wisdom",
+      "warfare strategy",
+      "crafts",
+      "architecture"
+    ],
+    "symbols": [
+      "owl",
+      "olive tree",
+      "aegis",
+      "spear"
+    ],
+    "sacred_animals": [
+      "owl"
+    ],
+    "sacred_plants": [
+      "olive tree"
+    ],
+    "sacred_items": [
+      "spear",
+      "aegis shield"
+    ],
+    "cabin_number": 6,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Intellectual, pragmatic, intensely focused on strategy and order, proud of her children's intelligence.",
+    "roman_aspect_personality": "Minerva, focused strictly on crafts, wisdom, and arts rather than war.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Goddess of Wisdom, Battle Strategy, and Handicrafts. Mother of Annabeth Chase. Her children are born from her divine thoughts.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Apollo",
+    "expected_slug": "apollo",
+    "roman_name": "Phoebus",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "sun",
+      "music",
+      "poetry",
+      "archery",
+      "truth",
+      "healing"
+    ],
+    "symbols": [
+      "lyre",
+      "sun chariot",
+      "bow and arrow",
+      "laurel wreath"
+    ],
+    "sacred_animals": [
+      "raven",
+      "python",
+      "swan"
+    ],
+    "sacred_plants": [
+      "laurel",
+      "hyacinth"
+    ],
+    "sacred_items": [
+      "golden bow",
+      "golden lyre",
+      "sun chariot",
+      "chryseae automata"
+    ],
+    "cabin_number": 7,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Flamboyant, vain, loves composing bad haikus, charismatic, drives the sun chariot Maserati.",
+    "roman_aspect_personality": "Apollo (kept the same name in Rome), god of prophecy and healing.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "God of the Sun, Archery, Music, and Prophecy. Twin brother of Artemis. Appears as a bright teenager driving the sun chariot. Recruits Percy in The Singer of Apollo to catch a rogue golden Celedon automaton.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-titans-curse",
+      "the-last-olympian",
+      "the-demigod-files",
+      "percy-jackson-and-the-singer-of-apollo",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Artemis",
+    "expected_slug": "artemis",
+    "roman_name": "Diana",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "moon",
+      "hunt",
+      "wilderness",
+      "maidenhood",
+      "young girls"
+    ],
+    "symbols": [
+      "silver bow and arrow",
+      "hunting dog",
+      "crescent moon",
+      "stag"
+    ],
+    "sacred_animals": [
+      "stag",
+      "bear",
+      "hunting dog"
+    ],
+    "sacred_plants": [
+      "cypress",
+      "walnut"
+    ],
+    "sacred_items": [
+      "silver bow",
+      "hunting knives"
+    ],
+    "cabin_number": 8,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Protective of young women, fierce hunter, cold toward men, appears as a twelve-year-old maiden.",
+    "roman_aspect_personality": "Diana, goddess of the woodlands and hunt.",
+    "roman_only": false,
+    "home": "Wilderness / Mount Olympus",
+    "description": "Goddess of the Hunt, Moon, and Wilderness. Twin sister of Apollo. Commands the Hunters of Artemis, an immortal band of maidens.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Hephaestus",
+    "expected_slug": "hephaestus",
+    "roman_name": "Vulcan",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "fire",
+      "forge",
+      "blacksmiths",
+      "craftsmen",
+      "technology"
+    ],
+    "symbols": [
+      "hammer",
+      "anvil",
+      "tongs",
+      "volcano"
+    ],
+    "sacred_animals": [
+      "donkey"
+    ],
+    "sacred_plants": [
+      "fennel"
+    ],
+    "sacred_items": [
+      "smith's hammer",
+      "volcanic forge"
+    ],
+    "cabin_number": 9,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Gruff, pragmatic, prefers machines and automatons over people, walks with a severe limp.",
+    "roman_aspect_personality": "Vulcan, destructive god of fire and volcanoes.",
+    "roman_only": false,
+    "home": "Mount St. Helens / Mount Olympus",
+    "description": "God of Fire, Metallurgy, and Forges. Husband of Aphrodite and father of Charles Beckendorf and Leo Valdez (V2).",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Aphrodite",
+    "expected_slug": "aphrodite",
+    "roman_name": "Venus",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "love",
+      "beauty",
+      "desire",
+      "passion"
+    ],
+    "symbols": [
+      "dove",
+      "rose",
+      "apple",
+      "myrtle",
+      "scallop shell"
+    ],
+    "sacred_animals": [
+      "dove",
+      "swan",
+      "sparrow"
+    ],
+    "sacred_plants": [
+      "rose",
+      "myrtle"
+    ],
+    "sacred_items": [
+      "magic girdle"
+    ],
+    "cabin_number": 10,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Glamorous, fickle, constantly shifting appearance to match the viewer's idea of beauty, fascinated by romance.",
+    "roman_aspect_personality": "Venus, mother of the Roman people through Aeneas.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Goddess of Love and Beauty. Mother of Silena Beauregard. Oldest Olympian deity born from Uranus's sea foam.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Hermes",
+    "expected_slug": "hermes",
+    "roman_name": "Mercury",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "travel",
+      "messengers",
+      "thieves",
+      "trade",
+      "athletes"
+    ],
+    "symbols": [
+      "caduceus",
+      "winged sandals",
+      "traveler's cap",
+      "tortoise"
+    ],
+    "sacred_animals": [
+      "tortoise",
+      "rooster"
+    ],
+    "sacred_plants": [
+      "crocus"
+    ],
+    "sacred_items": [
+      "caduceus",
+      "winged shoes"
+    ],
+    "cabin_number": 11,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Witty, restless, caring parent who suffers over Luke's path, wears a jogging suit and carries phone/caduceus.",
+    "roman_aspect_personality": "Mercury, god of commerce and financial gain.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Messenger of the Gods and God of Travelers, Thieves, and Commerce. Father of Luke Castellan and Chris Rodriguez. His cabin takes in all unclaimed campers.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Dionysus",
+    "expected_slug": "dionysus",
+    "roman_name": "Bacchus",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "wine",
+      "festivity",
+      "madness",
+      "theater",
+      "vegetation"
+    ],
+    "symbols": [
+      "thyrsus",
+      "grapevines",
+      "leopard",
+      "chalice"
+    ],
+    "sacred_animals": [
+      "leopard",
+      "tiger",
+      "panther"
+    ],
+    "sacred_plants": [
+      "grapevine",
+      "ivy"
+    ],
+    "sacred_items": [
+      "thyrsus staff",
+      "diet coke cans"
+    ],
+    "cabin_number": 12,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Sarcastic, grumpy, mispronounces demigods' names, bitter about his 100-year punishment as Camp Director.",
+    "roman_aspect_personality": "Bacchus, god of wine and agriculture.",
+    "roman_only": false,
+    "home": "Camp Half-Blood / Mount Olympus",
+    "description": "God of Wine and Madness. Director of Camp Half-Blood ('Mr. D'), sentenced to 100 years of camp directorship and wine restriction by Zeus.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Hades",
+    "expected_slug": "hades",
+    "roman_name": "Pluto",
+    "mythology": "greek",
+    "tier": "chthonic",
+    "affiliation": "chthonic",
+    "status": "immortal",
+    "domains": [
+      "underworld",
+      "dead",
+      "richness",
+      "precious metals"
+    ],
+    "symbols": [
+      "bident",
+      "helm of darkness",
+      "pomegranate",
+      "black ram"
+    ],
+    "sacred_animals": [
+      "black ram",
+      "screech owl"
+    ],
+    "sacred_plants": [
+      "asphodel",
+      "cypress",
+      "pomegranate"
+    ],
+    "sacred_items": [
+      "helm of darkness",
+      "obsidian throne"
+    ],
+    "cabin_number": 13,
+    "has_cabin": true,
+    "is_big_three": true,
+    "oath_status": "oath_dissolved",
+    "greek_aspect_personality": "Bitter about exclusion from Olympus, stern, precise, fiercely proud, resides in his Underworld palace.",
+    "roman_aspect_personality": "Pluto, god of mineral wealth and underground treasures.",
+    "roman_only": false,
+    "home": "The Underworld",
+    "description": "Lord of the Underworld and God of the Dead. Father of Nico and Bianca di Angelo. Received the Helm of Darkness from the Elder Cyclopes and was granted Cabin 13 at Camp Half-Blood after the Second Titan War.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Hestia",
+    "expected_slug": "hestia",
+    "roman_name": "Vesta",
+    "mythology": "greek",
+    "tier": "olympian",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "hearth",
+      "home",
+      "domesticity",
+      "family warmth"
+    ],
+    "symbols": [
+      "hearth fire",
+      "kettle",
+      "veil"
+    ],
+    "sacred_animals": [
+      "donkey"
+    ],
+    "sacred_plants": [
+      "chaste tree"
+    ],
+    "sacred_items": [
+      "hearth fire"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Humble, gentle, peace-keeping, appears as an eight-year-old girl tending the central hearth fire.",
+    "roman_aspect_personality": "Vesta, sacred keeper of the eternal flame.",
+    "roman_only": false,
+    "home": "Hearth Fire at Olympus / Camp Half-Blood",
+    "description": "Goddess of the Hearth and Home. Firstborn child of Kronos and Rhea. Gave up her Olympian seat to Dionysus to prevent civil war.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Persephone",
+    "expected_slug": "persephone",
+    "roman_name": "Proserpina",
+    "mythology": "greek",
+    "tier": "chthonic",
+    "affiliation": "chthonic",
+    "status": "immortal",
+    "domains": [
+      "springtime",
+      "underworld queen",
+      "flowers",
+      "vegetation"
+    ],
+    "symbols": [
+      "pomegranate",
+      "flowers",
+      "torch"
+    ],
+    "sacred_animals": [
+      "bat",
+      "screech owl"
+    ],
+    "sacred_plants": [
+      "pomegranate",
+      "asphodel"
+    ],
+    "sacred_items": [
+      "pomegranate seeds"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Duality between vibrant springtime spring deity and cold Queen of the Underworld alongside Hades.",
+    "roman_aspect_personality": "Proserpina, queen of the lower realm.",
+    "roman_only": false,
+    "home": "The Underworld (Winter) / Earth (Spring)",
+    "description": "Queen of the Underworld and Goddess of Springtime Growth. Daughter of Demeter and wife of Hades.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Iris",
+    "expected_slug": "iris",
+    "roman_name": "Arcus",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "rainbows",
+      "divine messages",
+      "communication"
+    ],
+    "symbols": [
+      "rainbow",
+      "caduceus",
+      "pitcher"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [
+      "iris flower"
+    ],
+    "sacred_items": [
+      "drachma mist projection"
+    ],
+    "cabin_number": 14,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Cheerful, communicative, provides Iris Messages across the demigod world.",
+    "roman_aspect_personality": "Arcus, rainbow messenger.",
+    "roman_only": false,
+    "home": "The Sky",
+    "description": "Goddess of Rainbows and Divine Messenger. Facilitates Iris Messaging via mist and golden drachmas. Received Cabin 14 post-war.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Hypnos",
+    "expected_slug": "hypnos",
+    "roman_name": "Somnus",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "sleep",
+      "dreams",
+      "drowsiness"
+    ],
+    "symbols": [
+      "poppy branch",
+      "horn of sleep",
+      "inverted torch"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [
+      "poppy"
+    ],
+    "sacred_items": [
+      "branch dripping Lethe water"
+    ],
+    "cabin_number": 15,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Constantly sleepy, relaxed, peaceful, hard to keep awake during conversation.",
+    "roman_aspect_personality": "Somnus, god of sleep.",
+    "roman_only": false,
+    "home": "Underworld / Cave of Sleep",
+    "description": "God of Sleep. Son of Nyx and twin brother of Thanatos. Divine parent of Clovis and Cabin 15 campers.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Nemesis",
+    "expected_slug": "nemesis",
+    "roman_name": "Invidia",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "revenge",
+      "balance",
+      "retribution",
+      "divine justice"
+    ],
+    "symbols": [
+      "measuring rod",
+      "scales",
+      "scourge",
+      "wheel"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [
+      "apple branch"
+    ],
+    "sacred_items": [
+      "balance scales",
+      "whip"
+    ],
+    "cabin_number": 16,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Stern, unforgiving, focused on punishing hubris and restoring cosmic balance.",
+    "roman_aspect_personality": "Invidia / Nemesis.",
+    "roman_only": false,
+    "home": "Underworld / Sky",
+    "description": "Goddess of Revenge, Balance, and Retribution. Mother of Ethan Nakamura. Received Cabin 16 post-war.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Nike",
+    "expected_slug": "nike",
+    "roman_name": "Victoria",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "victory",
+      "triumph",
+      "competitiveness"
+    ],
+    "symbols": [
+      "golden wreath",
+      "wings",
+      "palm branch"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [
+      "laurel",
+      "palm"
+    ],
+    "sacred_items": [
+      "victory wreath"
+    ],
+    "cabin_number": 17,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Intensely competitive, obsessed with winning at all costs.",
+    "roman_aspect_personality": "Victoria, goddess of battlefield victory.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Goddess of Victory. Received Cabin 17 at Camp Half-Blood after the Battle of Manhattan.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Hebe",
+    "expected_slug": "hebe",
+    "roman_name": "Juventas",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "youth",
+      "forgiveness",
+      "cupbearer to gods"
+    ],
+    "symbols": [
+      "golden chalice",
+      "ivy wreath",
+      "eagle"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [
+      "ivy"
+    ],
+    "sacred_items": [
+      "nectar chalice"
+    ],
+    "cabin_number": 18,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Youthful, playful, gentle.",
+    "roman_aspect_personality": "Juventas, goddess of youth.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Goddess of Youth and former cupbearer of Olympus. Daughter of Zeus and Hera. Received Cabin 18 post-war.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Tyche",
+    "expected_slug": "tyche",
+    "roman_name": "Fortuna",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "fortune",
+      "luck",
+      "chance",
+      "prosperity"
+    ],
+    "symbols": [
+      "cornucopia",
+      "wheel of fortune",
+      "rudder"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [
+      "lucky coin",
+      "wheel of fortune"
+    ],
+    "cabin_number": 19,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Unpredictable, generous to the lucky and indifferent to the unlucky.",
+    "roman_aspect_personality": "Fortuna, luck and fate.",
+    "roman_only": false,
+    "home": "Mount Olympus",
+    "description": "Goddess of Fortune and Luck. Received Cabin 19 post-Last Olympian.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Hecate",
+    "expected_slug": "hecate",
+    "roman_name": "Trivia",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "titan_allied",
+    "status": "immortal",
+    "domains": [
+      "magic",
+      "crossroads",
+      "mist",
+      "necromancy",
+      "witchcraft"
+    ],
+    "symbols": [
+      "twin torches",
+      "key",
+      "crossroads",
+      "black dog"
+    ],
+    "sacred_animals": [
+      "black dog",
+      "polecat"
+    ],
+    "sacred_plants": [
+      "yew",
+      "mandrake",
+      "cypress"
+    ],
+    "sacred_items": [
+      "flaming torches",
+      "stygian keys"
+    ],
+    "cabin_number": 20,
+    "has_cabin": true,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Mysterious, enigmatic, mistress of the Mist and magic, supported Titans in V1 before returning to neutrality.",
+    "roman_aspect_personality": "Trivia, goddess of three-way crossroads.",
+    "roman_only": false,
+    "home": "Underworld / Crossroads",
+    "description": "Goddess of Magic, Crossroads, and the Mist. Sided with Kronos in V1 war. Mother of magical demigods in Cabin 20.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Pan",
+    "expected_slug": "pan",
+    "roman_name": "Faunus",
+    "mythology": "greek",
+    "tier": "nature_deity",
+    "affiliation": "neutral",
+    "status": "faded",
+    "domains": [
+      "wild",
+      "nature",
+      "satyrs",
+      "flocks"
+    ],
+    "symbols": [
+      "syrinx pan flute",
+      "shepherd's crook"
+    ],
+    "sacred_animals": [
+      "goat",
+      "ram"
+    ],
+    "sacred_plants": [
+      "pine",
+      "reed"
+    ],
+    "sacred_items": [
+      "pan pipes"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Gentle, sorrowful over the fading of the wild, loving toward satyrs and Grover Underwood.",
+    "roman_aspect_personality": "Faunus, forest spirit.",
+    "roman_only": false,
+    "home": "Carlsbad Caverns (last refuge)",
+    "description": "God of the Wild. Searched for centuries by satyr Searchers. Formally fades in Book 4, bestowing his spirit upon Grover Underwood.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Circe",
+    "expected_slug": "circe",
+    "roman_name": "Circe",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "magic",
+      "sorcery",
+      "transformation"
+    ],
+    "symbols": [
+      "wand",
+      "loom",
+      "guinea pig"
+    ],
+    "sacred_animals": [
+      "guinea pig",
+      "tame wolves"
+    ],
+    "sacred_plants": [
+      "moly"
+    ],
+    "sacred_items": [
+      "potion chalice"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Vain, manipulative, runs a magical spa resort, turns men into guinea pigs.",
+    "roman_aspect_personality": null,
+    "roman_only": false,
+    "home": "C.C.'s Spa and Resort (Sea of Monsters)",
+    "description": "Minor Goddess of Magic. Operates C.C.'s Spa and Resort island in the Sea of Monsters, turning men into rodents.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "Phobos",
+    "expected_slug": "phobos",
+    "roman_name": "Timor",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "fear",
+      "phobias"
+    ],
+    "symbols": [
+      "frightened face",
+      "dagger"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Cruel, cowardly, delights in inducing terrifying illusions.",
+    "roman_aspect_personality": "Timor.",
+    "roman_only": false,
+    "home": "Underworld / Mount Olympus",
+    "description": "God of Fear and son of Ares. Steals Ares's war chariot in The Demigod Files before being defeated by Percy and Clarisse.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Deimos",
+    "expected_slug": "deimos",
+    "roman_name": "Formido",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "terror",
+      "dread",
+      "panic"
+    ],
+    "symbols": [
+      "screaming skull"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Aggressive, cruel, induces overwhelming dread.",
+    "roman_aspect_personality": "Formido.",
+    "roman_only": false,
+    "home": "Underworld / Mount Olympus",
+    "description": "God of Terror and panic. Son of Ares and brother of Phobos.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Melinoë",
+    "expected_slug": "melinoe",
+    "roman_name": "Melinoe",
+    "mythology": "greek",
+    "tier": "chthonic",
+    "affiliation": "chthonic",
+    "status": "immortal",
+    "domains": [
+      "ghosts",
+      "nightmares",
+      "hauntings"
+    ],
+    "symbols": [
+      "ghostly mantle"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Terrifying half-pale half-black skin, commands restless spirits.",
+    "roman_aspect_personality": null,
+    "roman_only": false,
+    "home": "The Underworld",
+    "description": "Goddess of Ghosts and Nightmares. Daughter of Persephone. Encountered by Percy, Thalia, and Nico in The Demigod Files.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Triton",
+    "expected_slug": "triton",
+    "roman_name": "Triton",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "olympian_council",
+    "status": "immortal",
+    "domains": [
+      "sea messenger",
+      "waves",
+      "conch shell"
+    ],
+    "symbols": [
+      "conch shell",
+      "double fish tail"
+    ],
+    "sacred_animals": [
+      "dolphin"
+    ],
+    "sacred_plants": [],
+    "sacred_items": [
+      "conch horn"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Arrogant, condescending toward his half-brother Percy Jackson, green-skinned merman.",
+    "roman_aspect_personality": null,
+    "roman_only": false,
+    "home": "Undersea Palace of Poseidon",
+    "description": "God of Sea Waves and herald of Poseidon. Green-skinned merman with twin fish tails, brother of Tyson and Percy.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Janus",
+    "expected_slug": "janus",
+    "roman_name": "Janus",
+    "mythology": "roman",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "doorways",
+      "beginnings",
+      "transitions",
+      "choices"
+    ],
+    "symbols": [
+      "two faces",
+      "key",
+      "doorway"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [
+      "key to doors"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Two-faced, indecisive, forces split choices on travelers in the Labyrinth.",
+    "roman_aspect_personality": "Janus, Roman god of choices and beginnings.",
+    "roman_only": true,
+    "home": "The Labyrinth",
+    "description": "Roman God of Doorways and Choices. Has two faces pointing in opposite directions. Appears in the Labyrinth before Annabeth.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Morpheus",
+    "expected_slug": "morpheus",
+    "roman_name": "Morpheus",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "titan_allied",
+    "status": "immortal",
+    "domains": [
+      "dreams",
+      "shaping sleep"
+    ],
+    "symbols": [
+      "poppy",
+      "wings"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [
+      "poppy"
+    ],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Quiet, solemn, puts Manhattan mortals to sleep during the Battle of Manhattan.",
+    "roman_aspect_personality": null,
+    "roman_only": false,
+    "home": "Underworld / Dream Realm",
+    "description": "God of Dreams and son of Hypnos. Sided with Kronos in V1 and cast a deep sleeping spell over Manhattan.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Chaos",
+    "expected_slug": "chaos",
+    "roman_name": "Chaos",
+    "mythology": "greek",
+    "tier": "primordial",
+    "affiliation": "independent",
+    "status": "immortal",
+    "domains": [
+      "origin void",
+      "creation",
+      "primordial space"
+    ],
+    "symbols": [
+      "abyss",
+      "endless void"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Amorphous, boundless, incomprehensible origin of all matter and divine life.",
+    "roman_aspect_personality": "Chaos Primordialis, the primordial void in Roman tradition.",
+    "roman_only": false,
+    "home": "The Void",
+    "description": "The primordial void from which the first divine beings (Gaea, Tartarus, Ouranos, Erebus, Nyx) emerged at the dawn of creation.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Ouranos",
+    "expected_slug": "ouranos",
+    "roman_name": "Caelus",
+    "mythology": "greek",
+    "tier": "primordial",
+    "affiliation": "independent",
+    "status": "faded",
+    "domains": [
+      "sky",
+      "heavens",
+      "firmament"
+    ],
+    "symbols": [
+      "starry sky",
+      "zodiac canopy"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Tyrannical, cruel, disgusted by his monstrous offspring, harsh father.",
+    "roman_aspect_personality": "Known as Caelus, personification of the sky.",
+    "roman_only": false,
+    "home": "The Sky",
+    "description": "The primordial deity of the Sky and husband of Gaea. Imprisoned his monstrous children in Tartarus until Kronos castrated and overthrew him with the adamantine scythe.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Gaea",
+    "expected_slug": "gaea",
+    "roman_name": "Terra / Tellus",
+    "mythology": "greek",
+    "tier": "primordial",
+    "affiliation": "independent",
+    "status": "immortal",
+    "domains": [
+      "earth",
+      "soil",
+      "creation",
+      "nature"
+    ],
+    "symbols": [
+      "fruitful soil",
+      "earthly rocks",
+      "greenery"
+    ],
+    "sacred_animals": [
+      "serpent"
+    ],
+    "sacred_plants": [
+      "fruit trees"
+    ],
+    "sacred_items": [
+      "adamantine scythe"
+    ],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Motherly yet vengeful, protective of her monster children, scheming against tyrannical rulers.",
+    "roman_aspect_personality": "Revered as Terra or Tellus Mater, the fertile earth mother.",
+    "roman_only": false,
+    "home": "The Earth itself",
+    "description": "Primordial goddess of the Earth, mother of Titans, Cyclopes, Giants, and Hekatonkheires.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Amphitrite",
+    "expected_slug": "amphitrite",
+    "roman_name": "Salacia",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "sea",
+      "calm waters",
+      "sea life"
+    ],
+    "symbols": [
+      "crab claw crown",
+      "dolphin",
+      "trident emblem"
+    ],
+    "sacred_animals": [
+      "dolphin",
+      "seal"
+    ],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Regal, calm, graceful Queen of the Sea, tolerant of Poseidon's mortal affairs.",
+    "roman_aspect_personality": "Known as Salacia, goddess of calm salt waters.",
+    "roman_only": false,
+    "home": "Poseidon's Undersea Palace",
+    "description": "Nereid goddess and Queen of the Sea, wife of Poseidon and mother of Triton.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Boreas",
+    "expected_slug": "boreas",
+    "roman_name": "Aquilon",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "neutral",
+    "status": "immortal",
+    "domains": [
+      "north wind",
+      "winter",
+      "cold air"
+    ],
+    "symbols": [
+      "icicles",
+      "conch shell",
+      "winged boots"
+    ],
+    "sacred_animals": [
+      "stallion"
+    ],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Chilly, stern, blustery lord of the north wind.",
+    "roman_aspect_personality": "Revered as Aquilon.",
+    "roman_only": false,
+    "home": "Thrace / Quebec Palace",
+    "description": "Anemoi god of the North Wind and Winter. Father of Khione, Zethes, and Calais.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Khione",
+    "expected_slug": "khione",
+    "roman_name": "Chione",
+    "mythology": "greek",
+    "tier": "minor",
+    "affiliation": "titan_allied",
+    "status": "immortal",
+    "domains": [
+      "snow",
+      "ice",
+      "blizzards"
+    ],
+    "symbols": [
+      "snowflake",
+      "ice dagger"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Cold, arrogant, disdainful of warm demigods and Olympians.",
+    "roman_aspect_personality": "Known as Chione.",
+    "roman_only": false,
+    "home": "Boreas's Ice Palace",
+    "description": "Goddess of Snow and Ice, daughter of Boreas. Viciously opposes the Olympians in favor of cold chaos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Tartarus",
+    "expected_slug": "tartarus",
+    "roman_name": "Tartarus",
+    "mythology": "greek",
+    "tier": "primordial",
+    "affiliation": "independent",
+    "status": "immortal",
+    "domains": [
+      "abyss",
+      "underworld pit",
+      "torment"
+    ],
+    "symbols": [
+      "abyssal chasm",
+      "chains of darkness"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "sacred_items": [],
+    "cabin_number": null,
+    "has_cabin": false,
+    "is_big_three": false,
+    "oath_status": "not_applicable",
+    "greek_aspect_personality": "Malevolent, vast, crushing, the embodiment of the cosmic underworld abyss.",
+    "roman_aspect_personality": "Represented identically in Roman mythology.",
+    "roman_only": false,
+    "home": "Beneath Hades",
+    "description": "The primordial god and cosmic abyss beneath the Underworld where monsters reform and slain Titans are imprisoned.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ]
+  }
+]

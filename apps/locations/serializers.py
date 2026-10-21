@@ -52,6 +52,12 @@ class LocationListSerializer(serializers.ModelSerializer):
                 'slug': obj.controlled_by_character.slug,
                 'name': obj.controlled_by_character.name,
             }
+        if obj.controlled_by_monster:
+            return {
+                'type': 'monster',
+                'slug': obj.controlled_by_monster.slug,
+                'name': obj.controlled_by_monster.name,
+            }
         return None
 
 
@@ -109,6 +115,12 @@ class LocationDetailSerializer(serializers.ModelSerializer):
                 'type': 'character',
                 'slug': obj.controlled_by_character.slug,
                 'name': obj.controlled_by_character.name,
+            }
+        if obj.controlled_by_monster:
+            return {
+                'type': 'monster',
+                'slug': obj.controlled_by_monster.slug,
+                'name': obj.controlled_by_monster.name,
             }
         return None
 

@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
-from tests.makers import make_character, make_god, make_power
+from tests.makers import make_book, make_character, make_god, make_power, make_titan
 
 
 class CharacterListSerializerTests(TestCase):
@@ -46,6 +46,23 @@ class CharacterDetailSerializerTests(TestCase):
         self.assertEqual(len(data['powers']), 1)
         self.assertEqual(data['powers'][0]['name'], 'Hydrokinesis')
 
+    def test_power_classification_and_first_book_are_serialized(self):
+        book = make_book(title='The Lightning Thief', book_number=1)
+        power = self.character.powers.first()
+        power.type = 'offensive'
+        power.is_passive = True
+        power.is_book_specific = True
+        power.first_demonstrated_book = book
+        power.display_order = 2
+        power.save()
+
+        serialized = CharacterDetailSerializer(self.character).data['powers'][0]
+        self.assertEqual(serialized['type'], 'offensive')
+        self.assertTrue(serialized['is_passive'])
+        self.assertTrue(serialized['is_book_specific'])
+        self.assertEqual(serialized['first_demonstrated_book'], 'the-lightning-thief')
+        self.assertEqual(serialized['display_order'], 2)
+
     def test_sibling_slugs_empty_by_default(self):
         data = CharacterDetailSerializer(self.character).data
         self.assertEqual(data['sibling_slugs'], [])
@@ -66,16 +83,14 @@ class CharacterDetailSerializerTests(TestCase):
         data = CharacterDetailSerializer(self.character).data
         self.assertEqual(data['appearance']['hair_color'], 'black')
 
-    def test_special_states_field(self):
-        self.character.special_states = [
-            {
-                'state': 'achilles_blessing',
-                'description': 'Invulnerable except at the small of his back',
-                'active_from_book': 5,
-                'active_to_book': 5,
-            }
-        ]
+    def test_special_states_preserve_descriptive_strings(self):
+        self.character.special_states = ['Bore the Curse of Achilles during Book 5']
         self.character.save()
         data = CharacterDetailSerializer(self.character).data
-        self.assertEqual(len(data['special_states']), 1)
-        self.assertEqual(data['special_states'][0]['state'], 'achilles_blessing')
+        self.assertEqual(data['special_states'], ['Bore the Curse of Achilles during Book 5'])
+
+    def test_titan_divine_parent_slug(self):
+        helios = make_titan(name='Helios')
+        phaethon = make_character(name='Phaethon', divine_parent_titan=helios)
+
+        self.assertEqual(CharacterDetailSerializer(phaethon).data['divine_parent_slug'], 'helios')

@@ -1,0 +1,191 @@
+[
+  {
+    "monster_slug": "minotaur",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-lightning-thief",
+    "method": "Ripped off one of its horns and drove it into the monster's side",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "minotaur",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-last-olympian",
+    "method": "Disintegrated with Riptide during the Battle of the Williamsburg Bridge",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "minotaur",
+    "defeated_by_slug": "theseus",
+    "book_slug": null,
+    "method": "Slew the Minotaur inside the Labyrinth using his bare hands and sword",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "medusa",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-lightning-thief",
+    "method": "Decapitated using Riptide while viewing her reflection in a glass gazing ball",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "medusa",
+    "defeated_by_slug": "perseus",
+    "book_slug": null,
+    "method": "Decapitated with an adamantine harpe while watching her through a polished bronze shield mirror",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "alecto",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-lightning-thief",
+    "method": "Sliced with Riptide in the Metropolitan Museum gallery when she attacked as Mrs. Dodds",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "chimera",
+    "defeated_by_slug": "bellerophon",
+    "book_slug": null,
+    "method": "Forced a block of lead on a spear point into the Chimera's flaming mouth, suffocating it",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "procrustes",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-lightning-thief",
+    "method": "Tricked onto his own waterbed, bound with brass clamps, and decapitated with Riptide",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "cerberus",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Wrestled Cerberus into submission barehanded and captured him for his Twelfth Labor",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "procrustes",
+    "defeated_by_slug": "theseus",
+    "book_slug": null,
+    "method": "Tricked onto his own bed and chopped off his head and feet to fit the frame",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "polyphemus",
+    "defeated_by_slug": "odysseus",
+    "book_slug": null,
+    "method": "Blinded in his single eye using a hot sharpened wooden olive stake after intoxicating him",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "polyphemus",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-sea-of-monsters",
+    "method": "Defeated Polyphemus in single combat, held Riptide to his eye, and spared his life before escaping with the Fleece",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "lernean-hydra",
+    "defeated_by_slug": "clarisse-la-rue",
+    "book_slug": "the-sea-of-monsters",
+    "method": "Blasted with full cannon volleys from the CSS Birmingham steamship at Monster Donut",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "lernean-hydra",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Cut off heads while Iolaus cauterized the necks, then buried the golden head under a boulder",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "dr-thorn",
+    "defeated_by_slug": "zoe-nightshade",
+    "book_slug": "the-titans-curse",
+    "method": "Driven off the cliff into the sea by a barrage of silver arrows from Zoë and the Hunters",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "nemean-lion",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-titans-curse",
+    "method": "Fed freeze-dried astronaut ice cream inside the Air and Space Museum to force its mouth open, exposing its soft interior to silver arrows",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "nemean-lion",
+    "defeated_by_slug": "zoe-nightshade",
+    "book_slug": "the-titans-curse",
+    "method": "Fired silver arrows into its exposed open mouth while Percy distracted it with space food",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "nemean-lion",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Strangled the lion with his bare hands and skinned it using its own razor-sharp claw",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "erymanthian-boar",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-titans-curse",
+    "method": "Lured the giant boar onto a frozen lake in New Mexico, causing it to crash through the ice and become trapped",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "erymanthian-boar",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Chased the boar into heavy snow drifts on Mount Erymanthos, trapped it in a net, and carried it alive to Eurystheus",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "ladon",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Shot Ladon over the garden wall with arrows dipped in Hydra venom to retrieve the Golden Apples",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "kampe",
+    "defeated_by_slug": "briares",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "method": "Crushed Kampê under a relentless barrage of hundreds of giant boulders in the Labyrinth courtyard",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "kelli",
+    "defeated_by_slug": "annabeth-chase",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "method": "Stabbed Kelli from behind with her Celestial Bronze dagger during the attack at Goode High School",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "geryon",
+    "defeated_by_slug": "percy-jackson",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "method": "Shot a single arrow guided by the West Wind that pierced all three of Geryon's hearts simultaneously",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "geryon",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Shot Geryon through all three of his chests with an arrow dipped in Hydra blood",
+    "is_myth": true
+  },
+  {
+    "monster_slug": "lydian-drakon",
+    "defeated_by_slug": "clarisse-la-rue",
+    "book_slug": "the-last-olympian",
+    "method": "Drove an electric spear straight into the Drakon's unarmored eye while riding her war chariot",
+    "is_myth": false
+  },
+  {
+    "monster_slug": "cacus",
+    "defeated_by_slug": "heracles",
+    "book_slug": null,
+    "method": "Strangled Cacus to death in his Aventine cavern after the giant stole Geryon's red cattle",
+    "is_myth": true
+  }
+]

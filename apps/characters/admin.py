@@ -8,7 +8,18 @@ from apps.characters.models import Character, CharacterImage, Power
 class PowerInline(admin.TabularInline):
     model = Power
     extra = 1
-    fields = ('name', 'source', 'description', 'limitations')
+    fields = (
+        'name',
+        'source',
+        'type',
+        'is_passive',
+        'is_book_specific',
+        'first_demonstrated_book',
+        'display_order',
+        'description',
+        'scope',
+        'limitations',
+    )
 
 
 class CharacterImageInline(admin.TabularInline):
@@ -49,7 +60,7 @@ class CharacterAdmin(admin.ModelAdmin):
 
 @admin.register(Power)
 class PowerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'character', 'source')
-    list_filter = ('source',)
+    list_display = ('name', 'character', 'source', 'type', 'is_passive', 'display_order')
+    list_filter = ('source', 'type', 'is_passive', 'is_book_specific')
     search_fields = ('name', 'description', 'character__name')
-    raw_id_fields = ('character',)
+    raw_id_fields = ('character', 'first_demonstrated_book')

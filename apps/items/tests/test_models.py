@@ -1,7 +1,7 @@
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from tests.makers import make_character, make_god, make_weapon
+from tests.makers import make_character, make_god, make_titan, make_weapon
 
 
 class WeaponModelTests(TestCase):
@@ -36,6 +36,15 @@ class WeaponModelTests(TestCase):
         self.weapon.save()
         self.assertEqual(self.weapon.owner_primary_god, poseidon)
         self.assertIsNone(self.weapon.owner_primary_character)
+        self.assertIsNone(self.weapon.owner_primary_titan)
+
+    def test_titan_owner_only(self):
+        kronos = make_titan(name='Kronos')
+        self.weapon.owner_primary_titan = kronos
+        self.weapon.save()
+        self.assertEqual(self.weapon.owner_primary_titan, kronos)
+        self.assertIsNone(self.weapon.owner_primary_character)
+        self.assertIsNone(self.weapon.owner_primary_god)
 
     def test_check_constraint_rejects_both_owners(self):
         percy = make_character(name='Percy Jackson')
@@ -47,10 +56,38 @@ class WeaponModelTests(TestCase):
                 owner_primary_god=poseidon,
             )
 
+    def test_check_constraint_rejects_character_and_titan_owners(self):
+        percy = make_character(name='Percy Jackson')
+        kronos = make_titan(name='Kronos')
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            make_weapon(
+                name='Dual Owner Weapon',
+                owner_primary_character=percy,
+                owner_primary_titan=kronos,
+            )
+
     def test_both_owners_null_is_valid(self):
         unclaimed = make_weapon(name='Unclaimed Artifact')
         self.assertIsNone(unclaimed.owner_primary_character)
         self.assertIsNone(unclaimed.owner_primary_god)
+        self.assertIsNone(unclaimed.owner_primary_titan)
+
+    def test_forged_by_character_only(self):
+        tyson = make_character(name='Tyson')
+        self.weapon.forged_by_character = tyson
+        self.weapon.save()
+        self.assertEqual(self.weapon.forged_by_character, tyson)
+        self.assertIsNone(self.weapon.forged_by)
+
+    def test_forged_by_constraints_reject_god_and_character(self):
+        hephaestus = make_god(name='Hephaestus')
+        daedalus = make_character(name='Daedalus')
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            make_weapon(
+                name='Dually Forged',
+                forged_by=hephaestus,
+                forged_by_character=daedalus,
+            )
 
     def test_true_name_is_optional(self):
         weapon = make_weapon(name='Sword', true_name='Anaklusmos')

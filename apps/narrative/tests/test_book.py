@@ -33,6 +33,61 @@ class BookModelTests(TestCase):
         self.book.main_characters.add(percy)
         self.assertIn(percy, self.book.main_characters.all())
 
+    def test_parent_collection_relationship_has_reverse_included_stories(self):
+        collection = make_book(
+            title='The Demigod Files',
+            series='companion',
+            book_number=1,
+            book_type='short_story_collection',
+        )
+        story = make_book(
+            title='The Sword of Hades',
+            series='companion',
+            book_number=2,
+            book_type='short_story',
+            parent_collection=collection,
+        )
+        self.assertEqual(story.parent_collection, collection)
+        self.assertIn(story, collection.included_stories.all())
+
+
+class BookHierarchyViewTests(BaseAPITestCase):
+    def setUp(self):
+        super().setUp()
+        self.collection = make_book(
+            title='The Demigod Files',
+            series='companion',
+            book_number=1,
+            book_type='short_story_collection',
+        )
+        self.story = make_book(
+            title='The Sword of Hades',
+            series='companion',
+            book_number=2,
+            book_type='short_story',
+            parent_collection=self.collection,
+        )
+
+    def test_story_detail_includes_parent_collection_summary(self):
+        response = self.client.get(reverse('book-detail', kwargs={'slug': self.story.slug}))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['parent_collection']['slug'], self.collection.slug)
+        self.assertEqual(response.data['parent_collection']['title'], self.collection.title)
+        self.assertEqual(response.data['parent_collection']['book_type'], 'short_story_collection')
+
+    def test_collection_detail_includes_story_summaries(self):
+        response = self.client.get(reverse('book-detail', kwargs={'slug': self.collection.slug}))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['included_stories']), 1)
+        self.assertEqual(response.data['included_stories'][0]['slug'], self.story.slug)
+
+    def test_filter_by_parent_collection_slug(self):
+        response = self.client.get(
+            reverse('book-list'), {'parent-collection': self.collection.slug}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([book['slug'] for book in response.data['data']], [self.story.slug])
+
 
 class BookListViewTests(BaseAPITestCase):
     def setUp(self):

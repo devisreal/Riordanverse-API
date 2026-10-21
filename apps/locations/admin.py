@@ -22,7 +22,12 @@ class LocationAdmin(admin.ModelAdmin):
     )
     list_filter = ('location_type', 'is_hidden_from_mortals')
     search_fields = ('name', 'description', 'real_world_location', 'mythological_significance')
-    raw_id_fields = ('controlled_by_god', 'controlled_by_titan', 'controlled_by_character')
+    raw_id_fields = (
+        'controlled_by_god',
+        'controlled_by_titan',
+        'controlled_by_character',
+        'controlled_by_monster',
+    )
     filter_horizontal = ('books_appeared_in',)
     readonly_fields = ('created_at', 'updated_at')
     inlines = [LocationImageInline]

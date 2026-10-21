@@ -20,6 +20,7 @@ BOOK_TYPE_CHOICES = (
     ('novel', 'Novel'),
     ('companion_book', 'Companion Book'),
     ('short_story_collection', 'Short Story Collection'),
+    ('short_story', 'Short Story'),
     ('myth_anthology', 'Myth Anthology'),
     ('graphic_novel', 'Graphic Novel'),
 )
@@ -32,6 +33,7 @@ CHARACTER_TYPE_CHOICES = (
     ('god', 'God'),
     ('titan', 'Titan'),
     ('monster', 'Monster'),
+    ('creature', 'Creature'),
     ('mortal', 'Mortal'),
     ('satyr', 'Satyr'),
     ('centaur', 'Centaur'),
@@ -65,6 +67,8 @@ SPECIES_CHOICES = (
     ('telekhine', 'Telekhine'),
     ('giant', 'Giant'),
     ('automaton', 'Automaton'),
+    ('spirit', 'Spirit'),
+    ('hekatonkheir', 'Hekatonkheir'),
     ('other', 'Other'),
 )
 
@@ -145,6 +149,7 @@ GOD_AFFILIATION_CHOICES = (
     ('neutral', 'Neutral'),
     ('titan_allied', 'Titan Allied'),
     ('chthonic', 'Chthonic'),
+    ('independent', 'Independent'),
 )
 
 # ---------------------------------------------------------------------------
@@ -179,6 +184,16 @@ MONSTER_TYPE_CHOICES = (
     ('nature_spirit', 'Nature Spirit'),
     ('shapeshifter', 'Shapeshifter'),
     ('mechanical', 'Mechanical'),
+    ('bovine_humanoid', 'Bovine Humanoid'),
+    ('fury', 'Fury'),
+    ('hybrid_monster', 'Hybrid Monster'),
+    ('swamp_hydra', 'Swamp Hydra'),
+    ('manticore', 'Manticore'),
+    ('mythic_beast', 'Mythic Beast'),
+    ('dragon', 'Dragon'),
+    ('ancient_dragon_jailer', 'Ancient Dragon Jailer'),
+    ('empousa', 'Empousa'),
+    ('drakon', 'Drakon'),
 )
 
 # ---------------------------------------------------------------------------
@@ -217,12 +232,17 @@ WEAPON_TYPE_CHOICES = (
 # ---------------------------------------------------------------------------
 MATERIAL_CHOICES = (
     ('celestial_bronze', 'Celestial Bronze'),
+    ('composite', 'Composite'),
+    ('flint', 'Flint'),
+    ('gold', 'Gold'),
+    ('other', 'Other'),
     ('stygian_iron', 'Stygian Iron'),
     ('imperial_gold', 'Imperial Gold'),
     ('mortal_steel', 'Mortal Steel'),
     ('silver', 'Silver'),
     ('divine_material', 'Divine Material'),
     ('enchanted', 'Enchanted'),
+    ('wood', 'Wood'),
 )
 
 # ---------------------------------------------------------------------------

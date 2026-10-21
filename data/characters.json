@@ -1,0 +1,3554 @@
+[
+  {
+    "name": "Percy Jackson",
+    "expected_slug": "percy-jackson",
+    "aliases": [
+      "Seaweed Brain",
+      "Perseus Jackson",
+      "Peter Johnson",
+      "Perry Johanssen"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 12,
+    "divine_parent_slug": "poseidon",
+    "mortal_parent_name": "Sally Jackson",
+    "mortal_parent_ref_slug": "sally-jackson",
+    "sibling_slugs": [
+      "tyson",
+      "theseus",
+      "bellerophon"
+    ],
+    "empathy_link_slug": "grover-underwood",
+    "cabin_number": 3,
+    "affiliation": [
+      "camp_half_blood",
+      "olympian_council"
+    ],
+    "fatal_flaw": "Personal loyalty",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "messy, jet-black hair",
+      "eye_color": "sea-green",
+      "build": "lean, athletic",
+      "height": "average for age, growing taller across series",
+      "notable_features": [
+        "sarcastic smile",
+        "troublemaker look",
+        "Curse of Achilles mark on small of back in Book 5"
+      ]
+    },
+    "personality_traits": [
+      "brave",
+      "sarcastic",
+      "loyal",
+      "impulsive",
+      "compassionate"
+    ],
+    "special_states": [
+      "Bore the Curse of Achilles (Achilles Mark on small of back) during Book 5",
+      "Transformed into a guinea pig by Circe in Book 2 (restored by Hermes multivitamins)"
+    ],
+    "quote": "Look, I didn't want to be a half-blood.",
+    "description": "Son of Poseidon, hero of Olympus, slayer of monsters across the PJO novels, Demigod Files, and Singer of Apollo.",
+    "lore_notes": "Claimed by Poseidon at age twelve during capture-the-flag. Bathed in the River Styx in Book 5 to gain invulnerability.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files",
+      "percy-jackson-and-the-singer-of-apollo",
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Annabeth Chase",
+    "expected_slug": "annabeth-chase",
+    "aliases": [
+      "Wise Girl",
+      "Architect of Olympus"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 12,
+    "divine_parent_slug": "athena",
+    "mortal_parent_name": "Frederick Chase",
+    "mortal_parent_ref_slug": "frederick-chase",
+    "sibling_slugs": [
+      "malcolm-pace",
+      "daedalus"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 6,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": "Hubris (deadly pride)",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "blond",
+      "hair_description": "curly, princess-like blond hair",
+      "eye_color": "gray",
+      "build": "athletic, tall",
+      "height": "tall for her age",
+      "notable_features": [
+        "intense gray eyes like storm clouds",
+        "deep tan",
+        "Camp Half-Blood bead necklace with ring"
+      ]
+    },
+    "personality_traits": [
+      "analytical",
+      "resourceful",
+      "stubborn",
+      "strategic",
+      "loyal"
+    ],
+    "special_states": [
+      "Forced to hold up the sky in Book 3 (gained a streak of gray hair alongside Percy)",
+      "Appointed Official Architect of Olympus at the end of Book 5"
+    ],
+    "quote": "You never can tell what's going to happen. But whatever it is, I want to be part of it.",
+    "description": "Daughter of Athena and Frederick Chase. Primary strategist of Camp Half-Blood, quest leader in the Labyrinth, and Percy's core partner.",
+    "lore_notes": "Born as a mind-child from Athena's divine intellect and Frederick's mind.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Grover Underwood",
+    "expected_slug": "grover-underwood",
+    "aliases": [
+      "G-Man",
+      "Lord of the Wild"
+    ],
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 28,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": "percy-jackson",
+    "cabin_number": null,
+    "affiliation": [
+      "camp_half_blood",
+      "council_of_cloven_elders"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "curly brown hair hiding small goat horns",
+      "eye_color": "brown",
+      "build": "slender, furry lower body",
+      "height": "average human height",
+      "notable_features": [
+        "goat legs",
+        "cloven hooves",
+        "small horns",
+        "acne in early books"
+      ]
+    },
+    "personality_traits": [
+      "nature-loving",
+      "loyal",
+      "anxious",
+      "brave",
+      "food-obsessed"
+    ],
+    "special_states": [
+      "Received the spirit blessing of Pan upon Pan's fading in Book 4",
+      "Appointed to the Council of Cloven Elders and named Lord of the Wild in Book 5"
+    ],
+    "quote": "I'm a satyr! We don't have souls!",
+    "description": "Satyr protector assigned to bring demigods safely to Camp Half-Blood. Best friend to Percy Jackson, with whom he shares a telepathic Empathy Link.",
+    "lore_notes": "Age 28 in Book 1, which equals 14 in human developmental terms for satyrs.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files",
+      "percy-jackson-and-the-singer-of-apollo"
+    ]
+  },
+  {
+    "name": "Luke Castellan",
+    "expected_slug": "luke-castellan",
+    "aliases": [
+      "Hero of the Great Prophecy"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 19,
+    "divine_parent_slug": "hermes",
+    "mortal_parent_name": "May Castellan",
+    "mortal_parent_ref_slug": "may-castellan",
+    "sibling_slugs": [
+      "travis-stoll",
+      "connor-stoll",
+      "chris-rodriguez"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 11,
+    "affiliation": [
+      "camp_half_blood",
+      "kronos_army",
+      "titan_army"
+    ],
+    "fatal_flaw": "Resentment toward the gods / Bitter anger over neglected demigods",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": true,
+    "appearance": {
+      "hair_color": "sandy blond",
+      "hair_description": "short sandy-blond hair",
+      "eye_color": "blue (golden when possessed by Kronos)",
+      "build": "tall, athletic, muscular",
+      "height": "tall",
+      "notable_features": [
+        "jagged white scar from eye to jaw received from a dragon",
+        "golden eyes during Kronos possession"
+      ]
+    },
+    "personality_traits": [
+      "charismatic",
+      "bitter",
+      "conflicted",
+      "skilled swordsman",
+      "tragic"
+    ],
+    "special_states": [
+      "Possessed as mortal vessel for Kronos in Book 4 and Book 5",
+      "Bathed in River Styx (Achilles mark under left armpit)",
+      "Sacrificed himself to destroy Kronos at the end of Book 5"
+    ],
+    "quote": "We need a new age, Percy. Not a repainting of the old one.",
+    "description": "Son of Hermes and May Castellan. Former Hermes cabin head counselor who betrayed Camp Half-Blood to serve Kronos due to resentment of divine neglect.",
+    "lore_notes": "Gave Annabeth her Celestial Bronze dagger when she was seven.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Thalia Grace",
+    "expected_slug": "thalia-grace",
+    "aliases": [
+      "Lieutenant of Artemis"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "immortal",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "zeus",
+    "mortal_parent_name": "Ms. Grace",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "perseus",
+      "heracles",
+      "tantalus",
+      "king-minos"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 1,
+    "affiliation": [
+      "camp_half_blood",
+      "hunters_of_artemis"
+    ],
+    "fatal_flaw": "Ambition and desire for power / Fear of failure",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": true,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "spiky black hair",
+      "eye_color": "electric blue",
+      "build": "athletic, punk-style",
+      "height": "average",
+      "notable_features": [
+        "freckles across nose",
+        "punk clothing and silver tiara of Hunter Lieutenant",
+        "electric blue eyes"
+      ]
+    },
+    "personality_traits": [
+      "stubborn",
+      "fierce",
+      "protective",
+      "independent",
+      "short-tempered"
+    ],
+    "special_states": [
+      "Transformed into a pine tree by Zeus upon dying at Camp boundary before Book 1",
+      "Resurrected from pine tree by Golden Fleece at end of Book 2",
+      "Pledged eternal maidenhood and became Lieutenant of Artemis at end of Book 3"
+    ],
+    "quote": "I am Thalia, daughter of Zeus.",
+    "description": "Daughter of Zeus. Sacrificed herself at Half-Blood Hill and was turned into a protective pine tree. Freed by the Golden Fleece, she joined the Hunters of Artemis.",
+    "lore_notes": "Sufferer of extreme acrophobia (fear of heights) despite being Zeus's daughter.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Nico di Angelo",
+    "expected_slug": "nico-di-angelo",
+    "aliases": [
+      "Ghost King",
+      "Son of Hades"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 10,
+    "divine_parent_slug": "hades",
+    "mortal_parent_name": "Maria di Angelo",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "bianca-di-angelo"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 13,
+    "affiliation": [
+      "camp_half_blood",
+      "underworld"
+    ],
+    "fatal_flaw": "Holding grudges",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "shaggy, messy black hair",
+      "eye_color": "dark brown / black",
+      "build": "slender, pale, thin",
+      "height": "short for age initially",
+      "notable_features": [
+        "pale olive skin",
+        "dark shadows under eyes",
+        "black aviator jacket",
+        "silver skull ring"
+      ]
+    },
+    "personality_traits": [
+      "solitary",
+      "gloomy",
+      "resilient",
+      "loyal",
+      "intense"
+    ],
+    "special_states": [
+      "Kept in the Lotus Hotel & Casino for decades with Bianca prior to Book 3",
+      "Proclaimed himself Ghost King after defeating King Minos's spirit in Book 4"
+    ],
+    "quote": "With true power comes true solitude.",
+    "description": "Son of Hades and Maria di Angelo. Born in 1930s Italy and hidden in the Lotus Casino. Masters necromancy and leads Underworld troops in Manhattan.",
+    "lore_notes": "Child of Hades born before the Big Three Oath.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Bianca di Angelo",
+    "expected_slug": "bianca-di-angelo",
+    "aliases": [
+      "Sister of Nico"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 12,
+    "divine_parent_slug": "hades",
+    "mortal_parent_name": "Maria di Angelo",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "nico-di-angelo"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "hunters_of_artemis"
+    ],
+    "fatal_flaw": "Desire for independence / Leaving her brother behind",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": true,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown / black",
+      "hair_description": "dark hair usually tied back",
+      "eye_color": "dark brown",
+      "build": "slender",
+      "height": "average",
+      "notable_features": [
+        "green floppy hat",
+        "freckles across nose",
+        "silver Hunter clothing"
+      ]
+    },
+    "personality_traits": [
+      "protective",
+      "eager for independence",
+      "quiet",
+      "selfless"
+    ],
+    "special_states": [
+      "Joined Hunters of Artemis in Book 3",
+      "Died in Junkyard of the Gods destroying defective Talos automaton"
+    ],
+    "quote": "I want my own life, Nico.",
+    "description": "Daughter of Hades and elder sister of Nico. Rescued from Westover Hall, joined the Hunters of Artemis, and died heroically in the Junkyard of the Gods.",
+    "lore_notes": "Appears as a ghost to Nico in Book 4 urging him to forgive Percy.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Tyson",
+    "expected_slug": "tyson",
+    "aliases": [
+      "General Tyson",
+      "Cyclops Son of Poseidon"
+    ],
+    "character_type": "cyclops",
+    "species": "cyclops",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 12,
+    "divine_parent_slug": "poseidon",
+    "mortal_parent_name": "A nature spirit / Nymph",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "percy-jackson",
+      "theseus",
+      "bellerophon"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 3,
+    "affiliation": [
+      "camp_half_blood",
+      "olympian_council"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "messy brown hair",
+      "eye_color": "brown (single large eye)",
+      "build": "massive, muscular, broad-shouldered",
+      "height": "over six feet tall",
+      "notable_features": [
+        "single large eye in middle of forehead",
+        "scarred back from street life",
+        "huge hands"
+      ]
+    },
+    "personality_traits": [
+      "gentle",
+      "loyal",
+      "brave",
+      "innocent",
+      "master smith"
+    ],
+    "special_states": [
+      "Named General of the Cyclopes Army by Poseidon at end of Book 5"
+    ],
+    "quote": "Ponies! Rainbow ponies!",
+    "description": "Young Cyclops son of Poseidon and half-brother of Percy. Skilled weapon-smith who forged Percy's shield and led Cyclopes forces against Typhon.",
+    "lore_notes": "is_demigod = false because Cyclopes are monstrous species/offspring rather than human demigods.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Chiron",
+    "expected_slug": "chiron",
+    "aliases": [
+      "Mr. Brunner",
+      "Trainer of Heroes"
+    ],
+    "character_type": "centaur",
+    "species": "centaur",
+    "gender": "male",
+    "status": "immortal",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "thinning brown hair and bushy beard",
+      "eye_color": "warm brown",
+      "build": "upper body human, lower body white stallion",
+      "height": "over seven feet tall in centaur form",
+      "notable_features": [
+        "white stallion lower body",
+        "wheelchair disguise when compacted into human form"
+      ]
+    },
+    "personality_traits": [
+      "wise",
+      "patient",
+      "paternal",
+      "scholarly",
+      "venerable"
+    ],
+    "special_states": [
+      "Uses magical wheelchair to compress lower horse body into human form for mortal disguise"
+    ],
+    "quote": "Thou shalt not kill, Percy. But monsters are another matter.",
+    "description": "Immortal centaur activities director at Camp Half-Blood and trainer of legendary heroes (Perseus, Hercules, Achilles).",
+    "lore_notes": "Son of Kronos and Philyra in classical myth.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Clarisse La Rue",
+    "expected_slug": "clarisse-la-rue",
+    "aliases": [
+      "Drakon Slayer"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "ares",
+    "mortal_parent_name": "Ms. La Rue",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "eurytion"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 5,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": "Pride / Rash aggressiveness",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "stringy brown hair",
+      "eye_color": "brown",
+      "build": "large, muscular, intimidating",
+      "height": "tall and broad",
+      "notable_features": [
+        "sneer",
+        "permanent combat scowl",
+        "bandana"
+      ]
+    },
+    "personality_traits": [
+      "aggressive",
+      "stubborn",
+      "brave",
+      "proud",
+      "fiercely protective of allies"
+    ],
+    "special_states": [
+      "Blessed with Ares's combat frenzy during the slaying of the Lydian Drakon in Book 5"
+    ],
+    "quote": "We're going to pulverize you!",
+    "description": "Daughter of Ares and head counselor of Cabin 5. Leads the official quest for the Golden Fleece and single-handedly slays the Lydian Drakon.",
+    "lore_notes": "Wields the electric spear Maimer.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Charles Beckendorf",
+    "expected_slug": "charles-beckendorf",
+    "aliases": [
+      "Charlie"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "hephaestus",
+    "mortal_parent_name": "Ms. Beckendorf",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "jake-mason"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 9,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "short shaved black hair",
+      "eye_color": "brown",
+      "build": "broad, immensely muscular, tall",
+      "height": "tall and imposing",
+      "notable_features": [
+        "calloused hands",
+        "soot-stained clothes",
+        "warm smile"
+      ]
+    },
+    "personality_traits": [
+      "master craftsman",
+      "calm",
+      "heroic",
+      "gentle giant",
+      "selfless"
+    ],
+    "special_states": [
+      "Died in Greek fire explosion demolishing the Princess Andromeda in opening of Book 5"
+    ],
+    "quote": "See ya, Percy.",
+    "description": "Son of Hephaestus and head counselor of Cabin 9. Master blacksmith and boyfriend of Silena Beauregard.",
+    "lore_notes": "Chosen for Elysium in Underworld judgment.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Silena Beauregard",
+    "expected_slug": "silena-beauregard",
+    "aliases": [
+      "The Heroic Spy"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "aphrodite",
+    "mortal_parent_name": "Mr. Beauregard",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": 10,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": "Unwavering romantic love / Vulnerability to blackmail",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "long dark hair",
+      "eye_color": "blue",
+      "build": "slender, attractive",
+      "height": "average",
+      "notable_features": [
+        "gorgeous appearance",
+        "pegasus riding gear"
+      ]
+    },
+    "personality_traits": [
+      "kind-hearted",
+      "remorseful",
+      "sweet",
+      "courageous in death"
+    ],
+    "special_states": [
+      "Blackmailed by Luke into acting as Kronos's camp spy",
+      "Disguised herself in Clarisse's Ares armor to lead Cabin 5 into battle, dying heroically against the Drakon"
+    ],
+    "quote": "I was the spy. I'm sorry.",
+    "description": "Daughter of Aphrodite and head counselor of Cabin 10. Girlfriend of Beckendorf. Redeemed herself by leading the charge against the Lydian Drakon.",
+    "lore_notes": "Honored as a hero of Camp Half-Blood upon her death.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Ethan Nakamura",
+    "expected_slug": "ethan-nakamura",
+    "aliases": [
+      "Son of Nemesis"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "nemesis",
+    "mortal_parent_name": "Mr. Nakamura",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": 11,
+    "affiliation": [
+      "kronos_army",
+      "titan_army"
+    ],
+    "fatal_flaw": "Desire for balance and recognition for minor gods",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "short black hair",
+      "eye_color": "brown",
+      "build": "slender, wiry",
+      "height": "average",
+      "notable_features": [
+        "black eyepatch over left eye given to Nemesis in exchange for power"
+      ]
+    },
+    "personality_traits": [
+      "resentful",
+      "honorable",
+      "conflicted",
+      "seeking balance"
+    ],
+    "special_states": [
+      "Pledged his oath to Kronos in Book 4 to awaken the Titan Lord",
+      "Turned on Kronos in throne room in Book 5 and was killed falling from Olympus"
+    ],
+    "quote": "All the minor gods... deserve respect!",
+    "description": "Son of Nemesis who lost an eye to pledge his allegiance to Kronos. In the final battle on Olympus, he turned on Kronos.",
+    "lore_notes": "His final plea inspired Percy's demand that the gods claim all children and build minor god cabins.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Zoë Nightshade",
+    "expected_slug": "zoe-nightshade",
+    "aliases": [
+      "Lieutenant of Artemis",
+      "Daughter of Atlas"
+    ],
+    "character_type": "hunter",
+    "species": "nymph",
+    "gender": "female",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 2000,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Pleione / Atlas",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "hunters_of_artemis"
+    ],
+    "fatal_flaw": "Misplaced trust / Resentment toward male demigods",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": true,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown / black",
+      "hair_description": "dark braided hair",
+      "eye_color": "dark brown",
+      "build": "slender, athletic",
+      "height": "tall",
+      "notable_features": [
+        "upturned nose",
+        "silver headband of Hunter Lieutenant",
+        "constellation star pattern upon death"
+      ]
+    },
+    "personality_traits": [
+      "proud",
+      "loyal",
+      "formal Old-English speech",
+      "master archer",
+      "noble"
+    ],
+    "special_states": [
+      "Transformed into the star constellation 'The Huntress' by Artemis upon her death in Book 3"
+    ],
+    "quote": "Stars. I can see the stars again, my lady.",
+    "description": "Exiled Hesperid nymph and daughter of Atlas. Gave Hercules his sword Riptide in ancient times. Died in battle against Atlas on Mount Tamalpais.",
+    "lore_notes": "Transformed into a star constellation upon death.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ]
+  },
+  {
+    "name": "Sally Jackson",
+    "expected_slug": "sally-jackson",
+    "aliases": [
+      "Mrs. Blofis"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 34,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Jim and Laura Jackson",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "long brown hair with gray streaks appearing over time",
+      "eye_color": "blue",
+      "build": "gentle, warm",
+      "height": "average",
+      "notable_features": [
+        "warm blue eyes",
+        "scent of blue candy and cookies"
+      ]
+    },
+    "personality_traits": [
+      "loving",
+      "resilient",
+      "wise",
+      "persevering",
+      "kind"
+    ],
+    "special_states": [
+      "Petrified Gabe Ugliano using Medusa's severed head in Book 1"
+    ],
+    "quote": "Blue food is my favorite.",
+    "description": "Mortal mother of Percy Jackson who possesses Clear Sight. Marries Paul Blofis and writes novels.",
+    "lore_notes": "can_see_through_mist = true.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Rachel Elizabeth Dare",
+    "expected_slug": "rachel-elizabeth-dare",
+    "aliases": [
+      "Oracle of Delphi"
+    ],
+    "character_type": "oracle",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Mr. Dare (Wealthy Land Developer)",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": true,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "red",
+      "hair_description": "frizzy, mane-like bright red hair",
+      "eye_color": "green",
+      "build": "slender",
+      "height": "average",
+      "notable_features": [
+        "doodle-covered jeans",
+        "paint-splattered clothes",
+        "glowing green eyes when speaking prophecy"
+      ]
+    },
+    "personality_traits": [
+      "artistic",
+      "bold",
+      "perceptive",
+      "independent",
+      "direct"
+    ],
+    "special_states": [
+      "Hit Kronos in the eye with a plastic hairbrush at the Battle of the Labyrinth",
+      "Host vessel for the Spirit of the Oracle of Delphi at end of Book 5"
+    ],
+    "quote": "I throw plastic hairbrushes at Titan Lords.",
+    "description": "Mortal girl with extraordinary ability to see through the Mist. Accepts the Spirit of Delphi into her body, becoming the new living Oracle.",
+    "lore_notes": "character_type = oracle, is_oracle = true.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Daedalus",
+    "expected_slug": "daedalus",
+    "aliases": [
+      "Quintus",
+      "Creator of the Labyrinth"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": "athena",
+    "mortal_parent_name": "Metion",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "annabeth-chase",
+      "malcolm-pace"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "camp_half_blood",
+      "neutral"
+    ],
+    "fatal_flaw": "Obsession with invention / Fear of death",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "gray",
+      "hair_description": "short gray hair",
+      "eye_color": "brown",
+      "build": "tall, muscular automaton body",
+      "height": "tall",
+      "notable_features": [
+        "glowing bronze animus joint at neck",
+        "automaton body disguising ancient soul"
+      ]
+    },
+    "personality_traits": [
+      "inventive",
+      "regretful",
+      "brilliant",
+      "pragmatic"
+    ],
+    "special_states": [
+      "Transferred his soul into five successive automaton bodies across millennia",
+      "Disguised as sword master Quintus at Camp Half-Blood in Book 4",
+      "Died voluntarily at end of Book 4 to collapse the Labyrinth"
+    ],
+    "quote": "My Labyrinth is linked to my life force. When I die, the maze will die with me.",
+    "description": "Ancient Greek inventor and son of Athena who built the Labyrinth. Cheated death by transferring his soul into automaton bodies.",
+    "lore_notes": "Gifted his 3D laptop of designs to Annabeth Chase.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Calypso",
+    "expected_slug": "calypso",
+    "aliases": [
+      "Lady of Ogygia"
+    ],
+    "character_type": "nymph",
+    "species": "nymph",
+    "gender": "female",
+    "status": "immortal",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Atlas",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "zoe-nightshade"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "caramel brown",
+      "hair_description": "long, braided caramel-brown hair",
+      "eye_color": "dark brown",
+      "build": "slender, graceful",
+      "height": "average",
+      "notable_features": [
+        "white Greek chiton dress",
+        "radiant beauty"
+      ]
+    },
+    "personality_traits": [
+      "gentle",
+      "hospitable",
+      "heartbroken",
+      "kind",
+      "lonely"
+    ],
+    "special_states": [
+      "Bound to the phantom island of Ogygia by gods as punishment for supporting Atlas",
+      "Cursed to fall in love with heroes who can never stay"
+    ],
+    "quote": "The gods curse me with heroes who cannot stay.",
+    "description": "Immortal daughter of Atlas imprisoned on the island of Ogygia. Nurse and host to Percy Jackson in Book 4.",
+    "lore_notes": "Percy refused her offer of immortality on Ogygia.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Oracle of Delphi",
+    "expected_slug": "oracle-of-delphi",
+    "aliases": [
+      "The Mummy",
+      "Spirit of Delphi"
+    ],
+    "character_type": "spirit",
+    "species": "spirit",
+    "gender": "female",
+    "status": "immortal",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": true,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "withered black hair on mummy body",
+      "eye_color": "empty sockets / glowing green mist",
+      "build": "withered mummy in tie-dye dress",
+      "height": "short sitting position",
+      "notable_features": [
+        "desiccated mummy body sitting in Big House attic",
+        "green prophetic mist pouring from mouth"
+      ]
+    },
+    "personality_traits": [
+      "mysterious",
+      "prophetic",
+      "bound"
+    ],
+    "special_states": [
+      "Cursed by Hades after WWII to remain trapped in her dead mortal body until the Great Prophecy was fulfilled",
+      "Transferred into Rachel Elizabeth Dare at end of Book 5"
+    ],
+    "quote": "I am the spirit of Delphi, speaker of the prophecies of Phoebus Apollo.",
+    "description": "Prophetic spirit of Apollo housed in the desiccated attic mummy at Camp Half-Blood.",
+    "lore_notes": "Cursed by Hades when he destroyed the Washington D.C. hotel.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Chris Rodriguez",
+    "expected_slug": "chris-rodriguez",
+    "aliases": [
+      "Son of Hermes"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "hermes",
+    "mortal_parent_name": "Ms. Rodriguez",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "luke-castellan",
+      "travis-stoll",
+      "connor-stoll"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 11,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "short dark hair",
+      "eye_color": "brown",
+      "build": "athletic",
+      "height": "average",
+      "notable_features": [
+        "hispanic features"
+      ]
+    },
+    "personality_traits": [
+      "repentant",
+      "loyal",
+      "brave"
+    ],
+    "special_states": [
+      "Driven insane wandering Daedalus's Labyrinth for Kronos in Book 4",
+      "Healed of madness by Dionysus at Camp Half-Blood"
+    ],
+    "quote": "The maze... it twists your mind.",
+    "description": "Son of Hermes who initially joined Luke's rebellion. Driven mad while scouting the Labyrinth, he was healed by Dionysus.",
+    "lore_notes": "Restored to sanity by Dionysus in Book 4.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Perseus",
+    "expected_slug": "perseus",
+    "aliases": [
+      "Medusa Slayer"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 18,
+    "divine_parent_slug": "zeus",
+    "mortal_parent_name": "Danaë",
+    "mortal_parent_ref_slug": "danae",
+    "sibling_slugs": [
+      "heracles",
+      "thalia-grace",
+      "tantalus",
+      "king-minos"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "None recorded",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "athletic dark hair",
+      "eye_color": "brown",
+      "build": "muscular, agile",
+      "height": "tall",
+      "notable_features": [
+        "winged sandals of Hermes",
+        "kibisis sack"
+      ]
+    },
+    "personality_traits": [
+      "resourceful",
+      "heroic",
+      "clever",
+      "courageous"
+    ],
+    "special_states": [],
+    "quote": "I brought you a gift, King Polydectes.",
+    "description": "Ancient demigod son of Zeus who slew Medusa using a polished bronze shield, winged sandals, and a kibisis sack.",
+    "lore_notes": "Percy Jackson was named after him because Perseus was one of the few heroes to get a happy ending.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Theseus",
+    "expected_slug": "theseus",
+    "aliases": [
+      "Slayer of the Minotaur"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 18,
+    "divine_parent_slug": "poseidon",
+    "mortal_parent_name": "Aethra",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "percy-jackson",
+      "tyson",
+      "bellerophon"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Forgetfulness",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "wavy brown hair",
+      "eye_color": "sea-green",
+      "build": "powerful, athletic",
+      "height": "tall",
+      "notable_features": [
+        "sword and sandals retrieved from beneath rock"
+      ]
+    },
+    "personality_traits": [
+      "brave",
+      "forgetful",
+      "confident",
+      "determined"
+    ],
+    "special_states": [],
+    "quote": "I go to Crete to slay the beast.",
+    "description": "Ancient hero son of Poseidon who navigated Daedalus's Labyrinth using Ariadne's string and killed the Cretan Minotaur.",
+    "lore_notes": "Forgot to change his ship's black sails to white, causing King Aegeus to jump to his death.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Heracles",
+    "expected_slug": "heracles",
+    "aliases": [
+      "Hercules",
+      "God of Strength"
+    ],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "immortal",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 20,
+    "divine_parent_slug": "zeus",
+    "mortal_parent_name": "Alcmene",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "perseus",
+      "thalia-grace",
+      "tantalus",
+      "king-minos"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "olympian_council"
+    ],
+    "fatal_flaw": "Uncontrollable temper",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "thick curly dark hair and beard",
+      "eye_color": "brown",
+      "build": "colossal, immensely muscular",
+      "height": "very tall",
+      "notable_features": [
+        "Nemean Lion pelt coat",
+        "massive wooden club"
+      ]
+    },
+    "personality_traits": [
+      "short-tempered",
+      "immensely strong",
+      "heroic",
+      "troubled"
+    ],
+    "special_states": [
+      "Elevated to full Olympian godhood upon his mortal death on a pyre"
+    ],
+    "quote": "Bring me another labor!",
+    "description": "Greatest ancient Greek demigod who performed Twelve Labors, wore the Nemean Lion pelt, and was elevated to godhood.",
+    "lore_notes": "Zoë Nightshade gave him Riptide, but Heracles took all the credit without mentioning her.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes",
+      "the-titans-curse"
+    ]
+  },
+  {
+    "name": "Celedon",
+    "expected_slug": "celedon",
+    "aliases": [
+      "Chryseia",
+      "Golden Automaton Singer"
+    ],
+    "character_type": "automaton",
+    "species": "automaton",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": null,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Vanity / desire to perform",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "gold",
+      "hair_description": "sculpted golden hair",
+      "eye_color": "glowing golden amber",
+      "build": "graceful golden statue body",
+      "height": "tall, elegant human stature",
+      "notable_features": [
+        "entirely golden metallic skin",
+        "hypnotic singing voice"
+      ]
+    },
+    "personality_traits": [
+      "vain",
+      "eager to perform",
+      "mischievous"
+    ],
+    "special_states": [
+      "Enchanted with hypnotic vocal music that compels listeners to applaud endlessly"
+    ],
+    "quote": "(Sings hypnotically in Times Square)",
+    "description": "Golden automaton singer forged by Hephaestus for Apollo. Escapes to NYC before being captured by Percy.",
+    "lore_notes": "One of four golden singers (chryseae) created for Apollo's choir.",
+    "first_appearance_book_slug": "percy-jackson-and-the-singer-of-apollo",
+    "books_appeared_in_slugs": [
+      "percy-jackson-and-the-singer-of-apollo"
+    ]
+  },
+  {
+    "name": "Travis Stoll",
+    "expected_slug": "travis-stoll",
+    "aliases": [
+      "Co-counselor of Cabin 11"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 13,
+    "divine_parent_slug": "hermes",
+    "mortal_parent_name": "Mrs. Stoll",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "connor-stoll"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 11,
+    "affiliation": [
+      "olympian_council",
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "curly brown hair",
+      "eye_color": "brown",
+      "build": "tall and lanky",
+      "height": "tall",
+      "notable_features": [
+        "mischievous smile",
+        "elfish features"
+      ]
+    },
+    "personality_traits": [
+      "prankster",
+      "clever",
+      "mischievous",
+      "loyal"
+    ],
+    "special_states": [],
+    "quote": "We're Hermes campers. We always have a plan.",
+    "description": "Demigod son of Hermes and older brother of Connor Stoll. Co-head counselor of Cabin 11 at Camp Half-Blood.",
+    "lore_notes": "Frequently confused with his brother Connor, though Travis is older.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Connor Stoll",
+    "expected_slug": "connor-stoll",
+    "aliases": [
+      "Co-counselor of Cabin 11"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 12,
+    "divine_parent_slug": "hermes",
+    "mortal_parent_name": "Mrs. Stoll",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "travis-stoll"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 11,
+    "affiliation": [
+      "olympian_council",
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "messy brown hair",
+      "eye_color": "brown",
+      "build": "lanky",
+      "height": "slightly shorter than Travis",
+      "notable_features": [
+        "elfish smile"
+      ]
+    },
+    "personality_traits": [
+      "mischievous",
+      "funny",
+      "clever"
+    ],
+    "special_states": [],
+    "quote": "We didn't steal it! We just borrowed it indefinitely.",
+    "description": "Demigod son of Hermes and younger brother of Travis Stoll. Co-head counselor of Cabin 11 who fights in the Battle of Manhattan.",
+    "lore_notes": "One year younger than Travis.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "May Castellan",
+    "expected_slug": "may-castellan",
+    "aliases": [
+      "Luke's Mother"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": null,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": true,
+    "appearance": {
+      "hair_color": "graying brown",
+      "hair_description": "frizzy hair",
+      "eye_color": "glowing green during trances",
+      "build": "thin",
+      "height": "average",
+      "notable_features": [
+        "glowing green eyes when possessed by Oracle spirit"
+      ]
+    },
+    "personality_traits": [
+      "loving",
+      "tragic",
+      "distorted reality"
+    ],
+    "special_states": [
+      "Cursed by Hades/Oracle Spirit failure"
+    ],
+    "quote": "I'm making sandwiches for Luke! He'll be home soon.",
+    "description": "Mortal mother of Luke Castellan. Possesses Clear Sight. Attempted to host the Spirit of Delphi despite Hades's curse, leaving her mind shattered.",
+    "lore_notes": "Her tragic state drove Luke to resent Hermes and the gods.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Frederick Chase",
+    "expected_slug": "frederick-chase",
+    "aliases": [
+      "Dr. Chase",
+      "Annabeth's Father"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": null,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": false,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "blond",
+      "hair_description": "thinning blond hair",
+      "eye_color": "gray",
+      "build": "average",
+      "height": "average",
+      "notable_features": [
+        "wears tweed jacket and aviator cap"
+      ]
+    },
+    "personality_traits": [
+      "scholarly",
+      "stubborn",
+      "brave",
+      "caring"
+    ],
+    "special_states": [],
+    "quote": "I have Celestial Bronze bullets!",
+    "description": "Mortal father of Annabeth Chase and professor of military history in San Francisco. Assists the demigods at Mount Tamalpais.",
+    "lore_notes": "Reconciles with Annabeth in The Titan's Curse.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ]
+  },
+  {
+    "name": "Malcolm Pace",
+    "expected_slug": "malcolm-pace",
+    "aliases": [
+      "Second-in-command of Athena Cabin"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "athena",
+    "mortal_parent_name": "Mr. Pace",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "annabeth-chase",
+      "daedalus"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 6,
+    "affiliation": [
+      "olympian_council",
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "blond",
+      "hair_description": "short blond hair",
+      "eye_color": "intense gray",
+      "build": "athletic",
+      "height": "average",
+      "notable_features": [
+        "intense calculating gray eyes"
+      ]
+    },
+    "personality_traits": [
+      "analytical",
+      "tactical",
+      "loyal"
+    ],
+    "special_states": [],
+    "quote": "Cabin Six, hold the line!",
+    "description": "Demigod son of Athena and second-in-command of Cabin 6 under Annabeth Chase.",
+    "lore_notes": "First seen walking in on Percy and Annabeth hugging in Cabin 6 in Book 4.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Jake Mason",
+    "expected_slug": "jake-mason",
+    "aliases": [
+      "Head Counselor of Cabin 9"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "hephaestus",
+    "mortal_parent_name": "Mrs. Mason",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "charles-beckendorf"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 9,
+    "affiliation": [
+      "olympian_council",
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "burly brown hair",
+      "eye_color": "brown",
+      "build": "broad and muscular",
+      "height": "tall",
+      "notable_features": [
+        "calloused hands",
+        "soot-stained clothes"
+      ]
+    },
+    "personality_traits": [
+      "hardworking",
+      "grieving",
+      "determined"
+    ],
+    "special_states": [],
+    "quote": "Beckendorf would have wanted us to fight.",
+    "description": "Human demigod son of Hephaestus who steps up as head counselor of Cabin 9 after Charles Beckendorf's death.",
+    "lore_notes": "Leads Cabin 9 forge work during the Battle of Manhattan.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Will Solace",
+    "expected_slug": "will-solace",
+    "aliases": [
+      "Head Medic of Camp Half-Blood"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "apollo",
+    "mortal_parent_name": "Naomi Solace",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "michael-yew",
+      "lee-fletcher"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 7,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "shaggy blond",
+      "hair_description": "surfer-style shaggy blond hair",
+      "eye_color": "blue",
+      "build": "athletic",
+      "height": "average",
+      "notable_features": [
+        "sunny disposition",
+        "medical supplies pouch"
+      ]
+    },
+    "personality_traits": [
+      "caring",
+      "skilled healer",
+      "calm under pressure",
+      "loyal"
+    ],
+    "special_states": [],
+    "quote": "I need ambrosia and nectar, stat!",
+    "description": "Demigod son of Apollo and skilled medic who heals wounded demigods during the Battle of Manhattan.",
+    "lore_notes": "Takes over as Cabin 7 head counselor after Michael Yew's disappearance.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Michael Yew",
+    "expected_slug": "michael-yew",
+    "aliases": [
+      "Head Counselor of Cabin 7"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "apollo",
+    "mortal_parent_name": "Mrs. Yew",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "lee-fletcher",
+      "will-solace"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 7,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "short black hair",
+      "eye_color": "brown",
+      "build": "short, feisty",
+      "height": "short",
+      "notable_features": [
+        "scowl",
+        "combat bow"
+      ]
+    },
+    "personality_traits": [
+      "feisty",
+      "aggressive archer",
+      "brave"
+    ],
+    "special_states": [
+      "Presumed dead after collapsing the Williamsburg Bridge in Book 5"
+    ],
+    "quote": "Percy, drop the bridge!",
+    "description": "Son of Apollo and head counselor of Cabin 7 after Lee Fletcher's death. Commands archers at Williamsburg Bridge.",
+    "lore_notes": "Vanished into the East River when the bridge collapsed.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Lee Fletcher",
+    "expected_slug": "lee-fletcher",
+    "aliases": [
+      "Former Counselor of Cabin 7"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "apollo",
+    "mortal_parent_name": "Mrs. Fletcher",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "michael-yew",
+      "will-solace"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 7,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "blond",
+      "hair_description": "curly blond hair",
+      "eye_color": "blue",
+      "build": "athletic",
+      "height": "average",
+      "notable_features": [
+        "cheerful expression",
+        "silver bow"
+      ]
+    },
+    "personality_traits": [
+      "friendly",
+      "skilled archer",
+      "loyal"
+    ],
+    "special_states": [
+      "Killed during the Battle of the Labyrinth"
+    ],
+    "quote": "Apollo cabin, ready bows!",
+    "description": "Demigod son of Apollo and head counselor of Cabin 7 who fought and died in the Battle of the Labyrinth.",
+    "lore_notes": "Succeeded by Michael Yew.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Castor",
+    "expected_slug": "castor",
+    "aliases": [
+      "Son of Dionysus"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "dionysus",
+    "mortal_parent_name": "Mrs. Castor",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "pollux"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 12,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "curly dark hair",
+      "eye_color": "purple",
+      "build": "athletic",
+      "height": "average",
+      "notable_features": [
+        "identical twin to Pollux"
+      ]
+    },
+    "personality_traits": [
+      "brave",
+      "loyal brother"
+    ],
+    "special_states": [
+      "Killed by enemy demigods in the Battle of the Labyrinth"
+    ],
+    "quote": "Fight for camp!",
+    "description": "Demigod son of Dionysus and twin brother of Pollux. Slain during the Battle of the Labyrinth.",
+    "lore_notes": "His death caused Dionysus deep grief and prompted Dionysus to cure Chris Rodriguez.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Pollux",
+    "expected_slug": "pollux",
+    "aliases": [
+      "Son of Dionysus"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "dionysus",
+    "mortal_parent_name": "Mrs. Pollux",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "castor"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": 12,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "curly dark hair",
+      "eye_color": "purple",
+      "build": "athletic",
+      "height": "average",
+      "notable_features": [
+        "identical twin to Castor"
+      ]
+    },
+    "personality_traits": [
+      "grieving",
+      "brave",
+      "loyal"
+    ],
+    "special_states": [],
+    "quote": "I'll fight in Castor's memory.",
+    "description": "Demigod son of Dionysus and twin brother of Castor. Survives the Battle of Manhattan after losing his twin.",
+    "lore_notes": "Ordered by Dionysus to stay safe during the final battle.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Katie Gardner",
+    "expected_slug": "katie-gardner",
+    "aliases": [
+      "Head Counselor of Cabin 4"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": "demeter",
+    "mortal_parent_name": "Mr. Gardner",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": 4,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "brown",
+      "hair_description": "brown hair usually with grass or leaves stuck in it",
+      "eye_color": "green",
+      "build": "slender",
+      "height": "average",
+      "notable_features": [
+        "gardening gloves",
+        "soil smudges"
+      ]
+    },
+    "personality_traits": [
+      "nature-loving",
+      "practical",
+      "stubborn"
+    ],
+    "special_states": [],
+    "quote": "Travis Stoll, get those chocolate bunnies off my roof!",
+    "description": "Daughter of Demeter and head counselor of Cabin 4. Manages camp agriculture and fights with plants in Manhattan.",
+    "lore_notes": "Frequently targeted by Travis and Connor Stoll's pranks.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Paul Blofis",
+    "expected_slug": "paul-blofis",
+    "aliases": [
+      "Mr. Blowfish"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 35,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": false,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "salt-and-pepper",
+      "hair_description": "neat salt-and-pepper hair",
+      "eye_color": "brown",
+      "build": "average, fit",
+      "height": "tall",
+      "notable_features": [
+        "kind eyes",
+        "actor-like charm"
+      ]
+    },
+    "personality_traits": [
+      "supportive",
+      "brave",
+      "understanding",
+      "literary"
+    ],
+    "special_states": [],
+    "quote": "I used to do a little swordplay in college Shakespeare productions!",
+    "description": "Goode High School English teacher who marries Sally Jackson. Fights monsters with a sword during the Battle of Manhattan.",
+    "lore_notes": "Helped Percy get accepted into Goode High School.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Gabe Ugliano",
+    "expected_slug": "gabe-ugliano",
+    "aliases": [
+      "Smelly Gabe"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 40,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Greed / Abusive malice",
+    "can_see_through_mist": false,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "balding black",
+      "hair_description": "greasy balding hair",
+      "eye_color": "beady brown",
+      "build": "obese, flabby",
+      "height": "average",
+      "notable_features": [
+        "reelling stench of garlic and stale cigars"
+      ]
+    },
+    "personality_traits": [
+      "abusive",
+      "greedy",
+      "lazy",
+      "gambler"
+    ],
+    "special_states": [
+      "Turned into a stone statue by Sally Jackson using Medusa's severed head"
+    ],
+    "quote": "Where's my poker money, Sally?",
+    "description": "Percy's abusive first stepfather whose foul human stench repelled monsters. Turned to stone by Sally at the end of Book 1.",
+    "lore_notes": "Sold as a statue titled 'The Poker Player' to fund Sally's college tuition.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ]
+  },
+  {
+    "name": "Juniper",
+    "expected_slug": "juniper",
+    "aliases": [
+      "Grover's Girlfriend"
+    ],
+    "character_type": "nymph",
+    "species": "nymph",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": null,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "camp_half_blood"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "chlorophyll green",
+      "hair_description": "gossamer green hair",
+      "eye_color": "green",
+      "build": "slender, wood-nymph chiton",
+      "height": "average",
+      "notable_features": [
+        "glowing green skin tint",
+        "cries green sap tears"
+      ]
+    },
+    "personality_traits": [
+      "loving",
+      "anxious",
+      "protective of nature"
+    ],
+    "special_states": [],
+    "quote": "Grover, don't you dare get yourself killed!",
+    "description": "Tree nymph dryad tied to a juniper bush at Camp Half-Blood. Girlfriend of Grover Underwood.",
+    "lore_notes": "Informed Percy about Luke's entrance to the Labyrinth near her tree.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Silenus",
+    "expected_slug": "silenus",
+    "aliases": [
+      "Elder Satyr"
+    ],
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 200,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "council_of_cloven_elders"
+    ],
+    "fatal_flaw": "Stubborn denial of truth",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "white",
+      "hair_description": "fat, white-furred satyr",
+      "eye_color": "brown",
+      "build": "portly, round",
+      "height": "short",
+      "notable_features": [
+        "massive belly",
+        "large horns"
+      ]
+    },
+    "personality_traits": [
+      "arrogant",
+      "stubborn",
+      "denialist"
+    ],
+    "special_states": [],
+    "quote": "Pan is not dead! You lie, Grover Underwood!",
+    "description": "Fat elder satyr leader of the Council of Cloven Elders who refuses to believe Pan is dead.",
+    "lore_notes": "Tried to exile Grover Underwood in Book 4.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Leneus",
+    "expected_slug": "leneus",
+    "aliases": [
+      "Elder Satyr"
+    ],
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 150,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "council_of_cloven_elders"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "gray",
+      "hair_description": "gray fur and horns",
+      "eye_color": "brown",
+      "build": "frail",
+      "height": "short",
+      "notable_features": [
+        "laurel wreath upon death"
+      ]
+    },
+    "personality_traits": [
+      "cowardly",
+      "repentant in death"
+    ],
+    "special_states": [
+      "Reborn into a laurel bush upon his heroic death in Central Park"
+    ],
+    "quote": "I fought... for the wild...",
+    "description": "Satyr member of the Council of Cloven Elders who dies heroically fighting in Manhattan and turns into a laurel bush.",
+    "lore_notes": "His death leaves a vacancy filled by Grover Underwood.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Briares",
+    "expected_slug": "briares",
+    "aliases": [
+      "The Hundred-Handed One"
+    ],
+    "character_type": "creature",
+    "species": "hekatonkheir",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Ouranos and Gaea",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "olympian_council"
+    ],
+    "fatal_flaw": "Loss of hope / Depression",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "shaggy black hair on fifty heads",
+      "eye_color": "brown",
+      "build": "colossal, fifty heads and hundred arms",
+      "height": "gigantic",
+      "notable_features": [
+        "one hundred arms and fifty faces changing emotions"
+      ]
+    },
+    "personality_traits": [
+      "grieving",
+      "powerful",
+      "gentle when confident"
+    ],
+    "special_states": [],
+    "quote": "I remember the power of boulders!",
+    "description": "The last surviving Hekatonkheir (Hundred-Handed One). Rescued from Alcatraz, he slays Kampê during the Battle of the Labyrinth.",
+    "lore_notes": "Forged boulders to hurl Kampê into the abyss.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Tantalus",
+    "expected_slug": "tantalus",
+    "aliases": [
+      "Activities Director of Book 2"
+    ],
+    "character_type": "spirit",
+    "species": "spirit",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": "zeus",
+    "mortal_parent_name": "Plouto",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "thalia-grace",
+      "perseus",
+      "heracles",
+      "king-minos"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "kronos_army"
+    ],
+    "fatal_flaw": "Gluttony and cruel hatred for demigods",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "gray",
+      "hair_description": "moth-eaten gray hair",
+      "eye_color": "sunken black",
+      "build": "gaunt Underworld ghost",
+      "height": "tall",
+      "notable_features": [
+        "orange Camp Half-Blood shirt over ghost rags",
+        "food shrinks away whenever he reaches for it"
+      ]
+    },
+    "personality_traits": [
+      "cruel",
+      "spiteful",
+      "obsessed with food"
+    ],
+    "special_states": [
+      "Curse of Tantalus (food and drink recoil from his mouth)"
+    ],
+    "quote": "I am the activities director! You will respect my authority!",
+    "description": "Cursed Underworld spirit summoned by Tantalus/Tychon to replace Chiron in Book 2. Banished back to Tartarus when Chiron returns.",
+    "lore_notes": "Killed his son Pelops and fed him to the gods in myth.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "King Minos",
+    "expected_slug": "king-minos",
+    "aliases": [
+      "Ghost King of Crete"
+    ],
+    "character_type": "spirit",
+    "species": "spirit",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 3000,
+    "divine_parent_slug": "zeus",
+    "mortal_parent_name": "Europa",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "thalia-grace",
+      "perseus",
+      "heracles",
+      "tantalus"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "titan_army"
+    ],
+    "fatal_flaw": "Vengefulness",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "translucent gray",
+      "hair_description": "ghostly royal crown and robes",
+      "eye_color": "pale blue ghost glow",
+      "build": "tall ghost figure",
+      "height": "tall",
+      "notable_features": [
+        "glowing spectral crown",
+        "ghostly robes"
+      ]
+    },
+    "personality_traits": [
+      "manipulative",
+      "vengeful",
+      "cruel"
+    ],
+    "special_states": [
+      "Underworld judge ghost manipulating Nico di Angelo in Book 4"
+    ],
+    "quote": "Daedalus must pay for his crimes!",
+    "description": "Ghost of the ancient King of Crete who manipulates Nico di Angelo into searching for Daedalus. Banished when Nico claims the title Ghost King.",
+    "lore_notes": "One of the three Judges of the Underworld.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Nancy Bobofit",
+    "expected_slug": "nancy-bobofit",
+    "aliases": [
+      "Yancy Academy Bully"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 12,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Mr. and Mrs. Bobofit",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": false,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "red",
+      "hair_description": "crooked red hair",
+      "eye_color": "brown",
+      "build": "chubby",
+      "height": "average",
+      "notable_features": [
+        "freckled face",
+        "kleptomaniac habit"
+      ]
+    },
+    "personality_traits": [
+      "obnoxious",
+      "bully",
+      "thief"
+    ],
+    "special_states": [
+      "Pushed into the Metropolitan Museum fountain by Percy's accidental hydrokinesis in Chapter 1"
+    ],
+    "quote": "Percy pushed me!",
+    "description": "Redheaded kleptomaniac student at Yancy Academy who picked on Grover Underwood before Percy accidentally pulled her into a fountain.",
+    "lore_notes": "First mortal antagonist in The Lightning Thief.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ]
+  },
+  {
+    "name": "Eurytion",
+    "expected_slug": "eurytion",
+    "aliases": [
+      "Head Cowherd of Triple G Ranch"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": null,
+    "divine_parent_slug": "ares",
+    "mortal_parent_name": "Ms. Eurytion",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "clarisse-la-rue"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "red",
+      "hair_description": "shaggy red hair and beard",
+      "eye_color": "brown",
+      "build": "muscular cowboy",
+      "height": "tall",
+      "notable_features": [
+        "cowboy hat",
+        "club made of Stygian iron"
+      ]
+    },
+    "personality_traits": [
+      "pragmatic",
+      "weary",
+      "honorable"
+    ],
+    "special_states": [],
+    "quote": "Geryon's a greedy boss, but a job's a job.",
+    "description": "Demigod son of Ares and cowherd at Geryon's Triple G Ranch who guards Orthrus. Takes over the ranch after Percy kills Geryon.",
+    "lore_notes": "Gives Percy the mechanical spider to guide them through the Labyrinth.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Bellerophon",
+    "expected_slug": "bellerophon",
+    "aliases": [
+      "Rider of Pegasus",
+      "Slayer of Chimera"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 20,
+    "divine_parent_slug": "poseidon",
+    "mortal_parent_name": "Eurynome",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [
+      "percy-jackson",
+      "theseus",
+      "tyson"
+    ],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Hubris (tried to fly Pegasus to Mount Olympus)",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": true,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "blond",
+      "hair_description": "flowing blond hair",
+      "eye_color": "blue",
+      "build": "athletic rider",
+      "height": "tall",
+      "notable_features": [
+        "golden bridle of Athena"
+      ]
+    },
+    "personality_traits": [
+      "daring",
+      "proud",
+      "heroic"
+    ],
+    "special_states": [
+      "Fell from Pegasus when Zeus sent a gadfly to sting the horse"
+    ],
+    "quote": "With Pegasus, I can conquer the heavens!",
+    "description": "Ancient demigod son of Poseidon who tamed Pegasus with Athena's golden bridle and killed the Chimera.",
+    "lore_notes": "Paralyzed when he fell from Pegasus trying to enter Olympus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Atalanta",
+    "expected_slug": "atalanta",
+    "aliases": [
+      "Heroine of the Calydonian Boar Hunt"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 18,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Iasus",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Pride in her footrace speed",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": true,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "braided dark hair",
+      "eye_color": "brown",
+      "build": "wiry, extremely fast runner",
+      "height": "average",
+      "notable_features": [
+        "bear-pelt cloak",
+        "hunting bow"
+      ]
+    },
+    "personality_traits": [
+      "swift",
+      "independent",
+      "master archer"
+    ],
+    "special_states": [
+      "Tricked in a footrace by Hippomenes using golden apples of Aphrodite"
+    ],
+    "quote": "First blood to me!",
+    "description": "Famous Greek heroine raised by bears who drew first blood on the Calydonian Boar and defeated all suitors in footraces.",
+    "lore_notes": "Turned into a lion by Cybele after desecrating a temple.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Psyche",
+    "expected_slug": "psyche",
+    "aliases": [
+      "Goddess of the Soul"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "immortal",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 18,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "King of Anatolia",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "olympian_council"
+    ],
+    "fatal_flaw": "Curiosity",
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "golden blond",
+      "hair_description": "radiant blond hair",
+      "eye_color": "blue",
+      "build": "gorgeous, delicate",
+      "height": "average",
+      "notable_features": [
+        "butterfly wings upon apotheosis"
+      ]
+    },
+    "personality_traits": [
+      "curious",
+      "persevering",
+      "loving"
+    ],
+    "special_states": [
+      "Completed Aphrodite's four impossible tasks to reunite with Eros and gain ambrosia immortality"
+    ],
+    "quote": "Love cannot live where there is no trust.",
+    "description": "Mortal princess whose beauty rivaled Aphrodite. Married Eros and achieved immortality after completing four trials.",
+    "lore_notes": "Made the goddess of the soul by Zeus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Phaethon",
+    "expected_slug": "phaethon",
+    "aliases": [
+      "Son of Helios"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 16,
+    "divine_parent_slug": "helios",
+    "mortal_parent_name": "Clymene",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Pride and reckless ambition",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "golden blond",
+      "hair_description": "bright golden hair",
+      "eye_color": "glowing amber",
+      "build": "slender",
+      "height": "average",
+      "notable_features": [
+        "sunburn marks from chariot"
+      ]
+    },
+    "personality_traits": [
+      "reckless",
+      "proud",
+      "eager to prove himself"
+    ],
+    "special_states": [
+      "Struck down by Zeus's lightning bolt to stop the sun chariot from burning the Earth"
+    ],
+    "quote": "Watch me drive the sun!",
+    "description": "Demigod son of Helios who insisted on driving the sun chariot, lost control, scorched Africa into a desert, and was struck down by Zeus.",
+    "lore_notes": "Created the Sahara Desert when he drove the chariot too close to Earth.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Danaë",
+    "expected_slug": "danae",
+    "aliases": [
+      "Mother of Perseus"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 20,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "King Acrisius",
+    "mortal_parent_ref_slug": "acrisius",
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "golden brown",
+      "hair_description": "long golden-brown hair",
+      "eye_color": "brown",
+      "build": "graceful",
+      "height": "average",
+      "notable_features": [
+        "bronze tower prisoner clothes"
+      ]
+    },
+    "personality_traits": [
+      "loving mother",
+      "resilient",
+      "faithful"
+    ],
+    "special_states": [
+      "Imprisoned in a subterranean bronze chamber by Acrisius where Zeus visited her as golden shower"
+    ],
+    "quote": "My son Perseus will survive.",
+    "description": "Princess of Argos and mother of Perseus by Zeus. Cast adrift in a wooden chest with baby Perseus by her father Acrisius.",
+    "lore_notes": "Washed ashore on Seriphos where Dictys rescued them.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Acrisius",
+    "expected_slug": "acrisius",
+    "aliases": [
+      "King of Argos"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 50,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Abas",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Paranoid fear of prophecy",
+    "can_see_through_mist": false,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "gray",
+      "hair_description": "balding gray hair",
+      "eye_color": "dark",
+      "build": "frail old king",
+      "height": "short",
+      "notable_features": [
+        "royal robes",
+        "paranoid scowl"
+      ]
+    },
+    "personality_traits": [
+      "paranoid",
+      "cruel",
+      "cowardly"
+    ],
+    "special_states": [
+      "Accidentally killed years later by a stray discus thrown by Perseus, fulfilling prophecy"
+    ],
+    "quote": "Lock her in the bronze tower!",
+    "description": "King of Argos who locked Danaë in a bronze tower after an Oracle foretold his grandson would kill him.",
+    "lore_notes": "Could not escape the prophecy despite trying to kill Danaë and Perseus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Polydectes",
+    "expected_slug": "polydectes",
+    "aliases": [
+      "Tyrant King of Seriphos"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 40,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Magnes",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Arrogance and lust",
+    "can_see_through_mist": false,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "black",
+      "hair_description": "slick black hair",
+      "eye_color": "brown",
+      "build": "sleek, royal",
+      "height": "average",
+      "notable_features": [
+        "gold rings",
+        "arrogant sneer"
+      ]
+    },
+    "personality_traits": [
+      "tyrannical",
+      "scheming",
+      "arrogant"
+    ],
+    "special_states": [
+      "Turned to stone when Perseus revealed Medusa's severed head at court"
+    ],
+    "quote": "Bring me the head of Medusa, boy!",
+    "description": "Evil king of Seriphos who sought to force Danaë into marriage and sent Perseus on a suicide mission for Medusa's head.",
+    "lore_notes": "Petrified by Medusa's head when Perseus returned.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Odysseus",
+    "expected_slug": "odysseus",
+    "aliases": [
+      "Nobody",
+      "King of Ithaca",
+      "Raider of Cities"
+    ],
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 30,
+    "divine_parent_slug": null,
+    "mortal_parent_name": "Laertes and Anticlea",
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": "Hubris (deadly pride)",
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark brown",
+      "hair_description": "weathered dark hair and beard",
+      "eye_color": "brown",
+      "build": "cunning, athletic, battle-tested",
+      "height": "average",
+      "notable_features": [
+        "sharpened glowing wooden stake",
+        "escaped under the belly of a ram"
+      ]
+    },
+    "personality_traits": [
+      "cunning",
+      "resourceful",
+      "tactical",
+      "proud",
+      "eloquent"
+    ],
+    "special_states": [],
+    "quote": "My name is Nobody.",
+    "description": "Legendary King of Ithaca and Greek hero who engineered the Trojan Horse, blinded the Cyclops Polyphemus using the alias 'Nobody', and navigated the Sea of Monsters.",
+    "lore_notes": "Great-grandson of Hermes. His blinding of Polyphemus created an enduring grudge among Cyclopes toward heroes using the name 'Nobody'.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes",
+      "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "Phoebe",
+    "expected_slug": "phoebe-hunter",
+    "aliases": [
+      "Phoebe the Hunter"
+    ],
+    "character_type": "demigod",
+    "species": "human",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 14,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": 8,
+    "affiliation": [
+      "olympian"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": true,
+    "has_dyslexia": true,
+    "is_demigod": true,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": true,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "dark",
+      "hair_description": "dark hair tied back",
+      "eye_color": "brown",
+      "build": "athletic archer",
+      "height": "average",
+      "notable_features": [
+        "silver Hunters jacket",
+        "bow and quiver"
+      ]
+    },
+    "personality_traits": [
+      "fierce",
+      "loyal",
+      "suspicious of demigod boys",
+      "skilled tracker"
+    ],
+    "special_states": [
+      "immortal_via_hunters_vow"
+    ],
+    "quote": "Keep your hands off my bow.",
+    "description": "Senior Hunter of Artemis and master tracker who plays a key role in Camp Half-Blood games and quests.",
+    "lore_notes": "Distinguished from Phoebe the Titan. Resides in Cabin 8 when visiting Camp Half-Blood.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Maron",
+    "expected_slug": "maron",
+    "aliases": [],
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 300,
+    "divine_parent_slug": null,
+    "mortal_parent_name": null,
+    "mortal_parent_ref_slug": null,
+    "sibling_slugs": [],
+    "empathy_link_slug": null,
+    "cabin_number": null,
+    "affiliation": [
+      "neutral"
+    ],
+    "fatal_flaw": null,
+    "can_see_through_mist": true,
+    "has_adhd": false,
+    "has_dyslexia": false,
+    "is_demigod": false,
+    "is_big_three_child": false,
+    "is_hunter_of_artemis": false,
+    "is_oracle": false,
+    "is_possessed": false,
+    "appearance": {
+      "hair_color": "grey",
+      "hair_description": "curly grey fur and beard",
+      "eye_color": "brown",
+      "build": "elderly satyr",
+      "height": "short",
+      "notable_features": [
+        "goat legs",
+        "pan pipes"
+      ]
+    },
+    "personality_traits": [
+      "conservative",
+      "timid",
+      "nature-focused"
+    ],
+    "special_states": [],
+    "quote": "Pan would never abandon us!",
+    "description": "Elderly satyr and member of the Council of Cloven Elders alongside Silenus and Leneus.",
+    "lore_notes": "Member of the Council of Cloven Elders that presided over Grover Underwood's search for Pan.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Jason Grace",
+    "expected_slug": "jason-grace",
+    "aliases": [],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "roman",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "zeus",
+    "mortal_parent_name": "Beryl Grace",
+    "is_big_three_child": true,
+    "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope."
+  },
+  {
+    "name": "Piper McLean",
+    "expected_slug": "piper-mclean",
+    "aliases": [],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "aphrodite",
+    "mortal_parent_name": "Tristan McLean",
+    "description": "Greek demigod and named member of the Seven in the Heroes of Olympus series.",
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope."
+  },
+  {
+    "name": "Leo Valdez",
+    "expected_slug": "leo-valdez",
+    "aliases": [],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "age_first_appearance": 15,
+    "divine_parent_slug": "hephaestus",
+    "mortal_parent_name": "Esperanza Valdez",
+    "description": "Greek demigod and named member of the Seven in the Heroes of Olympus series.",
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope."
+  },
+  {
+    "name": "Frank Zhang",
+    "expected_slug": "frank-zhang",
+    "aliases": [],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "roman",
+    "age_first_appearance": 16,
+    "divine_parent_slug": "ares",
+    "mortal_parent_name": "Emily Zhang",
+    "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Mars is represented by the existing Ares God record."
+  },
+  {
+    "name": "Hazel Levesque",
+    "expected_slug": "hazel-levesque",
+    "aliases": [],
+    "character_type": "demigod",
+    "species": "demigod",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "roman",
+    "age_first_appearance": 13,
+    "divine_parent_slug": "hades",
+    "mortal_parent_name": "Marie Levesque",
+    "is_big_three_child": true,
+    "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Pluto is represented by the existing Hades God record."
+  },
+  {
+    "name": "Blackjack",
+    "expected_slug": "blackjack",
+    "character_type": "creature",
+    "species": "pegasus",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "Percy's loyal black Pegasus, able to communicate telepathically with Poseidon's children."
+  },
+  {
+    "name": "Guido",
+    "expected_slug": "guido",
+    "character_type": "creature",
+    "species": "pegasus",
+    "gender": "unknown",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A named Pegasus and member of the Camp Half-Blood Pegasus herd."
+  },
+  {
+    "name": "Porkpie",
+    "expected_slug": "porkpie",
+    "character_type": "creature",
+    "species": "pegasus",
+    "gender": "unknown",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A named Pegasus and member of the Camp Half-Blood Pegasus herd."
+  },
+  {
+    "name": "Gleeson Hedge",
+    "expected_slug": "gleeson-hedge",
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A satyr and protector of demigods."
+  },
+  {
+    "name": "Mrs. O'Leary",
+    "expected_slug": "mrs-oleary",
+    "character_type": "creature",
+    "species": "other",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A friendly hellhound who becomes a companion of Percy Jackson and Camp Half-Blood."
+  }
+]

@@ -5,8 +5,16 @@ from apps.organizations.serializers import (
     CabinListSerializer,
     FactionDetailSerializer,
     FactionListSerializer,
+    FactionMemberSerializer,
 )
-from tests.makers import make_cabin, make_character, make_faction, make_god
+from tests.makers import (
+    make_cabin,
+    make_character,
+    make_faction,
+    make_god,
+    make_monster,
+    make_titan,
+)
 
 
 class CabinSerializerTests(TestCase):
@@ -55,11 +63,29 @@ class FactionSerializerTests(TestCase):
         faction = make_faction(name='Leaderless')
         self.assertIsNone(FactionListSerializer(faction).data['leader'])
 
-    def test_detail_serializer_member_slugs(self):
+    def test_detail_serializer_member_slugs_and_typed_members(self):
         member = make_character(name='Zoe Nightshade')
         self.faction.members.add(member)
         data = FactionDetailSerializer(self.faction).data
         self.assertIn('zoe-nightshade', data['member_slugs'])
+        self.assertIn(
+            {'type': 'character', 'slug': 'zoe-nightshade', 'name': 'Zoe Nightshade'},
+            data['members'],
+        )
+
+    def test_typed_member_serializer_supports_each_entity_type(self):
+        entries = (
+            ('character', make_character(name='Zoe Nightshade')),
+            ('god', self.god),
+            ('titan', make_titan(name='Atlas')),
+            ('monster', make_monster(name='Alecto')),
+        )
+        serialized = []
+        for member_type, entity in entries:
+            field = f'member_{member_type}'
+            membership = self.faction.member_records.create(**{field: entity})
+            serialized.append(FactionMemberSerializer(membership).data)
+        self.assertEqual([row['type'] for row in serialized], [kind for kind, _ in entries])
 
     def test_detail_serializer_flattens_character_leader(self):
         character = make_character(name='Chiron')

@@ -1,29 +1,81 @@
 # ruff: noqa: RUF012
 
+from django.db.models import Q
 from rest_framework import serializers
 
-from apps.divinities.models import God, Titan
+from apps.characters.models import Character
+from apps.divinities.models import DivineRelationship, God, Titan
 from apps.images.serializers import ImageListSerializer
 
 
-def _flatten_relationship(rel, direction='to'):
-    """
-    Flatten a DivineRelationship row into a clean dict for API consumers.
-    direction: "to" returns the target entity; "from" returns the source.
-    """
-    if direction == 'to':
-        entity = rel.to_god or rel.to_titan
-        entity_type = 'god' if rel.to_god else 'titan'
-    else:
-        entity = rel.from_god or rel.from_titan
-        entity_type = 'god' if rel.from_god else 'titan'
+def _relationship_filters(obj):
+    if isinstance(obj, God):
+        return Q(from_god=obj), Q(to_god=obj)
+    if isinstance(obj, Titan):
+        return Q(from_titan=obj), Q(to_titan=obj)
+    return Q(from_character=obj), Q(to_character=obj)
 
+
+def _relationship_entity(rel, side):
+    if side == 'from':
+        entity = rel.from_god or rel.from_titan or rel.from_character
+    else:
+        entity = rel.to_god or rel.to_titan or rel.to_character
+    entity_type = (
+        'god'
+        if isinstance(entity, God)
+        else 'titan'
+        if isinstance(entity, Titan)
+        else 'character'
+        if isinstance(entity, Character)
+        else 'unknown'
+    )
     return {
         'type': entity_type,
         'slug': entity.slug,
         'name': entity.name,
         'relationship': rel.relationship_type,
     }
+
+
+def _is_from_entity(rel, obj):
+    if isinstance(obj, God):
+        return rel.from_god_id == obj.pk
+    if isinstance(obj, Titan):
+        return rel.from_titan_id == obj.pk
+    return rel.from_character_id == obj.pk
+
+
+def _serialize_entity_relationships(obj, category):
+    from_filter, to_filter = _relationship_filters(obj)
+    related_filters = {
+        'parents': (Q(relationship_type='parent_of') & to_filter)
+        | (Q(relationship_type='child_of') & from_filter),
+        'children': (Q(relationship_type='parent_of') & from_filter)
+        | (Q(relationship_type='child_of') & to_filter),
+        'siblings': Q(relationship_type='sibling_of') & (from_filter | to_filter),
+        'consorts': Q(relationship_type='consort_of') & (from_filter | to_filter),
+    }
+    relationships = DivineRelationship.objects.filter(related_filters[category]).select_related(
+        'from_god', 'from_titan', 'from_character', 'to_god', 'to_titan', 'to_character'
+    )
+
+    results = []
+    seen = set()
+    for rel in relationships:
+        if category == 'parents':
+            side = 'from' if rel.relationship_type == 'parent_of' else 'to'
+        elif category == 'children':
+            side = 'to' if rel.relationship_type == 'parent_of' else 'from'
+        else:
+            side = 'to' if _is_from_entity(rel, obj) else 'from'
+
+        result = _relationship_entity(rel, side)
+        key = (result['type'], result['slug'])
+        if key not in seen:
+            results.append(result)
+            seen.add(key)
+    return results
 
 
 class GodListSerializer(serializers.ModelSerializer):
@@ -112,28 +164,16 @@ class GodDetailSerializer(serializers.ModelSerializer):
         return ImageListSerializer(primary.image).data if primary else None
 
     def get_parents(self, obj):
-        rels = obj.relationships_as_to.filter(relationship_type='parent_of').select_related(
-            'from_god', 'from_titan'
-        )
-        return [_flatten_relationship(r, direction='from') for r in rels]
+        return _serialize_entity_relationships(obj, 'parents')
 
     def get_siblings(self, obj):
-        rels = obj.relationships_as_to.filter(relationship_type='sibling_of').select_related(
-            'from_god', 'from_titan'
-        )
-        return [_flatten_relationship(r, direction='from') for r in rels]
+        return _serialize_entity_relationships(obj, 'siblings')
 
     def get_consorts(self, obj):
-        rels = obj.relationships_as_from.filter(relationship_type='consort_of').select_related(
-            'to_god', 'to_titan'
-        )
-        return [_flatten_relationship(r, direction='to') for r in rels]
+        return _serialize_entity_relationships(obj, 'consorts')
 
     def get_children(self, obj):
-        rels = obj.relationships_as_from.filter(relationship_type='parent_of').select_related(
-            'to_god', 'to_titan'
-        )
-        return [_flatten_relationship(r, direction='to') for r in rels]
+        return _serialize_entity_relationships(obj, 'children')
 
     def get_children_demigod_slugs(self, obj):
         return list(obj.children_demigods.values_list('slug', flat=True))
@@ -158,11 +198,15 @@ class TitanListSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'roman_name',
             'generation',
             'status',
             'alignment',
             'alignment_display',
             'domains',
+            'symbols',
+            'sacred_animals',
+            'sacred_plants',
             'primary_image',
         ]
 
@@ -179,6 +223,7 @@ class TitanDetailSerializer(serializers.ModelSerializer):
     parents = serializers.SerializerMethodField()
     siblings = serializers.SerializerMethodField()
     children = serializers.SerializerMethodField()
+    consorts = serializers.SerializerMethodField()
     first_appearance_book_slug = serializers.SerializerMethodField()
     books_appeared_in_slugs = serializers.SerializerMethodField()
 
@@ -188,6 +233,7 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'roman_name',
             'mythology',
             'generation',
             'generation_display',
@@ -196,6 +242,9 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'alignment',
             'alignment_display',
             'domains',
+            'symbols',
+            'sacred_animals',
+            'sacred_plants',
             'weapon_or_power',
             'role_in_series',
             'prison_location',
@@ -203,6 +252,7 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'parents',
             'siblings',
             'children',
+            'consorts',
             'first_appearance_book_slug',
             'books_appeared_in_slugs',
             'primary_image',
@@ -216,22 +266,16 @@ class TitanDetailSerializer(serializers.ModelSerializer):
         return ImageListSerializer(primary.image).data if primary else None
 
     def get_parents(self, obj):
-        rels = obj.relationships_as_to.filter(relationship_type='parent_of').select_related(
-            'from_god', 'from_titan'
-        )
-        return [_flatten_relationship(r, direction='from') for r in rels]
+        return _serialize_entity_relationships(obj, 'parents')
 
     def get_siblings(self, obj):
-        rels = obj.relationships_as_to.filter(relationship_type='sibling_of').select_related(
-            'from_god', 'from_titan'
-        )
-        return [_flatten_relationship(r, direction='from') for r in rels]
+        return _serialize_entity_relationships(obj, 'siblings')
 
     def get_children(self, obj):
-        rels = obj.relationships_as_from.filter(relationship_type='parent_of').select_related(
-            'to_god', 'to_titan'
-        )
-        return [_flatten_relationship(r, direction='to') for r in rels]
+        return _serialize_entity_relationships(obj, 'children')
+
+    def get_consorts(self, obj):
+        return _serialize_entity_relationships(obj, 'consorts')
 
     def get_first_appearance_book_slug(self, obj):
         return obj.first_appearance_book.slug if obj.first_appearance_book else None

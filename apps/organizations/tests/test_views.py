@@ -1,7 +1,8 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from tests.makers import make_cabin, make_faction, make_god
+from apps.organizations.models import FactionMember
+from tests.makers import make_cabin, make_character, make_faction, make_god
 
 
 class CabinViewTests(BaseAPITestCase):
@@ -103,4 +104,34 @@ class FactionViewTests(BaseAPITestCase):
         self.assertEqual(
             response.data['leader'],
             {'type': 'god', 'slug': 'artemis', 'name': 'Artemis'},
+        )
+
+    def test_detail_includes_typed_members(self):
+        character = make_character(name='Zoe Nightshade')
+        self.faction.members.add(character)
+        FactionMember.objects.create(faction=self.faction, member_god=self.god)
+
+        response = self.client.get(reverse('faction-detail', kwargs={'slug': self.faction.slug}))
+
+        self.assertEqual(
+            response.data['members'],
+            [
+                {'type': 'character', 'slug': 'zoe-nightshade', 'name': 'Zoe Nightshade'},
+                {'type': 'god', 'slug': 'artemis', 'name': 'Artemis'},
+            ],
+        )
+
+    def test_members_subresource_returns_typed_entities(self):
+        character = make_character(name='Zoe Nightshade')
+        self.faction.members.add(character)
+        FactionMember.objects.create(faction=self.faction, member_god=self.god)
+
+        response = self.client.get(
+            reverse('faction-member-list', kwargs={'slug': self.faction.slug})
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            {(row['type'], row['slug']) for row in response.data['data']},
+            {('character', 'zoe-nightshade'), ('god', 'artemis')},
         )

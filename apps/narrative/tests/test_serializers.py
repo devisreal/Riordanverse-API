@@ -1,5 +1,6 @@
 from django.test import TestCase
 
+from apps.narrative.models import EventCasualty, QuestCasualty, QuestParticipant
 from apps.narrative.serializers import (
     BookDetailSerializer,
     EventDetailSerializer,
@@ -11,8 +12,11 @@ from tests.makers import (
     make_book,
     make_character,
     make_event,
+    make_god,
+    make_monster,
     make_prophecy,
     make_quest,
+    make_titan,
 )
 
 
@@ -71,6 +75,29 @@ class ProphecySerializerTests(TestCase):
         data = ProphecyDetailSerializer(self.prophecy).data
         self.assertEqual(data['delivered_by_slug'], 'rachel-dare')
 
+    def test_typed_subjects_and_legacy_character_slugs(self):
+        character = make_character(name='Percy Jackson')
+        god = make_god(name='Ares')
+        titan = make_titan(name='Atlas')
+        monster = make_monster(name='Typhon')
+        self.prophecy.subject.add(character)
+        self.prophecy.subject_records.create(subject_god=god)
+        self.prophecy.subject_records.create(subject_titan=titan)
+        self.prophecy.subject_records.create(subject_monster=monster)
+
+        data = ProphecyDetailSerializer(self.prophecy).data
+
+        self.assertEqual(
+            data['subjects'],
+            [
+                {'type': 'character', 'slug': 'percy-jackson', 'name': 'Percy Jackson'},
+                {'type': 'god', 'slug': 'ares', 'name': 'Ares'},
+                {'type': 'titan', 'slug': 'atlas', 'name': 'Atlas'},
+                {'type': 'monster', 'slug': 'typhon', 'name': 'Typhon'},
+            ],
+        )
+        self.assertEqual(data['subject_slugs'], ['percy-jackson'])
+
 
 class QuestSerializerTests(TestCase):
     def setUp(self):
@@ -93,6 +120,35 @@ class QuestSerializerTests(TestCase):
         data = QuestDetailSerializer(self.quest).data
         self.assertIn('percy-jackson', data['participant_slugs'])
 
+    def test_typed_participants_and_casualties_keep_character_slug_fields(self):
+        percy = make_character(name='Percy Jackson')
+        apollo = make_god(name='Apollo')
+        polydectes = make_character(name='Polydectes')
+        minotaur = make_monster(name='Minotaur')
+        self.quest.participants.add(percy)
+        QuestParticipant.objects.create(quest=self.quest, participant_god=apollo)
+        self.quest.casualties.add(polydectes)
+        QuestCasualty.objects.create(quest=self.quest, casualty_monster=minotaur)
+
+        data = QuestDetailSerializer(self.quest).data
+
+        self.assertEqual(
+            data['participants'],
+            [
+                {'type': 'character', 'slug': 'percy-jackson', 'name': 'Percy Jackson'},
+                {'type': 'god', 'slug': 'apollo', 'name': 'Apollo'},
+            ],
+        )
+        self.assertEqual(data['participant_slugs'], ['percy-jackson'])
+        self.assertEqual(
+            data['casualties'],
+            [
+                {'type': 'character', 'slug': 'polydectes', 'name': 'Polydectes'},
+                {'type': 'monster', 'slug': 'minotaur', 'name': 'Minotaur'},
+            ],
+        )
+        self.assertEqual(data['casualty_slugs'], ['polydectes'])
+
 
 class EventSerializerTests(TestCase):
     def setUp(self):
@@ -109,6 +165,23 @@ class EventSerializerTests(TestCase):
         self.event.participant_gods.add(god)
         data = EventDetailSerializer(self.event).data
         self.assertIn('poseidon', data['participant_god_slugs'])
+
+    def test_typed_casualties_and_legacy_character_slugs(self):
+        percy = make_character(name='Percy Jackson')
+        kampe = make_monster(name='Kampe')
+        self.event.casualties.add(percy)
+        EventCasualty.objects.create(event=self.event, casualty_monster=kampe)
+
+        data = EventDetailSerializer(self.event).data
+
+        self.assertEqual(
+            data['casualties'],
+            [
+                {'type': 'character', 'slug': 'percy-jackson', 'name': 'Percy Jackson'},
+                {'type': 'monster', 'slug': 'kampe', 'name': 'Kampe'},
+            ],
+        )
+        self.assertEqual(data['casualty_slugs'], ['percy-jackson'])
 
     def test_event_type_display(self):
         data = EventDetailSerializer(self.event).data

@@ -183,6 +183,7 @@ class Titan(BaseModel):
 
     slug = AutoSlugField(populate_from='name', unique=True, editable=False)
     name = models.CharField(max_length=150)
+    roman_name = models.CharField(max_length=150, blank=True, null=True)
     mythology = models.CharField(
         max_length=20,
         choices=MYTHOLOGY_CHOICES,
@@ -204,8 +205,11 @@ class Titan(BaseModel):
         default='kronos_army',
     )
 
-    # Domains and powers — JSONField per important-notes.md note 1
+    # Sacred attributes and powers.
     domains = models.JSONField(default=list)
+    symbols = models.JSONField(default=list)
+    sacred_animals = models.JSONField(default=list)
+    sacred_plants = models.JSONField(default=list)
     weapon_or_power = models.JSONField(
         default=list,
         help_text='Notable powers or items.',
@@ -256,7 +260,7 @@ class Titan(BaseModel):
 class DivineRelationship(models.Model):
     """
     Directed graph edge representing a family or divine relationship
-    between any two entities in the God/Titan hierarchy.
+    between Gods, Titans, and Characters.
 
     Each row has exactly one "from" entity and exactly one "to" entity,
     enforced by CheckConstraints. This allows cross-boundary relationships
@@ -286,6 +290,13 @@ class DivineRelationship(models.Model):
         blank=True,
         related_name='relationships_as_from',
     )
+    from_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='divine_relationships_as_from',
+    )
 
     # "To" entity — exactly one must be set (enforced by CheckConstraint)
     to_god = models.ForeignKey(
@@ -302,6 +313,13 @@ class DivineRelationship(models.Model):
         blank=True,
         related_name='relationships_as_to',
     )
+    to_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='divine_relationships_as_to',
+    )
 
     relationship_type = models.CharField(
         max_length=20,
@@ -312,69 +330,71 @@ class DivineRelationship(models.Model):
         verbose_name = 'Divine Relationship'
         verbose_name_plural = 'Divine Relationships'
         constraints = [
-            # Exactly one of from_god / from_titan must be set
             models.CheckConstraint(
                 condition=(
-                    models.Q(from_god__isnull=False, from_titan__isnull=True)
-                    | models.Q(from_god__isnull=True, from_titan__isnull=False)
+                    models.Q(
+                        from_god__isnull=False,
+                        from_titan__isnull=True,
+                        from_character__isnull=True,
+                    )
+                    | models.Q(
+                        from_god__isnull=True,
+                        from_titan__isnull=False,
+                        from_character__isnull=True,
+                    )
+                    | models.Q(
+                        from_god__isnull=True,
+                        from_titan__isnull=True,
+                        from_character__isnull=False,
+                    )
                 ),
                 name='divine_rel_exactly_one_from',
             ),
-            # Exactly one of to_god / to_titan must be set
             models.CheckConstraint(
                 condition=(
-                    models.Q(to_god__isnull=False, to_titan__isnull=True)
-                    | models.Q(to_god__isnull=True, to_titan__isnull=False)
+                    models.Q(
+                        to_god__isnull=False,
+                        to_titan__isnull=True,
+                        to_character__isnull=True,
+                    )
+                    | models.Q(
+                        to_god__isnull=True,
+                        to_titan__isnull=False,
+                        to_character__isnull=True,
+                    )
+                    | models.Q(
+                        to_god__isnull=True,
+                        to_titan__isnull=True,
+                        to_character__isnull=False,
+                    )
                 ),
                 name='divine_rel_exactly_one_to',
             ),
-            # Split uniqueness by entity pairing because nullable FKs are
-            # distinct under ordinary SQL UNIQUE constraints.
-            models.UniqueConstraint(
-                fields=['from_god', 'to_god', 'relationship_type'],
-                condition=models.Q(
-                    from_god__isnull=False,
-                    from_titan__isnull=True,
-                    to_god__isnull=False,
-                    to_titan__isnull=True,
-                ),
-                name='unique_dr_god_god',
-            ),
-            models.UniqueConstraint(
-                fields=['from_god', 'to_titan', 'relationship_type'],
-                condition=models.Q(
-                    from_god__isnull=False,
-                    from_titan__isnull=True,
-                    to_god__isnull=True,
-                    to_titan__isnull=False,
-                ),
-                name='unique_dr_god_titan',
-            ),
-            models.UniqueConstraint(
-                fields=['from_titan', 'to_god', 'relationship_type'],
-                condition=models.Q(
-                    from_god__isnull=True,
-                    from_titan__isnull=False,
-                    to_god__isnull=False,
-                    to_titan__isnull=True,
-                ),
-                name='unique_dr_titan_god',
-            ),
-            models.UniqueConstraint(
-                fields=['from_titan', 'to_titan', 'relationship_type'],
-                condition=models.Q(
-                    from_god__isnull=True,
-                    from_titan__isnull=False,
-                    to_god__isnull=True,
-                    to_titan__isnull=False,
-                ),
-                name='unique_dr_titan_titan',
-            ),
+            *[
+                models.UniqueConstraint(
+                    fields=[f'from_{source}', f'to_{target}', 'relationship_type'],
+                    condition=models.Q(
+                        **{
+                            **{
+                                f'from_{kind}__isnull': kind != source
+                                for kind in ('god', 'titan', 'character')
+                            },
+                            **{
+                                f'to_{kind}__isnull': kind != target
+                                for kind in ('god', 'titan', 'character')
+                            },
+                        },
+                    ),
+                    name=f'unique_dr_{source}_{target}',
+                )
+                for source in ('god', 'titan', 'character')
+                for target in ('god', 'titan', 'character')
+            ],
         ]
 
     def __str__(self):
-        from_entity = self.from_god or self.from_titan
-        to_entity = self.to_god or self.to_titan
+        from_entity = self.from_god or self.from_titan or self.from_character
+        to_entity = self.to_god or self.to_titan or self.to_character
         return f'{from_entity} → {self.relationship_type} → {to_entity}'
 
 

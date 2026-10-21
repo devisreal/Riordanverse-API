@@ -1,12 +1,16 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
+from apps.narrative.models import EventCasualty, QuestCasualty, QuestParticipant
 from tests.makers import (
     make_book,
     make_character,
     make_event,
+    make_god,
+    make_monster,
     make_prophecy,
     make_quest,
+    make_titan,
 )
 
 
@@ -51,6 +55,50 @@ class ProphecyViewTests(BaseAPITestCase):
         self.assertIn('text', response.data)
         self.assertIn('\n', response.data['text'])
 
+    def test_detail_includes_typed_subjects(self):
+        god = make_god(name='Ares')
+        titan = make_titan(name='Atlas')
+        self.prophecy.subject_records.create(subject_god=god)
+        self.prophecy.subject_records.create(subject_titan=titan)
+
+        response = self.client.get(reverse('prophecy-detail', kwargs={'slug': self.prophecy.slug}))
+
+        self.assertEqual(
+            response.data['subjects'],
+            [
+                {'type': 'god', 'slug': 'ares', 'name': 'Ares'},
+                {'type': 'titan', 'slug': 'atlas', 'name': 'Atlas'},
+            ],
+        )
+
+    def test_filter_by_character_subject(self):
+        character = make_character(name='Percy Jackson')
+        self.prophecy.subject.add(character)
+        response = self.client.get(reverse('prophecy-list'), {'subject': 'percy-jackson'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_god_subject(self):
+        god = make_god(name='Ares')
+        self.prophecy.subject_records.create(subject_god=god)
+        response = self.client.get(reverse('prophecy-list'), {'subject_god': 'ares'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_titan_subject(self):
+        titan = make_titan(name='Atlas')
+        self.prophecy.subject_records.create(subject_titan=titan)
+        response = self.client.get(reverse('prophecy-list'), {'subject_titan': 'atlas'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_monster_subject(self):
+        monster = make_monster(name='Typhon')
+        self.prophecy.subject_records.create(subject_monster=monster)
+        response = self.client.get(reverse('prophecy-list'), {'subject_monster': 'typhon'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
 
 class QuestViewTests(BaseAPITestCase):
     def setUp(self):
@@ -85,6 +133,34 @@ class QuestViewTests(BaseAPITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data['data']), 1)
 
+    def test_detail_returns_typed_participant_and_casualty_payloads(self):
+        apollo = make_god(name='Apollo')
+        minotaur = make_monster(name='Minotaur')
+        QuestParticipant.objects.create(quest=self.quest, participant_god=apollo)
+        QuestCasualty.objects.create(quest=self.quest, casualty_monster=minotaur)
+
+        response = self.client.get(reverse('quest-detail', kwargs={'slug': self.quest.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['participants'][0]['type'], 'god')
+        self.assertEqual(response.data['participants'][0]['slug'], 'apollo')
+        self.assertEqual(response.data['casualties'][0]['type'], 'monster')
+        self.assertEqual(response.data['casualties'][0]['slug'], 'minotaur')
+
+    def test_filter_by_typed_god_participant(self):
+        QuestParticipant.objects.create(quest=self.quest, participant_god=make_god(name='Apollo'))
+        response = self.client.get(reverse('quest-list'), {'participant_god': 'apollo'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_typed_monster_casualty(self):
+        QuestCasualty.objects.create(
+            quest=self.quest, casualty_monster=make_monster(name='Minotaur')
+        )
+        response = self.client.get(reverse('quest-list'), {'casualty_monster': 'minotaur'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
     def test_participants_sub_resource(self):
         annabeth = make_character(name='Annabeth Chase')
         self.quest.participants.add(annabeth)
@@ -113,6 +189,25 @@ class EventViewTests(BaseAPITestCase):
     def test_detail_returns_200(self):
         response = self.client.get(reverse('event-detail', kwargs={'slug': 'battle-of-manhattan'}))
         self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_typed_casualties_and_legacy_slugs(self):
+        kampe = make_monster(name='Kampe')
+        EventCasualty.objects.create(event=self.event, casualty_monster=kampe)
+
+        response = self.client.get(reverse('event-detail', kwargs={'slug': self.event.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.data['casualties'],
+            [{'type': 'monster', 'slug': 'kampe', 'name': 'Kampe'}],
+        )
+        self.assertEqual(response.data['casualty_slugs'], [])
+
+    def test_filter_by_monster_casualty(self):
+        EventCasualty.objects.create(event=self.event, casualty_monster=make_monster(name='Kampe'))
+        response = self.client.get(reverse('event-list'), {'casualty_monster': 'kampe'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
 
     def test_filter_by_event_type(self):
         response = self.client.get(reverse('event-list'), {'event_type': 'battle'})

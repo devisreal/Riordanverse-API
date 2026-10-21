@@ -39,8 +39,10 @@ class BookDetailView(generics.RetrieveAPIView):
     """GET /api/v1/books/<slug>/"""
 
     queryset = (
-        Book.objects.prefetch_related('images__image', 'main_characters', 'antagonists')
-        .select_related('narrator')
+        Book.objects.prefetch_related(
+            'images__image', 'main_characters', 'antagonists', 'included_stories'
+        )
+        .select_related('narrator', 'parent_collection')
         .all()
     )
     serializer_class = BookDetailSerializer
@@ -91,6 +93,10 @@ class ProphecyDetailView(generics.RetrieveAPIView):
 
     queryset = Prophecy.objects.prefetch_related(
         'subject',
+        'subject_records__subject_character',
+        'subject_records__subject_god',
+        'subject_records__subject_titan',
+        'subject_records__subject_monster',
         'books_relevant_to',
     ).select_related('delivered_by', 'fulfilled_in')
     serializer_class = ProphecyDetailSerializer
@@ -123,6 +129,14 @@ class QuestDetailView(generics.RetrieveAPIView):
     """GET /api/v1/quests/:slug/"""
 
     queryset = Quest.objects.prefetch_related(
+        'participant_records__participant_character',
+        'participant_records__participant_god',
+        'participant_records__participant_titan',
+        'participant_records__participant_monster',
+        'casualty_records__casualty_character',
+        'casualty_records__casualty_god',
+        'casualty_records__casualty_titan',
+        'casualty_records__casualty_monster',
         'participants',
         'casualties',
         'locations_visited',
@@ -174,6 +188,10 @@ class EventDetailView(generics.RetrieveAPIView):
     """GET /api/v1/events/:slug/"""
 
     queryset = Event.objects.prefetch_related(
+        'casualty_records__casualty_character',
+        'casualty_records__casualty_god',
+        'casualty_records__casualty_titan',
+        'casualty_records__casualty_monster',
         'participant_characters',
         'participant_gods',
         'participant_titans',
