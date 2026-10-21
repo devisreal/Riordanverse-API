@@ -1,7 +1,15 @@
 from rest_framework import serializers
 
 from apps.images.serializers import ImageListSerializer
-from apps.narrative.models import Book, Event, Prophecy, ProphecySubject, Quest
+from apps.narrative.models import (
+    Book,
+    Event,
+    Prophecy,
+    ProphecySubject,
+    Quest,
+    QuestCasualty,
+    QuestParticipant,
+)
 
 
 def get_primary_image(book):
@@ -244,9 +252,69 @@ class QuestListSerializer(serializers.ModelSerializer):
         return obj.led_by.slug if obj.led_by else None
 
 
+class QuestParticipantSerializer(serializers.ModelSerializer):
+    """Typed quest participant with a stable entity type, slug, and display name."""
+
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = QuestParticipant
+        fields = ('type', 'slug', 'name')
+
+    def _entity(self, obj):
+        for entity_type in ('character', 'god', 'titan', 'monster'):
+            entity = getattr(obj, f'participant_{entity_type}')
+            if entity:
+                return entity_type, entity
+        return None, None
+
+    def get_type(self, obj):
+        return self._entity(obj)[0]
+
+    def get_slug(self, obj):
+        return self._entity(obj)[1].slug
+
+    def get_name(self, obj):
+        return self._entity(obj)[1].name
+
+
+class QuestCasualtySerializer(serializers.ModelSerializer):
+    """Typed quest casualty with a stable entity type, slug, and display name."""
+
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = QuestCasualty
+        fields = ('type', 'slug', 'name')
+
+    def _entity(self, obj):
+        for entity_type in ('character', 'god', 'titan', 'monster'):
+            entity = getattr(obj, f'casualty_{entity_type}')
+            if entity:
+                return entity_type, entity
+        return None, None
+
+    def get_type(self, obj):
+        return self._entity(obj)[0]
+
+    def get_slug(self, obj):
+        return self._entity(obj)[1].slug
+
+    def get_name(self, obj):
+        return self._entity(obj)[1].name
+
+
 class QuestDetailSerializer(serializers.ModelSerializer):
     """Full detail."""
 
+    participants = QuestParticipantSerializer(
+        source='participant_records', many=True, read_only=True
+    )
+    casualties = QuestCasualtySerializer(source='casualty_records', many=True, read_only=True)
     book_slug = serializers.SerializerMethodField()
     led_by_slug = serializers.SerializerMethodField()
     prophecy_slug = serializers.SerializerMethodField()
@@ -265,6 +333,7 @@ class QuestDetailSerializer(serializers.ModelSerializer):
             'book_slug',
             'prophecy_slug',
             'led_by_slug',
+            'participants',
             'participant_slugs',
             'objective',
             'outcome',
@@ -272,6 +341,7 @@ class QuestDetailSerializer(serializers.ModelSerializer):
             'location_slugs',
             'monster_slugs',
             'item_slugs',
+            'casualties',
             'casualty_slugs',
             'description',
             'wiki_url',

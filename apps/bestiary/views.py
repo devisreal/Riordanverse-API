@@ -89,7 +89,11 @@ class CreatureListView(generics.ListAPIView):
 class CreatureDetailView(generics.RetrieveAPIView):
     """GET /api/v1/creatures/<slug>/"""
 
-    queryset = Creature.objects.prefetch_related('notable_members').all()
+    queryset = Creature.objects.prefetch_related(
+        'member_records__member_character',
+        'member_records__member_monster',
+        'notable_members',
+    ).all()
     serializer_class = CreatureDetailSerializer
     lookup_field = 'slug'
 

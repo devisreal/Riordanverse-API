@@ -519,5 +519,48 @@
     ],
     "description": "A magnificent coral and pearl underwater fortress kingdom governed by Poseidon and Queen Amphitrite.",
     "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Brooklyn Zoo",
+    "expected_slug": "brooklyn-zoo",
+    "location_type": "mortal_city",
+    "real_world_location": "Prospect Park, Brooklyn, New York City",
+    "mythological_significance": "Hiding site chosen by Phobos and Deimos to conceal Ares's stolen war chariot among wild animal enclosures.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "40.6655, -73.9632",
+    "notable_events": [
+      "Recovery of Ares's Stolen War Chariot"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "controlled_by_monster_slug": null,
+    "books_appeared_in_slugs": [
+      "the-demigod-files",
+      "percy-jackson-and-the-stolen-chariot"
+    ],
+    "description": "The mortal zoo in Prospect Park, Brooklyn, where Ares's sons Phobos and Deimos hid their father's stolen war chariot, ambushing Clarisse La Rue and Percy Jackson."
+  },
+  {
+    "name": "Seriphos",
+    "expected_slug": "seriphos",
+    "location_type": "mythical_island",
+    "real_world_location": "Serifos Island, Cyclades, Greece",
+    "mythological_significance": "Ancient Aegean island kingdom ruled by King Polydectes where Danaë and Perseus washed ashore in a chest.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "37.1500, 24.5000",
+    "notable_events": [
+      "Perseus and Danaë wash ashore",
+      "Polydectes challenges Perseus to retrieve Medusa's head",
+      "Perseus turns Polydectes to stone with Medusa's head"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "controlled_by_monster_slug": null,
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "The rocky Aegean island ruled by King Polydectes where Dictys fished Perseus and Danaë out of the sea, and where Perseus later returned with Medusa's head to petrify the tyrant king."
   }
 ]

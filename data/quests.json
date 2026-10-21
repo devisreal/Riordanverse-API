@@ -1,0 +1,504 @@
+[
+  {
+    "title": "Quest for Zeus's Master Bolt",
+    "expected_slug": "quest-for-zeuss-master-bolt",
+    "book_slug": "the-lightning-thief",
+    "prophecy_slug": "the-lightning-thief-prophecy",
+    "led_by_slug": "percy-jackson",
+    "objective": "Retrieve Zeus's stolen Master Lightning Bolt from the Underworld before the Summer Solstice to prevent a cataclysmic war among the Big Three.",
+    "outcome": "Successful; Master Bolt recovered from Ares's backpack and returned to Zeus on Mount Olympus; Helm of Darkness restored to Hades.",
+    "initiated_by": "Chiron and Oracle of Delphi (under ultimatum from Zeus)",
+    "location_slugs": [
+      "camp-half-blood",
+      "gateway-arch",
+      "waterland",
+      "lotus-hotel-and-casino",
+      "doa-recording-studios",
+      "the-underworld",
+      "mount-olympus"
+    ],
+    "monster_slugs": [
+      "minotaur",
+      "medusa",
+      "alecto",
+      "echidna",
+      "chimera",
+      "procrustes",
+      "cerberus"
+    ],
+    "item_slugs": [
+      "master-lightning-bolt",
+      "helm-of-darkness",
+      "riptide",
+      "flying-sneakers"
+    ],
+    "description": "Percy Jackson's foundational quest across America accompanied by Annabeth Chase and Grover Underwood to recover Zeus's stolen weapon.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "title": "Quest for the Golden Fleece",
+    "expected_slug": "quest-for-the-golden-fleece",
+    "book_slug": "the-sea-of-monsters",
+    "prophecy_slug": "the-sea-of-monsters-prophecy",
+    "led_by_slug": "clarisse-la-rue",
+    "objective": "Retrieve the Golden Fleece from Polyphemus's island in the Sea of Monsters to heal Thalia's poisoned pine tree and rescue Grover.",
+    "outcome": "Successful; Fleece recovered and brought back to Camp Half-Blood, curing the tree and unexpectedly resurrecting Thalia Grace.",
+    "initiated_by": "Tantalus (official authorization) / Hermes (unofficial spur for Percy)",
+    "location_slugs": [
+      "camp-half-blood",
+      "princess-andromeda",
+      "the-sea-of-monsters",
+      "ccs-spa-and-resort",
+      "polyphemuses-island"
+    ],
+    "monster_slugs": [
+      "polyphemus",
+      "lernean-hydra",
+      "scylla",
+      "charybdis"
+    ],
+    "item_slugs": [
+      "golden-fleece",
+      "hermes-multivitamins",
+      "thermos-of-winds"
+    ],
+    "description": "Voyage into the Bermuda Triangle to rescue Grover Underwood and retrieve the Golden Fleece to save Camp Half-Blood.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "tyson"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "title": "Quest to Rescue Artemis and Annabeth",
+    "expected_slug": "quest-to-rescue-artemis",
+    "book_slug": "the-titans-curse",
+    "prophecy_slug": "the-titans-curse-prophecy",
+    "led_by_slug": "zoe-nightshade",
+    "objective": "Travel west to locate and rescue the captured goddess Artemis and Annabeth Chase, and confront the Titan Atlas.",
+    "outcome": "Successful rescuing of Artemis and Annabeth, but with fatal casualties (Bianca di Angelo and Zoë Nightshade killed).",
+    "initiated_by": "The Oracle of Delphi",
+    "location_slugs": [
+      "camp-half-blood",
+      "westover-hall",
+      "hoover-dam",
+      "mount-tamalpais",
+      "garden-of-the-hesperides",
+      "mount-olympus"
+    ],
+    "monster_slugs": [
+      "dr-thorn",
+      "nemean-lion",
+      "erymanthian-boar",
+      "ophiotaurus",
+      "ladon"
+    ],
+    "item_slugs": [
+      "lion-pelt"
+    ],
+    "description": "Cross-country search mission led by Zoë Nightshade to save Artemis and Annabeth from Mount Tamalpais.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "bianca-di-angelo"
+      },
+      {
+        "type": "character",
+        "slug": "zoe-nightshade"
+      }
+    ]
+  },
+  {
+    "title": "Quest into the Labyrinth",
+    "expected_slug": "quest-into-the-labyrinth",
+    "book_slug": "the-battle-of-the-labyrinth",
+    "prophecy_slug": "the-labyrinth-prophecy",
+    "led_by_slug": "annabeth-chase",
+    "objective": "Navigate Daedalus's subterranean Labyrinth to locate Daedalus, secure Ariadne's Thread, and prevent Kronos's army from invading Camp Half-Blood.",
+    "outcome": "Partially successful; Ariadne's Thread secured by Luke's forces but Daedalus sacrificed himself to collapse the Labyrinth following the Battle of Camp Half-Blood.",
+    "initiated_by": "Annabeth Chase via the Oracle of Delphi",
+    "location_slugs": [
+      "the-labyrinth",
+      "triple-g-ranch",
+      "alcatraz",
+      "mount-st-helens",
+      "ogygia",
+      "camp-half-blood"
+    ],
+    "monster_slugs": [
+      "kampe",
+      "kelli",
+      "geryon"
+    ],
+    "item_slugs": [
+      "ariadnes-thread",
+      "daedalus-laptop"
+    ],
+    "description": "Perilous subterranean expedition led by Annabeth Chase through the living Labyrinth.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "tyson"
+      },
+      {
+        "type": "character",
+        "slug": "rachel-elizabeth-dare"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "daedalus"
+      }
+    ]
+  },
+  {
+    "title": "Quest for Ares's Stolen Chariot",
+    "expected_slug": "quest-for-ares-stolen-chariot",
+    "book_slug": "percy-jackson-and-the-stolen-chariot",
+    "prophecy_slug": null,
+    "led_by_slug": "clarisse-la-rue",
+    "objective": "Recover Ares's war chariot from his antagonistic sons Phobos and Deimos in Brooklyn before sunset.",
+    "outcome": "Successful; Phobos and Deimos defeated and war chariot safely returned to Ares.",
+    "initiated_by": "Ares / Clarisse La Rue",
+    "location_slugs": [
+      "manhattan",
+      "brooklyn-zoo"
+    ],
+    "monster_slugs": [],
+    "item_slugs": [
+      "war-chariot"
+    ],
+    "description": "Short-notice emergency quest undertaken by Clarisse and Percy in New York City.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "clarisse-la-rue"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "title": "Quest for the Bronze Dragon",
+    "expected_slug": "quest-for-the-bronze-dragon",
+    "book_slug": "percy-jackson-and-the-bronze-dragon",
+    "prophecy_slug": null,
+    "led_by_slug": "charles-beckendorf",
+    "objective": "Reassemble and reactivate the magical Bronze Dragon automaton hidden in Camp Half-Blood's woods to rescue Beckendorf from Myrmekes.",
+    "outcome": "Successful; Bronze Dragon reassembled, Myrmekes nest defeated, and Beckendorf rescued.",
+    "initiated_by": "Charles Beckendorf and Silena Beauregard",
+    "location_slugs": [
+      "camp-half-blood"
+    ],
+    "monster_slugs": [],
+    "item_slugs": [
+      "bronze-dragon-head"
+    ],
+    "description": "Camp-based rescue mission in the Woods during a game of Capture the Flag.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "charles-beckendorf"
+      },
+      {
+        "type": "character",
+        "slug": "silena-beauregard"
+      },
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "annabeth-chase"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "title": "Quest for the Sword of Hades",
+    "expected_slug": "quest-for-the-sword-of-hades",
+    "book_slug": "percy-jackson-and-the-sword-of-hades",
+    "prophecy_slug": "the-prophecy-of-the-sword-of-hades",
+    "led_by_slug": "percy-jackson",
+    "objective": "Recover Hades's newly forged Stygian Iron keys/sword stolen by Ethan Nakamura and Iapetus before it leaves the Underworld.",
+    "outcome": "Successful; Titan Iapetus defeated and washed in the River Lethe, sword recovered and delivered to Persephone.",
+    "initiated_by": "Persephone in the Underworld",
+    "location_slugs": [
+      "the-underworld"
+    ],
+    "monster_slugs": [
+      "kelli"
+    ],
+    "item_slugs": [
+      "sword-of-hades"
+    ],
+    "description": "Underworld mission uniting children of the Big Three (Percy, Thalia, Nico) to retrieve a secret divine weapon.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "character",
+        "slug": "thalia-grace"
+      },
+      {
+        "type": "character",
+        "slug": "nico-di-angelo"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "title": "Quest for the Singer of Apollo",
+    "expected_slug": "quest-for-the-singer-of-apollo",
+    "book_slug": "percy-jackson-and-the-singer-of-apollo",
+    "prophecy_slug": null,
+    "led_by_slug": "percy-jackson",
+    "objective": "Recapture Apollo's runaway golden Celedon automaton in Times Square before his divine concert on Mount Olympus.",
+    "outcome": "Successful; Celedon pacified with musical spell and returned to Apollo.",
+    "initiated_by": "Apollo",
+    "location_slugs": [
+      "manhattan"
+    ],
+    "monster_slugs": [],
+    "item_slugs": [
+      "golden-celedon"
+    ],
+    "description": "Emergency Manhattan mission assigned by Apollo to Percy and Grover on Grover's birthday.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "percy-jackson"
+      },
+      {
+        "type": "god",
+        "slug": "apollo"
+      },
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      }
+    ],
+    "casualties": []
+  },
+  {
+    "title": "Quest of Perseus for Medusa's Head",
+    "expected_slug": "quest-of-perseus",
+    "book_slug": "percy-jacksons-greek-heroes",
+    "prophecy_slug": "prophecy-of-king-acrisius",
+    "led_by_slug": "perseus",
+    "objective": "Retrieve the severed head of the Gorgon Medusa to prevent King Polydectes from forcibly marrying Danaë.",
+    "outcome": "Successful; Medusa decapitated using Athena's shield and Hermes's harpe, and Polydectes petrified upon Perseus's return.",
+    "initiated_by": "King Polydectes of Seriphos",
+    "location_slugs": [
+      "seriphos"
+    ],
+    "monster_slugs": [
+      "medusa"
+    ],
+    "item_slugs": [
+      "harpe",
+      "kibisis",
+      "cap-of-invisibility",
+      "bronze-shield"
+    ],
+    "description": "Mythic hero quest of Perseus across the ancient world using divine gifts to slay Medusa.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "perseus"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "character",
+        "slug": "polydectes"
+      }
+    ]
+  },
+  {
+    "title": "Quest of Theseus to Slay the Minotaur",
+    "expected_slug": "quest-of-theseus",
+    "book_slug": "percy-jacksons-greek-heroes",
+    "prophecy_slug": null,
+    "led_by_slug": "theseus",
+    "objective": "Travel to Crete as a tribute, enter King Minos's Labyrinth, and slay the Minotaur to free Athens from human sacrifice.",
+    "outcome": "Successful; Minotaur slain in single combat and Theseus navigated out of the Labyrinth using Ariadne's Thread.",
+    "initiated_by": "Theseus / King Aegeus of Athens",
+    "location_slugs": [
+      "the-labyrinth"
+    ],
+    "monster_slugs": [
+      "minotaur"
+    ],
+    "item_slugs": [
+      "ariadnes-thread"
+    ],
+    "description": "Classical hero quest of Theseus entering the Cretan Labyrinth to destroy Asterion the Minotaur.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "theseus"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "monster",
+        "slug": "minotaur"
+      }
+    ]
+  },
+  {
+    "title": "Twelve Labors of Heracles",
+    "expected_slug": "twelve-labors-of-heracles",
+    "book_slug": "percy-jacksons-greek-heroes",
+    "prophecy_slug": "prophecy-of-eurystheus-and-hercules",
+    "led_by_slug": "heracles",
+    "objective": "Complete twelve impossible tasks assigned by King Eurystheus to expiate the murder of his family under Hera's madness.",
+    "outcome": "Successful; all twelve labors completed, securing Heracles's eventual divine ascension to Mount Olympus.",
+    "initiated_by": "Oracle of Delphi / King Eurystheus",
+    "location_slugs": [
+      "the-underworld",
+      "garden-of-the-hesperides"
+    ],
+    "monster_slugs": [
+      "nemean-lion",
+      "lernean-hydra",
+      "erymanthian-boar",
+      "geryon",
+      "ladon",
+      "cerberus"
+    ],
+    "item_slugs": [
+      "lion-pelt"
+    ],
+    "description": "Monumental epic quest sequence comprising twelve labors across ancient Greece, the Underworld, and the ends of the Earth.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "heracles"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "monster",
+        "slug": "nemean-lion"
+      },
+      {
+        "type": "monster",
+        "slug": "lernean-hydra"
+      },
+      {
+        "type": "monster",
+        "slug": "geryon"
+      },
+      {
+        "type": "monster",
+        "slug": "ladon"
+      }
+    ]
+  },
+  {
+    "title": "Quest of Bellerophon for Pegasus and the Chimera",
+    "expected_slug": "quest-of-bellerophon",
+    "book_slug": "percy-jacksons-greek-heroes",
+    "prophecy_slug": null,
+    "led_by_slug": "bellerophon",
+    "objective": "Tame the winged horse Pegasus with Athena's golden bridle and slay the fire-breathing Chimera terrorizing Lycia.",
+    "outcome": "Successful; Chimera choked with a lead-tipped spear and Bellerophon rewarded by King Iobates.",
+    "initiated_by": "King Iobates of Lycia",
+    "location_slugs": [],
+    "monster_slugs": [
+      "chimera"
+    ],
+    "item_slugs": [
+      "golden-bridle",
+      "lead-tipped-spear"
+    ],
+    "description": "Mythic hero quest of Bellerophon riding Pegasus to slay the Chimera.",
+    "participants": [
+      {
+        "type": "character",
+        "slug": "bellerophon"
+      }
+    ],
+    "casualties": [
+      {
+        "type": "monster",
+        "slug": "chimera"
+      }
+    ]
+  }
+]

@@ -1,8 +1,30 @@
 from django.test import TestCase
 
-from apps.bestiary.models import MonsterDefeat
-from apps.bestiary.serializers import MonsterDetailSerializer
+from apps.bestiary.models import CreatureMember, MonsterDefeat
+from apps.bestiary.serializers import CreatureDetailSerializer, MonsterDetailSerializer
 from tests.makers import make_book, make_character, make_god, make_monster
+
+
+class CreatureDetailSerializerTests(TestCase):
+    def test_returns_typed_members_and_legacy_character_slugs(self):
+        from tests.makers import make_creature
+
+        creature = make_creature(name='Cyclops')
+        tyson = make_character(name='Tyson')
+        polyphemus = make_monster(name='Polyphemus', monster_type='cyclops')
+        creature.notable_members.add(tyson)
+        CreatureMember.objects.create(creature=creature, member_monster=polyphemus)
+
+        data = CreatureDetailSerializer(creature).data
+
+        self.assertEqual(
+            data['notable_members'],
+            [
+                {'type': 'character', 'slug': 'tyson', 'name': 'Tyson'},
+                {'type': 'monster', 'slug': 'polyphemus', 'name': 'Polyphemus'},
+            ],
+        )
+        self.assertEqual(data['notable_member_slugs'], ['tyson'])
 
 
 class MonsterDetailSerializerTests(TestCase):

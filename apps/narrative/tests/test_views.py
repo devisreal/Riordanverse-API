@@ -1,6 +1,7 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
+from apps.narrative.models import QuestCasualty, QuestParticipant
 from tests.makers import (
     make_book,
     make_character,
@@ -129,6 +130,34 @@ class QuestViewTests(BaseAPITestCase):
 
     def test_filter_by_led_by(self):
         response = self.client.get(reverse('quest-list'), {'led_by': 'percy-jackson'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_detail_returns_typed_participant_and_casualty_payloads(self):
+        apollo = make_god(name='Apollo')
+        minotaur = make_monster(name='Minotaur')
+        QuestParticipant.objects.create(quest=self.quest, participant_god=apollo)
+        QuestCasualty.objects.create(quest=self.quest, casualty_monster=minotaur)
+
+        response = self.client.get(reverse('quest-detail', kwargs={'slug': self.quest.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['participants'][0]['type'], 'god')
+        self.assertEqual(response.data['participants'][0]['slug'], 'apollo')
+        self.assertEqual(response.data['casualties'][0]['type'], 'monster')
+        self.assertEqual(response.data['casualties'][0]['slug'], 'minotaur')
+
+    def test_filter_by_typed_god_participant(self):
+        QuestParticipant.objects.create(quest=self.quest, participant_god=make_god(name='Apollo'))
+        response = self.client.get(reverse('quest-list'), {'participant_god': 'apollo'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data['data']), 1)
+
+    def test_filter_by_typed_monster_casualty(self):
+        QuestCasualty.objects.create(
+            quest=self.quest, casualty_monster=make_monster(name='Minotaur')
+        )
+        response = self.client.get(reverse('quest-list'), {'casualty_monster': 'minotaur'})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data['data']), 1)
 

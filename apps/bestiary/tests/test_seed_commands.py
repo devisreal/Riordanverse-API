@@ -19,7 +19,7 @@ class MonsterSeedCommandTests(TestCase):
         output = StringIO()
         call_command('seed_monsters', stdout=output)
 
-        self.assertEqual(Monster.objects.count(), 22)
+        self.assertEqual(Monster.objects.count(), 25)
         self.assertEqual(Monster.objects.get(slug='minotaur').name, 'The Minotaur')
         self.assertEqual(MonsterDefeat.objects.count(), 0)
         self.assertEqual(
@@ -63,5 +63,5 @@ class MonsterSeedCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_monsters', stdout=rerun)
-        self.assertEqual(Monster.objects.count(), 22)
-        self.assertIn('22 updated', rerun.getvalue())
+        self.assertEqual(Monster.objects.count(), 25)
+        self.assertIn('25 updated', rerun.getvalue())

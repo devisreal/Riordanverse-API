@@ -210,7 +210,8 @@ class Creature(BaseModel):
 
     e.g. Satyr, Centaur, Harpy, Fury, Cyclops, Pegasus.
 
-    notable_members links to named Characters of this species.
+    Typed member_records link named Characters or Monsters of this species;
+    the notable_members manager remains Character-only for compatibility.
     abilities and weaknesses use JSONField per important-notes.md note 1.
 
     No image join table in V1 — species entries are reference data.
@@ -242,12 +243,15 @@ class Creature(BaseModel):
     abilities = models.JSONField(default=list)
     weaknesses = models.JSONField(default=list)
 
-    # Named individuals of this species
+    # Character members remain available through the legacy M2M manager; typed
+    # records additionally allow named Monsters to belong to a species.
     notable_members = models.ManyToManyField(
         'characters.Character',
+        through='CreatureMember',
+        through_fields=('creature', 'member_character'),
         blank=True,
         related_name='creature_species',
-        help_text='Named characters who are members of this species.',
+        help_text='Character members; use member_records for typed Character/Monster links.',
     )
 
     class Meta:
@@ -257,6 +261,54 @@ class Creature(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class CreatureMember(models.Model):
+    """A typed link from a creature species to one Character or Monster."""
+
+    creature = models.ForeignKey(Creature, on_delete=models.CASCADE, related_name='member_records')
+    member_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='creature_member_links',
+    )
+    member_monster = models.ForeignKey(
+        Monster,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='creature_member_links',
+    )
+
+    class Meta:
+        ordering = ['id']
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    models.Q(member_character__isnull=False, member_monster__isnull=True)
+                    | models.Q(member_character__isnull=True, member_monster__isnull=False)
+                ),
+                name='creature_member_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('creature', 'member_character'),
+                condition=models.Q(member_character__isnull=False),
+                name='creature_member_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('creature', 'member_monster'),
+                condition=models.Q(member_monster__isnull=False),
+                name='creature_member_unique_monster',
+            ),
+        ]
+        verbose_name = 'Creature Member'
+        verbose_name_plural = 'Creature Members'
+
+    def __str__(self):
+        entity = self.member_character or self.member_monster
+        return f'{self.creature}: {entity}'
 
 
 # ---------------------------------------------------------------------------

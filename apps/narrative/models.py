@@ -325,8 +325,11 @@ class Quest(BaseModel):
     )
     participants = models.ManyToManyField(
         'characters.Character',
+        through='QuestParticipant',
+        through_fields=('quest', 'participant_character'),
         blank=True,
         related_name='quests_participated_in',
+        help_text='Character participants; typed participant records support all entity types.',
     )
     objective = models.TextField(
         blank=True,
@@ -362,9 +365,11 @@ class Quest(BaseModel):
     )
     casualties = models.ManyToManyField(
         'characters.Character',
+        through='QuestCasualty',
+        through_fields=('quest', 'casualty_character'),
         blank=True,
         related_name='quests_died_in',
-        help_text='Characters who died during this quest.',
+        help_text='Character casualties; typed casualty records support all entity types.',
     )
     description = models.TextField(blank=True, null=True)
 
@@ -375,6 +380,204 @@ class Quest(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class QuestParticipant(models.Model):
+    """A typed participant link from a Quest to exactly one lore entity."""
+
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='participant_records')
+    participant_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+    participant_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+    participant_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+    participant_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_participant_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        participant_character__isnull=False,
+                        participant_god__isnull=True,
+                        participant_titan__isnull=True,
+                        participant_monster__isnull=True,
+                    )
+                    | models.Q(
+                        participant_character__isnull=True,
+                        participant_god__isnull=False,
+                        participant_titan__isnull=True,
+                        participant_monster__isnull=True,
+                    )
+                    | models.Q(
+                        participant_character__isnull=True,
+                        participant_god__isnull=True,
+                        participant_titan__isnull=False,
+                        participant_monster__isnull=True,
+                    )
+                    | models.Q(
+                        participant_character__isnull=True,
+                        participant_god__isnull=True,
+                        participant_titan__isnull=True,
+                        participant_monster__isnull=False,
+                    )
+                ),
+                name='quest_participant_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_character'),
+                condition=models.Q(participant_character__isnull=False),
+                name='quest_participant_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_god'),
+                condition=models.Q(participant_god__isnull=False),
+                name='quest_participant_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_titan'),
+                condition=models.Q(participant_titan__isnull=False),
+                name='quest_participant_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'participant_monster'),
+                condition=models.Q(participant_monster__isnull=False),
+                name='quest_participant_unique_monster',
+            ),
+        )
+        verbose_name = 'Quest Participant'
+        verbose_name_plural = 'Quest Participants'
+
+    def __str__(self):
+        entity = (
+            self.participant_character
+            or self.participant_god
+            or self.participant_titan
+            or self.participant_monster
+        )
+        return f'{self.quest}: {entity}'
+
+
+class QuestCasualty(models.Model):
+    """A typed casualty link from a Quest to exactly one lore entity."""
+
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='casualty_records')
+    casualty_character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+    casualty_god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+    casualty_titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+    casualty_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='quest_casualty_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        casualty_character__isnull=False,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=False,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=False,
+                        casualty_monster__isnull=True,
+                    )
+                    | models.Q(
+                        casualty_character__isnull=True,
+                        casualty_god__isnull=True,
+                        casualty_titan__isnull=True,
+                        casualty_monster__isnull=False,
+                    )
+                ),
+                name='quest_casualty_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_character'),
+                condition=models.Q(casualty_character__isnull=False),
+                name='quest_casualty_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_god'),
+                condition=models.Q(casualty_god__isnull=False),
+                name='quest_casualty_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_titan'),
+                condition=models.Q(casualty_titan__isnull=False),
+                name='quest_casualty_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('quest', 'casualty_monster'),
+                condition=models.Q(casualty_monster__isnull=False),
+                name='quest_casualty_unique_monster',
+            ),
+        )
+        verbose_name = 'Quest Casualty'
+        verbose_name_plural = 'Quest Casualties'
+
+    def __str__(self):
+        entity = (
+            self.casualty_character
+            or self.casualty_god
+            or self.casualty_titan
+            or self.casualty_monster
+        )
+        return f'{self.quest}: {entity}'
 
 
 # ---------------------------------------------------------------------------

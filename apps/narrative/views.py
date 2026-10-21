@@ -129,6 +129,14 @@ class QuestDetailView(generics.RetrieveAPIView):
     """GET /api/v1/quests/:slug/"""
 
     queryset = Quest.objects.prefetch_related(
+        'participant_records__participant_character',
+        'participant_records__participant_god',
+        'participant_records__participant_titan',
+        'participant_records__participant_monster',
+        'casualty_records__casualty_character',
+        'casualty_records__casualty_god',
+        'casualty_records__casualty_titan',
+        'casualty_records__casualty_monster',
         'participants',
         'casualties',
         'locations_visited',

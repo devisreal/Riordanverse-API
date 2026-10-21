@@ -1079,5 +1079,278 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth"
     ]
+  },
+  {
+    "name": "Ariadne's Thread",
+    "expected_slug": "ariadnes-thread",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "gold",
+    "form": [
+      "ball of glowing golden thread"
+    ],
+    "abilities": [
+      "navigates the Labyrinth by glowing and revealing the optimal path to any destination"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "daedalus",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "ariadne",
+      "theseus",
+      "daedalus",
+      "luke-castellan"
+    ],
+    "forged_by_notes": "Created by Daedalus",
+    "origin_story": "Invented by Daedalus for Ariadne to help Theseus navigate the Labyrinth.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Glowing golden thread created by Daedalus to navigate the Labyrinth.",
+    "forged_by_character_slug": "daedalus"
+  },
+  {
+    "name": "Bronze Dragon Head (Festus Core)",
+    "expected_slug": "bronze-dragon-head",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "celestial_bronze",
+    "form": [
+      "mechanical dragon head"
+    ],
+    "abilities": [
+      "breathes Greek fire",
+      "controls mechanical dragon limbs"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "charles-beckendorf",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "hephaestus-cabin",
+      "charles-beckendorf"
+    ],
+    "forged_by_notes": "Built by Nine Cabin demigods in ancient Camp Half-Blood.",
+    "origin_story": "The core control head of Camp Half-Blood's lost Bronze Dragon automaton, reassembled by Charles Beckendorf.",
+    "first_appearance_book_slug": "percy-jackson-and-the-bronze-dragon",
+    "books_appeared_in_slugs": [
+      "percy-jackson-and-the-bronze-dragon"
+    ],
+    "description": "The golden-bronze head of the Camp Half-Blood dragon automaton, containing its elemental fiery heart."
+  },
+  {
+    "name": "Polished Bronze Shield",
+    "expected_slug": "bronze-shield",
+    "true_name": null,
+    "weapon_type": "shield",
+    "material": "celestial_bronze",
+    "form": [
+      "mirror-polished round shield"
+    ],
+    "abilities": [
+      "provides clear mirror reflection to bypass petrifying gazes"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "perseus",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "athena",
+      "perseus"
+    ],
+    "forged_by_notes": "Polished to a mirror sheen by Athena.",
+    "origin_story": "Gifted by Athena to Perseus so he could view Medusa's reflection without turning to stone.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "A polished bronze shield so mirror-bright it functions as a crystal-clear reflector in battle.",
+    "forged_by_god_slug": "athena"
+  },
+  {
+    "name": "Cap of Invisibility",
+    "expected_slug": "cap-of-invisibility",
+    "true_name": "Helm of Darkness Prototype",
+    "weapon_type": "helm",
+    "material": "divine_material",
+    "form": [
+      "dark dog-skin cap"
+    ],
+    "abilities": [
+      "renders the wearer completely invisible"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hades",
+    "owner_history": [
+      "hades",
+      "perseus"
+    ],
+    "forged_by_notes": "Forged during the First Titanomachy.",
+    "origin_story": "Lent to Perseus by Hermes and the Nymphs to allow him to sneak into the Gorgons' lair unnoticed.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Hades's legendary cap of darkness, capable of cloaking the wearer in absolute shadow."
+  },
+  {
+    "name": "Flying Sneakers (Hermes' Winged Shoes)",
+    "expected_slug": "flying-sneakers",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "red-and-white Converse sneakers with tiny white wings at the heels"
+    ],
+    "abilities": [
+      "grants flight when the user speaks the command word 'Maia'"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "grover-underwood",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "hermes",
+      "luke-castellan",
+      "percy-jackson",
+      "grover-underwood"
+    ],
+    "forged_by_notes": "Enchanted by Hermes",
+    "origin_story": "Gifted by Hermes to Luke, passed to Percy, and worn by Grover in Book 1.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "description": "Flying red Converse sneakers enchanted by Hermes."
+  },
+  {
+    "name": "Bellerophon's Lead-Tipped Spear",
+    "expected_slug": "lead-tipped-spear",
+    "true_name": null,
+    "weapon_type": "spear",
+    "material": "mortal_steel",
+    "form": [
+      "spear tipped with a block of soft lead"
+    ],
+    "abilities": [
+      "melts into liquid fire in a monster's mouth to suffocate it"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": true,
+    "owner_primary_character_slug": "bellerophon",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "bellerophon"
+    ],
+    "forged_by_notes": "Crafted by Bellerophon before fighting the Chimera.",
+    "origin_story": "Invented by Bellerophon to defeat the Chimera; when thrust into her throat, her fire melted the lead, choking her.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "A custom spear capped with soft lead, designed to exploit fire-breathing monsters.",
+    "forged_by_character_slug": "bellerophon"
+  },
+  {
+    "name": "Nemean Lion Pelt",
+    "expected_slug": "lion-pelt",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "other",
+    "form": [
+      "golden lion-skin coat / cape"
+    ],
+    "abilities": [
+      "completely invulnerable to all weapons, claws, arrows, and elemental attacks"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "heracles",
+      "percy-jackson"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Slain by Heracles in myth, and by Percy at the Smithsonian in Book 3. Sacrificed to Poseidon.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Invulnerable golden pelt of the Nemean Lion."
+  },
+  {
+    "name": "Thermos of Winds",
+    "expected_slug": "thermos-of-winds",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "silver metal thermos with a red cap"
+    ],
+    "abilities": [
+      "releases trapped ocean winds (North, South, East, West) to propel ships or blast enemies"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "hermes",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Created by Hermes",
+    "origin_story": "Given by Hermes to Percy in Book 2 to power their ship across the ocean.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "description": "Metal thermos containing trapped winds, given to Percy by Hermes.",
+    "forged_by_god_slug": "hermes"
+  },
+  {
+    "name": "Ares's War Chariot",
+    "expected_slug": "war-chariot",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "imperial_gold",
+    "form": [
+      "crimson war chariot"
+    ],
+    "abilities": [
+      "drives at extreme speed",
+      "radiates a terror aura"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "ares",
+    "owner_history": [
+      "ares",
+      "clarisse-la-rue"
+    ],
+    "forged_by_notes": "Forged in Hephaestus's volcanic armories for Ares.",
+    "origin_story": "Ares's divine war chariot, stolen by Phobos and Deimos and recovered by Clarisse La Rue and Percy Jackson.",
+    "first_appearance_book_slug": "percy-jackson-and-the-stolen-chariot",
+    "books_appeared_in_slugs": [
+      "percy-jackson-and-the-stolen-chariot"
+    ],
+    "description": "A dark red war chariot belonging to Ares, capable of generating waves of divine fear.",
+    "forged_by_god_slug": "hephaestus"
   }
 ]

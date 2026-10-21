@@ -1,6 +1,15 @@
 from django.contrib import admin
 
-from apps.narrative.models import Book, BookImage, Event, Prophecy, ProphecySubject, Quest
+from apps.narrative.models import (
+    Book,
+    BookImage,
+    Event,
+    Prophecy,
+    ProphecySubject,
+    Quest,
+    QuestCasualty,
+    QuestParticipant,
+)
 
 
 class BookImageInline(admin.TabularInline):
@@ -73,6 +82,23 @@ class ProphecySubjectAdmin(admin.ModelAdmin):
         return obj.subject_character or obj.subject_god or obj.subject_titan or obj.subject_monster
 
 
+class QuestParticipantInline(admin.TabularInline):
+    model = QuestParticipant
+    extra = 0
+    raw_id_fields = (
+        'participant_character',
+        'participant_god',
+        'participant_titan',
+        'participant_monster',
+    )
+
+
+class QuestCasualtyInline(admin.TabularInline):
+    model = QuestCasualty
+    extra = 0
+    raw_id_fields = ('casualty_character', 'casualty_god', 'casualty_titan', 'casualty_monster')
+
+
 @admin.register(Quest)
 class QuestAdmin(admin.ModelAdmin):
     list_display = ('title', 'book', 'led_by', 'initiated_by')
@@ -80,13 +106,12 @@ class QuestAdmin(admin.ModelAdmin):
     search_fields = ('title', 'objective', 'outcome', 'description')
     raw_id_fields = ('book', 'led_by', 'prophecy')
     filter_horizontal = (
-        'participants',
-        'casualties',
         'locations_visited',
         'monsters_encountered',
         'items_recovered',
     )
     readonly_fields = ('created_at', 'updated_at')
+    inlines = (QuestParticipantInline, QuestCasualtyInline)
 
 
 @admin.register(Event)

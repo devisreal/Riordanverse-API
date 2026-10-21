@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from apps.bestiary.models import MonsterDefeat
+from apps.bestiary.models import CreatureMember, MonsterDefeat
 from apps.core.tests.base import BaseAPITestCase
 from tests.makers import make_book, make_character, make_creature, make_god, make_monster
 
@@ -83,6 +83,19 @@ class CreatureListViewTests(BaseAPITestCase):
     def test_detail_returns_200(self):
         response = self.client.get(reverse('creature-detail', kwargs={'slug': 'satyr'}))
         self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_typed_character_and_monster_members(self):
+        grover = make_character(name='Grover Underwood')
+        polyphemus = make_monster(name='Polyphemus', monster_type='cyclops')
+        self.creature.notable_members.add(grover)
+        CreatureMember.objects.create(creature=self.creature, member_monster=polyphemus)
+
+        response = self.client.get(reverse('creature-detail', kwargs={'slug': 'satyr'}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['notable_members'][0]['type'], 'character')
+        self.assertEqual(response.data['notable_members'][1]['type'], 'monster')
+        self.assertEqual(response.data['notable_member_slugs'], ['grover-underwood'])
 
     def test_members_subresource(self):
         grover = make_character(name='Grover Underwood')

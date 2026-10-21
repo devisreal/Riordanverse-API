@@ -1,4 +1,8 @@
+import json
 from io import StringIO
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 from django.core.management import call_command
 from django.test import TestCase
@@ -20,7 +24,7 @@ class SeedLocationsCommandTests(TestCase):
         output = StringIO()
         call_command('seed_locations', stdout=output)
 
-        self.assertEqual(Location.objects.count(), 24)
+        self.assertEqual(Location.objects.count(), 26)
         self.assertNotIn('[WARN]', output.getvalue())
 
         gateway_arch = Location.objects.get(slug='gateway-arch')
@@ -30,6 +34,16 @@ class SeedLocationsCommandTests(TestCase):
         tartarus = Location.objects.get(slug='tartarus')
         self.assertEqual(tartarus.controlled_by_god.slug, 'tartarus')
         self.assertIsNone(tartarus.controlled_by_titan)
+        brooklyn_zoo = Location.objects.get(slug='brooklyn-zoo')
+        self.assertIn(
+            'percy-jackson-and-the-stolen-chariot',
+            brooklyn_zoo.books_appeared_in.values_list('slug', flat=True),
+        )
+        seriphos = Location.objects.get(slug='seriphos')
+        self.assertIn(
+            'percy-jacksons-greek-heroes',
+            seriphos.books_appeared_in.values_list('slug', flat=True),
+        )
         self.assertIn(
             'the-last-olympian',
             Location.objects.get(slug='camp-half-blood').books_appeared_in.values_list(
@@ -39,5 +53,21 @@ class SeedLocationsCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_locations', stdout=rerun)
-        self.assertEqual(Location.objects.count(), 24)
-        self.assertIn('24 updated', rerun.getvalue())
+        self.assertEqual(Location.objects.count(), 26)
+        self.assertIn('26 updated', rerun.getvalue())
+
+    def test_seed_uses_explicit_expected_slug(self):
+        entry = {
+            'name': 'Canonical Test Place',
+            'expected_slug': 'master-slug',
+            'location_type': 'mortal_city',
+            'books_appeared_in_slugs': [],
+        }
+        with TemporaryDirectory() as directory:
+            data_file = Path(directory) / 'locations.json'
+            data_file.write_text(json.dumps([entry]), encoding='utf-8')
+            with patch('apps.locations.management.commands.seed_locations.DATA_FILE', data_file):
+                call_command('seed_locations', stdout=StringIO())
+
+        self.assertTrue(Location.objects.filter(slug='master-slug').exists())
+        self.assertFalse(Location.objects.filter(slug='canonical-test-place').exists())

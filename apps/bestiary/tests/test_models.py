@@ -1,6 +1,7 @@
+from django.db import IntegrityError, transaction
 from django.test import TestCase
 
-from apps.bestiary.models import MonsterDefeat
+from apps.bestiary.models import CreatureMember, MonsterDefeat
 from tests.makers import make_book, make_character, make_creature, make_god, make_monster
 
 
@@ -89,3 +90,25 @@ class CreatureModelTests(TestCase):
         grover = make_character(name='Grover Underwood')
         self.creature.notable_members.add(grover)
         self.assertIn(grover, self.creature.notable_members.all())
+
+    def test_member_records_support_character_and_monster_and_preserve_legacy_m2m(self):
+        grover = make_character(name='Grover Underwood')
+        polyphemus = make_monster(name='Polyphemus', monster_type='cyclops')
+        self.creature.notable_members.add(grover)
+        CreatureMember.objects.create(creature=self.creature, member_monster=polyphemus)
+
+        self.assertEqual(self.creature.member_records.count(), 2)
+        self.assertIn(grover, self.creature.notable_members.all())
+        self.assertNotIn(polyphemus, self.creature.notable_members.all())
+
+    def test_member_record_requires_exactly_one_entity(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            CreatureMember.objects.create(creature=self.creature)
+
+    def test_member_record_rejects_multiple_entity_types(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            CreatureMember.objects.create(
+                creature=self.creature,
+                member_character=make_character(name='Grover Underwood'),
+                member_monster=make_monster(name='Polyphemus', monster_type='cyclops'),
+            )

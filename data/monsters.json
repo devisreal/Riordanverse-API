@@ -751,5 +751,61 @@
       "percy-jacksons-greek-heroes"
     ],
     "description": "Fire-breathing giant who steals Hermes's caduceus in 'The Staff of Serapis' / 'The Demigod Files'. Slain by Percy Jackson and Annabeth Chase."
+  },
+  {
+    "name": "Bronze Dragon",
+    "expected_slug": "bronze-dragon",
+    "aliases": [],
+    "monster_type": "mechanical",
+    "allegiance": "olympian_ally",
+    "can_reform": false,
+    "reform_time": null,
+    "reform_location": null,
+    "abilities": [
+      "mechanical strength",
+      "Greek fire breath"
+    ],
+    "weaknesses": [
+      "damage to its mechanical components"
+    ],
+    "description": "A bronze dragon automaton found in the Camp Half-Blood woods and restored by demigods."
+  },
+  {
+    "name": "Talos",
+    "expected_slug": "talos",
+    "aliases": [
+      "Talos Automaton"
+    ],
+    "monster_type": "mechanical",
+    "allegiance": "independent",
+    "can_reform": false,
+    "reform_time": null,
+    "reform_location": null,
+    "abilities": [
+      "immense mechanical strength",
+      "bronze armor"
+    ],
+    "weaknesses": [
+      "the plug in its ankle that regulates its ichor"
+    ],
+    "description": "A rogue prototype Talos automaton destroyed by Bianca di Angelo in the Junkyard of the Gods."
+  },
+  {
+    "name": "Tammi",
+    "expected_slug": "tammi",
+    "aliases": [],
+    "monster_type": "empousa",
+    "allegiance": "kronos_army",
+    "can_reform": true,
+    "abilities": [
+      "seduction illusion magic",
+      "vampiric blood-draining",
+      "pyrokinesis"
+    ],
+    "weaknesses": [
+      "celestial bronze",
+      "illusions broken by insult or cold water"
+    ],
+    "description": "An Empousa associated with Kelli and the forces of Kronos."
   }
 ]

@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from apps.bestiary.models import Creature, Monster, MonsterDefeat
+from apps.bestiary.models import Creature, CreatureMember, Monster, MonsterDefeat
 from apps.images.serializers import ImageListSerializer
 
 
@@ -124,10 +124,39 @@ class CreatureListSerializer(serializers.ModelSerializer):
         ]
 
 
+class CreatureMemberSerializer(serializers.ModelSerializer):
+    """Typed named member of a Creature species."""
+
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CreatureMember
+        fields = ('type', 'slug', 'name')
+
+    def _entity(self, obj):
+        if obj.member_character_id:
+            return 'character', obj.member_character
+        if obj.member_monster_id:
+            return 'monster', obj.member_monster
+        return None, None
+
+    def get_type(self, obj):
+        return self._entity(obj)[0]
+
+    def get_slug(self, obj):
+        return self._entity(obj)[1].slug
+
+    def get_name(self, obj):
+        return self._entity(obj)[1].name
+
+
 class CreatureDetailSerializer(serializers.ModelSerializer):
     """Full detail — for single creature/species retrieval."""
 
     alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
+    notable_members = CreatureMemberSerializer(source='member_records', many=True, read_only=True)
     notable_member_slugs = serializers.SerializerMethodField()
 
     class Meta:
@@ -143,6 +172,7 @@ class CreatureDetailSerializer(serializers.ModelSerializer):
             'habitat',
             'abilities',
             'weaknesses',
+            'notable_members',
             'notable_member_slugs',
             'wiki_url',
             'created_at',

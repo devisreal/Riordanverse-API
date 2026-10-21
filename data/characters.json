@@ -884,7 +884,7 @@
     ]
   },
   {
-    "name": "Zo\u00eb Nightshade",
+    "name": "Zoë Nightshade",
     "expected_slug": "zoe-nightshade",
     "aliases": [
       "Lieutenant of Artemis",
@@ -1337,7 +1337,7 @@
     "greek_or_roman": "greek",
     "age_first_appearance": 18,
     "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Dana\u00eb",
+    "mortal_parent_name": "Danaë",
     "mortal_parent_ref_slug": "danae",
     "sibling_slugs": [
       "heracles",
@@ -1502,7 +1502,7 @@
     ],
     "quote": "Bring me another labor!",
     "description": "Greatest ancient Greek demigod who performed Twelve Labors, wore the Nemean Lion pelt, and was elevated to godhood.",
-    "lore_notes": "Zo\u00eb Nightshade gave him Riptide, but Heracles took all the credit without mentioning her.",
+    "lore_notes": "Zoë Nightshade gave him Riptide, but Heracles took all the credit without mentioning her.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes",
@@ -2601,8 +2601,8 @@
     ],
     "special_states": [],
     "quote": "I remember the power of boulders!",
-    "description": "The last surviving Hekatonkheir (Hundred-Handed One). Rescued from Alcatraz, he slays Kamp\u00ea during the Battle of the Labyrinth.",
-    "lore_notes": "Forged boulders to hurl Kamp\u00ea into the abyss.",
+    "description": "The last surviving Hekatonkheir (Hundred-Handed One). Rescued from Alcatraz, he slays Kampê during the Battle of the Labyrinth.",
+    "lore_notes": "Forged boulders to hurl Kampê into the abyss.",
     "first_appearance_book_slug": "the-battle-of-the-labyrinth",
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
@@ -3077,7 +3077,7 @@
     ]
   },
   {
-    "name": "Dana\u00eb",
+    "name": "Danaë",
     "expected_slug": "danae",
     "aliases": [
       "Mother of Perseus"
@@ -3182,8 +3182,8 @@
       "Accidentally killed years later by a stray discus thrown by Perseus, fulfilling prophecy"
     ],
     "quote": "Lock her in the bronze tower!",
-    "description": "King of Argos who locked Dana\u00eb in a bronze tower after an Oracle foretold his grandson would kill him.",
-    "lore_notes": "Could not escape the prophecy despite trying to kill Dana\u00eb and Perseus.",
+    "description": "King of Argos who locked Danaë in a bronze tower after an Oracle foretold his grandson would kill him.",
+    "lore_notes": "Could not escape the prophecy despite trying to kill Danaë and Perseus.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
@@ -3239,7 +3239,7 @@
       "Turned to stone when Perseus revealed Medusa's severed head at court"
     ],
     "quote": "Bring me the head of Medusa, boy!",
-    "description": "Evil king of Seriphos who sought to force Dana\u00eb into marriage and sent Perseus on a suicide mission for Medusa's head.",
+    "description": "Evil king of Seriphos who sought to force Danaë into marriage and sent Perseus on a suicide mission for Medusa's head.",
     "lore_notes": "Petrified by Medusa's head when Perseus returned.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
@@ -3495,5 +3495,60 @@
     "is_big_three_child": true,
     "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
     "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Pluto is represented by the existing Hades God record."
+  },
+  {
+    "name": "Blackjack",
+    "expected_slug": "blackjack",
+    "character_type": "creature",
+    "species": "pegasus",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "Percy's loyal black Pegasus, able to communicate telepathically with Poseidon's children."
+  },
+  {
+    "name": "Guido",
+    "expected_slug": "guido",
+    "character_type": "creature",
+    "species": "pegasus",
+    "gender": "unknown",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A named Pegasus and member of the Camp Half-Blood Pegasus herd."
+  },
+  {
+    "name": "Porkpie",
+    "expected_slug": "porkpie",
+    "character_type": "creature",
+    "species": "pegasus",
+    "gender": "unknown",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A named Pegasus and member of the Camp Half-Blood Pegasus herd."
+  },
+  {
+    "name": "Gleeson Hedge",
+    "expected_slug": "gleeson-hedge",
+    "character_type": "satyr",
+    "species": "satyr",
+    "gender": "male",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A satyr and protector of demigods."
+  },
+  {
+    "name": "Mrs. O'Leary",
+    "expected_slug": "mrs-oleary",
+    "character_type": "creature",
+    "species": "other",
+    "gender": "female",
+    "status": "alive",
+    "greek_or_roman": "greek",
+    "is_demigod": false,
+    "description": "A friendly hellhound who becomes a companion of Percy Jackson and Camp Half-Blood."
   }
 ]

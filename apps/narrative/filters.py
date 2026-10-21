@@ -72,12 +72,42 @@ class QuestFilter(django_filters.FilterSet):
     )
     participant = django_filters.CharFilter(
         field_name='participants__slug',
-        help_text='Filter by participant slug e.g. ?participant=annabeth-chase',
+        help_text='Filter by Character participant slug e.g. ?participant=annabeth-chase',
+    )
+    participant_god = django_filters.CharFilter(
+        field_name='participant_records__participant_god__slug',
+    )
+    participant_titan = django_filters.CharFilter(
+        field_name='participant_records__participant_titan__slug',
+    )
+    participant_monster = django_filters.CharFilter(
+        field_name='participant_records__participant_monster__slug',
+    )
+    casualty = django_filters.CharFilter(field_name='casualties__slug')
+    casualty_god = django_filters.CharFilter(
+        field_name='casualty_records__casualty_god__slug',
+    )
+    casualty_titan = django_filters.CharFilter(
+        field_name='casualty_records__casualty_titan__slug',
+    )
+    casualty_monster = django_filters.CharFilter(
+        field_name='casualty_records__casualty_monster__slug',
     )
 
     class Meta:
         model = Quest
-        fields = ('book', 'led_by', 'participant')
+        fields = (
+            'book',
+            'led_by',
+            'participant',
+            'participant_god',
+            'participant_titan',
+            'participant_monster',
+            'casualty',
+            'casualty_god',
+            'casualty_titan',
+            'casualty_monster',
+        )
 
 
 class EventFilter(django_filters.FilterSet):

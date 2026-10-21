@@ -22,7 +22,7 @@ class WeaponSeedCommandTests(TestCase):
             call_command(command, stdout=output)
             outputs.append(output.getvalue())
 
-        self.assertEqual(Weapon.objects.count(), 31)
+        self.assertEqual(Weapon.objects.count(), 40)
         self.assertFalse(any('[WARN]' in output for output in outputs))
 
         kronos = Titan.objects.get(slug='kronos')
@@ -44,7 +44,18 @@ class WeaponSeedCommandTests(TestCase):
         self.assertEqual(golden_celedon.owner_primary_god, apollo)
         self.assertEqual(golden_celedon.material, 'gold')
 
+        thermos = Weapon.objects.get(slug='thermos-of-winds')
+        self.assertEqual(thermos.owner_primary_character.slug, 'percy-jackson')
+        war_chariot = Weapon.objects.get(slug='war-chariot')
+        self.assertEqual(war_chariot.owner_primary_god.slug, 'ares')
+        self.assertIsNone(war_chariot.owner_primary_character)
+        cap = Weapon.objects.get(slug='cap-of-invisibility')
+        self.assertEqual(cap.owner_primary_god.slug, 'hades')
+        shield = Weapon.objects.get(slug='bronze-shield')
+        self.assertEqual(shield.owner_primary_character.slug, 'perseus')
+        self.assertEqual(shield.forged_by.slug, 'athena')
+
         rerun = StringIO()
         call_command('seed_items', stdout=rerun)
-        self.assertEqual(Weapon.objects.count(), 31)
-        self.assertIn('31 updated', rerun.getvalue())
+        self.assertEqual(Weapon.objects.count(), 40)
+        self.assertIn('40 updated', rerun.getvalue())
