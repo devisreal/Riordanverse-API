@@ -2,6 +2,7 @@
   {
     "name": "First Titanomachy",
     "expected_slug": "first-titanomachy",
+    "wiki_url": null,
     "event_type": "war",
     "book_slug": "percy-jacksons-greek-gods",
     "location_slug": "mount-olympus",
@@ -68,6 +69,7 @@
   {
     "name": "Battle of the St. Louis Arch",
     "expected_slug": "battle-of-the-st-louis-arch",
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Last_Olympian#The_River_Styx",
     "event_type": "battle",
     "book_slug": "the-lightning-thief",
     "location_slug": "gateway-arch",
@@ -93,6 +95,7 @@
   {
     "name": "Duel at Santa Monica Beach",
     "expected_slug": "duel-at-santa-monica-beach",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_the_Master_Bolt#Confronting_Ares",
     "event_type": "battle",
     "book_slug": "the-lightning-thief",
     "location_slug": "doa-recording-studios",
@@ -114,6 +117,7 @@
   {
     "name": "Battle of Monster Donut",
     "expected_slug": "battle-of-monster-donut",
+    "wiki_url": null,
     "event_type": "battle",
     "book_slug": "the-sea-of-monsters",
     "location_slug": "the-sea-of-monsters",
@@ -147,6 +151,7 @@
   {
     "name": "Clash at C.C.'s Spa and Resort",
     "expected_slug": "clash-at-ccs-spa-and-resort",
+    "wiki_url": "https://riordan.fandom.com/wiki/We_Check_In_to_C.C.%27s_Spa_%26_Resort",
     "event_type": "battle",
     "book_slug": "the-sea-of-monsters",
     "location_slug": "ccs-spa-and-resort",
@@ -168,6 +173,7 @@
   {
     "name": "Battle of Polyphemus's Island",
     "expected_slug": "battle-of-polyphemuses-island",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_the_Golden_Fleece",
     "event_type": "battle",
     "book_slug": "the-sea-of-monsters",
     "location_slug": "polyphemuses-island",
@@ -205,6 +211,7 @@
   {
     "name": "Resurrection of Thalia Grace",
     "expected_slug": "resurrection-of-thalia-grace",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_the_Golden_Fleece",
     "event_type": "political_event",
     "book_slug": "the-sea-of-monsters",
     "location_slug": "camp-half-blood",
@@ -230,6 +237,7 @@
   {
     "name": "Skirmish at Westover Hall",
     "expected_slug": "skirmish-at-westover-hall",
+    "wiki_url": "https://riordan.fandom.com/wiki/Westover_Hall",
     "event_type": "battle",
     "book_slug": "the-titans-curse",
     "location_slug": "westover-hall",
@@ -279,6 +287,7 @@
   {
     "name": "Battle at the Air and Space Museum",
     "expected_slug": "battle-at-the-air-and-space-museum",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_Artemis",
     "event_type": "battle",
     "book_slug": "the-titans-curse",
     "location_slug": "manhattan",
@@ -316,6 +325,7 @@
   {
     "name": "Destruction of the Talos Automaton",
     "expected_slug": "destruction-of-the-talos-automaton",
+    "wiki_url": "https://riordan.fandom.com/wiki/Talos_%28prototype%29",
     "event_type": "sacrifice",
     "book_slug": "the-titans-curse",
     "location_slug": "land-without-rain",
@@ -354,6 +364,7 @@
   {
     "name": "Battle of Mount Tamalpais",
     "expected_slug": "battle-of-mount-tamalpais",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_Artemis",
     "event_type": "battle",
     "book_slug": "the-titans-curse",
     "location_slug": "mount-tamalpais",
@@ -408,6 +419,7 @@
   {
     "name": "Battle of the Goode High School Gymnasium",
     "expected_slug": "battle-of-goode-high-school-gymnasium",
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Battle_of_the_Labyrinth#Orientation",
     "event_type": "battle",
     "book_slug": "the-battle-of-the-labyrinth",
     "location_slug": "manhattan",
@@ -437,6 +449,7 @@
   {
     "name": "Skirmish at Geryon's Triple G Ranch",
     "expected_slug": "skirmish-at-geryons-triple-g-ranch",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_Daedalus#The_Triple_G_Ranch",
     "event_type": "battle",
     "book_slug": "the-battle-of-the-labyrinth",
     "location_slug": "triple-g-ranch",
@@ -474,6 +487,7 @@
   {
     "name": "Eruption of Mount St. Helens",
     "expected_slug": "eruption-of-mount-st-helens",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_Daedalus#Calypso",
     "event_type": "sacrifice",
     "book_slug": "the-battle-of-the-labyrinth",
     "location_slug": "mount-st-helens",
@@ -495,6 +509,7 @@
   {
     "name": "Battle of the Labyrinth",
     "expected_slug": "battle-of-the-labyrinth",
+    "wiki_url": "https://riordan.fandom.com/wiki/Battle_of_the_Labyrinth",
     "event_type": "battle",
     "book_slug": "the-battle-of-the-labyrinth",
     "location_slug": "camp-half-blood",
@@ -545,6 +560,7 @@
   {
     "name": "Beckendorf's Sacrifice",
     "expected_slug": "beckendorfs-sacrifice",
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Last_Olympian",
     "event_type": "sacrifice",
     "book_slug": "the-last-olympian",
     "location_slug": "princess-andromeda",
@@ -579,6 +595,7 @@
   {
     "name": "Percy's Bath in the River Styx",
     "expected_slug": "percys-bath-in-the-river-styx",
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Last_Olympian#The_River_Styx",
     "event_type": "quest_event",
     "book_slug": "the-last-olympian",
     "location_slug": "the-underworld",
@@ -608,6 +625,7 @@
   {
     "name": "Battle of Williamsburg Bridge",
     "expected_slug": "battle-of-williamsburg-bridge",
+    "wiki_url": "https://riordan.fandom.com/wiki/Battle_of_Manhattan",
     "event_type": "battle",
     "book_slug": "the-last-olympian",
     "location_slug": "manhattan",
@@ -646,6 +664,7 @@
   {
     "name": "Defeat of the Lydian Drakon",
     "expected_slug": "defeat-of-the-lydian-drakon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Battle_of_Manhattan",
     "event_type": "battle",
     "book_slug": "the-last-olympian",
     "location_slug": "manhattan",
@@ -684,6 +703,7 @@
   {
     "name": "Battle of Manhattan",
     "expected_slug": "battle-of-manhattan",
+    "wiki_url": "https://riordan.fandom.com/wiki/Battle_of_Manhattan",
     "event_type": "war",
     "book_slug": "the-last-olympian",
     "location_slug": "manhattan",
@@ -802,6 +822,7 @@
   {
     "name": "The Olympian Council Reform Decree",
     "expected_slug": "the-olympian-council-reform-decree",
+    "wiki_url": "https://riordan.fandom.com/wiki/Battle_of_Manhattan",
     "event_type": "political_event",
     "book_slug": "the-last-olympian",
     "location_slug": "mount-olympus",
@@ -875,6 +896,7 @@
   {
     "name": "Battle of Brooklyn Bridge",
     "expected_slug": "battle-of-brooklyn-bridge",
+    "wiki_url": "https://riordan.fandom.com/wiki/Battle_of_Manhattan",
     "event_type": "battle",
     "book_slug": "the-demigod-files",
     "location_slug": "manhattan",
@@ -896,6 +918,7 @@
   {
     "name": "Battle of Times Square",
     "expected_slug": "battle-of-times-square",
+    "wiki_url": "https://riordan.fandom.com/wiki/Percy_Jackson_and_the_Singer_of_Apollo",
     "event_type": "battle",
     "book_slug": "percy-jackson-and-the-singer-of-apollo",
     "location_slug": "manhattan",

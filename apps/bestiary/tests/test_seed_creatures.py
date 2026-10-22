@@ -19,6 +19,11 @@ class SeedCreaturesCommandTests(TestCase):
         call_command('seed_creatures', stdout=output)
 
         self.assertEqual(Creature.objects.count(), 16)
+        self.assertEqual(Creature.objects.filter(wiki_url__isnull=False).count(), 16)
+        self.assertEqual(
+            Creature.objects.get(slug='pegasus').wiki_url,
+            'https://riordan.fandom.com/wiki/Pegasus_%28species%29',
+        )
         self.assertEqual(CreatureMember.objects.count(), 20)
         self.assertNotIn('[WARN]', character_output.getvalue())
         self.assertNotIn('[WARN]', monster_output.getvalue())

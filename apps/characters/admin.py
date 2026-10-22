@@ -10,6 +10,7 @@ class PowerInline(admin.TabularInline):
     extra = 1
     fields = (
         'name',
+        'wiki_url',
         'source',
         'type',
         'is_passive',

@@ -26,6 +26,7 @@ class PowerSeedCommandTests(TestCase):
             outputs.append(output.getvalue())
 
         self.assertEqual(Power.objects.count(), 14)
+        self.assertEqual(Power.objects.filter(wiki_url__isnull=False).count(), 8)
         self.assertFalse(any('[WARN]' in output for output in outputs), '\n'.join(outputs))
 
         percy = Character.objects.get(slug='percy-jackson')
@@ -34,6 +35,8 @@ class PowerSeedCommandTests(TestCase):
         self.assertEqual(hydrokinesis.source, 'divine_parent')
         self.assertEqual(hydrokinesis.first_demonstrated_book.slug, 'the-lightning-thief')
         self.assertEqual(hydrokinesis.display_order, 0)
+        self.assertEqual(hydrokinesis.wiki_url, 'https://riordan.fandom.com/wiki/Hydrokinesis')
+        self.assertIsNone(percy.powers.get(name='Personal Hurricane').wiki_url)
 
         celedon = Character.objects.get(slug='celedon')
         vocal_enchantment = celedon.powers.get(name='Hypnotic Vocal Enchantment')
@@ -46,6 +49,30 @@ class PowerSeedCommandTests(TestCase):
         call_command('seed_powers', stdout=rerun)
         self.assertEqual(Power.objects.count(), 14)
         self.assertIn('14 updated', rerun.getvalue())
+
+    def test_null_wiki_url_does_not_clear_existing_power_url(self):
+        percy = make_character(name='Percy Jackson')
+        power = Power.objects.create(
+            character=percy,
+            name='Personal Hurricane',
+            wiki_url='https://riordan.fandom.com/wiki/Existing_Hurricane',
+        )
+        data = [
+            {
+                'character_slug': percy.slug,
+                'name': 'Personal Hurricane',
+                'wiki_url': None,
+            }
+        ]
+
+        with TemporaryDirectory() as temp_dir:
+            data_file = Path(temp_dir) / 'powers.json'
+            data_file.write_text(json.dumps(data), encoding='utf-8')
+            with patch('apps.characters.management.commands.seed_powers.DATA_FILE', data_file):
+                call_command('seed_powers', stdout=StringIO())
+
+        power.refresh_from_db()
+        self.assertEqual(power.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Hurricane')
 
     def test_divine_parent_mismatch_warns_without_duplicating_parent(self):
         poseidon = make_god(name='Poseidon')

@@ -10,7 +10,7 @@ from django.test import TestCase
 from apps.characters.models import Character
 from apps.divinities.models import DivineRelationship, God, Titan
 from apps.narrative.models import Book
-from tests.makers import make_book, make_god
+from tests.makers import make_book, make_god, make_titan
 
 
 class DivinitySeedCommandTests(TestCase):
@@ -29,7 +29,17 @@ class DivinitySeedCommandTests(TestCase):
 
         self.assertEqual(Book.objects.count(), 12)
         self.assertEqual(God.objects.count(), 37)
+        self.assertEqual(God.objects.filter(wiki_url__isnull=False).count(), 37)
+        self.assertEqual(
+            God.objects.get(slug='tartarus').wiki_url,
+            'https://riordan.fandom.com/wiki/Tartarus_(primordial)',
+        )
         self.assertEqual(Titan.objects.count(), 17)
+        self.assertEqual(Titan.objects.filter(wiki_url__isnull=False).count(), 17)
+        self.assertEqual(
+            Titan.objects.get(slug='kronos').wiki_url,
+            'https://riordan.fandom.com/wiki/Kronos',
+        )
         self.assertEqual(DivineRelationship.objects.count(), 45)
         self.assertEqual(Character.objects.count(), 66)
         helios = Titan.objects.get(slug='helios')
@@ -81,6 +91,19 @@ class DivinitySeedCommandTests(TestCase):
         self.assertEqual(DivineRelationship.objects.count(), 45)
         self.assertIn('Exists:', rerun_relationships.getvalue())
 
+    def test_seed_titan_preserves_existing_url_when_source_url_is_missing(self):
+        titan = make_titan(name='Atlas', wiki_url='https://riordan.fandom.com/wiki/Existing_Atlas')
+        data = [{'name': 'Atlas'}]
+
+        with TemporaryDirectory() as temp_dir:
+            data_file = Path(temp_dir) / 'titans.json'
+            data_file.write_text(json.dumps(data), encoding='utf-8')
+            with patch('apps.divinities.management.commands.seed_titans.DATA_FILE', data_file):
+                call_command('seed_titans', stdout=StringIO())
+
+        titan.refresh_from_db()
+        self.assertEqual(titan.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Atlas')
+
     def test_seeded_rhea_relationships_are_typed_as_titan(self):
         for command in (
             'seed_books',
@@ -130,7 +153,11 @@ class MissingRelationshipEntityWarningTests(TestCase):
 class MissingBookSlugWarningTests(TestCase):
     def test_missing_book_slugs_warn_and_skip_only_missing_references(self):
         valid_book = make_book(title='Valid Book', book_number=1)
-        god = make_god(name='Zeus', first_appearance_book=valid_book)
+        god = make_god(
+            name='Zeus',
+            first_appearance_book=valid_book,
+            wiki_url='https://riordan.fandom.com/wiki/Existing_Zeus',
+        )
         data = [
             {
                 'name': 'Zeus',
@@ -148,6 +175,7 @@ class MissingBookSlugWarningTests(TestCase):
 
         god.refresh_from_db()
         self.assertEqual(god.first_appearance_book, valid_book)
+        self.assertEqual(god.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Zeus')
         self.assertEqual(list(god.books_appeared_in.all()), [valid_book])
         self.assertEqual(output.getvalue().count('Warning:'), 2)
         self.assertIn('Gods seeded: 0 created, 1 updated, 0 errors.', output.getvalue())

@@ -26,6 +26,7 @@ class MonsterListSerializer(serializers.ModelSerializer):
             'allegiance_display',
             'can_reform',
             'disguise_form',
+            'wiki_url',
             'primary_image',
         ]
 
@@ -121,6 +122,7 @@ class CreatureListSerializer(serializers.ModelSerializer):
             'alignment_display',
             'habitat',
             'origin',
+            'wiki_url',
         ]
 
 

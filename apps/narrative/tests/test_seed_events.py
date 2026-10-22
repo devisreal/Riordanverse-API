@@ -33,6 +33,11 @@ class SeedEventsCommandTests(TestCase):
         outputs = self.seed_all()
 
         self.assertEqual(Event.objects.count(), 23)
+        self.assertEqual(Event.objects.filter(wiki_url__isnull=False).count(), 21)
+        self.assertEqual(
+            Event.objects.get(slug='battle-of-the-st-louis-arch').wiki_url,
+            'https://riordan.fandom.com/wiki/The_Last_Olympian#The_River_Styx',
+        )
         self.assertEqual(EventCasualty.objects.count(), 13)
         self.assertEqual(
             sum(event.participant_characters.count() for event in Event.objects.all()),
@@ -63,6 +68,17 @@ class SeedEventsCommandTests(TestCase):
         self.assertEqual(Event.objects.count(), 23)
         self.assertEqual(EventCasualty.objects.count(), 13)
         self.assertIn('23 updated', rerun.getvalue())
+
+    def test_null_wiki_url_does_not_clear_existing_event_url(self):
+        self.seed_all()
+        event = Event.objects.get(slug='first-titanomachy')
+        event.wiki_url = 'https://riordan.fandom.com/wiki/Existing_Event'
+        event.save(update_fields=['wiki_url'])
+
+        call_command('seed_events', stdout=StringIO())
+
+        event.refresh_from_db()
+        self.assertEqual(event.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Event')
 
     def test_unresolved_references_warn_and_are_skipped(self):
         entry = {

@@ -48,20 +48,21 @@ class Command(BaseCommand):
         for index, entry in enumerate(entries):
             slug = entry['expected_slug']
             temporary_number = staging_number + len(existing) + index
-            book, created = Book.objects.update_or_create(
-                slug=slug,
-                defaults={
-                    'title': entry['title'],
-                    'series': entry['series'],
-                    'book_number': temporary_number,
-                    'published_date': entry.get('published_date'),
-                    'synopsis': entry.get('synopsis'),
-                    'short_description': entry.get('short_description'),
-                    'book_type': entry.get('book_type', 'novel'),
-                    'camp_bead_description': entry.get('camp_bead_description'),
-                    'parent_collection': None,
-                },
-            )
+            defaults = {
+                'title': entry['title'],
+                'series': entry['series'],
+                'book_number': temporary_number,
+                'published_date': entry.get('published_date'),
+                'synopsis': entry.get('synopsis'),
+                'short_description': entry.get('short_description'),
+                'book_type': entry.get('book_type', 'novel'),
+                'camp_bead_description': entry.get('camp_bead_description'),
+                'parent_collection': None,
+            }
+            if entry.get('wiki_url'):
+                defaults['wiki_url'] = entry['wiki_url']
+
+            book, created = Book.objects.update_or_create(slug=slug, defaults=defaults)
             if book.slug != slug:
                 raise CommandError(
                     f'Book slug mismatch for {entry["title"]!r}: '

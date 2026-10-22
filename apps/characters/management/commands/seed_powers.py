@@ -91,6 +91,9 @@ class Command(BaseCommand):
                     'first_demonstrated_book': first_book,
                     'display_order': entry.get('display_order', 0),
                 }
+                if entry.get('wiki_url'):
+                    defaults['wiki_url'] = entry['wiki_url']
+
                 _, created = Power.objects.update_or_create(
                     character=character,
                     name=name,

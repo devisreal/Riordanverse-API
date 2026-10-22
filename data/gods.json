@@ -2,6 +2,7 @@
   {
     "name": "Zeus",
     "expected_slug": "zeus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Zeus",
     "roman_name": "Jupiter",
     "mythology": "greek",
     "tier": "olympian",
@@ -51,6 +52,7 @@
   {
     "name": "Hera",
     "expected_slug": "hera",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hera",
     "roman_name": "Juno",
     "mythology": "greek",
     "tier": "olympian",
@@ -99,6 +101,7 @@
   {
     "name": "Poseidon",
     "expected_slug": "poseidon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Poseidon",
     "roman_name": "Neptune",
     "mythology": "greek",
     "tier": "olympian",
@@ -149,6 +152,7 @@
   {
     "name": "Demeter",
     "expected_slug": "demeter",
+    "wiki_url": "https://riordan.fandom.com/wiki/Demeter",
     "roman_name": "Ceres",
     "mythology": "greek",
     "tier": "olympian",
@@ -196,6 +200,7 @@
   {
     "name": "Ares",
     "expected_slug": "ares",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ares",
     "roman_name": "Mars",
     "mythology": "greek",
     "tier": "olympian",
@@ -246,6 +251,7 @@
   {
     "name": "Athena",
     "expected_slug": "athena",
+    "wiki_url": "https://riordan.fandom.com/wiki/Athena",
     "roman_name": "Minerva",
     "mythology": "greek",
     "tier": "olympian",
@@ -292,6 +298,7 @@
   {
     "name": "Apollo",
     "expected_slug": "apollo",
+    "wiki_url": "https://riordan.fandom.com/wiki/Apollo",
     "roman_name": "Phoebus",
     "mythology": "greek",
     "tier": "olympian",
@@ -348,6 +355,7 @@
   {
     "name": "Artemis",
     "expected_slug": "artemis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Artemis",
     "roman_name": "Diana",
     "mythology": "greek",
     "tier": "olympian",
@@ -397,6 +405,7 @@
   {
     "name": "Hephaestus",
     "expected_slug": "hephaestus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hephaestus",
     "roman_name": "Vulcan",
     "mythology": "greek",
     "tier": "olympian",
@@ -444,6 +453,7 @@
   {
     "name": "Aphrodite",
     "expected_slug": "aphrodite",
+    "wiki_url": "https://riordan.fandom.com/wiki/Aphrodite",
     "roman_name": "Venus",
     "mythology": "greek",
     "tier": "olympian",
@@ -492,6 +502,7 @@
   {
     "name": "Hermes",
     "expected_slug": "hermes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hermes",
     "roman_name": "Mercury",
     "mythology": "greek",
     "tier": "olympian",
@@ -540,6 +551,7 @@
   {
     "name": "Dionysus",
     "expected_slug": "dionysus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Dionysus",
     "roman_name": "Bacchus",
     "mythology": "greek",
     "tier": "olympian",
@@ -592,6 +604,7 @@
   {
     "name": "Hades",
     "expected_slug": "hades",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hades",
     "roman_name": "Pluto",
     "mythology": "greek",
     "tier": "chthonic",
@@ -644,6 +657,7 @@
   {
     "name": "Hestia",
     "expected_slug": "hestia",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hestia",
     "roman_name": "Vesta",
     "mythology": "greek",
     "tier": "olympian",
@@ -687,6 +701,7 @@
   {
     "name": "Persephone",
     "expected_slug": "persephone",
+    "wiki_url": "https://riordan.fandom.com/wiki/Persephone",
     "roman_name": "Proserpina",
     "mythology": "greek",
     "tier": "chthonic",
@@ -733,6 +748,7 @@
   {
     "name": "Iris",
     "expected_slug": "iris",
+    "wiki_url": "https://riordan.fandom.com/wiki/Iris",
     "roman_name": "Arcus",
     "mythology": "greek",
     "tier": "minor",
@@ -774,6 +790,7 @@
   {
     "name": "Hypnos",
     "expected_slug": "hypnos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hypnos",
     "roman_name": "Somnus",
     "mythology": "greek",
     "tier": "minor",
@@ -813,6 +830,7 @@
   {
     "name": "Nemesis",
     "expected_slug": "nemesis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemesis",
     "roman_name": "Invidia",
     "mythology": "greek",
     "tier": "minor",
@@ -855,6 +873,7 @@
   {
     "name": "Nike",
     "expected_slug": "nike",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nike",
     "roman_name": "Victoria",
     "mythology": "greek",
     "tier": "minor",
@@ -895,6 +914,7 @@
   {
     "name": "Hebe",
     "expected_slug": "hebe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hebe",
     "roman_name": "Juventas",
     "mythology": "greek",
     "tier": "minor",
@@ -934,6 +954,7 @@
   {
     "name": "Tyche",
     "expected_slug": "tyche",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tyche",
     "roman_name": "Fortuna",
     "mythology": "greek",
     "tier": "minor",
@@ -973,6 +994,7 @@
   {
     "name": "Hecate",
     "expected_slug": "hecate",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hecate",
     "roman_name": "Trivia",
     "mythology": "greek",
     "tier": "minor",
@@ -1022,6 +1044,7 @@
   {
     "name": "Pan",
     "expected_slug": "pan",
+    "wiki_url": "https://riordan.fandom.com/wiki/Pan",
     "roman_name": "Faunus",
     "mythology": "greek",
     "tier": "nature_deity",
@@ -1065,6 +1088,7 @@
   {
     "name": "Circe",
     "expected_slug": "circe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Circe",
     "roman_name": "Circe",
     "mythology": "greek",
     "tier": "minor",
@@ -1107,6 +1131,7 @@
   {
     "name": "Phobos",
     "expected_slug": "phobos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Phobos",
     "roman_name": "Timor",
     "mythology": "greek",
     "tier": "minor",
@@ -1140,6 +1165,7 @@
   {
     "name": "Deimos",
     "expected_slug": "deimos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Deimos",
     "roman_name": "Formido",
     "mythology": "greek",
     "tier": "minor",
@@ -1173,6 +1199,7 @@
   {
     "name": "Melinoë",
     "expected_slug": "melinoe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Melinoe",
     "roman_name": "Melinoe",
     "mythology": "greek",
     "tier": "chthonic",
@@ -1206,6 +1233,7 @@
   {
     "name": "Triton",
     "expected_slug": "triton",
+    "wiki_url": "https://riordan.fandom.com/wiki/Triton",
     "roman_name": "Triton",
     "mythology": "greek",
     "tier": "minor",
@@ -1244,6 +1272,7 @@
   {
     "name": "Janus",
     "expected_slug": "janus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Janus",
     "roman_name": "Janus",
     "mythology": "roman",
     "tier": "minor",
@@ -1282,6 +1311,7 @@
   {
     "name": "Morpheus",
     "expected_slug": "morpheus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Morpheus",
     "roman_name": "Morpheus",
     "mythology": "greek",
     "tier": "minor",
@@ -1317,6 +1347,7 @@
   {
     "name": "Chaos",
     "expected_slug": "chaos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Chaos",
     "roman_name": "Chaos",
     "mythology": "greek",
     "tier": "primordial",
@@ -1351,6 +1382,7 @@
   {
     "name": "Ouranos",
     "expected_slug": "ouranos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ouranos",
     "roman_name": "Caelus",
     "mythology": "greek",
     "tier": "primordial",
@@ -1385,6 +1417,7 @@
   {
     "name": "Gaea",
     "expected_slug": "gaea",
+    "wiki_url": "https://riordan.fandom.com/wiki/Gaea",
     "roman_name": "Terra / Tellus",
     "mythology": "greek",
     "tier": "primordial",
@@ -1428,6 +1461,7 @@
   {
     "name": "Amphitrite",
     "expected_slug": "amphitrite",
+    "wiki_url": "https://riordan.fandom.com/wiki/Amphitrite",
     "roman_name": "Salacia",
     "mythology": "greek",
     "tier": "minor",
@@ -1467,6 +1501,7 @@
   {
     "name": "Boreas",
     "expected_slug": "boreas",
+    "wiki_url": "https://riordan.fandom.com/wiki/Boreas",
     "roman_name": "Aquilon",
     "mythology": "greek",
     "tier": "minor",
@@ -1504,6 +1539,7 @@
   {
     "name": "Khione",
     "expected_slug": "khione",
+    "wiki_url": "https://riordan.fandom.com/wiki/Khione",
     "roman_name": "Chione",
     "mythology": "greek",
     "tier": "minor",
@@ -1538,6 +1574,7 @@
   {
     "name": "Tartarus",
     "expected_slug": "tartarus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tartarus_(primordial)",
     "roman_name": "Tartarus",
     "mythology": "greek",
     "tier": "primordial",

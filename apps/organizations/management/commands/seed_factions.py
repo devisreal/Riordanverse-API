@@ -77,6 +77,9 @@ class Command(BaseCommand):
                             self.style,
                         ),
                     }
+                    if entry.get('wiki_url'):
+                        defaults['wiki_url'] = entry['wiki_url']
+
                     faction, created = Faction.objects.update_or_create(
                         slug=entry['expected_slug'],
                         defaults=defaults,

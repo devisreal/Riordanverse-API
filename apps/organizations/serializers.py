@@ -24,6 +24,7 @@ class CabinListSerializer(serializers.ModelSerializer):
             'is_empty',
             'position',
             'position_display',
+            'wiki_url',
         ]
 
     def get_deity_slug(self, obj):
@@ -98,6 +99,7 @@ class FactionListSerializer(serializers.ModelSerializer):
             'alignment',
             'alignment_display',
             'leader',
+            'wiki_url',
         ]
 
     def get_leader(self, obj):

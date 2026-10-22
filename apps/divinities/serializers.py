@@ -95,6 +95,7 @@ class GodListSerializer(serializers.ModelSerializer):
             'is_big_three',
             'has_cabin',
             'cabin_number',
+            'wiki_url',
             'primary_image',
         ]
 
@@ -207,6 +208,7 @@ class TitanListSerializer(serializers.ModelSerializer):
             'symbols',
             'sacred_animals',
             'sacred_plants',
+            'wiki_url',
             'primary_image',
         ]
 

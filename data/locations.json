@@ -2,6 +2,7 @@
   {
     "name": "Camp Half-Blood",
     "expected_slug": "camp-half-blood",
+    "wiki_url": "https://riordan.fandom.com/wiki/Camp_Half-Blood",
     "location_type": "camp",
     "real_world_location": "Long Island, New York (Strawberry fields)",
     "mythological_significance": "Primary sanctuary and training ground for Greek demigods in North America.",
@@ -29,6 +30,7 @@
   {
     "name": "Mount Olympus",
     "expected_slug": "mount-olympus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Olympus",
     "location_type": "olympus",
     "real_world_location": "Empire State Building 600th Floor, New York City",
     "mythological_significance": "Divine citadel and home of the twelve Olympian gods.",
@@ -53,6 +55,7 @@
   {
     "name": "The Underworld",
     "expected_slug": "the-underworld",
+    "wiki_url": "https://riordan.fandom.com/wiki/Underworld",
     "location_type": "underworld",
     "real_world_location": "Entrance at DOA Recording Studios, Los Angeles, California",
     "mythological_significance": "Realm of the dead ruled by Hades.",
@@ -79,6 +82,7 @@
   {
     "name": "The Labyrinth",
     "expected_slug": "the-labyrinth",
+    "wiki_url": "https://riordan.fandom.com/wiki/Labyrinth",
     "location_type": "labyrinth",
     "real_world_location": "Subterranean network spanning North America",
     "mythological_significance": "Sentient subterranean maze built by Daedalus.",
@@ -100,6 +104,7 @@
   {
     "name": "Lotus Hotel and Casino",
     "expected_slug": "lotus-hotel-and-casino",
+    "wiki_url": "https://riordan.fandom.com/wiki/Lotus_Hotel_and_Casino",
     "location_type": "hotel_or_building",
     "real_world_location": "Las Vegas, Nevada",
     "mythological_significance": "Modern lair of the Lotus Eaters, where time slows down for trapped guests.",
@@ -122,6 +127,7 @@
   {
     "name": "Gateway Arch",
     "expected_slug": "gateway-arch",
+    "wiki_url": "https://riordan.fandom.com/wiki/Gateway_Arch",
     "location_type": "hotel_or_building",
     "real_world_location": "St. Louis, Missouri",
     "mythological_significance": "Site of Percy's battle with Echidna and the Chimera.",
@@ -142,6 +148,7 @@
   {
     "name": "Waterland",
     "expected_slug": "waterland",
+    "wiki_url": "https://riordan.fandom.com/wiki/Waterland",
     "location_type": "hotel_or_building",
     "real_world_location": "Denver, Colorado",
     "mythological_significance": "Abandoned amusement park containing Hephaestus's trap for Ares and Aphrodite.",
@@ -162,6 +169,7 @@
   {
     "name": "DOA Recording Studios",
     "expected_slug": "doa-recording-studios",
+    "wiki_url": "https://riordan.fandom.com/wiki/DOA_Recording_Studios",
     "location_type": "hotel_or_building",
     "real_world_location": "West Hollywood, Los Angeles, California",
     "mythological_significance": "Mortal front and entrance lobby for the Underworld.",
@@ -182,6 +190,7 @@
   {
     "name": "Crusty's Waterbed Palace",
     "expected_slug": "crustys-waterbed-palace",
+    "wiki_url": "https://riordan.fandom.com/wiki/Crusty%27s_Water_Bed_Palace",
     "location_type": "hotel_or_building",
     "real_world_location": "West Hollywood, California",
     "mythological_significance": "Lair of Procrustes (Crusty the Stretcher).",
@@ -202,6 +211,7 @@
   {
     "name": "The Sea of Monsters",
     "expected_slug": "the-sea-of-monsters",
+    "wiki_url": "https://riordan.fandom.com/wiki/Sea_of_Monsters",
     "location_type": "sea",
     "real_world_location": "Bermuda Triangle (Atlantic Ocean)",
     "mythological_significance": "Mythological sea zone containing mythical islands and hazards.",
@@ -223,6 +233,7 @@
   {
     "name": "Polyphemus's Island",
     "expected_slug": "polyphemuses-island",
+    "wiki_url": "https://riordan.fandom.com/wiki/Polyphemus%27_Island",
     "location_type": "mythical_island",
     "real_world_location": "Sea of Monsters (Bermuda Triangle)",
     "mythological_significance": "Island lair of Polyphemus the Cyclops and location of the Golden Fleece.",
@@ -244,6 +255,7 @@
   {
     "name": "C.C.'s Spa and Resort",
     "expected_slug": "ccs-spa-and-resort",
+    "wiki_url": "https://riordan.fandom.com/wiki/C.C.%27s_Spa_%26_Resort",
     "location_type": "mythical_island",
     "real_world_location": "Island of Aiaia, Sea of Monsters",
     "mythological_significance": "Island resort run by the sorceress Circe.",
@@ -265,6 +277,7 @@
   {
     "name": "Princess Andromeda",
     "expected_slug": "princess-andromeda",
+    "wiki_url": "https://riordan.fandom.com/wiki/Princess_Andromeda",
     "location_type": "hotel_or_building",
     "real_world_location": "Floating in Atlantic / Hudson River",
     "mythological_significance": "Flagship luxury cruise ship of Kronos's army.",
@@ -287,6 +300,7 @@
   {
     "name": "Westover Hall",
     "expected_slug": "westover-hall",
+    "wiki_url": "https://riordan.fandom.com/wiki/Westover_Hall",
     "location_type": "hotel_or_building",
     "real_world_location": "Bar Harbor, Maine",
     "mythological_significance": "Boarding school where Bianca and Nico di Angelo were discovered.",
@@ -309,6 +323,7 @@
   {
     "name": "Mount Tamalpais",
     "expected_slug": "mount-tamalpais",
+    "wiki_url": "https://riordan.fandom.com/wiki/Mount_Tamalpais",
     "location_type": "mountain",
     "real_world_location": "Marin County, California",
     "mythological_significance": "Site of rebuilt Mount Othrys, Garden of Hesperides, and the Sky Burden.",
@@ -331,6 +346,7 @@
   {
     "name": "Garden of the Hesperides",
     "expected_slug": "garden-of-the-hesperides",
+    "wiki_url": "https://riordan.fandom.com/wiki/Garden_of_the_Hesperides",
     "location_type": "divine_realm",
     "real_world_location": "Mount Tamalpais, California",
     "mythological_significance": "Sacred orchard containing Hera's golden apple tree guarded by Ladon.",
@@ -353,6 +369,7 @@
   {
     "name": "Hoover Dam",
     "expected_slug": "hoover-dam",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hoover_Dam",
     "location_type": "hotel_or_building",
     "real_world_location": "Nevada/Arizona border",
     "mythological_significance": "Mortal engineering feat where Percy meets Rachel Elizabeth Dare.",
@@ -374,6 +391,7 @@
   {
     "name": "Ogygia",
     "expected_slug": "ogygia",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ogygia",
     "location_type": "mythical_island",
     "real_world_location": "Phantom island in unknown sea",
     "mythological_significance": "Calypso's enchanted island prison.",
@@ -395,6 +413,7 @@
   {
     "name": "Mount St. Helens",
     "expected_slug": "mount-st-helens",
+    "wiki_url": "https://riordan.fandom.com/wiki/Mount_Saint_Helens",
     "location_type": "mountain",
     "real_world_location": "Skamania County, Washington State",
     "mythological_significance": "Forge of the Telekhines and prison of the monster Typhon.",
@@ -416,6 +435,7 @@
   {
     "name": "Triple G Ranch",
     "expected_slug": "triple-g-ranch",
+    "wiki_url": "https://riordan.fandom.com/wiki/Triple_G_Ranch",
     "location_type": "hotel_or_building",
     "real_world_location": "Texas (near San Antonio)",
     "mythological_significance": "Ranch operated by three-bodied giant Geryon feeding flesh-eating cattle.",
@@ -437,6 +457,7 @@
   {
     "name": "Alcatraz Island",
     "expected_slug": "alcatraz",
+    "wiki_url": "https://riordan.fandom.com/wiki/Alcatraz_Island",
     "location_type": "hotel_or_building",
     "real_world_location": "San Francisco Bay, California",
     "mythological_significance": "Tartarus prison outpost guarded by Kampê holding Briares.",
@@ -457,6 +478,7 @@
   {
     "name": "Manhattan",
     "expected_slug": "manhattan",
+    "wiki_url": "https://riordan.fandom.com/wiki/Manhattan",
     "location_type": "mortal_city",
     "real_world_location": "New York City, New York",
     "mythological_significance": "Primary battleground for the Second Titanomachy.",
@@ -480,6 +502,7 @@
   {
     "name": "Tartarus",
     "expected_slug": "tartarus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tartarus",
     "location_type": "underworld",
     "real_world_location": "Abyss below the Underworld",
     "mythological_significance": "Primordial abyss where defeated Titans and monsters are cast.",
@@ -503,6 +526,7 @@
   {
     "name": "Undersea Palace of Poseidon",
     "expected_slug": "poseidons-undersea-palace",
+    "wiki_url": "https://riordan.fandom.com/wiki/Atlantis",
     "location_type": "divine_realm",
     "real_world_location": "Atlantic Ocean seabed",
     "mythological_significance": "Divine seat of Poseidon's ocean kingdom.",
@@ -523,6 +547,7 @@
   {
     "name": "Brooklyn Zoo",
     "expected_slug": "brooklyn-zoo",
+    "wiki_url": null,
     "location_type": "mortal_city",
     "real_world_location": "Prospect Park, Brooklyn, New York City",
     "mythological_significance": "Hiding site chosen by Phobos and Deimos to conceal Ares's stolen war chariot among wild animal enclosures.",
@@ -544,6 +569,7 @@
   {
     "name": "Seriphos",
     "expected_slug": "seriphos",
+    "wiki_url": null,
     "location_type": "mythical_island",
     "real_world_location": "Serifos Island, Cyclades, Greece",
     "mythological_significance": "Ancient Aegean island kingdom ruled by King Polydectes where Danaë and Perseus washed ashore in a chest.",
@@ -566,6 +592,7 @@
   {
     "name": "Land Without Rain (Junkyard of the Gods)",
     "expected_slug": "land-without-rain",
+    "wiki_url": "https://riordan.fandom.com/wiki/Junkyard_of_the_Gods",
     "location_type": "crossroads",
     "real_world_location": "Mojave Desert, California",
     "mythological_significance": "Disposal grounds for discarded divine items, magical scrap, and failed prototypes created by Hephaestus.",

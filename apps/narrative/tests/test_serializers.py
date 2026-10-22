@@ -3,6 +3,7 @@ from django.test import TestCase
 from apps.narrative.models import EventCasualty, QuestCasualty, QuestParticipant
 from apps.narrative.serializers import (
     BookDetailSerializer,
+    BookListSerializer,
     EventDetailSerializer,
     ProphecyDetailSerializer,
     ProphecyListSerializer,
@@ -18,6 +19,19 @@ from tests.makers import (
     make_quest,
     make_titan,
 )
+
+
+class BookListSerializerTests(TestCase):
+    def test_includes_wiki_url(self):
+        book = make_book(
+            title='The Lightning Thief',
+            book_number=1,
+            wiki_url='https://riordan.fandom.com/wiki/The_Lightning_Thief',
+        )
+
+        data = BookListSerializer(book).data
+
+        self.assertEqual(data['wiki_url'], 'https://riordan.fandom.com/wiki/The_Lightning_Thief')
 
 
 class BookDetailSerializerTests(TestCase):

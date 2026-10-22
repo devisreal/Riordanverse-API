@@ -2,6 +2,7 @@
   {
     "title": "The Great Prophecy",
     "expected_slug": "the-great-prophecy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Great_Prophecy",
     "text": "A half-blood of the eldest gods\nShall reach sixteen against all odds\nAnd see the world in cursed sleep\nA hero's soul, cursed blade shall reap\nA single choice shall end his days\nOlympus to preserve or raze.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -41,6 +42,7 @@
   {
     "title": "The Lightning Thief Prophecy",
     "expected_slug": "the-lightning-thief-prophecy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Prophecies#The_Lightning_Thief",
     "text": "You shall go west, and face the god who has turned,\nYou shall find what was stolen, and see it safely returned,\nYou shall be betrayed by one who calls you a friend,\nAnd you shall fail to save what matters most, in the end.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -72,6 +74,7 @@
   {
     "title": "The Sea of Monsters Prophecy",
     "expected_slug": "the-sea-of-monsters-prophecy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Prophecies#The_Sea_of_Monsters",
     "text": "You shall sail the iron ship with warriors of bone,\nYou shall find what you seek and make it your own,\nBut despair for your life entombed within stone,\nAnd fail without friends, to fly home alone.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -107,6 +110,7 @@
   {
     "title": "The Titan's Curse Prophecy",
     "expected_slug": "the-titans-curse-prophecy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Prophecies#The_Titan%27s_Curse",
     "text": "Five shall go west to the goddess in chains,\nOne shall be lost in the land without rain,\nThe bane of Olympus shows the trail,\nCampers and Hunters combined prevail,\nThe Titan's curse must one withstand,\nAnd one shall perish by a parent's hand.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -146,6 +150,7 @@
   {
     "title": "The Labyrinth Prophecy",
     "expected_slug": "the-labyrinth-prophecy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Prophecies#The_Battle_of_the_Labyrinth",
     "text": "You shall delve in the darkness of the endless maze,\nThe dead, the traitor, and the lost one raise.\nYou shall rise or fall by the ghost king's hand,\nThe child of Athena's final stand.\nDestroy with a hero's final breath,\nAnd lose a love to worse than death.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -189,6 +194,7 @@
   {
     "title": "The Prophecy of the Seven",
     "expected_slug": "the-prophecy-of-the-seven",
+    "wiki_url": "https://riordan.fandom.com/wiki/Prophecy_of_Seven",
     "text": "Seven half-bloods shall answer the call,\nTo storm or fire, the world must fall.\nAn oath to keep with a final breath,\nAnd foes bear arms to the Doors of Death.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "rachel-elizabeth-dare",
@@ -232,6 +238,7 @@
   {
     "title": "The Prophecy of the Sword of Hades",
     "expected_slug": "the-prophecy-of-the-sword-of-hades",
+    "wiki_url": null,
     "text": "Child of May, beware the shade,\nStolen power, the forged blade.\nThree shall venture to the deep,\nOne shall wake what ought to sleep.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -260,6 +267,7 @@
   {
     "title": "Prophecy of the Bones of Mother Earth",
     "expected_slug": "prophecy-of-the-bones-of-mother-earth",
+    "wiki_url": null,
     "text": "When you leave this place, cover your heads and throw the bones of your mother behind you as you go, and do not look back.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -274,6 +282,7 @@
   {
     "title": "Prophecy of King Acrisius",
     "expected_slug": "prophecy-of-king-acrisius",
+    "wiki_url": null,
     "text": "You will never have sons. One day your daughter Danaë will have a son. That boy will kill you and become the next king of Argos.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -293,6 +302,7 @@
   {
     "title": "Prophecy of Psyche's Doom",
     "expected_slug": "prophecy-of-psyches-doom",
+    "wiki_url": null,
     "text": "Your daughter shall marry no mortal. She is destined to marry a monster—a fierce, barbaric beast even the gods fear! Dress her for her wedding as you would dress her for her funeral. Take her to the tallest spire of rock in your kingdom. There she shall meet her doom!",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",
@@ -307,6 +317,7 @@
   {
     "title": "Prophecy of Eurystheus and Hercules",
     "expected_slug": "prophecy-of-eurystheus-and-hercules",
+    "wiki_url": null,
     "text": "Go to the city of Tiryns. Serve High King Eurystheus by doing ten great tasks of his choosing.",
     "oracle_type": "Oracle of Delphi",
     "delivered_by_slug": "oracle-of-delphi",

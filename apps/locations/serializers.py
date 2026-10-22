@@ -26,6 +26,7 @@ class LocationListSerializer(serializers.ModelSerializer):
             'real_world_location',
             'is_hidden_from_mortals',
             'controlled_by',
+            'wiki_url',
             'primary_image',
         ]
 

@@ -28,6 +28,7 @@ class WeaponListSerializer(serializers.ModelSerializer):
             'transforms',
             'passes_through_mortals',
             'owner_primary',
+            'wiki_url',
             'primary_image',
         ]
 

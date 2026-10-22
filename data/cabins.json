@@ -2,6 +2,7 @@
   {
     "number": 1,
     "expected_slug": "cabin-1-zeus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Zeus%27s_Cabin",
     "deity_slug": "zeus",
     "is_honorary": false,
     "is_empty": true,
@@ -16,6 +17,7 @@
   {
     "number": 2,
     "expected_slug": "cabin-2-hera",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hera%27s_Cabin",
     "deity_slug": null,
     "is_honorary": true,
     "is_empty": true,
@@ -28,6 +30,7 @@
   {
     "number": 3,
     "expected_slug": "cabin-3-poseidon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Poseidon%27s_Cabin",
     "deity_slug": "poseidon",
     "is_honorary": false,
     "is_empty": true,
@@ -42,6 +45,7 @@
   {
     "number": 4,
     "expected_slug": "cabin-4-demeter",
+    "wiki_url": "https://riordan.fandom.com/wiki/Demeter%27s_Cabin",
     "deity_slug": "demeter",
     "is_honorary": false,
     "is_empty": false,
@@ -56,6 +60,7 @@
   {
     "number": 5,
     "expected_slug": "cabin-5-ares",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ares%27_Cabin",
     "deity_slug": "ares",
     "is_honorary": false,
     "is_empty": false,
@@ -70,6 +75,7 @@
   {
     "number": 6,
     "expected_slug": "cabin-6-athena",
+    "wiki_url": "https://riordan.fandom.com/wiki/Athena%27s_Cabin",
     "deity_slug": "athena",
     "is_honorary": false,
     "is_empty": false,
@@ -85,6 +91,7 @@
   {
     "number": 7,
     "expected_slug": "cabin-7-apollo",
+    "wiki_url": "https://riordan.fandom.com/wiki/Apollo%27s_Cabin",
     "deity_slug": "apollo",
     "is_honorary": false,
     "is_empty": false,
@@ -101,6 +108,7 @@
   {
     "number": 8,
     "expected_slug": "cabin-8-artemis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Artemis%27s_Cabin",
     "deity_slug": null,
     "is_honorary": true,
     "is_empty": true,
@@ -117,6 +125,7 @@
   {
     "number": 9,
     "expected_slug": "cabin-9-hephaestus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hephaestus%27s_Cabin",
     "deity_slug": "hephaestus",
     "is_honorary": false,
     "is_empty": false,
@@ -132,6 +141,7 @@
   {
     "number": 10,
     "expected_slug": "cabin-10-aphrodite",
+    "wiki_url": "https://riordan.fandom.com/wiki/Aphrodite%27s_Cabin",
     "deity_slug": "aphrodite",
     "is_honorary": false,
     "is_empty": false,
@@ -146,6 +156,7 @@
   {
     "number": 11,
     "expected_slug": "cabin-11-hermes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hermes%27_Cabin",
     "deity_slug": "hermes",
     "is_honorary": false,
     "is_empty": false,
@@ -164,6 +175,7 @@
   {
     "number": 12,
     "expected_slug": "cabin-12-dionysus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Dionysus%27_Cabin",
     "deity_slug": "dionysus",
     "is_honorary": false,
     "is_empty": false,
@@ -179,6 +191,7 @@
   {
     "number": 13,
     "expected_slug": "cabin-13-hades",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hades%27_Cabin",
     "deity_slug": "hades",
     "is_honorary": false,
     "is_empty": true,
@@ -193,6 +206,7 @@
   {
     "number": 14,
     "expected_slug": "cabin-14-iris",
+    "wiki_url": "https://riordan.fandom.com/wiki/Iris%27_Cabin",
     "deity_slug": "iris",
     "is_honorary": false,
     "is_empty": false,
@@ -205,6 +219,7 @@
   {
     "number": 15,
     "expected_slug": "cabin-15-hypnos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hypnos%27_Cabin",
     "deity_slug": "hypnos",
     "is_honorary": false,
     "is_empty": false,
@@ -217,6 +232,7 @@
   {
     "number": 16,
     "expected_slug": "cabin-16-nemesis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemesis%27_Cabin",
     "deity_slug": "nemesis",
     "is_honorary": false,
     "is_empty": false,
@@ -229,6 +245,7 @@
   {
     "number": 17,
     "expected_slug": "cabin-17-nike",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nike%27s_Cabin",
     "deity_slug": "nike",
     "is_honorary": false,
     "is_empty": false,
@@ -241,6 +258,7 @@
   {
     "number": 18,
     "expected_slug": "cabin-18-hebe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hebe%27s_Cabin",
     "deity_slug": "hebe",
     "is_honorary": false,
     "is_empty": false,
@@ -253,6 +271,7 @@
   {
     "number": 19,
     "expected_slug": "cabin-19-tyche",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tyche%27s_Cabin",
     "deity_slug": "tyche",
     "is_honorary": false,
     "is_empty": false,
@@ -265,6 +284,7 @@
   {
     "number": 20,
     "expected_slug": "cabin-20-hecate",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hecate%27s_Cabin",
     "deity_slug": "hecate",
     "is_honorary": false,
     "is_empty": false,

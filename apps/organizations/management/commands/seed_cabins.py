@@ -78,6 +78,9 @@ class Command(BaseCommand):
                             self.style,
                         ),
                     }
+                    if entry.get('wiki_url'):
+                        defaults['wiki_url'] = entry['wiki_url']
+
                     cabin, created = Cabin.objects.update_or_create(
                         number=entry['number'],
                         defaults=defaults,

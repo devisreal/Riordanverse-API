@@ -30,6 +30,7 @@ class SearchViewTests(BaseAPITestCase):
                 name='Percy Jackson',
                 aliases=['Seaweed Brain'],
                 description='Hero of Olympus and son of Poseidon.',
+                wiki_url='https://riordan.fandom.com/wiki/Percy_Jackson',
             )
             self.riptide = make_weapon(
                 name='Riptide',
@@ -80,6 +81,7 @@ class SearchViewTests(BaseAPITestCase):
         self.assertEqual(result['url'], '/api/v1/characters/percy-jackson/')
         self.assertEqual(result['title'], 'Percy Jackson')
         self.assertEqual(result['description'], 'Hero of Olympus and son of Poseidon.')
+        self.assertEqual(result['wiki_url'], 'https://riordan.fandom.com/wiki/Percy_Jackson')
 
     def test_search_indexes_character_aliases(self):
         response = self.search('Seaweed Brain')

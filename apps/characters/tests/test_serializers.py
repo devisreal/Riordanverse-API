@@ -46,6 +46,18 @@ class CharacterDetailSerializerTests(TestCase):
         self.assertEqual(len(data['powers']), 1)
         self.assertEqual(data['powers'][0]['name'], 'Hydrokinesis')
 
+    def test_power_wiki_url_is_exposed_in_character_detail(self):
+        power = self.character.powers.get(name='Hydrokinesis')
+        power.wiki_url = 'https://riordan.fandom.com/wiki/Hydrokinesis'
+        power.save(update_fields=['wiki_url'])
+
+        data = CharacterDetailSerializer(self.character).data
+
+        self.assertEqual(
+            data['powers'][0]['wiki_url'],
+            'https://riordan.fandom.com/wiki/Hydrokinesis',
+        )
+
     def test_power_classification_and_first_book_are_serialized(self):
         book = make_book(title='The Lightning Thief', book_number=1)
         power = self.character.powers.first()

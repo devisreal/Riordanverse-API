@@ -27,6 +27,11 @@ class SeedPropheciesCommandTests(TestCase):
 
     def test_seed_creates_prophecies_and_resolves_typed_subjects(self):
         self.assertEqual(Prophecy.objects.count(), 11)
+        self.assertEqual(Prophecy.objects.filter(wiki_url__isnull=False).count(), 6)
+        self.assertEqual(
+            Prophecy.objects.get(slug='the-great-prophecy').wiki_url,
+            'https://riordan.fandom.com/wiki/Great_Prophecy',
+        )
         self.assertEqual(ProphecySubject.objects.count(), 39)
         self.assertNotIn('[WARN]', self.output.getvalue())
 
@@ -48,6 +53,16 @@ class SeedPropheciesCommandTests(TestCase):
             set(prophecy.books_relevant_to.values_list('slug', flat=True)),
             {'the-demigod-files', 'percy-jackson-and-the-sword-of-hades'},
         )
+
+    def test_null_wiki_url_does_not_clear_existing_prophecy_url(self):
+        prophecy = Prophecy.objects.get(slug='the-prophecy-of-the-sword-of-hades')
+        prophecy.wiki_url = 'https://riordan.fandom.com/wiki/Existing_Prophecy'
+        prophecy.save(update_fields=['wiki_url'])
+
+        call_command('seed_prophecies', stdout=StringIO())
+
+        prophecy.refresh_from_db()
+        self.assertEqual(prophecy.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Prophecy')
 
     def test_seed_command_is_idempotent(self):
         call_command('seed_prophecies', stdout=StringIO())

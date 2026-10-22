@@ -99,6 +99,9 @@ class Command(BaseCommand):
             name = entry.get('name', 'unknown')
             try:
                 defaults = {field: entry[field] for field in SCALAR_FIELDS if field in entry}
+                if entry.get('wiki_url'):
+                    defaults['wiki_url'] = entry['wiki_url']
+
                 expected_slug = entry.get('expected_slug')
                 if expected_slug:
                     defaults['slug'] = expected_slug

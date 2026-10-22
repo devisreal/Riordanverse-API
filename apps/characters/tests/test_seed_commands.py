@@ -8,7 +8,7 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from apps.characters.models import Character
-from tests.makers import make_book
+from tests.makers import make_book, make_character
 
 
 class SeedCharactersCommandTests(TestCase):
@@ -26,7 +26,12 @@ class SeedCharactersCommandTests(TestCase):
             ["Struck down by Zeus's lightning bolt to stop the sun chariot from burning the Earth"],
         )
         self.assertEqual(Character.objects.count(), 66)
+        self.assertEqual(Character.objects.filter(wiki_url__isnull=False).count(), 66)
         self.assertEqual(Character.objects.get(slug='phoebe-hunter').name, 'Phoebe')
+        self.assertEqual(
+            Character.objects.get(slug='mrs-oleary').wiki_url,
+            "https://riordan.fandom.com/wiki/Mrs._O'Leary",
+        )
         odysseus = Character.objects.get(slug='odysseus')
         self.assertFalse(odysseus.is_demigod)
         self.assertIsNone(odysseus.divine_parent)
@@ -40,6 +45,21 @@ class SeedCharactersCommandTests(TestCase):
         self.assertIn(
             'Characters seeded: 0 created, 66 updated, 0 errors.', rerun_output.getvalue()
         )
+
+    def test_missing_wiki_url_does_not_clear_existing_value(self):
+        character = make_character(
+            name='Percy Jackson', wiki_url='https://riordan.fandom.com/wiki/Existing_Percy'
+        )
+        data = [{'name': 'Percy Jackson', 'expected_slug': 'percy-jackson'}]
+
+        with TemporaryDirectory() as temp_dir:
+            data_file = Path(temp_dir) / 'characters.json'
+            data_file.write_text(json.dumps(data), encoding='utf-8')
+            with patch('apps.characters.management.commands.seed_characters.DATA_FILE', data_file):
+                call_command('seed_characters', stdout=StringIO())
+
+        character.refresh_from_db()
+        self.assertEqual(character.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Percy')
 
     def test_unresolved_foreign_keys_are_null_and_slug_lists_omit_missing_refs(self):
         valid_book = make_book(title='Valid Book')
