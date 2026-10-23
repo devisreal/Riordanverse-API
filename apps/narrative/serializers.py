@@ -23,7 +23,7 @@ class BookSummarySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ('id', 'slug', 'title', 'book_type', 'published_date')
+        fields = ('id', 'slug', 'title', 'book_type', 'published_date', 'wiki_url')
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -43,6 +43,7 @@ class BookListSerializer(serializers.ModelSerializer):
             'published_date',
             'short_description',
             'camp_bead_description',
+            'wiki_url',
             'primary_image',
         )
 
@@ -133,6 +134,7 @@ class ProphecyListSerializer(serializers.ModelSerializer):
             'delivered_by_slug',
             'fulfilled_in_slug',
             'prophecy_lines',
+            'wiki_url',
         )
 
     def get_delivered_by_slug(self, obj):
@@ -244,6 +246,7 @@ class QuestListSerializer(serializers.ModelSerializer):
             'led_by_slug',
             'initiated_by',
             'objective',
+            'wiki_url',
         )
 
     def get_book_slug(self, obj):
@@ -398,6 +401,7 @@ class EventListSerializer(serializers.ModelSerializer):
             'book_slug',
             'location_slug',
             'significance',
+            'wiki_url',
         )
 
     def get_book_slug(self, obj):

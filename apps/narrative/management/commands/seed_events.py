@@ -115,31 +115,34 @@ class Command(BaseCommand):
             name = entry.get('name', 'unknown')
             try:
                 with transaction.atomic():
+                    defaults = {
+                        'name': name,
+                        'event_type': entry['event_type'],
+                        'book': _resolve(
+                            Book,
+                            entry.get('book_slug'),
+                            'book',
+                            name,
+                            self.stdout,
+                            self.style,
+                        ),
+                        'location': _resolve(
+                            Location,
+                            entry.get('location_slug'),
+                            'location',
+                            name,
+                            self.stdout,
+                            self.style,
+                        ),
+                        'outcome': entry.get('outcome'),
+                        'significance': entry.get('significance'),
+                        'description': entry.get('description'),
+                    }
+                    if entry.get('wiki_url'):
+                        defaults['wiki_url'] = entry['wiki_url']
                     event, created = Event.objects.update_or_create(
                         slug=entry['expected_slug'],
-                        defaults={
-                            'name': name,
-                            'event_type': entry['event_type'],
-                            'book': _resolve(
-                                Book,
-                                entry.get('book_slug'),
-                                'book',
-                                name,
-                                self.stdout,
-                                self.style,
-                            ),
-                            'location': _resolve(
-                                Location,
-                                entry.get('location_slug'),
-                                'location',
-                                name,
-                                self.stdout,
-                                self.style,
-                            ),
-                            'outcome': entry.get('outcome'),
-                            'significance': entry.get('significance'),
-                            'description': entry.get('description'),
-                        },
+                        defaults=defaults,
                     )
 
                     desired_participants = {entity_type: [] for entity_type in ENTITY_MODELS}

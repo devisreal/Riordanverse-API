@@ -2,6 +2,7 @@
   {
     "title": "Quest for Zeus's Master Bolt",
     "expected_slug": "quest-for-zeuss-master-bolt",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_the_Master_Bolt",
     "book_slug": "the-lightning-thief",
     "prophecy_slug": "the-lightning-thief-prophecy",
     "led_by_slug": "percy-jackson",
@@ -52,6 +53,7 @@
   {
     "title": "Quest for the Golden Fleece",
     "expected_slug": "quest-for-the-golden-fleece",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_the_Golden_Fleece",
     "book_slug": "the-sea-of-monsters",
     "prophecy_slug": "the-sea-of-monsters-prophecy",
     "led_by_slug": "clarisse-la-rue",
@@ -104,6 +106,7 @@
   {
     "title": "Quest to Rescue Artemis and Annabeth",
     "expected_slug": "quest-to-rescue-artemis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_Artemis",
     "book_slug": "the-titans-curse",
     "prophecy_slug": "the-titans-curse-prophecy",
     "led_by_slug": "zoe-nightshade",
@@ -165,6 +168,7 @@
   {
     "title": "Quest into the Labyrinth",
     "expected_slug": "quest-into-the-labyrinth",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_Daedalus",
     "book_slug": "the-battle-of-the-labyrinth",
     "prophecy_slug": "the-labyrinth-prophecy",
     "led_by_slug": "annabeth-chase",
@@ -221,6 +225,7 @@
   {
     "title": "Quest for Ares's Stolen Chariot",
     "expected_slug": "quest-for-ares-stolen-chariot",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest#The_Demigod_Files",
     "book_slug": "percy-jackson-and-the-stolen-chariot",
     "prophecy_slug": null,
     "led_by_slug": "clarisse-la-rue",
@@ -251,6 +256,7 @@
   {
     "title": "Quest for the Bronze Dragon",
     "expected_slug": "quest-for-the-bronze-dragon",
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Demigod_Files#Percy_Jackson_and_the_Bronze_Dragon",
     "book_slug": "percy-jackson-and-the-bronze-dragon",
     "prophecy_slug": null,
     "led_by_slug": "charles-beckendorf",
@@ -288,6 +294,7 @@
   {
     "title": "Quest for the Sword of Hades",
     "expected_slug": "quest-for-the-sword-of-hades",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest_for_the_Sword_of_Hades",
     "book_slug": "percy-jackson-and-the-sword-of-hades",
     "prophecy_slug": "the-prophecy-of-the-sword-of-hades",
     "led_by_slug": "percy-jackson",
@@ -323,6 +330,7 @@
   {
     "title": "Quest for the Singer of Apollo",
     "expected_slug": "quest-for-the-singer-of-apollo",
+    "wiki_url": "https://riordan.fandom.com/wiki/Percy_Jackson_and_the_Singer_of_Apollo",
     "book_slug": "percy-jackson-and-the-singer-of-apollo",
     "prophecy_slug": null,
     "led_by_slug": "percy-jackson",
@@ -356,6 +364,7 @@
   {
     "title": "Quest of Perseus for Medusa's Head",
     "expected_slug": "quest-of-perseus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest#Ancient_Quests",
     "book_slug": "percy-jacksons-greek-heroes",
     "prophecy_slug": "prophecy-of-king-acrisius",
     "led_by_slug": "perseus",
@@ -391,6 +400,7 @@
   {
     "title": "Quest of Theseus to Slay the Minotaur",
     "expected_slug": "quest-of-theseus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest#Ancient_Quests",
     "book_slug": "percy-jacksons-greek-heroes",
     "prophecy_slug": null,
     "led_by_slug": "theseus",
@@ -423,6 +433,7 @@
   {
     "title": "Twelve Labors of Heracles",
     "expected_slug": "twelve-labors-of-heracles",
+    "wiki_url": "https://riordan.fandom.com/wiki/Quest#Ancient_Quests",
     "book_slug": "percy-jacksons-greek-heroes",
     "prophecy_slug": "prophecy-of-eurystheus-and-hercules",
     "led_by_slug": "heracles",
@@ -473,6 +484,7 @@
   {
     "title": "Quest of Bellerophon for Pegasus and the Chimera",
     "expected_slug": "quest-of-bellerophon",
+    "wiki_url": null,
     "book_slug": "percy-jacksons-greek-heroes",
     "prophecy_slug": null,
     "led_by_slug": "bellerophon",

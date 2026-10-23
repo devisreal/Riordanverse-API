@@ -60,31 +60,34 @@ class Command(BaseCommand):
             title = entry.get('title', 'unknown')
             try:
                 with transaction.atomic():
+                    defaults = {
+                        'title': title,
+                        'text': entry['text'],
+                        'oracle_type': entry.get('oracle_type'),
+                        'delivered_by': _resolve(
+                            Character,
+                            entry.get('delivered_by_slug'),
+                            'deliverer',
+                            title,
+                            self.stdout,
+                            self.style,
+                        ),
+                        'fulfilled_in': _resolve(
+                            Book,
+                            entry.get('fulfilled_in_book_slug'),
+                            'fulfillment book',
+                            title,
+                            self.stdout,
+                            self.style,
+                        ),
+                        'interpretation_notes': entry.get('interpretation_notes'),
+                        'description': entry.get('description'),
+                    }
+                    if entry.get('wiki_url'):
+                        defaults['wiki_url'] = entry['wiki_url']
                     prophecy, created = Prophecy.objects.update_or_create(
                         slug=entry['expected_slug'],
-                        defaults={
-                            'title': title,
-                            'text': entry['text'],
-                            'oracle_type': entry.get('oracle_type'),
-                            'delivered_by': _resolve(
-                                Character,
-                                entry.get('delivered_by_slug'),
-                                'deliverer',
-                                title,
-                                self.stdout,
-                                self.style,
-                            ),
-                            'fulfilled_in': _resolve(
-                                Book,
-                                entry.get('fulfilled_in_book_slug'),
-                                'fulfillment book',
-                                title,
-                                self.stdout,
-                                self.style,
-                            ),
-                            'interpretation_notes': entry.get('interpretation_notes'),
-                            'description': entry.get('description'),
-                        },
+                        defaults=defaults,
                     )
 
                     desired_subjects = {}

@@ -2,6 +2,7 @@
   {
     "character_slug": "percy-jackson",
     "name": "Hydrokinesis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hydrokinesis",
     "power_type": "offensive",
     "source": "divine_parent",
     "divine_parent_slug": "poseidon",
@@ -22,6 +23,7 @@
   {
     "character_slug": "percy-jackson",
     "name": "Personal Hurricane",
+    "wiki_url": null,
     "power_type": "offensive",
     "source": "divine_parent",
     "divine_parent_slug": "poseidon",
@@ -40,6 +42,7 @@
   {
     "character_slug": "percy-jackson",
     "name": "Curse of Achilles Invulnerability",
+    "wiki_url": "https://riordan.fandom.com/wiki/Curse_of_Achilles",
     "power_type": "defensive",
     "source": "blessing",
     "divine_parent_slug": null,
@@ -57,6 +60,7 @@
   {
     "character_slug": "thalia-grace",
     "name": "Electrokinesis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Electrokinesis",
     "power_type": "offensive",
     "source": "divine_parent",
     "divine_parent_slug": "zeus",
@@ -74,6 +78,7 @@
   {
     "character_slug": "nico-di-angelo",
     "name": "Necromancy & Undead Command",
+    "wiki_url": "https://riordan.fandom.com/wiki/Necromancy",
     "power_type": "offensive",
     "source": "divine_parent",
     "divine_parent_slug": "hades",
@@ -92,6 +97,7 @@
   {
     "character_slug": "nico-di-angelo",
     "name": "Shadow Travel",
+    "wiki_url": "https://riordan.fandom.com/wiki/Shadow_Travel",
     "power_type": "utility",
     "source": "divine_parent",
     "divine_parent_slug": "hades",
@@ -109,6 +115,7 @@
   {
     "character_slug": "grover-underwood",
     "name": "Panic Scream",
+    "wiki_url": null,
     "power_type": "offensive",
     "source": "blessing",
     "divine_parent_slug": null,
@@ -127,6 +134,7 @@
   {
     "character_slug": "annabeth-chase",
     "name": "Strategic Genius & Architectural Intuition",
+    "wiki_url": null,
     "power_type": "utility",
     "source": "divine_parent",
     "divine_parent_slug": "athena",
@@ -145,6 +153,7 @@
   {
     "character_slug": "clarisse-la-rue",
     "name": "Ares Combat Frenzy & Intimidation",
+    "wiki_url": null,
     "power_type": "offensive",
     "source": "divine_parent",
     "divine_parent_slug": "ares",
@@ -162,6 +171,7 @@
   {
     "character_slug": "silena-beauregard",
     "name": "Charmspeak & Persuasion",
+    "wiki_url": "https://riordan.fandom.com/wiki/Charmspeak",
     "power_type": "utility",
     "source": "divine_parent",
     "divine_parent_slug": "aphrodite",
@@ -179,6 +189,7 @@
   {
     "character_slug": "charles-beckendorf",
     "name": "Pyrokinesis & Forge Mastery",
+    "wiki_url": "https://riordan.fandom.com/wiki/Pyrokinesis",
     "power_type": "utility",
     "source": "divine_parent",
     "divine_parent_slug": "hephaestus",
@@ -197,6 +208,7 @@
   {
     "character_slug": "heracles",
     "name": "Superhuman Strength & Invulnerability",
+    "wiki_url": "https://riordan.fandom.com/wiki/Superhuman_Strength",
     "power_type": "offensive",
     "source": "divine_parent",
     "divine_parent_slug": "zeus",
@@ -214,6 +226,7 @@
   {
     "character_slug": "bellerophon",
     "name": "Equestrian Mastery",
+    "wiki_url": null,
     "power_type": "utility",
     "source": "divine_parent",
     "divine_parent_slug": "poseidon",
@@ -231,6 +244,7 @@
   {
     "character_slug": "celedon",
     "name": "Hypnotic Vocal Enchantment",
+    "wiki_url": null,
     "power_type": "utility",
     "source": "creation",
     "divine_parent_slug": null,

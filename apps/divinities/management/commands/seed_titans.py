@@ -69,6 +69,9 @@ class Command(BaseCommand):
                     'prison_location': entry.get('prison_location'),
                     'description': entry.get('description'),
                 }
+                if entry.get('wiki_url'):
+                    defaults['wiki_url'] = entry['wiki_url']
+
                 first_book_slug = entry.get('first_appearance_book_slug')
                 if first_book_slug:
                     first_book = _get_book(first_book_slug, entry['name'], self.stdout, self.style)

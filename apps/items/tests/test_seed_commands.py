@@ -10,6 +10,9 @@ from apps.items.models import Weapon
 
 class WeaponSeedCommandTests(TestCase):
     def test_seed_weapons_resolves_relationships_and_is_idempotent(self):
+        bow = Weapon.objects.create(
+            name='Bow of Heracles', wiki_url='https://riordan.fandom.com/wiki/Verified_Bow'
+        )
         outputs = []
         for command in (
             'seed_books',
@@ -23,6 +26,13 @@ class WeaponSeedCommandTests(TestCase):
             outputs.append(output.getvalue())
 
         self.assertEqual(Weapon.objects.count(), 40)
+        self.assertEqual(Weapon.objects.filter(wiki_url__isnull=False).count(), 35)
+        self.assertEqual(
+            Weapon.objects.get(slug='riptide').wiki_url,
+            'https://riordan.fandom.com/wiki/Riptide',
+        )
+        bow.refresh_from_db()
+        self.assertEqual(bow.wiki_url, 'https://riordan.fandom.com/wiki/Verified_Bow')
         self.assertFalse(any('[WARN]' in output for output in outputs))
 
         kronos = Titan.objects.get(slug='kronos')

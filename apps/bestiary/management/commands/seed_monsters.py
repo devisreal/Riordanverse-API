@@ -86,6 +86,9 @@ class Command(BaseCommand):
                         if field in entry
                     },
                 }
+                if entry.get('wiki_url'):
+                    defaults['wiki_url'] = entry['wiki_url']
+
                 monster, created = Monster.objects.update_or_create(
                     slug=entry['expected_slug'],
                     defaults=defaults,

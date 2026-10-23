@@ -45,4 +45,5 @@ class ImageListSerializer(serializers.ModelSerializer):
             'source_type',
             'category',
             'artist_name',
+            'wiki_url',
         )

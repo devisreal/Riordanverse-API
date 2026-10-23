@@ -72,6 +72,9 @@ class Command(BaseCommand):
                         if field in entry
                     },
                 }
+                if entry.get('wiki_url'):
+                    defaults['wiki_url'] = entry['wiki_url']
+
                 defaults['owner_primary_character'] = _resolve(
                     Character,
                     entry.get('owner_primary_character_slug'),

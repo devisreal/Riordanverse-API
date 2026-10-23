@@ -69,6 +69,9 @@ class Command(BaseCommand):
                         if field in entry
                     },
                 }
+                if entry.get('wiki_url'):
+                    defaults['wiki_url'] = entry['wiki_url']
+
                 for model, slug_field, relation, target_field in (
                     (God, 'controlled_by_god_slug', 'God controller', 'controlled_by_god'),
                     (

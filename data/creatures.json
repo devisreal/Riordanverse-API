@@ -2,6 +2,7 @@
   {
     "name": "Satyr",
     "expected_slug": "satyr",
+    "wiki_url": "https://riordan.fandom.com/wiki/Satyr",
     "description": "Nature spirits with the upper body of a human and lower body of a goat. Serving as Camp Half-Blood protectors who locate demigods and search for the lost god Pan.",
     "origin": "Greek wilderness spirits associated with Dionysus and Pan.",
     "alignment": "olympian",
@@ -42,6 +43,7 @@
   {
     "name": "Centaur",
     "expected_slug": "centaur",
+    "wiki_url": "https://riordan.fandom.com/wiki/Centaur",
     "description": "Beings with the upper body of a human and the lower body of a horse. Civilized centaurs like Chiron excel in medicine and archery, while wild Party Ponies hail from the American West.",
     "origin": "Ancient Thessaly in Greek myth; offspring of Ixion or Centaurus.",
     "alignment": "olympian",
@@ -65,6 +67,7 @@
   {
     "name": "Nymph",
     "expected_slug": "nymph",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nymph",
     "description": "Female nature spirits bound to natural elements, including dryads (tree nymphs), naiads (freshwater nymphs), and nereids (sea nymphs).",
     "origin": "Greek myth spirits of natural phenomena.",
     "alignment": "olympian",
@@ -87,6 +90,7 @@
   {
     "name": "Pegasus",
     "expected_slug": "pegasus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Pegasus_%28species%29",
     "description": "Winged equine steeds endowed with high intelligence, flight, and speech with children of Poseidon.",
     "origin": "Born from Medusa's neck when severed by Perseus.",
     "alignment": "olympian",
@@ -117,6 +121,7 @@
   {
     "name": "Fury",
     "expected_slug": "fury",
+    "wiki_url": "https://riordan.fandom.com/wiki/Furies",
     "description": "Bat-winged chthonic ministers of vengeance serving Hades, tasked with punishing crimes and guarding the Underworld.",
     "origin": "Primordial Erinyes born from the blood of Ouranos.",
     "alignment": "independent",
@@ -142,6 +147,7 @@
   {
     "name": "Hellhound",
     "expected_slug": "hellhound",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hellhound",
     "description": "Massive canine beasts from the Underworld with abyssal black fur and red glowing eyes, capable of traveling through shadows.",
     "origin": "Underworld predatory beasts.",
     "alignment": "varies",
@@ -165,6 +171,7 @@
   {
     "name": "Skeleton Warrior",
     "expected_slug": "skeleton-warrior",
+    "wiki_url": "https://riordan.fandom.com/wiki/Skeleton_Warrior",
     "description": "Undead infantry raised from the ground, frequently summoned by Hades or sowed from dragon teeth (Spartoi).",
     "origin": "Cadmus's mythic dragon teeth sowing.",
     "alignment": "independent",
@@ -183,6 +190,7 @@
   {
     "name": "Cyclops",
     "expected_slug": "cyclops",
+    "wiki_url": "https://riordan.fandom.com/wiki/Cyclops",
     "description": "One-eyed giants. Immune to fire; split between civilized divine forge-workers of Poseidon and aggressive feral island-dwelling man-eaters.",
     "origin": "Elder Cyclopes born of Ouranos & Gaea / Sea Cyclopes fathered by Poseidon.",
     "alignment": "varies",
@@ -211,6 +219,7 @@
   {
     "name": "Dracaena",
     "expected_slug": "dracaena",
+    "wiki_url": "https://riordan.fandom.com/wiki/Scythian_Dracaena",
     "description": "Reptilian humanoid women with two serpent trunks in place of legs, wielding spears and shields as officers in Kronos's army.",
     "origin": "Scythian serpent-women of Greek mythology.",
     "alignment": "titan",
@@ -229,6 +238,7 @@
   {
     "name": "Laistrygonian Giant",
     "expected_slug": "laistrygonian-giant",
+    "wiki_url": "https://riordan.fandom.com/wiki/Laistrygonian_Giant",
     "description": "Eight-foot-tall cannibalistic northern giants with tattooed skin and bronze armor, specializing in throwing fiery dodgeballs.",
     "origin": "Odysseus's encounter in Homer's Odyssey.",
     "alignment": "titan",
@@ -247,6 +257,7 @@
   {
     "name": "Empousa",
     "expected_slug": "empousa",
+    "wiki_url": "https://riordan.fandom.com/wiki/Empousa",
     "description": "Shape-shifting vampiric demonesses created by Hecate, having fangs, fiery hair, one bronze leg, and one donkey leg.",
     "origin": "Minions of Hecate in Greek folklore.",
     "alignment": "titan",
@@ -274,6 +285,7 @@
   {
     "name": "Telekhine",
     "expected_slug": "telekhine",
+    "wiki_url": "https://riordan.fandom.com/wiki/Telekhine",
     "description": "Dog-faced sea demons with flipper hands, master metalworkers who forged Poseidon's trident and Kronos's scythe in Mount St. Helens.",
     "origin": "Ancient Rhodes mythic smiths.",
     "alignment": "titan",
@@ -291,6 +303,7 @@
   {
     "name": "Gorgon",
     "expected_slug": "gorgon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Gorgon",
     "description": "Snake-haired female monsters whose gaze turns living beings to stone.",
     "origin": "Daughters of Phorcys and Ceto in ancient myth.",
     "alignment": "independent",
@@ -314,6 +327,7 @@
   {
     "name": "Harpy",
     "expected_slug": "harpy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Harpy",
     "description": "Avian-human female scavengers with bird claws and wings, acting as Camp Half-Blood's strict kitchen and curfew enforcement unit.",
     "origin": "Greek storm spirits and wind demons.",
     "alignment": "olympian",
@@ -332,6 +346,7 @@
   {
     "name": "Siren",
     "expected_slug": "siren",
+    "wiki_url": "https://riordan.fandom.com/wiki/Siren",
     "description": "Bird-like sea enchantresses whose hypnotic songs lure sailors to shipwreck by projecting irresistible visions of their tragic flaws.",
     "origin": "Homeric Odyssey sea monsters.",
     "alignment": "independent",
@@ -349,6 +364,7 @@
   {
     "name": "Automaton",
     "expected_slug": "automaton",
+    "wiki_url": "https://riordan.fandom.com/wiki/Automaton",
     "description": "Enchanted metallic artificial constructs forged by Hephaestus or Daedalus, animated by divine magic or celestial bronze mechanisms.",
     "origin": "Hephaestian divine craftsmanship.",
     "alignment": "varies",

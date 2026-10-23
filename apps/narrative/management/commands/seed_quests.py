@@ -114,34 +114,37 @@ class Command(BaseCommand):
             title = entry.get('title', 'unknown')
             try:
                 with transaction.atomic():
+                    defaults = {
+                        'title': title,
+                        'book': _resolve(
+                            Book, entry.get('book_slug'), 'book', title, self.stdout, self.style
+                        ),
+                        'prophecy': _resolve(
+                            Prophecy,
+                            entry.get('prophecy_slug'),
+                            'prophecy',
+                            title,
+                            self.stdout,
+                            self.style,
+                        ),
+                        'led_by': _resolve(
+                            Character,
+                            entry.get('led_by_slug'),
+                            'quest leader',
+                            title,
+                            self.stdout,
+                            self.style,
+                        ),
+                        'objective': entry.get('objective'),
+                        'outcome': entry.get('outcome'),
+                        'initiated_by': entry.get('initiated_by'),
+                        'description': entry.get('description'),
+                    }
+                    if entry.get('wiki_url'):
+                        defaults['wiki_url'] = entry['wiki_url']
                     quest, created = Quest.objects.update_or_create(
                         slug=entry['expected_slug'],
-                        defaults={
-                            'title': title,
-                            'book': _resolve(
-                                Book, entry.get('book_slug'), 'book', title, self.stdout, self.style
-                            ),
-                            'prophecy': _resolve(
-                                Prophecy,
-                                entry.get('prophecy_slug'),
-                                'prophecy',
-                                title,
-                                self.stdout,
-                                self.style,
-                            ),
-                            'led_by': _resolve(
-                                Character,
-                                entry.get('led_by_slug'),
-                                'quest leader',
-                                title,
-                                self.stdout,
-                                self.style,
-                            ),
-                            'objective': entry.get('objective'),
-                            'outcome': entry.get('outcome'),
-                            'initiated_by': entry.get('initiated_by'),
-                            'description': entry.get('description'),
-                        },
+                        defaults=defaults,
                     )
 
                     for relation_name, model, model_class in (

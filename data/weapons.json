@@ -2,6 +2,7 @@
   {
     "name": "Riptide",
     "expected_slug": "riptide",
+    "wiki_url": "https://riordan.fandom.com/wiki/Riptide",
     "true_name": "Anaklusmos",
     "weapon_type": "sword",
     "material": "celestial_bronze",
@@ -47,6 +48,7 @@
   {
     "name": "Annabeth's Dagger",
     "expected_slug": "annabeths-dagger",
+    "wiki_url": "https://riordan.fandom.com/wiki/Annabeth%27s_Knife",
     "true_name": null,
     "weapon_type": "dagger",
     "material": "celestial_bronze",
@@ -85,6 +87,7 @@
   {
     "name": "Aegis",
     "expected_slug": "aegis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Aegis",
     "true_name": "Aegis",
     "weapon_type": "shield",
     "material": "silver",
@@ -122,6 +125,7 @@
   {
     "name": "Nico's Stygian Iron Sword",
     "expected_slug": "nicos-stygian-iron-sword",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nico%27s_Sword",
     "true_name": null,
     "weapon_type": "sword",
     "material": "stygian_iron",
@@ -157,6 +161,7 @@
   {
     "name": "Master Lightning Bolt",
     "expected_slug": "master-lightning-bolt",
+    "wiki_url": "https://riordan.fandom.com/wiki/Master_Bolt",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "composite",
@@ -195,6 +200,7 @@
   {
     "name": "Helm of Darkness",
     "expected_slug": "helm-of-darkness",
+    "wiki_url": "https://riordan.fandom.com/wiki/Helm_of_Darkness",
     "true_name": null,
     "weapon_type": "helm",
     "material": "stygian_iron",
@@ -232,6 +238,7 @@
   {
     "name": "Poseidon's Trident",
     "expected_slug": "poseidons-trident",
+    "wiki_url": "https://riordan.fandom.com/wiki/Poseidon%27s_Trident",
     "true_name": null,
     "weapon_type": "trident",
     "material": "celestial_bronze",
@@ -267,6 +274,7 @@
   {
     "name": "Yankees Cap",
     "expected_slug": "yankees-cap",
+    "wiki_url": "https://riordan.fandom.com/wiki/Annabeth%27s_Yankees_Cap",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "other",
@@ -304,6 +312,7 @@
   {
     "name": "Backbiter",
     "expected_slug": "backbiter",
+    "wiki_url": "https://riordan.fandom.com/wiki/Backbiter",
     "true_name": null,
     "weapon_type": "sword",
     "material": "composite",
@@ -339,6 +348,7 @@
   {
     "name": "Kronos's Scythe",
     "expected_slug": "kronos-scythe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kronos%27_Scythe",
     "true_name": null,
     "weapon_type": "scythe",
     "material": "composite",
@@ -374,6 +384,7 @@
   {
     "name": "Clarisse's Electric Spear",
     "expected_slug": "clarisses-electric-spear",
+    "wiki_url": "https://riordan.fandom.com/wiki/Clarisse%27s_Spear",
     "true_name": "Maimer",
     "weapon_type": "spear",
     "material": "celestial_bronze",
@@ -409,6 +420,7 @@
   {
     "name": "Zoë's Silver Bow",
     "expected_slug": "zoes-silver-bow",
+    "wiki_url": "https://riordan.fandom.com/wiki/Silver_Bow",
     "true_name": null,
     "weapon_type": "bow",
     "material": "silver",
@@ -441,6 +453,7 @@
   {
     "name": "Adamantine Scythe",
     "expected_slug": "adamantine-scythe",
+    "wiki_url": null,
     "true_name": null,
     "weapon_type": "scythe",
     "material": "flint",
@@ -474,6 +487,7 @@
   {
     "name": "Harpe",
     "expected_slug": "harpe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Harpe",
     "true_name": null,
     "weapon_type": "sword",
     "material": "other",
@@ -507,6 +521,7 @@
   {
     "name": "Kibisis",
     "expected_slug": "kibisis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kibisis",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "other",
@@ -540,6 +555,7 @@
   {
     "name": "Golden Celedon",
     "expected_slug": "golden-celedon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Celedon",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "gold",
@@ -573,6 +589,7 @@
   {
     "name": "Golden Fleece",
     "expected_slug": "golden-fleece",
+    "wiki_url": "https://riordan.fandom.com/wiki/Golden_Fleece",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "gold",
@@ -611,6 +628,7 @@
   {
     "name": "Ariadne's String",
     "expected_slug": "ariadnes-string",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ariadne%27s_String",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "gold",
@@ -646,6 +664,7 @@
   {
     "name": "Daedalus's Laptop",
     "expected_slug": "daedalus-laptop",
+    "wiki_url": "https://riordan.fandom.com/wiki/Daedalus%27_Laptop",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "silver",
@@ -679,6 +698,7 @@
   {
     "name": "Grover's Reed Pipes",
     "expected_slug": "grovers-reed-pipes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Reed_Pipes",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "wood",
@@ -716,6 +736,7 @@
   {
     "name": "Winged Shoes",
     "expected_slug": "winged-shoes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Winged_Shoes",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "other",
@@ -750,6 +771,7 @@
   {
     "name": "Medusa's Severed Head",
     "expected_slug": "medusas-head",
+    "wiki_url": "https://riordan.fandom.com/wiki/Medusa%27s_Head",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "other",
@@ -784,6 +806,7 @@
   {
     "name": "Sword of Hades",
     "expected_slug": "sword-of-hades",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hades%27_Sword",
     "true_name": null,
     "weapon_type": "sword",
     "material": "stygian_iron",
@@ -821,6 +844,7 @@
   {
     "name": "Golden Bridle",
     "expected_slug": "golden-bridle",
+    "wiki_url": "https://riordan.fandom.com/wiki/Golden_Bridle",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "gold",
@@ -853,6 +877,7 @@
   {
     "name": "Nemean Lion Skin Coat",
     "expected_slug": "nemean-lion-skin",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemean_Lion%27s_Pelt",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "other",
@@ -886,6 +911,7 @@
   {
     "name": "Bow of Heracles",
     "expected_slug": "bow-of-heracles",
+    "wiki_url": null,
     "true_name": null,
     "weapon_type": "bow",
     "material": "composite",
@@ -918,6 +944,7 @@
   {
     "name": "Club of Heracles",
     "expected_slug": "club-of-heracles",
+    "wiki_url": null,
     "true_name": null,
     "weapon_type": "club",
     "material": "wood",
@@ -949,6 +976,7 @@
   {
     "name": "Persephone's Pearls",
     "expected_slug": "persephones-pearls",
+    "wiki_url": "https://riordan.fandom.com/wiki/Persephone%27s_Pearls",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "other",
@@ -982,6 +1010,7 @@
   {
     "name": "Hermes's Multivitamins",
     "expected_slug": "hermes-multivitamins",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hermes%27_Multivitamins",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "other",
@@ -1014,6 +1043,7 @@
   {
     "name": "Hermes's Thermos",
     "expected_slug": "hermes-thermos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Thermos_of_Winds",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "other",
@@ -1046,6 +1076,7 @@
   {
     "name": "Tyson's Shield",
     "expected_slug": "tysons-shield",
+    "wiki_url": "https://riordan.fandom.com/wiki/Wristwatch_Shield",
     "true_name": null,
     "weapon_type": "shield",
     "material": "celestial_bronze",
@@ -1083,6 +1114,7 @@
   {
     "name": "Ariadne's Thread",
     "expected_slug": "ariadnes-thread",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ariadne%27s_String",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "gold",
@@ -1116,6 +1148,7 @@
   {
     "name": "Bronze Dragon Head (Festus Core)",
     "expected_slug": "bronze-dragon-head",
+    "wiki_url": null,
     "true_name": null,
     "weapon_type": "artifact",
     "material": "celestial_bronze",
@@ -1146,6 +1179,7 @@
   {
     "name": "Polished Bronze Shield",
     "expected_slug": "bronze-shield",
+    "wiki_url": null,
     "true_name": null,
     "weapon_type": "shield",
     "material": "celestial_bronze",
@@ -1176,6 +1210,7 @@
   {
     "name": "Cap of Invisibility",
     "expected_slug": "cap-of-invisibility",
+    "wiki_url": "https://riordan.fandom.com/wiki/Annabeth%27s_Yankees_Cap",
     "true_name": "Helm of Darkness Prototype",
     "weapon_type": "helm",
     "material": "divine_material",
@@ -1205,6 +1240,7 @@
   {
     "name": "Flying Sneakers (Hermes' Winged Shoes)",
     "expected_slug": "flying-sneakers",
+    "wiki_url": "https://riordan.fandom.com/wiki/Winged_Shoes",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "other",
@@ -1236,6 +1272,7 @@
   {
     "name": "Bellerophon's Lead-Tipped Spear",
     "expected_slug": "lead-tipped-spear",
+    "wiki_url": null,
     "true_name": null,
     "weapon_type": "spear",
     "material": "mortal_steel",
@@ -1265,6 +1302,7 @@
   {
     "name": "Nemean Lion Pelt",
     "expected_slug": "lion-pelt",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemean_Lion%27s_Pelt",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "other",
@@ -1295,6 +1333,7 @@
   {
     "name": "Thermos of Winds",
     "expected_slug": "thermos-of-winds",
+    "wiki_url": "https://riordan.fandom.com/wiki/Thermos_of_Winds",
     "true_name": null,
     "weapon_type": "magical_item",
     "material": "other",
@@ -1325,6 +1364,7 @@
   {
     "name": "Ares's War Chariot",
     "expected_slug": "war-chariot",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ares%27_War_Chariot",
     "true_name": null,
     "weapon_type": "artifact",
     "material": "imperial_gold",

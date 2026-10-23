@@ -2,6 +2,7 @@
   {
     "name": "The Minotaur",
     "expected_slug": "minotaur",
+    "wiki_url": "https://riordan.fandom.com/wiki/Minotaur",
     "aliases": [
       "Asterion",
       "Pasiphaë's Son",
@@ -43,6 +44,7 @@
   {
     "name": "Medusa",
     "expected_slug": "medusa",
+    "wiki_url": "https://riordan.fandom.com/wiki/Medusa",
     "aliases": [
       "Aunty Em",
       "The Gorgon"
@@ -80,6 +82,7 @@
   {
     "name": "Alecto",
     "expected_slug": "alecto",
+    "wiki_url": "https://riordan.fandom.com/wiki/Alecto",
     "aliases": [
       "Mrs. Dodds",
       "Head Fury",
@@ -119,6 +122,7 @@
   {
     "name": "Echidna",
     "expected_slug": "echidna",
+    "wiki_url": "https://riordan.fandom.com/wiki/Echidna",
     "aliases": [
       "Mother of All Monsters"
     ],
@@ -153,6 +157,7 @@
   {
     "name": "Chimera",
     "expected_slug": "chimera",
+    "wiki_url": "https://riordan.fandom.com/wiki/Chimera",
     "aliases": [
       "The St. Louis Arch Monster"
     ],
@@ -188,6 +193,7 @@
   {
     "name": "Procrustes",
     "expected_slug": "procrustes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Procrustes",
     "aliases": [
       "Crusty",
       "The Stretcher"
@@ -222,6 +228,7 @@
   {
     "name": "Cerberus",
     "expected_slug": "cerberus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Cerberus",
     "aliases": [
       "The Three-Headed Guard Dog",
       "Spot"
@@ -258,6 +265,7 @@
   {
     "name": "Polyphemus",
     "expected_slug": "polyphemus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Polyphemus",
     "aliases": [
       "The Island Cyclops"
     ],
@@ -294,6 +302,7 @@
   {
     "name": "Lernean Hydra",
     "expected_slug": "lernean-hydra",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hydra",
     "aliases": [
       "The Nine-Headed Swamp Hydra"
     ],
@@ -328,6 +337,7 @@
   {
     "name": "Scylla",
     "expected_slug": "scylla",
+    "wiki_url": "https://riordan.fandom.com/wiki/Scylla",
     "aliases": [
       "The Six-Headed Cliff Monster"
     ],
@@ -359,6 +369,7 @@
   {
     "name": "Charybdis",
     "expected_slug": "charybdis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Charybdis",
     "aliases": [
       "The Maw of the Ocean"
     ],
@@ -390,6 +401,7 @@
   {
     "name": "Dr. Thorn",
     "expected_slug": "dr-thorn",
+    "wiki_url": "https://riordan.fandom.com/wiki/Dr._Thorn",
     "aliases": [
       "The Manticore"
     ],
@@ -423,6 +435,7 @@
   {
     "name": "The Nemean Lion",
     "expected_slug": "nemean-lion",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemean_Lion",
     "aliases": [
       "The Invulnerable Lion"
     ],
@@ -456,6 +469,7 @@
   {
     "name": "Erymanthian Boar",
     "expected_slug": "erymanthian-boar",
+    "wiki_url": "https://riordan.fandom.com/wiki/Erymanthian_Boar",
     "aliases": [
       "The Giant Pink Boar"
     ],
@@ -489,6 +503,7 @@
   {
     "name": "Ophiotaurus",
     "expected_slug": "ophiotaurus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ophiotaurus",
     "aliases": [
       "Bessie",
       "The Serpent-Bull"
@@ -522,6 +537,7 @@
   {
     "name": "Ladon",
     "expected_slug": "ladon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ladon",
     "aliases": [
       "Dragon of the Hesperides"
     ],
@@ -556,6 +572,7 @@
   {
     "name": "Kampê",
     "expected_slug": "kampe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kamp%C3%AA",
     "aliases": [
       "Jailer of Tartarus"
     ],
@@ -589,6 +606,7 @@
   {
     "name": "Kelli",
     "expected_slug": "kelli",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kelli",
     "aliases": [
       "Empousa Senior"
     ],
@@ -623,6 +641,7 @@
   {
     "name": "Geryon",
     "expected_slug": "geryon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Geryon",
     "aliases": [
       "Owner of Triple G Ranch"
     ],
@@ -655,6 +674,7 @@
   {
     "name": "Typhon",
     "expected_slug": "typhon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Typhon",
     "aliases": [
       "Father of All Monsters",
       "Storm Giant"
@@ -690,6 +710,7 @@
   {
     "name": "Lydian Drakon",
     "expected_slug": "lydian-drakon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Lydian_Drakon",
     "aliases": [
       "The Great Manhattan Drakon"
     ],
@@ -722,6 +743,7 @@
   {
     "name": "Cacus",
     "expected_slug": "cacus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Cacus",
     "aliases": [
       "The Caduceus Thief"
     ],
@@ -755,6 +777,7 @@
   {
     "name": "Bronze Dragon",
     "expected_slug": "bronze-dragon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Festus",
     "aliases": [],
     "monster_type": "mechanical",
     "allegiance": "olympian_ally",
@@ -773,6 +796,7 @@
   {
     "name": "Talos",
     "expected_slug": "talos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Talos",
     "aliases": [
       "Talos Automaton"
     ],
@@ -793,6 +817,7 @@
   {
     "name": "Tammi",
     "expected_slug": "tammi",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tammi",
     "aliases": [],
     "monster_type": "empousa",
     "allegiance": "kronos_army",

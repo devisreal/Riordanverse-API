@@ -35,6 +35,11 @@ class SeedQuestsCommandTests(TestCase):
         outputs = self.seed_all()
 
         self.assertEqual(Quest.objects.count(), 12)
+        self.assertEqual(Quest.objects.filter(wiki_url__isnull=False).count(), 11)
+        self.assertEqual(
+            Quest.objects.get(slug='quest-for-zeuss-master-bolt').wiki_url,
+            'https://riordan.fandom.com/wiki/Quest_for_the_Master_Bolt',
+        )
         self.assertEqual(QuestParticipant.objects.count(), 34)
         self.assertEqual(QuestCasualty.objects.count(), 10)
         self.assertFalse(any('[WARN]' in output for output in outputs))
@@ -76,6 +81,17 @@ class SeedQuestsCommandTests(TestCase):
         self.assertEqual(QuestParticipant.objects.count(), 34)
         self.assertEqual(QuestCasualty.objects.count(), 10)
         self.assertIn('12 updated', rerun.getvalue())
+
+    def test_null_wiki_url_does_not_clear_existing_quest_url(self):
+        self.seed_all()
+        quest = Quest.objects.get(slug='quest-of-bellerophon')
+        quest.wiki_url = 'https://riordan.fandom.com/wiki/Existing_Quest'
+        quest.save(update_fields=['wiki_url'])
+
+        call_command('seed_quests', stdout=StringIO())
+
+        quest.refresh_from_db()
+        self.assertEqual(quest.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Quest')
 
     def test_unresolved_references_warn_and_are_skipped(self):
         entry = {

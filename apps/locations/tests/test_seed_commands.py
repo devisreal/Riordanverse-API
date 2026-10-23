@@ -25,6 +25,11 @@ class SeedLocationsCommandTests(TestCase):
         call_command('seed_locations', stdout=output)
 
         self.assertEqual(Location.objects.count(), 27)
+        self.assertEqual(Location.objects.filter(wiki_url__isnull=False).count(), 25)
+        self.assertEqual(
+            Location.objects.get(slug='camp-half-blood').wiki_url,
+            'https://riordan.fandom.com/wiki/Camp_Half-Blood',
+        )
         self.assertNotIn('[WARN]', output.getvalue())
 
         gateway_arch = Location.objects.get(slug='gateway-arch')
@@ -35,6 +40,7 @@ class SeedLocationsCommandTests(TestCase):
         self.assertEqual(tartarus.controlled_by_god.slug, 'tartarus')
         self.assertIsNone(tartarus.controlled_by_titan)
         brooklyn_zoo = Location.objects.get(slug='brooklyn-zoo')
+        self.assertIsNone(brooklyn_zoo.wiki_url)
         self.assertIn(
             'percy-jackson-and-the-stolen-chariot',
             brooklyn_zoo.books_appeared_in.values_list('slug', flat=True),
@@ -77,3 +83,24 @@ class SeedLocationsCommandTests(TestCase):
 
         self.assertTrue(Location.objects.filter(slug='master-slug').exists())
         self.assertFalse(Location.objects.filter(slug='canonical-test-place').exists())
+
+    def test_null_wiki_url_does_not_clear_existing_location_url(self):
+        location = Location.objects.create(
+            name='Unlisted Place',
+            wiki_url='https://riordan.fandom.com/wiki/Existing_Place',
+        )
+        entry = {
+            'name': location.name,
+            'expected_slug': location.slug,
+            'wiki_url': None,
+            'books_appeared_in_slugs': [],
+        }
+
+        with TemporaryDirectory() as directory:
+            data_file = Path(directory) / 'locations.json'
+            data_file.write_text(json.dumps([entry]), encoding='utf-8')
+            with patch('apps.locations.management.commands.seed_locations.DATA_FILE', data_file):
+                call_command('seed_locations', stdout=StringIO())
+
+        location.refresh_from_db()
+        self.assertEqual(location.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Place')

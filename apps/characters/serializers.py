@@ -19,6 +19,7 @@ class PowerSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
+            'wiki_url',
             'description',
             'source',
             'type',
@@ -54,6 +55,7 @@ class CharacterListSerializer(serializers.ModelSerializer):
             'is_big_three_child',
             'divine_parent_slug',
             'cabin_number',
+            'wiki_url',
             'primary_image',
         )
 

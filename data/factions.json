@@ -2,6 +2,7 @@
   {
     "name": "Camp Half-Blood",
     "expected_slug": "camp-half-blood",
+    "wiki_url": "https://riordan.fandom.com/wiki/Camp-Half-Blood",
     "faction_type": "camp",
     "alignment": "olympian",
     "leader_character_slug": "chiron",
@@ -85,6 +86,7 @@
   {
     "name": "Titan Army",
     "expected_slug": "titan-army",
+    "wiki_url": "https://riordan.fandom.com/wiki/Titan_Army",
     "faction_type": "army",
     "alignment": "titan",
     "leader_character_slug": "luke-castellan",
@@ -159,6 +161,7 @@
   {
     "name": "Hunters of Artemis",
     "expected_slug": "hunters-of-artemis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hunters_of_Artemis",
     "faction_type": "order",
     "alignment": "olympian",
     "leader_character_slug": "zoe-nightshade",
@@ -191,6 +194,7 @@
   {
     "name": "Olympian Council",
     "expected_slug": "olympian-council",
+    "wiki_url": null,
     "faction_type": "council",
     "alignment": "olympian",
     "leader_character_slug": null,
@@ -258,6 +262,7 @@
   {
     "name": "Council of Cloven Elders",
     "expected_slug": "council-of-cloven-elders",
+    "wiki_url": "https://riordan.fandom.com/wiki/Council_of_Cloven_Elders",
     "faction_type": "council",
     "alignment": "neutral",
     "leader_character_slug": "silenus",
@@ -285,6 +290,7 @@
   {
     "name": "Party Ponies",
     "expected_slug": "party-ponies",
+    "wiki_url": "https://riordan.fandom.com/wiki/Party_Ponies",
     "faction_type": "group",
     "alignment": "olympian",
     "leader_character_slug": "chiron",
@@ -304,6 +310,7 @@
   {
     "name": "Underworld Legion",
     "expected_slug": "underworld-legion",
+    "wiki_url": null,
     "faction_type": "army",
     "alignment": "independent",
     "leader_character_slug": null,
@@ -336,6 +343,7 @@
   {
     "name": "House of Perseus",
     "expected_slug": "house-of-perseus",
+    "wiki_url": null,
     "faction_type": "family",
     "alignment": "independent",
     "leader_character_slug": "perseus",

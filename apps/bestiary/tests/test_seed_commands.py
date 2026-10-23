@@ -20,7 +20,12 @@ class MonsterSeedCommandTests(TestCase):
         call_command('seed_monsters', stdout=output)
 
         self.assertEqual(Monster.objects.count(), 25)
+        self.assertEqual(Monster.objects.filter(wiki_url__isnull=False).count(), 25)
         self.assertEqual(Monster.objects.get(slug='minotaur').name, 'The Minotaur')
+        self.assertEqual(
+            Monster.objects.get(slug='alecto').wiki_url,
+            'https://riordan.fandom.com/wiki/Alecto',
+        )
         self.assertEqual(MonsterDefeat.objects.count(), 0)
         self.assertEqual(
             Monster.objects.get(slug='polyphemus').defeated_by.count(),

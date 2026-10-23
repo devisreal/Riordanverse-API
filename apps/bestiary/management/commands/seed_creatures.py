@@ -102,20 +102,23 @@ class Command(BaseCommand):
             name = entry.get('name', 'unknown')
             try:
                 with transaction.atomic():
+                    defaults = {
+                        field: entry.get(field)
+                        for field in (
+                            'name',
+                            'description',
+                            'origin',
+                            'alignment',
+                            'habitat',
+                            'abilities',
+                            'weaknesses',
+                        )
+                    }
+                    if entry.get('wiki_url'):
+                        defaults['wiki_url'] = entry['wiki_url']
                     creature, created = Creature.objects.update_or_create(
                         slug=entry['expected_slug'],
-                        defaults={
-                            field: entry.get(field)
-                            for field in (
-                                'name',
-                                'description',
-                                'origin',
-                                'alignment',
-                                'habitat',
-                                'abilities',
-                                'weaknesses',
-                            )
-                        },
+                        defaults=defaults,
                     )
 
                     references = entry.get('notable_members')

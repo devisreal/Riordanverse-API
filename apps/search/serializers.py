@@ -27,6 +27,7 @@ class SearchResultSerializer(serializers.Serializer):
     url = serializers.SerializerMethodField()
     title = serializers.SerializerMethodField()
     description = serializers.SerializerMethodField()
+    wiki_url = serializers.SerializerMethodField()
 
     def _get_model_key(self, obj):
         content_type = obj.content_type
@@ -52,3 +53,10 @@ class SearchResultSerializer(serializers.Serializer):
 
     def get_description(self, obj):
         return obj.description or ''
+
+    def get_wiki_url(self, obj):
+        try:
+            instance = obj.object
+        except AttributeError, ObjectDoesNotExist:
+            return None
+        return getattr(instance, 'wiki_url', None) if instance is not None else None

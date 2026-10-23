@@ -288,6 +288,7 @@ class Power(models.Model):
         related_name='powers',
     )
     name = models.CharField(max_length=150)
+    wiki_url = models.URLField(max_length=500, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     source = models.CharField(
         max_length=20,
