@@ -18,12 +18,24 @@ class SeedCreaturesCommandTests(TestCase):
         output = StringIO()
         call_command('seed_creatures', stdout=output)
 
-        self.assertEqual(Creature.objects.count(), 16)
-        self.assertEqual(Creature.objects.filter(wiki_url__isnull=False).count(), 16)
+        self.assertEqual(Creature.objects.count(), 17)
+        self.assertEqual(Creature.objects.filter(wiki_url__isnull=False).count(), 17)
         self.assertEqual(
             Creature.objects.get(slug='pegasus').wiki_url,
             'https://riordan.fandom.com/wiki/Pegasus_%28species%29',
         )
+        myrmekes = Creature.objects.get(slug='myrmekes')
+        self.assertEqual(myrmekes.alignment, 'independent')
+        self.assertEqual(
+            myrmekes.origin,
+            'Ancient Greek myth, originating on the island of Aegina before being transformed by Zeus into the Myrmidons.',
+        )
+        self.assertEqual(
+            myrmekes.abilities,
+            ['acid spitting', 'poisonous bite', 'armored exoskeleton', 'swarm tactics'],
+        )
+        self.assertEqual(myrmekes.notable_members.count(), 0)
+        self.assertEqual(myrmekes.wiki_url, 'https://riordan.fandom.com/wiki/Myrmekes')
         self.assertEqual(CreatureMember.objects.count(), 20)
         self.assertNotIn('[WARN]', character_output.getvalue())
         self.assertNotIn('[WARN]', monster_output.getvalue())
@@ -51,7 +63,7 @@ class SeedCreaturesCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_creatures', stdout=rerun)
-        self.assertEqual(Creature.objects.count(), 16)
+        self.assertEqual(Creature.objects.count(), 17)
         self.assertEqual(CreatureMember.objects.count(), 20)
         self.assertEqual(satyr.notable_members.count(), 5)
-        self.assertIn('16 updated', rerun.getvalue())
+        self.assertIn('17 updated', rerun.getvalue())

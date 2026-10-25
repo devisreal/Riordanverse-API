@@ -12,10 +12,82 @@ class BookFilter(django_filters.FilterSet):
         field_name='parent_collection__slug',
         help_text='Filter by parent collection slug e.g. ?parent-collection=the-demigod-files',
     )
+    narrator = django_filters.CharFilter(
+        field_name='narrator_records__character__slug', distinct=True
+    )
+    narrator_character = django_filters.CharFilter(
+        field_name='narrator_records__character__slug', distinct=True
+    )
+    narrator_god = django_filters.CharFilter(
+        field_name='narrator_records__god__slug', distinct=True
+    )
+    narrator_titan = django_filters.CharFilter(
+        field_name='narrator_records__titan__slug', distinct=True
+    )
+    narrator_monster = django_filters.CharFilter(
+        field_name='narrator_records__monster__slug', distinct=True
+    )
+    narrator_creature = django_filters.CharFilter(
+        field_name='narrator_records__creature__slug', distinct=True
+    )
+    main_character = django_filters.CharFilter(
+        field_name='main_characters__slug',
+        distinct=True,
+        help_text='Filter by Character main-character slug.',
+    )
+    main_character_god = django_filters.CharFilter(
+        field_name='main_character_records__god__slug', distinct=True
+    )
+    main_character_titan = django_filters.CharFilter(
+        field_name='main_character_records__titan__slug', distinct=True
+    )
+    main_character_monster = django_filters.CharFilter(
+        field_name='main_character_records__monster__slug', distinct=True
+    )
+    main_character_creature = django_filters.CharFilter(
+        field_name='main_character_records__creature__slug', distinct=True
+    )
+    antagonist = django_filters.CharFilter(
+        field_name='antagonists__slug',
+        distinct=True,
+        help_text='Filter by Character antagonist slug.',
+    )
+    antagonist_god = django_filters.CharFilter(
+        field_name='antagonist_records__god__slug', distinct=True
+    )
+    antagonist_titan = django_filters.CharFilter(
+        field_name='antagonist_records__titan__slug', distinct=True
+    )
+    antagonist_monster = django_filters.CharFilter(
+        field_name='antagonist_records__monster__slug', distinct=True
+    )
+    antagonist_creature = django_filters.CharFilter(
+        field_name='antagonist_records__creature__slug', distinct=True
+    )
 
     class Meta:
         model = Book
-        fields = ('series', 'book_type', 'parent_collection')
+        fields = (
+            'series',
+            'book_type',
+            'parent_collection',
+            'narrator',
+            'narrator_character',
+            'narrator_god',
+            'narrator_titan',
+            'narrator_monster',
+            'narrator_creature',
+            'main_character',
+            'main_character_god',
+            'main_character_titan',
+            'main_character_monster',
+            'main_character_creature',
+            'antagonist',
+            'antagonist_god',
+            'antagonist_titan',
+            'antagonist_monster',
+            'antagonist_creature',
+        )
 
     def __init__(self, data=None, *args, **kwargs):
         if data is not None and 'parent-collection' in data:

@@ -19,13 +19,17 @@ class MonsterSeedCommandTests(TestCase):
         output = StringIO()
         call_command('seed_monsters', stdout=output)
 
-        self.assertEqual(Monster.objects.count(), 25)
-        self.assertEqual(Monster.objects.filter(wiki_url__isnull=False).count(), 25)
+        self.assertEqual(Monster.objects.count(), 26)
+        self.assertEqual(Monster.objects.filter(wiki_url__isnull=False).count(), 26)
         self.assertEqual(Monster.objects.get(slug='minotaur').name, 'The Minotaur')
         self.assertEqual(
             Monster.objects.get(slug='alecto').wiki_url,
             'https://riordan.fandom.com/wiki/Alecto',
         )
+        antaeus = Monster.objects.get(slug='antaeus')
+        self.assertEqual(antaeus.monster_type, 'giant')
+        self.assertEqual(antaeus.wiki_url, 'https://riordan.fandom.com/wiki/Antaeus')
+        self.assertEqual(antaeus.first_appearance_book.slug, 'the-battle-of-the-labyrinth')
         self.assertEqual(MonsterDefeat.objects.count(), 0)
         self.assertEqual(
             Monster.objects.get(slug='polyphemus').defeated_by.count(),
@@ -68,5 +72,5 @@ class MonsterSeedCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_monsters', stdout=rerun)
-        self.assertEqual(Monster.objects.count(), 25)
-        self.assertIn('25 updated', rerun.getvalue())
+        self.assertEqual(Monster.objects.count(), 26)
+        self.assertIn('26 updated', rerun.getvalue())

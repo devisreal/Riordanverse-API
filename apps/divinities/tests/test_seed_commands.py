@@ -41,7 +41,7 @@ class DivinitySeedCommandTests(TestCase):
             'https://riordan.fandom.com/wiki/Kronos',
         )
         self.assertEqual(DivineRelationship.objects.count(), 45)
-        self.assertEqual(Character.objects.count(), 66)
+        self.assertEqual(Character.objects.count(), 68)
         helios = Titan.objects.get(slug='helios')
         tartarus = God.objects.get(slug='tartarus')
         amphitrite = God.objects.get(slug='amphitrite')

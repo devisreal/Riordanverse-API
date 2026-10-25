@@ -25,13 +25,22 @@ class SeedCharactersCommandTests(TestCase):
             phaethon.special_states,
             ["Struck down by Zeus's lightning bolt to stop the sun chariot from burning the Earth"],
         )
-        self.assertEqual(Character.objects.count(), 66)
-        self.assertEqual(Character.objects.filter(wiki_url__isnull=False).count(), 66)
+        self.assertEqual(Character.objects.count(), 68)
+        self.assertEqual(Character.objects.filter(wiki_url__isnull=False).count(), 68)
         self.assertEqual(Character.objects.get(slug='phoebe-hunter').name, 'Phoebe')
         self.assertEqual(
             Character.objects.get(slug='mrs-oleary').wiki_url,
             "https://riordan.fandom.com/wiki/Mrs._O'Leary",
         )
+        acrisius = Character.objects.get(slug='king-acrisius')
+        self.assertEqual(acrisius.species, 'human')
+        self.assertEqual(acrisius.first_appearance_book.slug, 'percy-jacksons-greek-heroes')
+        self.assertFalse(acrisius.is_demigod)
+        self.assertEqual(acrisius.wiki_url, 'https://riordan.fandom.com/wiki/Acrisius')
+        polydectes = Character.objects.get(slug='king-polydectes')
+        self.assertEqual(polydectes.status, 'deceased')
+        self.assertEqual(polydectes.wiki_url, 'https://riordan.fandom.com/wiki/Polydectes')
+        self.assertEqual(polydectes.first_appearance_book.slug, 'percy-jacksons-greek-heroes')
         odysseus = Character.objects.get(slug='odysseus')
         self.assertFalse(odysseus.is_demigod)
         self.assertIsNone(odysseus.divine_parent)
@@ -41,9 +50,9 @@ class SeedCharactersCommandTests(TestCase):
 
         rerun_output = StringIO()
         call_command('seed_characters', stdout=rerun_output)
-        self.assertEqual(Character.objects.count(), 66)
+        self.assertEqual(Character.objects.count(), 68)
         self.assertIn(
-            'Characters seeded: 0 created, 66 updated, 0 errors.', rerun_output.getvalue()
+            'Characters seeded: 0 created, 68 updated, 0 errors.', rerun_output.getvalue()
         )
 
     def test_missing_wiki_url_does_not_clear_existing_value(self):
