@@ -23,7 +23,7 @@ This API is the data backbone for a planned fan web application, with a future m
 ## 🏗 Tech Stack
 
 | Layer | Choice |
-|---|---|
+| --- | --- |
 | Language / Framework | Python, Django, Django REST Framework |
 | Database | PostgreSQL |
 | Caching | Redis (`django-redis`) |
@@ -38,7 +38,7 @@ This API is the data backbone for a planned fan web application, with a future m
 
 ## 📁 Project Structure
 
-```
+```bash
 pj_fandom_api/
 ├── manage.py
 ├── .env.example
@@ -99,7 +99,7 @@ cp .env.example .env
 ```
 
 | Variable | Description |
-|---|---|
+| --- | --- |
 | `SECRET_KEY` | Django secret key |
 | `DEBUG` | `True` / `False` |
 | `ALLOWED_HOSTS` | Comma-separated hostnames |
@@ -136,7 +136,7 @@ Or set `DJANGO_SETTINGS_MODULE=config.settings.development` in your shell/`.env`
 
 ## 🔑 Authentication
 
-This is a public, **read-only** API. Most endpoints require an API key, passed via the `Api-Key` request header:
+This is a public, **read-only** API. All `/api/v1/` endpoints require a valid API key, passed via the `Api-Key` request header. Health checks and the `/auth/` key request/verification routes are public:
 
 ```bash
 curl -H "Api-Key: <your-key>" https://api.example.com/api/v1/characters/percy-jackson
@@ -144,11 +144,11 @@ curl -H "Api-Key: <your-key>" https://api.example.com/api/v1/characters/percy-ja
 
 Request a key:
 
-```
+```bash
 POST /auth/request-key/
 ```
 
-> In the `development` settings, authentication is disabled by default for easier local browsing of the API.
+> API-key authentication is enforced in both `development` and `production` settings. Only the automated `test` settings disable it to simplify tests; do not use test settings to run a server.
 
 ---
 
