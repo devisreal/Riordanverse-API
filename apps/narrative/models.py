@@ -55,17 +55,29 @@ class Book(BaseModel):
         related_name='narrated_books',
         help_text='Percy Jackson for all PJO books.',
     )
+    narrators = models.ManyToManyField(
+        'characters.Character',
+        through='BookNarrator',
+        through_fields=('book', 'character'),
+        blank=True,
+        related_name='books_as_narrator',
+        help_text='Character narrators; typed narrator links are in narrator_records.',
+    )
     main_characters = models.ManyToManyField(
         'characters.Character',
+        through='BookMainCharacter',
+        through_fields=('book', 'character'),
         blank=True,
         related_name='books_as_main_character',
-        help_text='Primary POV and quest characters.',
+        help_text='Character main links; typed main-character links are in main_character_records.',
     )
     antagonists = models.ManyToManyField(
         'characters.Character',
+        through='BookAntagonist',
+        through_fields=('book', 'character'),
         blank=True,
         related_name='books_as_antagonist',
-        help_text='Primary villains, including demigods and Titans acting as antagonists.',
+        help_text='Character antagonist links; typed links are in antagonist_records.',
     )
 
     class Meta:
@@ -81,6 +93,357 @@ class Book(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class BookNarrator(models.Model):
+    """A typed narrator link from a Book to exactly one lore entity."""
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='narrator_records')
+    character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_narrator_links',
+    )
+    god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_narrator_links',
+    )
+    titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_narrator_links',
+    )
+    monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_narrator_links',
+    )
+    creature = models.ForeignKey(
+        'bestiary.Creature',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_narrator_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        character__isnull=False,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=False,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=False,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=False,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=False,
+                    )
+                ),
+                name='book_narrator_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'character'),
+                condition=models.Q(character__isnull=False),
+                name='book_narrator_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'god'),
+                condition=models.Q(god__isnull=False),
+                name='book_narrator_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'titan'),
+                condition=models.Q(titan__isnull=False),
+                name='book_narrator_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'monster'),
+                condition=models.Q(monster__isnull=False),
+                name='book_narrator_unique_monster',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'creature'),
+                condition=models.Q(creature__isnull=False),
+                name='book_narrator_unique_creature',
+            ),
+        )
+        verbose_name = 'Book Narrator'
+        verbose_name_plural = 'Book Narrators'
+
+    def __str__(self):
+        entity = self.character or self.god or self.titan or self.monster or self.creature
+        return f'{self.book}: {entity}'
+
+
+class BookMainCharacter(models.Model):
+    """A typed main-character link from a Book to exactly one lore entity."""
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='main_character_records')
+    character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_main_character_links',
+    )
+    god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_main_character_links',
+    )
+    titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_main_character_links',
+    )
+    monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_main_character_links',
+    )
+    creature = models.ForeignKey(
+        'bestiary.Creature',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_main_character_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        character__isnull=False,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=False,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=False,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=False,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=False,
+                    )
+                ),
+                name='book_main_character_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'character'),
+                condition=models.Q(character__isnull=False),
+                name='book_main_character_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'god'),
+                condition=models.Q(god__isnull=False),
+                name='book_main_character_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'titan'),
+                condition=models.Q(titan__isnull=False),
+                name='book_main_character_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'monster'),
+                condition=models.Q(monster__isnull=False),
+                name='book_main_character_unique_monster',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'creature'),
+                condition=models.Q(creature__isnull=False),
+                name='book_main_character_unique_creature',
+            ),
+        )
+        verbose_name = 'Book Main Character'
+        verbose_name_plural = 'Book Main Characters'
+
+    def __str__(self):
+        entity = self.character or self.god or self.titan or self.monster or self.creature
+        return f'{self.book}: {entity}'
+
+
+class BookAntagonist(models.Model):
+    """A typed antagonist link from a Book to exactly one lore entity."""
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='antagonist_records')
+    character = models.ForeignKey(
+        'characters.Character',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_antagonist_links',
+    )
+    god = models.ForeignKey(
+        'divinities.God',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_antagonist_links',
+    )
+    titan = models.ForeignKey(
+        'divinities.Titan',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_antagonist_links',
+    )
+    monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_antagonist_links',
+    )
+    creature = models.ForeignKey(
+        'bestiary.Creature',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='book_antagonist_links',
+    )
+
+    class Meta:
+        ordering = ['id']  # noqa: RUF012
+        constraints = (
+            models.CheckConstraint(
+                condition=(
+                    models.Q(
+                        character__isnull=False,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=False,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=False,
+                        monster__isnull=True,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=False,
+                        creature__isnull=True,
+                    )
+                    | models.Q(
+                        character__isnull=True,
+                        god__isnull=True,
+                        titan__isnull=True,
+                        monster__isnull=True,
+                        creature__isnull=False,
+                    )
+                ),
+                name='book_antagonist_exactly_one_entity',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'character'),
+                condition=models.Q(character__isnull=False),
+                name='book_antagonist_unique_character',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'god'),
+                condition=models.Q(god__isnull=False),
+                name='book_antagonist_unique_god',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'titan'),
+                condition=models.Q(titan__isnull=False),
+                name='book_antagonist_unique_titan',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'monster'),
+                condition=models.Q(monster__isnull=False),
+                name='book_antagonist_unique_monster',
+            ),
+            models.UniqueConstraint(
+                fields=('book', 'creature'),
+                condition=models.Q(creature__isnull=False),
+                name='book_antagonist_unique_creature',
+            ),
+        )
+        verbose_name = 'Book Antagonist'
+        verbose_name_plural = 'Book Antagonists'
+
+    def __str__(self):
+        entity = self.character or self.god or self.titan or self.monster or self.creature
+        return f'{self.book}: {entity}'
 
 
 class BookImage(BaseImageLink):

@@ -22,13 +22,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Fine for local dev only — never enable this in production
 CORS_ALLOW_ALL_ORIGINS = True
 
-# Loosen auth locally so you can browse the API / Swagger UI without
-# generating a key every time. Production keeps base.py's strict default.
-REST_FRAMEWORK = {
-    **REST_FRAMEWORK,
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
-}
-
+# Keep base.py's API-key requirement in development as well as production.
+# Automated tests opt out explicitly in config.settings.test.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

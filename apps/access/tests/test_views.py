@@ -1,13 +1,73 @@
+from datetime import timedelta
 from unittest.mock import patch
 
 from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
 from django_redis.exceptions import ConnectionInterrupted
 from rest_framework.test import APIClient
 
 from apps.access.models import ConsumerAPIKey
 from apps.core.throttles import _FALLBACK_THROTTLE_CACHE
+
+
+class VerifyKeyViewTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        cache.clear()
+        _FALLBACK_THROTTLE_CACHE.clear()
+
+    def _verify_key(self, key=None):
+        extra = {'HTTP_API_KEY': key} if key is not None else {}
+        return self.client.post(reverse('verify-api-key'), **extra)
+
+    def _create_key(self):
+        return ConsumerAPIKey.objects.create_key(
+            consumer_name='Test App',
+            email='test@example.com',
+            name='Test App',
+        )
+
+    def test_valid_key_returns_true_and_consumer_name(self):
+        _record, plaintext_key = self._create_key()
+
+        response = self._verify_key(plaintext_key)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'valid': True, 'consumer_name': 'Test App'})
+
+    def test_invalid_key_returns_false_without_name(self):
+        response = self._verify_key('invalid.key')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'valid': False, 'consumer_name': None})
+
+    def test_missing_key_returns_false_without_name(self):
+        response = self._verify_key()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'valid': False, 'consumer_name': None})
+
+    def test_revoked_key_returns_false_without_name(self):
+        record, plaintext_key = self._create_key()
+        record.revoked = True
+        record.save(update_fields=['revoked'])
+
+        response = self._verify_key(plaintext_key)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'valid': False, 'consumer_name': None})
+
+    def test_expired_key_returns_false_without_name(self):
+        record, plaintext_key = self._create_key()
+        record.expiry_date = timezone.now() - timedelta(days=1)
+        record.save(update_fields=['expiry_date'])
+
+        response = self._verify_key(plaintext_key)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'valid': False, 'consumer_name': None})
 
 
 class RequestKeyViewTests(TestCase):

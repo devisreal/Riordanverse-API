@@ -40,7 +40,25 @@ class BookDetailView(generics.RetrieveAPIView):
 
     queryset = (
         Book.objects.prefetch_related(
-            'images__image', 'main_characters', 'antagonists', 'included_stories'
+            'images__image',
+            'main_characters',
+            'antagonists',
+            'narrator_records__character',
+            'narrator_records__god',
+            'narrator_records__titan',
+            'narrator_records__monster',
+            'narrator_records__creature',
+            'main_character_records__character',
+            'main_character_records__god',
+            'main_character_records__titan',
+            'main_character_records__monster',
+            'main_character_records__creature',
+            'antagonist_records__character',
+            'antagonist_records__god',
+            'antagonist_records__titan',
+            'antagonist_records__monster',
+            'antagonist_records__creature',
+            'included_stories',
         )
         .select_related('narrator', 'parent_collection')
         .all()

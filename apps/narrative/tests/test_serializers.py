@@ -1,6 +1,12 @@
 from django.test import TestCase
 
-from apps.narrative.models import EventCasualty, QuestCasualty, QuestParticipant
+from apps.narrative.models import (
+    BookAntagonist,
+    BookMainCharacter,
+    EventCasualty,
+    QuestCasualty,
+    QuestParticipant,
+)
 from apps.narrative.serializers import (
     BookDetailSerializer,
     BookListSerializer,
@@ -12,6 +18,7 @@ from apps.narrative.serializers import (
 from tests.makers import (
     make_book,
     make_character,
+    make_creature,
     make_event,
     make_god,
     make_monster,
@@ -44,6 +51,38 @@ class BookDetailSerializerTests(TestCase):
 
         self.assertEqual(data['quest_count'], 1)
         self.assertEqual(data['event_count'], 1)
+
+    def test_detail_returns_typed_casts_and_legacy_character_slugs(self):
+        book = make_book(title='The Lightning Thief', book_number=1)
+        entities = (
+            ('character', make_character(name='Percy Jackson')),
+            ('god', make_god(name='Ares')),
+            ('titan', make_titan(name='Atlas')),
+            ('monster', make_monster(name='Medusa')),
+            ('creature', make_creature(name='Myrmekes')),
+        )
+        for entity_type, entity in entities:
+            BookMainCharacter.objects.create(book=book, **{entity_type: entity})
+            BookAntagonist.objects.create(book=book, **{entity_type: entity})
+
+        data = BookDetailSerializer(book).data
+
+        self.assertEqual(
+            data['main_characters'],
+            [
+                {'type': entity_type, 'slug': entity.slug, 'name': entity.name}
+                for entity_type, entity in entities
+            ],
+        )
+        self.assertEqual(
+            data['antagonists'],
+            [
+                {'type': entity_type, 'slug': entity.slug, 'name': entity.name}
+                for entity_type, entity in entities
+            ],
+        )
+        self.assertEqual(data['main_character_slugs'], ['percy-jackson'])
+        self.assertEqual(data['antagonist_slugs'], ['percy-jackson'])
 
 
 class ProphecySerializerTests(TestCase):

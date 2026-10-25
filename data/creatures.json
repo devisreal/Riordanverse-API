@@ -139,8 +139,7 @@
     "notable_members": [
       {
         "type": "monster",
-        "slug": "alecto",
-        "source_slug": "mrs-dodds"
+        "slug": "alecto"
       }
     ]
   },
@@ -392,5 +391,25 @@
         "slug": "celedon"
       }
     ]
+  },
+  {
+    "name": "Myrmekes",
+    "expected_slug": "myrmekes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Myrmekes",
+    "description": "Giant, blood-red armored ant monsters about the size of German Shepherds. Living in underground nest colonies in deep woods, they spit toxic acid, possess venomous bites, and compulsively hoard gold and shiny metals.",
+    "origin": "Ancient Greek myth, originating on the island of Aegina before being transformed by Zeus into the Myrmidons.",
+    "alignment": "independent",
+    "habitat": "Camp Half-Blood woods, subterranean nests",
+    "abilities": [
+      "acid spitting",
+      "poisonous bite",
+      "armored exoskeleton",
+      "swarm tactics"
+    ],
+    "weaknesses": [
+      "vulnerable to fire and intense heat",
+      "easily distracted by gold and shiny metal objects"
+    ],
+    "notable_members": []
   }
 ]

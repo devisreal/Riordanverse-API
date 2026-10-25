@@ -832,5 +832,13 @@
       "illusions broken by insult or cold water"
     ],
     "description": "An Empousa associated with Kelli and the forces of Kronos."
+  },
+  {
+    "name": "Antaeus",
+    "expected_slug": "antaeus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Antaeus",
+    "monster_type": "giant",
+    "description": "Giant son of Poseidon and Gaea who gained invulnerability while touching the earth. He ran a gladiatorial arena in the Labyrinth where he forced demigods to fight to the death before being defeated by Percy Jackson.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth"
   }
 ]

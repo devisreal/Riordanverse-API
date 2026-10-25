@@ -3616,5 +3616,29 @@
     "greek_or_roman": "greek",
     "is_demigod": false,
     "description": "A friendly hellhound who becomes a companion of Percy Jackson and Camp Half-Blood."
+  },
+  {
+    "name": "King Acrisius",
+    "expected_slug": "king-acrisius",
+    "wiki_url": "https://riordan.fandom.com/wiki/Acrisius",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Tyrannical King of Argos and grandfather of Perseus. Fearing a prophecy that his daughter Danaë's child would kill him, he locked her in a bronze tower and later set her and newborn Perseus adrift at sea.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes"
+  },
+  {
+    "name": "King Polydectes",
+    "expected_slug": "king-polydectes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Polydectes",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Ruler of the island of Seriphos who sought to marry Danaë. To get rid of Perseus, he sent the young demigod on a suicidal quest to retrieve the head of Medusa.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes"
   }
 ]

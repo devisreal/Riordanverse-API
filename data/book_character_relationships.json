@@ -1,0 +1,258 @@
+[
+  {
+    "book_slug": "the-lightning-thief",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "annabeth-chase"},
+      {"type": "character", "slug": "grover-underwood"}
+    ],
+    "antagonists": [
+      {"type": "character", "slug": "luke-castellan"},
+      {"type": "titan", "slug": "kronos"},
+      {"type": "god", "slug": "ares"},
+      {"type": "monster", "slug": "echidna"},
+      {"type": "monster", "slug": "minotaur"},
+      {"type": "monster", "slug": "medusa"},
+      {"type": "character", "slug": "gabe-ugliano"}
+    ]
+  },
+  {
+    "book_slug": "the-sea-of-monsters",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "annabeth-chase"},
+      {"type": "character", "slug": "tyson"},
+      {"type": "character", "slug": "clarisse-la-rue"}
+    ],
+    "antagonists": [
+      {"type": "monster", "slug": "polyphemus"},
+      {"type": "character", "slug": "luke-castellan"},
+      {"type": "titan", "slug": "kronos"},
+      {"type": "god", "slug": "circe"},
+      {"type": "character", "slug": "tantalus"}
+    ]
+  },
+  {
+    "book_slug": "the-titans-curse",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "thalia-grace"},
+      {"type": "character", "slug": "grover-underwood"},
+      {"type": "character", "slug": "zoe-nightshade"},
+      {"type": "character", "slug": "bianca-di-angelo"}
+    ],
+    "antagonists": [
+      {"type": "titan", "slug": "atlas"},
+      {"type": "character", "slug": "luke-castellan"},
+      {"type": "monster", "slug": "dr-thorn"},
+      {"type": "titan", "slug": "kronos"},
+      {"type": "monster", "slug": "alecto"}
+    ]
+  },
+  {
+    "book_slug": "the-battle-of-the-labyrinth",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "annabeth-chase"},
+      {"type": "character", "slug": "grover-underwood"},
+      {"type": "character", "slug": "tyson"},
+      {"type": "character", "slug": "rachel-elizabeth-dare"},
+      {"type": "character", "slug": "nico-di-angelo"}
+    ],
+    "antagonists": [
+      {"type": "titan", "slug": "kronos"},
+      {"type": "character", "slug": "luke-castellan"},
+      {"type": "monster", "slug": "kampe"},
+      {"type": "character", "slug": "king-minos"},
+      {"type": "monster", "slug": "antaeus"},
+      {"type": "monster", "slug": "geryon"}
+    ]
+  },
+  {
+    "book_slug": "the-last-olympian",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "annabeth-chase"},
+      {"type": "character", "slug": "grover-underwood"},
+      {"type": "character", "slug": "thalia-grace"},
+      {"type": "character", "slug": "nico-di-angelo"},
+      {"type": "character", "slug": "charles-beckendorf"},
+      {"type": "character", "slug": "silena-beauregard"}
+    ],
+    "antagonists": [
+      {"type": "titan", "slug": "kronos"},
+      {"type": "titan", "slug": "hyperion"},
+      {"type": "character", "slug": "luke-castellan"},
+      {"type": "monster", "slug": "typhon"},
+      {"type": "titan", "slug": "oceanus"},
+      {"type": "titan", "slug": "prometheus"}
+    ]
+  },
+  {
+    "book_slug": "the-demigod-files",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [],
+    "antagonists": []
+  },
+  {
+    "book_slug": "percy-jackson-and-the-stolen-chariot",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "clarisse-la-rue"}
+    ],
+    "antagonists": [
+      {"type": "god", "slug": "phobos"},
+      {"type": "god", "slug": "deimos"}
+    ]
+  },
+  {
+    "book_slug": "percy-jackson-and-the-bronze-dragon",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "annabeth-chase"},
+      {"type": "character", "slug": "charles-beckendorf"},
+      {"type": "character", "slug": "silena-beauregard"}
+    ],
+    "antagonists": [
+      {"type": "creature", "slug": "myrmekes"}
+    ]
+  },
+  {
+    "book_slug": "percy-jackson-and-the-sword-of-hades",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "thalia-grace"},
+      {"type": "character", "slug": "nico-di-angelo"}
+    ],
+    "antagonists": [
+      {"type": "titan", "slug": "iapetus"},
+      {"type": "character", "slug": "ethan-nakamura"}
+    ]
+  },
+  {
+    "book_slug": "percy-jackson-and-the-singer-of-apollo",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "grover-underwood"},
+      {"type": "god", "slug": "apollo"}
+    ],
+    "antagonists": [
+      {"type": "character", "slug": "celedon"}
+    ]
+  },
+  {
+    "book_slug": "percy-jacksons-greek-gods",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "god", "slug": "zeus"},
+      {"type": "god", "slug": "poseidon"},
+      {"type": "god", "slug": "hades"},
+      {"type": "god", "slug": "hera"},
+      {"type": "god", "slug": "demeter"},
+      {"type": "god", "slug": "ares"},
+      {"type": "god", "slug": "athena"},
+      {"type": "god", "slug": "apollo"},
+      {"type": "god", "slug": "artemis"},
+      {"type": "god", "slug": "hephaestus"},
+      {"type": "god", "slug": "aphrodite"},
+      {"type": "god", "slug": "hermes"},
+      {"type": "god", "slug": "dionysus"}
+    ],
+    "antagonists": [
+      {"type": "titan", "slug": "kronos"},
+      {"type": "god", "slug": "ouranos"},
+      {"type": "monster", "slug": "typhon"}
+    ]
+  },
+  {
+    "book_slug": "percy-jacksons-greek-heroes",
+    "narrator_slugs": [
+      "percy-jackson"
+    ],
+    "narrators": [
+      {"type": "character", "slug": "percy-jackson", "name": "Percy Jackson"}
+    ],
+    "main_characters": [
+      {"type": "character", "slug": "percy-jackson"},
+      {"type": "character", "slug": "perseus"},
+      {"type": "character", "slug": "psyche"},
+      {"type": "character", "slug": "phaethon"},
+      {"type": "character", "slug": "daedalus"},
+      {"type": "character", "slug": "theseus"},
+      {"type": "character", "slug": "atalanta"},
+      {"type": "character", "slug": "bellerophon"},
+      {"type": "character", "slug": "heracles"}
+    ],
+    "antagonists": [
+      {"type": "monster", "slug": "medusa"},
+      {"type": "character", "slug": "king-acrisius"},
+      {"type": "character", "slug": "king-polydectes"},
+      {"type": "character", "slug": "king-minos"}
+    ]
+  }
+]

@@ -51,13 +51,45 @@ class BookListSerializer(serializers.ModelSerializer):
         return get_primary_image(obj)
 
 
+class BookCastMemberSerializer(serializers.Serializer):
+    """Typed entity reference in a Book's cast or antagonist list."""
+
+    type = serializers.SerializerMethodField()
+    slug = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+
+    def _entity(self, obj):
+        for entity_type in ('character', 'god', 'titan', 'monster', 'creature'):
+            entity = getattr(obj, entity_type)
+            if entity is not None:
+                return entity_type, entity
+        return None, None
+
+    def get_type(self, obj):
+        return self._entity(obj)[0]
+
+    def get_slug(self, obj):
+        entity = self._entity(obj)[1]
+        return entity.slug if entity else None
+
+    def get_name(self, obj):
+        entity = self._entity(obj)[1]
+        return entity.name if entity else None
+
+
 class BookDetailSerializer(serializers.ModelSerializer):
     """Full representation for a single book."""
 
     primary_image = serializers.SerializerMethodField()
     narrator_slug = serializers.SerializerMethodField()
+    narrator_slugs = serializers.SerializerMethodField()
+    narrators = serializers.SerializerMethodField()
     main_character_slugs = serializers.SerializerMethodField()
     antagonist_slugs = serializers.SerializerMethodField()
+    main_characters = BookCastMemberSerializer(
+        source='main_character_records', many=True, read_only=True
+    )
+    antagonists = BookCastMemberSerializer(source='antagonist_records', many=True, read_only=True)
     quest_count = serializers.SerializerMethodField()
     event_count = serializers.SerializerMethodField()
     series_display = serializers.CharField(source='get_series_display', read_only=True)
@@ -83,8 +115,12 @@ class BookDetailSerializer(serializers.ModelSerializer):
             'short_description',
             'camp_bead_description',
             'narrator_slug',
+            'narrator_slugs',
+            'narrators',
             'main_character_slugs',
+            'main_characters',
             'antagonist_slugs',
+            'antagonists',
             'quest_count',
             'event_count',
             'primary_image',
@@ -96,8 +132,27 @@ class BookDetailSerializer(serializers.ModelSerializer):
     def get_primary_image(self, obj):
         return get_primary_image(obj)
 
+    def get_narrators(self, obj):
+        records = list(obj.narrator_records.all())
+        if records:
+            return BookCastMemberSerializer(records, many=True, context=self.context).data
+        if obj.narrator_id:
+            return [{'type': 'character', 'slug': obj.narrator.slug, 'name': obj.narrator.name}]
+        return []
+
     def get_narrator_slug(self, obj):
+        records = list(obj.narrator_records.all())
+        if records:
+            if len(records) == 1 and records[0].character_id:
+                return records[0].character.slug
+            return None
         return obj.narrator.slug if obj.narrator else None
+
+    def get_narrator_slugs(self, obj):
+        records = list(obj.narrator_records.all())
+        if records:
+            return [record.character.slug for record in records if record.character_id]
+        return [obj.narrator.slug] if obj.narrator_id else []
 
     def get_main_character_slugs(self, obj):
         return list(obj.main_characters.values_list('slug', flat=True))

@@ -2,7 +2,10 @@ from django.contrib import admin
 
 from apps.narrative.models import (
     Book,
+    BookAntagonist,
     BookImage,
+    BookMainCharacter,
+    BookNarrator,
     Event,
     EventCasualty,
     Prophecy,
@@ -20,14 +23,36 @@ class BookImageInline(admin.TabularInline):
     ordering = ('display_order',)
 
 
+class BookNarratorInline(admin.TabularInline):
+    model = BookNarrator
+    extra = 0
+    raw_id_fields = ('character', 'god', 'titan', 'monster', 'creature')
+
+
+class BookMainCharacterInline(admin.TabularInline):
+    model = BookMainCharacter
+    extra = 0
+    raw_id_fields = ('character', 'god', 'titan', 'monster', 'creature')
+
+
+class BookAntagonistInline(admin.TabularInline):
+    model = BookAntagonist
+    extra = 0
+    raw_id_fields = ('character', 'god', 'titan', 'monster', 'creature')
+
+
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'series', 'book_number', 'book_type', 'published_date')
     list_filter = ('series', 'book_type')
     search_fields = ('title', 'synopsis')
-    filter_horizontal = ('main_characters', 'antagonists')
     readonly_fields = ('slug', 'created_at', 'updated_at')
-    inlines = (BookImageInline,)
+    inlines = (
+        BookImageInline,
+        BookNarratorInline,
+        BookMainCharacterInline,
+        BookAntagonistInline,
+    )
 
 
 @admin.register(BookImage)
