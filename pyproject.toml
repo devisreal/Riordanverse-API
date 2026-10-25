@@ -41,7 +41,7 @@ dependencies = [
     "requests-toolbelt==1.0.0",
     "rich==15.0.0",
     "rpds-py==2026.9.1",
-    "setuptools==84.0.0",
+    "setuptools==84.1.0",
     "sqlparse==0.6.0",
     "tzdata==2026.5",
     "uritemplate==4.2.0",
