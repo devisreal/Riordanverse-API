@@ -8,9 +8,8 @@ Dependency order:
 - Books must be seeded first (seed_books) — references first_appearance_book
   and books_appeared_in by slug.
 
-Deferred:
-- children_demigods (FK[] → Character) — populated by seed_characters
-- weapons (FK[] → Weapon) — populated by seed_items
+Deferred until all referenced entities exist:
+- children_demigods, weapons, and sibling relationships — populated by seed_divine_relationships
 """
 
 import json

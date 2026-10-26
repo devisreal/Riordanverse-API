@@ -71,6 +71,18 @@ class TitanListViewTests(BaseAPITestCase):
         response = self.client.get(reverse('titan-detail', kwargs={'slug': 'kronos'}))
         self.assertEqual(response.status_code, 200)
 
+    def test_detail_includes_weapon_slugs_and_home(self):
+        scythe = make_weapon(name='Kronos Scythe')
+        self.kronos.weapons.add(scythe)
+        self.kronos.home = 'Mount Othrys'
+        self.kronos.save()
+
+        response = self.client.get(reverse('titan-detail', kwargs={'slug': 'kronos'}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['weapon_slugs'], ['kronos-scythe'])
+        self.assertEqual(response.data['home'], 'Mount Othrys')
+
     def test_filter_by_alignment(self):
         make_titan(name='Prometheus', alignment='neutral')
         response = self.client.get(reverse('titan-list'), {'alignment': 'kronos_army'})

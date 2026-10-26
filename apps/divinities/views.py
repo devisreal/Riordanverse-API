@@ -115,6 +115,7 @@ class TitanDetailView(generics.RetrieveAPIView):
         Titan.objects.prefetch_related(
             'images__image',
             'books_appeared_in',
+            'weapons',
             'relationships_as_from__to_god',
             'relationships_as_from__to_titan',
             'relationships_as_from__to_character',

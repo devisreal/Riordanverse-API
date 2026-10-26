@@ -30,7 +30,25 @@
       "percy-jacksons-greek-gods"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [
+      "kronos-scythe",
+      "adamantine-scythe",
+      "backbiter"
+    ],
+    "siblings": [
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Atlas",
@@ -58,7 +76,12 @@
       "the-titans-curse"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "prometheus",
+      "epimetheus"
+    ]
   },
   {
     "name": "Hyperion",
@@ -86,7 +109,21 @@
       "the-last-olympian"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Iapetus",
@@ -112,7 +149,21 @@
       "the-demigod-files"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Oceanus",
@@ -138,7 +189,21 @@
       "the-last-olympian"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Prometheus",
@@ -166,7 +231,12 @@
       "the-last-olympian"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "atlas",
+      "epimetheus"
+    ]
   },
   {
     "name": "Koios",
@@ -193,7 +263,21 @@
       "the-last-olympian"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Krios",
@@ -219,7 +303,21 @@
       "the-last-olympian"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Rhea",
@@ -258,6 +356,20 @@
     ],
     "sacred_plants": [
       "oak tree"
+    ],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
     ]
   },
   {
@@ -294,6 +406,11 @@
     ],
     "sacred_plants": [
       "heliotrope"
+    ],
+    "weapon_slugs": [],
+    "siblings": [
+      "selene",
+      "eos"
     ]
   },
   {
@@ -324,7 +441,21 @@
       "percy-jacksons-greek-gods"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "theia",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Theia",
@@ -354,7 +485,21 @@
       "percy-jacksons-greek-gods"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "themis",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Themis",
@@ -384,7 +529,21 @@
       "percy-jacksons-greek-gods"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "mnemosyne",
+      "phoebe"
+    ]
   },
   {
     "name": "Mnemosyne",
@@ -413,7 +572,21 @@
       "percy-jacksons-greek-gods"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "phoebe"
+    ]
   },
   {
     "name": "Phoebe",
@@ -442,7 +615,21 @@
       "percy-jacksons-greek-gods"
     ],
     "sacred_animals": [],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "kronos",
+      "hyperion",
+      "iapetus",
+      "oceanus",
+      "koios",
+      "krios",
+      "rhea",
+      "tethys",
+      "theia",
+      "themis",
+      "mnemosyne"
+    ]
   },
   {
     "name": "Selene",
@@ -475,7 +662,12 @@
     "sacred_animals": [
       "white bulls"
     ],
-    "sacred_plants": []
+    "sacred_plants": [],
+    "weapon_slugs": [],
+    "siblings": [
+      "helios",
+      "eos"
+    ]
   },
   {
     "name": "Leto",
@@ -509,6 +701,77 @@
     "sacred_plants": [
       "date palm",
       "olive tree"
-    ]
+    ],
+    "weapon_slugs": [],
+    "siblings": []
+  },
+  {
+    "name": "Epimetheus",
+    "expected_slug": "epimetheus",
+    "roman_name": null,
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "immortal",
+    "alignment": "kronos_army",
+    "domains": [
+      "afterthought",
+      "excuses"
+    ],
+    "symbols": [
+      "pandoras_jar"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_or_power": [
+      "Pandora's Pithos"
+    ],
+    "home": "Mount Othrys / Earth",
+    "role_in_series": null,
+    "prison_location": null,
+    "description": "Titan of Afterthought and excuses. Brother of Prometheus and Atlas, husband of Pandora, who famously opened Pandora's jar.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "the-last-olympian"
+    ],
+    "siblings": [
+      "atlas",
+      "prometheus"
+    ],
+    "weapon_slugs": [],
+    "wiki_url": null
+  },
+  {
+    "name": "Eos",
+    "expected_slug": "eos",
+    "roman_name": "Aurora",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "dawn"
+    ],
+    "symbols": [
+      "saffron_cloak",
+      "morning_star"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_or_power": [],
+    "home": "Sky / Palace of the Sun",
+    "role_in_series": null,
+    "prison_location": null,
+    "description": "Titaness of Dawn. Daughter of Hyperion and Theia, sister of Helios and Selene, and mother of the Four Winds.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "siblings": [
+      "helios",
+      "selene"
+    ],
+    "weapon_slugs": [],
+    "wiki_url": null
   }
 ]

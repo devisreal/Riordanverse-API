@@ -40,7 +40,7 @@ class TitanAdmin(admin.ModelAdmin):
     list_display = ('name', 'generation', 'status', 'alignment')
     list_filter = ('generation', 'status', 'alignment', 'mythology')
     search_fields = ('name', 'description', 'role_in_series')
-    filter_horizontal = ('books_appeared_in',)
+    filter_horizontal = ('books_appeared_in', 'weapons')
     readonly_fields = ('created_at', 'updated_at')
     inlines = [TitanImageInline]
 

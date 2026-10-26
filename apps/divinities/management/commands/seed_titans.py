@@ -69,6 +69,8 @@ class Command(BaseCommand):
                     'prison_location': entry.get('prison_location'),
                     'description': entry.get('description'),
                 }
+                if 'home' in entry:
+                    defaults['home'] = entry['home']
                 if entry.get('wiki_url'):
                     defaults['wiki_url'] = entry['wiki_url']
 

@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from apps.divinities.serializers import GodDetailSerializer, TitanDetailSerializer
-from tests.makers import make_character, make_divine_relationship, make_god, make_titan
+from tests.makers import make_character, make_divine_relationship, make_god, make_titan, make_weapon
 
 
 class GodDetailSerializerTests(TestCase):
@@ -82,6 +82,16 @@ class TitanDetailSerializerTests(TestCase):
     def test_parents_empty_by_default(self):
         data = TitanDetailSerializer(self.kronos).data
         self.assertEqual(data['parents'], [])
+
+    def test_weapon_slugs_and_home_are_serialized(self):
+        scythe = make_weapon(name='Kronos Scythe')
+        self.kronos.weapons.add(scythe)
+        self.kronos.home = 'Mount Othrys'
+        self.kronos.save()
+
+        data = TitanDetailSerializer(self.kronos).data
+        self.assertEqual(data['weapon_slugs'], ['kronos-scythe'])
+        self.assertEqual(data['home'], 'Mount Othrys')
 
     def test_sacred_animals_and_plants_are_serialized(self):
         self.kronos.sacred_animals = ['white horse']

@@ -228,6 +228,7 @@ class TitanDetailSerializer(serializers.ModelSerializer):
     consorts = serializers.SerializerMethodField()
     first_appearance_book_slug = serializers.SerializerMethodField()
     books_appeared_in_slugs = serializers.SerializerMethodField()
+    weapon_slugs = serializers.SerializerMethodField()
 
     class Meta:
         model = Titan
@@ -248,6 +249,8 @@ class TitanDetailSerializer(serializers.ModelSerializer):
             'sacred_animals',
             'sacred_plants',
             'weapon_or_power',
+            'weapon_slugs',
+            'home',
             'role_in_series',
             'prison_location',
             'description',
@@ -278,6 +281,9 @@ class TitanDetailSerializer(serializers.ModelSerializer):
 
     def get_consorts(self, obj):
         return _serialize_entity_relationships(obj, 'consorts')
+
+    def get_weapon_slugs(self, obj):
+        return list(obj.weapons.values_list('slug', flat=True))
 
     def get_first_appearance_book_slug(self, obj):
         return obj.first_appearance_book.slug if obj.first_appearance_book else None
