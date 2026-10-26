@@ -62,12 +62,30 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'json': {'()': 'apps.core.logging.JsonEventFormatter'},
+    },
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler', 'formatter': 'json'},
+    },
+    'root': {'handlers': ['console'], 'level': 'WARNING'},
+    'loggers': {
+        'django': {'handlers': ['console'], 'level': 'WARNING', 'propagate': False},
+        'api.request': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
+        'api.security': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
+    },
+}
+
 
 # ---------------------------------------------------------------------------
 # * Middleware
 # ---------------------------------------------------------------------------
 
 MIDDLEWARE = [
+    'apps.core.middleware.RequestLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

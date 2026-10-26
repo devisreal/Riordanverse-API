@@ -1,4 +1,6 @@
 # ty: ignore[unresolved-attribute]
+import logging
+
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -8,6 +10,8 @@ from rest_framework_api_key.permissions import HasAPIKey
 from apps.access.models import ConsumerAPIKey
 from apps.access.serializers import KeyRequestSerializer, KeyResponseSerializer
 from apps.core.throttles import CacheFallbackAnonRateThrottle
+
+security_logger = logging.getLogger('api.security')
 
 
 class KeyRequestThrottle(CacheFallbackAnonRateThrottle):
@@ -34,10 +38,28 @@ class VerifyKeyView(APIView):
         key = HasAPIKey().get_key(request)
         try:
             api_key = ConsumerAPIKey.objects.get_from_key(key) if key else None
-        except ConsumerAPIKey.DoesNotExist:
+        except ConsumerAPIKey.DoesNotExist, ValueError:
             api_key = None
 
         is_valid = bool(api_key and not api_key.has_expired)
+        if not is_valid:
+            if not key:
+                reason = 'missing_key'
+            elif '.' not in key:
+                reason = 'malformed_key'
+            elif api_key is None:
+                reason = 'invalid_or_revoked_key'
+            else:
+                reason = 'expired_key'
+            security_logger.warning(
+                'security.api_key.verification_failed',
+                extra={
+                    'event': 'security.api_key.verification_failed',
+                    'request_id': getattr(request, 'request_id', None),
+                    'api_key_prefix': key.partition('.')[0] if key and '.' in key else None,
+                    'reason': reason,
+                },
+            )
         return Response(
             {
                 'valid': is_valid,
@@ -62,6 +84,14 @@ class RequestKeyView(APIView):
             consumer_name=consumer_name,
             email=serializer.validated_data['email'],
             name=consumer_name[:50],
+        )
+        security_logger.info(
+            'security.api_key.created',
+            extra={
+                'event': 'security.api_key.created',
+                'request_id': getattr(request, 'request_id', None),
+                'api_key_prefix': api_key.prefix,
+            },
         )
 
         response_data = KeyResponseSerializer(
