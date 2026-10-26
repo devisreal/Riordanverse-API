@@ -37,17 +37,5 @@ STORAGES = {
     },
 }
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {'format': '{levelname} {asctime} {module} {message}', 'style': '{'},
-    },
-    'handlers': {
-        'console': {'class': 'logging.StreamHandler', 'formatter': 'verbose'},
-    },
-    'root': {'handlers': ['console'], 'level': 'WARNING'},
-    'loggers': {
-        'django': {'handlers': ['console'], 'level': 'WARNING', 'propagate': True},
-    },
-}
+# Base settings configure JSON console logs. Request summaries stay INFO-level;
+# other application and Django logs remain WARNING-level in production.

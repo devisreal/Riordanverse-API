@@ -1,3 +1,4 @@
+import json
 from datetime import timedelta
 from unittest.mock import patch
 
@@ -9,6 +10,7 @@ from django_redis.exceptions import ConnectionInterrupted
 from rest_framework.test import APIClient
 
 from apps.access.models import ConsumerAPIKey
+from apps.core.logging import JsonEventFormatter
 from apps.core.throttles import _FALLBACK_THROTTLE_CACHE
 
 
@@ -42,6 +44,19 @@ class VerifyKeyViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'valid': False, 'consumer_name': None})
+
+    def test_failed_verification_logs_prefix_but_never_plaintext_key(self):
+        plaintext_key = 'testprefix.super-secret-value'
+
+        with self.assertLogs('api.security', level='WARNING') as captured:
+            response = self._verify_key(plaintext_key)
+
+        self.assertEqual(response.data, {'valid': False, 'consumer_name': None})
+        payload = json.loads(JsonEventFormatter().format(captured.records[0]))
+        self.assertEqual(payload['event'], 'security.api_key.verification_failed')
+        self.assertEqual(payload['api_key_prefix'], 'testprefix')
+        self.assertNotIn(plaintext_key, json.dumps(payload))
+        self.assertNotIn('super-secret-value', json.dumps(payload))
 
     def test_missing_key_returns_false_without_name(self):
         response = self._verify_key()
@@ -99,6 +114,17 @@ class RequestKeyViewTests(TestCase):
     def test_post_returns_message(self):
         response = self._request_key()
         self.assertIn('message', response.data)
+
+    def test_key_creation_logs_prefix_but_never_plaintext_key(self):
+        with self.assertLogs('api.security', level='INFO') as captured:
+            response = self._request_key()
+
+        payload = json.loads(JsonEventFormatter().format(captured.records[0]))
+        key_record = ConsumerAPIKey.objects.get()
+        self.assertEqual(payload['event'], 'security.api_key.created')
+        self.assertIn('api_key_prefix', payload)
+        self.assertNotIn(response.data['api_key'], json.dumps(payload))
+        self.assertNotIn(key_record.pk, json.dumps(payload))
 
     def test_post_missing_email_returns_400(self):
         response = self._request_key({'consumer_name': 'Test App'})

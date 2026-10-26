@@ -22,11 +22,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Fine for local dev only — never enable this in production
 CORS_ALLOW_ALL_ORIGINS = True
 
-# Keep base.py's API-key requirement in development as well as production.
-# Automated tests opt out explicitly in config.settings.test.
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {'console': {'class': 'logging.StreamHandler'}},
-    'root': {'handlers': ['console'], 'level': 'INFO'},
-}
+# Keep API-key requirements and request/security logging in development too.
+LOGGING['root']['level'] = 'INFO'
+LOGGING['loggers']['django']['level'] = 'INFO'
