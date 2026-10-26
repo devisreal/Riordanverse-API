@@ -1392,5 +1392,322 @@
     ],
     "description": "A dark red war chariot belonging to Ares, capable of generating waves of divine fear.",
     "forged_by_god_slug": "hephaestus"
+  },
+  {
+    "name": "Circe's Wand",
+    "expected_slug": "circes-wand",
+    "true_name": "Circe's Wand",
+    "weapon_type": "magical_item",
+    "material": "enchanted",
+    "form": [
+      "wooden wand"
+    ],
+    "abilities": [
+      "transforms humans into guinea pigs or animals",
+      "weaves illusion magic",
+      "transmutation"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "circe",
+    "owner_history": [
+      "circe"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Crafted by Circe on Aeaea",
+    "origin_story": "Wielded by the sorceress Circe to transform visiting sailors and demigods into animals on her resort island of Aeaea.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The magical wand wielded by Circe to transform men into guinea pigs and cast sorcery spells."
+  },
+  {
+    "name": "Conch Shell Trumpet",
+    "expected_slug": "conch-shell-trumpet",
+    "true_name": "Triton's Conch",
+    "weapon_type": "artifact",
+    "material": "enchanted",
+    "form": [
+      "large spiral conch shell"
+    ],
+    "abilities": [
+      "stirs up oceanic storms or calms giant waves",
+      "frightens away sea monsters with sonic blast",
+      "summons marine creatures"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "triton",
+    "owner_history": [
+      "triton"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Naturally formed in the ocean depths and enchanted by Poseidon",
+    "origin_story": "Wielded by Poseidon's son Triton to signal the sea armies and control wave currents.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The enchanted conch shell trumpet carried by Triton to command the sea forces and direct ocean current sound waves."
+  },
+  {
+    "name": "Golden Sickle",
+    "expected_slug": "golden-sickle",
+    "true_name": "Sickle of Demeter",
+    "weapon_type": "scythe",
+    "material": "imperial_gold",
+    "form": [
+      "curved golden harvesting sickle"
+    ],
+    "abilities": [
+      "accelerates plant growth or harvest death",
+      "slices through wood and stone",
+      "channels agricultural magic"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "demeter",
+    "owner_history": [
+      "demeter"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Forged by Hephaestus for Demeter",
+    "origin_story": "Demeter's sacred golden harvesting tool used in agriculture and battle.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "the-last-olympian"
+    ],
+    "description": "Demeter's golden sickle, symbolizing the harvest and used as her primary divine tool and weapon."
+  },
+  {
+    "name": "Hammer of Hephaestus",
+    "expected_slug": "hammer-of-hephaestus",
+    "true_name": "Smith's Hammer of Hephaestus",
+    "weapon_type": "artifact",
+    "material": "divine_material",
+    "form": [
+      "heavy blacksmithing sledgehammer"
+    ],
+    "abilities": [
+      "sparks intense volcanic flames",
+      "forges and shapes any divine metal",
+      "delivers earth-shattering concussive strikes"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hephaestus",
+    "owner_history": [
+      "hephaestus"
+    ],
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_notes": "Forged by Hephaestus himself in his volcanic forge under Mount Etna",
+    "origin_story": "The primary divine smithing tool and weapon crafted by Hephaestus to forge the weapons of the gods.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The massive blacksmithing hammer of Hephaestus used to forge divine weapons like the Master Bolt and Trident."
+  },
+  {
+    "name": "Ice Sword of Boreas",
+    "expected_slug": "ice-sword-of-boreas",
+    "true_name": "Glacial Blade of Boreas",
+    "weapon_type": "sword",
+    "material": "enchanted",
+    "form": [
+      "translucent frozen ice broadsword"
+    ],
+    "abilities": [
+      "freezes targets instantly on contact",
+      "summons blizzard wind gusts",
+      "never melts in heat"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "boreas",
+    "owner_history": [
+      "boreas"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Condensed from the North Wind in Quebec",
+    "origin_story": "Wielded by Boreas, God of the North Wind, to freeze opponents and unleash arctic blizzards.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "A razor-sharp sword made of magical, unmelting glacier ice carried by Boreas, the North Wind."
+  },
+  {
+    "name": "Lotus Staff",
+    "expected_slug": "lotus-staff",
+    "true_name": "Scepter of Hera",
+    "weapon_type": "staff",
+    "material": "imperial_gold",
+    "form": [
+      "golden royal staff topped with a lotus flower"
+    ],
+    "abilities": [
+      "projects divine royal authority and command",
+      "summons peacocks or royal storms",
+      "channels peacock feather energy blasts"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hera",
+    "owner_history": [
+      "hera"
+    ],
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_notes": "Forged by Hephaestus for the Queen of Olympus",
+    "origin_story": "The ceremonial golden staff and scepter carried by Queen Hera as a sign of her sovereignty on Mount Olympus.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "Hera's golden royal scepter topped with a carved lotus flower, symbolizing her position as Queen of Olympus."
+  },
+  {
+    "name": "Mirror of Aphrodite",
+    "expected_slug": "mirror-of-aphrodite",
+    "true_name": "Looking Glass of Beauty",
+    "weapon_type": "magical_item",
+    "material": "celestial_bronze",
+    "form": [
+      "handheld polished bronze mirror"
+    ],
+    "abilities": [
+      "reflects glamour magic and reveals illusions",
+      "blinds enemies with dazzling beauty light",
+      "allows scrying across distances"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "aphrodite",
+    "owner_history": [
+      "aphrodite"
+    ],
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_notes": "Forged by Hephaestus as a gift for Aphrodite",
+    "origin_story": "Aphrodite's handheld mirror, used to alter appearances, scry on mortals, and reflect divine light.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "A magical bronze mirror used by Aphrodite to control her charm glamour and scry across the world."
+  },
+  {
+    "name": "Strophalos",
+    "expected_slug": "strophalos",
+    "true_name": "Wheel of Hecate",
+    "weapon_type": "magical_item",
+    "material": "stygian_iron",
+    "form": [
+      "spinning wheel emblem with a triple-headed serpent"
+    ],
+    "abilities": [
+      "channels Mist illusions and necromancy",
+      "opens dimensional doorways",
+      "spins to release blinding magical pulses"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hecate",
+    "owner_history": [
+      "hecate"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Crafted in the Underworld by Hecate",
+    "origin_story": "Hecate's ancient spinning wheel artifact used to manipulate the Mist and invoke crossroad magic.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The sacred spinning wheel of Hecate, used to weave the Mist and command magic at the crossroads."
+  },
+  {
+    "name": "Sword of Nemesis",
+    "expected_slug": "sword-of-nemesis",
+    "true_name": "Blade of Retribution",
+    "weapon_type": "sword",
+    "material": "stygian_iron",
+    "form": [
+      "double-edged black bronze spatha"
+    ],
+    "abilities": [
+      "strikes with force proportional to the victim's hubris",
+      "exacts retribution and balances karma",
+      "cuts through dark magic"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "nemesis",
+    "owner_history": [
+      "nemesis"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Forged in the Underworld from Stygian Bronze",
+    "origin_story": "The blade carried by Nemesis, Goddess of Revenge, to punish mortals and gods who exhibit excessive pride.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The dark Stygian Bronze sword wielded by Nemesis to punish hubris and deliver exact retribution."
+  },
+  {
+    "name": "Thyrsus",
+    "expected_slug": "thyrsus",
+    "true_name": "Pinecone Staff of Dionysus",
+    "weapon_type": "staff",
+    "material": "enchanted",
+    "form": [
+      "giant fennel stalk wrapped in ivy vines and topped with a pinecone"
+    ],
+    "abilities": [
+      "causes instant madness or hysteria in enemies",
+      "sprouts grapevines and wine springs on command",
+      "channels bacchic energy blasts"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "dionysus",
+    "owner_history": [
+      "dionysus"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Nurtured by Nymphs of Nysa",
+    "origin_story": "The wand and staff carried by Dionysus and his maenads, dripping with honey and ivy, capable of inducing madness.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "the-last-olympian"
+    ],
+    "description": "The staff of Dionysus, wrapped in ivy vines and topped with a giant pinecone, used to induce madness and sprout vines."
   }
 ]

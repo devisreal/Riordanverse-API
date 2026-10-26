@@ -214,7 +214,13 @@ class Titan(BaseModel):
         default=list,
         help_text='Notable powers or items.',
     )
+    weapons = models.ManyToManyField(
+        'items.Weapon',
+        blank=True,
+        related_name='associated_titans',
+    )
 
+    home = models.CharField(max_length=255, blank=True, null=True)
     role_in_series = models.TextField(
         blank=True,
         null=True,

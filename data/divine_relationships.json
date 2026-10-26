@@ -313,5 +313,656 @@
     "to_type": "god",
     "to_slug": "khione",
     "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hestia",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hestia",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "hades",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "hebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hebe",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "god",
+    "to_slug": "ouranos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "god",
+    "to_slug": "tartarus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "god",
+    "to_slug": "tartarus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "titan",
+    "to_slug": "prometheus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "titan",
+    "to_slug": "epimetheus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "iapetus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "koios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "krios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "koios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "krios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "epimetheus",
+    "to_type": "titan",
+    "to_slug": "prometheus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "krios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "titan",
+    "to_slug": "selene",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "eos",
+    "to_type": "titan",
+    "to_slug": "helios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "tethys",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "tethys",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "theia",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "eos",
+    "to_type": "titan",
+    "to_slug": "selene",
+    "relationship_type": "sibling_of"
   }
 ]

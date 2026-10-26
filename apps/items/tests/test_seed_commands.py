@@ -25,7 +25,7 @@ class WeaponSeedCommandTests(TestCase):
             call_command(command, stdout=output)
             outputs.append(output.getvalue())
 
-        self.assertEqual(Weapon.objects.count(), 40)
+        self.assertEqual(Weapon.objects.count(), 50)
         self.assertEqual(Weapon.objects.filter(wiki_url__isnull=False).count(), 35)
         self.assertEqual(
             Weapon.objects.get(slug='riptide').wiki_url,
@@ -56,6 +56,16 @@ class WeaponSeedCommandTests(TestCase):
 
         thermos = Weapon.objects.get(slug='thermos-of-winds')
         self.assertEqual(thermos.owner_primary_character.slug, 'percy-jackson')
+        circes_wand = Weapon.objects.get(slug='circes-wand')
+        self.assertEqual(circes_wand.weapon_type, 'magical_item')
+        self.assertEqual(circes_wand.material, 'enchanted')
+        self.assertEqual(circes_wand.owner_primary_god.slug, 'circe')
+        conch = Weapon.objects.get(slug='conch-shell-trumpet')
+        self.assertEqual(conch.weapon_type, 'artifact')
+        self.assertEqual(conch.material, 'enchanted')
+        golden_sickle = Weapon.objects.get(slug='golden-sickle')
+        self.assertEqual(golden_sickle.weapon_type, 'scythe')
+        self.assertIsNone(golden_sickle.forged_by)
         war_chariot = Weapon.objects.get(slug='war-chariot')
         self.assertEqual(war_chariot.owner_primary_god.slug, 'ares')
         self.assertIsNone(war_chariot.owner_primary_character)
@@ -67,5 +77,5 @@ class WeaponSeedCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_items', stdout=rerun)
-        self.assertEqual(Weapon.objects.count(), 40)
-        self.assertIn('40 updated', rerun.getvalue())
+        self.assertEqual(Weapon.objects.count(), 50)
+        self.assertIn('50 updated', rerun.getvalue())
