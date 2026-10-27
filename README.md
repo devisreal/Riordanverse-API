@@ -189,7 +189,13 @@ The response contains `valid` and `consumer_name`. API keys can be managed/revok
 uv run python manage.py test --settings=config.settings.test
 ```
 
-The test suite uses SQLite test settings. OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The schema and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
+The default test suite uses SQLite. CI also runs the full suite against PostgreSQL using `config.settings.test_postgresql`; locally, configure `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`, then run:
+
+```bash
+uv run python manage.py test --settings=config.settings.test_postgresql
+```
+
+OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The schema and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
 
 ## Roadmap
 
