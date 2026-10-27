@@ -56,6 +56,8 @@ class _EntityImageListView(generics.ListAPIView):
     entity_slug_kwarg = 'slug'
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         self.get_entity()
         links = self.get_links_queryset()
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
@@ -126,6 +128,8 @@ class GodChildrenListView(generics.ListAPIView):
         from apps.characters.models import Character
         from apps.divinities.models import God
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(God, slug=self.kwargs['slug'])
         return Character.objects.filter(
             divine_relationships_as_to__from_god__slug=self.kwargs['slug'],
@@ -145,6 +149,8 @@ class GodWeaponListView(generics.ListAPIView):
         from apps.divinities.models import God
         from apps.items.models import Weapon
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Weapon.objects.none()
         get_object_or_404(God, slug=self.kwargs['slug'])
         return Weapon.objects.filter(associated_gods__slug=self.kwargs['slug']).distinct()
 

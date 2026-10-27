@@ -52,6 +52,11 @@ jobs:
       - name: Check for missing migrations
         run: uv run python manage.py makemigrations --check --dry-run --settings=config.settings.test
 
+      - name: Validate OpenAPI schema
+        env:
+          DJANGO_SETTINGS_MODULE: config.settings.development
+        run: uv run python manage.py spectacular --file /tmp/openapi.yaml --validate --skip-checks
+
       - name: Run tests
         run: uv run python manage.py test --settings=config.settings.test
 

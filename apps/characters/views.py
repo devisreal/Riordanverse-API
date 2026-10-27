@@ -54,6 +54,8 @@ class CharacterImageListView(generics.ListAPIView):
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Character, slug=self.kwargs['slug'])
         links = CharacterImage.objects.filter(character__slug=self.kwargs['slug'])
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
@@ -70,6 +72,8 @@ class CharacterWeaponListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.items.models import Weapon
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Weapon.objects.none()
         get_object_or_404(Character, slug=self.kwargs['slug'])
         return Weapon.objects.filter(wielded_by__slug=self.kwargs['slug']).distinct()
 
@@ -85,6 +89,8 @@ class CharacterQuestListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.narrative.models import Quest
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Quest.objects.none()
         get_object_or_404(Character, slug=self.kwargs['slug'])
         return (
             Quest.objects.filter(participants__slug=self.kwargs['slug'])

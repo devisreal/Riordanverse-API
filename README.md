@@ -1,8 +1,8 @@
 # Percy Jackson Fandom API
 
-A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; key request/verification and health-check routes are public.
+A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; key request/verification, health-check, and API documentation routes are public.
 
-> **Status:** The API, seed commands, authentication, filtering, pagination, relationships, and tests are implemented. OpenAPI/Swagger/Redoc routes are not yet registered. A detailed working reference is maintained in `API.md`, but that file is currently Git-ignored and is not included in repository checkouts.
+> **Status:** The versioned API, seed commands, authentication, filtering, pagination, typed relationships, and tests are implemented. OpenAPI schema, Swagger UI, and ReDoc are available at `/api/schema/`, `/api/docs/`, and `/api/redoc/`. See the [API reference](API.md) for routes, filters, response shapes, and examples.
 
 ## Features
 
@@ -36,8 +36,11 @@ All versioned routes are under `/api/v1/` and use trailing slashes. Public lore 
 | Factions | `/factions/`, `/factions/<slug>/`, `/factions/<slug>/members/` |
 | Search | `/search/?q=<query>`; optional `type=<entity-type>` |
 
-Health checks and API-key endpoints are outside `/api/v1/`:
+Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 
+- `GET /api/schema/` — OpenAPI 3 schema (YAML by default; add `?format=json` for JSON).
+- `GET /api/docs/` — Swagger UI.
+- `GET /api/redoc/` — ReDoc.
 - `GET /health/live/` — process liveness.
 - `GET /health/ready/` — checks PostgreSQL readiness.
 - `POST /auth/request-key/` — request a key with `consumer_name` and `email`.
@@ -184,12 +187,12 @@ The response contains `valid` and `consumer_name`. API keys can be managed/revok
 uv run python manage.py test --settings=config.settings.test
 ```
 
-The test suite uses SQLite test settings. `drf-spectacular` is installed and configured as the schema class, but schema, Swagger UI, and Redoc URLs are not yet registered.
+The test suite uses SQLite test settings. OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The schema and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
 
 ## Roadmap
 
 - **Current v1:** implemented/testable routes and seeded Riordanverse reference data described above.
-- **Future:** finish the API contract/OpenAPI work and decide/version further story-universe expansions. The detailed Future Work list is in the local, Git-ignored `API.md`.
+- **Future:** add approved ordering fields that require new model/data decisions and continue planned story-universe expansions. See [Future Work](API.md#future-work).
 
 ## Acknowledgments
 

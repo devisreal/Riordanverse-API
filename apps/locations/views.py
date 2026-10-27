@@ -57,6 +57,8 @@ class LocationImageListView(generics.ListAPIView):
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Location, slug=self.kwargs['slug'])
         links = LocationImage.objects.filter(location__slug=self.kwargs['slug'])
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])

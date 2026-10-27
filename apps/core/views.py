@@ -4,10 +4,13 @@ import logging
 
 from django.conf import settings
 from django.db import DatabaseError, connections
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from apps.core.schema_serializers import HealthResponseSchemaSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +21,11 @@ def _health_response(data, status_code=status.HTTP_200_OK):
     return response
 
 
+@extend_schema(
+    auth=[],
+    tags=['Health'],
+    responses={200: HealthResponseSchemaSerializer},
+)
 class HealthLiveView(APIView):
     """Report that this application process is alive and can serve requests."""
 
@@ -29,6 +37,14 @@ class HealthLiveView(APIView):
         return _health_response({'status': 'ok', 'version': settings.APP_VERSION})
 
 
+@extend_schema(
+    auth=[],
+    tags=['Health'],
+    responses={
+        200: HealthResponseSchemaSerializer,
+        503: HealthResponseSchemaSerializer,
+    },
+)
 class HealthReadyView(APIView):
     """Report whether required dependencies allow this process to serve API traffic."""
 

@@ -107,7 +107,7 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | 12 (flow) | Key creation | **Public self-service endpoint** `POST /auth/request-key/` and verification at `/auth/verify-key/` (both outside `/api/v1/`) | Requires `consumer_name` and `email`; each route has an IP-based throttle |
 | 15 | Search | **`django-watson`** with custom adapters per model | Mature, PostgreSQL-native full-text search; custom adapters handle aliases, `true_name`, `disguise_form` |
 | 16 | Alias search | **Included in watson custom adapters via `get_search_text()`** | Flattens `aliases` array, `true_name`, `disguise_form` into indexed text; "Aunty Em" finds Medusa |
-| 17 | API documentation | **`drf-spectacular==0.30.0` installed and configured, but schema/UI URL routes are not registered** | Add the schema, Swagger UI, and/or Redoc routes in future work after the current contract is documented |
+| 17 | API documentation | **Public OpenAPI, Swagger UI, and ReDoc routes are registered with `drf-spectacular==0.30.0`** | `/api/schema/` serves the schema; `/api/docs/` and `/api/redoc/` serve public interactive documentation. The schema declares `X-API-Key` for protected operations |
 
 ---
 
@@ -1033,7 +1033,7 @@ Response (`201 Created`; key shown once only):
 
 ```json
 {
-  "api_key": "LPbH.xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "api_key": "<generated-api-key>",
   "consumer_name": "My Fan App",
   "email": "dev@example.com",
   "message": "Your API key has been created."
@@ -1043,7 +1043,7 @@ Response (`201 Created`; key shown once only):
 All other endpoints require:
 
 ```text
-X-API-Key: LPbH.xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+X-API-Key: <your-key>
 ```
 
 ### Books
@@ -1704,7 +1704,7 @@ The following remain proposals, not current API contracts: `lore_accuracy`/`Lore
 
 ### API key routes and header
 
-Versioned lore endpoints require `X-API-Key`. Public endpoints outside `/api/v1/` are `GET /health/live/`, `GET /health/ready/`, `POST /auth/request-key/`, and `POST /auth/verify-key/`.
+Versioned lore endpoints require `X-API-Key`. Public endpoints outside `/api/v1/` include `GET /api/schema/`, `GET /api/docs/`, `GET /api/redoc/`, `GET /health/live/`, `GET /health/ready/`, `POST /auth/request-key/`, and `POST /auth/verify-key/`.
 
 Request a key with `consumer_name` and `email`:
 
@@ -2814,10 +2814,13 @@ This section describes routes and behaviors present in the code and test suite. 
 | --- | --- | --- |
 | `GET` | `/health/live/` | Liveness; no dependency checks |
 | `GET` | `/health/ready/` | PostgreSQL readiness |
+| `GET` | `/api/schema/` | OpenAPI 3 schema (YAML by default; `?format=json` for JSON) |
+| `GET` | `/api/docs/` | Public Swagger UI |
+| `GET` | `/api/redoc/` | Public ReDoc UI |
 | `POST` | `/auth/request-key/` | Request a key using `consumer_name` and `email` |
 | `POST` | `/auth/verify-key/` | Verify key from `X-API-Key` header |
 
-These routes are outside `/api/v1/`. Key request and verification responses are rate-limited by client IP. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
+These routes are outside `/api/v1/`. The schema and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Key request and verification responses are rate-limited by client IP. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
 
 ### Versioned resource routes
 
@@ -2962,13 +2965,12 @@ The gallery serializer returns `id`, `url`, `thumbnail_url`, `alt_text`, `source
 
 The following items are intentionally deferred. They are not implemented API guarantees and should be reviewed before schema/data changes.
 
-1. **OpenAPI and API routes.** Add the drf-spectacular schema route and Swagger UI and/or Redoc routes using the installed package ([drf-spectacular documentation](https://drf-spectacular.readthedocs.io/en/latest/)). Decide whether schema/UI endpoints are public or require `X-API-Key`, document the complete `X-API-Key` security scheme and error/pagination contracts, and validate the generated schema. Before committing documentation, decide whether to unignore `API.md`/`docs/` or maintain the canonical contract in a tracked file; `API.md` is currently Git-ignored.
-2. **Planned ordering fields.** Decide and implement Titan `display_order`, Event `in_universe_timeframe`, and Location first-appearance ordering (likely derived from its Book relationships). This requires agreeing on field semantics and seed values, migrations, filters/serializer exposure, and tests.
-3. **Lore accuracy and soft deletion.** Decide whether to add a provenance/accuracy model (`lore_accuracy`, source/notes) and/or soft-delete fields (`is_deleted`, `deleted_at`). These affect model inheritance, filters, admin behavior, serializers, and migrations; neither exists currently.
-4. **Power routes.** Powers are implemented, seeded, and embedded in Character detail. Decide whether independent `/powers/` or `/characters/<slug>/powers/` endpoints are needed before adding routes.
-5. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
-6. **Key revocation/cache workflow.** Current positive validation caching can delay revocation up to five minutes. Consider explicit cache invalidation and a verified-contact or other safe self-service revocation flow; an unverified email address must not authorize revocation.
-7. **PostgreSQL CI.** Add CI coverage against PostgreSQL in addition to SQLite tests so production database constraints and query behavior are exercised.
-8. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
+1. **Planned ordering fields.** Decide and implement Titan `display_order`, Event `in_universe_timeframe`, and Location first-appearance ordering (likely derived from its Book relationships). This requires agreeing on field semantics and seed values, migrations, filters/serializer exposure, and tests.
+2. **Lore accuracy and soft deletion.** Decide whether to add a provenance/accuracy model (`lore_accuracy`, source/notes) and/or soft-delete fields (`is_deleted`, `deleted_at`). These affect model inheritance, filters, admin behavior, serializers, and migrations; neither exists currently.
+3. **Power routes.** Powers are implemented, seeded, and embedded in Character detail. Decide whether independent `/powers/` or `/characters/<slug>/powers/` endpoints are needed before adding routes.
+4. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
+5. **Key revocation/cache workflow.** Current positive validation caching can delay revocation up to five minutes. Consider explicit cache invalidation and a verified-contact or other safe self-service revocation flow; an unverified email address must not authorize revocation.
+6. **PostgreSQL CI.** Add CI coverage against PostgreSQL in addition to SQLite tests so production database constraints and query behavior are exercised.
+7. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
 
 *Reference: [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki)*

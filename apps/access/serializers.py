@@ -11,3 +11,8 @@ class KeyResponseSerializer(serializers.Serializer):
     consumer_name = serializers.CharField()
     email = serializers.EmailField()
     message = serializers.CharField()
+
+
+class KeyVerificationResponseSerializer(serializers.Serializer):
+    valid = serializers.BooleanField()
+    consumer_name = serializers.CharField(allow_null=True)

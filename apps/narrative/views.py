@@ -76,6 +76,8 @@ class BookImageListView(generics.ListAPIView):
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         book_images = BookImage.objects.filter(book__slug=self.kwargs['slug'])
         gallery_order = Subquery(
@@ -172,6 +174,8 @@ class QuestParticipantListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.characters.models import Character
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Quest, slug=self.kwargs['slug'])
         return Character.objects.filter(quests_participated_in__slug=self.kwargs['slug']).distinct()
 
@@ -232,6 +236,8 @@ class BookCharacterListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.characters.models import Character
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Character.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
 
@@ -247,6 +253,8 @@ class BookMonsterListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.bestiary.models import Monster
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Monster.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Monster.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
 
@@ -262,6 +270,8 @@ class BookLocationListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.locations.models import Location
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Location.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Location.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
 
@@ -275,6 +285,8 @@ class BookQuestListView(generics.ListAPIView):
     """GET /api/v1/books/:slug/quests/"""
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Quest.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Quest.objects.filter(book__slug=self.kwargs['slug'])
 

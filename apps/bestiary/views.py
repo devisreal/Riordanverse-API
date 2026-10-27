@@ -63,6 +63,8 @@ class MonsterImageListView(generics.ListAPIView):
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Monster, slug=self.kwargs['slug'])
         links = MonsterImage.objects.filter(monster__slug=self.kwargs['slug'])
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
@@ -105,6 +107,8 @@ class CreatureMemberListView(generics.ListAPIView):
         from apps.bestiary.models import Creature
         from apps.characters.models import Character
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Creature, slug=self.kwargs['slug'])
         return Character.objects.filter(creature_species__slug=self.kwargs['slug']).distinct()
 

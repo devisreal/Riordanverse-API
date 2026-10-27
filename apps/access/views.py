@@ -1,6 +1,7 @@
 # ty: ignore[unresolved-attribute]
 import logging
 
+from drf_spectacular.utils import OpenApiParameter, OpenApiTypes, extend_schema
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -8,8 +9,13 @@ from rest_framework.views import APIView
 from rest_framework_api_key.permissions import HasAPIKey
 
 from apps.access.models import ConsumerAPIKey
-from apps.access.serializers import KeyRequestSerializer, KeyResponseSerializer
+from apps.access.serializers import (
+    KeyRequestSerializer,
+    KeyResponseSerializer,
+    KeyVerificationResponseSerializer,
+)
 from apps.core.logging import SUCCESS_LEVEL
+from apps.core.schema_serializers import ErrorEnvelopeSchemaSerializer
 from apps.core.throttles import CacheFallbackAnonRateThrottle
 
 security_logger = logging.getLogger('api.security')
@@ -29,6 +35,24 @@ class KeyVerificationThrottle(CacheFallbackAnonRateThrottle):
     rate = '5/hour'
 
 
+@extend_schema(
+    auth=[],
+    tags=['Authentication'],
+    request=None,
+    parameters=[
+        OpenApiParameter(
+            name='X-API-Key',
+            type=OpenApiTypes.STR,
+            location=OpenApiParameter.HEADER,
+            required=False,
+            description='The key to verify. Omit it to receive `valid: false`.',
+        ),
+    ],
+    responses={
+        200: KeyVerificationResponseSerializer,
+        429: ErrorEnvelopeSchemaSerializer,
+    },
+)
 class VerifyKeyView(APIView):
     """Check a supplied API key directly against the database."""
 
@@ -70,6 +94,16 @@ class VerifyKeyView(APIView):
         )
 
 
+@extend_schema(
+    auth=[],
+    tags=['Authentication'],
+    request=KeyRequestSerializer,
+    responses={
+        201: KeyResponseSerializer,
+        400: ErrorEnvelopeSchemaSerializer,
+        429: ErrorEnvelopeSchemaSerializer,
+    },
+)
 class RequestKeyView(APIView):
     """Issue a consumer API key and display its plaintext value once."""
 

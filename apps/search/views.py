@@ -1,11 +1,17 @@
 import watson.search as watson
 from django.apps import apps as django_apps
+from drf_spectacular.utils import OpenApiParameter, OpenApiTypes, extend_schema
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.core.exceptions import InvalidFilterValue
-from apps.search.serializers import MODEL_TYPE_MAP, SearchResultSerializer
+from apps.core.schema_serializers import ErrorEnvelopeSchemaSerializer
+from apps.search.serializers import (
+    MODEL_TYPE_MAP,
+    SearchResponseSchemaSerializer,
+    SearchResultSerializer,
+)
 
 # Derive supported filters from the serializer's canonical model map.
 TYPE_TO_MODEL = {type_label: model_key for model_key, (type_label, _) in MODEL_TYPE_MAP.items()}
@@ -19,6 +25,30 @@ def _get_model_class(type_label):
     return django_apps.get_model(app_label, model_name)
 
 
+@extend_schema(
+    tags=['Search'],
+    parameters=[
+        OpenApiParameter(
+            name='q',
+            type=OpenApiTypes.STR,
+            location=OpenApiParameter.QUERY,
+            required=True,
+            description='Nonblank text to search for.',
+        ),
+        OpenApiParameter(
+            name='type',
+            type=OpenApiTypes.STR,
+            location=OpenApiParameter.QUERY,
+            enum=VALID_TYPES,
+            required=False,
+            description='Optional supported entity type filter.',
+        ),
+    ],
+    responses={
+        200: SearchResponseSchemaSerializer,
+        400: ErrorEnvelopeSchemaSerializer,
+    },
+)
 class SearchView(APIView):
     """Search all indexed lore models, optionally restricted by ``type``."""
 

@@ -95,6 +95,8 @@ class CabinCamperListView(generics.ListAPIView):
         from apps.characters.models import Character
         from apps.organizations.models import Cabin
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Cabin, slug=self.kwargs['slug'])
         return Character.objects.filter(cabin__slug=self.kwargs['slug']).distinct()
 
@@ -110,6 +112,8 @@ class FactionMemberListView(generics.ListAPIView):
     serializer_class = FactionMemberSerializer
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return FactionMember.objects.none()
         get_object_or_404(Faction, slug=self.kwargs['slug'])
         return FactionMember.objects.filter(faction__slug=self.kwargs['slug']).select_related(
             'member_character', 'member_god', 'member_titan', 'member_monster'

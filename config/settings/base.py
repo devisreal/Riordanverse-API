@@ -170,7 +170,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.EnvelopePagination',
     'PAGE_SIZE': 20,
     'EXCEPTION_HANDLER': 'apps.core.exceptions.custom_exception_handler',
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_SCHEMA_CLASS': 'apps.core.schema.APIKeyAutoSchema',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_THROTTLE_CLASSES': [
         'apps.core.throttles.PerAPIKeyRateThrottle',
@@ -184,9 +184,31 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Percy Jackson Fandom API',
-    'DESCRIPTION': 'A lore-accurate, read-only REST API for the Riordanverse.',
+    'DESCRIPTION': (
+        'A read-only REST API for the Riordanverse. Protected endpoints require an X-API-Key '
+        'header; public health and API-key management routes are explicitly marked in the schema.'
+    ),
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+    'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
+    'SERVE_AUTHENTICATION': [],
+    'ENUM_NAME_OVERRIDES': {
+        'CharacterStatusEnum': 'apps.core.choices.STATUS_CHOICES',
+        'HealthStatusEnum': 'apps.core.schema_serializers.HEALTH_STATUS_CHOICES',
+        'TitanAlignmentEnum': 'apps.core.choices.TITAN_ALIGNMENT_CHOICES',
+        'CreatureAlignmentEnum': 'apps.bestiary.models.CREATURE_ALIGNMENT_CHOICES',
+        'FactionAlignmentEnum': 'apps.organizations.models.FACTION_ALIGNMENT_CHOICES',
+    },
+    'APPEND_COMPONENTS': {
+        'securitySchemes': {
+            'ApiKeyAuth': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'X-API-Key',
+                'description': 'Consumer API key. Request one at POST /auth/request-key/.',
+            },
+        },
+    },
 }
 
 # ---------------------------------------------------------------------------

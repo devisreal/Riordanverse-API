@@ -1,5 +1,10 @@
 from django.contrib import admin
 from django.urls import include, path
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 from apps.core.views import HealthLiveView, HealthReadyView
 
@@ -7,6 +12,9 @@ urlpatterns = [
     path('health/live/', HealthLiveView.as_view(), name='health-live'),
     path('health/ready/', HealthReadyView.as_view(), name='health-ready'),
     path('admin/', admin.site.urls),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('auth/', include('apps.access.urls')),
     path('api/v1/', include('apps.narrative.urls')),
     path('api/v1/', include('apps.divinities.urls')),
