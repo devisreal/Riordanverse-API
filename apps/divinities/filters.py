@@ -9,7 +9,7 @@ from apps.core.choices import (
     TITAN_ALIGNMENT_CHOICES,
     TITAN_GENERATION_CHOICES,
 )
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
 from apps.divinities.models import God, Titan
 
 
@@ -17,9 +17,9 @@ class GodFilter(django_filters.FilterSet):
     tier = StrictChoiceFilter(choices=GOD_TIER_CHOICES)
     affiliation = StrictChoiceFilter(choices=GOD_AFFILIATION_CHOICES)
     status = StrictChoiceFilter(choices=STATUS_CHOICES)
-    has_cabin = django_filters.BooleanFilter()
-    is_big_three = django_filters.BooleanFilter()
-    roman_only = django_filters.BooleanFilter()
+    has_cabin = StrictBooleanFilter()
+    is_big_three = StrictBooleanFilter()
+    roman_only = StrictBooleanFilter()
 
     class Meta:
         model = God

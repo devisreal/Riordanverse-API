@@ -4,7 +4,7 @@ import django_filters
 from django.db.models import Q
 
 from apps.core.choices import MATERIAL_CHOICES, WEAPON_TYPE_CHOICES
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
 from apps.items.models import Weapon
 
 
@@ -37,8 +37,8 @@ class WeaponFilter(django_filters.FilterSet):
         ).distinct()
 
     # Boolean filters
-    transforms = django_filters.BooleanFilter()
-    passes_through_mortals = django_filters.BooleanFilter()
+    transforms = StrictBooleanFilter()
+    passes_through_mortals = StrictBooleanFilter()
 
     # Book filters
     book = django_filters.CharFilter(

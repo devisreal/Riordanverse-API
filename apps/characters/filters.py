@@ -11,7 +11,7 @@ from apps.core.choices import (
     SPECIES_CHOICES,
     STATUS_CHOICES,
 )
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
 
 
 class CharacterFilter(django_filters.FilterSet):
@@ -38,13 +38,13 @@ class CharacterFilter(django_filters.FilterSet):
     )
 
     # Boolean filters
-    is_demigod = django_filters.BooleanFilter()
-    is_big_three_child = django_filters.BooleanFilter()
-    is_hunter_of_artemis = django_filters.BooleanFilter()
-    is_oracle = django_filters.BooleanFilter()
-    is_possessed = django_filters.BooleanFilter()
-    can_see_through_mist = django_filters.BooleanFilter()
-    has_adhd = django_filters.BooleanFilter()
+    is_demigod = StrictBooleanFilter()
+    is_big_three_child = StrictBooleanFilter()
+    is_hunter_of_artemis = StrictBooleanFilter()
+    is_oracle = StrictBooleanFilter()
+    is_possessed = StrictBooleanFilter()
+    can_see_through_mist = StrictBooleanFilter()
+    has_adhd = StrictBooleanFilter()
 
     # Cabin
     cabin = django_filters.NumberFilter(field_name='cabin_number')

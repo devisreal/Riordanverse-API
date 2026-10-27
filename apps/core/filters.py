@@ -1,4 +1,6 @@
 import django_filters
+from django import forms
+from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter
 
@@ -42,6 +44,41 @@ class SortOrderingFilter(OrderingFilter):
             )
 
         return [sort if order == 'asc' else f'-{sort}']
+
+
+class StrictBooleanWidget(forms.Widget):
+    """Keep raw query values so the field can reject noncanonical forms."""
+
+    def value_from_datadict(self, data, files, name):
+        values = data.getlist(name) if hasattr(data, 'getlist') else [data.get(name)]
+        if not values:
+            return None
+        if len(values) > 1:
+            return values
+        return values[0]
+
+
+class StrictBooleanField(forms.Field):
+    """Accept only lowercase ``true`` and ``false`` query values."""
+
+    def to_python(self, value):
+        if value is None:
+            return None
+        if value == 'true':
+            return True
+        if value == 'false':
+            return False
+        raise DjangoValidationError('Enter either "true" or "false".', code='invalid')
+
+
+class StrictBooleanFilter(django_filters.BooleanFilter):
+    """Boolean query filter that rejects aliases and malformed values."""
+
+    field_class = StrictBooleanField
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('widget', StrictBooleanWidget())
+        super().__init__(*args, **kwargs)
 
 
 class StrictChoiceFilter(django_filters.ChoiceFilter):

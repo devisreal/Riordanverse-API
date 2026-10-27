@@ -3,13 +3,13 @@
 import django_filters
 
 from apps.core.choices import LOCATION_TYPE_CHOICES
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
 from apps.locations.models import Location
 
 
 class LocationFilter(django_filters.FilterSet):
     location_type = StrictChoiceFilter(choices=LOCATION_TYPE_CHOICES)
-    is_hidden_from_mortals = django_filters.BooleanFilter()
+    is_hidden_from_mortals = StrictBooleanFilter()
 
     # controlled_by filters — one per entity type
     controlled_by_god = django_filters.CharFilter(

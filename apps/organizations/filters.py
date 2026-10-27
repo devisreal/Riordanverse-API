@@ -3,7 +3,7 @@
 import django_filters
 
 from apps.core.choices import FACTION_TYPE_CHOICES
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
 from apps.organizations.models import (
     CABIN_POSITION_CHOICES,
     FACTION_ALIGNMENT_CHOICES,
@@ -13,8 +13,8 @@ from apps.organizations.models import (
 
 
 class CabinFilter(django_filters.FilterSet):
-    is_honorary = django_filters.BooleanFilter()
-    is_empty = django_filters.BooleanFilter()
+    is_honorary = StrictBooleanFilter()
+    is_empty = StrictBooleanFilter()
     position = StrictChoiceFilter(choices=CABIN_POSITION_CHOICES)
     deity = django_filters.CharFilter(
         field_name='deity__slug',
