@@ -150,6 +150,12 @@ POST /auth/request-key/
 
 > API-key authentication is enforced in both `development` and `production` settings. Only the automated `test` settings disable it to simplify tests; do not use test settings to run a server.
 
+### Rate Limits
+
+Authenticated API requests are limited to **1,000 requests per hour per API key**. Responses include the standard `RateLimit-Limit`, `RateLimit-Remaining`, and `RateLimit-Reset` headers; throttled responses also include `Retry-After`. Public key-request and verification endpoints have a separate limit of **5 requests per hour per client IP**.
+
+Redis provides shared counters across workers. If Redis is unavailable, the API remains available using process-local counters; during that outage, rate limits are best-effort and are not shared across workers.
+
 ---
 
 ## 🧪 Running Tests

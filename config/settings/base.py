@@ -87,6 +87,7 @@ LOGGING = {
 
 MIDDLEWARE = [
     'apps.core.middleware.RequestLoggingMiddleware',
+    'apps.core.middleware.RateLimitHeadersMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -172,10 +173,10 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_THROTTLE_CLASSES': [
-        'apps.core.throttles.CacheFallbackAnonRateThrottle',
-        'apps.core.throttles.CacheFallbackUserRateThrottle',
+        'apps.core.throttles.PerAPIKeyRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
+        'api_key': '1000/hour',
         'anon': '100/day',
         'user': '1000/day',
     },
@@ -205,6 +206,12 @@ CACHES = {
 # * CORS
 # ---------------------------------------------------------------------------
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS')
+CORS_EXPOSE_HEADERS = [
+    'RateLimit-Limit',
+    'RateLimit-Remaining',
+    'RateLimit-Reset',
+    'Retry-After',
+]
 
 # ---------------------------------------------------------------------------
 # * django-watson (search)

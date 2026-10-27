@@ -21,7 +21,7 @@ class CachedHasAPIKeyTests(TestCase):
         self.assertFalse(CachedHasAPIKey().has_permission(request, view=None))
 
     def test_valid_key_falls_back_to_database_when_cache_is_unavailable(self):
-        _, plaintext_key = ConsumerAPIKey.objects.create_key(
+        record, plaintext_key = ConsumerAPIKey.objects.create_key(
             name='Example App',
             consumer_name='Example App',
             email='developer@example.com',
@@ -35,3 +35,4 @@ class CachedHasAPIKeyTests(TestCase):
             allowed = CachedHasAPIKey().has_permission(request, view=None)
 
         self.assertTrue(allowed)
+        self.assertEqual(request.api_key_prefix, record.prefix)
