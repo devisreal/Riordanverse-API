@@ -48,23 +48,9 @@
       "the-last-olympian",
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [
-      "thalia-grace",
-      "perseus",
-      "heracles",
-      "tantalus",
-      "king-minos"
-    ],
     "weapon_slugs": [
       "master-lightning-bolt",
       "aegis"
-    ],
-    "siblings": [
-      "poseidon",
-      "hades",
-      "hera",
-      "demeter",
-      "hestia"
     ]
   },
   {
@@ -115,16 +101,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "lotus-staff"
-    ],
-    "siblings": [
-      "zeus",
-      "poseidon",
-      "hades",
-      "demeter",
-      "hestia"
     ]
   },
   {
@@ -177,20 +155,8 @@
       "percy-jacksons-greek-gods",
       "percy-jacksons-greek-heroes"
     ],
-    "children_demigod_slugs": [
-      "percy-jackson",
-      "theseus",
-      "bellerophon"
-    ],
     "weapon_slugs": [
       "poseidons-trident"
-    ],
-    "siblings": [
-      "zeus",
-      "hades",
-      "hera",
-      "demeter",
-      "hestia"
     ]
   },
   {
@@ -240,18 +206,8 @@
       "the-titans-curse",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "katie-gardner"
-    ],
     "weapon_slugs": [
       "golden-sickle"
-    ],
-    "siblings": [
-      "zeus",
-      "poseidon",
-      "hades",
-      "hera",
-      "hestia"
     ]
   },
   {
@@ -304,16 +260,8 @@
       "the-titans-curse",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "clarisse-la-rue",
-      "eurytion"
-    ],
     "weapon_slugs": [
       "clarisses-electric-spear"
-    ],
-    "siblings": [
-      "hephaestus",
-      "hebe"
     ]
   },
   {
@@ -362,15 +310,9 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "annabeth-chase",
-      "daedalus",
-      "malcolm-pace"
-    ],
     "weapon_slugs": [
       "aegis"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Apollo",
@@ -428,16 +370,8 @@
       "percy-jackson-and-the-singer-of-apollo",
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [
-      "will-solace",
-      "michael-yew",
-      "lee-fletcher"
-    ],
     "weapon_slugs": [
       "golden-celedon"
-    ],
-    "siblings": [
-      "artemis"
     ]
   },
   {
@@ -489,12 +423,8 @@
       "the-titans-curse",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "zoes-silver-bow"
-    ],
-    "siblings": [
-      "apollo"
     ]
   },
   {
@@ -544,16 +474,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "charles-beckendorf",
-      "jake-mason"
-    ],
     "weapon_slugs": [
       "hammer-of-hephaestus"
-    ],
-    "siblings": [
-      "ares",
-      "hebe"
     ]
   },
   {
@@ -604,13 +526,9 @@
       "the-titans-curse",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "silena-beauregard"
-    ],
     "weapon_slugs": [
       "mirror-of-aphrodite"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Hermes",
@@ -660,19 +578,12 @@
       "the-titans-curse",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "luke-castellan",
-      "chris-rodriguez",
-      "travis-stoll",
-      "connor-stoll"
-    ],
     "weapon_slugs": [
       "harpe",
       "winged-shoes",
       "hermes-multivitamins",
       "hermes-thermos"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Dionysus",
@@ -726,14 +637,9 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "castor",
-      "pollux"
-    ],
     "weapon_slugs": [
       "thyrsus"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Hades",
@@ -787,20 +693,9 @@
       "the-demigod-files",
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [
-      "nico-di-angelo",
-      "bianca-di-angelo"
-    ],
     "weapon_slugs": [
       "helm-of-darkness",
       "sword-of-hades"
-    ],
-    "siblings": [
-      "zeus",
-      "poseidon",
-      "hera",
-      "demeter",
-      "hestia"
     ]
   },
   {
@@ -846,15 +741,7 @@
       "the-lightning-thief",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "zeus",
-      "poseidon",
-      "hades",
-      "hera",
-      "demeter"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Persephone",
@@ -902,11 +789,9 @@
       "the-last-olympian",
       "the-demigod-files"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "persephones-pearls"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Iris",
@@ -949,9 +834,7 @@
       "the-sea-of-monsters",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Hypnos",
@@ -992,9 +875,7 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Nemesis",
@@ -1038,13 +919,9 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [
-      "ethan-nakamura"
-    ],
     "weapon_slugs": [
       "sword-of-nemesis"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Nike",
@@ -1086,9 +963,7 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Hebe",
@@ -1129,12 +1004,7 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "ares",
-      "hephaestus"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Tyche",
@@ -1175,9 +1045,7 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Hecate",
@@ -1228,11 +1096,9 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "strophalos"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Pan",
@@ -1277,11 +1143,9 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "grovers-reed-pipes"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Circe",
@@ -1325,11 +1189,9 @@
     "books_appeared_in_slugs": [
       "the-sea-of-monsters"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "circes-wand"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Phobos",
@@ -1364,9 +1226,7 @@
     "books_appeared_in_slugs": [
       "the-demigod-files"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Deimos",
@@ -1401,9 +1261,7 @@
     "books_appeared_in_slugs": [
       "the-demigod-files"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Melinoë",
@@ -1438,9 +1296,7 @@
     "books_appeared_in_slugs": [
       "the-demigod-files"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Triton",
@@ -1480,11 +1336,9 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "conch-shell-trumpet"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Janus",
@@ -1524,9 +1378,7 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Morpheus",
@@ -1563,9 +1415,7 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Chaos",
@@ -1601,9 +1451,7 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Ouranos",
@@ -1639,12 +1487,7 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "gaea",
-      "tartarus"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Gaea",
@@ -1689,12 +1532,7 @@
       "percy-jacksons-greek-gods",
       "percy-jacksons-greek-heroes"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "ouranos",
-      "tartarus"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Amphitrite",
@@ -1735,9 +1573,7 @@
       "the-last-olympian",
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Boreas",
@@ -1776,11 +1612,9 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [],
     "weapon_slugs": [
       "ice-sword-of-boreas"
-    ],
-    "siblings": []
+    ]
   },
   {
     "name": "Khione",
@@ -1816,9 +1650,7 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Tartarus",
@@ -1856,11 +1688,53 @@
       "the-last-olympian",
       "percy-jacksons-greek-gods"
     ],
-    "children_demigod_slugs": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "gaea",
-      "ouranos"
+    "weapon_slugs": []
+  },
+  {
+    "name": "Phorcys",
+    "expected_slug": "phorcys",
+    "character_type": "god",
+    "tier": "minor",
+    "description": "Ancient sea god of the hidden dangers of the deep, husband of Ceto, and father of monsters.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Phorcys"
+  },
+  {
+    "name": "Ceto",
+    "expected_slug": "ceto",
+    "character_type": "god",
+    "tier": "minor",
+    "description": "Ancient sea goddess of sea monsters, wife of Phorcys, and mother of Echidna, Medusa, and Ladon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Keto"
+  },
+  {
+    "name": "Maia",
+    "expected_slug": "maia",
+    "character_type": "god",
+    "tier": "minor",
+    "description": "Pleiad nymph goddess of mountains, daughter of Atlas, and mother of Hermes by Zeus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Maia"
+  },
+  {
+    "name": "Calliope",
+    "expected_slug": "calliope",
+    "character_type": "god",
+    "tier": "olympian",
+    "description": "Muse of epic poetry, consort of Apollo, and mother of Orpheus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
     ]
   }
 ]

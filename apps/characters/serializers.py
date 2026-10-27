@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from apps.characters.models import Character, Power
+from apps.divinities.family import serialize_family
 from apps.images.serializers import ImageListSerializer
 
 
@@ -72,9 +73,8 @@ class CharacterDetailSerializer(serializers.ModelSerializer):
 
     primary_image = serializers.SerializerMethodField()
     powers = PowerSerializer(many=True, read_only=True)
-    divine_parent_slug = serializers.SerializerMethodField()
-    mortal_parent_ref_slug = serializers.SerializerMethodField()
-    sibling_slugs = serializers.SerializerMethodField()
+    type = serializers.SerializerMethodField()
+    family = serializers.SerializerMethodField()
     empathy_link_slug = serializers.SerializerMethodField()
     weapon_slugs = serializers.SerializerMethodField()
     first_appearance_book_slug = serializers.SerializerMethodField()
@@ -107,10 +107,8 @@ class CharacterDetailSerializer(serializers.ModelSerializer):
             'greek_or_roman',
             'greek_or_roman_display',
             'age_first_appearance',
-            'divine_parent_slug',
-            'mortal_parent_name',
-            'mortal_parent_ref_slug',
-            'sibling_slugs',
+            'type',
+            'family',
             'empathy_link_slug',
             'cabin_number',
             'affiliation',
@@ -142,15 +140,11 @@ class CharacterDetailSerializer(serializers.ModelSerializer):
     def get_primary_image(self, obj):
         return _primary_image(obj)
 
-    def get_divine_parent_slug(self, obj):
-        parent = obj.divine_parent or obj.divine_parent_titan
-        return parent.slug if parent else None
+    def get_type(self, obj):
+        return 'character'
 
-    def get_mortal_parent_ref_slug(self, obj):
-        return obj.mortal_parent_ref.slug if obj.mortal_parent_ref else None
-
-    def get_sibling_slugs(self, obj):
-        return [sibling.slug for sibling in obj.siblings.all()]
+    def get_family(self, obj):
+        return serialize_family(obj)
 
     def get_empathy_link_slug(self, obj):
         return obj.empathy_link.slug if obj.empathy_link else None

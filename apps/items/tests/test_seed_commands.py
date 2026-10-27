@@ -26,7 +26,7 @@ class WeaponSeedCommandTests(TestCase):
             outputs.append(output.getvalue())
 
         self.assertEqual(Weapon.objects.count(), 50)
-        self.assertEqual(Weapon.objects.filter(wiki_url__isnull=False).count(), 35)
+        self.assertEqual(Weapon.objects.filter(wiki_url__isnull=False).count(), 36)
         self.assertEqual(
             Weapon.objects.get(slug='riptide').wiki_url,
             'https://riordan.fandom.com/wiki/Riptide',

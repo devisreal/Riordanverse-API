@@ -122,6 +122,7 @@ class RequestKeyViewTests(TestCase):
         payload = json.loads(JsonEventFormatter().format(captured.records[0]))
         key_record = ConsumerAPIKey.objects.get()
         self.assertEqual(payload['event'], 'security.api_key.created')
+        self.assertEqual(payload['level'], 'SUCCESS')
         self.assertIn('api_key_prefix', payload)
         self.assertNotIn(response.data['api_key'], json.dumps(payload))
         self.assertNotIn(key_record.pk, json.dumps(payload))

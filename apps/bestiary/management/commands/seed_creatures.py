@@ -12,6 +12,7 @@ from django.db import DatabaseError, transaction
 
 from apps.bestiary.models import Creature, CreatureMember, Monster
 from apps.characters.models import Character
+from apps.core.seed_utils import update_or_create_by_expected_slug
 
 DATA_FILE = settings.BASE_DIR / 'data' / 'creatures.json'
 ENTITY_MODELS = {'character': Character, 'monster': Monster}
@@ -103,7 +104,7 @@ class Command(BaseCommand):
             try:
                 with transaction.atomic():
                     defaults = {
-                        field: entry.get(field)
+                        field: entry[field]
                         for field in (
                             'name',
                             'description',
@@ -113,12 +114,15 @@ class Command(BaseCommand):
                             'abilities',
                             'weaknesses',
                         )
+                        if field in entry
                     }
                     if entry.get('wiki_url'):
                         defaults['wiki_url'] = entry['wiki_url']
-                    creature, created = Creature.objects.update_or_create(
-                        slug=entry['expected_slug'],
-                        defaults=defaults,
+                    creature, created = update_or_create_by_expected_slug(
+                        Creature,
+                        entry['expected_slug'],
+                        defaults,
+                        fallback={'name': name},
                     )
 
                     references = entry.get('notable_members')

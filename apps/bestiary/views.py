@@ -11,6 +11,7 @@ from apps.bestiary.serializers import (
     MonsterDetailSerializer,
     MonsterListSerializer,
 )
+from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
 from apps.images.serializers import ImageSerializer
@@ -19,18 +20,14 @@ from apps.images.serializers import ImageSerializer
 class MonsterListView(generics.ListAPIView):
     """GET /api/v1/monsters/"""
 
-    queryset = (
-        Monster.objects.prefetch_related(
-            'images__image',
-            'defeated_by',
-            'defeated_by_gods',
-            'defeats__defeated_by',
-            'defeats__book',
-            'books_appeared_in',
-        )
-        .select_related('first_appearance_book')
-        .all()
-    )
+    queryset = Monster.objects.prefetch_related(
+        'images__image',
+        'defeated_by',
+        'defeated_by_gods',
+        'defeats__defeated_by',
+        'defeats__book',
+        'books_appeared_in',
+    ).select_related('first_appearance_book')
     serializer_class = MonsterListSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     filterset_class = MonsterFilter
@@ -41,7 +38,7 @@ class MonsterListView(generics.ListAPIView):
 class MonsterDetailView(generics.RetrieveAPIView):
     """GET /api/v1/monsters/<slug>/"""
 
-    queryset = (
+    queryset = prefetch_family(
         Monster.objects.prefetch_related(
             'images__image',
             'defeated_by',
@@ -89,11 +86,13 @@ class CreatureListView(generics.ListAPIView):
 class CreatureDetailView(generics.RetrieveAPIView):
     """GET /api/v1/creatures/<slug>/"""
 
-    queryset = Creature.objects.prefetch_related(
-        'member_records__member_character',
-        'member_records__member_monster',
-        'notable_members',
-    ).all()
+    queryset = prefetch_family(
+        Creature.objects.prefetch_related(
+            'member_records__member_character',
+            'member_records__member_monster',
+            'notable_members',
+        ).all()
+    )
     serializer_class = CreatureDetailSerializer
     lookup_field = 'slug'
 

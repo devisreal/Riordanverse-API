@@ -19,8 +19,8 @@ class MonsterSeedCommandTests(TestCase):
         output = StringIO()
         call_command('seed_monsters', stdout=output)
 
-        self.assertEqual(Monster.objects.count(), 26)
-        self.assertEqual(Monster.objects.filter(wiki_url__isnull=False).count(), 26)
+        self.assertEqual(Monster.objects.count(), 29)
+        self.assertEqual(Monster.objects.filter(wiki_url__isnull=False).count(), 29)
         self.assertEqual(Monster.objects.get(slug='minotaur').name, 'The Minotaur')
         self.assertEqual(
             Monster.objects.get(slug='alecto').wiki_url,
@@ -72,5 +72,5 @@ class MonsterSeedCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_monsters', stdout=rerun)
-        self.assertEqual(Monster.objects.count(), 26)
-        self.assertIn('26 updated', rerun.getvalue())
+        self.assertEqual(Monster.objects.count(), 29)
+        self.assertIn('29 updated', rerun.getvalue())

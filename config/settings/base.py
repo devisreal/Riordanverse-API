@@ -67,6 +67,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'json': {'()': 'apps.core.logging.JsonEventFormatter'},
+        'color_json': {'()': 'apps.core.logging.ColorJsonEventFormatter'},
     },
     'handlers': {
         'console': {'class': 'logging.StreamHandler', 'formatter': 'json'},

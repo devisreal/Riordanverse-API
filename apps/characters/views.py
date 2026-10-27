@@ -6,6 +6,7 @@ from rest_framework import filters, generics
 from apps.characters.filters import CharacterFilter
 from apps.characters.models import Character, CharacterImage
 from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
+from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
 from apps.images.serializers import ImageSerializer
@@ -14,23 +15,12 @@ from apps.images.serializers import ImageSerializer
 class CharacterListView(generics.ListAPIView):
     """GET /api/v1/characters/"""
 
-    queryset = (
-        Character.objects.prefetch_related(
-            'images__image',
-            'books_appeared_in',
-            'siblings',
-            'weapons',
-            'powers__first_demonstrated_book',
-        )
-        .select_related(
-            'divine_parent',
-            'divine_parent_titan',
-            'mortal_parent_ref',
-            'empathy_link',
-            'first_appearance_book',
-        )
-        .all()
-    )
+    queryset = Character.objects.prefetch_related(
+        'images__image',
+        'books_appeared_in',
+        'weapons',
+        'powers__first_demonstrated_book',
+    ).select_related('empathy_link', 'first_appearance_book')
     serializer_class = CharacterListSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     filterset_class = CharacterFilter
@@ -41,21 +31,14 @@ class CharacterListView(generics.ListAPIView):
 class CharacterDetailView(generics.RetrieveAPIView):
     """GET /api/v1/characters/<slug>/"""
 
-    queryset = (
+    queryset = prefetch_family(
         Character.objects.prefetch_related(
             'images__image',
             'books_appeared_in',
-            'siblings',
             'weapons',
             'powers__first_demonstrated_book',
         )
-        .select_related(
-            'divine_parent',
-            'divine_parent_titan',
-            'mortal_parent_ref',
-            'empathy_link',
-            'first_appearance_book',
-        )
+        .select_related('empathy_link', 'first_appearance_book')
         .all()
     )
     serializer_class = CharacterDetailSerializer

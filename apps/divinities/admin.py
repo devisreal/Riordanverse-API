@@ -53,7 +53,11 @@ class DivineRelationshipAdmin(admin.ModelAdmin):
         'from_god',
         'from_titan',
         'from_character',
+        'from_monster',
+        'from_creature',
         'to_god',
         'to_titan',
         'to_character',
+        'to_monster',
+        'to_creature',
     )

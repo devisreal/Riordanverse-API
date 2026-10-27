@@ -1,6 +1,7 @@
 # ruff: noqa: RUF012
 
 import django_filters
+from django.db.models import Q
 
 from apps.characters.models import Character
 from apps.core.choices import (
@@ -25,7 +26,7 @@ class CharacterFilter(django_filters.FilterSet):
 
     # FK filters
     divine_parent = django_filters.CharFilter(
-        field_name='divine_parent__slug',
+        method='filter_divine_parent',
         help_text='Filter by divine parent slug e.g. ?divine_parent=poseidon',
     )
     first_appearance_book = django_filters.CharFilter(
@@ -47,6 +48,18 @@ class CharacterFilter(django_filters.FilterSet):
 
     # Cabin
     cabin = django_filters.NumberFilter(field_name='cabin_number')
+
+    def filter_divine_parent(self, queryset, name, value):
+        return queryset.filter(
+            Q(
+                divine_relationships_as_to__relationship_type='parent_of',
+                divine_relationships_as_to__from_god__slug=value,
+            )
+            | Q(
+                divine_relationships_as_to__relationship_type='parent_of',
+                divine_relationships_as_to__from_titan__slug=value,
+            )
+        ).distinct()
 
     class Meta:
         model = Character

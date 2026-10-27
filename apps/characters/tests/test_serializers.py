@@ -1,7 +1,14 @@
 from django.test import TestCase
 
 from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
-from tests.makers import make_book, make_character, make_god, make_power, make_titan
+from tests.makers import (
+    make_book,
+    make_character,
+    make_divine_relationship,
+    make_god,
+    make_power,
+    make_titan,
+)
 
 
 class CharacterListSerializerTests(TestCase):
@@ -10,31 +17,32 @@ class CharacterListSerializerTests(TestCase):
         self.character = make_character(
             name='Percy Jackson',
             character_type='demigod',
-            divine_parent=self.poseidon,
             is_big_three_child=True,
+            divine_parent=self.poseidon,
         )
+        make_divine_relationship(from_entity=self.poseidon, to_entity=self.character)
 
     def test_expected_list_fields_are_present(self):
         data = CharacterListSerializer(self.character).data
         self.assertIn('slug', data)
         self.assertIn('name', data)
-        self.assertIn('divine_parent_slug', data)
+        self.assertEqual(data['divine_parent_slug'], 'poseidon')
+        self.assertNotIn('type', data)
+        self.assertNotIn('family', data)
         self.assertIn('is_big_three_child', data)
 
-    def test_divine_parent_slug(self):
-        data = CharacterListSerializer(self.character).data
-        self.assertEqual(data['divine_parent_slug'], 'poseidon')
-
-    def test_divine_parent_slug_is_null_without_parent(self):
+    def test_family_is_empty_without_relationships(self):
         mortal = make_character(name='Sally Jackson', character_type='mortal')
         data = CharacterListSerializer(mortal).data
         self.assertIsNone(data['divine_parent_slug'])
+        self.assertNotIn('family', data)
 
 
 class CharacterDetailSerializerTests(TestCase):
     def setUp(self):
         self.poseidon = make_god(name='Poseidon')
-        self.character = make_character(name='Percy Jackson', divine_parent=self.poseidon)
+        self.character = make_character(name='Percy Jackson')
+        make_divine_relationship(from_entity=self.poseidon, to_entity=self.character)
         make_power(
             character=self.character,
             name='Hydrokinesis',
@@ -75,15 +83,19 @@ class CharacterDetailSerializerTests(TestCase):
         self.assertEqual(serialized['first_demonstrated_book'], 'the-lightning-thief')
         self.assertEqual(serialized['display_order'], 2)
 
-    def test_sibling_slugs_empty_by_default(self):
+    def test_family_is_nested_with_empty_sibling_array_by_default(self):
         data = CharacterDetailSerializer(self.character).data
-        self.assertEqual(data['sibling_slugs'], [])
+        self.assertEqual(data['family']['siblings'], [])
+        self.assertNotIn('sibling_slugs', data)
+        self.assertNotIn('divine_parent_slug', data)
 
-    def test_sibling_slugs_populated(self):
+    def test_siblings_are_nested_typed_references(self):
         tyson = make_character(name='Tyson')
-        self.character.siblings.add(tyson)
+        make_divine_relationship(
+            from_entity=self.character, to_entity=tyson, relationship_type='sibling_of'
+        )
         data = CharacterDetailSerializer(self.character).data
-        self.assertIn('tyson', data['sibling_slugs'])
+        self.assertEqual(data['family']['siblings'][0]['slug'], 'tyson')
 
     def test_empathy_link_slug_is_null(self):
         data = CharacterDetailSerializer(self.character).data
@@ -105,4 +117,7 @@ class CharacterDetailSerializerTests(TestCase):
         helios = make_titan(name='Helios')
         phaethon = make_character(name='Phaethon', divine_parent_titan=helios)
 
-        self.assertEqual(CharacterDetailSerializer(phaethon).data['divine_parent_slug'], 'helios')
+        make_divine_relationship(from_entity=helios, to_entity=phaethon)
+        data = CharacterDetailSerializer(phaethon).data
+        self.assertEqual(data['family']['parents'][0]['slug'], 'helios')
+        self.assertEqual(data['family']['parents'][0]['type'], 'titan')

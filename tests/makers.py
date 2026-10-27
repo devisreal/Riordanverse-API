@@ -72,7 +72,8 @@ def make_titan(**kwargs):
 
 
 def make_divine_relationship(from_entity, to_entity, relationship_type='parent_of', **kwargs):
-    """Create a relationship between God, Titan, or Character entities."""
+    """Create a relationship between any supported family entities."""
+    from apps.bestiary.models import Creature, Monster
     from apps.characters.models import Character
     from apps.divinities.models import DivineRelationship, God, Titan
 
@@ -83,8 +84,12 @@ def make_divine_relationship(from_entity, to_entity, relationship_type='parent_o
         data['from_titan'] = from_entity
     elif isinstance(from_entity, Character):
         data['from_character'] = from_entity
+    elif isinstance(from_entity, Monster):
+        data['from_monster'] = from_entity
+    elif isinstance(from_entity, Creature):
+        data['from_creature'] = from_entity
     else:
-        raise TypeError('from_entity must be a God, Titan, or Character instance')
+        raise TypeError('from_entity must be a supported family entity instance')
 
     if isinstance(to_entity, God):
         data['to_god'] = to_entity
@@ -92,8 +97,12 @@ def make_divine_relationship(from_entity, to_entity, relationship_type='parent_o
         data['to_titan'] = to_entity
     elif isinstance(to_entity, Character):
         data['to_character'] = to_entity
+    elif isinstance(to_entity, Monster):
+        data['to_monster'] = to_entity
+    elif isinstance(to_entity, Creature):
+        data['to_creature'] = to_entity
     else:
-        raise TypeError('to_entity must be a God, Titan, or Character instance')
+        raise TypeError('to_entity must be a supported family entity instance')
 
     data.update(kwargs)
     return DivineRelationship.objects.create(**data)

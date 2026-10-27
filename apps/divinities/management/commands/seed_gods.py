@@ -19,6 +19,7 @@ from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand
 from django.db import DatabaseError
 
+from apps.core.seed_utils import update_or_create_by_expected_slug
 from apps.divinities.models import God
 from apps.narrative.models import Book
 
@@ -87,7 +88,18 @@ class Command(BaseCommand):
                 else:
                     defaults['first_appearance_book'] = None
 
-                god, created = God.objects.update_or_create(name=entry['name'], defaults=defaults)
+                expected_slug = entry.get('expected_slug')
+                if expected_slug:
+                    god, created = update_or_create_by_expected_slug(
+                        God,
+                        expected_slug,
+                        defaults,
+                        fallback={'name': entry['name']},
+                    )
+                else:
+                    god, created = God.objects.update_or_create(
+                        name=entry['name'], defaults=defaults
+                    )
 
                 # Missing M2M book slugs are warned and omitted; valid references remain.
                 if 'books_appeared_in_slugs' in entry:

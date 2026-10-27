@@ -17,8 +17,10 @@ class SeedQuestsCommandTests(TestCase):
         'seed_titans',
         'seed_characters',
         'seed_monsters',
+        'seed_creatures',
         'seed_items',
         'seed_locations',
+        'seed_divine_relationships',
         'seed_prophecies',
         'seed_quests',
     )
@@ -42,7 +44,12 @@ class SeedQuestsCommandTests(TestCase):
         )
         self.assertEqual(QuestParticipant.objects.count(), 34)
         self.assertEqual(QuestCasualty.objects.count(), 10)
-        self.assertFalse(any('[WARN]' in output for output in outputs))
+        warnings = {
+            command: output
+            for command, output in zip(self.seed_commands, outputs, strict=True)
+            if '[WARN]' in output
+        }
+        self.assertFalse(warnings, warnings)
 
         child_story_books = {
             'quest-for-ares-stolen-chariot': 'percy-jackson-and-the-stolen-chariot',

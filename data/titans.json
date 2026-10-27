@@ -35,19 +35,6 @@
       "kronos-scythe",
       "adamantine-scythe",
       "backbiter"
-    ],
-    "siblings": [
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
     ]
   },
   {
@@ -77,11 +64,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "prometheus",
-      "epimetheus"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Hyperion",
@@ -110,20 +93,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Iapetus",
@@ -150,20 +120,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Oceanus",
@@ -190,20 +147,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Prometheus",
@@ -232,11 +176,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "atlas",
-      "epimetheus"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Koios",
@@ -264,20 +204,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Krios",
@@ -304,20 +231,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Rhea",
@@ -357,20 +271,7 @@
     "sacred_plants": [
       "oak tree"
     ],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Helios",
@@ -407,11 +308,7 @@
     "sacred_plants": [
       "heliotrope"
     ],
-    "weapon_slugs": [],
-    "siblings": [
-      "selene",
-      "eos"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Tethys",
@@ -442,20 +339,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "theia",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Theia",
@@ -486,20 +370,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "themis",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Themis",
@@ -530,20 +401,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "mnemosyne",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Mnemosyne",
@@ -573,20 +431,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "phoebe"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Phoebe",
@@ -616,20 +461,7 @@
     ],
     "sacred_animals": [],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "kronos",
-      "hyperion",
-      "iapetus",
-      "oceanus",
-      "koios",
-      "krios",
-      "rhea",
-      "tethys",
-      "theia",
-      "themis",
-      "mnemosyne"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Selene",
@@ -663,11 +495,7 @@
       "white bulls"
     ],
     "sacred_plants": [],
-    "weapon_slugs": [],
-    "siblings": [
-      "helios",
-      "eos"
-    ]
+    "weapon_slugs": []
   },
   {
     "name": "Leto",
@@ -702,12 +530,12 @@
       "date palm",
       "olive tree"
     ],
-    "weapon_slugs": [],
-    "siblings": []
+    "weapon_slugs": []
   },
   {
     "name": "Epimetheus",
     "expected_slug": "epimetheus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Epimetheus",
     "roman_name": null,
     "mythology": "greek",
     "generation": "younger_titan",
@@ -728,22 +556,18 @@
     "home": "Mount Othrys / Earth",
     "role_in_series": null,
     "prison_location": null,
-    "description": "Titan of Afterthought and excuses. Brother of Prometheus and Atlas, husband of Pandora, who famously opened Pandora's jar.",
+    "description": "Titan of Afterthought and excuses. Brother of Prometheus and Atlas, husband of Pandora.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods",
       "the-last-olympian"
     ],
-    "siblings": [
-      "atlas",
-      "prometheus"
-    ],
-    "weapon_slugs": [],
-    "wiki_url": null
+    "weapon_slugs": []
   },
   {
     "name": "Eos",
     "expected_slug": "eos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Eos",
     "roman_name": "Aurora",
     "mythology": "greek",
     "generation": "younger_titan",
@@ -767,11 +591,55 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
     ],
-    "siblings": [
-      "helios",
-      "selene"
+    "weapon_slugs": []
+  },
+  {
+    "name": "Metis",
+    "expected_slug": "metis",
+    "description": "Titaness of Wisdom and first wife of Zeus. Mother of Athena.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
     ],
-    "weapon_slugs": [],
-    "wiki_url": null
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal",
+    "wiki_url": "https://riordan.fandom.com/wiki/Metis"
+  },
+  {
+    "name": "Clymene",
+    "expected_slug": "clymene",
+    "description": "Oceanid Titaness. Wife of Iapetus and mother of Atlas, Prometheus, and Epimetheus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal"
+  },
+  {
+    "name": "Pleione",
+    "expected_slug": "pleione",
+    "description": "Oceanid nymph/Titaness, wife of Atlas, and mother of Zoë Nightshade and Calypso.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal"
+  },
+  {
+    "name": "Eurynome",
+    "expected_slug": "eurynome",
+    "description": "Oceanid Titaness and mother of Bellerophon by Poseidon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal"
   }
 ]

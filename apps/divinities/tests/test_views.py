@@ -1,7 +1,13 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from tests.makers import make_character, make_god, make_titan, make_weapon
+from tests.makers import (
+    make_character,
+    make_divine_relationship,
+    make_god,
+    make_titan,
+    make_weapon,
+)
 
 
 class GodListViewTests(BaseAPITestCase):
@@ -39,7 +45,8 @@ class GodListViewTests(BaseAPITestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_children_subresource(self):
-        make_character(name='Percy Jackson', divine_parent=self.poseidon)
+        percy = make_character(name='Percy Jackson')
+        make_divine_relationship(from_entity=self.poseidon, to_entity=percy)
         response = self.client.get(reverse('god-children-list', kwargs={'slug': 'poseidon'}))
         self.assertEqual(response.status_code, 200)
         slugs = [character['slug'] for character in response.data['data']]

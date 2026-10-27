@@ -3,6 +3,7 @@
 from rest_framework import serializers
 
 from apps.bestiary.models import Creature, CreatureMember, Monster, MonsterDefeat
+from apps.divinities.family import serialize_family
 from apps.images.serializers import ImageListSerializer
 
 
@@ -48,6 +49,8 @@ class MonsterDetailSerializer(serializers.ModelSerializer):
     """Full detail — for single monster retrieval."""
 
     primary_image = serializers.SerializerMethodField()
+    type = serializers.SerializerMethodField()
+    family = serializers.SerializerMethodField()
     monster_type_display = serializers.CharField(source='get_monster_type_display', read_only=True)
     allegiance_display = serializers.CharField(source='get_allegiance_display', read_only=True)
     defeated_by_slugs = serializers.SerializerMethodField()
@@ -62,6 +65,8 @@ class MonsterDetailSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'type',
+            'family',
             'aliases',
             'monster_type',
             'monster_type_display',
@@ -76,7 +81,6 @@ class MonsterDetailSerializer(serializers.ModelSerializer):
             'reform_time',
             'reform_location',
             'spoils_of_war',
-            'parent_entity',
             'disguise_form',
             'defeated_by_slugs',
             'defeated_by_god_slugs',
@@ -93,6 +97,12 @@ class MonsterDetailSerializer(serializers.ModelSerializer):
     def get_primary_image(self, obj):
         primary = obj.images.filter(is_primary=True).select_related('image').first()
         return ImageListSerializer(primary.image).data if primary else None
+
+    def get_type(self, obj):
+        return 'monster'
+
+    def get_family(self, obj):
+        return serialize_family(obj)
 
     def get_defeated_by_slugs(self, obj):
         return list(obj.defeated_by.values_list('slug', flat=True))
@@ -157,6 +167,8 @@ class CreatureMemberSerializer(serializers.ModelSerializer):
 class CreatureDetailSerializer(serializers.ModelSerializer):
     """Full detail — for single creature/species retrieval."""
 
+    type = serializers.SerializerMethodField()
+    family = serializers.SerializerMethodField()
     alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
     notable_members = CreatureMemberSerializer(source='member_records', many=True, read_only=True)
     notable_member_slugs = serializers.SerializerMethodField()
@@ -167,6 +179,8 @@ class CreatureDetailSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'type',
+            'family',
             'description',
             'origin',
             'alignment',
@@ -180,6 +194,12 @@ class CreatureDetailSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
+
+    def get_type(self, obj):
+        return 'creature'
+
+    def get_family(self, obj):
+        return serialize_family(obj)
 
     def get_notable_member_slugs(self, obj):
         return list(obj.notable_members.values_list('slug', flat=True))
