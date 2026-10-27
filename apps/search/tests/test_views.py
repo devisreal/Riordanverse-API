@@ -108,8 +108,12 @@ class SearchViewTests(BaseAPITestCase):
     def test_invalid_type_returns_400_and_lists_valid_options(self):
         response = self.search('Percy', type='wizard')
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.data['error']['code'], 'BAD_REQUEST')
-        self.assertIn('character', response.data['error']['message'])
+        self.assertEqual(response.data['error']['code'], 'INVALID_FILTER_VALUE')
+        self.assertEqual(
+            response.data['error']['message'],
+            "type: 'wizard' is not a valid choice.",
+        )
+        self.assertIn('character', response.data['error']['valid_values'])
 
     def test_search_is_case_insensitive(self):
         response = self.search('rIpTiDe')

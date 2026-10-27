@@ -4,6 +4,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.core.exceptions import InvalidFilterValue
 from apps.search.serializers import MODEL_TYPE_MAP, SearchResultSerializer
 
 # Derive supported filters from the serializer's canonical model map.
@@ -29,10 +30,7 @@ class SearchView(APIView):
             raise ValidationError("Query parameter 'q' is required and cannot be blank.")
 
         if type_filter and type_filter not in TYPE_TO_MODEL:
-            raise ValidationError(
-                f"'{type_filter}' is not a valid type filter. "
-                f'Valid options are: {", ".join(VALID_TYPES)}.'
-            )
+            raise InvalidFilterValue('type', type_filter, VALID_TYPES)
 
         if type_filter:
             results = watson.search(query, models=(_get_model_class(type_filter),))

@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter
 
+from apps.core.exceptions import InvalidFilterValue
+
 
 class SortOrderingFilter(OrderingFilter):
     """Support the documented ``sort``/``order`` pair and legacy ``ordering``."""
@@ -81,21 +83,25 @@ class StrictBooleanFilter(django_filters.BooleanFilter):
         super().__init__(*args, **kwargs)
 
 
+class StrictChoiceField(forms.ChoiceField):
+    """Retain choice metadata while deferring value validation to the filter."""
+
+    def valid_value(self, value):
+        return True
+
+
 class StrictChoiceFilter(django_filters.ChoiceFilter):
     """Reject invalid choice query parameters instead of returning no results."""
 
+    field_class = StrictChoiceField
+
     def filter(self, qs, value):
-        if value and value not in dict(self.field.choices):
-            valid_choices = ', '.join(dict(self.field.choices))
-            raise ValidationError(
-                {
-                    'error': {
-                        'code': 'BAD_REQUEST',
-                        'message': (
-                            f"'{value}' is not a valid choice for this filter. "
-                            f'Valid options are: {valid_choices}'
-                        ),
-                    }
-                }
-            )
+        valid_values = list(dict(self.field.choices))
+        if value and value not in valid_values:
+            parameter = self.field_name
+            for filter_name, filter_instance in self.parent.filters.items():
+                if filter_instance is self:
+                    parameter = filter_name
+                    break
+            raise InvalidFilterValue(parameter, value, valid_values)
         return super().filter(qs, value)

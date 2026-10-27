@@ -56,4 +56,9 @@ class DocumentedFilterAliasTests(BaseAPITestCase):
         response = self.client.get(reverse('character-list'), {'type': 'Demigod'})
 
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.data['error']['code'], 'BAD_REQUEST')
+        self.assertEqual(response.data['error']['code'], 'INVALID_FILTER_VALUE')
+        self.assertEqual(
+            response.data['error']['message'],
+            "type: 'Demigod' is not a valid choice.",
+        )
+        self.assertIn('demigod', response.data['error']['valid_values'])
