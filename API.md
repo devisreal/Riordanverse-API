@@ -67,7 +67,7 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | # | Decision | Choice Made | Reason |
 | --- | --- | --- | --- |
 | 1 | Backend stack | **Python 3.14+ / Django / DRF + PostgreSQL; dependencies managed with `uv`** | Relational ORM, Django Admin, DRF serializers/filtering, and migration support; test settings use SQLite |
-| 21 | Environments | **`base.py`, `development.py`, `production.py`, and `test.py`**; development/production use PostgreSQL, tests use SQLite | Redis is optional and has outage fallbacks; see Section 19 |
+| 21 | Environments | **`base.py`, `development.py`, `production.py`, `test.py`, and `test_postgresql.py`**; development/production use PostgreSQL, SQLite is the default test backend, and CI also runs the full suite against PostgreSQL | Redis is optional and has outage fallbacks; see Section 19 |
 | 14 | Caching | **Redis is optional** — caches successful API-key validation and shares rate-limit counters when available | PostgreSQL and process-local fallbacks keep requests available during a Redis outage; lore responses are not generally cached |
 
 ### API Design & Conventions
@@ -103,7 +103,7 @@ A running record of project decisions. Some earlier rows were proposals and are 
 
 | # | Decision | Choice Made | Reason |
 | --- | --- | --- | --- |
-| 12 | API authentication | **`djangorestframework-api-key` + `ConsumerAPIKey`; `X-API-Key`; 5-minute positive validation cache** | No user accounts; cache fallback to PostgreSQL, with revocation potentially delayed until positive-cache expiry |
+| 12 | API authentication | **`djangorestframework-api-key` + `ConsumerAPIKey`; `X-API-Key`; 5-minute positive validation cache** | No user accounts; validation falls back to PostgreSQL, and admin revocation invalidates the positive cache after commit |
 | 12 (flow) | Key creation | **Public self-service endpoint** `POST /auth/request-key/` and verification at `/auth/verify-key/` (both outside `/api/v1/`) | Requires `consumer_name` and `email`; each route has an IP-based throttle |
 | 15 | Search | **`django-watson`** with custom adapters per model | Mature, PostgreSQL-native full-text search; custom adapters handle aliases, `true_name`, `disguise_form` |
 | 16 | Alias search | **Included in watson custom adapters via `get_search_text()`** | Flattens `aliases` array, `true_name`, `disguise_form` into indexed text; "Aunty Em" finds Medusa |
@@ -1718,7 +1718,7 @@ Content-Type: application/json
 
 The successful response is `201 Created` and contains `api_key`, `consumer_name`, `email`, and `message`. The plaintext key is shown once. To verify it, send `POST /auth/verify-key/` with the `X-API-Key` header; the response contains `valid` and `consumer_name`. Neither endpoint accepts `intended_use` or `website_url` in its request body.
 
-The key model is `ConsumerAPIKey`, managed through Django Admin. The API key package stores a hashed key; logs contain neither the plaintext key nor its hash. Revocation is an administrative action, not a public API route. Successful key-validation results are cached for five minutes; if a cached success exists, revocation can take up to that cache TTL to take effect. Redis outage falls back to PostgreSQL validation.
+The key model is `ConsumerAPIKey`, managed through Django Admin. The API key package stores a hashed key; logs contain neither the plaintext key nor its hash. Revocation is an administrative action, not a public API route. Successful key-validation results are cached for five minutes; admin revocation deletes the cached prefix after the database transaction commits. If cache invalidation fails because Redis is unavailable, the failure is logged; permission checks fall back to PostgreSQL while Redis is down, and a stale positive can remain until TTL expiry if Redis recovers before the entry expires.
 
 ### Throttling and response headers
 
@@ -1984,7 +1984,7 @@ config/settings/
   test.py          # SQLite and test-only settings
 ```
 
-There is no staging settings module. Development and production use PostgreSQL; automated tests use SQLite. Redis is optional: key validation falls back to PostgreSQL, and throttle counters fall back to process-local memory.
+There is no staging settings module. Development and production use PostgreSQL; the default automated test settings use SQLite, while CI also runs the suite with PostgreSQL. Redis is optional: key validation falls back to PostgreSQL, and throttle counters fall back to process-local memory.
 
 ### Required Entry in `base.py` — Primary Key Type
 
@@ -2010,7 +2010,7 @@ uv run python manage.py test --settings=config.settings.test
 
 - **Local development** — `.env` file loaded by `django-environ` and ignored by Git.
 - **Production** — platform-provided environment variables; no secret files are committed.
-- **Tests** — `config.settings.test` uses SQLite; development and production settings use PostgreSQL.
+- **Tests** — `config.settings.test` uses SQLite; `config.settings.test_postgresql` runs the full suite against PostgreSQL in CI. Development and production settings also use PostgreSQL.
 
 ### `.env.example` (committed template; no real secrets)
 
@@ -2970,8 +2970,7 @@ The following items are intentionally deferred. They are not implemented API gua
 2. **Lore accuracy and soft deletion.** Decide whether to add a provenance/accuracy model (`lore_accuracy`, source/notes) and/or soft-delete fields (`is_deleted`, `deleted_at`). These affect model inheritance, filters, admin behavior, serializers, and migrations; neither exists currently.
 3. **Power routes.** Powers are implemented, seeded, and embedded in Character detail. Decide whether independent `/powers/` or `/characters/<slug>/powers/` endpoints are needed before adding routes.
 4. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
-5. **Key revocation/cache workflow.** Current positive validation caching can delay revocation up to five minutes. Consider explicit cache invalidation and a verified-contact or other safe self-service revocation flow; an unverified email address must not authorize revocation.
-6. **PostgreSQL CI.** Add CI coverage against PostgreSQL in addition to SQLite tests so production database constraints and query behavior are exercised.
-7. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
+5. **Key revocation/cache workflow.** Django Admin revocation now invalidates the positive validation cache after the database transaction commits. Consider a verified-contact or other safe self-service revocation flow; an unverified email address must not authorize revocation.
+6. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
 
 *Reference: [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki)*
