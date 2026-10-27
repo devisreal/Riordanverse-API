@@ -8,15 +8,25 @@ from apps.access.models import ConsumerAPIKey
 from apps.core.permissions import CachedHasAPIKey
 
 
-@override_settings(API_KEY_CUSTOM_HEADER='HTTP_API_KEY')
+@override_settings(API_KEY_CUSTOM_HEADER='HTTP_X_API_KEY')
 class CachedHasAPIKeyTests(TestCase):
-    def test_valid_key_falls_back_to_database_when_cache_is_unavailable(self):
+    def test_legacy_api_key_header_is_not_accepted(self):
         _, plaintext_key = ConsumerAPIKey.objects.create_key(
             name='Example App',
             consumer_name='Example App',
             email='developer@example.com',
         )
         request = APIRequestFactory().get('/api/v1/books/', HTTP_API_KEY=plaintext_key)
+
+        self.assertFalse(CachedHasAPIKey().has_permission(request, view=None))
+
+    def test_valid_key_falls_back_to_database_when_cache_is_unavailable(self):
+        _, plaintext_key = ConsumerAPIKey.objects.create_key(
+            name='Example App',
+            consumer_name='Example App',
+            email='developer@example.com',
+        )
+        request = APIRequestFactory().get('/api/v1/books/', HTTP_X_API_KEY=plaintext_key)
 
         with (
             patch('apps.core.permissions.cache.get', side_effect=ConnectionInterrupted(None)),

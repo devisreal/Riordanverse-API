@@ -39,7 +39,7 @@ class RequestLoggingMiddlewareTests(SimpleTestCase):
     def test_request_summary_is_structured_and_excludes_query_and_secrets(self):
         request = self.factory.get(
             '/api/v1/gods/zeus/?search=private-query',
-            HTTP_API_KEY='prefix.plaintextsecret',
+            HTTP_X_API_KEY='prefix.plaintextsecret',
         )
         request.resolver_match = resolve('/api/v1/gods/zeus/')
         middleware = RequestLoggingMiddleware(lambda _request: HttpResponse(status=200))

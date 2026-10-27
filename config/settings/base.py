@@ -191,7 +191,7 @@ SPECTACULAR_SETTINGS = {
 # ---------------------------------------------------------------------------
 # * API key header + Redis cache (used by CachedHasAPIKey)
 # ---------------------------------------------------------------------------
-API_KEY_CUSTOM_HEADER = env('API_KEY_CUSTOM_HEADER')
+API_KEY_CUSTOM_HEADER = env('API_KEY_CUSTOM_HEADER', default='HTTP_X_API_KEY')
 
 CACHES = {
     'default': {

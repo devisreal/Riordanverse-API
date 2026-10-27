@@ -21,7 +21,7 @@ class VerifyKeyViewTests(TestCase):
         _FALLBACK_THROTTLE_CACHE.clear()
 
     def _verify_key(self, key=None):
-        extra = {'HTTP_API_KEY': key} if key is not None else {}
+        extra = {'HTTP_X_API_KEY': key} if key is not None else {}
         return self.client.post(reverse('verify-api-key'), **extra)
 
     def _create_key(self):

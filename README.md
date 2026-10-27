@@ -136,10 +136,10 @@ Or set `DJANGO_SETTINGS_MODULE=config.settings.development` in your shell/`.env`
 
 ## 🔑 Authentication
 
-This is a public, **read-only** API. All `/api/v1/` endpoints require a valid API key, passed via the `Api-Key` request header. Health checks and the `/auth/` key request/verification routes are public:
+This is a public, **read-only** API. All `/api/v1/` endpoints require a valid API key, passed via the `X-API-Key` request header. Health checks and the `/auth/` key request/verification routes are public:
 
 ```bash
-curl -H "Api-Key: <your-key>" https://api.example.com/api/v1/characters/percy-jackson
+curl -H "X-API-Key: <your-key>" https://api.example.com/api/v1/characters/percy-jackson
 ```
 
 Request a key:
