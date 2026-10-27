@@ -5,11 +5,13 @@ from rest_framework.permissions import BasePermission
 from rest_framework_api_key.permissions import HasAPIKey
 
 from apps.access.models import ConsumerAPIKey
-from apps.core.cache_utils import CACHE_UNAVAILABLE_EXCEPTIONS
+from apps.core.cache_utils import (
+    CACHE_UNAVAILABLE_EXCEPTIONS,
+    api_key_validation_cache_key,
+)
 
 logger = logging.getLogger(__name__)
 
-CACHE_PREFIX = 'api_key:'
 CACHE_TTL = 60 * 5
 
 
@@ -26,7 +28,7 @@ class CachedHasAPIKey(BasePermission):
         if not separator:
             return False
 
-        cache_key = f'{CACHE_PREFIX}{prefix}'
+        cache_key = api_key_validation_cache_key(prefix)
         try:
             cached = cache.get(cache_key)
         except CACHE_UNAVAILABLE_EXCEPTIONS:

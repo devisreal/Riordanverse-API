@@ -181,7 +181,7 @@ curl -X POST http://127.0.0.1:8000/auth/verify-key/ \
   -H 'X-API-Key: <your-key>'
 ```
 
-The response contains `valid` and `consumer_name`. API keys can be managed/revoked by an authorized administrator; plaintext keys are not recoverable after creation.
+The response contains `valid` and `consumer_name`. API keys can be managed/revoked by an authorized administrator; revocation clears cached validation after the database transaction commits. If Redis is unavailable, invalidation failures are logged and any stale cache entry expires by its five-minute TTL. Plaintext keys are not recoverable after creation.
 
 ## Tests
 
