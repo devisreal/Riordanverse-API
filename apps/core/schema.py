@@ -59,8 +59,10 @@ class SortOrderingFilterSchemaExtension(OpenApiFilterExtension):
                 schema={'type': 'string'},
                 location='query',
                 enum=['asc', 'desc'],
-                default='asc',
-                description='Direction for `sort`; only lowercase `asc` or `desc` is accepted.',
+                description=(
+                    'Direction for `sort`; only lowercase `asc` or `desc` is accepted. '
+                    'Defaults to `asc` when omitted.'
+                ),
             ),
             build_parameter_type(
                 name='ordering',

@@ -43,10 +43,17 @@ class SchemaEndpointTests(APITestCase):
             parameters['sort']['schema']['enum'], ['age_first_appearance', 'name', 'status']
         )
         self.assertEqual(parameters['order']['schema']['enum'], ['asc', 'desc'])
-        self.assertEqual(parameters['order']['schema']['default'], 'asc')
+        self.assertNotIn('default', parameters['order']['schema'])
+        self.assertIn('Defaults to `asc` when omitted.', parameters['order']['description'])
         self.assertEqual(parameters['is_demigod']['schema']['type'], 'boolean')
         self.assertIn('ordering', parameters)
         self.assertIn('type', parameters)
+
+        book_parameters = schema['paths']['/api/v1/books/']['get']['parameters']
+        book_order = next(
+            parameter for parameter in book_parameters if parameter['name'] == 'order'
+        )
+        self.assertNotIn('default', book_order['schema'])
 
         character_family = schema['components']['schemas']['CharacterDetail']['properties'][
             'family'
