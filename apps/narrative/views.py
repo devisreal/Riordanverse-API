@@ -247,6 +247,23 @@ class BookCharacterListView(generics.ListAPIView):
         return CharacterListSerializer
 
 
+class BookGodListView(generics.ListAPIView):
+    """GET /api/v1/books/:slug/gods/"""
+
+    def get_queryset(self):
+        from apps.divinities.models import God
+
+        if getattr(self, 'swagger_fake_view', False):
+            return God.objects.none()
+        get_object_or_404(Book, slug=self.kwargs['slug'])
+        return God.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.divinities.serializers import GodListSerializer
+
+        return GodListSerializer
+
+
 class BookMonsterListView(generics.ListAPIView):
     """GET /api/v1/books/:slug/monsters/"""
 

@@ -22,7 +22,7 @@ All versioned routes are under `/api/v1/` and use trailing slashes. Public lore 
 
 | Resource | Routes and subresources |
 | --- | --- |
-| Books | `/books/`, `/books/<slug>/`, `/books/<slug>/characters/`, `/books/<slug>/monsters/`, `/books/<slug>/locations/`, `/books/<slug>/quests/`, `/books/<slug>/images/` |
+| Books | `/books/`, `/books/<slug>/`, `/books/<slug>/characters/`, `/books/<slug>/gods/`, `/books/<slug>/monsters/`, `/books/<slug>/locations/`, `/books/<slug>/quests/`, `/books/<slug>/images/` |
 | Characters | `/characters/`, `/characters/<slug>/`, `/characters/<slug>/images/`, `/characters/<slug>/weapons/`, `/characters/<slug>/quests/` |
 | Gods | `/gods/`, `/gods/<slug>/`, `/gods/<slug>/images/`, `/gods/<slug>/children/`, `/gods/<slug>/weapons/` |
 | Titans | `/titans/`, `/titans/<slug>/`, `/titans/<slug>/images/` |
@@ -66,7 +66,7 @@ God, Titan, Character, Monster, and Creature detail responses include `type` and
 }
 ```
 
-Book details expose typed `narrators`, `main_characters`, and `antagonists` references, while `/books/<slug>/characters/` lists the linked characters. Quest details provide typed participant and casualty references; Event details expose typed casualties and per-entity participant slug lists; Prophecy details expose typed subjects; Faction details and member subresources expose typed members. These are response relationships, not separate relationship CRUD endpoints.
+Book details expose typed `narrators`, `main_characters`, and `antagonists` references, while `/books/<slug>/characters/` and `/books/<slug>/gods/` list the linked characters and gods. Quest details provide typed participant and casualty references; Event details expose typed casualties and per-entity participant slug lists; Prophecy details expose typed subjects; Faction details and member subresources expose typed members. These are response relationships, not separate relationship CRUD endpoints.
 
 ## Quick start
 

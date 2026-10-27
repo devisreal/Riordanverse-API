@@ -66,6 +66,9 @@ class SchemaEndpointTests(APITestCase):
         self.assertIn('main_characters', book_detail)
         self.assertIn('narrators', book_detail)
         self.assertIn('antagonists', book_detail)
+        book_gods = schema['paths']['/api/v1/books/{slug}/gods/']['get']
+        self.assertEqual(book_gods['tags'], ['Books'])
+        self.assertEqual(book_gods['security'], [{'ApiKeyAuth': []}])
         for typed_serializer in (
             'QuestParticipant',
             'QuestCasualty',

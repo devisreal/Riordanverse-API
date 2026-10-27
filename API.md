@@ -1052,6 +1052,7 @@ X-API-Key: <your-key>
 GET    /books                        List all books (filterable by series, type)
 GET    /books/:slug                  Get a single book
 GET    /books/:slug/characters       All characters in a book
+GET    /books/:slug/gods             All gods appearing in a book
 GET    /books/:slug/quests           Quests in a book
 GET    /books/:slug/monsters         Monsters appearing in a book
 GET    /books/:slug/locations        Locations visited in a book
@@ -2826,7 +2827,7 @@ These routes are outside `/api/v1/`. The schema and UI pages are public; protect
 
 | Resource | Collection and detail | Implemented subresources |
 | --- | --- | --- |
-| Books | `/books/`, `/books/<slug>/` | `/books/<slug>/characters/`, `/monsters/`, `/locations/`, `/quests/`, `/images/` |
+| Books | `/books/`, `/books/<slug>/` | `/books/<slug>/characters/`, `/gods/`, `/monsters/`, `/locations/`, `/quests/`, `/images/` |
 | Characters | `/characters/`, `/characters/<slug>/` | `/images/`, `/weapons/`, `/quests/` |
 | Gods | `/gods/`, `/gods/<slug>/` | `/images/`, `/children/`, `/weapons/` |
 | Titans | `/titans/`, `/titans/<slug>/` | `/images/` |
@@ -2894,7 +2895,7 @@ The idempotent `seed_divine_relationships` command reads `data/family_relationsh
 
 #### Book-character and typed Book roles
 
-`Book` details expose `narrators`, `main_characters`, and `antagonists` as typed `{ "type", "slug", "name" }` references. Supported types are Character, God, Titan, Monster, and Creature. Compatibility slug fields remain on the serializer. `narrator_slug` is null when multiple typed narrator records are present; `narrator_slugs` contains Character narrator slugs. The `/books/<slug>/characters/` subresource returns `CharacterListSerializer` records.
+`Book` details expose `narrators`, `main_characters`, and `antagonists` as typed `{ "type", "slug", "name" }` references. Supported types are Character, God, Titan, Monster, and Creature. Compatibility slug fields remain on the serializer. `narrator_slug` is null when multiple typed narrator records are present; `narrator_slugs` contains Character narrator slugs. The `/books/<slug>/characters/` subresource returns `CharacterListSerializer` records, and `/books/<slug>/gods/` returns God records linked through each God’s `books_appeared_in` relation.
 
 Book roles are seeded from `data/book_character_relationships.json` with `seed_book_relationships`; it contains 12 book relationship records. There is no standalone role-relationship endpoint.
 
