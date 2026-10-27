@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.organizations.filters import CabinFilter, FactionFilter
 from apps.organizations.models import Cabin, Faction, FactionMember
 from apps.organizations.serializers import (
@@ -22,7 +23,7 @@ class CabinListView(generics.ListAPIView):
         .all()
     )
     serializer_class = CabinListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = CabinFilter
     ordering_fields = ('number',)
     ordering = ('number',)
@@ -62,7 +63,7 @@ class FactionListView(generics.ListAPIView):
         .all()
     )
     serializer_class = FactionListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = FactionFilter
     ordering_fields = ('name', 'alignment')
     ordering = ('name',)

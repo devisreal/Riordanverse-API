@@ -1,8 +1,9 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
 from apps.images.serializers import ImageSerializer
@@ -25,7 +26,7 @@ class LocationListView(generics.ListAPIView):
         .all()
     )
     serializer_class = LocationListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = LocationFilter
     ordering_fields = ('name', 'location_type')
     ordering = ('name',)
@@ -52,7 +53,7 @@ class LocationImageListView(generics.ListAPIView):
     """GET /api/v1/locations/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):

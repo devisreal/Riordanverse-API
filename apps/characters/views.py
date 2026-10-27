@@ -1,11 +1,12 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
 from apps.characters.filters import CharacterFilter
 from apps.characters.models import Character, CharacterImage
 from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
+from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
@@ -22,7 +23,7 @@ class CharacterListView(generics.ListAPIView):
         'powers__first_demonstrated_book',
     ).select_related('empathy_link', 'first_appearance_book')
     serializer_class = CharacterListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = CharacterFilter
     ordering_fields = ('name', 'status', 'age_first_appearance')
     ordering = ('name',)
@@ -49,7 +50,7 @@ class CharacterImageListView(generics.ListAPIView):
     """GET /api/v1/characters/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):

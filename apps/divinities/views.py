@@ -1,8 +1,9 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.divinities.filters import GodFilter, TitanFilter
 from apps.divinities.models import God, GodImage, Titan, TitanImage
@@ -26,7 +27,7 @@ class GodListView(generics.ListAPIView):
         'weapons',
     ).select_related('first_appearance_book')
     serializer_class = GodListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = GodFilter
     ordering_fields = ('name', 'tier', 'cabin_number')
     ordering = ('name',)
@@ -50,7 +51,7 @@ class GodDetailView(generics.RetrieveAPIView):
 
 class _EntityImageListView(generics.ListAPIView):
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
     entity_slug_kwarg = 'slug'
 
@@ -89,7 +90,7 @@ class TitanListView(generics.ListAPIView):
         'first_appearance_book'
     )
     serializer_class = TitanListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = TitanFilter
     ordering_fields = ('name', 'alignment', 'status')
     ordering = ('name',)

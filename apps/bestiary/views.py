@@ -1,7 +1,7 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
 from apps.bestiary.filters import CreatureFilter, MonsterFilter
 from apps.bestiary.models import Creature, Monster, MonsterImage
@@ -11,6 +11,7 @@ from apps.bestiary.serializers import (
     MonsterDetailSerializer,
     MonsterListSerializer,
 )
+from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
@@ -29,7 +30,7 @@ class MonsterListView(generics.ListAPIView):
         'books_appeared_in',
     ).select_related('first_appearance_book')
     serializer_class = MonsterListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = MonsterFilter
     ordering_fields = ('name', 'allegiance', 'monster_type')
     ordering = ('name',)
@@ -58,7 +59,7 @@ class MonsterImageListView(generics.ListAPIView):
     """GET /api/v1/monsters/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):
@@ -77,7 +78,7 @@ class CreatureListView(generics.ListAPIView):
 
     queryset = Creature.objects.prefetch_related('notable_members').all()
     serializer_class = CreatureListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = CreatureFilter
     ordering_fields = ('name', 'alignment')
     ordering = ('name',)

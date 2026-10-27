@@ -164,7 +164,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework.filters.OrderingFilter',
+        'apps.core.filters.SortOrderingFilter',
     ],
     'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.EnvelopePagination',
     'PAGE_SIZE': 20,

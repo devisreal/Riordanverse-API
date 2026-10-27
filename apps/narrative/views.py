@@ -1,8 +1,9 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
 from apps.images.serializers import ImageSerializer
@@ -29,7 +30,7 @@ class BookListView(generics.ListAPIView):
         .all()
     )
     serializer_class = BookListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = BookFilter
     ordering_fields = ('book_number', 'published_date', 'title')
     ordering = ('series', 'book_number')
@@ -71,7 +72,7 @@ class BookImageListView(generics.ListAPIView):
     """GET /api/v1/books/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):
@@ -100,7 +101,7 @@ class ProphecyListView(generics.ListAPIView):
         'books_relevant_to',
     ).select_related('delivered_by', 'fulfilled_in')
     serializer_class = ProphecyListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ProphecyFilter
     ordering_fields = ('title',)
     ordering = ('title',)
@@ -137,7 +138,7 @@ class QuestListView(generics.ListAPIView):
         'items_recovered',
     ).select_related('book', 'led_by', 'prophecy')
     serializer_class = QuestListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = QuestFilter
     ordering_fields = ('title', 'book__book_number')
     ordering = ('book__book_number',)
@@ -196,7 +197,7 @@ class EventListView(generics.ListAPIView):
         'casualties',
     ).select_related('book', 'location')
     serializer_class = EventListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = EventFilter
     ordering_fields = ('name', 'book__book_number')
     ordering = ('book__book_number', 'name')
