@@ -87,6 +87,7 @@ LOGGING = {
 
 MIDDLEWARE = [
     'apps.core.middleware.RequestLoggingMiddleware',
+    'apps.core.middleware.RateLimitHeadersMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -164,34 +165,86 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework.filters.OrderingFilter',
+        'apps.core.filters.SortOrderingFilter',
     ],
     'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.EnvelopePagination',
     'PAGE_SIZE': 20,
     'EXCEPTION_HANDLER': 'apps.core.exceptions.custom_exception_handler',
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_SCHEMA_CLASS': 'apps.core.schema.APIKeyAutoSchema',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_THROTTLE_CLASSES': [
-        'apps.core.throttles.CacheFallbackAnonRateThrottle',
-        'apps.core.throttles.CacheFallbackUserRateThrottle',
+        'apps.core.throttles.PerAPIKeyRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
+        'api_key': '1000/hour',
         'anon': '100/day',
         'user': '1000/day',
     },
 }
 
+# ---------------------------------------------------------------------------
+# * DRF Spectacular
+# ---------------------------------------------------------------------------
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Percy Jackson Fandom API',
-    'DESCRIPTION': 'A lore-accurate, read-only REST API for the Riordanverse.',
+    'DESCRIPTION': (
+        'A read-only REST API for the Riordanverse. Protected endpoints require an X-API-Key '
+        'header; public health and API-key management routes are explicitly marked in the schema.'
+    ),
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+    'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
+    'SERVE_AUTHENTICATION': [],
+    'SWAGGER_UI_SETTINGS': {'tagsSorter': None},
+    'SCHEMA_PATH_PREFIX': r'/api/v1',
+    'TAGS': [
+        {
+            'name': 'Authentication',
+            'description': 'Request and verify an API key before using protected resources.',
+        },
+        {
+            'name': 'Health',
+            'description': 'Public liveness and readiness checks.',
+        },
+        {'name': 'Books', 'description': 'Books and companion-story records.'},
+        {'name': 'Characters', 'description': 'Character profiles and their subresources.'},
+        {'name': 'Gods', 'description': 'God profiles and their subresources.'},
+        {'name': 'Titans', 'description': 'Titan profiles and their subresources.'},
+        {'name': 'Monsters', 'description': 'Monster profiles and their subresources.'},
+        {'name': 'Creatures', 'description': 'Creature taxonomy and member records.'},
+        {'name': 'Weapons', 'description': 'Weapon and artifact records.'},
+        {'name': 'Locations', 'description': 'Location records and their image galleries.'},
+        {'name': 'Quests', 'description': 'Quest details and participant records.'},
+        {'name': 'Prophecies', 'description': 'Prophecies and typed subjects.'},
+        {'name': 'Events', 'description': 'Narrative event records.'},
+        {'name': 'Cabins', 'description': 'Camp cabin records and campers.'},
+        {'name': 'Factions', 'description': 'Faction records and typed members.'},
+        {'name': 'Search', 'description': 'Search indexed lore across supported entity types.'},
+    ],
+    'ENUM_NAME_OVERRIDES': {
+        'CharacterStatusEnum': 'apps.core.choices.STATUS_CHOICES',
+        'HealthStatusEnum': 'apps.core.schema_serializers.HEALTH_STATUS_CHOICES',
+        'TitanAlignmentEnum': 'apps.core.choices.TITAN_ALIGNMENT_CHOICES',
+        'CreatureAlignmentEnum': 'apps.bestiary.models.CREATURE_ALIGNMENT_CHOICES',
+        'FactionAlignmentEnum': 'apps.organizations.models.FACTION_ALIGNMENT_CHOICES',
+    },
+    'APPEND_COMPONENTS': {
+        'securitySchemes': {
+            'ApiKeyAuth': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'X-API-Key',
+                'description': 'Consumer API key. Request one at POST /auth/request-key/.',
+            },
+        },
+    },
 }
 
 # ---------------------------------------------------------------------------
 # * API key header + Redis cache (used by CachedHasAPIKey)
 # ---------------------------------------------------------------------------
-API_KEY_CUSTOM_HEADER = env('API_KEY_CUSTOM_HEADER')
+API_KEY_CUSTOM_HEADER = env('API_KEY_CUSTOM_HEADER', default='HTTP_X_API_KEY')
 
 CACHES = {
     'default': {
@@ -205,6 +258,12 @@ CACHES = {
 # * CORS
 # ---------------------------------------------------------------------------
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS')
+CORS_EXPOSE_HEADERS = [
+    'RateLimit-Limit',
+    'RateLimit-Remaining',
+    'RateLimit-Reset',
+    'Retry-After',
+]
 
 # ---------------------------------------------------------------------------
 # * django-watson (search)

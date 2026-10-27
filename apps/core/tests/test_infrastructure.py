@@ -1,5 +1,6 @@
 from django.urls import reverse
 
+from apps.core.choices import CHARACTER_TYPE_CHOICES
 from apps.core.tests.base import BaseAPITestCase
 from tests.makers import make_book, make_character
 
@@ -78,9 +79,20 @@ class StrictChoiceFilterTests(BaseAPITestCase):
         response = self.client.get(reverse('character-list'), {'status': 'definitely-not-a-status'})
         self.assertEqual(response.status_code, 400)
 
-    def test_invalid_character_type_returns_400(self):
-        response = self.client.get(reverse('character-list'), {'character_type': 'wizard'})
+    def test_invalid_character_type_returns_documented_error_payload(self):
+        response = self.client.get(reverse('character-list'), {'character_type': 'Wizard'})
+
         self.assertEqual(response.status_code, 400)
+        self.assertEqual(
+            response.data,
+            {
+                'error': {
+                    'code': 'INVALID_FILTER_VALUE',
+                    'message': "character_type: 'Wizard' is not a valid choice.",
+                    'valid_values': [value for value, _ in CHARACTER_TYPE_CHOICES],
+                }
+            },
+        )
 
     def test_invalid_book_series_returns_400(self):
         response = self.client.get(reverse('book-list'), {'series': 'harry-potter'})

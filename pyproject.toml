@@ -59,6 +59,7 @@ dev = [
 
 [tool.ruff]
 line-length = 100
+extend-exclude = ["API.md"]
 
 [tool.ruff.format]
 quote-style = "single"

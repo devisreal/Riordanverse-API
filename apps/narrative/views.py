@@ -1,8 +1,9 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
 from apps.images.serializers import ImageSerializer
@@ -29,7 +30,7 @@ class BookListView(generics.ListAPIView):
         .all()
     )
     serializer_class = BookListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = BookFilter
     ordering_fields = ('book_number', 'published_date', 'title')
     ordering = ('series', 'book_number')
@@ -71,10 +72,12 @@ class BookImageListView(generics.ListAPIView):
     """GET /api/v1/books/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         book_images = BookImage.objects.filter(book__slug=self.kwargs['slug'])
         gallery_order = Subquery(
@@ -100,7 +103,7 @@ class ProphecyListView(generics.ListAPIView):
         'books_relevant_to',
     ).select_related('delivered_by', 'fulfilled_in')
     serializer_class = ProphecyListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ProphecyFilter
     ordering_fields = ('title',)
     ordering = ('title',)
@@ -137,7 +140,7 @@ class QuestListView(generics.ListAPIView):
         'items_recovered',
     ).select_related('book', 'led_by', 'prophecy')
     serializer_class = QuestListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = QuestFilter
     ordering_fields = ('title', 'book__book_number')
     ordering = ('book__book_number',)
@@ -171,6 +174,8 @@ class QuestParticipantListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.characters.models import Character
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Quest, slug=self.kwargs['slug'])
         return Character.objects.filter(quests_participated_in__slug=self.kwargs['slug']).distinct()
 
@@ -196,7 +201,7 @@ class EventListView(generics.ListAPIView):
         'casualties',
     ).select_related('book', 'location')
     serializer_class = EventListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = EventFilter
     ordering_fields = ('name', 'book__book_number')
     ordering = ('book__book_number', 'name')
@@ -231,6 +236,8 @@ class BookCharacterListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.characters.models import Character
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Character.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
 
@@ -240,12 +247,31 @@ class BookCharacterListView(generics.ListAPIView):
         return CharacterListSerializer
 
 
+class BookGodListView(generics.ListAPIView):
+    """GET /api/v1/books/:slug/gods/"""
+
+    def get_queryset(self):
+        from apps.divinities.models import God
+
+        if getattr(self, 'swagger_fake_view', False):
+            return God.objects.none()
+        get_object_or_404(Book, slug=self.kwargs['slug'])
+        return God.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.divinities.serializers import GodListSerializer
+
+        return GodListSerializer
+
+
 class BookMonsterListView(generics.ListAPIView):
     """GET /api/v1/books/:slug/monsters/"""
 
     def get_queryset(self):
         from apps.bestiary.models import Monster
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Monster.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Monster.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
 
@@ -261,6 +287,8 @@ class BookLocationListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.locations.models import Location
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Location.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Location.objects.filter(books_appeared_in__slug=self.kwargs['slug']).distinct()
 
@@ -274,6 +302,8 @@ class BookQuestListView(generics.ListAPIView):
     """GET /api/v1/books/:slug/quests/"""
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Quest.objects.none()
         get_object_or_404(Book, slug=self.kwargs['slug'])
         return Quest.objects.filter(book__slug=self.kwargs['slug'])
 

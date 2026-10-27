@@ -33,12 +33,17 @@ class CachedHasAPIKey(BasePermission):
             logger.warning('Redis unavailable for API-key validation; checking PostgreSQL.')
             cached = None
         if cached is not None:
+            if cached:
+                raw_request = getattr(request, '_request', request)
+                raw_request.api_key_prefix = prefix
             return cached
 
         is_valid = ConsumerAPIKey.objects.is_valid(key)
         # Do not cache failures: otherwise an invalid attempt using a real
         # prefix could poison the cache and deny the legitimate key holder.
         if is_valid:
+            raw_request = getattr(request, '_request', request)
+            raw_request.api_key_prefix = prefix
             try:
                 cache.set(cache_key, True, CACHE_TTL)
             except CACHE_UNAVAILABLE_EXCEPTIONS:

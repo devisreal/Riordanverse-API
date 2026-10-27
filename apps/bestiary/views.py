@@ -1,7 +1,7 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
 from apps.bestiary.filters import CreatureFilter, MonsterFilter
 from apps.bestiary.models import Creature, Monster, MonsterImage
@@ -11,6 +11,7 @@ from apps.bestiary.serializers import (
     MonsterDetailSerializer,
     MonsterListSerializer,
 )
+from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
@@ -29,7 +30,7 @@ class MonsterListView(generics.ListAPIView):
         'books_appeared_in',
     ).select_related('first_appearance_book')
     serializer_class = MonsterListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = MonsterFilter
     ordering_fields = ('name', 'allegiance', 'monster_type')
     ordering = ('name',)
@@ -58,10 +59,12 @@ class MonsterImageListView(generics.ListAPIView):
     """GET /api/v1/monsters/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Monster, slug=self.kwargs['slug'])
         links = MonsterImage.objects.filter(monster__slug=self.kwargs['slug'])
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
@@ -77,7 +80,7 @@ class CreatureListView(generics.ListAPIView):
 
     queryset = Creature.objects.prefetch_related('notable_members').all()
     serializer_class = CreatureListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = CreatureFilter
     ordering_fields = ('name', 'alignment')
     ordering = ('name',)
@@ -104,6 +107,8 @@ class CreatureMemberListView(generics.ListAPIView):
         from apps.bestiary.models import Creature
         from apps.characters.models import Character
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(Creature, slug=self.kwargs['slug'])
         return Character.objects.filter(creature_species__slug=self.kwargs['slug']).distinct()
 

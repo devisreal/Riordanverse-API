@@ -1,198 +1,205 @@
 # Percy Jackson Fandom API
 
-A lore-accurate, read-only public REST API covering the Riordanverse — starting with the five core novels of **Percy Jackson & the Olympians**, with companion materials, and built to expand into the wider universe (Heroes of Olympus, Kane Chronicles, and beyond).
+A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; key request/verification, health-check, and API documentation routes are public.
 
-This API is the data backbone for a planned fan web application, with a future mobile adaptation.
+> **Status:** The versioned API, seed commands, authentication, filtering, pagination, typed relationships, and tests are implemented. OpenAPI schema, Swagger UI, and ReDoc are available at `/api/schema/`, `/api/docs/`, and `/api/redoc/`. See the [API reference](API.md) for routes, filters, response shapes, and examples.
 
-> 🚧 **Status:** Architecture planning ongoing, implementation in progress. See [`API.md`](./API.md) for the full data model, endpoint, and decision-log documentation.
+## Features
 
----
+- PostgreSQL-backed relational models; no `GenericForeignKey` for typed entity relationships.
+- Paginated list responses use `{ "data": [...], "meta": {...} }`.
+- API-key authentication via `X-API-Key`, Redis caching for valid key checks, per-key throttling, and request/security logging.
+- Strict choice filters and lowercase-only boolean filters; invalid values return a structured `400` response.
+- `?sort=<allowed-field>&order=asc|desc` with endpoint-specific allowlists; legacy `?ordering=` remains supported.
+- Typed relationships in API responses: Book narrators/cast/antagonists, family graphs, quest participants/casualties, Event casualties, prophecy subjects, faction members, location controllers, and Monster defeat records.
+- Image galleries for books, characters, gods, Titans, monsters, weapons, and locations.
+- Global search via django-watson, with a typed result for each supported entity.
+- Idempotent seed commands for canonical data and relationships.
 
-## ✨ Features
+## Implemented API routes
 
-- Rich relational lore data: characters, gods, Titans, monsters, weapons, locations, quests, prophecies, cabins, factions, and events
-- Full PostgreSQL referential integrity — no `GenericForeignKey` usage anywhere (divine relationships and image galleries are modelled with explicit FK join tables)
-- Per-entity, filterable image galleries (official art, Disney+ stills, fan art, concept art, etc.)
-- Strict enum filtering — invalid filter values return a `400`, not a silently empty result set
-- Global search across all lore entities, including alias resolution (e.g. "Aunty Em" → Medusa)
-- API-key authentication with Redis-backed key caching
-- Versioned from day one (`/api/v1/`) to support a non-breaking V2 (Heroes of Olympus + Kane Chronicles) and V3 (Trials of Apollo, Magnus Chase) expansion
+All versioned routes are under `/api/v1/` and use trailing slashes. Public lore routes require an API key. The following collections have list and slug-detail routes unless noted:
 
----
-
-## 🏗 Tech Stack
-
-| Layer | Choice |
+| Resource | Routes and subresources |
 | --- | --- |
-| Language / Framework | Python, Django, Django REST Framework |
-| Database | PostgreSQL |
-| Caching | Redis (`django-redis`) |
-| Auth | `djangorestframework-api-key` (custom `ConsumerAPIKey` model, Redis-cached permission check) |
-| Filtering | `django-filter` |
-| Search | `django-watson` (with custom per-model adapters for alias flattening) |
-| Slugs | `django-autoslug` |
-| Settings | `django-environ` (split settings, explicit DB env vars) |
-| API Docs | `drf-spectacular` (OpenAPI schema + Swagger UI) |
+| Books | `/books/`, `/books/<slug>/`, `/books/<slug>/characters/`, `/books/<slug>/gods/`, `/books/<slug>/monsters/`, `/books/<slug>/locations/`, `/books/<slug>/quests/`, `/books/<slug>/images/` |
+| Characters | `/characters/`, `/characters/<slug>/`, `/characters/<slug>/images/`, `/characters/<slug>/weapons/`, `/characters/<slug>/quests/` |
+| Gods | `/gods/`, `/gods/<slug>/`, `/gods/<slug>/images/`, `/gods/<slug>/children/`, `/gods/<slug>/weapons/` |
+| Titans | `/titans/`, `/titans/<slug>/`, `/titans/<slug>/images/` |
+| Monsters | `/monsters/`, `/monsters/<slug>/`, `/monsters/<slug>/images/` |
+| Creatures | `/creatures/`, `/creatures/<slug>/`, `/creatures/<slug>/members/` |
+| Weapons | `/weapons/`, `/weapons/<slug>/`, `/weapons/<slug>/images/` |
+| Locations | `/locations/`, `/locations/<slug>/`, `/locations/<slug>/images/` |
+| Quests | `/quests/`, `/quests/<slug>/`, `/quests/<slug>/participants/` |
+| Prophecies and Events | `/prophecies/`, `/prophecies/<slug>/`, `/events/`, `/events/<slug>/` |
+| Cabins | `/cabins/`, `/cabins/<slug>/`, `/cabins/number/<number>/`, `/cabins/<slug>/campers/` |
+| Factions | `/factions/`, `/factions/<slug>/`, `/factions/<slug>/members/` |
+| Search | `/search/?q=<query>`; optional `type=<entity-type>` |
 
----
+Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 
-## 📁 Project Structure
+- `GET /api/schema/` — OpenAPI 3 schema (YAML by default; add `?format=json` for JSON).
+- `GET /api/docs/` — Swagger UI.
+- `GET /api/redoc/` — ReDoc.
+- `GET /health/live/` — process liveness.
+- `GET /health/ready/` — checks PostgreSQL readiness.
+- `POST /auth/request-key/` — request a key with `consumer_name` and `email`.
+- `POST /auth/verify-key/` — verify a key passed in the configured API-key header.
 
-```bash
-pj_fandom_api/
-├── manage.py
-├── .env.example
-├── API.md                     # full architecture & lore data-model docs
-├── requirements/
-│   ├── base.txt
-│   ├── development.txt
-│   └── production.txt
-├── config/
-│   ├── settings/
-│   │   ├── base.py
-│   │   ├── development.py
-│   │   ├── production.py
-│   │   └── test.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── asgi.py
-└── apps/
-    ├── core/             # BaseModel, shared enums, pagination, exceptions
-    ├── images/           # Image model + reusable image-join mixin
-    ├── characters/       # Character, Power
-    ├── divinities/       # God, Titan, DivineRelationship
-    ├── bestiary/         # Monster, Creature/Species
-    ├── items/            # Weapons & magical items
-    ├── locations/        # Location
-    ├── narrative/        # Book, Quest, Prophecy, Event
-    ├── organizations/    # Cabin, Faction
-    ├── search/           # django-watson adapters, global search endpoint
-    └── access/           # self-service API key registration
+Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
+
+There is no standalone family/divine-relationship, Power, or Image collection endpoint. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses; Powers are embedded in Character details; images are exposed through the listed galleries.
+
+## Relationship response examples
+
+God, Titan, Character, Monster, and Creature detail responses include `type` and a nested `family` object. Each family group contains typed `{ "name", "type", "slug" }` references:
+
+```json
+{
+  "type": "monster",
+  "family": {
+    "parents": [{"name": "Pasiphaë", "type": "character", "slug": "pasiphae"}],
+    "siblings": [],
+    "consorts": [],
+    "children": []
+  }
+}
 ```
 
----
+Book details expose typed `narrators`, `main_characters`, and `antagonists` references, while `/books/<slug>/characters/` and `/books/<slug>/gods/` list the linked characters and gods. Quest details provide typed participant and casualty references; Event details expose typed casualties and per-entity participant slug lists; Prophecy details expose typed subjects; Faction details and member subresources expose typed members. These are response relationships, not separate relationship CRUD endpoints.
 
-## 🚀 Getting Started
+## Quick start
 
-### Prerequisites
+### Requirements
 
-- Python 3.12+
-- PostgreSQL 15+
-- Redis 7+
+- Python **3.14+**.
+- PostgreSQL for the development and production settings.
+- Redis is recommended for shared API-key caching and rate-limit counters. The API continues if Redis is unavailable, using PostgreSQL for key validation and process-local counters as a fallback.
+- [`uv`](https://docs.astral.sh/uv/) for dependency and virtual-environment management.
 
-### Installation
+### Install and configure
 
 ```bash
 git clone <repo-url>
-cd pj_fandom_api
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install -r requirements/development.txt
-```
-
-### Environment Variables
-
-Copy the example file and fill in your local values:
-
-```bash
+cd pj-fandom-api
+uv sync
 cp .env.example .env
 ```
 
-| Variable | Description |
-| --- | --- |
-| `SECRET_KEY` | Django secret key |
-| `DEBUG` | `True` / `False` |
-| `ALLOWED_HOSTS` | Comma-separated hostnames |
-| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | PostgreSQL connection |
-| `REDIS_URL` | Redis connection string |
-| `CORS_ALLOWED_ORIGINS` | Comma-separated frontend origins |
-| `API_KEY_CUSTOM_HEADER` | Header name used for API key auth |
+Configure the database and `SECRET_KEY` in `.env`. The development settings connect to PostgreSQL using `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`. Set `REDIS_URL` to your Redis instance; the example file provides a local URL. The API-key header defaults to `X-API-Key` (`API_KEY_CUSTOM_HEADER=HTTP_X_API_KEY`).
 
-### Database Setup
+Apply migrations, create an admin user if needed, then run the server:
 
 ```bash
-createdb pj_fandom_dev
-python manage.py migrate --settings=config.settings.development
-python manage.py createsuperuser --settings=config.settings.development
+uv run python manage.py migrate --settings=config.settings.development
+uv run python manage.py createsuperuser --settings=config.settings.development
+uv run python manage.py runserver --settings=config.settings.development
 ```
 
-### Redis
+Development keeps API-key authentication enabled. Tests use separate SQLite settings and are not a substitute for running the server with development or production settings.
 
-Make sure a local Redis instance is running (used for API key caching):
+### Seed canonical data
+
+Run migrations first and seed dependent records in order. Commands are idempotent; use them only against the database you intend to populate.
 
 ```bash
-redis-server
+uv run python manage.py seed_books
+uv run python manage.py seed_gods
+uv run python manage.py seed_titans
+uv run python manage.py seed_characters
+uv run python manage.py seed_items
+uv run python manage.py seed_monsters
+uv run python manage.py seed_creatures
+uv run python manage.py seed_divine_relationships
+uv run python manage.py seed_book_relationships
+uv run python manage.py seed_powers
+uv run python manage.py seed_locations
+uv run python manage.py seed_cabins
+uv run python manage.py seed_factions
+uv run python manage.py seed_prophecies
+uv run python manage.py seed_events
+uv run python manage.py seed_quests
+uv run python manage.py seed_monster_defeats
 ```
 
-### Run the Dev Server
+The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, and 14 Powers. These are seed-file record counts; unresolved references are warned about and skipped by the relevant seed command.
+
+## Authentication and rate limits
+
+Request a key (shown only once):
 
 ```bash
-python manage.py runserver --settings=config.settings.development
+curl -X POST http://127.0.0.1:8000/auth/request-key/ \
+  -H 'Content-Type: application/json' \
+  -d '{"consumer_name":"My Fan App","email":"dev@example.com"}'
 ```
 
-Or set `DJANGO_SETTINGS_MODULE=config.settings.development` in your shell/`.env` to drop the `--settings` flag.
-
----
-
-## 🔑 Authentication
-
-This is a public, **read-only** API. All `/api/v1/` endpoints require a valid API key, passed via the `Api-Key` request header. Health checks and the `/auth/` key request/verification routes are public:
+Use the returned key on v1 requests:
 
 ```bash
-curl -H "Api-Key: <your-key>" https://api.example.com/api/v1/characters/percy-jackson
+curl 'http://127.0.0.1:8000/api/v1/characters/?type=demigod&is_demigod=true' \
+  -H 'X-API-Key: <your-key>'
 ```
 
-Request a key:
+Authenticated requests are limited to **1,000 per key per fixed one-hour window**. Responses include `RateLimit-Limit`, `RateLimit-Remaining`, and `RateLimit-Reset`; throttled responses include `Retry-After`. Key request and verification routes are separately limited to **5 requests per hour per client IP**. If Redis is down, counters are process-local and are not shared between workers. `X-Request-ID` is returned on responses for request correlation.
+
+## Responses and query parameters
+
+List routes use the default page size of 20, configurable by `page` and `limit` (`limit` maximum 100):
+
+```json
+{
+  "data": [],
+  "meta": {"total": 0, "page": 1, "limit": 20, "total_pages": 1}
+}
+```
+
+Search returns `data` and `meta` containing `total`, `query`, and `type_filter`. Detail routes return a resource-specific object, not the list envelope.
+
+Examples:
+
+```text
+/api/v1/books/?series=percy_jackson_and_the_olympians
+/api/v1/books/?parent-collection=the-demigod-files
+/api/v1/characters/?divine_parent=poseidon&status=alive
+/api/v1/gods/?tier=olympian
+/api/v1/monsters/?type=gorgon&can_reform=true
+/api/v1/weapons/?type=sword&owner_character=percy-jackson
+/api/v1/events/?type=battle&book=the-last-olympian
+/api/v1/search/?q=riptide&type=weapon
+/api/v1/characters/percy-jackson/images/?source_type=fan_art&category=portrait
+/api/v1/characters/?sort=name&order=asc
+```
+
+Choice values are validated; invalid choices return `400` with `code: INVALID_FILTER_VALUE` and a `valid_values` list. Boolean filters accept only lowercase `true` and `false`; other spellings return `400`. `sort` and `order` are validated per list endpoint. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not implemented.
+
+### API key verification
 
 ```bash
-POST /auth/request-key/
+curl -X POST http://127.0.0.1:8000/auth/verify-key/ \
+  -H 'Content-Type: application/json' \
+  -H 'X-API-Key: <your-key>'
 ```
 
-> API-key authentication is enforced in both `development` and `production` settings. Only the automated `test` settings disable it to simplify tests; do not use test settings to run a server.
+The response contains `valid` and `consumer_name`. API keys can be managed/revoked by an authorized administrator; plaintext keys are not recoverable after creation.
 
----
-
-## 🧪 Running Tests
-
-Tests always run against SQLite, regardless of your `.env` database config:
+## Tests
 
 ```bash
-python manage.py test --settings=config.settings.test
+uv run python manage.py test --settings=config.settings.test
 ```
 
----
+The test suite uses SQLite test settings. OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The schema and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
 
-## 📚 Example Requests
+## Roadmap
 
-```bash
-GET /api/v1/characters?divine_parent=poseidon
-GET /api/v1/gods/zeus
-GET /api/v1/characters/annabeth-chase/images?source_type=fan_art&category=portrait
-GET /api/v1/search?q=riptide
-```
+- **Current v1:** implemented/testable routes and seeded Riordanverse reference data described above.
+- **Future:** add approved ordering fields that require new model/data decisions and continue planned story-universe expansions. See [Future Work](API.md#future-work).
 
-Full endpoint reference: see [Section 7 of `API.md`](./API.md#7-api-endpoints-v1).
+## Acknowledgments
 
-Once `drf-spectacular` is wired up, interactive API docs will be available at `/api/v1/docs/`.
+Lore sourced and cross-referenced from the [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki). This is an unofficial, non-commercial fan project built for educational and portfolio purposes. *Percy Jackson & the Olympians* and related characters, names, and lore are the property of Rick Riordan and Disney Hyperion. This project is not affiliated with or endorsed by either.
 
----
-
-## 🗺 Roadmap
-
-- **V1** — Percy Jackson & the Olympians (Books 1–5) + companion materials *(current focus)*
-- **V2** — Heroes of Olympus, Kane Chronicles, crossover works (Roman aspects, Egyptian deity system)
-- **V3** — Trials of Apollo, Magnus Chase, Nico di Angelo Adventures
-
-See [Section 12 of `API.md`](./API.md#12-v2-expansion-considerations) for expansion notes.
-
----
-
-## 🙏 Acknowledgments
-
-Lore sourced and cross-referenced from the [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki). This is an unofficial, non-commercial fan project built for educational and portfolio purposes. *Percy Jackson & the Olympians* and all related characters, names, and lore are the property of Rick Riordan and Disney Hyperion. This project is not affiliated with or endorsed by either.
-
----
-
-## 📄 License
+## License
 
 License to be determined.

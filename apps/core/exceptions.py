@@ -1,5 +1,19 @@
 from rest_framework import status
+from rest_framework.exceptions import APIException
 from rest_framework.views import exception_handler
+
+
+class InvalidFilterValue(APIException):
+    status_code = status.HTTP_400_BAD_REQUEST
+    default_code = 'INVALID_FILTER_VALUE'
+
+    def __init__(self, parameter: str, value: str, valid_values: list[str]):
+        self.error_payload = {
+            'code': self.default_code,
+            'message': f"{parameter}: '{value}' is not a valid choice.",
+            'valid_values': list(valid_values),
+        }
+        super().__init__(detail=self.error_payload['message'], code=self.default_code)
 
 
 def custom_exception_handler(exc, context):
@@ -8,6 +22,10 @@ def custom_exception_handler(exc, context):
     if response is None:
         # Let Django handle unhandled exceptions as server errors.
         return None
+
+    if isinstance(exc, InvalidFilterValue):
+        response.data = {'error': exc.error_payload}
+        return response
 
     response.data = {
         'error': {

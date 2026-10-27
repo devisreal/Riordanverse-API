@@ -1,8 +1,9 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
 from apps.images.serializers import ImageSerializer
@@ -27,7 +28,7 @@ class WeaponListView(generics.ListAPIView):
         .all()
     )
     serializer_class = WeaponListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = WeaponFilter
     ordering_fields = ('name', 'weapon_type', 'material')
     ordering = ('name',)
@@ -56,10 +57,12 @@ class WeaponImageListView(generics.ListAPIView):
     """GET /api/v1/weapons/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Weapon, slug=self.kwargs['slug'])
         links = WeaponImage.objects.filter(weapon__slug=self.kwargs['slug'])
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])

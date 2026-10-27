@@ -240,6 +240,21 @@ class BookSubResourceViewTests(BaseAPITestCase):
         slugs = [c['slug'] for c in response.data['data']]
         self.assertIn('percy-jackson', slugs)
 
+    def test_book_gods_only_include_gods_appearing_in_the_book(self):
+        ares = make_god(name='Ares')
+        ares.books_appeared_in.add(self.book)
+        make_god(name='Apollo')
+
+        response = self.client.get(reverse('book-god-list', kwargs={'slug': self.book.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([god['slug'] for god in response.data['data']], ['ares'])
+
+    def test_book_gods_returns_404_for_unknown_book(self):
+        response = self.client.get(reverse('book-god-list', kwargs={'slug': 'missing-book'}))
+
+        self.assertEqual(response.status_code, 404)
+
     def test_book_quests_returns_200(self):
         make_quest(title='Test Quest', book=self.book)
         response = self.client.get(reverse('book-quest-list', kwargs={'slug': self.book.slug}))

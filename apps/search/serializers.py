@@ -33,30 +33,41 @@ class SearchResultSerializer(serializers.Serializer):
         content_type = obj.content_type
         return f'{content_type.app_label}.{content_type.model}'
 
-    def get_type(self, obj):
+    def get_type(self, obj) -> str:
         return MODEL_TYPE_MAP.get(self._get_model_key(obj), ('unknown', ''))[0]
 
-    def get_slug(self, obj):
+    def get_slug(self, obj) -> str | None:
         try:
             instance = obj.object
         except AttributeError, ObjectDoesNotExist:
             return None
         return getattr(instance, 'slug', None) if instance is not None else None
 
-    def get_url(self, obj):
+    def get_url(self, obj) -> str | None:
         _, prefix = MODEL_TYPE_MAP.get(self._get_model_key(obj), ('unknown', ''))
         slug = self.get_slug(obj)
         return f'{prefix}{slug}/' if prefix and slug else None
 
-    def get_title(self, obj):
+    def get_title(self, obj) -> str:
         return obj.title or ''
 
-    def get_description(self, obj):
+    def get_description(self, obj) -> str:
         return obj.description or ''
 
-    def get_wiki_url(self, obj):
+    def get_wiki_url(self, obj) -> str | None:
         try:
             instance = obj.object
         except AttributeError, ObjectDoesNotExist:
             return None
         return getattr(instance, 'wiki_url', None) if instance is not None else None
+
+
+class SearchMetaSchemaSerializer(serializers.Serializer):
+    total = serializers.IntegerField()
+    query = serializers.CharField()
+    type_filter = serializers.CharField(allow_null=True)
+
+
+class SearchResponseSchemaSerializer(serializers.Serializer):
+    data = SearchResultSerializer(many=True)
+    meta = SearchMetaSchemaSerializer()

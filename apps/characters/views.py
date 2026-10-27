@@ -1,11 +1,12 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
 from apps.characters.filters import CharacterFilter
 from apps.characters.models import Character, CharacterImage
 from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
+from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
 from apps.images.models import Image
@@ -22,7 +23,7 @@ class CharacterListView(generics.ListAPIView):
         'powers__first_demonstrated_book',
     ).select_related('empathy_link', 'first_appearance_book')
     serializer_class = CharacterListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = CharacterFilter
     ordering_fields = ('name', 'status', 'age_first_appearance')
     ordering = ('name',)
@@ -49,10 +50,12 @@ class CharacterImageListView(generics.ListAPIView):
     """GET /api/v1/characters/<slug>/images/"""
 
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         get_object_or_404(Character, slug=self.kwargs['slug'])
         links = CharacterImage.objects.filter(character__slug=self.kwargs['slug'])
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
@@ -69,6 +72,8 @@ class CharacterWeaponListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.items.models import Weapon
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Weapon.objects.none()
         get_object_or_404(Character, slug=self.kwargs['slug'])
         return Weapon.objects.filter(wielded_by__slug=self.kwargs['slug']).distinct()
 
@@ -84,6 +89,8 @@ class CharacterQuestListView(generics.ListAPIView):
     def get_queryset(self):
         from apps.narrative.models import Quest
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Quest.objects.none()
         get_object_or_404(Character, slug=self.kwargs['slug'])
         return (
             Quest.objects.filter(participants__slug=self.kwargs['slug'])

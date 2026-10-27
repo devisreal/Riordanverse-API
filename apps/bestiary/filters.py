@@ -6,13 +6,14 @@ from apps.bestiary.models import (
     Monster,
 )
 from apps.core.choices import MONSTER_ALLEGIANCE_CHOICES, MONSTER_TYPE_CHOICES
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
 
 
 class MonsterFilter(django_filters.FilterSet):
     monster_type = StrictChoiceFilter(choices=MONSTER_TYPE_CHOICES)
+    type = StrictChoiceFilter(choices=MONSTER_TYPE_CHOICES, field_name='monster_type')
     allegiance = StrictChoiceFilter(choices=MONSTER_ALLEGIANCE_CHOICES)
-    can_reform = django_filters.BooleanFilter()
+    can_reform = StrictBooleanFilter()
     defeated_by = django_filters.CharFilter(
         field_name='defeated_by__slug',
         help_text='Filter by character slug e.g. ?defeated_by=percy-jackson',
@@ -35,6 +36,7 @@ class MonsterFilter(django_filters.FilterSet):
         model = Monster
         fields = (
             'monster_type',
+            'type',
             'allegiance',
             'can_reform',
             'defeated_by',

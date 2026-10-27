@@ -9,6 +9,22 @@ security_logger = logging.getLogger('api.security')
 REQUEST_ID_HEADER = 'X-Request-ID'
 
 
+class RateLimitHeadersMiddleware:
+    """Expose standard rate-limit metadata recorded by the request throttle."""
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        rate_limit = getattr(request, 'rate_limit_info', None)
+        if rate_limit:
+            response['RateLimit-Limit'] = f'{rate_limit["limit"]};w={rate_limit["window"]}'
+            response['RateLimit-Remaining'] = str(rate_limit['remaining'])
+            response['RateLimit-Reset'] = str(rate_limit['reset'])
+        return response
+
+
 class RequestLoggingMiddleware:
     """Attach a request ID and log one summary without request data or secrets."""
 

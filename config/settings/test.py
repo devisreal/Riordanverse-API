@@ -2,6 +2,7 @@ from .base import *
 
 DEBUG = False
 SECRET_KEY = 'test-secret-key-not-for-production'
+API_KEY_CUSTOM_HEADER = 'HTTP_X_API_KEY'
 
 # SQLite avoids PostgreSQL session/connection conflicts during test runs
 # (per your existing guidelines doc).

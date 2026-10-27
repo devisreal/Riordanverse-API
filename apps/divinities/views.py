@@ -1,8 +1,9 @@
 from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import generics
 
+from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.divinities.filters import GodFilter, TitanFilter
 from apps.divinities.models import God, GodImage, Titan, TitanImage
@@ -26,7 +27,7 @@ class GodListView(generics.ListAPIView):
         'weapons',
     ).select_related('first_appearance_book')
     serializer_class = GodListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = GodFilter
     ordering_fields = ('name', 'tier', 'cabin_number')
     ordering = ('name',)
@@ -50,11 +51,13 @@ class GodDetailView(generics.RetrieveAPIView):
 
 class _EntityImageListView(generics.ListAPIView):
     serializer_class = ImageSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = ImageFilter
     entity_slug_kwarg = 'slug'
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
         self.get_entity()
         links = self.get_links_queryset()
         gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
@@ -89,7 +92,7 @@ class TitanListView(generics.ListAPIView):
         'first_appearance_book'
     )
     serializer_class = TitanListSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = TitanFilter
     ordering_fields = ('name', 'alignment', 'status')
     ordering = ('name',)
@@ -125,6 +128,8 @@ class GodChildrenListView(generics.ListAPIView):
         from apps.characters.models import Character
         from apps.divinities.models import God
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Character.objects.none()
         get_object_or_404(God, slug=self.kwargs['slug'])
         return Character.objects.filter(
             divine_relationships_as_to__from_god__slug=self.kwargs['slug'],
@@ -144,6 +149,8 @@ class GodWeaponListView(generics.ListAPIView):
         from apps.divinities.models import God
         from apps.items.models import Weapon
 
+        if getattr(self, 'swagger_fake_view', False):
+            return Weapon.objects.none()
         get_object_or_404(God, slug=self.kwargs['slug'])
         return Weapon.objects.filter(associated_gods__slug=self.kwargs['slug']).distinct()
 

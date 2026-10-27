@@ -3,6 +3,7 @@ from django.urls import path
 from apps.narrative.views import (
     BookCharacterListView,
     BookDetailView,
+    BookGodListView,
     BookImageListView,
     BookListView,
     BookLocationListView,
@@ -23,6 +24,7 @@ urlpatterns = [
     path('books/<slug:slug>/', BookDetailView.as_view(), name='book-detail'),
     path('books/<slug:slug>/images/', BookImageListView.as_view(), name='book-image-list'),
     # Book sub-resources (deferred from feature/book-model)
+    path('books/<slug:slug>/gods/', BookGodListView.as_view(), name='book-god-list'),
     path(
         'books/<slug:slug>/characters/', BookCharacterListView.as_view(), name='book-character-list'
     ),
