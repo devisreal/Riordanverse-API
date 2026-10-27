@@ -14,6 +14,12 @@ class SchemaEndpointTests(APITestCase):
 
         self.assertEqual(response.status_code, 200)
         schema = response.json()
+        tag_names = [tag['name'] for tag in schema['tags']]
+        self.assertEqual(tag_names[:4], ['Authentication', 'Health', 'Books', 'Characters'])
+        self.assertEqual(
+            schema['paths']['/api/v1/characters/']['get']['tags'],
+            ['Characters'],
+        )
         self.assertEqual(
             schema['components']['securitySchemes']['ApiKeyAuth'],
             {
@@ -83,4 +89,5 @@ class SchemaEndpointTests(APITestCase):
         self.assertEqual(swagger.status_code, 200)
         self.assertEqual(redoc.status_code, 200)
         self.assertIn(b'SwaggerUIBundle', swagger.content)
+        self.assertIn(b'tagsSorter": null', swagger.content)
         self.assertIn(b'<redoc', redoc.content.lower())

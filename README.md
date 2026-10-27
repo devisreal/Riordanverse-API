@@ -46,6 +46,8 @@ Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 - `POST /auth/request-key/` — request a key with `consumer_name` and `email`.
 - `POST /auth/verify-key/` — verify a key passed in the configured API-key header.
 
+Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
+
 There is no standalone family/divine-relationship, Power, or Image collection endpoint. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses; Powers are embedded in Character details; images are exposed through the listed galleries.
 
 ## Relationship response examples

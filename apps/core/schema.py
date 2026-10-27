@@ -14,6 +14,9 @@ class APIKeyAutoSchema(AutoSchema):
             return [{'ApiKeyAuth': []}]
         return super().get_auth()
 
+    def get_tags(self):
+        return [tag.replace('_', ' ').title() for tag in super().get_tags()]
+
 
 _REFERENCE_SCHEMA = {
     'type': 'object',

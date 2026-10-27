@@ -2820,7 +2820,7 @@ This section describes routes and behaviors present in the code and test suite. 
 | `POST` | `/auth/request-key/` | Request a key using `consumer_name` and `email` |
 | `POST` | `/auth/verify-key/` | Verify key from `X-API-Key` header |
 
-These routes are outside `/api/v1/`. The schema and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Key request and verification responses are rate-limited by client IP. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
+These routes are outside `/api/v1/`. The schema and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Key request and verification responses are rate-limited by client IP. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
 
 ### Versioned resource routes
 
