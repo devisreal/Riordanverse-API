@@ -411,5 +411,18 @@
       "easily distracted by gold and shiny metal objects"
     ],
     "notable_members": []
+  },
+  {
+    "name": "Cretan Bull",
+    "expected_slug": "cretan-bull",
+    "alignment": "neutral",
+    "abilities": [],
+    "weaknesses": [],
+    "description": "Sacred white bull sent by Poseidon to King Minos of Crete. Father of the Minotaur through Pasiphaë.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Marathonian_Bull"
   }
 ]

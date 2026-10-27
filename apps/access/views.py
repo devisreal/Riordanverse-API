@@ -9,6 +9,7 @@ from rest_framework_api_key.permissions import HasAPIKey
 
 from apps.access.models import ConsumerAPIKey
 from apps.access.serializers import KeyRequestSerializer, KeyResponseSerializer
+from apps.core.logging import SUCCESS_LEVEL
 from apps.core.throttles import CacheFallbackAnonRateThrottle
 
 security_logger = logging.getLogger('api.security')
@@ -85,7 +86,8 @@ class RequestKeyView(APIView):
             email=serializer.validated_data['email'],
             name=consumer_name[:50],
         )
-        security_logger.info(
+        security_logger.log(
+            SUCCESS_LEVEL,
             'security.api_key.created',
             extra={
                 'event': 'security.api_key.created',

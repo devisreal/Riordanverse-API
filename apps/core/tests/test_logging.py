@@ -1,11 +1,35 @@
 import json
+import logging
+import re
 
 from django.http import HttpResponse
 from django.test import RequestFactory, SimpleTestCase
 from django.urls import resolve
 
-from apps.core.logging import JsonEventFormatter
+from apps.core.logging import SUCCESS_LEVEL, ColorJsonEventFormatter, JsonEventFormatter
 from apps.core.middleware import REQUEST_ID_HEADER, RequestLoggingMiddleware
+
+
+class ColorJsonEventFormatterTests(SimpleTestCase):
+    def test_event_json_is_preserved_and_colored_by_level(self):
+        formatter = ColorJsonEventFormatter()
+        ansi = re.compile(r'\x1b\[[0-9;]*m')
+        levels = (
+            (logging.INFO, '\x1b[34m', 'INFO'),
+            (logging.WARNING, '\x1b[33m', 'WARNING'),
+            (logging.ERROR, '\x1b[31m', 'ERROR'),
+            (SUCCESS_LEVEL, '\x1b[32m', 'SUCCESS'),
+        )
+        for level, color_code, level_name in levels:
+            with self.subTest(level=level_name):
+                record = logging.LogRecord(
+                    'test.logger', level, __file__, 1, 'test.event', (), None
+                )
+                output = formatter.format(record)
+                self.assertIn(color_code, output)
+                payload = json.loads(ansi.sub('', output))
+                self.assertEqual(payload['level'], level_name)
+                self.assertEqual(payload['message'], 'test.event')
 
 
 class RequestLoggingMiddlewareTests(SimpleTestCase):

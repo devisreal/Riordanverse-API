@@ -15,14 +15,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 12,
-    "divine_parent_slug": "poseidon",
-    "mortal_parent_name": "Sally Jackson",
-    "mortal_parent_ref_slug": "sally-jackson",
-    "sibling_slugs": [
-      "tyson",
-      "theseus",
-      "bellerophon"
-    ],
     "empathy_link_slug": "grover-underwood",
     "cabin_number": 3,
     "affiliation": [
@@ -75,7 +67,8 @@
       "percy-jackson-and-the-singer-of-apollo",
       "percy-jacksons-greek-gods",
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Sally Jackson"
   },
   {
     "name": "Annabeth Chase",
@@ -91,13 +84,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 12,
-    "divine_parent_slug": "athena",
-    "mortal_parent_name": "Frederick Chase",
-    "mortal_parent_ref_slug": "frederick-chase",
-    "sibling_slugs": [
-      "malcolm-pace",
-      "daedalus"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 6,
     "affiliation": [
@@ -146,7 +132,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Frederick Chase"
   },
   {
     "name": "Grover Underwood",
@@ -162,10 +149,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 28,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": "percy-jackson",
     "cabin_number": null,
     "affiliation": [
@@ -217,7 +200,8 @@
       "the-last-olympian",
       "the-demigod-files",
       "percy-jackson-and-the-singer-of-apollo"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Luke Castellan",
@@ -232,14 +216,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 19,
-    "divine_parent_slug": "hermes",
-    "mortal_parent_name": "May Castellan",
-    "mortal_parent_ref_slug": "may-castellan",
-    "sibling_slugs": [
-      "travis-stoll",
-      "connor-stoll",
-      "chris-rodriguez"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 11,
     "affiliation": [
@@ -289,7 +265,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "May Castellan"
   },
   {
     "name": "Thalia Grace",
@@ -304,15 +281,6 @@
     "status": "immortal",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Ms. Grace",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "perseus",
-      "heracles",
-      "tantalus",
-      "king-minos"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 1,
     "affiliation": [
@@ -361,7 +329,8 @@
       "the-titans-curse",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Ms. Grace"
   },
   {
     "name": "Nico di Angelo",
@@ -377,12 +346,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 10,
-    "divine_parent_slug": "hades",
-    "mortal_parent_name": "Maria di Angelo",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "bianca-di-angelo"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 13,
     "affiliation": [
@@ -431,7 +394,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Maria di Angelo"
   },
   {
     "name": "Bianca di Angelo",
@@ -446,12 +410,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 12,
-    "divine_parent_slug": "hades",
-    "mortal_parent_name": "Maria di Angelo",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "nico-di-angelo"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -495,7 +453,8 @@
     "books_appeared_in_slugs": [
       "the-titans-curse",
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Maria di Angelo"
   },
   {
     "name": "Tyson",
@@ -511,14 +470,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 12,
-    "divine_parent_slug": "poseidon",
-    "mortal_parent_name": "A nature spirit / Nymph",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "percy-jackson",
-      "theseus",
-      "bellerophon"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 3,
     "affiliation": [
@@ -565,7 +516,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "A nature spirit / Nymph"
   },
   {
     "name": "Chiron",
@@ -581,10 +533,6 @@
     "status": "immortal",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -631,7 +579,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Clarisse La Rue",
@@ -646,12 +595,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "ares",
-    "mortal_parent_name": "Ms. La Rue",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "eurytion"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 5,
     "affiliation": [
@@ -699,7 +642,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Ms. La Rue"
   },
   {
     "name": "Charles Beckendorf",
@@ -714,12 +658,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "hephaestus",
-    "mortal_parent_name": "Ms. Beckendorf",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "jake-mason"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 9,
     "affiliation": [
@@ -767,7 +705,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Ms. Beckendorf"
   },
   {
     "name": "Silena Beauregard",
@@ -782,10 +721,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "aphrodite",
-    "mortal_parent_name": "Mr. Beauregard",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": 10,
     "affiliation": [
@@ -832,7 +767,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Mr. Beauregard"
   },
   {
     "name": "Ethan Nakamura",
@@ -847,10 +783,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "nemesis",
-    "mortal_parent_name": "Mr. Nakamura",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": 11,
     "affiliation": [
@@ -894,7 +826,8 @@
       "the-battle-of-the-labyrinth",
       "the-last-olympian",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": "Mr. Nakamura"
   },
   {
     "name": "Zoë Nightshade",
@@ -910,10 +843,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 2000,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Pleione / Atlas",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -956,7 +885,8 @@
     "first_appearance_book_slug": "the-titans-curse",
     "books_appeared_in_slugs": [
       "the-titans-curse"
-    ]
+    ],
+    "mortal_parent_name": "Pleione / Atlas"
   },
   {
     "name": "Sally Jackson",
@@ -971,10 +901,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 34,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Jim and Laura Jackson",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1020,7 +946,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Jim and Laura Jackson"
   },
   {
     "name": "Rachel Elizabeth Dare",
@@ -1035,10 +962,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Mr. Dare (Wealthy Land Developer)",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1084,7 +1007,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mr. Dare (Wealthy Land Developer)"
   },
   {
     "name": "Daedalus",
@@ -1100,13 +1024,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": "athena",
-    "mortal_parent_name": "Metion",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "annabeth-chase",
-      "malcolm-pace"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1150,7 +1067,8 @@
     "first_appearance_book_slug": "the-battle-of-the-labyrinth",
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Metion"
   },
   {
     "name": "Calypso",
@@ -1165,12 +1083,6 @@
     "status": "immortal",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Atlas",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "zoe-nightshade"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1214,7 +1126,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Atlas"
   },
   {
     "name": "Oracle of Delphi",
@@ -1230,10 +1143,6 @@
     "status": "immortal",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1278,7 +1187,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Chris Rodriguez",
@@ -1293,14 +1203,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "hermes",
-    "mortal_parent_name": "Ms. Rodriguez",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "luke-castellan",
-      "travis-stoll",
-      "connor-stoll"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 11,
     "affiliation": [
@@ -1342,7 +1244,8 @@
       "the-sea-of-monsters",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Ms. Rodriguez"
   },
   {
     "name": "Perseus",
@@ -1357,15 +1260,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 18,
-    "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Danaë",
-    "mortal_parent_ref_slug": "danae",
-    "sibling_slugs": [
-      "heracles",
-      "thalia-grace",
-      "tantalus",
-      "king-minos"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1404,7 +1298,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Danaë"
   },
   {
     "name": "Theseus",
@@ -1419,14 +1314,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 18,
-    "divine_parent_slug": "poseidon",
-    "mortal_parent_name": "Aethra",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "percy-jackson",
-      "tyson",
-      "bellerophon"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1464,7 +1351,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Aethra"
   },
   {
     "name": "Heracles",
@@ -1480,15 +1368,6 @@
     "status": "immortal",
     "greek_or_roman": "greek",
     "age_first_appearance": 20,
-    "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Alcmene",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "perseus",
-      "thalia-grace",
-      "tantalus",
-      "king-minos"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1530,7 +1409,8 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes",
       "the-titans-curse"
-    ]
+    ],
+    "mortal_parent_name": "Alcmene"
   },
   {
     "name": "Celedon",
@@ -1546,10 +1426,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": null,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1589,7 +1465,8 @@
     "first_appearance_book_slug": "percy-jackson-and-the-singer-of-apollo",
     "books_appeared_in_slugs": [
       "percy-jackson-and-the-singer-of-apollo"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Travis Stoll",
@@ -1604,12 +1481,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 13,
-    "divine_parent_slug": "hermes",
-    "mortal_parent_name": "Mrs. Stoll",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "connor-stoll"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 11,
     "affiliation": [
@@ -1652,7 +1523,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Stoll"
   },
   {
     "name": "Connor Stoll",
@@ -1667,12 +1539,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 12,
-    "divine_parent_slug": "hermes",
-    "mortal_parent_name": "Mrs. Stoll",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "travis-stoll"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 11,
     "affiliation": [
@@ -1713,7 +1579,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Stoll"
   },
   {
     "name": "May Castellan",
@@ -1728,10 +1595,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": null,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1770,7 +1633,8 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Frederick Chase",
@@ -1786,10 +1650,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": null,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -1827,7 +1687,8 @@
     "first_appearance_book_slug": "the-titans-curse",
     "books_appeared_in_slugs": [
       "the-titans-curse"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Malcolm Pace",
@@ -1842,13 +1703,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "athena",
-    "mortal_parent_name": "Mr. Pace",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "annabeth-chase",
-      "daedalus"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 6,
     "affiliation": [
@@ -1887,7 +1741,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mr. Pace"
   },
   {
     "name": "Jake Mason",
@@ -1902,12 +1757,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "hephaestus",
-    "mortal_parent_name": "Mrs. Mason",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "charles-beckendorf"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 9,
     "affiliation": [
@@ -1946,7 +1795,8 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Mason"
   },
   {
     "name": "Will Solace",
@@ -1961,13 +1811,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "apollo",
-    "mortal_parent_name": "Naomi Solace",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "michael-yew",
-      "lee-fletcher"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 7,
     "affiliation": [
@@ -2006,7 +1849,8 @@
     "first_appearance_book_slug": "the-last-olympian",
     "books_appeared_in_slugs": [
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Naomi Solace"
   },
   {
     "name": "Michael Yew",
@@ -2021,13 +1865,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "apollo",
-    "mortal_parent_name": "Mrs. Yew",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "lee-fletcher",
-      "will-solace"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 7,
     "affiliation": [
@@ -2068,7 +1905,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Yew"
   },
   {
     "name": "Lee Fletcher",
@@ -2083,13 +1921,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "apollo",
-    "mortal_parent_name": "Mrs. Fletcher",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "michael-yew",
-      "will-solace"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 7,
     "affiliation": [
@@ -2130,7 +1961,8 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief",
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Fletcher"
   },
   {
     "name": "Castor",
@@ -2145,12 +1977,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "dionysus",
-    "mortal_parent_name": "Mrs. Castor",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "pollux"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 12,
     "affiliation": [
@@ -2189,7 +2015,8 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief",
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Castor"
   },
   {
     "name": "Pollux",
@@ -2204,12 +2031,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "dionysus",
-    "mortal_parent_name": "Mrs. Pollux",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "castor"
-    ],
     "empathy_link_slug": null,
     "cabin_number": 12,
     "affiliation": [
@@ -2248,7 +2069,8 @@
       "the-lightning-thief",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mrs. Pollux"
   },
   {
     "name": "Katie Gardner",
@@ -2263,10 +2085,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": "demeter",
-    "mortal_parent_name": "Mr. Gardner",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": 4,
     "affiliation": [
@@ -2305,7 +2123,8 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": "Mr. Gardner"
   },
   {
     "name": "Paul Blofis",
@@ -2320,10 +2139,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 35,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2364,7 +2179,8 @@
       "the-titans-curse",
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Gabe Ugliano",
@@ -2379,10 +2195,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 40,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2422,7 +2234,8 @@
     "first_appearance_book_slug": "the-lightning-thief",
     "books_appeared_in_slugs": [
       "the-lightning-thief"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Juniper",
@@ -2437,10 +2250,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": null,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2479,7 +2288,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Silenus",
@@ -2494,10 +2304,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 200,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2536,7 +2342,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Leneus",
@@ -2551,10 +2358,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 150,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2593,7 +2396,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Briares",
@@ -2608,10 +2412,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Ouranos and Gaea",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2648,7 +2448,8 @@
     "first_appearance_book_slug": "the-battle-of-the-labyrinth",
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Ouranos and Gaea"
   },
   {
     "name": "Tantalus",
@@ -2663,15 +2464,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Plouto",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "thalia-grace",
-      "perseus",
-      "heracles",
-      "king-minos"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2711,7 +2503,8 @@
     "first_appearance_book_slug": "the-sea-of-monsters",
     "books_appeared_in_slugs": [
       "the-sea-of-monsters"
-    ]
+    ],
+    "mortal_parent_name": "Plouto"
   },
   {
     "name": "King Minos",
@@ -2726,15 +2519,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 3000,
-    "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Europa",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "thalia-grace",
-      "perseus",
-      "heracles",
-      "tantalus"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2774,7 +2558,8 @@
     "first_appearance_book_slug": "the-battle-of-the-labyrinth",
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Europa"
   },
   {
     "name": "Nancy Bobofit",
@@ -2789,10 +2574,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 12,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Mr. and Mrs. Bobofit",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2832,7 +2613,8 @@
     "first_appearance_book_slug": "the-lightning-thief",
     "books_appeared_in_slugs": [
       "the-lightning-thief"
-    ]
+    ],
+    "mortal_parent_name": "Mr. and Mrs. Bobofit"
   },
   {
     "name": "Eurytion",
@@ -2847,12 +2629,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": null,
-    "divine_parent_slug": "ares",
-    "mortal_parent_name": "Ms. Eurytion",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "clarisse-la-rue"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2890,7 +2666,8 @@
     "first_appearance_book_slug": "the-battle-of-the-labyrinth",
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
-    ]
+    ],
+    "mortal_parent_name": "Ms. Eurytion"
   },
   {
     "name": "Bellerophon",
@@ -2906,14 +2683,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 20,
-    "divine_parent_slug": "poseidon",
-    "mortal_parent_name": "Eurynome",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [
-      "percy-jackson",
-      "theseus",
-      "tyson"
-    ],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -2952,7 +2721,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Eurynome"
   },
   {
     "name": "Atalanta",
@@ -2967,10 +2737,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 18,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Iasus",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3010,7 +2776,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Iasus"
   },
   {
     "name": "Psyche",
@@ -3025,10 +2792,6 @@
     "status": "immortal",
     "greek_or_roman": "greek",
     "age_first_appearance": 18,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "King of Anatolia",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3067,7 +2830,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
-    ]
+    ],
+    "mortal_parent_name": "King of Anatolia"
   },
   {
     "name": "Phaethon",
@@ -3082,10 +2846,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 16,
-    "divine_parent_slug": "helios",
-    "mortal_parent_name": "Clymene",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3124,7 +2884,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-gods"
-    ]
+    ],
+    "mortal_parent_name": "Clymene"
   },
   {
     "name": "Danaë",
@@ -3139,10 +2900,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 20,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "King Acrisius",
-    "mortal_parent_ref_slug": "acrisius",
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3181,7 +2938,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "King Acrisius"
   },
   {
     "name": "Acrisius",
@@ -3196,10 +2954,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 50,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Abas",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3239,7 +2993,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Abas"
   },
   {
     "name": "Polydectes",
@@ -3254,10 +3009,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 40,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Magnes",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3297,7 +3048,8 @@
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
-    ]
+    ],
+    "mortal_parent_name": "Magnes"
   },
   {
     "name": "Odysseus",
@@ -3314,10 +3066,6 @@
     "status": "deceased",
     "greek_or_roman": "greek",
     "age_first_appearance": 30,
-    "divine_parent_slug": null,
-    "mortal_parent_name": "Laertes and Anticlea",
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3358,7 +3106,8 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes",
       "the-sea-of-monsters"
-    ]
+    ],
+    "mortal_parent_name": "Laertes and Anticlea"
   },
   {
     "name": "Phoebe",
@@ -3373,10 +3122,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 14,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": 8,
     "affiliation": [
@@ -3418,7 +3163,8 @@
     "books_appeared_in_slugs": [
       "the-titans-curse",
       "the-demigod-files"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Maron",
@@ -3431,10 +3177,6 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 300,
-    "divine_parent_slug": null,
-    "mortal_parent_name": null,
-    "mortal_parent_ref_slug": null,
-    "sibling_slugs": [],
     "empathy_link_slug": null,
     "cabin_number": null,
     "affiliation": [
@@ -3473,7 +3215,8 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth",
       "the-last-olympian"
-    ]
+    ],
+    "mortal_parent_name": null
   },
   {
     "name": "Jason Grace",
@@ -3486,11 +3229,10 @@
     "status": "alive",
     "greek_or_roman": "roman",
     "age_first_appearance": 15,
-    "divine_parent_slug": "zeus",
-    "mortal_parent_name": "Beryl Grace",
     "is_big_three_child": true,
     "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
-    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope."
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope.",
+    "mortal_parent_name": "Beryl Grace"
   },
   {
     "name": "Piper McLean",
@@ -3503,10 +3245,9 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "aphrodite",
-    "mortal_parent_name": "Tristan McLean",
     "description": "Greek demigod and named member of the Seven in the Heroes of Olympus series.",
-    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope."
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope.",
+    "mortal_parent_name": "Tristan McLean"
   },
   {
     "name": "Leo Valdez",
@@ -3519,10 +3260,9 @@
     "status": "alive",
     "greek_or_roman": "greek",
     "age_first_appearance": 15,
-    "divine_parent_slug": "hephaestus",
-    "mortal_parent_name": "Esperanza Valdez",
     "description": "Greek demigod and named member of the Seven in the Heroes of Olympus series.",
-    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope."
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope.",
+    "mortal_parent_name": "Esperanza Valdez"
   },
   {
     "name": "Frank Zhang",
@@ -3535,10 +3275,9 @@
     "status": "alive",
     "greek_or_roman": "roman",
     "age_first_appearance": 16,
-    "divine_parent_slug": "ares",
-    "mortal_parent_name": "Emily Zhang",
     "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
-    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Mars is represented by the existing Ares God record."
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Mars is represented by the existing Ares God record.",
+    "mortal_parent_name": "Emily Zhang"
   },
   {
     "name": "Hazel Levesque",
@@ -3551,11 +3290,10 @@
     "status": "alive",
     "greek_or_roman": "roman",
     "age_first_appearance": 13,
-    "divine_parent_slug": "hades",
-    "mortal_parent_name": "Marie Levesque",
     "is_big_three_child": true,
     "description": "Roman demigod and named member of the Seven in the Heroes of Olympus series.",
-    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Pluto is represented by the existing Hades God record."
+    "lore_notes": "Minimal Heroes of Olympus stub seeded to resolve The Prophecy of the Seven subject; detailed profile and book links are outside the V1 seed scope. Pluto is represented by the existing Hades God record.",
+    "mortal_parent_name": "Marie Levesque"
   },
   {
     "name": "Blackjack",
@@ -3626,8 +3364,11 @@
     "gender": "male",
     "status": "deceased",
     "is_demigod": false,
-    "description": "Tyrannical King of Argos and grandfather of Perseus. Fearing a prophecy that his daughter Danaë's child would kill him, he locked her in a bronze tower and later set her and newborn Perseus adrift at sea.",
-    "first_appearance_book_slug": "percy-jacksons-greek-heroes"
+    "description": "Tyrannical King of Argos and grandfather of Perseus. Locked Danaë in a bronze tower and cast her into the sea.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
   },
   {
     "name": "King Polydectes",
@@ -3638,7 +3379,391 @@
     "gender": "male",
     "status": "deceased",
     "is_demigod": false,
-    "description": "Ruler of the island of Seriphos who sought to marry Danaë. To get rid of Perseus, he sent the young demigod on a suicidal quest to retrieve the head of Medusa.",
-    "first_appearance_book_slug": "percy-jacksons-greek-heroes"
+    "description": "Ruler of Seriphos who sought to marry Danaë and sent Perseus on a quest to fetch Medusa's head.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Pasiphaë",
+    "expected_slug": "pasiphae",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "immortal",
+    "is_demigod": false,
+    "description": "Queen of Crete, daughter of Helios, wife of King Minos, and mother of Ariadne, Phaedra, and the Minotaur.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Pasipha%C3%AB"
+  },
+  {
+    "name": "Ariadne",
+    "expected_slug": "ariadne",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "immortal",
+    "is_demigod": false,
+    "description": "Princess of Crete, daughter of King Minos and Pasiphaë, half-sister of the Minotaur. Helped Theseus navigate the Labyrinth before becoming the immortal wife of Dionysus.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Ariadne"
+  },
+  {
+    "name": "Phaedra",
+    "expected_slug": "phaedra",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Princess of Crete, daughter of King Minos and Pasiphaë, half-sister of the Minotaur, and second wife of Theseus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Phaedra"
+  },
+  {
+    "name": "Aethra",
+    "expected_slug": "aethra",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Princess of Troezen and mortal mother of Theseus by Poseidon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Aethra"
+  },
+  {
+    "name": "Alcmene",
+    "expected_slug": "alcmene",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Mortal queen of Thebes and mother of Heracles by Zeus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Ms. Beryl Grace",
+    "expected_slug": "beryl-grace",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Mortal television actress and mother of Thalia Grace (by Zeus) and Jason Grace (by Jupiter).",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Beryl_Grace"
+  },
+  {
+    "name": "Maria di Angelo",
+    "expected_slug": "maria-di-angelo",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Mortal daughter of an Italian diplomat and mother of Nico and Bianca di Angelo by Hades.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-last-olympian"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Maria_di_Angelo"
+  },
+  {
+    "name": "Semele",
+    "expected_slug": "semele",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "immortal",
+    "is_demigod": false,
+    "description": "Mortal princess of Thebes and mother of Dionysus by Zeus. Destroyed by Zeus's true divine form before being resurrected by Dionysus as the goddess Thyone.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Semele"
+  },
+  {
+    "name": "Chrysaor",
+    "expected_slug": "chrysaor",
+    "character_type": "monster",
+    "species": "other",
+    "description": "Golden warrior giant born from Medusa's neck when decapitated by Perseus. Father of Geryon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Chrysaor"
+  },
+  {
+    "name": "Thoosa",
+    "expected_slug": "thoosa",
+    "character_type": "nymph",
+    "species": "nymph",
+    "gender": "female",
+    "status": "immortal",
+    "is_demigod": false,
+    "description": "Sea nymph daughter of Phorcys and Ceto, and mother of Polyphemus the Cyclops by Poseidon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Europa",
+    "expected_slug": "europa",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Phoenician princess carried away by Zeus in the form of a white bull. Mother of King Minos, Rhadamanthys, and Sarpedon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Andromeda",
+    "expected_slug": "andromeda",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Ethiopian princess saved from Cetus by Perseus and became his queen.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Andromeda_%28Princess%29"
+  },
+  {
+    "name": "Deianira",
+    "expected_slug": "deianira",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Calydonian princess and wife of Heracles who unknowingly gave him the poisoned Tunic of Nessus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Deianira"
+  },
+  {
+    "name": "Megara",
+    "expected_slug": "megara",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "female",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "First wife of Heracles and princess of Thebes.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Hippolytus",
+    "expected_slug": "hippolytus",
+    "character_type": "mortal",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": true,
+    "description": "Son of Theseus and Hippolyta the Amazon queen.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Hippolytus_%28legacy%29"
+  },
+  {
+    "name": "Icarus",
+    "expected_slug": "icarus",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Son of Daedalus who flew too close to the sun on wings made of wax and feathers.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Icarus"
+  },
+  {
+    "name": "Orpheus",
+    "expected_slug": "orpheus",
+    "character_type": "mortal",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": true,
+    "description": "Legendary musician son of Apollo and Calliope who traveled to the Underworld to retrieve Eurydice.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Orpheus"
+  },
+  {
+    "name": "Aeneas",
+    "expected_slug": "aeneas",
+    "character_type": "mortal",
+    "species": "demigod",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": true,
+    "description": "Trojan hero son of Aphrodite and Anchises who founded the Roman lineage.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Aeneas"
+  },
+  {
+    "name": "Anchises",
+    "expected_slug": "anchises",
+    "character_type": "mortal",
+    "species": "human",
+    "gender": "male",
+    "status": "deceased",
+    "is_demigod": false,
+    "description": "Mortal Trojan prince and lover of Aphrodite, father of Aeneas.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Anchises"
+  },
+  {
+    "name": "Callirhoe",
+    "expected_slug": "callirhoe",
+    "character_type": "nymph",
+    "species": "naiad",
+    "description": "Naiad daughter of Oceanus and mother of Geryon by Chrysaor.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Philyra",
+    "expected_slug": "philyra",
+    "character_type": "nymph",
+    "species": "nymph",
+    "description": "Oceanid nymph and mother of Chiron the Centaur by Kronos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Chariclo",
+    "expected_slug": "chariclo",
+    "character_type": "nymph",
+    "species": "nymph",
+    "description": "Nymph wife of Chiron the Centaur.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ]
+  },
+  {
+    "name": "Ms. La Rue",
+    "expected_slug": "ms-la-rue",
+    "character_type": "mortal",
+    "species": "human",
+    "description": "Mortal mother of Clarisse La Rue by Ares.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "Ms. Beckendorf",
+    "expected_slug": "ms-beckendorf",
+    "character_type": "mortal",
+    "species": "human",
+    "description": "Mortal mother of Charles Beckendorf by Hephaestus.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Ms. Mason",
+    "expected_slug": "ms-mason",
+    "character_type": "mortal",
+    "species": "human",
+    "description": "Mortal mother of Jake Mason by Hephaestus.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Ms. Beauregard",
+    "expected_slug": "ms-beauregard",
+    "character_type": "mortal",
+    "species": "human",
+    "description": "Mortal mother of Silena Beauregard by Aphrodite.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Ms. Rodriguez",
+    "expected_slug": "ms-rodriguez",
+    "character_type": "mortal",
+    "species": "human",
+    "description": "Mortal mother of Chris Rodriguez by Hermes.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Ms. Stoll",
+    "expected_slug": "ms-stoll",
+    "character_type": "mortal",
+    "species": "human",
+    "description": "Mortal mother of Travis and Connor Stoll by Hermes.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ]
   }
 ]

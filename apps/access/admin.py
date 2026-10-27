@@ -4,6 +4,7 @@ from django.contrib import admin
 from rest_framework_api_key.admin import APIKeyModelAdmin
 
 from apps.access.models import ConsumerAPIKey
+from apps.core.logging import SUCCESS_LEVEL
 
 security_logger = logging.getLogger('api.security')
 
@@ -33,15 +34,16 @@ class ConsumerAPIKeyAdmin(APIKeyModelAdmin):
         if created:
             event = 'security.api_key.created'
             message = 'security.api_key.created'
-            level = security_logger.info
+            level = SUCCESS_LEVEL
         elif obj.revoked and not was_revoked:
             event = 'security.api_key.revoked'
             message = 'security.api_key.revoked'
-            level = security_logger.warning
+            level = logging.WARNING
         else:
             return
 
-        level(
+        security_logger.log(
+            level,
             message,
             extra={
                 'event': event,

@@ -1,7 +1,13 @@
 from django.urls import reverse
 
 from apps.core.tests.base import BaseAPITestCase
-from tests.makers import make_character, make_god, make_quest, make_weapon
+from tests.makers import (
+    make_character,
+    make_divine_relationship,
+    make_god,
+    make_quest,
+    make_weapon,
+)
 
 
 class CharacterListViewTests(BaseAPITestCase):
@@ -12,9 +18,9 @@ class CharacterListViewTests(BaseAPITestCase):
             name='Percy Jackson',
             character_type='demigod',
             status='alive',
-            divine_parent=self.poseidon,
             is_big_three_child=True,
         )
+        make_divine_relationship(from_entity=self.poseidon, to_entity=self.character)
 
     def test_list_returns_200_and_paginated_envelope(self):
         response = self.client.get(reverse('character-list'))

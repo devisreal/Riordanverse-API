@@ -12,6 +12,7 @@ from django.core.management.base import BaseCommand
 from django.db import DatabaseError
 
 from apps.characters.models import Character
+from apps.core.seed_utils import update_or_create_by_expected_slug
 from apps.divinities.models import God, Titan
 from apps.narrative.models import Book
 
@@ -106,22 +107,30 @@ class Command(BaseCommand):
                 if expected_slug:
                     defaults['slug'] = expected_slug
 
-                divine_parent_slug = entry.get('divine_parent_slug')
-                god_parent, titan_parent = _resolve_divine_parent(
-                    divine_parent_slug, name, self.stdout, self.style
-                )
-                defaults['divine_parent'] = god_parent
-                defaults['divine_parent_titan'] = titan_parent
+                if 'divine_parent_slug' in entry:
+                    god_parent, titan_parent = _resolve_divine_parent(
+                        entry['divine_parent_slug'], name, self.stdout, self.style
+                    )
+                    defaults['divine_parent'] = god_parent
+                    defaults['divine_parent_titan'] = titan_parent
 
                 first_book_slug = entry.get('first_appearance_book_slug')
                 defaults['first_appearance_book'] = _resolve_book(
                     first_book_slug, name, self.stdout, self.style
                 )
 
-                character, created = Character.objects.update_or_create(
-                    name=name,
-                    defaults=defaults,
-                )
+                if expected_slug:
+                    character, created = update_or_create_by_expected_slug(
+                        Character,
+                        expected_slug,
+                        defaults,
+                        fallback={'name': name},
+                    )
+                else:
+                    character, created = Character.objects.update_or_create(
+                        name=name,
+                        defaults=defaults,
+                    )
                 if expected_slug:
                     by_expected_slug[expected_slug] = character
                     if character.slug != expected_slug:
@@ -148,47 +157,55 @@ class Command(BaseCommand):
         for entry, character in pending:
             owner = entry.get('name', character.name)
             try:
-                parent_slug = entry.get('mortal_parent_ref_slug')
-                parent = by_expected_slug.get(parent_slug) if parent_slug else None
-                if parent_slug and parent is None:
-                    _warning(
-                        self.stdout,
-                        self.style,
-                        f"Unresolved mortal parent '{parent_slug}' for {owner} — skipping link.",
-                    )
-                character.mortal_parent_ref = parent
-
-                empathy_slug = entry.get('empathy_link_slug')
-                empathy_link = by_expected_slug.get(empathy_slug) if empathy_slug else None
-                if empathy_slug and empathy_link is None:
-                    _warning(
-                        self.stdout,
-                        self.style,
-                        f"Unresolved empathy-link character '{empathy_slug}' for {owner} "
-                        '— skipping link.',
-                    )
-                character.empathy_link = empathy_link
-                character.save(update_fields=('mortal_parent_ref', 'empathy_link', 'updated_at'))
-
-                siblings = []
-                for slug in entry.get('sibling_slugs', []):
-                    sibling = by_expected_slug.get(slug)
-                    if sibling is None:
+                update_fields = []
+                if 'mortal_parent_ref_slug' in entry:
+                    parent_slug = entry.get('mortal_parent_ref_slug')
+                    parent = by_expected_slug.get(parent_slug) if parent_slug else None
+                    if parent_slug and parent is None:
                         _warning(
                             self.stdout,
                             self.style,
-                            f"Unresolved sibling '{slug}' for {owner} — omitting reference.",
+                            f"Unresolved mortal parent '{parent_slug}' for {owner} — skipping link.",
                         )
-                    else:
-                        siblings.append(sibling)
-                character.siblings.set(siblings)
+                    character.mortal_parent_ref = parent
+                    update_fields.append('mortal_parent_ref')
 
-                books = []
-                for slug in entry.get('books_appeared_in_slugs', []):
-                    book = _resolve_book(slug, owner, self.stdout, self.style)
-                    if book is not None:
-                        books.append(book)
-                character.books_appeared_in.set(books)
+                if 'empathy_link_slug' in entry:
+                    empathy_slug = entry.get('empathy_link_slug')
+                    empathy_link = by_expected_slug.get(empathy_slug) if empathy_slug else None
+                    if empathy_slug and empathy_link is None:
+                        _warning(
+                            self.stdout,
+                            self.style,
+                            f"Unresolved empathy-link character '{empathy_slug}' for {owner} "
+                            '— skipping link.',
+                        )
+                    character.empathy_link = empathy_link
+                    update_fields.append('empathy_link')
+                if update_fields:
+                    character.save(update_fields=(*update_fields, 'updated_at'))
+
+                if 'sibling_slugs' in entry:
+                    siblings = []
+                    for slug in entry.get('sibling_slugs', []):
+                        sibling = by_expected_slug.get(slug)
+                        if sibling is None:
+                            _warning(
+                                self.stdout,
+                                self.style,
+                                f"Unresolved sibling '{slug}' for {owner} — omitting reference.",
+                            )
+                        else:
+                            siblings.append(sibling)
+                    character.siblings.set(siblings)
+
+                if 'books_appeared_in_slugs' in entry:
+                    books = []
+                    for slug in entry['books_appeared_in_slugs']:
+                        book = _resolve_book(slug, owner, self.stdout, self.style)
+                        if book is not None:
+                            books.append(book)
+                    character.books_appeared_in.set(books)
             except (DatabaseError, KeyError, TypeError, ValueError) as exc:
                 error_count += 1
                 self.stdout.write(self.style.ERROR(f'  Failed relationships for {owner} — {exc}'))

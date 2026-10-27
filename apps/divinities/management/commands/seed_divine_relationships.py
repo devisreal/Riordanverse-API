@@ -1,9 +1,8 @@
-"""Seed DivineRelationship records from ``data/divine_relationships.json``.
+"""Seed unified DivineRelationship family tuples from ``data/family_relationships.json``.
 
 Re-run safe: immutable relationship tuples are created with ``get_or_create``.
-Books, Gods, Titans, Characters, and Weapons should be seeded first. The
-command also synchronizes God children/weapons and Titan weapons from their
-seed files. Missing slugs warn and skip only the affected link.
+All entity and Book seed commands should run first. Missing slugs warn and skip
+only the affected link; God/Titan weapon links remain synchronized separately.
 """
 
 import json
@@ -13,11 +12,12 @@ from django.core.management.base import BaseCommand
 from django.db import DatabaseError
 from django.db.models import Q
 
+from apps.bestiary.models import Creature, Monster
 from apps.characters.models import Character
-from apps.divinities.models import DivineRelationship, God, Titan
+from apps.divinities.models import RELATIONSHIP_ENTITY_TYPES, DivineRelationship, God, Titan
 from apps.items.models import Weapon
 
-DATA_FILE = settings.BASE_DIR / 'data' / 'divine_relationships.json'
+DATA_FILE = settings.BASE_DIR / 'data' / 'family_relationships.json'
 GODS_FILE = settings.BASE_DIR / 'data' / 'gods.json'
 TITANS_FILE = settings.BASE_DIR / 'data' / 'titans.json'
 
@@ -25,6 +25,8 @@ ENTITY_MODELS = {
     'god': God,
     'titan': Titan,
     'character': Character,
+    'monster': Monster,
+    'creature': Creature,
 }
 
 
@@ -39,11 +41,14 @@ def _resolve_entity(entity_type, slug):
 
 
 def _endpoint_kwargs(side, entity_type, entity):
-    return {f'{side}_{kind}': entity if kind == entity_type else None for kind in ENTITY_MODELS}
+    return {
+        f'{side}_{kind}': entity if kind == entity_type else None
+        for kind in RELATIONSHIP_ENTITY_TYPES
+    }
 
 
 class Command(BaseCommand):
-    help = 'Seed immutable divine relationship tuples from data/divine_relationships.json.'
+    help = 'Seed immutable family relationship tuples from data/family_relationships.json.'
 
     def handle(self, *args, **kwargs):
         if not DATA_FILE.exists():
@@ -64,6 +69,18 @@ class Command(BaseCommand):
                 to_type = entry['to_type']
                 to_slug = entry['to_slug']
                 relationship_type = entry['relationship_type']
+                if relationship_type not in ('parent_of', 'child_of', 'sibling_of', 'consort_of'):
+                    self.stdout.write(
+                        self.style.WARNING(
+                            f"[WARN] Unknown relationship type '{relationship_type}' — skipping link."
+                        )
+                    )
+                    skipped_count += 1
+                    continue
+                if relationship_type == 'child_of':
+                    from_type, to_type = to_type, from_type
+                    from_slug, to_slug = to_slug, from_slug
+                    relationship_type = 'parent_of'
 
                 from_entity = _resolve_entity(from_type, from_slug)
                 to_entity = _resolve_entity(to_type, to_slug)
@@ -114,8 +131,8 @@ class Command(BaseCommand):
                     )
                 )
 
-        sibling_count = self._sync_sibling_links()
         direct_link_count = self._sync_direct_links()
+        direct_link_count += self._sync_character_relationships()
 
         self.stdout.write('')
         self.stdout.write(
@@ -124,76 +141,16 @@ class Command(BaseCommand):
                 f'{skipped_count} already existed or skipped, {error_count} errors.'
             )
         )
-        self.stdout.write(self.style.SUCCESS(f'Sibling links synchronized: {sibling_count}.'))
-        self.stdout.write(
-            self.style.SUCCESS(f'Direct divine links synchronized: {direct_link_count}.')
-        )
-
-    def _sync_sibling_links(self):
-        """Create one typed DivineRelationship tuple for every source sibling pair."""
-        synchronized_count = 0
-        seen_pairs = set()
-        for path, entity_type, entity_model in (
-            (GODS_FILE, 'god', God),
-            (TITANS_FILE, 'titan', Titan),
-        ):
-            if not path.exists():
-                continue
-            with path.open(encoding='utf-8') as data_file:
-                entries = json.load(data_file)
-            for entry in entries:
-                try:
-                    source = entity_model.objects.get(slug=entry['expected_slug'])
-                except entity_model.DoesNotExist, KeyError:
-                    continue
-                for sibling_slug in entry.get('siblings', []):
-                    sibling = God.objects.filter(slug=sibling_slug).first()
-                    sibling_type = 'god'
-                    if sibling is None:
-                        sibling = Titan.objects.filter(slug=sibling_slug).first()
-                        sibling_type = 'titan'
-                    if sibling is None:
-                        self.stdout.write(
-                            self.style.WARNING(
-                                f"[WARN] Unresolved sibling '{sibling_slug}' for "
-                                f'{entity_type} {source.slug} — skipping link.'
-                            )
-                        )
-                        continue
-
-                    pair = tuple(sorted(((entity_type, source.slug), (sibling_type, sibling.slug))))
-                    if pair in seen_pairs:
-                        continue
-                    seen_pairs.add(pair)
-
-                    forward = {
-                        **_endpoint_kwargs('from', entity_type, source),
-                        **_endpoint_kwargs('to', sibling_type, sibling),
-                        'relationship_type': 'sibling_of',
-                    }
-                    reverse = {
-                        **_endpoint_kwargs('from', sibling_type, sibling),
-                        **_endpoint_kwargs('to', entity_type, source),
-                        'relationship_type': 'sibling_of',
-                    }
-                    if DivineRelationship.objects.filter(Q(**forward) | Q(**reverse)).exists():
-                        continue
-
-                    _, created = DivineRelationship.objects.get_or_create(**forward)
-                    synchronized_count += int(created)
-        return synchronized_count
+        self.stdout.write(self.style.SUCCESS(f'Weapon links synchronized: {direct_link_count}.'))
 
     def _sync_direct_links(self):
-        """Synchronize source-declared God children/weapons and Titan weapons."""
+        """Project God children and synchronize God/Titan weapon references."""
         synced_count = 0
         for path, entity_model, relation_fields in (
             (
                 GODS_FILE,
                 God,
-                {
-                    'children_demigod_slugs': (Character, 'children_demigods'),
-                    'weapon_slugs': (Weapon, 'weapons'),
-                },
+                {'weapon_slugs': (Weapon, 'weapons')},
             ),
             (TITANS_FILE, Titan, {'weapon_slugs': (Weapon, 'weapons')}),
         ):
@@ -231,4 +188,84 @@ class Command(BaseCommand):
                             )
                     getattr(entity, relation_name).set(related_objects)
                     synced_count += len(related_objects)
+        for god in God.objects.all():
+            children = Character.objects.filter(
+                divine_relationships_as_to__from_god=god,
+                divine_relationships_as_to__relationship_type='parent_of',
+            ).distinct()
+            god.children_demigods.set(children)
+            synced_count += children.count()
+        return synced_count
+
+    def _sync_character_relationships(self):
+        """Keep legacy Character parent/sibling fields projected from the graph."""
+        synced_count = 0
+        for character in Character.objects.all():
+            parent_relationships = list(
+                DivineRelationship.objects.filter(
+                    to_character=character,
+                    relationship_type='parent_of',
+                ).select_related('from_god', 'from_titan', 'from_character')
+            )
+            god_parents = [
+                relationship.from_god
+                for relationship in parent_relationships
+                if relationship.from_god_id
+            ]
+            titan_parents = [
+                relationship.from_titan
+                for relationship in parent_relationships
+                if relationship.from_titan_id
+            ]
+            mortal_parents = [
+                relationship.from_character
+                for relationship in parent_relationships
+                if relationship.from_character_id
+            ]
+
+            desired_god_parent = (
+                god_parents[0] if len(god_parents) == 1 and not titan_parents else None
+            )
+            desired_titan_parent = (
+                titan_parents[0] if len(titan_parents) == 1 and not god_parents else None
+            )
+            desired_mortal_parent = mortal_parents[0] if len(mortal_parents) == 1 else None
+            changed_fields = []
+            if character.divine_parent_id != getattr(desired_god_parent, 'pk', None):
+                character.divine_parent = desired_god_parent
+                changed_fields.append('divine_parent')
+            if character.divine_parent_titan_id != getattr(desired_titan_parent, 'pk', None):
+                character.divine_parent_titan = desired_titan_parent
+                changed_fields.append('divine_parent_titan')
+            if character.mortal_parent_ref_id != getattr(desired_mortal_parent, 'pk', None):
+                character.mortal_parent_ref = desired_mortal_parent
+                changed_fields.append('mortal_parent_ref')
+            if desired_mortal_parent and not character.mortal_parent_name:
+                character.mortal_parent_name = desired_mortal_parent.name
+                changed_fields.append('mortal_parent_name')
+            if changed_fields:
+                character.save(update_fields=changed_fields)
+                synced_count += 1
+
+            sibling_relationships = (
+                DivineRelationship.objects.filter(
+                    relationship_type='sibling_of',
+                )
+                .filter(Q(from_character=character) | Q(to_character=character))
+                .select_related('from_character', 'to_character')
+            )
+            siblings = []
+            for relationship in sibling_relationships:
+                sibling = (
+                    relationship.to_character
+                    if relationship.from_character_id == character.pk
+                    else relationship.from_character
+                )
+                if sibling and sibling.pk != character.pk:
+                    siblings.append(sibling)
+            if set(character.siblings.values_list('pk', flat=True)) != {
+                sibling.pk for sibling in siblings
+            }:
+                character.siblings.set(siblings)
+                synced_count += len(siblings)
         return synced_count

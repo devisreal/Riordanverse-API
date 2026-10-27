@@ -12,6 +12,7 @@ from django.core.management.base import BaseCommand
 from django.db import DatabaseError
 
 from apps.characters.models import Character, Power
+from apps.divinities.models import DivineRelationship
 from apps.narrative.models import Book
 
 DATA_FILE = settings.BASE_DIR / 'data' / 'powers.json'
@@ -62,17 +63,27 @@ class Command(BaseCommand):
 
                 expected_parent_slug = entry.get('divine_parent_slug')
                 if expected_parent_slug or entry.get('source') == 'divine_parent':
-                    parent = character.divine_parent or character.divine_parent_titan
-                    actual_parent_slug = parent.slug if parent else None
-                else:
-                    actual_parent_slug = expected_parent_slug
-                if expected_parent_slug != actual_parent_slug:
-                    _warning(
-                        self.stdout,
-                        self.style,
-                        f"Divine-parent check failed for {character.name}'s {name}: "
-                        f"seed says '{expected_parent_slug}', Character has '{actual_parent_slug}'.",
+                    parent_relationships = DivineRelationship.objects.filter(
+                        to_character=character,
+                        relationship_type='parent_of',
                     )
+                    actual_parent_slugs = set(
+                        parent_relationships.filter(from_god__isnull=False).values_list(
+                            'from_god__slug', flat=True
+                        )
+                    ) | set(
+                        parent_relationships.filter(from_titan__isnull=False).values_list(
+                            'from_titan__slug', flat=True
+                        )
+                    )
+                    if expected_parent_slug and expected_parent_slug not in actual_parent_slugs:
+                        _warning(
+                            self.stdout,
+                            self.style,
+                            f"Divine-parent check failed for {character.name}'s {name}: "
+                            f"seed says '{expected_parent_slug}', family links contain "
+                            f'{sorted(actual_parent_slugs)}.',
+                        )
 
                 first_book = _resolve_book(
                     entry.get('first_demonstrated_book'),

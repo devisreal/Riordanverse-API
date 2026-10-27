@@ -26,8 +26,9 @@ DIVINE_RELATIONSHIP_TYPE_CHOICES = (
     ('parent_of', 'Parent of'),
     ('sibling_of', 'Sibling of'),
     ('consort_of', 'Consort of'),
-    ('child_of', 'Child of'),
 )
+
+RELATIONSHIP_ENTITY_TYPES = ('god', 'titan', 'character', 'monster', 'creature')
 
 
 # ---------------------------------------------------------------------------
@@ -265,13 +266,12 @@ class Titan(BaseModel):
 
 class DivineRelationship(models.Model):
     """
-    Directed graph edge representing a family or divine relationship
-    between Gods, Titans, and Characters.
+    Directed graph edge representing a family relationship between Gods,
+    Titans, Characters, Monsters, and Creatures.
 
     Each row has exactly one "from" entity and exactly one "to" entity,
-    enforced by CheckConstraints. This allows cross-boundary relationships
-    (e.g. Kronos [Titan] → parent_of → Zeus [God]) that simple M2M fields
-    on God or Titan cannot express.
+    enforced by CheckConstraints. This allows cross-type relationships that
+    simple M2M fields on individual entity models cannot express.
 
     The API consumer never sees the raw FK fields — serializers flatten
     them into a clean {type, slug, name} shape. See GodDetailSerializer
@@ -303,6 +303,20 @@ class DivineRelationship(models.Model):
         blank=True,
         related_name='divine_relationships_as_from',
     )
+    from_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='family_relationships_as_from',
+    )
+    from_creature = models.ForeignKey(
+        'bestiary.Creature',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='family_relationships_as_from',
+    )
 
     # "To" entity — exactly one must be set (enforced by CheckConstraint)
     to_god = models.ForeignKey(
@@ -326,6 +340,20 @@ class DivineRelationship(models.Model):
         blank=True,
         related_name='divine_relationships_as_to',
     )
+    to_monster = models.ForeignKey(
+        'bestiary.Monster',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='family_relationships_as_to',
+    )
+    to_creature = models.ForeignKey(
+        'bestiary.Creature',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='family_relationships_as_to',
+    )
 
     relationship_type = models.CharField(
         max_length=20,
@@ -342,16 +370,36 @@ class DivineRelationship(models.Model):
                         from_god__isnull=False,
                         from_titan__isnull=True,
                         from_character__isnull=True,
+                        from_monster__isnull=True,
+                        from_creature__isnull=True,
                     )
                     | models.Q(
                         from_god__isnull=True,
                         from_titan__isnull=False,
                         from_character__isnull=True,
+                        from_monster__isnull=True,
+                        from_creature__isnull=True,
                     )
                     | models.Q(
                         from_god__isnull=True,
                         from_titan__isnull=True,
                         from_character__isnull=False,
+                        from_monster__isnull=True,
+                        from_creature__isnull=True,
+                    )
+                    | models.Q(
+                        from_god__isnull=True,
+                        from_titan__isnull=True,
+                        from_character__isnull=True,
+                        from_monster__isnull=False,
+                        from_creature__isnull=True,
+                    )
+                    | models.Q(
+                        from_god__isnull=True,
+                        from_titan__isnull=True,
+                        from_character__isnull=True,
+                        from_monster__isnull=True,
+                        from_creature__isnull=False,
                     )
                 ),
                 name='divine_rel_exactly_one_from',
@@ -362,16 +410,36 @@ class DivineRelationship(models.Model):
                         to_god__isnull=False,
                         to_titan__isnull=True,
                         to_character__isnull=True,
+                        to_monster__isnull=True,
+                        to_creature__isnull=True,
                     )
                     | models.Q(
                         to_god__isnull=True,
                         to_titan__isnull=False,
                         to_character__isnull=True,
+                        to_monster__isnull=True,
+                        to_creature__isnull=True,
                     )
                     | models.Q(
                         to_god__isnull=True,
                         to_titan__isnull=True,
                         to_character__isnull=False,
+                        to_monster__isnull=True,
+                        to_creature__isnull=True,
+                    )
+                    | models.Q(
+                        to_god__isnull=True,
+                        to_titan__isnull=True,
+                        to_character__isnull=True,
+                        to_monster__isnull=False,
+                        to_creature__isnull=True,
+                    )
+                    | models.Q(
+                        to_god__isnull=True,
+                        to_titan__isnull=True,
+                        to_character__isnull=True,
+                        to_monster__isnull=True,
+                        to_creature__isnull=False,
                     )
                 ),
                 name='divine_rel_exactly_one_to',
@@ -383,24 +451,32 @@ class DivineRelationship(models.Model):
                         **{
                             **{
                                 f'from_{kind}__isnull': kind != source
-                                for kind in ('god', 'titan', 'character')
+                                for kind in RELATIONSHIP_ENTITY_TYPES
                             },
                             **{
                                 f'to_{kind}__isnull': kind != target
-                                for kind in ('god', 'titan', 'character')
+                                for kind in RELATIONSHIP_ENTITY_TYPES
                             },
                         },
                     ),
                     name=f'unique_dr_{source}_{target}',
                 )
-                for source in ('god', 'titan', 'character')
-                for target in ('god', 'titan', 'character')
+                for source in RELATIONSHIP_ENTITY_TYPES
+                for target in RELATIONSHIP_ENTITY_TYPES
             ],
         ]
 
     def __str__(self):
-        from_entity = self.from_god or self.from_titan or self.from_character
-        to_entity = self.to_god or self.to_titan or self.to_character
+        from_entity = (
+            self.from_god
+            or self.from_titan
+            or self.from_character
+            or self.from_monster
+            or self.from_creature
+        )
+        to_entity = (
+            self.to_god or self.to_titan or self.to_character or self.to_monster or self.to_creature
+        )
         return f'{from_entity} → {self.relationship_type} → {to_entity}'
 
 

@@ -69,7 +69,7 @@
     ],
     "monster_slugs": [
       "polyphemus",
-      "lernean-hydra",
+      "hydra",
       "scylla",
       "charybdis"
     ],
@@ -446,7 +446,7 @@
     ],
     "monster_slugs": [
       "nemean-lion",
-      "lernean-hydra",
+      "hydra",
       "erymanthian-boar",
       "geryon",
       "ladon",
@@ -469,7 +469,7 @@
       },
       {
         "type": "monster",
-        "slug": "lernean-hydra"
+        "slug": "hydra"
       },
       {
         "type": "monster",

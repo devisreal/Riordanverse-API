@@ -8,7 +8,8 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from apps.characters.models import Character, Power
-from tests.makers import make_character, make_god
+from apps.divinities.family import serialize_family
+from tests.makers import make_character, make_divine_relationship, make_god
 
 
 class PowerSeedCommandTests(TestCase):
@@ -19,6 +20,10 @@ class PowerSeedCommandTests(TestCase):
             'seed_gods',
             'seed_titans',
             'seed_characters',
+            'seed_items',
+            'seed_monsters',
+            'seed_creatures',
+            'seed_divine_relationships',
             'seed_powers',
         ):
             output = StringIO()
@@ -76,7 +81,8 @@ class PowerSeedCommandTests(TestCase):
 
     def test_divine_parent_mismatch_warns_without_duplicating_parent(self):
         poseidon = make_god(name='Poseidon')
-        percy = make_character(name='Percy Jackson', divine_parent=poseidon)
+        percy = make_character(name='Percy Jackson')
+        make_divine_relationship(from_entity=poseidon, to_entity=percy)
         data = [
             {
                 'character_slug': percy.slug,
@@ -100,4 +106,4 @@ class PowerSeedCommandTests(TestCase):
 
         self.assertEqual(Power.objects.count(), 1)
         self.assertIn('Divine-parent check failed', output.getvalue())
-        self.assertEqual(percy.divine_parent, poseidon)
+        self.assertEqual(serialize_family(percy)['parents'][0]['slug'], 'poseidon')

@@ -11,6 +11,7 @@ from django.core.management.base import BaseCommand
 from django.db import DatabaseError
 
 from apps.bestiary.models import Monster
+from apps.core.seed_utils import update_or_create_by_expected_slug
 from apps.narrative.models import Book
 
 DATA_FILE = settings.BASE_DIR / 'data' / 'monsters.json'
@@ -61,7 +62,6 @@ class Command(BaseCommand):
                     self.style,
                 )
                 defaults = {
-                    'slug': entry['expected_slug'],
                     'name': name,
                     'first_appearance_book': first_book,
                     **{
@@ -89,9 +89,11 @@ class Command(BaseCommand):
                 if entry.get('wiki_url'):
                     defaults['wiki_url'] = entry['wiki_url']
 
-                monster, created = Monster.objects.update_or_create(
-                    slug=entry['expected_slug'],
-                    defaults=defaults,
+                monster, created = update_or_create_by_expected_slug(
+                    Monster,
+                    entry['expected_slug'],
+                    defaults,
+                    fallback={'name': name},
                 )
 
                 books = []

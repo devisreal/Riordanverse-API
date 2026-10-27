@@ -8,25 +8,37 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from apps.characters.models import Character
+from apps.divinities.family import serialize_family
 from tests.makers import make_book, make_character
 
 
 class SeedCharactersCommandTests(TestCase):
     def test_seed_v3_records_and_titan_parent(self):
-        for command in ('seed_books', 'seed_gods', 'seed_titans'):
+        for command in (
+            'seed_books',
+            'seed_gods',
+            'seed_titans',
+            'seed_characters',
+            'seed_items',
+            'seed_monsters',
+            'seed_creatures',
+            'seed_divine_relationships',
+        ):
             call_command(command, stdout=StringIO())
 
         output = StringIO()
         call_command('seed_characters', stdout=output)
 
         phaethon = Character.objects.get(slug='phaethon')
-        self.assertEqual(phaethon.divine_parent_titan.slug, 'helios')
+        family = serialize_family(phaethon)
+        self.assertEqual(family['parents'][0]['slug'], 'helios')
+        self.assertEqual(family['parents'][0]['type'], 'titan')
         self.assertEqual(
             phaethon.special_states,
             ["Struck down by Zeus's lightning bolt to stop the sun chariot from burning the Earth"],
         )
-        self.assertEqual(Character.objects.count(), 68)
-        self.assertEqual(Character.objects.filter(wiki_url__isnull=False).count(), 68)
+        self.assertEqual(Character.objects.count(), 96)
+        self.assertEqual(Character.objects.filter(wiki_url__isnull=False).count(), 83)
         self.assertEqual(Character.objects.get(slug='phoebe-hunter').name, 'Phoebe')
         self.assertEqual(
             Character.objects.get(slug='mrs-oleary').wiki_url,
@@ -50,9 +62,9 @@ class SeedCharactersCommandTests(TestCase):
 
         rerun_output = StringIO()
         call_command('seed_characters', stdout=rerun_output)
-        self.assertEqual(Character.objects.count(), 68)
+        self.assertEqual(Character.objects.count(), 96)
         self.assertIn(
-            'Characters seeded: 0 created, 68 updated, 0 errors.', rerun_output.getvalue()
+            'Characters seeded: 0 created, 96 updated, 0 errors.', rerun_output.getvalue()
         )
 
     def test_missing_wiki_url_does_not_clear_existing_value(self):

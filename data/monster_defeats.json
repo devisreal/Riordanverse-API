@@ -84,14 +84,14 @@
     "is_myth": false
   },
   {
-    "monster_slug": "lernean-hydra",
+    "monster_slug": "hydra",
     "defeated_by_slug": "clarisse-la-rue",
     "book_slug": "the-sea-of-monsters",
     "method": "Blasted with full cannon volleys from the CSS Birmingham steamship at Monster Donut",
     "is_myth": false
   },
   {
-    "monster_slug": "lernean-hydra",
+    "monster_slug": "hydra",
     "defeated_by_slug": "heracles",
     "book_slug": null,
     "method": "Cut off heads while Iolaus cauterized the necks, then buried the golden head under a boulder",

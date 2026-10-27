@@ -126,7 +126,7 @@
     "aliases": [
       "Mother of All Monsters"
     ],
-    "monster_type": "hybrid_monster",
+    "monster_type": "chimeric",
     "allegiance": "kronos_army",
     "origin_myth": "Ancient half-woman, half-snake mother of Greek mythology's most horrific beasts (Cerberus, Hydra, Chimera, Nemean Lion).",
     "physical_description": "Appears as a rotund, heavy-set woman in a denim dress carrying a Chihuahua in a handbag. True form reveals a scaly snake body from the waist down and reptile eyes.",
@@ -152,7 +152,7 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief"
     ],
-    "description": "The Mother of All Monsters. Corner Percy, Annabeth, and Grover at the top of the St. Louis Arch in Book 1, loosing her son the Chimera against Percy."
+    "description": "The Mother of Monsters, half-woman and half-snake. Accompanied by her child the Chimera, she attacked Percy Jackson at the Gateway Arch in St. Louis."
   },
   {
     "name": "Chimera",
@@ -188,7 +188,7 @@
       "the-lightning-thief",
       "percy-jacksons-greek-heroes"
     ],
-    "description": "Fire-breathing hybrid monster. Poisoned Percy Jackson with its tail at the St. Louis Arch, forcing Percy to leap into the Mississippi River."
+    "description": "Fire-breathing monster offspring of Echidna and Typhon with the head of a lion, body of a goat, and tail of a poisonous serpent."
   },
   {
     "name": "Procrustes",
@@ -260,7 +260,7 @@
       "the-lightning-thief",
       "percy-jacksons-greek-heroes"
     ],
-    "description": "The giant three-headed guard dog of Hades. Pacified by Annabeth Chase using a red rubber ball from Waterland, allowing the quest group to pass safely into Erebos."
+    "description": "Massive three-headed guard dog of the Underworld who guards the entrance to Erebos. Befriended by Annabeth Chase with a red rubber ball."
   },
   {
     "name": "Polyphemus",
@@ -297,11 +297,11 @@
       "the-sea-of-monsters",
       "percy-jacksons-greek-heroes"
     ],
-    "description": "The blind Cyclops guardian of the Golden Fleece on his island in the Sea of Monsters. Traps Grover (mistaking him for a female Cyclops) and Clarisse before being outwitted by Percy and Annabeth."
+    "description": "Blind elder Cyclops son of Poseidon who guarded the Golden Fleece on his island in the Sea of Monsters."
   },
   {
     "name": "Lernean Hydra",
-    "expected_slug": "lernean-hydra",
+    "expected_slug": "hydra",
     "wiki_url": "https://riordan.fandom.com/wiki/Hydra",
     "aliases": [
       "The Nine-Headed Swamp Hydra"
@@ -364,7 +364,7 @@
     "books_appeared_in_slugs": [
       "the-sea-of-monsters"
     ],
-    "description": "Six-headed cliff monster in the Sea of Monsters. Plucks six zombie sailors off Clarisse's ironclad vessel as they navigate the strait."
+    "description": "Six-headed sea monster who eats sailors passing through the Straits of Messina opposite Charybdis."
   },
   {
     "name": "Charybdis",
@@ -541,7 +541,7 @@
     "aliases": [
       "Dragon of the Hesperides"
     ],
-    "monster_type": "dragon",
+    "monster_type": "sea_monster",
     "allegiance": "kronos_army",
     "origin_myth": "Hundred-headed dragon assigned by Hera to guard the Golden Apples in the Garden of the Hesperides.",
     "physical_description": "Colossal copper dragon coiled around the Golden Apple tree with one hundred snapping heads, each speaking with different voices.",
@@ -567,7 +567,7 @@
       "the-titans-curse",
       "percy-jacksons-greek-heroes"
     ],
-    "description": "The hundred-headed dragon guarding Mount Tamalpais. Inflicts a fatal poisonous wound on Zoë Nightshade during the quest to free Artemis."
+    "description": "Hundred-headed dragon that guards the golden apple tree in the Garden of the Hesperides. Poisoned Luke Castellan and fatally wounded Zoë Nightshade."
   },
   {
     "name": "Kampê",
@@ -669,7 +669,7 @@
       "the-battle-of-the-labyrinth",
       "percy-jacksons-greek-heroes"
     ],
-    "description": "Three-chested giant operating Triple G Ranch in Texas. Slain by Percy Jackson who shoots an arrow guided by the wind through all three of his chests at once."
+    "description": "Three-bodied rancher giant who managed the Triple-G Ranch in Texas and sold flesh-eating cattle to Kronos's army before Percy shot him through all three hearts."
   },
   {
     "name": "Typhon",
@@ -839,6 +839,42 @@
     "wiki_url": "https://riordan.fandom.com/wiki/Antaeus",
     "monster_type": "giant",
     "description": "Giant son of Poseidon and Gaea who gained invulnerability while touching the earth. He ran a gladiatorial arena in the Labyrinth where he forced demigods to fight to the death before being defeated by Percy Jackson.",
-    "first_appearance_book_slug": "the-battle-of-the-labyrinth"
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Sphinx",
+    "expected_slug": "sphinx",
+    "monster_type": "chimeric",
+    "description": "Monster with the head of a woman and body of a lion. Guarded an intersection in the Labyrinth administering standardized tests to demigods.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Sphinx"
+  },
+  {
+    "name": "Stheno",
+    "expected_slug": "stheno",
+    "monster_type": "gorgon",
+    "description": "Immortal Gorgon, sister of Medusa and Euryale, with brass hands, sharp fangs, and living green snakes for hair.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Stheno"
+  },
+  {
+    "name": "Euryale",
+    "expected_slug": "euryale",
+    "monster_type": "gorgon",
+    "description": "Immortal Gorgon, sister of Medusa and Stheno, known for her bellowing brass roar and venomous serpent hair.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Euryale"
   }
 ]

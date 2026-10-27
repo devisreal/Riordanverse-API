@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics
 
+from apps.divinities.family import prefetch_family
 from apps.divinities.filters import GodFilter, TitanFilter
 from apps.divinities.models import God, GodImage, Titan, TitanImage
 from apps.divinities.serializers import (
@@ -19,16 +20,11 @@ from apps.images.serializers import ImageSerializer
 class GodListView(generics.ListAPIView):
     """GET /api/v1/gods/"""
 
-    queryset = (
-        God.objects.prefetch_related(
-            'images__image',
-            'books_appeared_in',
-            'children_demigods',
-            'weapons',
-        )
-        .select_related('first_appearance_book')
-        .all()
-    )
+    queryset = God.objects.prefetch_related(
+        'images__image',
+        'books_appeared_in',
+        'weapons',
+    ).select_related('first_appearance_book')
     serializer_class = GodListSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     filterset_class = GodFilter
@@ -39,18 +35,11 @@ class GodListView(generics.ListAPIView):
 class GodDetailView(generics.RetrieveAPIView):
     """GET /api/v1/gods/<slug>/"""
 
-    queryset = (
+    queryset = prefetch_family(
         God.objects.prefetch_related(
             'images__image',
             'books_appeared_in',
-            'children_demigods',
             'weapons',
-            'relationships_as_from__to_god',
-            'relationships_as_from__to_titan',
-            'relationships_as_from__to_character',
-            'relationships_as_to__from_god',
-            'relationships_as_to__from_titan',
-            'relationships_as_to__from_character',
         )
         .select_related('first_appearance_book')
         .all()
@@ -96,10 +85,8 @@ class GodImageListView(_EntityImageListView):
 class TitanListView(generics.ListAPIView):
     """GET /api/v1/titans/"""
 
-    queryset = (
-        Titan.objects.prefetch_related('images__image', 'books_appeared_in')
-        .select_related('first_appearance_book')
-        .all()
+    queryset = Titan.objects.prefetch_related('images__image', 'books_appeared_in').select_related(
+        'first_appearance_book'
     )
     serializer_class = TitanListSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
@@ -111,18 +98,8 @@ class TitanListView(generics.ListAPIView):
 class TitanDetailView(generics.RetrieveAPIView):
     """GET /api/v1/titans/<slug>/"""
 
-    queryset = (
-        Titan.objects.prefetch_related(
-            'images__image',
-            'books_appeared_in',
-            'weapons',
-            'relationships_as_from__to_god',
-            'relationships_as_from__to_titan',
-            'relationships_as_from__to_character',
-            'relationships_as_to__from_god',
-            'relationships_as_to__from_titan',
-            'relationships_as_to__from_character',
-        )
+    queryset = prefetch_family(
+        Titan.objects.prefetch_related('images__image', 'books_appeared_in', 'weapons')
         .select_related('first_appearance_book')
         .all()
     )
@@ -149,7 +126,10 @@ class GodChildrenListView(generics.ListAPIView):
         from apps.divinities.models import God
 
         get_object_or_404(God, slug=self.kwargs['slug'])
-        return Character.objects.filter(divine_parent__slug=self.kwargs['slug']).distinct()
+        return Character.objects.filter(
+            divine_relationships_as_to__from_god__slug=self.kwargs['slug'],
+            divine_relationships_as_to__relationship_type='parent_of',
+        ).distinct()
 
     def get_serializer_class(self):
         from apps.characters.serializers import CharacterListSerializer

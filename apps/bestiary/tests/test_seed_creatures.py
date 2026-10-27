@@ -18,8 +18,8 @@ class SeedCreaturesCommandTests(TestCase):
         output = StringIO()
         call_command('seed_creatures', stdout=output)
 
-        self.assertEqual(Creature.objects.count(), 17)
-        self.assertEqual(Creature.objects.filter(wiki_url__isnull=False).count(), 17)
+        self.assertEqual(Creature.objects.count(), 18)
+        self.assertEqual(Creature.objects.filter(wiki_url__isnull=False).count(), 18)
         self.assertEqual(
             Creature.objects.get(slug='pegasus').wiki_url,
             'https://riordan.fandom.com/wiki/Pegasus_%28species%29',
@@ -63,7 +63,7 @@ class SeedCreaturesCommandTests(TestCase):
 
         rerun = StringIO()
         call_command('seed_creatures', stdout=rerun)
-        self.assertEqual(Creature.objects.count(), 17)
+        self.assertEqual(Creature.objects.count(), 18)
         self.assertEqual(CreatureMember.objects.count(), 20)
         self.assertEqual(satyr.notable_members.count(), 5)
-        self.assertIn('17 updated', rerun.getvalue())
+        self.assertIn('18 updated', rerun.getvalue())

@@ -25,3 +25,4 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Keep API-key requirements and request/security logging in development too.
 LOGGING['root']['level'] = 'INFO'
 LOGGING['loggers']['django']['level'] = 'INFO'
+LOGGING['handlers']['console']['formatter'] = 'color_json'
