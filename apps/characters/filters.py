@@ -1,10 +1,13 @@
 # ruff: noqa: RUF012
 
 import django_filters
-from django.db.models import Q
+from django.db import connection
+from django.db.models import CharField, Q
+from django.db.models.functions import Cast
 
 from apps.characters.models import Character
 from apps.core.choices import (
+    AFFILIATION_CHOICES,
     CHARACTER_TYPE_CHOICES,
     GENDER_CHOICES,
     GREEK_OR_ROMAN_CHOICES,
@@ -18,6 +21,11 @@ class CharacterFilter(django_filters.FilterSet):
     character_type = StrictChoiceFilter(
         choices=CHARACTER_TYPE_CHOICES,
         field_name='character_type',
+    )
+    type = StrictChoiceFilter(choices=CHARACTER_TYPE_CHOICES, field_name='character_type')
+    affiliation = StrictChoiceFilter(
+        choices=AFFILIATION_CHOICES,
+        method='filter_affiliation',
     )
     species = StrictChoiceFilter(choices=SPECIES_CHOICES)
     status = StrictChoiceFilter(choices=STATUS_CHOICES)
@@ -49,6 +57,15 @@ class CharacterFilter(django_filters.FilterSet):
     # Cabin
     cabin = django_filters.NumberFilter(field_name='cabin_number')
 
+    def filter_affiliation(self, queryset, name, value):
+        if connection.features.supports_json_field_contains:
+            return queryset.filter(affiliation__contains=[value]).distinct()
+        return (
+            queryset.annotate(_affiliation_text=Cast('affiliation', output_field=CharField()))
+            .filter(_affiliation_text__contains=f'"{value}"')
+            .distinct()
+        )
+
     def filter_divine_parent(self, queryset, name, value):
         return queryset.filter(
             Q(
@@ -65,6 +82,8 @@ class CharacterFilter(django_filters.FilterSet):
         model = Character
         fields = [
             'character_type',
+            'type',
+            'affiliation',
             'species',
             'status',
             'gender',

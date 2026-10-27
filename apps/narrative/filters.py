@@ -8,6 +8,7 @@ from apps.narrative.models import Book, Event, Prophecy, Quest
 class BookFilter(django_filters.FilterSet):
     series = StrictChoiceFilter(choices=SERIES_CHOICES)
     book_type = StrictChoiceFilter(choices=BOOK_TYPE_CHOICES)
+    type = StrictChoiceFilter(choices=BOOK_TYPE_CHOICES, field_name='book_type')
     parent_collection = django_filters.CharFilter(
         field_name='parent_collection__slug',
         help_text='Filter by parent collection slug e.g. ?parent-collection=the-demigod-files',
@@ -70,6 +71,7 @@ class BookFilter(django_filters.FilterSet):
         fields = (
             'series',
             'book_type',
+            'type',
             'parent_collection',
             'narrator',
             'narrator_character',
@@ -184,6 +186,7 @@ class QuestFilter(django_filters.FilterSet):
 
 class EventFilter(django_filters.FilterSet):
     event_type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES)
+    type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES, field_name='event_type')
     book = django_filters.CharFilter(field_name='book__slug')
     location = django_filters.CharFilter(field_name='location__slug')
     participant_character = django_filters.CharFilter(
@@ -213,6 +216,7 @@ class EventFilter(django_filters.FilterSet):
         model = Event
         fields = (
             'event_type',
+            'type',
             'book',
             'location',
             'participant_character',
