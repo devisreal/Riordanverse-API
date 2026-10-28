@@ -1042,13 +1042,13 @@ Response (`201 Created`; key shown once only):
 
 All other endpoints require:
 
-```text
+```http
 X-API-Key: <your-key>
 ```
 
 ### Books
 
-```text
+```http
 GET    /books                        List all books (filterable by series, type)
 GET    /books/:slug                  Get a single book
 GET    /books/:slug/characters       All characters in a book
@@ -1060,7 +1060,7 @@ GET    /books/:slug/locations        Locations visited in a book
 
 ### Characters
 
-```text
+```http
 GET    /characters                   List all characters
 GET    /characters/:slug             Get a single character
 GET    /characters/:slug/weapons     Weapons associated with character
@@ -1076,7 +1076,7 @@ GET    /characters?status=deceased
 
 ### Gods
 
-```text
+```http
 GET    /gods                         List all gods
 GET    /gods/:slug                   Get a single god
 GET    /gods/:slug/children          All demigod children
@@ -1088,7 +1088,7 @@ GET    /gods?has_cabin=true
 
 ### Titans
 
-```text
+```http
 GET    /titans                       List all Titans
 GET    /titans/:slug                 Get a single Titan
 GET    /titans?alignment=kronos_army
@@ -1097,7 +1097,7 @@ GET    /api/v1/titans/?status=imprisoned
 
 ### Monsters
 
-```text
+```http
 GET    /monsters                     List all monsters
 GET    /monsters/:slug               Get a single monster
 GET    /monsters?book=the-lightning-thief
@@ -1109,7 +1109,7 @@ GET    /monsters?defeated_by=percy-jackson
 
 ### Weapons & Items
 
-```text
+```http
 GET    /weapons                      List all weapons and items
 GET    /weapons/:slug                Get a single weapon/item
 GET    /weapons?type=sword
@@ -1123,7 +1123,7 @@ GET    /weapons?transforms=true
 
 ### Locations
 
-```text
+```http
 GET    /locations                    List all locations
 GET    /locations/:slug              Get a single location
 GET    /locations?type=underworld
@@ -1133,7 +1133,7 @@ GET    /locations?is_hidden_from_mortals=true
 
 ### Quests
 
-```text
+```http
 GET    /quests                       List all quests
 GET    /quests/:slug                 Get a single quest
 GET    /quests/:slug/participants    All characters on a quest
@@ -1143,7 +1143,7 @@ GET    /quests?led_by=percy-jackson
 
 ### Cabins
 
-```text
+```http
 GET    /cabins                       List all cabins
 GET    /cabins/number/<number>/      Get a single cabin by number
 GET    /cabins/:slug                 Get a single cabin by slug
@@ -1152,14 +1152,14 @@ GET    /cabins/:slug/campers         All known campers
 
 ### Prophecies
 
-```text
+```http
 GET    /prophecies                   List all prophecies
 GET    /prophecies/:slug             Get a single prophecy
 ```
 
 ### Events
 
-```text
+```http
 GET    /events                       List all events/battles
 GET    /events/:slug                 Get a single event
 GET    /events?type=battle
@@ -1168,7 +1168,7 @@ GET    /events?book=the-last-olympian
 
 ### Factions
 
-```text
+```http
 GET    /factions                     List all factions
 GET    /factions/:slug               Get a single faction
 GET    /factions/:slug/members       All members
@@ -1176,7 +1176,7 @@ GET    /factions/:slug/members       All members
 
 ### Creatures / Species
 
-```text
+```http
 GET    /creatures                    List all species
 GET    /creatures/:slug              Get a single species
 GET    /creatures/:slug/members      Named individuals of that species
@@ -1184,7 +1184,7 @@ GET    /creatures/:slug/members      Named individuals of that species
 
 ### Images (Sub-resource on all major entities)
 
-```text
+```http
 GET    /characters/:slug/images                          All images for a character
 GET    /characters/:slug/images?source_type=official_book
 GET    /characters/:slug/images?source_type=fan_art
@@ -1208,13 +1208,13 @@ GET    /books/:slug/images
 
 Filters can be combined on any image endpoint:
 
-```text
+```http
 GET    /characters/annabeth-chase/images?source_type=official_book&category=portrait
 ```
 
 ### Search (Global)
 
-```text
+```http
 GET    /search?q=riptide             Global search across all models
 GET    /search?q=poseidon&type=god   Search within a model type
 ```
@@ -1229,7 +1229,7 @@ List endpoints that use DRF pagination support `page` and `limit` (20 default; m
 
 ### Pagination
 
-```text
+```http
 ?page=1&limit=20          Default: page 1, 20 results
 ?page=2&limit=50          Max limit: 100
 ```
@@ -1252,7 +1252,7 @@ Response envelope:
 
 All list endpoints accept `?sort=<field>&order=asc|desc` to override the default. Example:
 
-```text
+```http
 ?sort=name&order=asc
 ?sort=book_number&order=desc
 ?sort=age_first_appearance
@@ -1398,7 +1398,7 @@ Species are pure reference data. Alphabetical is simplest and most useful for br
 
 Multiple filters can be combined:
 
-```text
+```http
 ?type=demigod&affiliation=camp_half_blood&status=alive
 ```
 
@@ -1406,10 +1406,12 @@ Multiple filters can be combined:
 
 Filters implemented with `StrictChoiceFilter` reject invalid values with a `400 Bad Request` and the allowed values in `valid_values`. Other invalid query inputs use the generic `BAD_REQUEST` envelope. See the live filter list in Section 23.
 
-```text
-GET /api/v1/characters/?type=Demigod
+```http
+GET /api/v1/characters/?type=Demigod HTTP/1.1
+Accept: application/json
 
-→ 400 Bad Request
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
 {
   "error": {
     "code": "INVALID_FILTER_VALUE",
@@ -1425,7 +1427,7 @@ This applies to choice filters that use `StrictChoiceFilter`; invalid boolean an
 
 Boolean query params accept lowercase `true` or `false` only:
 
-```text
+```http
 ?is_demigod=true               ✅
 ?can_reform=false               ✅
 ?is_demigod=True               ❌  returns 400
@@ -1551,7 +1553,7 @@ BookImage        → book (FK)      + image (FK) + is_primary + display_order
 
 Images are filterable as a sub-resource on the supported entities listed in Section 23. The API accepts the strict `source_type` and `category` choice filters.
 
-```text
+```http
 GET /api/v1/characters/<slug>/images/
 GET /api/v1/characters/<slug>/images/?source_type=official_book
 GET /api/v1/characters/<slug>/images/?source_type=fan_art
@@ -1572,7 +1574,7 @@ GET /api/v1/locations/<slug>/images/?category=concept_art
 
 Multiple filters can be combined:
 
-```text
+```http
 GET /api/v1/characters/annabeth-chase/images/?source_type=official_book&category=portrait
 ```
 
@@ -1733,7 +1735,7 @@ The key model is `ConsumerAPIKey`, managed through Django Admin. The API key pac
 
 Example response headers:
 
-```text
+```http
 RateLimit-Limit: 1000;w=3600
 RateLimit-Remaining: 847
 RateLimit-Reset: 1723
@@ -1803,7 +1805,7 @@ python manage.py buildwatson
 
 #### Search Endpoint
 
-```text
+```http
 GET /api/v1/search/?q=riptide
 GET /api/v1/search/?q=poseidon&type=god
 ```
@@ -2369,7 +2371,7 @@ Without `BaseModel`, these fields would be written 13 times each — once per mo
 
 The `Character` model originally stored powers as a raw JSON array. This works for display but makes filtering and querying impossible:
 
-```text
+```http
 GET /characters/?has_power=hydrokinesis     ❌ not queryable
 GET /powers/?source=divine_parent           ❌ no endpoint possible
 GET /powers/?type=offensive                 ❌ no type field to filter on
@@ -2582,7 +2584,7 @@ class Power(models.Model):
 
 ### Endpoints Unlocked
 
-```text
+```http
 GET  /api/v1/characters/percy-jackson/powers/
 GET  /api/v1/characters/percy-jackson/powers/?source=divine_parent
 GET  /api/v1/characters/percy-jackson/powers/?type=offensive
