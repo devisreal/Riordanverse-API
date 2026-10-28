@@ -102,7 +102,24 @@ Development keeps API-key authentication enabled. Tests use separate SQLite sett
 
 ### Seed canonical data
 
-Run migrations first and seed dependent records in order. Commands are idempotent; use them only against the database you intend to populate.
+Run migrations first. Use the master command for a one-command setup, or run
+the individual commands below if you prefer step-by-step control. All seed
+commands are idempotent; use them only against the database you intend to
+populate.
+
+#### One-command setup
+
+```bash
+uv run python manage.py seed_all --settings=config.settings.development
+```
+
+`seed_all` runs every canonical seed command in dependency order and stops if
+a command fails. You can safely rerun it after correcting a seed issue.
+
+#### Step-by-step setup
+
+Run these commands in order if you want to seed individual datasets or inspect
+each command's output:
 
 ```bash
 uv run python manage.py seed_books
