@@ -1,3 +1,4 @@
+import hmac
 import logging
 
 from django.core.cache import cache
@@ -8,6 +9,7 @@ from apps.access.models import ConsumerAPIKey
 from apps.core.cache_utils import (
     CACHE_UNAVAILABLE_EXCEPTIONS,
     api_key_validation_cache_key,
+    api_key_validation_cache_value,
 )
 
 logger = logging.getLogger(__name__)
@@ -29,17 +31,19 @@ class CachedHasAPIKey(BasePermission):
             return False
 
         cache_key = api_key_validation_cache_key(prefix)
+        key_fingerprint = api_key_validation_cache_value(key)
         try:
             cached = cache.get(cache_key)
         except CACHE_UNAVAILABLE_EXCEPTIONS:
             logger.warning('Redis unavailable for API-key validation; checking PostgreSQL.')
             cached = None
-        if cached is not None:
-            if cached:
-                raw_request = getattr(request, '_request', request)
-                raw_request.api_key_prefix = prefix
-            return cached
+        if isinstance(cached, str) and hmac.compare_digest(cached, key_fingerprint):
+            raw_request = getattr(request, '_request', request)
+            raw_request.api_key_prefix = prefix
+            return True
 
+        # Legacy booleans and mismatched fingerprints are not trusted; validate with the
+        # database and replace them with a fingerprinted positive entry when the key is valid.
         is_valid = ConsumerAPIKey.objects.is_valid(key)
         # Do not cache failures: otherwise an invalid attempt using a real
         # prefix could poison the cache and deny the legitimate key holder.
@@ -47,7 +51,7 @@ class CachedHasAPIKey(BasePermission):
             raw_request = getattr(request, '_request', request)
             raw_request.api_key_prefix = prefix
             try:
-                cache.set(cache_key, True, CACHE_TTL)
+                cache.set(cache_key, key_fingerprint, CACHE_TTL)
             except CACHE_UNAVAILABLE_EXCEPTIONS:
                 logger.warning('Redis unavailable; API-key validation succeeded without caching.')
         return is_valid

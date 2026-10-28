@@ -103,8 +103,8 @@ A running record of project decisions. Some earlier rows were proposals and are 
 
 | # | Decision | Choice Made | Reason |
 | --- | --- | --- | --- |
-| 12 | API authentication | **`djangorestframework-api-key` + `ConsumerAPIKey`; `X-API-Key`; 5-minute positive validation cache** | No user accounts; validation falls back to PostgreSQL, and admin revocation invalidates the positive cache after commit |
-| 12 (flow) | Key creation | **Public self-service endpoint** `POST /auth/request-key/` and verification at `/auth/verify-key/` (both outside `/api/v1/`) | Requires `consumer_name` and `email`; each route has an IP-based throttle |
+| 12 | API authentication | **`djangorestframework-api-key` + `ConsumerAPIKey`; `X-API-Key`; 5-minute positive validation cache** | Cache is keyed by public prefix but stores a settings-salted fingerprint of the full key, so a different secret with the same prefix is not accepted; validation falls back to PostgreSQL, and admin/self-revocation invalidates after commit |
+| 12 (flow) | Key lifecycle | **Public key request/verification** at `POST /auth/request-key/` and `/auth/verify-key/`; key holders can revoke only the presented key at `POST /auth/revoke-key/` | Request and verification require `consumer_name` and `email` as applicable and use IP-based throttles; revocation requires `X-API-Key`, not an email address |
 | 15 | Search | **`django-watson`** with custom adapters per model | Mature, PostgreSQL-native full-text search; custom adapters handle aliases, `true_name`, `disguise_form` |
 | 16 | Alias search | **Included in watson custom adapters via `get_search_text()`** | Flattens `aliases` array, `true_name`, `disguise_form` into indexed text; "Aunty Em" finds Medusa |
 | 17 | API documentation | **Public OpenAPI, Swagger UI, and ReDoc routes are registered with `drf-spectacular==0.30.0`** | `/api/schema/` serves the schema; `/api/docs/` and `/api/redoc/` serve public interactive documentation. The schema declares `X-API-Key` for protected operations |
@@ -1718,7 +1718,9 @@ Content-Type: application/json
 
 The successful response is `201 Created` and contains `api_key`, `consumer_name`, `email`, and `message`. The plaintext key is shown once. To verify it, send `POST /auth/verify-key/` with the `X-API-Key` header; the response contains `valid` and `consumer_name`. Neither endpoint accepts `intended_use` or `website_url` in its request body.
 
-The key model is `ConsumerAPIKey`, managed through Django Admin. The API key package stores a hashed key; logs contain neither the plaintext key nor its hash. Revocation is an administrative action, not a public API route. Successful key-validation results are cached for five minutes; admin revocation deletes the cached prefix after the database transaction commits. If cache invalidation fails because Redis is unavailable, the failure is logged; permission checks fall back to PostgreSQL while Redis is down, and a stale positive can remain until TTL expiry if Redis recovers before the entry expires.
+To revoke the key used for the current request, send `POST /auth/revoke-key/` with `X-API-Key` and no request body. It returns `200 OK` with `revoked: true`; repeated requests are idempotent. A caller cannot select another key to revoke.
+
+The key model is `ConsumerAPIKey`, managed through Django Admin. The API key package stores a hashed key; logs contain neither the plaintext key nor its hash. Revocation is available to administrators and to the holder of the presented key via `POST /auth/revoke-key/`; unverified email cannot authorize revocation. Successful key-validation results are cached for five minutes under the public prefix; the cache value is a settings-salted fingerprint of the full key, not a boolean, and a different secret with that prefix is rejected. Both admin and self-revocation delete the cached prefix after the database transaction commits. If cache invalidation fails because Redis is unavailable, the failure is logged; permission checks fall back to PostgreSQL while Redis is down, and a stale positive can remain until TTL expiry if Redis recovers before the entry expires. A repeated request to the self-revocation route retries cache invalidation.
 
 ### Throttling and response headers
 
@@ -1740,7 +1742,7 @@ X-Request-ID: 9b0e9d3c...
 
 ### Current permissions
 
-The default DRF permission is cached API-key validation (`CachedHasAPIKey`). Health and key-management views explicitly allow unauthenticated access. There is no end-user login/account workflow and no public key-revocation endpoint.
+The default DRF permission is cached API-key validation (`CachedHasAPIKey`). Health, key-request, and key-verification views explicitly allow unauthenticated access; `POST /auth/revoke-key/` requires the presented key and revokes only that key. There is no end-user login/account workflow or email-authorized key revocation.
 
 ---
 
@@ -2821,7 +2823,9 @@ This section describes routes and behaviors present in the code and test suite. 
 | `POST` | `/auth/request-key/` | Request a key using `consumer_name` and `email` |
 | `POST` | `/auth/verify-key/` | Verify key from `X-API-Key` header |
 
-These routes are outside `/api/v1/`. The schema and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Key request and verification responses are rate-limited by client IP. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
+These routes are outside `/api/v1/`. The schema and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Key request and verification responses are rate-limited by client IP.
+
+Unlike the public key request and verification endpoints, `POST /auth/revoke-key/` requires `X-API-Key` and revokes only the key used for that request. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
 
 ### Versioned resource routes
 
@@ -2970,7 +2974,6 @@ The following items are intentionally deferred. They are not implemented API gua
 2. **Lore accuracy and soft deletion.** Decide whether to add a provenance/accuracy model (`lore_accuracy`, source/notes) and/or soft-delete fields (`is_deleted`, `deleted_at`). These affect model inheritance, filters, admin behavior, serializers, and migrations; neither exists currently.
 3. **Power routes.** Powers are implemented, seeded, and embedded in Character detail. Decide whether independent `/powers/` or `/characters/<slug>/powers/` endpoints are needed before adding routes.
 4. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
-5. **Key revocation/cache workflow.** Django Admin revocation now invalidates the positive validation cache after the database transaction commits. Consider a verified-contact or other safe self-service revocation flow; an unverified email address must not authorize revocation.
-6. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
+5. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
 
 *Reference: [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki)*

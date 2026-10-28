@@ -190,7 +190,8 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Percy Jackson Fandom API',
     'DESCRIPTION': (
         'A read-only REST API for the Riordanverse. Protected endpoints require an X-API-Key '
-        'header; public health and API-key management routes are explicitly marked in the schema.'
+        'header; health checks and API-key request/verification are public, while self-revocation '
+        'is authenticated.'
     ),
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,

@@ -36,6 +36,17 @@ class SchemaEndpointTests(APITestCase):
         self.assertEqual(schema['paths']['/health/live/']['get'].get('security', []), [])
         self.assertEqual(schema['paths']['/health/ready/']['get'].get('security', []), [])
         self.assertEqual(schema['paths']['/auth/request-key/']['post'].get('security', []), [])
+        self.assertEqual(
+            schema['paths']['/auth/revoke-key/']['post']['security'],
+            [{'ApiKeyAuth': []}],
+        )
+        revoke_operation = schema['paths']['/auth/revoke-key/']['post']
+        self.assertIn('400', revoke_operation['responses'])
+        self.assertNotIn('requestBody', revoke_operation)
+        self.assertEqual(
+            set(schema['components']['schemas']['KeyRevocationResponse']['properties']),
+            {'revoked', 'message'},
+        )
 
         character_list = schema['paths']['/api/v1/characters/']['get']
         parameters = {parameter['name']: parameter for parameter in character_list['parameters']}

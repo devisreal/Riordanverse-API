@@ -1,8 +1,10 @@
 # ty: ignore[unresolved-attribute]
 import logging
 
+from django.db import transaction
 from drf_spectacular.utils import OpenApiParameter, OpenApiTypes, extend_schema
 from rest_framework import status
+from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,9 +14,12 @@ from apps.access.models import ConsumerAPIKey
 from apps.access.serializers import (
     KeyRequestSerializer,
     KeyResponseSerializer,
+    KeyRevocationResponseSerializer,
     KeyVerificationResponseSerializer,
 )
+from apps.access.services import schedule_api_key_revocation_side_effects
 from apps.core.logging import SUCCESS_LEVEL
+from apps.core.permissions import CachedHasAPIKey
 from apps.core.schema_serializers import ErrorEnvelopeSchemaSerializer
 from apps.core.throttles import CacheFallbackAnonRateThrottle
 
@@ -141,3 +146,52 @@ class RequestKeyView(APIView):
             }
         ).data
         return Response(response_data, status=status.HTTP_201_CREATED)
+
+
+@extend_schema(
+    tags=['Authentication'],
+    request=None,
+    responses={
+        200: KeyRevocationResponseSerializer,
+        400: ErrorEnvelopeSchemaSerializer,
+        403: ErrorEnvelopeSchemaSerializer,
+        429: ErrorEnvelopeSchemaSerializer,
+    },
+)
+class RevokeAPIKeyView(APIView):
+    """Revoke only the API key used to authenticate this request."""
+
+    permission_classes = (CachedHasAPIKey,)
+
+    @transaction.atomic
+    def post(self, request):
+        if request.data:
+            raise ValidationError('This endpoint does not accept a request body.')
+
+        raw_request = getattr(request, '_request', request)
+        prefix = getattr(raw_request, 'api_key_prefix', None)
+        if not prefix:
+            raise PermissionDenied('The authenticated API key could not be identified.')
+
+        api_key = ConsumerAPIKey.objects.select_for_update().filter(prefix=prefix).first()
+        if api_key is None:
+            raise PermissionDenied('The authenticated API key is no longer available.')
+
+        was_revoked = api_key.revoked
+        if not was_revoked:
+            api_key.revoked = True
+            api_key.save(update_fields=['revoked'])
+
+        schedule_api_key_revocation_side_effects(
+            prefix,
+            request_id=getattr(request, 'request_id', None),
+            actor_id=None,
+            log_event=not was_revoked,
+        )
+        message = (
+            'Your API key has already been revoked.' if was_revoked else 'Your API key was revoked.'
+        )
+        return Response(
+            KeyRevocationResponseSerializer({'revoked': True, 'message': message}).data,
+            status=status.HTTP_200_OK,
+        )

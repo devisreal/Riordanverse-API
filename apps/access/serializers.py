@@ -16,3 +16,8 @@ class KeyResponseSerializer(serializers.Serializer):
 class KeyVerificationResponseSerializer(serializers.Serializer):
     valid = serializers.BooleanField()
     consumer_name = serializers.CharField(allow_null=True)
+
+
+class KeyRevocationResponseSerializer(serializers.Serializer):
+    revoked = serializers.BooleanField()
+    message = serializers.CharField()
