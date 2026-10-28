@@ -1,11 +1,10 @@
 import logging
 
 from django.contrib import admin
-from django.db import transaction
 from rest_framework_api_key.admin import APIKeyModelAdmin
 
 from apps.access.models import ConsumerAPIKey
-from apps.core.cache_utils import invalidate_api_key_validation_cache
+from apps.access.services import schedule_api_key_revocation_side_effects
 from apps.core.logging import SUCCESS_LEVEL
 
 security_logger = logging.getLogger('api.security')
@@ -42,19 +41,11 @@ class ConsumerAPIKeyAdmin(APIKeyModelAdmin):
             request_id = getattr(request, 'request_id', None)
             actor_id = getattr(getattr(request, 'user', None), 'pk', None)
 
-            def log_revocation():
-                invalidate_api_key_validation_cache(prefix)
-                security_logger.warning(
-                    'security.api_key.revoked',
-                    extra={
-                        'event': 'security.api_key.revoked',
-                        'request_id': request_id,
-                        'api_key_prefix': prefix,
-                        'actor_id': actor_id,
-                    },
-                )
-
-            transaction.on_commit(log_revocation)
+            schedule_api_key_revocation_side_effects(
+                prefix,
+                request_id=request_id,
+                actor_id=actor_id,
+            )
             return
         else:
             return

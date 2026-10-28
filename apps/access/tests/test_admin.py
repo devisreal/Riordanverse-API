@@ -10,7 +10,10 @@ from rest_framework.test import APIRequestFactory
 
 from apps.access.admin import ConsumerAPIKeyAdmin
 from apps.access.models import ConsumerAPIKey
-from apps.core.cache_utils import api_key_validation_cache_key
+from apps.core.cache_utils import (
+    api_key_validation_cache_key,
+    api_key_validation_cache_value,
+)
 from apps.core.logging import JsonEventFormatter
 from apps.core.permissions import CACHE_TTL, CachedHasAPIKey
 
@@ -46,7 +49,7 @@ class ConsumerAPIKeyAdminLoggingTests(TestCase):
             name='Test App',
         )
         cache_key = api_key_validation_cache_key(record.prefix)
-        cache.set(cache_key, True, CACHE_TTL)
+        cache.set(cache_key, api_key_validation_cache_value(plaintext_key), CACHE_TTL)
         self.assertTrue(cache.get(cache_key))
 
         record.revoked = True
@@ -63,13 +66,13 @@ class ConsumerAPIKeyAdminLoggingTests(TestCase):
         self.assertFalse(CachedHasAPIKey().has_permission(api_request, view=None))
 
     def test_cache_invalidation_waits_for_database_commit(self):
-        record, _plaintext_key = ConsumerAPIKey.objects.create_key(
+        record, plaintext_key = ConsumerAPIKey.objects.create_key(
             consumer_name='Test App',
             email='test@example.com',
             name='Test App',
         )
         cache_key = api_key_validation_cache_key(record.prefix)
-        cache.set(cache_key, True, CACHE_TTL)
+        cache.set(cache_key, api_key_validation_cache_value(plaintext_key), CACHE_TTL)
         self.addCleanup(cache.delete, cache_key)
         record.revoked = True
         request = RequestFactory().post('/admin/access/consumerapikey/')

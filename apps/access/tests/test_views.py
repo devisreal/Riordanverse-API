@@ -8,9 +8,15 @@ from django.urls import reverse
 from django.utils import timezone
 from django_redis.exceptions import ConnectionInterrupted
 from rest_framework.test import APIClient
+from rest_framework.views import APIView
 
 from apps.access.models import ConsumerAPIKey
+from apps.core.cache_utils import (
+    api_key_validation_cache_key,
+    api_key_validation_cache_value,
+)
 from apps.core.logging import JsonEventFormatter
+from apps.core.permissions import CACHE_TTL, CachedHasAPIKey
 from apps.core.throttles import _FALLBACK_THROTTLE_CACHE
 
 
@@ -154,3 +160,97 @@ class RequestKeyViewTests(TestCase):
         response = self._request_key()
         self.assertEqual(response.status_code, 201)
         self.assertIn('api_key', response.data)
+
+
+class RevokeKeyViewTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        cache.clear()
+        _FALLBACK_THROTTLE_CACHE.clear()
+
+    def _create_key(self, name='Test App'):
+        return ConsumerAPIKey.objects.create_key(
+            consumer_name=name,
+            email=f'{name.lower().replace(" ", "-")}@example.com',
+            name=name,
+        )
+
+    def _revoke_key(self, plaintext_key=None, data=None):
+        extra = {'HTTP_X_API_KEY': plaintext_key} if plaintext_key else {}
+        return self.client.post(
+            reverse('revoke-api-key'),
+            data or {},
+            format='json',
+            **extra,
+        )
+
+    def test_revoke_requires_a_valid_api_key(self):
+        response = self._revoke_key()
+
+        self.assertEqual(response.status_code, 403)
+        self.assertFalse(ConsumerAPIKey.objects.exists())
+
+    def test_revoke_only_revokes_the_key_used_for_the_request(self):
+        own_record, own_key = self._create_key()
+        other_record, _other_key = self._create_key('Other App')
+        cache_key = api_key_validation_cache_key(own_record.prefix)
+        cache.set(cache_key, api_key_validation_cache_value(own_key), CACHE_TTL)
+
+        with self.captureOnCommitCallbacks(execute=True) as callbacks:
+            response = self._revoke_key(own_key)
+
+        self.assertEqual(len(callbacks), 1)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['revoked'], True)
+        self.assertTrue(own_record.__class__.objects.get(pk=own_record.pk).revoked)
+        self.assertFalse(other_record.__class__.objects.get(pk=other_record.pk).revoked)
+        self.assertIsNone(cache.get(cache_key))
+
+        with patch.object(APIView, 'permission_classes', [CachedHasAPIKey]):
+            protected_response = self.client.get('/api/v1/characters/', HTTP_X_API_KEY=own_key)
+        self.assertEqual(protected_response.status_code, 403)
+        self.assertTrue(ConsumerAPIKey.objects.is_valid(_other_key))
+
+    def test_request_body_cannot_select_another_key(self):
+        own_record, own_key = self._create_key()
+        other_record, _other_key = self._create_key('Other App')
+
+        response = self._revoke_key(own_key, {'prefix': other_record.prefix})
+
+        self.assertEqual(response.status_code, 400)
+        own_record.refresh_from_db()
+        other_record.refresh_from_db()
+        self.assertFalse(own_record.revoked)
+        self.assertFalse(other_record.revoked)
+
+    def test_revoke_is_idempotent_and_retries_cache_invalidation(self):
+        record, plaintext_key = self._create_key()
+        record.revoked = True
+        record.save(update_fields=['revoked'])
+        cache_key = api_key_validation_cache_key(record.prefix)
+        cache.set(cache_key, api_key_validation_cache_value(plaintext_key), CACHE_TTL)
+
+        with self.captureOnCommitCallbacks(execute=True) as callbacks:
+            response = self._revoke_key(plaintext_key)
+
+        self.assertEqual(len(callbacks), 1)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.data['revoked'])
+        self.assertIn('already been revoked', response.data['message'])
+        self.assertIsNone(cache.get(cache_key))
+
+    def test_revocation_logs_prefix_without_plaintext_key(self):
+        record, plaintext_key = self._create_key()
+
+        with (
+            self.assertLogs('api.security', level='WARNING') as captured,
+            self.captureOnCommitCallbacks(execute=True),
+        ):
+            response = self._revoke_key(plaintext_key)
+
+        self.assertEqual(response.status_code, 200)
+        payload = json.loads(JsonEventFormatter().format(captured.records[0]))
+        self.assertEqual(payload['event'], 'security.api_key.revoked')
+        self.assertEqual(payload['api_key_prefix'], record.prefix)
+        self.assertNotIn(plaintext_key, json.dumps(payload))
+        self.assertNotIn(record.pk, json.dumps(payload))

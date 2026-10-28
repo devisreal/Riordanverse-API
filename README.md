@@ -46,6 +46,8 @@ Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 - `POST /auth/request-key/` — request a key with `consumer_name` and `email`.
 - `POST /auth/verify-key/` — verify a key passed in the configured API-key header.
 
+To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`; it revokes only the presented key and requires authentication.
+
 Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
 
 There is no standalone family/divine-relationship, Power, or Image collection endpoint. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses; Powers are embedded in Character details; images are exposed through the listed galleries.
@@ -181,7 +183,7 @@ curl -X POST http://127.0.0.1:8000/auth/verify-key/ \
   -H 'X-API-Key: <your-key>'
 ```
 
-The response contains `valid` and `consumer_name`. API keys can be managed/revoked by an authorized administrator; revocation clears cached validation after the database transaction commits. If Redis is unavailable, invalidation failures are logged and any stale cache entry expires by its five-minute TTL. Plaintext keys are not recoverable after creation.
+The response contains `valid` and `consumer_name`. API keys can be revoked by an authorized administrator or by calling `POST /auth/revoke-key/` with the same `X-API-Key`; the endpoint revokes only the presented key. Revocation clears cached validation after the database transaction commits. If Redis is unavailable, invalidation failures are logged and any stale cache entry expires by its five-minute TTL. Plaintext keys are not recoverable after creation.
 
 ## Tests
 
