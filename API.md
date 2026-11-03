@@ -37,24 +37,24 @@
    - [Pagination](#pagination)
    - [Sorting & Default Sort Order](#sorting)
    - [Filtering & Case Sensitivity](#filtering)
-   - [Sparse Fieldsets](#sparse-fieldsets-optional-for-mobile-performance)
-   - [Includes / Relationships](#includes--relationships-optional-expansion)
+   - [Sparse Fieldsets](#sparse-fieldsets--not-implemented)
+   - [Includes / Relationships](#include-relationship-expansion--not-implemented)
 9. [Image Strategy](#9-image-strategy)
-10. [Seed Data — V1 Canonical Entries](#10-seed-data--v1-canonical-entries)
+10. [Seed Data — V1 Canonical Entries](#10-seed-data--current-canonical-json-counts)
 11. [Edge Cases & Lore Nuances](#11-edge-cases--lore-nuances)
-12. [V2 Expansion Considerations](#12-v2-expansion-considerations)
+12. [V2 Expansion Considerations](#12-v2-expansion-considerations-proposals)
 13. [General API Design Principles](#13-general-api-design-principles)
 14. [Authentication & Security](#14-authentication--security)
 15. [Search](#15-search)
-16. [Lore Accuracy Flagging](#16-lore-accuracy-flagging)
-17. [Soft Delete](#17-soft-delete)
-18. [Ordering Within Related Sets](#18-ordering-within-related-sets)
+16. [Lore Accuracy Flagging](#16-lore-accuracy-flagging--proposed-not-implemented)
+17. [Soft Delete](#17-soft-delete--proposed-not-implemented)
+18. [Ordering Within Related Sets](#18-ordering-within-related-sets--partially-implemented)
 19. [Environment Configuration](#19-environment-configuration)
 20. [BaseModel — Implemented Shared Fields and Earlier Proposal](#20-basemodel--implemented-shared-fields-and-earlier-proposal)
 21. [Power Sub-Model](#21-power-sub-model)
 22. [Typed Family Relationships](#22-typed-family-relationships)
 23. [Current Implemented API Reference](#23-current-implemented-api-reference)
-24. [Future Work](#future-work)
+24. [Future Work](#24-future-work)
 
 ---
 
@@ -1264,7 +1264,7 @@ All list endpoints accept `?sort=<field>&order=asc|desc` to override the default
 
 ---
 
-##### Books
+##### Books — Original Proposal
 
 **`book_number` ascending (1 → 5)**
 
@@ -1272,7 +1272,7 @@ The only logical default. A reader always wants chronological order. Companion w
 
 ---
 
-##### Characters
+##### Characters — Original Proposal
 
 **`name` ascending (A → Z)**
 
@@ -1280,7 +1280,7 @@ Characters function as an encyclopedia — alphabetical is the most intuitive de
 
 ---
 
-##### Gods
+##### Gods — Original Proposal
 
 **`tier` weight first, then `name` ascending within tier**
 
@@ -1290,7 +1290,7 @@ Tier weight order: `olympian` → `minor` → `chthonic` → `primordial`
 
 ---
 
-##### Titans
+##### Titans — Original Proposal
 
 **`display_order` ascending, then `name` ascending**
 
@@ -1300,7 +1300,7 @@ Canonical lore importance does not map cleanly to alphabetical or chronological,
 
 ---
 
-##### Monsters
+##### Monsters — Original Proposal
 
 **`first_appearance_book__book_number` ascending, then `name` ascending within book**
 
@@ -1316,7 +1316,7 @@ Weapons are reference data — alphabetical works best for browsing. Filtering b
 
 ---
 
-##### Locations
+##### Locations — Original Proposal
 
 **`first_appearance_book__book_number` ascending, then `name` ascending**
 
@@ -1324,7 +1324,7 @@ Same logic as monsters — locations are tied to the journey. Camp Half-Blood an
 
 ---
 
-##### Quests
+##### Quests — Original Proposal
 
 **`book__book_number` ascending**
 
@@ -1332,7 +1332,7 @@ Quests are strictly chronological. Quest 1 through Quest 5 in story order.
 
 ---
 
-##### Cabins
+##### Cabins — Original Proposal
 
 **`number` ascending (1 → 20)**
 
@@ -1340,7 +1340,7 @@ Cabin number is canonical and universally understood by fans. Always sort 1 thro
 
 ---
 
-##### Prophecies
+##### Prophecies — Original Proposal
 
 **`books_relevant_to__book_number` ascending**
 
@@ -1358,7 +1358,7 @@ Events are inherently a timeline — chronological is the only default that make
 
 ---
 
-##### Factions
+##### Factions — Original Proposal
 
 **`alignment` weight first, then `name` ascending within alignment**
 
@@ -1368,7 +1368,7 @@ Alignment weight order: `olympian` → `neutral` → `independent` → `titan`
 
 ---
 
-##### Creatures / Species
+##### Creatures / Species — Original Proposal
 
 **`name` ascending (A → Z)**
 
@@ -1884,7 +1884,7 @@ class LoreTrackedModel(models.Model):
 
 #### Filterable at API Level
 
-```
+```http
 GET /api/v1/characters/?lore_accuracy=disputed
 GET /api/v1/monsters/?lore_accuracy=fan_interpretation
 GET /api/v1/weapons/?lore_accuracy=confirmed
@@ -1903,7 +1903,7 @@ class LoreTrackedModel(models.Model):
     deleted_at = models.DateTimeField(null=True, blank=True)
 ```
 
-#### Behaviour
+### Behaviour
 
 - Deleted records are excluded from all list and detail endpoints by default via a custom manager
 - `GET /api/v1/characters/gabe-ugliano/` returns `404` if `is_deleted=True`
@@ -2796,7 +2796,7 @@ Family links are sourced from the reviewed cross-type map, not duplicated in eac
 }
 ```
 
-### Summary
+### Typed Family Relationship Summary
 
 | Requirement | Handled By |
 | --- | --- |
