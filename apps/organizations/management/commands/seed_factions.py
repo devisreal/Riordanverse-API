@@ -80,7 +80,7 @@ class Command(BaseCommand):
                     if entry.get('wiki_url'):
                         defaults['wiki_url'] = entry['wiki_url']
 
-                    faction, created = Faction.objects.update_or_create(
+                    faction, created = Faction.all_objects.update_or_create(
                         slug=entry['expected_slug'],
                         defaults=defaults,
                     )

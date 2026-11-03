@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 
+from apps.core.admin import SoftDeleteAdminMixin
 from apps.items.models import Weapon, WeaponImage
 
 
@@ -13,7 +14,7 @@ class WeaponImageInline(admin.TabularInline):
 
 
 @admin.register(Weapon)
-class WeaponAdmin(admin.ModelAdmin):
+class WeaponAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = (
         'name',
         'true_name',

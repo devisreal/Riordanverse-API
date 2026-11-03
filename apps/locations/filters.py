@@ -3,11 +3,15 @@
 import django_filters
 
 from apps.core.choices import LOCATION_TYPE_CHOICES
-from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
+from apps.core.filters import (
+    LoreMetadataFilterSet,
+    StrictBooleanFilter,
+    StrictChoiceFilter,
+)
 from apps.locations.models import Location
 
 
-class LocationFilter(django_filters.FilterSet):
+class LocationFilter(LoreMetadataFilterSet):
     location_type = StrictChoiceFilter(choices=LOCATION_TYPE_CHOICES)
     type = StrictChoiceFilter(choices=LOCATION_TYPE_CHOICES, field_name='location_type')
     is_hidden_from_mortals = StrictBooleanFilter()

@@ -3,7 +3,11 @@
 import django_filters
 
 from apps.core.choices import FACTION_TYPE_CHOICES
-from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
+from apps.core.filters import (
+    LoreMetadataFilterSet,
+    StrictBooleanFilter,
+    StrictChoiceFilter,
+)
 from apps.organizations.models import (
     CABIN_POSITION_CHOICES,
     FACTION_ALIGNMENT_CHOICES,
@@ -12,7 +16,7 @@ from apps.organizations.models import (
 )
 
 
-class CabinFilter(django_filters.FilterSet):
+class CabinFilter(LoreMetadataFilterSet):
     is_honorary = StrictBooleanFilter()
     is_empty = StrictBooleanFilter()
     position = StrictChoiceFilter(choices=CABIN_POSITION_CHOICES)
@@ -26,7 +30,7 @@ class CabinFilter(django_filters.FilterSet):
         fields = ['is_honorary', 'is_empty', 'position', 'deity']
 
 
-class FactionFilter(django_filters.FilterSet):
+class FactionFilter(LoreMetadataFilterSet):
     faction_type = StrictChoiceFilter(choices=FACTION_TYPE_CHOICES)
     alignment = StrictChoiceFilter(choices=FACTION_ALIGNMENT_CHOICES)
     book = django_filters.CharFilter(

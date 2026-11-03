@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from apps.core.admin import SoftDeleteAdminMixin
 from apps.narrative.models import (
     Book,
     BookAntagonist,
@@ -42,7 +43,7 @@ class BookAntagonistInline(admin.TabularInline):
 
 
 @admin.register(Book)
-class BookAdmin(admin.ModelAdmin):
+class BookAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'series', 'book_number', 'book_type', 'published_date')
     list_filter = ('series', 'book_type')
     search_fields = ('title', 'synopsis')
@@ -69,7 +70,7 @@ class ProphecySubjectInline(admin.TabularInline):
 
 
 @admin.register(Prophecy)
-class ProphecyAdmin(admin.ModelAdmin):
+class ProphecyAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'oracle_type', 'delivered_by', 'fulfilled_in')
     search_fields = ('title', 'text', 'interpretation_notes')
     raw_id_fields = ('delivered_by', 'fulfilled_in')
@@ -126,7 +127,7 @@ class QuestCasualtyInline(admin.TabularInline):
 
 
 @admin.register(Quest)
-class QuestAdmin(admin.ModelAdmin):
+class QuestAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'book', 'led_by', 'initiated_by')
     list_filter = ('book',)
     search_fields = ('title', 'objective', 'outcome', 'description')
@@ -147,7 +148,7 @@ class EventCasualtyInline(admin.TabularInline):
 
 
 @admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('name', 'event_type', 'book', 'location')
     list_filter = ('event_type', 'book')
     search_fields = ('name', 'outcome', 'significance', 'description')

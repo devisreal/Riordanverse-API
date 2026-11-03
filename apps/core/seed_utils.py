@@ -6,9 +6,9 @@ def update_or_create_by_expected_slug(model, expected_slug, defaults, fallback=N
     defaults = {**defaults, 'slug': expected_slug}
     if fallback and 'name' in fallback:
         defaults.setdefault('name', fallback['name'])
-    existing = model.objects.filter(slug=expected_slug).first()
+    existing = model.all_objects.filter(slug=expected_slug).first()
     if existing is None and fallback:
-        existing = model.objects.filter(**fallback).order_by('pk').first()
+        existing = model.all_objects.filter(**fallback).order_by('pk').first()
 
     lookup = {'pk': existing.pk} if existing is not None else {'slug': expected_slug}
-    return model.objects.update_or_create(**lookup, defaults=defaults)
+    return model.all_objects.update_or_create(**lookup, defaults=defaults)

@@ -14,10 +14,14 @@ from apps.core.choices import (
     SPECIES_CHOICES,
     STATUS_CHOICES,
 )
-from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
+from apps.core.filters import (
+    LoreMetadataFilterSet,
+    StrictBooleanFilter,
+    StrictChoiceFilter,
+)
 
 
-class CharacterFilter(django_filters.FilterSet):
+class CharacterFilter(LoreMetadataFilterSet):
     character_type = StrictChoiceFilter(
         choices=CHARACTER_TYPE_CHOICES,
         field_name='character_type',

@@ -1,10 +1,11 @@
 from django.contrib import admin
 
+from apps.core.admin import SoftDeleteAdminMixin
 from apps.organizations.models import Cabin, Faction, FactionMember
 
 
 @admin.register(Cabin)
-class CabinAdmin(admin.ModelAdmin):
+class CabinAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = (
         'number',
         'deity',
@@ -27,7 +28,7 @@ class FactionMemberInline(admin.TabularInline):
 
 
 @admin.register(Faction)
-class FactionAdmin(admin.ModelAdmin):
+class FactionAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('name', 'faction_type', 'alignment')
     list_filter = ('faction_type', 'alignment')
     search_fields = ('name', 'description')

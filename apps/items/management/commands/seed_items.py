@@ -126,7 +126,7 @@ class Command(BaseCommand):
                     self.style,
                 )
 
-                weapon, created = Weapon.objects.update_or_create(
+                weapon, created = Weapon.all_objects.update_or_create(
                     name=name,
                     defaults=defaults,
                 )

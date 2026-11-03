@@ -2,10 +2,17 @@
 
 from rest_framework import serializers
 
+from apps.core.serializers import (
+    ActiveRelatedModelSerializer,
+    LoreMetadataModelSerializer,
+    active_lore_entity,
+    active_lore_reference,
+    active_lore_slug,
+)
 from apps.organizations.models import Cabin, Faction, FactionMember
 
 
-class CabinListSerializer(serializers.ModelSerializer):
+class CabinListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     deity_slug = serializers.SerializerMethodField()
@@ -28,13 +35,14 @@ class CabinListSerializer(serializers.ModelSerializer):
         ]
 
     def get_deity_slug(self, obj):
-        return obj.deity.slug if obj.deity else None
+        return active_lore_slug(obj.deity)
 
     def get_deity_name(self, obj):
-        return obj.deity.name if obj.deity else None
+        deity = active_lore_entity(obj.deity)
+        return deity.name if deity is not None else None
 
 
-class CabinDetailSerializer(serializers.ModelSerializer):
+class CabinDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — for single cabin retrieval."""
 
     deity_slug = serializers.SerializerMethodField()
@@ -66,22 +74,23 @@ class CabinDetailSerializer(serializers.ModelSerializer):
         ]
 
     def get_deity_slug(self, obj):
-        return obj.deity.slug if obj.deity else None
+        return active_lore_slug(obj.deity)
 
     def get_deity_name(self, obj):
-        return obj.deity.name if obj.deity else None
+        deity = active_lore_entity(obj.deity)
+        return deity.name if deity is not None else None
 
     def get_head_counselor_slug(self, obj):
-        return obj.head_counselor.slug if obj.head_counselor else None
+        return active_lore_slug(obj.head_counselor)
 
     def get_known_camper_slugs(self, obj):
         return list(obj.known_campers.values_list('slug', flat=True))
 
     def get_added_in_book_slug(self, obj):
-        return obj.added_in_book.slug if obj.added_in_book else None
+        return active_lore_slug(obj.added_in_book)
 
 
-class FactionListSerializer(serializers.ModelSerializer):
+class FactionListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     faction_type_display = serializers.CharField(source='get_faction_type_display', read_only=True)
@@ -103,22 +112,14 @@ class FactionListSerializer(serializers.ModelSerializer):
         ]
 
     def get_leader(self, obj):
-        if obj.leader_character:
-            return {
-                'type': 'character',
-                'slug': obj.leader_character.slug,
-                'name': obj.leader_character.name,
-            }
-        if obj.leader_god:
-            return {
-                'type': 'god',
-                'slug': obj.leader_god.slug,
-                'name': obj.leader_god.name,
-            }
-        return None
+        character = active_lore_entity(obj.leader_character)
+        if character is not None:
+            return active_lore_reference(character, 'character')
+        god = active_lore_entity(obj.leader_god)
+        return active_lore_reference(god, 'god')
 
 
-class FactionMemberSerializer(serializers.ModelSerializer):
+class FactionMemberSerializer(ActiveRelatedModelSerializer):
     type = serializers.SerializerMethodField()
     slug = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
@@ -145,7 +146,7 @@ class FactionMemberSerializer(serializers.ModelSerializer):
         return entity.name if entity else None
 
 
-class FactionDetailSerializer(serializers.ModelSerializer):
+class FactionDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — for single faction retrieval."""
 
     faction_type_display = serializers.CharField(source='get_faction_type_display', read_only=True)
@@ -176,19 +177,11 @@ class FactionDetailSerializer(serializers.ModelSerializer):
         ]
 
     def get_leader(self, obj):
-        if obj.leader_character:
-            return {
-                'type': 'character',
-                'slug': obj.leader_character.slug,
-                'name': obj.leader_character.name,
-            }
-        if obj.leader_god:
-            return {
-                'type': 'god',
-                'slug': obj.leader_god.slug,
-                'name': obj.leader_god.name,
-            }
-        return None
+        character = active_lore_entity(obj.leader_character)
+        if character is not None:
+            return active_lore_reference(character, 'character')
+        god = active_lore_entity(obj.leader_god)
+        return active_lore_reference(god, 'god')
 
     def get_member_slugs(self, obj):
         return list(obj.members.values_list('slug', flat=True))

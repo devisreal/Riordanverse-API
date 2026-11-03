@@ -81,7 +81,7 @@ class Command(BaseCommand):
                     if entry.get('wiki_url'):
                         defaults['wiki_url'] = entry['wiki_url']
 
-                    cabin, created = Cabin.objects.update_or_create(
+                    cabin, created = Cabin.all_objects.update_or_create(
                         number=entry['number'],
                         defaults=defaults,
                     )

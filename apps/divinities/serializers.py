@@ -2,12 +2,13 @@
 
 from rest_framework import serializers
 
+from apps.core.serializers import LoreMetadataModelSerializer
 from apps.divinities.family import serialize_family
 from apps.divinities.models import God, Titan
 from apps.images.serializers import ImageListSerializer
 
 
-class GodListSerializer(serializers.ModelSerializer):
+class GodListSerializer(LoreMetadataModelSerializer):
     primary_image = serializers.SerializerMethodField()
     tier_display = serializers.CharField(source='get_tier_display', read_only=True)
 
@@ -33,7 +34,7 @@ class GodListSerializer(serializers.ModelSerializer):
         return ImageListSerializer(primary.image).data if primary else None
 
 
-class GodDetailSerializer(serializers.ModelSerializer):
+class GodDetailSerializer(LoreMetadataModelSerializer):
     primary_image = serializers.SerializerMethodField()
     tier_display = serializers.CharField(source='get_tier_display', read_only=True)
     affiliation_display = serializers.CharField(source='get_affiliation_display', read_only=True)
@@ -103,7 +104,7 @@ class GodDetailSerializer(serializers.ModelSerializer):
         return list(obj.books_appeared_in.values_list('slug', flat=True))
 
 
-class TitanListSerializer(serializers.ModelSerializer):
+class TitanListSerializer(LoreMetadataModelSerializer):
     primary_image = serializers.SerializerMethodField()
     alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
 
@@ -131,7 +132,7 @@ class TitanListSerializer(serializers.ModelSerializer):
         return ImageListSerializer(primary.image).data if primary else None
 
 
-class TitanDetailSerializer(serializers.ModelSerializer):
+class TitanDetailSerializer(LoreMetadataModelSerializer):
     primary_image = serializers.SerializerMethodField()
     alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)

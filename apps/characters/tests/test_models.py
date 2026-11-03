@@ -94,6 +94,9 @@ class PowerModelTests(TestCase):
     def test_character_power_reverse_relation(self):
         self.assertIn(self.power, self.character.powers.all())
 
-    def test_power_is_deleted_with_character(self):
+    def test_power_is_preserved_when_character_is_soft_deleted(self):
         self.character.delete()
-        self.assertFalse(Power.objects.filter(name='Hydrokinesis').exists())
+        self.assertTrue(Power.objects.filter(pk=self.power.pk).exists())
+
+        self.character.restore()
+        self.assertEqual(self.character.powers.get().pk, self.power.pk)

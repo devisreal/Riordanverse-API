@@ -62,7 +62,7 @@ class Command(BaseCommand):
             if entry.get('wiki_url'):
                 defaults['wiki_url'] = entry['wiki_url']
 
-            book, created = Book.objects.update_or_create(slug=slug, defaults=defaults)
+            book, created = Book.all_objects.update_or_create(slug=slug, defaults=defaults)
             if book.slug != slug:
                 raise CommandError(
                     f'Book slug mismatch for {entry["title"]!r}: '

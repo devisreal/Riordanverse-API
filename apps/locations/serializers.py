@@ -2,11 +2,12 @@
 
 from rest_framework import serializers
 
+from apps.core.serializers import LoreMetadataModelSerializer
 from apps.images.serializers import ImageListSerializer
 from apps.locations.models import Location
 
 
-class LocationListSerializer(serializers.ModelSerializer):
+class LocationListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     primary_image = serializers.SerializerMethodField()
@@ -62,7 +63,7 @@ class LocationListSerializer(serializers.ModelSerializer):
         return None
 
 
-class LocationDetailSerializer(serializers.ModelSerializer):
+class LocationDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — for single location retrieval."""
 
     primary_image = serializers.SerializerMethodField()

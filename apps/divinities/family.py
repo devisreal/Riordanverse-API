@@ -34,7 +34,7 @@ def relationship_filters(entity):
 def _related_entity(relationship, side):
     for entity_type in ENTITY_TYPES:
         entity = getattr(relationship, f'{side}_{entity_type}')
-        if entity is not None:
+        if entity is not None and not getattr(entity, 'is_deleted', False):
             return {
                 'name': entity.name,
                 'type': entity_type,

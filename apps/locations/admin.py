@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 
+from apps.core.admin import SoftDeleteAdminMixin
 from apps.locations.models import Location, LocationImage
 
 
@@ -13,7 +14,7 @@ class LocationImageInline(admin.TabularInline):
 
 
 @admin.register(Location)
-class LocationAdmin(admin.ModelAdmin):
+class LocationAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = (
         'name',
         'location_type',

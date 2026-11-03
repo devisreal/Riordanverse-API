@@ -1,5 +1,11 @@
 from rest_framework import serializers
 
+from apps.core.serializers import (
+    ActiveRelatedModelSerializer,
+    LoreMetadataModelSerializer,
+    active_lore_entity,
+    active_lore_slug,
+)
 from apps.images.serializers import ImageListSerializer
 from apps.narrative.models import (
     Book,
@@ -18,7 +24,7 @@ def get_primary_image(book):
     return ImageListSerializer(link.image).data if link else None
 
 
-class BookSummarySerializer(serializers.ModelSerializer):
+class BookSummarySerializer(LoreMetadataModelSerializer):
     """Compact reference used for parent and included-story relationships."""
 
     class Meta:
@@ -26,7 +32,7 @@ class BookSummarySerializer(serializers.ModelSerializer):
         fields = ('id', 'slug', 'title', 'book_type', 'published_date', 'wiki_url')
 
 
-class BookListSerializer(serializers.ModelSerializer):
+class BookListSerializer(LoreMetadataModelSerializer):
     """Lightweight representation for book collection responses."""
 
     primary_image = serializers.SerializerMethodField()
@@ -61,9 +67,14 @@ class BookCastMemberSerializer(serializers.Serializer):
     def _entity(self, obj):
         for entity_type in ('character', 'god', 'titan', 'monster', 'creature'):
             entity = getattr(obj, entity_type)
-            if entity is not None:
+            if entity is not None and not getattr(entity, 'is_deleted', False):
                 return entity_type, entity
         return None, None
+
+    def to_representation(self, instance):
+        if self._entity(instance)[1] is None:
+            return None
+        return super().to_representation(instance)
 
     def get_type(self, obj):
         return self._entity(obj)[0]
@@ -77,7 +88,7 @@ class BookCastMemberSerializer(serializers.Serializer):
         return entity.name if entity else None
 
 
-class BookDetailSerializer(serializers.ModelSerializer):
+class BookDetailSerializer(LoreMetadataModelSerializer):
     """Full representation for a single book."""
 
     primary_image = serializers.SerializerMethodField()
@@ -136,23 +147,29 @@ class BookDetailSerializer(serializers.ModelSerializer):
         records = list(obj.narrator_records.all())
         if records:
             return BookCastMemberSerializer(records, many=True, context=self.context).data
-        if obj.narrator_id:
-            return [{'type': 'character', 'slug': obj.narrator.slug, 'name': obj.narrator.name}]
+        narrator = active_lore_entity(obj.narrator)
+        if narrator is not None:
+            return [{'type': 'character', 'slug': narrator.slug, 'name': narrator.name}]
         return []
 
     def get_narrator_slug(self, obj):
         records = list(obj.narrator_records.all())
         if records:
             if len(records) == 1 and records[0].character_id:
-                return records[0].character.slug
+                return active_lore_slug(records[0].character)
             return None
-        return obj.narrator.slug if obj.narrator else None
+        return active_lore_slug(obj.narrator)
 
     def get_narrator_slugs(self, obj):
         records = list(obj.narrator_records.all())
         if records:
-            return [record.character.slug for record in records if record.character_id]
-        return [obj.narrator.slug] if obj.narrator_id else []
+            return [
+                slug
+                for record in records
+                if record.character_id and (slug := active_lore_slug(record.character)) is not None
+            ]
+        narrator_slug = active_lore_slug(obj.narrator)
+        return [narrator_slug] if narrator_slug else []
 
     def get_main_character_slugs(self, obj):
         return list(obj.main_characters.values_list('slug', flat=True))
@@ -172,7 +189,7 @@ class BookDetailSerializer(serializers.ModelSerializer):
 # ---------------------------------------------------------------------------
 
 
-class ProphecyListSerializer(serializers.ModelSerializer):
+class ProphecyListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     delivered_by_slug = serializers.SerializerMethodField()
@@ -204,7 +221,7 @@ class ProphecyListSerializer(serializers.ModelSerializer):
         return []
 
 
-class ProphecySubjectSerializer(serializers.ModelSerializer):
+class ProphecySubjectSerializer(ActiveRelatedModelSerializer):
     type = serializers.SerializerMethodField()
     slug = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
@@ -231,7 +248,7 @@ class ProphecySubjectSerializer(serializers.ModelSerializer):
         return entity.name if entity else None
 
 
-class ProphecyDetailSerializer(serializers.ModelSerializer):
+class ProphecyDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — returns both raw text and split prophecy_lines."""
 
     delivered_by_slug = serializers.SerializerMethodField()
@@ -285,7 +302,7 @@ class ProphecyDetailSerializer(serializers.ModelSerializer):
 # ---------------------------------------------------------------------------
 
 
-class QuestListSerializer(serializers.ModelSerializer):
+class QuestListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     book_slug = serializers.SerializerMethodField()
@@ -311,7 +328,7 @@ class QuestListSerializer(serializers.ModelSerializer):
         return obj.led_by.slug if obj.led_by else None
 
 
-class QuestParticipantSerializer(serializers.ModelSerializer):
+class QuestParticipantSerializer(ActiveRelatedModelSerializer):
     """Typed quest participant with a stable entity type, slug, and display name."""
 
     type = serializers.SerializerMethodField()
@@ -339,7 +356,7 @@ class QuestParticipantSerializer(serializers.ModelSerializer):
         return self._entity(obj)[1].name
 
 
-class QuestCasualtySerializer(serializers.ModelSerializer):
+class QuestCasualtySerializer(ActiveRelatedModelSerializer):
     """Typed quest casualty with a stable entity type, slug, and display name."""
 
     type = serializers.SerializerMethodField()
@@ -367,7 +384,7 @@ class QuestCasualtySerializer(serializers.ModelSerializer):
         return self._entity(obj)[1].name
 
 
-class QuestDetailSerializer(serializers.ModelSerializer):
+class QuestDetailSerializer(LoreMetadataModelSerializer):
     """Full detail."""
 
     participants = QuestParticipantSerializer(
@@ -438,7 +455,7 @@ class QuestDetailSerializer(serializers.ModelSerializer):
 # ---------------------------------------------------------------------------
 
 
-class EventListSerializer(serializers.ModelSerializer):
+class EventListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     book_slug = serializers.SerializerMethodField()
@@ -466,7 +483,7 @@ class EventListSerializer(serializers.ModelSerializer):
         return obj.location.slug if obj.location else None
 
 
-class EventCasualtySerializer(serializers.ModelSerializer):
+class EventCasualtySerializer(ActiveRelatedModelSerializer):
     """Typed Event casualty with a stable entity type, slug, and display name."""
 
     type = serializers.SerializerMethodField()
@@ -494,7 +511,7 @@ class EventCasualtySerializer(serializers.ModelSerializer):
         return self._entity(obj)[1].name
 
 
-class EventDetailSerializer(serializers.ModelSerializer):
+class EventDetailSerializer(LoreMetadataModelSerializer):
     """Full detail."""
 
     casualties = EventCasualtySerializer(source='casualty_records', many=True, read_only=True)

@@ -102,7 +102,7 @@ class Command(BaseCommand):
                         self.style,
                     )
 
-                location, created = Location.objects.update_or_create(
+                location, created = Location.all_objects.update_or_create(
                     slug=entry['expected_slug'],
                     defaults=defaults,
                 )

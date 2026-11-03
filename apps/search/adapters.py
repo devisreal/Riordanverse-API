@@ -13,7 +13,10 @@ from apps.organizations.models import Cabin, Faction
 
 
 class BaseLoreSearchAdapter(SearchAdapter):
-    """Expose the model description in Watson search results."""
+    """Expose active lore records and their descriptions in Watson search."""
+
+    def get_live_queryset(self):
+        return self.model.objects.all()
 
     def get_description(self, obj):
         return getattr(obj, 'description', '') or ''
