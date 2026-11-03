@@ -127,7 +127,7 @@ class Command(BaseCommand):
                         fallback={'name': name},
                     )
                 else:
-                    character, created = Character.objects.update_or_create(
+                    character, created = Character.all_objects.update_or_create(
                         name=name,
                         defaults=defaults,
                     )

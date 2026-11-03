@@ -97,7 +97,7 @@ class Command(BaseCommand):
                         fallback={'name': entry['name']},
                     )
                 else:
-                    god, created = God.objects.update_or_create(
+                    god, created = God.all_objects.update_or_create(
                         name=entry['name'], defaults=defaults
                     )
 

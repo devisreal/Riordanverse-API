@@ -1,11 +1,11 @@
 import django_filters
 
 from apps.core.choices import BOOK_TYPE_CHOICES, EVENT_TYPE_CHOICES, SERIES_CHOICES
-from apps.core.filters import StrictChoiceFilter
+from apps.core.filters import LoreMetadataFilterSet, StrictChoiceFilter
 from apps.narrative.models import Book, Event, Prophecy, Quest
 
 
-class BookFilter(django_filters.FilterSet):
+class BookFilter(LoreMetadataFilterSet):
     series = StrictChoiceFilter(choices=SERIES_CHOICES)
     book_type = StrictChoiceFilter(choices=BOOK_TYPE_CHOICES)
     type = StrictChoiceFilter(choices=BOOK_TYPE_CHOICES, field_name='book_type')
@@ -98,7 +98,7 @@ class BookFilter(django_filters.FilterSet):
         super().__init__(data, *args, **kwargs)
 
 
-class ProphecyFilter(django_filters.FilterSet):
+class ProphecyFilter(LoreMetadataFilterSet):
     fulfilled_in = django_filters.CharFilter(
         field_name='fulfilled_in__slug',
         help_text='Filter by book slug e.g. ?fulfilled_in=the-last-olympian',
@@ -135,7 +135,7 @@ class ProphecyFilter(django_filters.FilterSet):
         )
 
 
-class QuestFilter(django_filters.FilterSet):
+class QuestFilter(LoreMetadataFilterSet):
     book = django_filters.CharFilter(
         field_name='book__slug',
         help_text='Filter by book slug e.g. ?book=the-sea-of-monsters',
@@ -184,7 +184,7 @@ class QuestFilter(django_filters.FilterSet):
         )
 
 
-class EventFilter(django_filters.FilterSet):
+class EventFilter(LoreMetadataFilterSet):
     event_type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES)
     type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES, field_name='event_type')
     book = django_filters.CharFilter(field_name='book__slug')

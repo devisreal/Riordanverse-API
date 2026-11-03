@@ -6,10 +6,14 @@ from apps.bestiary.models import (
     Monster,
 )
 from apps.core.choices import MONSTER_ALLEGIANCE_CHOICES, MONSTER_TYPE_CHOICES
-from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
+from apps.core.filters import (
+    LoreMetadataFilterSet,
+    StrictBooleanFilter,
+    StrictChoiceFilter,
+)
 
 
-class MonsterFilter(django_filters.FilterSet):
+class MonsterFilter(LoreMetadataFilterSet):
     monster_type = StrictChoiceFilter(choices=MONSTER_TYPE_CHOICES)
     type = StrictChoiceFilter(choices=MONSTER_TYPE_CHOICES, field_name='monster_type')
     allegiance = StrictChoiceFilter(choices=MONSTER_ALLEGIANCE_CHOICES)
@@ -46,7 +50,7 @@ class MonsterFilter(django_filters.FilterSet):
         )
 
 
-class CreatureFilter(django_filters.FilterSet):
+class CreatureFilter(LoreMetadataFilterSet):
     alignment = StrictChoiceFilter(choices=CREATURE_ALIGNMENT_CHOICES)
 
     class Meta:

@@ -4,11 +4,15 @@ import django_filters
 from django.db.models import Q
 
 from apps.core.choices import MATERIAL_CHOICES, WEAPON_TYPE_CHOICES
-from apps.core.filters import StrictBooleanFilter, StrictChoiceFilter
+from apps.core.filters import (
+    LoreMetadataFilterSet,
+    StrictBooleanFilter,
+    StrictChoiceFilter,
+)
 from apps.items.models import Weapon
 
 
-class WeaponFilter(django_filters.FilterSet):
+class WeaponFilter(LoreMetadataFilterSet):
     weapon_type = StrictChoiceFilter(choices=WEAPON_TYPE_CHOICES)
     type = StrictChoiceFilter(choices=WEAPON_TYPE_CHOICES, field_name='weapon_type')
     material = StrictChoiceFilter(choices=MATERIAL_CHOICES)

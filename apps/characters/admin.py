@@ -3,6 +3,7 @@
 from django.contrib import admin
 
 from apps.characters.models import Character, CharacterImage, Power
+from apps.core.admin import SoftDeleteAdminMixin
 
 
 class PowerInline(admin.TabularInline):
@@ -31,7 +32,7 @@ class CharacterImageInline(admin.TabularInline):
 
 
 @admin.register(Character)
-class CharacterAdmin(admin.ModelAdmin):
+class CharacterAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = (
         'name',
         'character_type',

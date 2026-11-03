@@ -1,6 +1,10 @@
 from rest_framework import serializers
 
 from apps.characters.models import Character, Power
+from apps.core.serializers import (
+    LoreMetadataModelSerializer,
+    active_lore_slug,
+)
 from apps.divinities.family import serialize_family
 from apps.images.serializers import ImageListSerializer
 
@@ -33,7 +37,7 @@ class PowerSerializer(serializers.ModelSerializer):
         )
 
 
-class CharacterListSerializer(serializers.ModelSerializer):
+class CharacterListSerializer(LoreMetadataModelSerializer):
     """Lightweight representation for collection responses and embedding."""
 
     primary_image = serializers.SerializerMethodField()
@@ -65,10 +69,10 @@ class CharacterListSerializer(serializers.ModelSerializer):
 
     def get_divine_parent_slug(self, obj):
         parent = obj.divine_parent or obj.divine_parent_titan
-        return parent.slug if parent else None
+        return active_lore_slug(parent)
 
 
-class CharacterDetailSerializer(serializers.ModelSerializer):
+class CharacterDetailSerializer(LoreMetadataModelSerializer):
     """Full detail representation for a single character."""
 
     primary_image = serializers.SerializerMethodField()
@@ -147,13 +151,17 @@ class CharacterDetailSerializer(serializers.ModelSerializer):
         return serialize_family(obj)
 
     def get_empathy_link_slug(self, obj):
-        return obj.empathy_link.slug if obj.empathy_link else None
+        return active_lore_slug(obj.empathy_link)
 
     def get_weapon_slugs(self, obj):
         return [weapon.slug for weapon in obj.weapons.all()]
 
     def get_first_appearance_book_slug(self, obj):
-        return obj.first_appearance_book.slug if obj.first_appearance_book else None
+        return active_lore_slug(obj.first_appearance_book)
 
     def get_books_appeared_in_slugs(self, obj):
-        return [book.slug for book in obj.books_appeared_in.all()]
+        return [
+            slug
+            for book in obj.books_appeared_in.all()
+            if (slug := active_lore_slug(book)) is not None
+        ]

@@ -3,11 +3,12 @@
 from rest_framework import serializers
 
 from apps.bestiary.models import Creature, CreatureMember, Monster, MonsterDefeat
+from apps.core.serializers import LoreMetadataModelSerializer
 from apps.divinities.family import serialize_family
 from apps.images.serializers import ImageListSerializer
 
 
-class MonsterListSerializer(serializers.ModelSerializer):
+class MonsterListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     primary_image = serializers.SerializerMethodField()
@@ -45,7 +46,7 @@ class MonsterDefeatSerializer(serializers.ModelSerializer):
         fields = ['defeated_by', 'book', 'method', 'is_myth']
 
 
-class MonsterDetailSerializer(serializers.ModelSerializer):
+class MonsterDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — for single monster retrieval."""
 
     primary_image = serializers.SerializerMethodField()
@@ -117,7 +118,7 @@ class MonsterDetailSerializer(serializers.ModelSerializer):
         return list(obj.books_appeared_in.values_list('slug', flat=True))
 
 
-class CreatureListSerializer(serializers.ModelSerializer):
+class CreatureListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     alignment_display = serializers.CharField(source='get_alignment_display', read_only=True)
@@ -164,7 +165,7 @@ class CreatureMemberSerializer(serializers.ModelSerializer):
         return self._entity(obj)[1].name
 
 
-class CreatureDetailSerializer(serializers.ModelSerializer):
+class CreatureDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — for single creature/species retrieval."""
 
     type = serializers.SerializerMethodField()

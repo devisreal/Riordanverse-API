@@ -92,7 +92,7 @@ class Command(BaseCommand):
                         fallback={'name': entry['name']},
                     )
                 else:
-                    titan, created = Titan.objects.update_or_create(
+                    titan, created = Titan.all_objects.update_or_create(
                         name=entry['name'], defaults=defaults
                     )
 

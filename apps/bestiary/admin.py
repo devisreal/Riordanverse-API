@@ -3,6 +3,7 @@
 from django.contrib import admin
 
 from apps.bestiary.models import Creature, CreatureMember, Monster, MonsterDefeat, MonsterImage
+from apps.core.admin import SoftDeleteAdminMixin
 
 
 class MonsterDefeatInline(admin.TabularInline):
@@ -29,7 +30,7 @@ class MonsterImageInline(admin.TabularInline):
 
 
 @admin.register(Monster)
-class MonsterAdmin(admin.ModelAdmin):
+class MonsterAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = (
         'name',
         'monster_type',
@@ -52,7 +53,7 @@ class CreatureMemberInline(admin.TabularInline):
 
 
 @admin.register(Creature)
-class CreatureAdmin(admin.ModelAdmin):
+class CreatureAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('name', 'alignment', 'habitat')
     list_filter = ('alignment',)
     search_fields = ('name', 'description', 'origin')

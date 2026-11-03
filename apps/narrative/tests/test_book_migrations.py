@@ -6,6 +6,9 @@ from django.test import TransactionTestCase
 class BookNarratorMigrationTests(TransactionTestCase):
     migrate_from = ('narrative', '0009_bookantagonist_alter_book_antagonists_and_more')
     migrate_to = ('narrative', '0010_booknarrator_book_narrators_and_more')
+    characters_migrate_from = ('characters', '0006_power_wiki_url')
+    migration_targets_from = (migrate_from, characters_migrate_from)
+    migration_targets_to = (migrate_to, characters_migrate_from)
 
     def tearDown(self):
         executor = MigrationExecutor(connection)
@@ -14,8 +17,8 @@ class BookNarratorMigrationTests(TransactionTestCase):
 
     def test_migration_copies_legacy_narrator_to_typed_character_link(self):
         executor = MigrationExecutor(connection)
-        executor.migrate([self.migrate_from])
-        old_apps = executor.loader.project_state([self.migrate_from]).apps
+        executor.migrate(self.migration_targets_from)
+        old_apps = executor.loader.project_state(self.migration_targets_from).apps
         OldBook = old_apps.get_model('narrative', 'Book')
         OldCharacter = old_apps.get_model('characters', 'Character')
 
@@ -28,8 +31,8 @@ class BookNarratorMigrationTests(TransactionTestCase):
         )
 
         executor = MigrationExecutor(connection)
-        executor.migrate([self.migrate_to])
-        new_apps = executor.loader.project_state([self.migrate_to]).apps
+        executor.migrate(self.migration_targets_to)
+        new_apps = executor.loader.project_state(self.migration_targets_to).apps
         BookNarrator = new_apps.get_model('narrative', 'BookNarrator')
 
         self.assertTrue(
@@ -41,8 +44,8 @@ class BookNarratorMigrationTests(TransactionTestCase):
 
     def test_typed_narrator_constraints_are_created(self):
         executor = MigrationExecutor(connection)
-        executor.migrate([self.migrate_to])
-        apps = executor.loader.project_state([self.migrate_to]).apps
+        executor.migrate(self.migration_targets_to)
+        apps = executor.loader.project_state(self.migration_targets_to).apps
         BookNarrator = apps.get_model('narrative', 'BookNarrator')
         Book = apps.get_model('narrative', 'Book')
         book = Book.objects.create(
@@ -56,6 +59,9 @@ class BookNarratorMigrationTests(TransactionTestCase):
 class BookTypedCastMigrationTests(TransactionTestCase):
     migrate_from = ('narrative', '0008_eventcasualty_alter_event_casualties_and_more')
     migrate_to = ('narrative', '0009_bookantagonist_alter_book_antagonists_and_more')
+    characters_migrate_from = ('characters', '0006_power_wiki_url')
+    migration_targets_from = (migrate_from, characters_migrate_from)
+    migration_targets_to = (migrate_to, characters_migrate_from)
 
     def tearDown(self):
         executor = MigrationExecutor(connection)
@@ -64,8 +70,8 @@ class BookTypedCastMigrationTests(TransactionTestCase):
 
     def test_migration_preserves_existing_character_m2m_links(self):
         executor = MigrationExecutor(connection)
-        executor.migrate([self.migrate_from])
-        old_apps = executor.loader.project_state([self.migrate_from]).apps
+        executor.migrate(self.migration_targets_from)
+        old_apps = executor.loader.project_state(self.migration_targets_from).apps
         OldBook = old_apps.get_model('narrative', 'Book')
         OldCharacter = old_apps.get_model('characters', 'Character')
 
@@ -79,8 +85,8 @@ class BookTypedCastMigrationTests(TransactionTestCase):
         book.antagonists.add(character)
 
         executor = MigrationExecutor(connection)
-        executor.migrate([self.migrate_to])
-        new_apps = executor.loader.project_state([self.migrate_to]).apps
+        executor.migrate(self.migration_targets_to)
+        new_apps = executor.loader.project_state(self.migration_targets_to).apps
         BookMainCharacter = new_apps.get_model('narrative', 'BookMainCharacter')
         BookAntagonist = new_apps.get_model('narrative', 'BookAntagonist')
 

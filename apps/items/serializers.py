@@ -2,11 +2,17 @@
 
 from rest_framework import serializers
 
+from apps.core.serializers import (
+    LoreMetadataModelSerializer,
+    active_lore_entity,
+    active_lore_reference,
+    active_lore_slug,
+)
 from apps.images.serializers import ImageListSerializer
 from apps.items.models import Weapon
 
 
-class WeaponListSerializer(serializers.ModelSerializer):
+class WeaponListSerializer(LoreMetadataModelSerializer):
     """Lightweight — for list views."""
 
     primary_image = serializers.SerializerMethodField()
@@ -40,28 +46,14 @@ class WeaponListSerializer(serializers.ModelSerializer):
         return obj.get_material_display() if obj.material else None
 
     def get_owner_primary(self, obj):
-        if obj.owner_primary_character:
-            return {
-                'type': 'character',
-                'slug': obj.owner_primary_character.slug,
-                'name': obj.owner_primary_character.name,
-            }
-        if obj.owner_primary_god:
-            return {
-                'type': 'god',
-                'slug': obj.owner_primary_god.slug,
-                'name': obj.owner_primary_god.name,
-            }
-        if obj.owner_primary_titan:
-            return {
-                'type': 'titan',
-                'slug': obj.owner_primary_titan.slug,
-                'name': obj.owner_primary_titan.name,
-            }
+        for entity_type in ('character', 'god', 'titan'):
+            entity = active_lore_entity(getattr(obj, f'owner_primary_{entity_type}'))
+            if entity is not None:
+                return active_lore_reference(entity, entity_type)
         return None
 
 
-class WeaponDetailSerializer(serializers.ModelSerializer):
+class WeaponDetailSerializer(LoreMetadataModelSerializer):
     """Full detail — for single weapon retrieval."""
 
     primary_image = serializers.SerializerMethodField()
@@ -112,44 +104,24 @@ class WeaponDetailSerializer(serializers.ModelSerializer):
         return obj.get_material_display() if obj.material else None
 
     def get_owner_primary(self, obj):
-        if obj.owner_primary_character:
-            return {
-                'type': 'character',
-                'slug': obj.owner_primary_character.slug,
-                'name': obj.owner_primary_character.name,
-            }
-        if obj.owner_primary_god:
-            return {
-                'type': 'god',
-                'slug': obj.owner_primary_god.slug,
-                'name': obj.owner_primary_god.name,
-            }
-        if obj.owner_primary_titan:
-            return {
-                'type': 'titan',
-                'slug': obj.owner_primary_titan.slug,
-                'name': obj.owner_primary_titan.name,
-            }
+        for entity_type in ('character', 'god', 'titan'):
+            entity = active_lore_entity(getattr(obj, f'owner_primary_{entity_type}'))
+            if entity is not None:
+                return active_lore_reference(entity, entity_type)
         return None
 
     def get_forged_by(self, obj):
-        if obj.forged_by:
-            return {'type': 'god', 'slug': obj.forged_by.slug, 'name': obj.forged_by.name}
-        if obj.forged_by_character:
-            return {
-                'type': 'character',
-                'slug': obj.forged_by_character.slug,
-                'name': obj.forged_by_character.name,
-            }
-        return None
+        entity = active_lore_entity(obj.forged_by)
+        if entity is not None:
+            return active_lore_reference(entity, 'god')
+        entity = active_lore_entity(obj.forged_by_character)
+        return active_lore_reference(entity, 'character')
 
     def get_forged_by_slug(self, obj):
-        if obj.forged_by:
-            return obj.forged_by.slug
-        return obj.forged_by_character.slug if obj.forged_by_character else None
+        return active_lore_slug(obj.forged_by or obj.forged_by_character)
 
     def get_first_appearance_book_slug(self, obj):
-        return obj.first_appearance_book.slug if obj.first_appearance_book else None
+        return active_lore_slug(obj.first_appearance_book)
 
     def get_books_appeared_in_slugs(self, obj):
         return list(obj.books_appeared_in.values_list('slug', flat=True))

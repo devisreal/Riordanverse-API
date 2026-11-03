@@ -5,6 +5,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter
 
 from apps.core.exceptions import InvalidFilterValue
+from apps.core.models import LoreAccuracy
 
 
 class SortOrderingFilter(OrderingFilter):
@@ -105,3 +106,9 @@ class StrictChoiceFilter(django_filters.ChoiceFilter):
                     break
             raise InvalidFilterValue(parameter, value, valid_values)
         return super().filter(qs, value)
+
+
+class LoreMetadataFilterSet(django_filters.FilterSet):
+    """Shared lore-accuracy filter for all public lore entity collections."""
+
+    lore_accuracy = StrictChoiceFilter(choices=LoreAccuracy.choices)

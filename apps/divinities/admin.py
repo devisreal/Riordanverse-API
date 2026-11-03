@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 
+from apps.core.admin import SoftDeleteAdminMixin
 from apps.divinities.models import (
     DivineRelationship,
     God,
@@ -26,7 +27,7 @@ class TitanImageInline(admin.TabularInline):
 
 
 @admin.register(God)
-class GodAdmin(admin.ModelAdmin):
+class GodAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('name', 'roman_name', 'tier', 'affiliation', 'is_big_three', 'has_cabin')
     list_filter = ('tier', 'affiliation', 'is_big_three', 'roman_only', 'mythology')
     search_fields = ('name', 'roman_name', 'description')
@@ -36,7 +37,7 @@ class GodAdmin(admin.ModelAdmin):
 
 
 @admin.register(Titan)
-class TitanAdmin(admin.ModelAdmin):
+class TitanAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
     list_display = ('name', 'generation', 'status', 'alignment')
     list_filter = ('generation', 'status', 'alignment', 'mythology')
     search_fields = ('name', 'description', 'role_in_series')
