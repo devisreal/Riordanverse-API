@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     env:
       DJANGO_SETTINGS_MODULE: config.settings.test
       SECRET_KEY: ci-only-dummy-secret-key-not-for-production
@@ -63,7 +63,7 @@ jobs:
 
   postgres-test:
     name: PostgreSQL tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     services:
       postgres:
         image: postgres:16
@@ -113,7 +113,7 @@ jobs:
         run: uv run python manage.py test --settings=config.settings.test_postgresql
 
   audit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: [test, postgres-test]
     steps:
       - uses: actions/checkout@v6
