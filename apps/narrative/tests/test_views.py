@@ -180,6 +180,9 @@ class EventViewTests(BaseAPITestCase):
             name='Battle of Manhattan',
             event_type='battle',
             book=self.book,
+            in_universe_timeframe='August 15-18 (Percy Age 15/16)',
+            date_precision='exact',
+            chronology_order=20,
         )
 
     def test_list_returns_200(self):
@@ -189,6 +192,61 @@ class EventViewTests(BaseAPITestCase):
     def test_detail_returns_200(self):
         response = self.client.get(reverse('event-detail', kwargs={'slug': 'battle-of-manhattan'}))
         self.assertEqual(response.status_code, 200)
+
+    def test_detail_returns_timeline_metadata(self):
+        response = self.client.get(reverse('event-detail', kwargs={'slug': self.event.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.data['in_universe_timeframe'],
+            'August 15-18 (Percy Age 15/16)',
+        )
+        self.assertEqual(response.data['date_precision'], 'exact')
+        self.assertEqual(response.data['date_precision_display'], 'Exact')
+        self.assertEqual(response.data['chronology_order'], 20)
+
+    def test_list_defaults_to_chronology_order_and_supports_sort(self):
+        first = make_event(name='Earlier Event', chronology_order=10)
+
+        response = self.client.get(reverse('event-list'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            [item['slug'] for item in response.data['data']],
+            [first.slug, self.event.slug],
+        )
+        self.assertEqual(response.data['data'][0]['chronology_order'], 10)
+
+        reversed_response = self.client.get(
+            reverse('event-list'), {'sort': 'chronology_order', 'order': 'desc'}
+        )
+        self.assertEqual(
+            [item['slug'] for item in reversed_response.data['data']],
+            [self.event.slug, first.slug],
+        )
+
+    def test_filter_by_timeframe_and_date_precision(self):
+        response = self.client.get(
+            reverse('event-list'),
+            {'in_universe_timeframe': 'August 15', 'date_precision': 'exact'},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item['slug'] for item in response.data['data']], [self.event.slug])
+
+    def test_invalid_date_precision_returns_400(self):
+        response = self.client.get(reverse('event-list'), {'date_precision': 'exactish'})
+        self.assertEqual(response.status_code, 400)
+
+    def test_list_places_untimed_events_after_curated_timeline_entries(self):
+        untimed = make_event(name='Untimed Event')
+
+        response = self.client.get(reverse('event-list'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            [item['slug'] for item in response.data['data']],
+            [self.event.slug, untimed.slug],
+        )
 
     def test_detail_returns_typed_casualties_and_legacy_slugs(self):
         kampe = make_monster(name='Kampe')

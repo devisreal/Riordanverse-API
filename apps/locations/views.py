@@ -22,14 +22,15 @@ class LocationListView(generics.ListAPIView):
             'controlled_by_titan',
             'controlled_by_character',
             'controlled_by_monster',
+            'first_appearance_book',
+            'earlier_mention_book',
         )
         .all()
     )
     serializer_class = LocationListSerializer
     filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = LocationFilter
-    ordering_fields = ('name', 'location_type')
-    ordering = ('name',)
+    ordering_fields = ('location_order', 'name', 'location_type')
 
 
 class LocationDetailView(generics.RetrieveAPIView):
@@ -42,6 +43,8 @@ class LocationDetailView(generics.RetrieveAPIView):
             'controlled_by_titan',
             'controlled_by_character',
             'controlled_by_monster',
+            'first_appearance_book',
+            'earlier_mention_book',
         )
         .all()
     )

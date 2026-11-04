@@ -38,6 +38,12 @@ class LocationFilter(LoreMetadataFilterSet):
         field_name='books_appeared_in__slug',
         help_text='Filter by book slug e.g. ?book=the-titans-curse',
     )
+    first_appearance_book = django_filters.CharFilter(
+        field_name='first_appearance_book__slug',
+    )
+    earlier_mention_book = django_filters.CharFilter(
+        field_name='earlier_mention_book__slug',
+    )
 
     class Meta:
         model = Location
@@ -50,4 +56,6 @@ class LocationFilter(LoreMetadataFilterSet):
             'controlled_by_character',
             'controlled_by_monster',
             'book',
+            'first_appearance_book',
+            'earlier_mention_book',
         ]

@@ -68,6 +68,7 @@ class TitanListViewTests(BaseAPITestCase):
             name='Kronos',
             alignment='kronos_army',
             status='imprisoned',
+            display_order=10,
         )
 
     def test_list_returns_200(self):
@@ -77,6 +78,37 @@ class TitanListViewTests(BaseAPITestCase):
     def test_detail_returns_200(self):
         response = self.client.get(reverse('titan-detail', kwargs={'slug': 'kronos'}))
         self.assertEqual(response.status_code, 200)
+
+    def test_list_exposes_and_defaults_to_display_order(self):
+        make_titan(name='Atlas', display_order=20)
+
+        response = self.client.get(reverse('titan-list'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item['slug'] for item in response.data['data']], ['kronos', 'atlas'])
+        self.assertEqual(response.data['data'][0]['display_order'], 10)
+        self.assertEqual(response.data['data'][1]['display_order'], 20)
+
+    def test_list_can_sort_by_display_order(self):
+        make_titan(name='Atlas', display_order=20)
+
+        response = self.client.get(
+            reverse('titan-list'), {'sort': 'display_order', 'order': 'desc'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item['slug'] for item in response.data['data']], ['atlas', 'kronos'])
+
+    def test_list_places_unranked_titans_after_curated_entries(self):
+        unranked = make_titan(name='Unranked Titan')
+
+        response = self.client.get(reverse('titan-list'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            [item['slug'] for item in response.data['data']],
+            [self.kronos.slug, unranked.slug],
+        )
 
     def test_detail_includes_weapon_slugs_and_home(self):
         scythe = make_weapon(name='Kronos Scythe')
@@ -89,6 +121,7 @@ class TitanListViewTests(BaseAPITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['weapon_slugs'], ['kronos-scythe'])
         self.assertEqual(response.data['home'], 'Mount Othrys')
+        self.assertEqual(response.data['display_order'], 10)
 
     def test_filter_by_alignment(self):
         make_titan(name='Prometheus', alignment='neutral')

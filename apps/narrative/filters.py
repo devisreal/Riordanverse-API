@@ -1,6 +1,11 @@
 import django_filters
 
-from apps.core.choices import BOOK_TYPE_CHOICES, EVENT_TYPE_CHOICES, SERIES_CHOICES
+from apps.core.choices import (
+    BOOK_TYPE_CHOICES,
+    EVENT_DATE_PRECISION_CHOICES,
+    EVENT_TYPE_CHOICES,
+    SERIES_CHOICES,
+)
 from apps.core.filters import LoreMetadataFilterSet, StrictChoiceFilter
 from apps.narrative.models import Book, Event, Prophecy, Quest
 
@@ -187,6 +192,10 @@ class QuestFilter(LoreMetadataFilterSet):
 class EventFilter(LoreMetadataFilterSet):
     event_type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES)
     type = StrictChoiceFilter(choices=EVENT_TYPE_CHOICES, field_name='event_type')
+    in_universe_timeframe = django_filters.CharFilter(
+        field_name='in_universe_timeframe', lookup_expr='icontains'
+    )
+    date_precision = StrictChoiceFilter(choices=EVENT_DATE_PRECISION_CHOICES)
     book = django_filters.CharFilter(field_name='book__slug')
     location = django_filters.CharFilter(field_name='location__slug')
     participant_character = django_filters.CharFilter(
@@ -217,6 +226,8 @@ class EventFilter(LoreMetadataFilterSet):
         fields = (
             'event_type',
             'type',
+            'in_universe_timeframe',
+            'date_precision',
             'book',
             'location',
             'participant_character',

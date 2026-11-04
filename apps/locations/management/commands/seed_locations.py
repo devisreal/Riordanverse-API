@@ -65,6 +65,8 @@ class Command(BaseCommand):
                             'coordinates_approx',
                             'notable_events',
                             'description',
+                            'first_appearance_locator',
+                            'location_order',
                         )
                         if field in entry
                     },
@@ -95,6 +97,27 @@ class Command(BaseCommand):
                 ):
                     defaults[target_field] = _resolve(
                         model,
+                        entry.get(slug_field),
+                        relation,
+                        name,
+                        self.stdout,
+                        self.style,
+                    )
+
+                for slug_field, relation, target_field in (
+                    (
+                        'first_appearance_book_slug',
+                        'first-appearance Book',
+                        'first_appearance_book',
+                    ),
+                    (
+                        'earlier_mention_book_slug',
+                        'earlier-mention Book',
+                        'earlier_mention_book',
+                    ),
+                ):
+                    defaults[target_field] = _resolve(
+                        Book,
                         entry.get(slug_field),
                         relation,
                         name,

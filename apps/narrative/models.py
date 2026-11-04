@@ -1,7 +1,12 @@
 from autoslug import AutoSlugField
 from django.db import models
 
-from apps.core.choices import BOOK_TYPE_CHOICES, EVENT_TYPE_CHOICES, SERIES_CHOICES
+from apps.core.choices import (
+    BOOK_TYPE_CHOICES,
+    EVENT_DATE_PRECISION_CHOICES,
+    EVENT_TYPE_CHOICES,
+    SERIES_CHOICES,
+)
 from apps.core.models import BaseModel
 from apps.images.models import BaseImageLink
 
@@ -969,6 +974,23 @@ class Event(BaseModel):
         default='battle',
         db_column='type',
     )
+    in_universe_timeframe = models.TextField(
+        blank=True,
+        null=True,
+        help_text='In-universe timeframe, distinct from publication order.',
+    )
+    date_precision = models.CharField(
+        max_length=20,
+        choices=EVENT_DATE_PRECISION_CHOICES,
+        default='unknown',
+        help_text='How precisely the in-universe timeframe is established.',
+    )
+    chronology_order = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        db_index=True,
+        help_text='Curated chronological display order; tied values may represent overlap.',
+    )
     book = models.ForeignKey(
         'narrative.Book',
         on_delete=models.SET_NULL,
@@ -1024,7 +1046,7 @@ class Event(BaseModel):
     description = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ['book__book_number', 'name']  # noqa: RUF012
+        ordering = [models.F('chronology_order').asc(nulls_last=True), 'name']  # noqa: RUF012
         verbose_name = 'Event'
         verbose_name_plural = 'Events'
 

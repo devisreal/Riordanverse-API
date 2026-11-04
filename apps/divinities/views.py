@@ -94,8 +94,7 @@ class TitanListView(generics.ListAPIView):
     serializer_class = TitanListSerializer
     filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = TitanFilter
-    ordering_fields = ('name', 'alignment', 'status')
-    ordering = ('name',)
+    ordering_fields = ('display_order', 'name', 'alignment', 'status')
 
 
 class TitanDetailView(generics.RetrieveAPIView):

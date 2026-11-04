@@ -203,8 +203,13 @@ class EventListView(generics.ListAPIView):
     serializer_class = EventListSerializer
     filter_backends = (DjangoFilterBackend, SortOrderingFilter)
     filterset_class = EventFilter
-    ordering_fields = ('name', 'book__book_number')
-    ordering = ('book__book_number', 'name')
+    ordering_fields = (
+        'chronology_order',
+        'name',
+        'in_universe_timeframe',
+        'date_precision',
+        'book__book_number',
+    )
 
 
 class EventDetailView(generics.RetrieveAPIView):
