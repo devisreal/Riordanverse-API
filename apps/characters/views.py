@@ -3,9 +3,13 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 
-from apps.characters.filters import CharacterFilter
-from apps.characters.models import Character, CharacterImage
-from apps.characters.serializers import CharacterDetailSerializer, CharacterListSerializer
+from apps.characters.filters import CharacterFilter, PowerFilter
+from apps.characters.models import Character, CharacterImage, Power
+from apps.characters.serializers import (
+    CharacterDetailSerializer,
+    CharacterListSerializer,
+    PowerSerializer,
+)
 from apps.core.filters import SortOrderingFilter
 from apps.divinities.family import prefetch_family
 from apps.images.filters import ImageFilter
@@ -64,6 +68,28 @@ class CharacterImageListView(generics.ListAPIView):
             .annotate(_gallery_order=gallery_order)
             .order_by('_gallery_order', 'pk')
         )
+
+
+class CharacterPowerListView(generics.ListAPIView):
+    """GET /api/v1/characters/<slug>/powers/"""
+
+    serializer_class = PowerSerializer
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
+    filterset_class = PowerFilter
+    ordering_fields = (
+        'display_order',
+        'name',
+        'source',
+        'type',
+        'is_passive',
+        'is_book_specific',
+    )
+
+    def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Power.objects.none()
+        character = get_object_or_404(Character, slug=self.kwargs['slug'])
+        return Power.objects.filter(character=character).select_related('first_demonstrated_book')
 
 
 class CharacterWeaponListView(generics.ListAPIView):

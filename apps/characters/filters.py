@@ -5,7 +5,12 @@ from django.db import connection
 from django.db.models import CharField, Q
 from django.db.models.functions import Cast
 
-from apps.characters.models import Character
+from apps.characters.models import (
+    POWER_SOURCE_CHOICES,
+    POWER_TYPE_CHOICES,
+    Character,
+    Power,
+)
 from apps.core.choices import (
     AFFILIATION_CHOICES,
     CHARACTER_TYPE_CHOICES,
@@ -19,6 +24,18 @@ from apps.core.filters import (
     StrictBooleanFilter,
     StrictChoiceFilter,
 )
+
+
+class PowerFilter(django_filters.FilterSet):
+    """Filters available on a Character's nested Power collection."""
+
+    source = StrictChoiceFilter(choices=POWER_SOURCE_CHOICES)
+    type = StrictChoiceFilter(choices=POWER_TYPE_CHOICES)
+    is_passive = StrictBooleanFilter()
+
+    class Meta:
+        model = Power
+        fields = ('source', 'type', 'is_passive')
 
 
 class CharacterFilter(LoreMetadataFilterSet):

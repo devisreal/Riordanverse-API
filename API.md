@@ -2393,16 +2393,15 @@ This table preserves the original proposal’s reuse rationale; entries such as 
 The `Character` model originally stored powers as a raw JSON array. This works for display but makes filtering and querying impossible:
 
 ```http
-GET /characters/?has_power=hydrokinesis     ❌ not queryable
-GET /powers/?source=divine_parent           ❌ no endpoint possible
-GET /powers/?type=offensive                 ❌ no type field to filter on
+GET /characters/?has_power=hydrokinesis                         ❌ not queryable on Character lists
+GET /api/v1/characters/percy-jackson/powers/?source=divine_parent ✅ character-scoped Power collection
 ```
 
 A dedicated `Power` model with a FK back to `Character` fixes all of this.
 
 ### Design Decision
 
-`Power` does **not** inherit from `BaseModel` and has no slug or standalone detail route. It is exposed as an embedded Character detail resource, with its own `wiki_url` and the fields listed in Section 23. A standalone Power collection/detail route remains future work.
+`Power` does **not** inherit from `BaseModel` and has no slug or standalone route. It is exposed both as an embedded Character detail resource and through the character-scoped `/characters/<slug>/powers/` list endpoint, with its own `wiki_url` and the fields listed in Section 23. There is no standalone `/powers/` collection or detail route.
 
 ### The `Power` Model
 
@@ -2610,10 +2609,6 @@ GET  /api/v1/characters/percy-jackson/powers/
 GET  /api/v1/characters/percy-jackson/powers/?source=divine_parent
 GET  /api/v1/characters/percy-jackson/powers/?type=offensive
 GET  /api/v1/characters/percy-jackson/powers/?is_passive=true
-
-GET  /api/v1/powers/?source=blessing
-GET  /api/v1/powers/?type=offensive
-GET  /api/v1/powers/?character=percy-jackson
 ```
 
 ### Summary
@@ -2855,7 +2850,7 @@ Unlike the public key request and verification endpoints, `POST /auth/revoke-key
 | Resource | Collection and detail | Implemented subresources |
 | --- | --- | --- |
 | Books | `/books/`, `/books/<slug>/` | `/books/<slug>/characters/`, `/gods/`, `/monsters/`, `/locations/`, `/quests/`, `/images/` |
-| Characters | `/characters/`, `/characters/<slug>/` | `/images/`, `/weapons/`, `/quests/` |
+| Characters | `/characters/`, `/characters/<slug>/` | `/images/`, `/powers/`, `/weapons/`, `/quests/` |
 | Gods | `/gods/`, `/gods/<slug>/` | `/images/`, `/children/`, `/weapons/` |
 | Titans | `/titans/`, `/titans/<slug>/` | `/images/` |
 | Monsters | `/monsters/`, `/monsters/<slug>/` | `/images/` |
@@ -2869,7 +2864,7 @@ Unlike the public key request and verification endpoints, `POST /auth/revoke-key
 | Factions | `/factions/`, `/factions/<slug>/` | `/members/` |
 | Search | `/search/?q=<query>` | Optional `type=<entity-type>` |
 
-Subresource paths in the table are appended to the entity detail path shown in the same row. There is no standalone `/images/`, `/powers/`, `/family/`, or `/divine-relationships/` endpoint. Book/character role relations, family edges, Powers, quest relations, prophecy subjects, and faction members are serialized through resource detail and the listed subresources; these are not relationship CRUD routes.
+Subresource paths in the table are appended to the entity detail path shown in the same row. Powers have a Character-scoped list endpoint at `/characters/<slug>/powers/` and are also embedded in Character detail; there is no standalone `/powers/` route. There is no standalone `/images/`, `/family/`, or `/divine-relationships/` endpoint. Book/character role relations, family edges, quest relations, prophecy subjects, and faction members are serialized through resource detail and the listed subresources; these are not relationship CRUD routes.
 
 ### List response and error shapes
 
@@ -2934,7 +2929,7 @@ Book roles are seeded from `data/book_character_relationships.json` with `seed_b
 - **Faction detail and `/factions/<slug>/members/`:** typed member records for Character, God, Titan, or Monster; leaders are also typed.
 - **Location list/detail:** `controlled_by` is a typed object for God, Titan, Character, or Monster.
 - **Monster detail:** typed defeat records supplement compatibility slug lists; God defeat links are represented separately.
-- **Character detail:** `powers` is embedded. Power fields are `id`, `name`, `wiki_url`, `description`, `source`, `type`, `scope`, `limitations`, `is_passive`, `is_book_specific`, `first_demonstrated_book`, and `display_order`. No Power list/detail route exists.
+- **Character detail and `/characters/<slug>/powers/`:** `powers` is embedded in Character detail and the nested list returns Power fields `id`, `name`, `wiki_url`, `description`, `source`, `type`, `scope`, `limitations`, `is_passive`, `is_book_specific`, `first_demonstrated_book`, and `display_order`. The nested list supports `source`, `type`, and `is_passive` filters; no standalone Power endpoint exists.
 
 ### List filters
 
@@ -2944,6 +2939,7 @@ Parameters below are declared by current filter sets. Every lore entity list als
 | --- | --- |
 | Books | `series`, `book_type`, `type` (alias), `parent_collection` / `parent-collection`, `narrator`, `narrator_character`, `narrator_god`, `narrator_titan`, `narrator_monster`, `narrator_creature`, `main_character`, `main_character_god`, `main_character_titan`, `main_character_monster`, `main_character_creature`, `antagonist`, `antagonist_god`, `antagonist_titan`, `antagonist_monster`, `antagonist_creature` |
 | Characters | `character_type`, `type` (alias), `affiliation`, `species`, `status`, `gender`, `greek_or_roman`, `divine_parent`, `first_appearance_book`, `book`, `is_demigod`, `is_big_three_child`, `is_hunter_of_artemis`, `is_oracle`, `is_possessed`, `can_see_through_mist`, `has_adhd`, `cabin` |
+| Character Powers subresource | `source`, `type`, `is_passive` |
 | Gods | `tier`, `affiliation`, `status`, `has_cabin`, `is_big_three`, `roman_only` |
 | Titans | `alignment`, `generation`, `status` |
 | Monsters | `monster_type`, `type` (alias), `allegiance`, `can_reform`, `defeated_by`, `defeated_by_god`, `defeated_in_book`, `book` |
@@ -2968,6 +2964,7 @@ Use `?sort=<field>&order=asc|desc`; `order` defaults to `asc`. Invalid, repeated
 | --- | --- | --- |
 | Books | `series`, `book_number` | `book_number`, `published_date`, `title` |
 | Characters | `name` | `name`, `status`, `age_first_appearance` |
+| Character Powers subresource | `display_order`, `name` | `display_order`, `name`, `source`, `type`, `is_passive`, `is_book_specific` |
 | Gods | `name` | `name`, `tier`, `cabin_number` |
 | Titans | `display_order`, `name` | `display_order`, `name`, `alignment`, `status` |
 | Monsters | `name` | `name`, `allegiance`, `monster_type` |
@@ -2981,7 +2978,7 @@ Use `?sort=<field>&order=asc|desc`; `order` defaults to `asc`. Invalid, repeated
 | Factions | `name` | `name`, `alignment` |
 | Image galleries | `display_order`, image PK | no declared `sort`/`order` allowlist |
 
-Nested list views generally inherit pagination but do not declare their own resource filters or sorting. Titan `display_order`, Event timeline fields, and Location first-appearance metadata are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
+Nested list views inherit pagination; the Character Powers subresource additionally supports the filters and sort fields documented above. Titan `display_order`, Event timeline fields, and Location first-appearance metadata are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
 
 ### Image gallery payload
 
@@ -2994,8 +2991,7 @@ The gallery serializer returns `id`, `url`, `thumbnail_url`, `alt_text`, `source
 The following items are intentionally deferred. They are not implemented API guarantees and should be reviewed before schema/data changes.
 
 1. **Claim-level provenance and review workflow.** Entity-level `lore_accuracy`, `lore_notes`, and `lore_sources` are implemented. Consider finer-grained citations attached to individual claims or fields, review timestamps, and editorial workflows if the data-curation process requires them; these would need separate requirements and schema design.
-2. **Power routes.** Powers are implemented, seeded, and embedded in Character detail. Decide whether independent `/powers/` or `/characters/<slug>/powers/` endpoints are needed before adding routes.
-3. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
-4. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
+2. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
+3. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
 
 *Reference: [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki)*
