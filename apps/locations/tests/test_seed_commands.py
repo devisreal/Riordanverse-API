@@ -26,6 +26,10 @@ class SeedLocationsCommandTests(TestCase):
 
         self.assertEqual(Location.objects.count(), 27)
         self.assertEqual(Location.objects.filter(wiki_url__isnull=False).count(), 25)
+        manhattan = Location.objects.get(slug='manhattan')
+        self.assertEqual(manhattan.location_order, 10)
+        self.assertEqual(manhattan.first_appearance_book.slug, 'the-lightning-thief')
+        self.assertEqual(manhattan.first_appearance_locator, 'Chapter 1')
         self.assertEqual(
             Location.objects.get(slug='camp-half-blood').wiki_url,
             'https://riordan.fandom.com/wiki/Camp_Half-Blood',
@@ -41,6 +45,11 @@ class SeedLocationsCommandTests(TestCase):
         self.assertIsNone(tartarus.controlled_by_titan)
         brooklyn_zoo = Location.objects.get(slug='brooklyn-zoo')
         self.assertIsNone(brooklyn_zoo.wiki_url)
+        self.assertEqual(
+            brooklyn_zoo.first_appearance_book.slug,
+            'percy-jackson-and-the-stolen-chariot',
+        )
+        self.assertEqual(brooklyn_zoo.location_order, 260)
         self.assertIn(
             'percy-jackson-and-the-stolen-chariot',
             brooklyn_zoo.books_appeared_in.values_list('slug', flat=True),
@@ -56,12 +65,14 @@ class SeedLocationsCommandTests(TestCase):
             'the-titans-curse',
             land_without_rain.books_appeared_in.values_list('slug', flat=True),
         )
+        camp = Location.objects.get(slug='camp-half-blood')
         self.assertIn(
             'the-last-olympian',
-            Location.objects.get(slug='camp-half-blood').books_appeared_in.values_list(
-                'slug', flat=True
-            ),
+            camp.books_appeared_in.values_list('slug', flat=True),
         )
+        self.assertEqual(camp.first_appearance_locator, 'Chapter 5')
+        self.assertEqual(camp.earlier_mention_book.slug, 'the-lightning-thief')
+        self.assertEqual(camp.location_order, 20)
 
         rerun = StringIO()
         call_command('seed_locations', stdout=rerun)
@@ -83,6 +94,28 @@ class SeedLocationsCommandTests(TestCase):
 
         self.assertTrue(Location.objects.filter(slug='master-slug').exists())
         self.assertFalse(Location.objects.filter(slug='canonical-test-place').exists())
+
+    def test_unresolved_first_appearance_books_warn_and_remain_null(self):
+        entry = {
+            'name': 'Unresolved Appearance Place',
+            'expected_slug': 'unresolved-appearance-place',
+            'location_type': 'mortal_city',
+            'first_appearance_book_slug': 'missing-first-book',
+            'earlier_mention_book_slug': 'missing-earlier-book',
+            'books_appeared_in_slugs': [],
+        }
+        with TemporaryDirectory() as temp_dir:
+            data_file = Path(temp_dir) / 'locations.json'
+            data_file.write_text(json.dumps([entry]), encoding='utf-8')
+            output = StringIO()
+            with patch('apps.locations.management.commands.seed_locations.DATA_FILE', data_file):
+                call_command('seed_locations', stdout=output)
+
+        location = Location.objects.get(slug='unresolved-appearance-place')
+        self.assertIsNone(location.first_appearance_book)
+        self.assertIsNone(location.earlier_mention_book)
+        self.assertEqual(output.getvalue().count('[WARN]'), 2)
+        self.assertIn('0 errors', output.getvalue())
 
     def test_null_wiki_url_does_not_clear_existing_location_url(self):
         location = Location.objects.create(

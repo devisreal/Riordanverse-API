@@ -24,6 +24,10 @@
       "the-last-olympian",
       "the-demigod-files"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 5",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 20,
     "description": "The secret Greek demigod training sanctuary located on Long Island, featuring strawberry fields, magical protective borders from Thalia's pine tree, 20 cabins, an armory, an amphitheater, and Big House.",
     "controlled_by_monster_slug": null
   },
@@ -49,6 +53,10 @@
       "the-last-olympian",
       "percy-jacksons-greek-gods"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 21",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 100,
     "description": "The floating palace city of the gods sitting atop the Empire State Building, accessible via a special key in the elevator to the 600th floor.",
     "controlled_by_monster_slug": null
   },
@@ -76,6 +84,10 @@
       "the-demigod-files",
       "percy-jacksons-greek-gods"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 18",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 80,
     "description": "The massive subterranean realm of the dead featuring the River Styx, Judgment Pavilion, Fields of Asphodel, Elysium, Tartarus, and Hades's obsidian palace.",
     "controlled_by_monster_slug": null
   },
@@ -98,6 +110,10 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 4",
+    "earlier_mention_book_slug": "the-battle-of-the-labyrinth",
+    "location_order": 200,
     "description": "An ancient, living subterranean maze created by Daedalus that grows underneath the entire continent, shifting locations and warping time and space.",
     "controlled_by_monster_slug": null
   },
@@ -121,6 +137,10 @@
       "the-lightning-thief",
       "the-titans-curse"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 16",
+    "earlier_mention_book_slug": null,
+    "location_order": 50,
     "description": "A glittering Las Vegas casino trap where guests consume lotus flowers and play endless games, losing all track of time.",
     "controlled_by_monster_slug": null
   },
@@ -142,6 +162,10 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 13",
+    "earlier_mention_book_slug": null,
+    "location_order": 30,
     "description": "Iconic 630-foot steel monument in St. Louis where Percy was ambushed at the observation deck by Echidna and her Chimera.",
     "controlled_by_monster_slug": "echidna"
   },
@@ -163,6 +187,10 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 15",
+    "earlier_mention_book_slug": null,
+    "location_order": 40,
     "description": "An abandoned water theme park in Denver engineered by Hephaestus with mechanical spider traps and broadcast cameras.",
     "controlled_by_monster_slug": null
   },
@@ -184,6 +212,10 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 18",
+    "earlier_mention_book_slug": null,
+    "location_order": 70,
     "description": "A dreary music studio office in Los Angeles that serves as the waiting room for dead souls before Charon ferries them into the Underworld.",
     "controlled_by_monster_slug": null
   },
@@ -205,6 +237,10 @@
     "books_appeared_in_slugs": [
       "the-lightning-thief"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 17",
+    "earlier_mention_book_slug": null,
+    "location_order": 60,
     "description": "A shady waterbed showroom block from DOA Recording Studios where Procrustes traps travelers to fit 6-foot beds.",
     "controlled_by_monster_slug": "procrustes"
   },
@@ -227,6 +263,10 @@
     "books_appeared_in_slugs": [
       "the-sea-of-monsters"
     ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 11",
+    "earlier_mention_book_slug": "the-sea-of-monsters",
+    "location_order": 120,
     "description": "A treacherous supernatural sea shifting through the Bermuda Triangle, filled with sirens, sea monsters, and enchantress resorts.",
     "controlled_by_monster_slug": null
   },
@@ -249,6 +289,10 @@
     "books_appeared_in_slugs": [
       "the-sea-of-monsters"
     ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 14",
+    "earlier_mention_book_slug": "the-sea-of-monsters",
+    "location_order": 140,
     "description": "A lush tropical island surrounded by carnivorous sheep, guarded by the blind Cyclops Polyphemus and housing the Golden Fleece in an oak tree.",
     "controlled_by_monster_slug": "polyphemus"
   },
@@ -271,6 +315,10 @@
     "books_appeared_in_slugs": [
       "the-sea-of-monsters"
     ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 12",
+    "earlier_mention_book_slug": null,
+    "location_order": 130,
     "description": "A luxurious island pampering spa where Circe turns men into guinea pigs and keeps them in cages.",
     "controlled_by_monster_slug": null
   },
@@ -294,6 +342,10 @@
       "the-sea-of-monsters",
       "the-last-olympian"
     ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 9",
+    "earlier_mention_book_slug": null,
+    "location_order": 110,
     "description": "A massive, zombified luxury cruise ship operating under a spell where mortal passengers wander in a trance alongside monsters and Titan soldiers.",
     "controlled_by_monster_slug": null
   },
@@ -317,6 +369,10 @@
     "books_appeared_in_slugs": [
       "the-titans-curse"
     ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 1",
+    "earlier_mention_book_slug": null,
+    "location_order": 150,
     "description": "A somber, castle-like military prep school in Maine overlooking the freezing ocean.",
     "controlled_by_monster_slug": "dr-thorn"
   },
@@ -340,6 +396,10 @@
     "books_appeared_in_slugs": [
       "the-titans-curse"
     ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 15",
+    "earlier_mention_book_slug": "the-titans-curse",
+    "location_order": 190,
     "description": "A fog-shrouded mountain north of San Francisco where the Titans rebuilt Mount Othrys and Atlas was trapped under the weight of the heavens.",
     "controlled_by_monster_slug": null
   },
@@ -363,6 +423,10 @@
       "the-titans-curse",
       "percy-jacksons-greek-heroes"
     ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 15",
+    "earlier_mention_book_slug": "the-titans-curse",
+    "location_order": 180,
     "description": "A tranquil garden atop Mount Tamalpais containing the golden apple tree, tended by the Hesperides nymphs and guarded by the 100-headed dragon Ladon.",
     "controlled_by_monster_slug": null
   },
@@ -385,6 +449,10 @@
     "books_appeared_in_slugs": [
       "the-titans-curse"
     ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 12",
+    "earlier_mention_book_slug": null,
+    "location_order": 170,
     "description": "Colossal concrete dam on the Colorado River where Percy encountered Clear-Sighted mortal Rachel Dare while fleeing Kronos's skeleton warriors.",
     "controlled_by_monster_slug": null
   },
@@ -407,6 +475,10 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 13",
+    "earlier_mention_book_slug": null,
+    "location_order": 240,
     "description": "A paradise island where Calypso is punished by the gods to fall in love with heroes who can never stay.",
     "controlled_by_monster_slug": null
   },
@@ -429,6 +501,10 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 12",
+    "earlier_mention_book_slug": null,
+    "location_order": 230,
     "description": "Active stratovolcano housing secret Telekhine foundries deep within its magmatic roots.",
     "controlled_by_monster_slug": null
   },
@@ -451,6 +527,10 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 10",
+    "earlier_mention_book_slug": null,
+    "location_order": 220,
     "description": "Sprawling Texas cattle ranch housing flesh-eating red cows and Hippalektryons.",
     "controlled_by_monster_slug": "geryon"
   },
@@ -472,6 +552,10 @@
     "books_appeared_in_slugs": [
       "the-battle-of-the-labyrinth"
     ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 9",
+    "earlier_mention_book_slug": null,
+    "location_order": 210,
     "description": "Historic island prison in San Francisco Bay serving as a supernatural cell for Briares.",
     "controlled_by_monster_slug": "kampe"
   },
@@ -496,6 +580,10 @@
       "the-last-olympian",
       "percy-jackson-and-the-singer-of-apollo"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 1",
+    "earlier_mention_book_slug": null,
+    "location_order": 10,
     "description": "The densely populated NYC borough beneath Mount Olympus, put into a magical trance during the Titan Siege.",
     "controlled_by_monster_slug": null
   },
@@ -520,6 +608,10 @@
       "the-last-olympian",
       "percy-jacksons-greek-gods"
     ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 19",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 90,
     "description": "A pitch-black, agonizing primordial abyss beneath Hades where monsters reform and Titans were bound.",
     "controlled_by_monster_slug": null
   },
@@ -541,6 +633,10 @@
     "books_appeared_in_slugs": [
       "the-last-olympian"
     ],
+    "first_appearance_book_slug": "the-last-olympian",
+    "first_appearance_locator": "Chapter 3",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 250,
     "description": "A magnificent coral and pearl underwater fortress kingdom governed by Poseidon and Queen Amphitrite.",
     "controlled_by_monster_slug": null
   },
@@ -564,6 +660,10 @@
       "the-demigod-files",
       "percy-jackson-and-the-stolen-chariot"
     ],
+    "first_appearance_book_slug": "percy-jackson-and-the-stolen-chariot",
+    "first_appearance_locator": "Section 1",
+    "earlier_mention_book_slug": null,
+    "location_order": 260,
     "description": "The mortal zoo in Prospect Park, Brooklyn, where Ares's sons Phobos and Deimos hid their father's stolen war chariot, ambushing Clarisse La Rue and Percy Jackson."
   },
   {
@@ -587,6 +687,10 @@
     "books_appeared_in_slugs": [
       "percy-jacksons-greek-heroes"
     ],
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "first_appearance_locator": "Chapter on Perseus",
+    "earlier_mention_book_slug": null,
+    "location_order": 270,
     "description": "The rocky Aegean island ruled by King Polydectes where Dictys fished Perseus and Danaë out of the sea, and where Perseus later returned with Medusa's head to petrify the tyrant king."
   },
   {
@@ -610,6 +714,10 @@
     "books_appeared_in_slugs": [
       "the-titans-curse"
     ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 10",
+    "earlier_mention_book_slug": null,
+    "location_order": 160,
     "description": "A vast desert junkyard where the gods discard ancient artifacts, magical scrap, and prototype automatons like Talos. Taking any item without permission awakens lethal guardians."
   }
 ]

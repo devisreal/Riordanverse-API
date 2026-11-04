@@ -118,6 +118,9 @@ class Command(BaseCommand):
                     defaults = {
                         'name': name,
                         'event_type': entry['event_type'],
+                        'in_universe_timeframe': entry.get('in_universe_timeframe'),
+                        'date_precision': entry.get('date_precision', 'unknown'),
+                        'chronology_order': entry.get('chronology_order'),
                         'book': _resolve(
                             Book,
                             entry.get('book_slug'),

@@ -38,7 +38,7 @@ class GodAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
 
 @admin.register(Titan)
 class TitanAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
-    list_display = ('name', 'generation', 'status', 'alignment')
+    list_display = ('display_order', 'name', 'generation', 'status', 'alignment')
     list_filter = ('generation', 'status', 'alignment', 'mythology')
     search_fields = ('name', 'description', 'role_in_series')
     filter_horizontal = ('books_appeared_in', 'weapons')

@@ -44,6 +44,9 @@ class DivinitySeedCommandTests(TestCase):
         )
         self.assertEqual(Titan.objects.count(), 23)
         self.assertEqual(Titan.objects.filter(wiki_url__isnull=False).count(), 20)
+        self.assertEqual(Titan.objects.get(slug='atlas').display_order, 130)
+        self.assertEqual(Titan.objects.get(slug='helios').display_order, 140)
+        self.assertEqual(Titan.objects.get(slug='atlas').generation, 'elder_titan')
         self.assertEqual(Weapon.objects.count(), 50)
         self.assertEqual(
             Titan.objects.get(slug='kronos').wiki_url,

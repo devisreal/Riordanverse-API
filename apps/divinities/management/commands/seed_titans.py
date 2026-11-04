@@ -59,6 +59,7 @@ class Command(BaseCommand):
                     'roman_name': entry.get('roman_name'),
                     'mythology': entry.get('mythology', 'greek'),
                     'generation': entry.get('generation', 'elder_titan'),
+                    'display_order': entry.get('display_order'),
                     'status': entry.get('status', 'imprisoned'),
                     'alignment': entry.get('alignment', 'kronos_army'),
                     'domains': entry.get('domains', []),

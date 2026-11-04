@@ -274,6 +274,15 @@ EVENT_TYPE_CHOICES = (
     ('sacrifice', 'Sacrifice'),
 )
 
+EVENT_DATE_PRECISION_CHOICES = (
+    ('exact', 'Exact'),
+    ('approximate', 'Approximate'),
+    ('relative_period', 'Relative Period'),
+    ('mythological_era', 'Mythological Era'),
+    ('disputed', 'Disputed'),
+    ('unknown', 'Unknown'),
+)
+
 # ---------------------------------------------------------------------------
 # Faction Type
 # ---------------------------------------------------------------------------

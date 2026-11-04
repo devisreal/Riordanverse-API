@@ -51,6 +51,9 @@ class SeedEventsCommandTests(TestCase):
         self.assertFalse(any('[WARN]' in value for value in outputs[:-1]))
 
         titanomachy = Event.objects.get(slug='first-titanomachy')
+        self.assertEqual(titanomachy.in_universe_timeframe, 'Ancient Mythological Era')
+        self.assertEqual(titanomachy.date_precision, 'mythological_era')
+        self.assertEqual(titanomachy.chronology_order, 10)
         self.assertIn('kampe', titanomachy.participant_monsters.values_list('slug', flat=True))
         kampe_casualty = titanomachy.casualty_records.get(casualty_monster__slug='kampe')
         self.assertEqual(kampe_casualty.casualty_monster.name, 'Kampê')
@@ -62,6 +65,10 @@ class SeedEventsCommandTests(TestCase):
 
         sacrifice_event = Event.objects.get(slug='destruction-of-the-talos-automaton')
         self.assertEqual(sacrifice_event.location.slug, 'land-without-rain')
+        beckendorfs_sacrifice = Event.objects.get(slug='beckendorfs-sacrifice')
+        self.assertEqual(beckendorfs_sacrifice.in_universe_timeframe, 'August 12 (Percy Age 15)')
+        self.assertEqual(beckendorfs_sacrifice.date_precision, 'exact')
+        self.assertEqual(beckendorfs_sacrifice.chronology_order, 170)
 
         rerun = StringIO()
         call_command('seed_events', stdout=rerun)

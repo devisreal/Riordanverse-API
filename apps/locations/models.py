@@ -104,11 +104,32 @@ class Location(BaseModel):
         blank=True,
         related_name='locations',
     )
+    first_appearance_book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='locations_first_appearing',
+    )
+    first_appearance_locator = models.CharField(max_length=255, blank=True, null=True)
+    earlier_mention_book = models.ForeignKey(
+        'narrative.Book',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='locations_earlier_mentioned',
+    )
+    location_order = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        db_index=True,
+        help_text='Curated order based on first physical on-page appearance.',
+    )
 
     description = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ['name']
+        ordering = [models.F('location_order').asc(nulls_last=True), 'name']
         verbose_name = 'Location'
         verbose_name_plural = 'Locations'
         constraints = [

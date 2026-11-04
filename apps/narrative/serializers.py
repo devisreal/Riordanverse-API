@@ -461,6 +461,9 @@ class EventListSerializer(LoreMetadataModelSerializer):
     book_slug = serializers.SerializerMethodField()
     location_slug = serializers.SerializerMethodField()
     event_type_display = serializers.CharField(source='get_event_type_display', read_only=True)
+    date_precision_display = serializers.CharField(
+        source='get_date_precision_display', read_only=True
+    )
 
     class Meta:
         model = Event
@@ -470,6 +473,10 @@ class EventListSerializer(LoreMetadataModelSerializer):
             'name',
             'event_type',
             'event_type_display',
+            'in_universe_timeframe',
+            'date_precision',
+            'date_precision_display',
+            'chronology_order',
             'book_slug',
             'location_slug',
             'significance',
@@ -518,6 +525,9 @@ class EventDetailSerializer(LoreMetadataModelSerializer):
     book_slug = serializers.SerializerMethodField()
     location_slug = serializers.SerializerMethodField()
     event_type_display = serializers.CharField(source='get_event_type_display', read_only=True)
+    date_precision_display = serializers.CharField(
+        source='get_date_precision_display', read_only=True
+    )
     participant_character_slugs = serializers.SerializerMethodField()
     participant_god_slugs = serializers.SerializerMethodField()
     participant_titan_slugs = serializers.SerializerMethodField()
@@ -532,6 +542,10 @@ class EventDetailSerializer(LoreMetadataModelSerializer):
             'name',
             'event_type',
             'event_type_display',
+            'in_universe_timeframe',
+            'date_precision',
+            'date_precision_display',
+            'chronology_order',
             'book_slug',
             'location_slug',
             'participant_character_slugs',

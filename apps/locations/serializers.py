@@ -15,6 +15,12 @@ class LocationListSerializer(LoreMetadataModelSerializer):
         source='get_location_type_display', read_only=True
     )
     controlled_by = serializers.SerializerMethodField()
+    first_appearance_book_slug = serializers.SlugRelatedField(
+        source='first_appearance_book', slug_field='slug', read_only=True
+    )
+    earlier_mention_book_slug = serializers.SlugRelatedField(
+        source='earlier_mention_book', slug_field='slug', read_only=True
+    )
 
     class Meta:
         model = Location
@@ -27,6 +33,10 @@ class LocationListSerializer(LoreMetadataModelSerializer):
             'real_world_location',
             'is_hidden_from_mortals',
             'controlled_by',
+            'first_appearance_book_slug',
+            'first_appearance_locator',
+            'earlier_mention_book_slug',
+            'location_order',
             'wiki_url',
             'primary_image',
         ]
@@ -72,6 +82,12 @@ class LocationDetailSerializer(LoreMetadataModelSerializer):
     )
     controlled_by = serializers.SerializerMethodField()
     books_appeared_in_slugs = serializers.SerializerMethodField()
+    first_appearance_book_slug = serializers.SlugRelatedField(
+        source='first_appearance_book', slug_field='slug', read_only=True
+    )
+    earlier_mention_book_slug = serializers.SlugRelatedField(
+        source='earlier_mention_book', slug_field='slug', read_only=True
+    )
 
     class Meta:
         model = Location
@@ -89,6 +105,10 @@ class LocationDetailSerializer(LoreMetadataModelSerializer):
             'controlled_by',
             'description',
             'books_appeared_in_slugs',
+            'first_appearance_book_slug',
+            'first_appearance_locator',
+            'earlier_mention_book_slug',
+            'location_order',
             'primary_image',
             'wiki_url',
             'created_at',

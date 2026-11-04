@@ -149,8 +149,8 @@ class EventCasualtyInline(admin.TabularInline):
 
 @admin.register(Event)
 class EventAdmin(SoftDeleteAdminMixin, admin.ModelAdmin):
-    list_display = ('name', 'event_type', 'book', 'location')
-    list_filter = ('event_type', 'book')
+    list_display = ('chronology_order', 'name', 'date_precision', 'book', 'location')
+    list_filter = ('event_type', 'date_precision', 'book')
     search_fields = ('name', 'outcome', 'significance', 'description')
     raw_id_fields = ('book', 'location')
     filter_horizontal = (

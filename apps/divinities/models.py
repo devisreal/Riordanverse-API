@@ -195,6 +195,12 @@ class Titan(BaseModel):
         choices=TITAN_GENERATION_CHOICES,
         default='elder_titan',
     )
+    display_order = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        db_index=True,
+        help_text='Curated list order; independent of the Titan generation classification.',
+    )
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
@@ -251,7 +257,7 @@ class Titan(BaseModel):
     description = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ['name']
+        ordering = [models.F('display_order').asc(nulls_last=True), 'name']
         verbose_name = 'Titan'
         verbose_name_plural = 'Titans'
 

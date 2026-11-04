@@ -2,6 +2,7 @@
   {
     "name": "Kronos",
     "expected_slug": "kronos",
+    "display_order": 10,
     "wiki_url": "https://riordan.fandom.com/wiki/Kronos",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -40,6 +41,7 @@
   {
     "name": "Atlas",
     "expected_slug": "atlas",
+    "display_order": 130,
     "wiki_url": "https://riordan.fandom.com/wiki/Atlas",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -69,6 +71,7 @@
   {
     "name": "Hyperion",
     "expected_slug": "hyperion",
+    "display_order": 40,
     "wiki_url": "https://riordan.fandom.com/wiki/Hyperion",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -98,6 +101,7 @@
   {
     "name": "Iapetus",
     "expected_slug": "iapetus",
+    "display_order": 50,
     "wiki_url": "https://riordan.fandom.com/wiki/Iapetus",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -125,6 +129,7 @@
   {
     "name": "Oceanus",
     "expected_slug": "oceanus",
+    "display_order": 30,
     "wiki_url": "https://riordan.fandom.com/wiki/Oceanus",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -152,6 +157,7 @@
   {
     "name": "Prometheus",
     "expected_slug": "prometheus",
+    "display_order": 150,
     "wiki_url": "https://riordan.fandom.com/wiki/Prometheus",
     "mythology": "greek",
     "generation": "younger_titan",
@@ -181,6 +187,7 @@
   {
     "name": "Koios",
     "expected_slug": "koios",
+    "display_order": 70,
     "wiki_url": "https://riordan.fandom.com/wiki/Koios",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -209,6 +216,7 @@
   {
     "name": "Krios",
     "expected_slug": "krios",
+    "display_order": 60,
     "wiki_url": "https://riordan.fandom.com/wiki/Krios",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -236,6 +244,7 @@
   {
     "name": "Rhea",
     "expected_slug": "rhea",
+    "display_order": 20,
     "wiki_url": "https://riordan.fandom.com/wiki/Rhea",
     "mythology": "greek",
     "generation": "elder_titan",
@@ -276,6 +285,7 @@
   {
     "name": "Helios",
     "expected_slug": "helios",
+    "display_order": 140,
     "wiki_url": "https://riordan.fandom.com/wiki/Helios",
     "roman_name": "Sol",
     "mythology": "greek",
@@ -313,6 +323,7 @@
   {
     "name": "Tethys",
     "expected_slug": "tethys",
+    "display_order": 110,
     "wiki_url": "https://riordan.fandom.com/wiki/Tethys",
     "roman_name": "Tethys",
     "mythology": "greek",
@@ -344,6 +355,7 @@
   {
     "name": "Theia",
     "expected_slug": "theia",
+    "display_order": 120,
     "wiki_url": "https://riordan.fandom.com/wiki/Theia",
     "roman_name": "Theia",
     "mythology": "greek",
@@ -375,6 +387,7 @@
   {
     "name": "Themis",
     "expected_slug": "themis",
+    "display_order": 80,
     "wiki_url": "https://riordan.fandom.com/wiki/Themis",
     "roman_name": "Justitia",
     "mythology": "greek",
@@ -406,6 +419,7 @@
   {
     "name": "Mnemosyne",
     "expected_slug": "mnemosyne",
+    "display_order": 90,
     "wiki_url": "https://riordan.fandom.com/wiki/Mnemosyne",
     "roman_name": "Moneta",
     "mythology": "greek",
@@ -436,6 +450,7 @@
   {
     "name": "Phoebe",
     "expected_slug": "phoebe",
+    "display_order": 100,
     "wiki_url": "https://riordan.fandom.com/wiki/Phoebe",
     "roman_name": "Phoebe",
     "mythology": "greek",
@@ -466,6 +481,7 @@
   {
     "name": "Selene",
     "expected_slug": "selene",
+    "display_order": 160,
     "wiki_url": "https://riordan.fandom.com/wiki/Selene",
     "roman_name": "Luna",
     "mythology": "greek",
@@ -500,6 +516,7 @@
   {
     "name": "Leto",
     "expected_slug": "leto",
+    "display_order": 170,
     "wiki_url": "https://riordan.fandom.com/wiki/Leto",
     "roman_name": "Latona",
     "mythology": "greek",
@@ -535,6 +552,7 @@
   {
     "name": "Epimetheus",
     "expected_slug": "epimetheus",
+    "display_order": 180,
     "wiki_url": "https://riordan.fandom.com/wiki/Epimetheus",
     "roman_name": null,
     "mythology": "greek",
@@ -567,6 +585,7 @@
   {
     "name": "Eos",
     "expected_slug": "eos",
+    "display_order": 190,
     "wiki_url": "https://riordan.fandom.com/wiki/Eos",
     "roman_name": "Aurora",
     "mythology": "greek",
@@ -596,6 +615,7 @@
   {
     "name": "Metis",
     "expected_slug": "metis",
+    "display_order": 200,
     "description": "Titaness of Wisdom and first wife of Zeus. Mother of Athena.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
@@ -609,6 +629,7 @@
   {
     "name": "Clymene",
     "expected_slug": "clymene",
+    "display_order": 210,
     "description": "Oceanid Titaness. Wife of Iapetus and mother of Atlas, Prometheus, and Epimetheus.",
     "first_appearance_book_slug": "percy-jacksons-greek-gods",
     "books_appeared_in_slugs": [
@@ -621,6 +642,7 @@
   {
     "name": "Pleione",
     "expected_slug": "pleione",
+    "display_order": 220,
     "description": "Oceanid nymph/Titaness, wife of Atlas, and mother of Zoë Nightshade and Calypso.",
     "first_appearance_book_slug": "the-titans-curse",
     "books_appeared_in_slugs": [
@@ -633,6 +655,7 @@
   {
     "name": "Eurynome",
     "expected_slug": "eurynome",
+    "display_order": 230,
     "description": "Oceanid Titaness and mother of Bellerophon by Poseidon.",
     "first_appearance_book_slug": "percy-jacksons-greek-heroes",
     "books_appeared_in_slugs": [
