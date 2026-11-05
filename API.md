@@ -1625,12 +1625,12 @@ uv run python manage.py audit_wiki_images \
   --settings=config.settings.development
 ```
 
-`--request-delay` defaults to 0.25 seconds. The current seed contains 2,753 per-page image references from 330 pages; `seed_images` upserts these into 2,618 unique Image rows by `(url, source_url)`. Twenty pages have no image candidates. Import after entity seeds with `uv run python manage.py seed_images --settings=config.settings.development` or use `seed_all`. The importer sets `source_type='wiki'`, `category='other'`, and `license`/`license_url` to null. Only supported typed relations (Books, Characters, Gods, Titans, Monsters, Weapons, Locations) receive gallery links; images from other source pages remain available in the global collection. Missing license metadata means reuse rights are unverified, not granted; confirm permissions separately before public reuse.
+`--request-delay` defaults to 0.25 seconds. The current seed contains 2,753 per-page image references from 330 pages; `seed_images` upserts these into 2,618 unique Image rows by `(url, source_url)`. Twenty pages have no image candidates. Import after entity seeds with `uv run python manage.py seed_images --settings=config.settings.development` or use `seed_all`. Imported rows use `source_type='wiki'`; license fields remain null. Characters, Gods, Titans, Monsters, and Weapons receive a gallery link only when the decoded image URL filename contains the entity name or slug. Book galleries include explicit cover/CVR/Bookpic files or portrait image filenames matching the book title; those Image rows use `category='book_cover'`. Other imported images use `category='other'` and remain available in the global collection, and re-seeding removes stale wiki gallery links that no longer meet the matching rules. Location gallery matching remains page-based. Missing license metadata means reuse rights are unverified, not granted; confirm permissions separately before public reuse.
 
 ### Additional Notes
 
 - The `is_primary` flag is stored on each entity-image join row; a conditional unique constraint enforces at most one primary image per entity.
-- For `Book`, the `book_cover` category on `BookImage` replaces the earlier `cover_image_url` string field — covers are just images like everything else
+- For a Book, `category='book_cover'` is stored on the Image row and identifies cover candidates; the `BookImage` join links only qualifying covers.
 - Requiring `artist_name` for fan art is a future validation-policy decision; the current model allows it to be null.
 - External URLs (e.g. Riordan Wiki) should be stored but the system should support migrating to internally hosted CDN URLs in future without breaking the API response shape
 - A separate `map_marker_icon` field on `Location` is not currently implemented; consider it only if a client use case requires it.

@@ -10,6 +10,7 @@ from apps.bestiary.models import Monster, MonsterImage
 from apps.characters.models import Character, CharacterImage
 from apps.divinities.models import God, GodImage, Titan, TitanImage
 from apps.images.models import Image
+from apps.images.seed_matching import should_link_image
 from apps.items.models import Weapon, WeaponImage
 from apps.locations.models import Location, LocationImage
 from apps.narrative.models import Book, BookImage
@@ -57,6 +58,10 @@ class Command(BaseCommand):
             source_page_url = entity_record.get('source_page_url')
             supported = SUPPORTED_IMAGE_LINKS.get(entity_type)
             linked_entity = None
+            image_link_model = supported[1] if supported else None
+            image_link_foreign_key = supported[2] if supported else None
+            linked_image_ids = set()
+            entity_has_errors = False
 
             if supported and entity_slug:
                 entity_model, _, _ = supported
@@ -84,6 +89,7 @@ class Command(BaseCommand):
                 source_url = entry.get('source_url') or source_page_url
                 if not url or not source_url:
                     error_count += 1
+                    entity_has_errors = True
                     self.stderr.write(
                         self.style.ERROR(
                             f'  Skipped {image_name} for {entity_name}: missing image or source URL.'
@@ -91,11 +97,16 @@ class Command(BaseCommand):
                     )
                     continue
 
+                matched_entity_image = linked_entity is not None and should_link_image(
+                    entity_type, entity_name, entity_slug, entry
+                )
                 defaults = {
                     'thumbnail_url': entry.get('thumbnail_url'),
                     'alt_text': (entry.get('alt_text') or image_name)[:255],
                     'source_type': 'wiki',
-                    'category': 'other',
+                    'category': (
+                        'book_cover' if entity_type == 'books' and matched_entity_image else 'other'
+                    ),
                     'artist_name': entry.get('artist_name'),
                     'artist_url': entry.get('artist_url'),
                     'source_url': source_url,
@@ -114,15 +125,16 @@ class Command(BaseCommand):
                             source_url=source_url,
                             defaults=defaults,
                         )
-                        if linked_entity is not None and supported:
-                            _, link_model, foreign_key = supported
-                            link_model.objects.update_or_create(
+                        if matched_entity_image:
+                            image_link_model.objects.update_or_create(
                                 image=image,
-                                **{foreign_key: linked_entity},
+                                **{image_link_foreign_key: linked_entity},
                                 defaults={'display_order': display_order},
                             )
+                            linked_image_ids.add(image.pk)
                 except (DatabaseError, KeyError, TypeError, ValueError) as exc:
                     error_count += 1
+                    entity_has_errors = True
                     self.stderr.write(
                         self.style.ERROR(f'  Failed {image_name} for {entity_name}: {exc}')
                     )
@@ -132,8 +144,14 @@ class Command(BaseCommand):
                     created_count += 1
                 else:
                     updated_count += 1
-                if linked_entity is not None and supported:
+                if matched_entity_image:
                     linked_count += 1
+
+            if linked_entity is not None and supported and not entity_has_errors:
+                image_link_model.objects.filter(
+                    **{image_link_foreign_key: linked_entity},
+                    image__source_type='wiki',
+                ).exclude(image_id__in=linked_image_ids).delete()
 
         self.stdout.write(
             self.style.SUCCESS(
