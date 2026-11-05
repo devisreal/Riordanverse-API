@@ -23,6 +23,7 @@ SEED_COMMANDS = (
     'seed_events',
     'seed_quests',
     'seed_monster_defeats',
+    'seed_images',
 )
 
 
@@ -44,6 +45,7 @@ class SeedAllCommandTests(SimpleTestCase):
         )
         self.assertIn('Running seed_books...', output.getvalue())
         self.assertIn('Running seed_monster_defeats...', output.getvalue())
+        self.assertIn('Running seed_images...', output.getvalue())
         self.assertIn('All canonical seed commands completed.', output.getvalue())
         self.assertTrue(
             all(

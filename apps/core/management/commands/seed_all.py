@@ -18,6 +18,7 @@ SEED_COMMANDS = (
     'seed_events',
     'seed_quests',
     'seed_monster_defeats',
+    'seed_images',
 )
 
 

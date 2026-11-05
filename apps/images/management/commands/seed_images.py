@@ -1,0 +1,144 @@
+"""Seed URL-backed image metadata and supported entity gallery links."""
+
+import json
+
+from django.conf import settings
+from django.core.management.base import BaseCommand
+from django.db import DatabaseError, transaction
+
+from apps.bestiary.models import Monster, MonsterImage
+from apps.characters.models import Character, CharacterImage
+from apps.divinities.models import God, GodImage, Titan, TitanImage
+from apps.images.models import Image
+from apps.items.models import Weapon, WeaponImage
+from apps.locations.models import Location, LocationImage
+from apps.narrative.models import Book, BookImage
+
+DATA_FILE = settings.BASE_DIR / 'data' / 'images.json'
+
+SUPPORTED_IMAGE_LINKS = {
+    'books': (Book, BookImage, 'book'),
+    'characters': (Character, CharacterImage, 'character'),
+    'gods': (God, GodImage, 'god'),
+    'titans': (Titan, TitanImage, 'titan'),
+    'monsters': (Monster, MonsterImage, 'monster'),
+    'weapons': (Weapon, WeaponImage, 'weapon'),
+    'locations': (Location, LocationImage, 'location'),
+}
+
+
+class Command(BaseCommand):
+    help = 'Seed wiki image URLs and supported entity gallery links from data/images.json.'
+
+    def handle(self, *args, **options):
+        if not DATA_FILE.exists():
+            self.stderr.write(self.style.ERROR(f'Data file not found: {DATA_FILE}'))
+            return
+
+        with DATA_FILE.open(encoding='utf-8') as data_file:
+            payload = json.load(data_file)
+
+        entities = payload.get('entities', [])
+        created_count = 0
+        updated_count = 0
+        linked_count = 0
+        unresolved_count = 0
+        error_count = 0
+
+        for entity_record in entities:
+            entity_type = entity_record.get('entity_type')
+            entity_slug = entity_record.get('entity_slug')
+            entity_name = (
+                entity_record.get('entity_name')
+                or entity_record.get('name')
+                or entity_slug
+                or 'unknown entity'
+            )
+            source_page_url = entity_record.get('source_page_url')
+            supported = SUPPORTED_IMAGE_LINKS.get(entity_type)
+            linked_entity = None
+
+            if supported and entity_slug:
+                entity_model, _, _ = supported
+                linked_entity = entity_model.objects.filter(slug=entity_slug).first()
+                if linked_entity is None:
+                    unresolved_count += 1
+                    self.stderr.write(
+                        self.style.WARNING(
+                            f"[WARN] Unresolved {entity_type} '{entity_slug}' for "
+                            f'{entity_name}; images will remain in the global collection.'
+                        )
+                    )
+            elif supported:
+                unresolved_count += 1
+                self.stderr.write(
+                    self.style.WARNING(
+                        f'[WARN] Missing slug for {entity_type} {entity_name}; '
+                        'images will remain in the global collection.'
+                    )
+                )
+
+            for display_order, entry in enumerate(entity_record.get('images', [])):
+                image_name = entry.get('file_title', entry.get('alt_text', 'unknown image'))
+                url = entry.get('url')
+                source_url = entry.get('source_url') or source_page_url
+                if not url or not source_url:
+                    error_count += 1
+                    self.stderr.write(
+                        self.style.ERROR(
+                            f'  Skipped {image_name} for {entity_name}: missing image or source URL.'
+                        )
+                    )
+                    continue
+
+                defaults = {
+                    'thumbnail_url': entry.get('thumbnail_url'),
+                    'alt_text': (entry.get('alt_text') or image_name)[:255],
+                    'source_type': 'wiki',
+                    'category': 'other',
+                    'artist_name': entry.get('artist_name'),
+                    'artist_url': entry.get('artist_url'),
+                    'source_url': source_url,
+                    'license': None,
+                    'license_url': None,
+                    'width': entry.get('width'),
+                    'height': entry.get('height'),
+                    'file_format': (entry.get('file_format') or '')[:10] or None,
+                    'wiki_url': entry.get('wiki_url'),
+                }
+
+                try:
+                    with transaction.atomic():
+                        image, created = Image.objects.update_or_create(
+                            url=url,
+                            source_url=source_url,
+                            defaults=defaults,
+                        )
+                        if linked_entity is not None and supported:
+                            _, link_model, foreign_key = supported
+                            link_model.objects.update_or_create(
+                                image=image,
+                                **{foreign_key: linked_entity},
+                                defaults={'display_order': display_order},
+                            )
+                except (DatabaseError, KeyError, TypeError, ValueError) as exc:
+                    error_count += 1
+                    self.stderr.write(
+                        self.style.ERROR(f'  Failed {image_name} for {entity_name}: {exc}')
+                    )
+                    continue
+
+                if created:
+                    created_count += 1
+                else:
+                    updated_count += 1
+                if linked_entity is not None and supported:
+                    linked_count += 1
+
+        self.stdout.write(
+            self.style.SUCCESS(
+                f'Images seeded: {created_count} created, {updated_count} updated, '
+                f'{linked_count} gallery links, {unresolved_count} unresolved entities, '
+                f'{error_count} errors.'
+            )
+        )
