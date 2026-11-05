@@ -16,6 +16,7 @@ from apps.locations.models import Location, LocationImage
 from apps.narrative.models import Book, BookImage
 
 DATA_FILE = settings.BASE_DIR / 'data' / 'images.json'
+GALLERY_OVERRIDES_FILE = settings.BASE_DIR / 'data' / 'image_gallery_overrides.json'
 
 SUPPORTED_IMAGE_LINKS = {
     'books': (Book, BookImage, 'book'),
@@ -38,6 +39,11 @@ class Command(BaseCommand):
 
         with DATA_FILE.open(encoding='utf-8') as data_file:
             payload = json.load(data_file)
+        if GALLERY_OVERRIDES_FILE.exists():
+            with GALLERY_OVERRIDES_FILE.open(encoding='utf-8') as overrides_file:
+                gallery_overrides = json.load(overrides_file)
+        else:
+            gallery_overrides = {}
 
         entities = payload.get('entities', [])
         created_count = 0
@@ -62,6 +68,8 @@ class Command(BaseCommand):
             image_link_foreign_key = supported[2] if supported else None
             linked_image_ids = set()
             entity_has_errors = False
+            entity_overrides = gallery_overrides.get(entity_type, {}).get(entity_slug, {})
+            include_file_titles = set(entity_overrides.get('include_file_titles', []))
 
             if supported and entity_slug:
                 entity_model, _, _ = supported
@@ -98,7 +106,11 @@ class Command(BaseCommand):
                     continue
 
                 matched_entity_image = linked_entity is not None and should_link_image(
-                    entity_type, entity_name, entity_slug, entry
+                    entity_type,
+                    entity_name,
+                    entity_slug,
+                    entry,
+                    include_file_titles=include_file_titles,
                 )
                 defaults = {
                     'thumbnail_url': entry.get('thumbnail_url'),

@@ -81,6 +81,32 @@ class ImageSeedMatchingTests(SimpleTestCase):
                     )
                 )
 
+    def test_explicit_file_title_override_can_link_nonmatching_zoe_art(self):
+        images = (
+            {
+                'file_title': 'File:Huntress_constellation_GN.png',
+                'url': 'https://static.example/Huntress_constellation_GN.png',
+            },
+            {
+                'file_title': 'File:Zoe_GN.png',
+                'url': 'https://static.example/Zoe_GN.png',
+            },
+        )
+        for image in images:
+            with self.subTest(file_title=image['file_title']):
+                self.assertFalse(
+                    should_link_image('characters', 'Zoë Nightshade', 'zoe-nightshade', image)
+                )
+                self.assertTrue(
+                    should_link_image(
+                        'characters',
+                        'Zoë Nightshade',
+                        'zoe-nightshade',
+                        image,
+                        include_file_titles={image['file_title']},
+                    )
+                )
+
     def test_book_cover_markers_and_title_named_portraits_are_kept(self):
         self.assertTrue(
             is_book_cover(

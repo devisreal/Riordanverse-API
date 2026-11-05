@@ -129,6 +129,7 @@ class FandomImageAuditClient:
             'prop': 'images',
             'titles': page_title,
             'imlimit': 'max',
+            'redirects': '1',
         }
         titles = []
         while True:

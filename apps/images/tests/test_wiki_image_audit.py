@@ -171,6 +171,28 @@ class WikiImageLicenseTests(SimpleTestCase):
         self.assertEqual(titles, ['File:First.jpg', 'File:Second.jpg'])
         self.assertEqual(mock_request.call_count, 2)
 
+    def test_image_titles_follow_page_redirects_for_accented_names(self):
+        client = FandomImageAuditClient(request_delay=0)
+        with patch.object(
+            client,
+            '_request',
+            return_value={
+                'query': {
+                    'redirects': [{'from': 'Zoe Nightshade', 'to': 'Zoë Nightshade'}],
+                    'pages': [
+                        {
+                            'title': 'Zoë Nightshade',
+                            'images': [{'title': 'File:Zoe Nightshade.jpg'}],
+                        }
+                    ],
+                }
+            },
+        ) as mock_request:
+            titles = client._image_titles('https://riordan.fandom.com/api.php', 'Zoe Nightshade')
+
+        self.assertEqual(titles, ['File:Zoe Nightshade.jpg'])
+        self.assertEqual(mock_request.call_args.args[1]['redirects'], '1')
+
     def test_rejects_wiki_urls_outside_the_riordan_fandom_domain(self):
         with self.assertRaisesRegex(WikiImageAuditError, 'Unsupported wiki host'):
             FandomImageAuditClient().scan_page('https://example.com/wiki/Page')

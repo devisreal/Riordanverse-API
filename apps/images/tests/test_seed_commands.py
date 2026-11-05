@@ -18,6 +18,8 @@ class SeedImagesCommandTests(TestCase):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir.cleanup)
         self.data_file = Path(self.temp_dir.name) / 'images.json'
+        self.overrides_file = Path(self.temp_dir.name) / 'image_gallery_overrides.json'
+        self.overrides_file.write_text('{}', encoding='utf-8')
         calypso_source_url = 'https://riordan.fandom.com/wiki/Calypso'
         lightning_thief_source_url = 'https://riordan.fandom.com/wiki/The_Lightning_Thief'
         self.payload = {
@@ -126,7 +128,13 @@ class SeedImagesCommandTests(TestCase):
         CharacterImage.objects.create(character=self.character, image=wrong_image)
 
     def _seed(self):
-        with patch('apps.images.management.commands.seed_images.DATA_FILE', self.data_file):
+        with (
+            patch('apps.images.management.commands.seed_images.DATA_FILE', self.data_file),
+            patch(
+                'apps.images.management.commands.seed_images.GALLERY_OVERRIDES_FILE',
+                self.overrides_file,
+            ),
+        ):
             call_command('seed_images')
 
     def test_only_matching_character_and_book_cover_images_are_linked(self):
@@ -164,6 +172,54 @@ class SeedImagesCommandTests(TestCase):
         self.assertEqual(CharacterImage.objects.filter(character=self.character).count(), 1)
         self.assertEqual(BookImage.objects.filter(book=self.book).count(), 1)
         self.assertEqual(WeaponImage.objects.filter(weapon=self.weapon).count(), 1)
+
+    def test_curated_file_title_overrides_link_confirmed_zoe_images(self):
+        zoe = make_character(name='Zoë Nightshade')
+        source_url = 'https://riordan.fandom.com/wiki/Zoe_Nightshade'
+        entries = [
+            {
+                'file_title': 'File:Huntress_constellation_GN.png',
+                'url': 'https://static.example/Huntress_constellation_GN.png',
+                'source_url': source_url,
+            },
+            {
+                'file_title': 'File:Zoe_GN.png',
+                'url': 'https://static.example/Zoe_GN.png',
+                'source_url': source_url,
+            },
+        ]
+        self.payload['entities'].append(
+            {
+                'entity_type': 'characters',
+                'entity_slug': zoe.slug,
+                'entity_name': zoe.name,
+                'source_page_url': source_url,
+                'images': entries,
+            }
+        )
+        self.data_file.write_text(json.dumps(self.payload), encoding='utf-8')
+        self.overrides_file.write_text(
+            json.dumps(
+                {
+                    'characters': {
+                        zoe.slug: {
+                            'include_file_titles': [entry['file_title'] for entry in entries]
+                        }
+                    }
+                }
+            ),
+            encoding='utf-8',
+        )
+
+        self._seed()
+
+        for entry in entries:
+            with self.subTest(file_title=entry['file_title']):
+                image = Image.objects.get(url=entry['url'])
+                self.assertTrue(CharacterImage.objects.filter(character=zoe, image=image).exists())
+                self.assertFalse(
+                    CharacterImage.objects.filter(character=self.character, image=image).exists()
+                )
 
     def test_failed_entity_import_preserves_existing_gallery_links(self):
         self.payload['entities'][0]['images'].append({'file_title': 'File:Missing.jpg'})
