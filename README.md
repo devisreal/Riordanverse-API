@@ -12,7 +12,7 @@ A Django REST API for Riordanverse reference data. The implemented v1 API includ
 - Strict choice filters and lowercase-only boolean filters; invalid values return a structured `400` response.
 - `?sort=<allowed-field>&order=asc|desc` with endpoint-specific allowlists; legacy `?ordering=` remains supported.
 - Typed relationships in API responses: Book narrators/cast/antagonists, family graphs, quest participants/casualties, Event casualties, prophecy subjects, faction members, location controllers, and Monster defeat records.
-- Image galleries for books, characters, gods, Titans, monsters, weapons, and locations.
+- Image galleries for books, characters, gods, Titans, monsters, weapons, and locations, plus a paginated global image collection.
 - Global search via django-watson, with a typed result for each supported entity.
 - Idempotent seed commands for canonical data and relationships.
 
@@ -34,6 +34,7 @@ All versioned routes are under `/api/v1/` and use trailing slashes. Public lore 
 | Prophecies and Events | `/prophecies/`, `/prophecies/<slug>/`, `/events/`, `/events/<slug>/` |
 | Cabins | `/cabins/`, `/cabins/<slug>/`, `/cabins/number/<number>/`, `/cabins/<slug>/campers/` |
 | Factions | `/factions/`, `/factions/<slug>/`, `/factions/<slug>/members/` |
+| Images | `/images/` global collection; nested galleries are listed with their entities |
 | Search | `/search/?q=<query>`; optional `type=<entity-type>` |
 
 Public health, API-key, and documentation endpoints are outside `/api/v1/`:
@@ -50,7 +51,7 @@ To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`
 
 Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
 
-There is no standalone family/divine-relationship, Power, or Image collection endpoint. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses; Powers are embedded in Character details; images are exposed through the listed galleries.
+There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses; Powers are embedded in Character details.
 
 ## Relationship response examples
 
@@ -139,9 +140,10 @@ uv run python manage.py seed_prophecies
 uv run python manage.py seed_events
 uv run python manage.py seed_quests
 uv run python manage.py seed_monster_defeats
+uv run python manage.py seed_images
 ```
 
-The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, and 14 Powers. These are seed-file record counts; unresolved references are warned about and skipped by the relevant seed command.
+The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, 14 Powers, and 2,753 wiki image references from 330 entity pages (2,618 distinct `(url, source_url)` Image records after seeding; 20 pages have no image candidates). Wiki image records use `source_type=wiki`; license fields are null because the source does not expose machine-readable license metadata. These are seed-file record counts; unresolved typed entity references are warned about and skipped by the relevant seed command.
 
 ## Authentication and rate limits
 
@@ -187,6 +189,7 @@ Examples:
 /api/v1/events/?type=battle&book=the-last-olympian
 /api/v1/search/?q=riptide&type=weapon
 /api/v1/characters/percy-jackson/images/?source_type=fan_art&category=portrait
+/api/v1/images/?source_type=wiki&source_url=https%3A%2F%2Friordan.fandom.com%2Fwiki%2FPercy_Jackson
 /api/v1/characters/?sort=name&order=asc
 ```
 

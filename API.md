@@ -1196,9 +1196,13 @@ GET    /creatures/:slug              Get a single species
 GET    /creatures/:slug/members      Named individuals of that species
 ```
 
-### Images (Sub-resource on all major entities)
+### Images (Global collection and entity galleries)
 
 ```http
+GET    /images                                           Paginated global image collection
+GET    /images?source_type=wiki&source_url=<encoded-url>
+GET    /images?wiki_url=<encoded-file-page-url>
+
 GET    /characters/:slug/images                          All images for a character
 GET    /characters/:slug/images?source_type=official_book
 GET    /characters/:slug/images?source_type=fan_art
@@ -1464,7 +1468,7 @@ The `include=` query parameter is not supported. Implemented relationships are r
 
 ## 9. Image Strategy
 
-> **Implementation status:** image records, typed entity joins, and image subresources are implemented. See Section 23 for actual routes and serializer fields. Artist validation, fallback placeholders, and some storage/CDN behavior described below are proposals, not guarantees of the current API.
+> **Implementation status:** image records, typed entity joins, image galleries, a global image collection, and a read-only wiki image audit/import workflow are implemented. Wiki seed records use `source_type='wiki'`; `license` and `license_url` remain null because the source did not expose machine-readable license metadata. See Section 23 for routes and serializer fields. The API returns external URLs, does not proxy or host image bytes, and does not assert reuse rights. Runtime fallback behavior and storage/CDN migration are not guaranteed by the current API.
 
 ### Decision: Standalone `Image` Model + Separate Join Tables Per Entity (Option B)
 
@@ -1488,6 +1492,7 @@ Every image stored in the system has the following fields:
 | `artist_url` | string | Link to artist's profile or portfolio (nullable) |
 | `source_url` | string | Original page where the image was found (nullable) |
 | `license` | string | e.g. "All Rights Reserved", "CC BY-NC" (nullable) |
+| `license_url` | URLField | Canonical URL describing the image license (nullable) |
 | `width` | int | Pixel width (nullable) |
 | `height` | int | Pixel height (nullable) |
 | `file_format` | string | jpg, png, webp (nullable) |
@@ -1594,6 +1599,34 @@ GET /api/v1/characters/annabeth-chase/images/?source_type=official_book&category
 
 ---
 
+### Wiki Image Audit and Import
+
+The report-only audit scans entity seed files and writes JSON; it does not modify the database. Strict allowlist mode is the default. To include every discovered URL for the v1 seed, pass `--include-all-images`; license fields will remain null and this does not assert reuse rights:
+
+```bash
+uv run python manage.py audit_wiki_images \
+  --input data/books.json \
+  --input data/cabins.json \
+  --input data/characters.json \
+  --input data/creatures.json \
+  --input data/events.json \
+  --input data/factions.json \
+  --input data/gods.json \
+  --input data/locations.json \
+  --input data/monsters.json \
+  --input data/powers.json \
+  --input data/prophecies.json \
+  --input data/quests.json \
+  --input data/titans.json \
+  --input data/weapons.json \
+  --include-all-images \
+  --request-delay 0.5 \
+  --output data/images.json \
+  --settings=config.settings.development
+```
+
+`--request-delay` defaults to 0.25 seconds. The current seed contains 2,753 per-page image references from 330 pages; `seed_images` upserts these into 2,618 unique Image rows by `(url, source_url)`. Twenty pages have no image candidates. Import after entity seeds with `uv run python manage.py seed_images --settings=config.settings.development` or use `seed_all`. The importer sets `source_type='wiki'`, `category='other'`, and `license`/`license_url` to null. Only supported typed relations (Books, Characters, Gods, Titans, Monsters, Weapons, Locations) receive gallery links; images from other source pages remain available in the global collection. Missing license metadata means reuse rights are unverified, not granted; confirm permissions separately before public reuse.
+
 ### Additional Notes
 
 - The `is_primary` flag is stored on each entity-image join row; a conditional unique constraint enforces at most one primary image per entity.
@@ -1627,6 +1660,7 @@ Counts below are record counts in the current root-level `data/*.json` files, no
 | `book_character_relationships.json` / Book relationship records | 12 |
 | `monster_defeats.json` / defeat events | 27 |
 | `powers.json` / Powers | 14 |
+| `images.json` / wiki Image references | 2,753 refs from 330 pages; 2,618 unique Image rows |
 
 ---
 
@@ -2857,6 +2891,7 @@ Unlike the public key request and verification endpoints, `POST /auth/revoke-key
 | Creatures | `/creatures/`, `/creatures/<slug>/` | `/members/` |
 | Weapons | `/weapons/`, `/weapons/<slug>/` | `/images/` |
 | Locations | `/locations/`, `/locations/<slug>/` | `/images/` |
+| Images | `/images/` global collection | — |
 | Quests | `/quests/`, `/quests/<slug>/` | `/participants/` |
 | Prophecies | `/prophecies/`, `/prophecies/<slug>/` | — |
 | Events | `/events/`, `/events/<slug>/` | — |
@@ -2864,7 +2899,7 @@ Unlike the public key request and verification endpoints, `POST /auth/revoke-key
 | Factions | `/factions/`, `/factions/<slug>/` | `/members/` |
 | Search | `/search/?q=<query>` | Optional `type=<entity-type>` |
 
-Subresource paths in the table are appended to the entity detail path shown in the same row. Powers have a Character-scoped list endpoint at `/characters/<slug>/powers/` and are also embedded in Character detail; there is no standalone `/powers/` route. There is no standalone `/images/`, `/family/`, or `/divine-relationships/` endpoint. Book/character role relations, family edges, quest relations, prophecy subjects, and faction members are serialized through resource detail and the listed subresources; these are not relationship CRUD routes.
+Subresource paths in the table are appended to the entity detail path shown in the same row. Powers have a Character-scoped list endpoint at `/characters/<slug>/powers/` and are also embedded in Character detail; there is no standalone `/powers/` route. Images have a global paginated `/images/` collection as well as the typed galleries. Book/character role relations, family edges, quest relations, prophecy subjects, and faction members are serialized through resource detail and the listed subresources; these are not relationship CRUD routes.
 
 ### List response and error shapes
 
@@ -2951,6 +2986,7 @@ Parameters below are declared by current filter sets. Every lore entity list als
 | Events | `event_type`, `type` (alias), `in_universe_timeframe` (case-insensitive substring), `date_precision`, `book`, `location`, `participant_character`, `participant_god`, `participant_titan`, `participant_monster`, `casualty`, `casualty_god`, `casualty_titan`, `casualty_monster` |
 | Cabins | `is_honorary`, `is_empty`, `position`, `deity` |
 | Factions | `faction_type`, `alignment`, `book` |
+| Image collection | `source_type`, `category`, exact `source_url`, exact `wiki_url` |
 | Image galleries | `source_type`, `category` |
 | Search | `q` (required query), optional `type` entity filter |
 
@@ -2976,13 +3012,14 @@ Use `?sort=<field>&order=asc|desc`; `order` defaults to `asc`. Invalid, repeated
 | Events | `chronology_order`, `name` | `chronology_order`, `name`, `in_universe_timeframe`, `date_precision`, `book__book_number` |
 | Cabins | `number` | `number` |
 | Factions | `name` | `name`, `alignment` |
+| Image collection | `id` | `id`, `url`, `source_type`, `category`, `uploaded_at` |
 | Image galleries | `display_order`, image PK | no declared `sort`/`order` allowlist |
 
 Nested list views inherit pagination; the Character Powers subresource additionally supports the filters and sort fields documented above. Titan `display_order`, Event timeline fields, and Location first-appearance metadata are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
 
-### Image gallery payload
+### Image collection and gallery payload
 
-The gallery serializer returns `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `source_type_display`, `category`, `category_display`, `artist_name`, `artist_url`, `source_url`, `license`, `width`, `height`, `file_format`, `wiki_url`, and `uploaded_at`. Embedded primary-image objects are smaller: `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `category`, `artist_name`, and `wiki_url`. Gallery filters are `source_type` and `category`; order is `display_order`, then image PK. The API does not promise a fallback placeholder or require an artist name for every image.
+`GET /api/v1/images/` returns a paginated global collection. It accepts `source_type`, `category`, exact `source_url`, and exact `wiki_url` filters. Its default order is image ID ascending; supported sort fields are listed above. The global collection and gallery serializers return `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `source_type_display`, `category`, `category_display`, `artist_name`, `artist_url`, `source_url`, `license`, `license_url`, `width`, `height`, `file_format`, `wiki_url`, and `uploaded_at`. Embedded primary-image objects include `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `category`, `artist_name`, `artist_url`, `source_url`, `license`, `license_url`, and `wiki_url`. Gallery filters are `source_type` and `category`; order is `display_order`, then image PK. Wiki seed records have both license fields null; the API does not stream image bytes or guarantee runtime placeholder fallback.
 
 ---
 
@@ -2991,7 +3028,7 @@ The gallery serializer returns `id`, `url`, `thumbnail_url`, `alt_text`, `source
 The following items are intentionally deferred. They are not implemented API guarantees and should be reviewed before schema/data changes.
 
 1. **Claim-level provenance and review workflow.** Entity-level `lore_accuracy`, `lore_notes`, and `lore_sources` are implemented. Consider finer-grained citations attached to individual claims or fields, review timestamps, and editorial workflows if the data-curation process requires them; these would need separate requirements and schema design.
-2. **Image attribution and fallback policy.** Decide required attribution fields, image hosting/CDN migration, broken-image/fallback behavior, and whether stronger source/license validation is required. Current image galleries and metadata are implemented; fallback and mandatory-artist guarantees are not.
+2. **Image rights and fallback policy.** Review licensing and attribution for wiki URLs whose license metadata is absent, define v1 publication rules, and implement runtime broken-image/placeholder behavior and any image hosting/CDN migration. The seed importer records no license when the source provides none; it does not grant reuse rights.
 3. **Universe expansion.** Review future seed/model scope for Heroes of Olympus, Kane Chronicles, Magnus Chase, Trials of Apollo, and other companion works. Add domain-specific fields only after the scope and migration/data requirements are approved.
 
 *Reference: [Riordan Wiki](https://riordan.fandom.com/wiki/Riordan_Wiki)*
