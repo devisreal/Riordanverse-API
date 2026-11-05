@@ -1625,7 +1625,7 @@ uv run python manage.py audit_wiki_images \
   --settings=config.settings.development
 ```
 
-`--request-delay` defaults to 0.25 seconds. The current seed contains 2,753 per-page image references from 330 pages; `seed_images` upserts these into 2,618 unique Image rows by `(url, source_url)`. Twenty pages have no image candidates. Import after entity seeds with `uv run python manage.py seed_images --settings=config.settings.development` or use `seed_all`. Imported rows use `source_type='wiki'`; license fields remain null. Characters, Gods, Titans, Monsters, and Weapons receive a gallery link only when the decoded image URL filename contains the entity name or slug. Book galleries include explicit cover/CVR/Bookpic files or portrait image filenames matching the book title; those Image rows use `category='book_cover'`. Other imported images use `category='other'` and remain available in the global collection, and re-seeding removes stale wiki gallery links that no longer meet the matching rules. Location gallery matching remains page-based. Missing license metadata means reuse rights are unverified, not granted; confirm permissions separately before public reuse.
+`--request-delay` defaults to 0.25 seconds. The current seed contains 2,777 per-page image references from 330 pages; `seed_images` upserts these into 2,642 unique Image rows by `(url, source_url)`. Seventeen pages have no image candidates. The audit follows MediaWiki page redirects when resolving page images, including unaccented aliases such as `Zoe_Nightshade`. Import after entity seeds with `uv run python manage.py seed_images --settings=config.settings.development` or use `seed_all`. Imported rows use `source_type='wiki'`; license fields remain null. Characters, Gods, Titans, Monsters, and Weapons receive a gallery link only when the decoded image URL filename contains the entity name or slug, except for entity-specific file-title inclusions listed in `data/image_gallery_overrides.json`. Book galleries include explicit cover/CVR/Bookpic files or portrait image filenames matching the book title; those Image rows use `category='book_cover'`. Other imported images use `category='other'` and remain available in the global collection, and re-seeding removes stale wiki gallery links that no longer meet the matching rules. Location gallery matching remains page-based. Missing license metadata means reuse rights are unverified, not granted; confirm permissions separately before public reuse.
 
 ### Additional Notes
 
@@ -1660,7 +1660,7 @@ Counts below are record counts in the current root-level `data/*.json` files, no
 | `book_character_relationships.json` / Book relationship records | 12 |
 | `monster_defeats.json` / defeat events | 27 |
 | `powers.json` / Powers | 14 |
-| `images.json` / wiki Image references | 2,753 refs from 330 pages; 2,618 unique Image rows |
+| `images.json` / wiki Image references | 2,777 refs from 330 pages; 2,642 unique Image rows |
 
 ---
 
