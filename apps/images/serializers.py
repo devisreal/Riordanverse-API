@@ -24,6 +24,7 @@ class ImageSerializer(serializers.ModelSerializer):
             'artist_url',
             'source_url',
             'license',
+            'license_url',
             'width',
             'height',
             'file_format',
@@ -45,5 +46,9 @@ class ImageListSerializer(serializers.ModelSerializer):
             'source_type',
             'category',
             'artist_name',
+            'artist_url',
+            'source_url',
+            'license',
+            'license_url',
             'wiki_url',
         )

@@ -35,6 +35,7 @@ class ImageModelTests(TestCase):
         self.assertIsNone(image.artist_url)
         self.assertIsNone(image.source_url)
         self.assertIsNone(image.license)
+        self.assertIsNone(image.license_url)
 
     def test_character_image_join(self):
         from apps.characters.models import CharacterImage
