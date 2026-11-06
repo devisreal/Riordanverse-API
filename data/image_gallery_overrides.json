@@ -6,5 +6,20 @@
         "File:Zoe_GN.png"
       ]
     }
+  },
+  "monsters": {
+    "dr-thorn": {
+      "include_file_titles": [
+        "File:Manticore-RR.jpg",
+        "File:Manticore.jpg",
+        "File:ManticoreSeaOfMonsters.jpg",
+        "File:Manticore - GN (1).jpg",
+        "File:Manticore - GN (2).jpg",
+        "File:Manticore - GN (3).jpg",
+        "File:Manticore - GN (4).jpg",
+        "File:Manticore - GN (5).jpg",
+        "File:Manticore GN.png"
+      ]
+    }
   }
 }

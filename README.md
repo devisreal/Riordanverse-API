@@ -143,7 +143,7 @@ uv run python manage.py seed_monster_defeats
 uv run python manage.py seed_images
 ```
 
-The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, 14 Powers, and 2,777 wiki image references from 330 entity pages (2,642 distinct `(url, source_url)` Image records after seeding; 17 pages have no image candidates). Wiki image records use `source_type=wiki`; license fields are null because the source does not expose machine-readable license metadata. These are seed-file record counts; unresolved typed entity references are warned about and skipped by the relevant seed command.
+The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, 14 Powers, and 2,787 wiki image references from 330 entity pages (2,651 distinct `(url, source_url)` Image records after seeding; 15 pages have no image candidates). Wiki image records use `source_type=wiki`; license fields are null because the source does not expose machine-readable license metadata. These are seed-file record counts; unresolved typed entity references are warned about and skipped by the relevant seed command.
 
 ## Authentication and rate limits
 
