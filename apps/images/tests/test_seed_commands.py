@@ -6,11 +6,13 @@ from unittest.mock import patch
 from django.core.management import call_command
 from django.test import TestCase
 
+from apps.bestiary.models import MonsterImage
 from apps.characters.models import CharacterImage
+from apps.divinities.models import GodImage
 from apps.images.models import Image
 from apps.items.models import WeaponImage
 from apps.narrative.models import BookImage
-from tests.makers import make_book, make_character, make_weapon
+from tests.makers import make_book, make_character, make_god, make_monster, make_weapon
 
 
 class SeedImagesCommandTests(TestCase):
@@ -220,6 +222,67 @@ class SeedImagesCommandTests(TestCase):
                 self.assertFalse(
                     CharacterImage.objects.filter(character=self.character, image=image).exists()
                 )
+
+    def test_user_sourced_tyche_and_manticore_images_link_to_their_entities(self):
+        tyche = make_god(name='Tyche')
+        dr_thorn = make_monster(name='Dr. Thorn')
+        tyche_source_url = 'https://riordan.fandom.com/wiki/Tyche%27s_Cabin'
+        manticore_source_url = 'https://riordan.fandom.com/wiki/Manticore'
+        tyche_image = {
+            'file_title': 'File:Tyche.jpg',
+            'url': 'https://static.wikia.nocookie.net/olympians/images/3/35/Tyche.jpg/revision/latest?cb=20140422034124',
+            'source_url': tyche_source_url,
+        }
+        manticore_file_titles = [
+            'File:Manticore-RR.jpg',
+            'File:Manticore.jpg',
+            'File:ManticoreSeaOfMonsters.jpg',
+            'File:Manticore - GN (1).jpg',
+            'File:Manticore - GN (2).jpg',
+            'File:Manticore - GN (3).jpg',
+            'File:Manticore - GN (4).jpg',
+            'File:Manticore - GN (5).jpg',
+            'File:Manticore GN.png',
+        ]
+        manticore_images = [
+            {
+                'file_title': file_title,
+                'url': f'https://static.example/{file_title.removeprefix("File:")}',
+                'source_url': manticore_source_url,
+            }
+            for file_title in manticore_file_titles
+        ]
+        self.payload['entities'].extend(
+            [
+                {
+                    'entity_type': 'gods',
+                    'entity_slug': tyche.slug,
+                    'entity_name': tyche.name,
+                    'source_page_url': 'https://riordan.fandom.com/wiki/Tyche',
+                    'images': [tyche_image],
+                },
+                {
+                    'entity_type': 'monsters',
+                    'entity_slug': dr_thorn.slug,
+                    'entity_name': dr_thorn.name,
+                    'source_page_url': 'https://riordan.fandom.com/wiki/Dr._Thorn',
+                    'images': manticore_images,
+                },
+            ]
+        )
+        self.data_file.write_text(json.dumps(self.payload), encoding='utf-8')
+        self.overrides_file.write_text(
+            json.dumps(
+                {'monsters': {dr_thorn.slug: {'include_file_titles': manticore_file_titles}}}
+            ),
+            encoding='utf-8',
+        )
+
+        self._seed()
+
+        tyche_image_row = Image.objects.get(url=tyche_image['url'])
+        self.assertTrue(GodImage.objects.filter(god=tyche, image=tyche_image_row).exists())
+        self.assertEqual(MonsterImage.objects.filter(monster=dr_thorn).count(), 9)
 
     def test_failed_entity_import_preserves_existing_gallery_links(self):
         self.payload['entities'][0]['images'].append({'file_title': 'File:Missing.jpg'})
