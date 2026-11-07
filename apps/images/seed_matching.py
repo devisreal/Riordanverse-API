@@ -107,9 +107,20 @@ def is_book_cover(image, *, book_title, book_slug):
     return False
 
 
-def should_link_image(entity_type, entity_name, entity_slug, image, *, include_file_titles=()):
+def should_link_image(
+    entity_type,
+    entity_name,
+    entity_slug,
+    image,
+    *,
+    include_file_titles=(),
+    exclude_file_titles=(),
+):
     """Apply URL-name matching plus explicit curation to entity galleries."""
-    if image.get('file_title') in include_file_titles:
+    file_title = image.get('file_title')
+    if file_title in exclude_file_titles:
+        return False
+    if file_title in include_file_titles:
         return True
     if entity_type == 'books':
         return is_book_cover(image, book_title=entity_name, book_slug=entity_slug)

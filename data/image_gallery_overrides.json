@@ -21,5 +21,16 @@
         "File:Manticore GN.png"
       ]
     }
+  },
+  "books": {
+    "percy-jacksons-greek-heroes": {
+      "include_file_titles": ["File:Greekheroes.jpg"],
+      "primary_file_title": "File:Greekheroes.jpg"
+    }
+  },
+  "locations": {
+    "ogygia": {
+      "exclude_file_titles": ["File:Calypso-Viria.jpg", "File:Moonlace.png"]
+    }
   }
 }
