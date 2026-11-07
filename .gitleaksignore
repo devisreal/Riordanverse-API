@@ -1,0 +1,2 @@
+# False positive: explanatory text in the EmailField help_text of the initial migration.
+997e3c182a2c75b5f7d3bb07848016788df1dcf9:apps/access/migrations/0001_initial.py:generic-api-key:64
