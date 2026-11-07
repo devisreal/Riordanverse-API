@@ -234,4 +234,4 @@ Lore sourced and cross-referenced from the [Riordan Wiki](https://riordan.fandom
 
 ## License
 
-License to be determined.
+The original source code and original project documentation are licensed under the [MIT License](LICENSE), excluding any embedded third-party material. The license does **not** cover the `data/` seed datasets, externally sourced lore or quotations, wiki images or their metadata and URLs, characters, names, trademarks, or other third-party works. Their inclusion or reference here does not grant reuse rights; check the relevant rights and obtain any required permissions before reusing them. Dependencies retain their own licenses. The project's non-commercial description refers to its current purpose, not a restriction on the MIT-licensed code.
