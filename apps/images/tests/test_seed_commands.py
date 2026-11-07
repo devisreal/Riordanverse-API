@@ -11,8 +11,16 @@ from apps.characters.models import CharacterImage
 from apps.divinities.models import GodImage
 from apps.images.models import Image
 from apps.items.models import WeaponImage
+from apps.locations.models import LocationImage
 from apps.narrative.models import BookImage
-from tests.makers import make_book, make_character, make_god, make_monster, make_weapon
+from tests.makers import (
+    make_book,
+    make_character,
+    make_god,
+    make_location,
+    make_monster,
+    make_weapon,
+)
 
 
 class SeedImagesCommandTests(TestCase):
@@ -283,6 +291,121 @@ class SeedImagesCommandTests(TestCase):
         tyche_image_row = Image.objects.get(url=tyche_image['url'])
         self.assertTrue(GodImage.objects.filter(god=tyche, image=tyche_image_row).exists())
         self.assertEqual(MonsterImage.objects.filter(monster=dr_thorn).count(), 9)
+
+    def test_curated_book_image_is_linked_and_becomes_the_only_primary(self):
+        book = make_book(title="Percy Jackson's Greek Heroes", book_number=99)
+        source_url = "https://riordan.fandom.com/wiki/Percy_Jackson's_Greek_Heroes"
+        old_cover = Image.objects.create(
+            url='https://static.example/OldCover.jpg',
+            source_url=source_url,
+            source_type='wiki',
+        )
+        old_link = BookImage.objects.create(book=book, image=old_cover, is_primary=True)
+        english_cover = {
+            'file_title': 'File:Greekheroes.jpg',
+            'url': 'https://static.example/Greekheroes.jpg',
+            'thumbnail_url': 'https://static.example/Greekheroes-thumb.jpg',
+            'alt_text': "English-language cover of Percy Jackson's Greek Heroes",
+            'source_url': source_url,
+            'width': 1195,
+            'height': 1600,
+            'file_format': 'jpg',
+        }
+        self.payload['entities'].append(
+            {
+                'entity_type': 'books',
+                'entity_slug': book.slug,
+                'entity_name': book.title,
+                'source_page_url': source_url,
+                'images': [
+                    {
+                        'file_title': 'File:OldCover.jpg',
+                        'url': old_cover.url,
+                        'source_url': source_url,
+                        'width': 600,
+                        'height': 900,
+                    },
+                    english_cover,
+                ],
+            }
+        )
+        self.data_file.write_text(json.dumps(self.payload), encoding='utf-8')
+        self.overrides_file.write_text(
+            json.dumps(
+                {
+                    'books': {
+                        book.slug: {
+                            'include_file_titles': ['File:Greekheroes.jpg'],
+                            'primary_file_title': 'File:Greekheroes.jpg',
+                        }
+                    }
+                }
+            ),
+            encoding='utf-8',
+        )
+
+        self._seed()
+
+        english_image = Image.objects.get(url=english_cover['url'])
+        english_link = BookImage.objects.get(book=book, image=english_image)
+        old_link.refresh_from_db()
+        self.assertTrue(english_link.is_primary)
+        self.assertFalse(old_link.is_primary)
+        self.assertEqual(BookImage.objects.filter(book=book, is_primary=True).count(), 1)
+        self.assertEqual(english_image.thumbnail_url, english_cover['thumbnail_url'])
+        self.assertEqual(english_image.category, 'book_cover')
+
+    def test_excluded_ogygia_images_remain_global_but_are_not_gallery_links(self):
+        location = make_location(name='Ogygia')
+        source_url = 'https://riordan.fandom.com/wiki/Ogygia'
+        entries = [
+            {
+                'file_title': 'File:Calypso-Viria.jpg',
+                'url': 'https://static.example/Calypso-Viria.jpg',
+                'source_url': source_url,
+            },
+            {
+                'file_title': 'File:Moonlace.png',
+                'url': 'https://static.example/Moonlace.png',
+                'source_url': source_url,
+            },
+        ]
+        for entry in entries:
+            image = Image.objects.create(
+                url=entry['url'],
+                source_url=source_url,
+                source_type='wiki',
+            )
+            LocationImage.objects.create(location=location, image=image)
+        self.payload['entities'].append(
+            {
+                'entity_type': 'locations',
+                'entity_slug': location.slug,
+                'entity_name': location.name,
+                'source_page_url': source_url,
+                'images': entries,
+            }
+        )
+        self.data_file.write_text(json.dumps(self.payload), encoding='utf-8')
+        self.overrides_file.write_text(
+            json.dumps(
+                {
+                    'locations': {
+                        location.slug: {
+                            'exclude_file_titles': [entry['file_title'] for entry in entries]
+                        }
+                    }
+                }
+            ),
+            encoding='utf-8',
+        )
+
+        self._seed()
+
+        self.assertEqual(
+            Image.objects.filter(url__in=[entry['url'] for entry in entries]).count(), 2
+        )
+        self.assertFalse(LocationImage.objects.filter(location=location).exists())
 
     def test_failed_entity_import_preserves_existing_gallery_links(self):
         self.payload['entities'][0]['images'].append({'file_title': 'File:Missing.jpg'})

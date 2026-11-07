@@ -70,6 +70,8 @@ class Command(BaseCommand):
             entity_has_errors = False
             entity_overrides = gallery_overrides.get(entity_type, {}).get(entity_slug, {})
             include_file_titles = set(entity_overrides.get('include_file_titles', []))
+            exclude_file_titles = set(entity_overrides.get('exclude_file_titles', []))
+            primary_file_title = entity_overrides.get('primary_file_title')
 
             if supported and entity_slug:
                 entity_model, _, _ = supported
@@ -111,6 +113,7 @@ class Command(BaseCommand):
                     entity_slug,
                     entry,
                     include_file_titles=include_file_titles,
+                    exclude_file_titles=exclude_file_titles,
                 )
                 defaults = {
                     'thumbnail_url': entry.get('thumbnail_url'),
@@ -138,10 +141,17 @@ class Command(BaseCommand):
                             defaults=defaults,
                         )
                         if matched_entity_image:
+                            link_defaults = {'display_order': display_order}
+                            if image_name == primary_file_title:
+                                image_link_model.objects.filter(
+                                    **{image_link_foreign_key: linked_entity},
+                                    is_primary=True,
+                                ).exclude(image=image).update(is_primary=False)
+                                link_defaults['is_primary'] = True
                             image_link_model.objects.update_or_create(
                                 image=image,
                                 **{image_link_foreign_key: linked_entity},
-                                defaults={'display_order': display_order},
+                                defaults=link_defaults,
                             )
                             linked_image_ids.add(image.pk)
                 except (DatabaseError, KeyError, TypeError, ValueError) as exc:
