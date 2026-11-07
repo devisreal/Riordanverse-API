@@ -101,6 +101,10 @@ uv run python manage.py runserver --settings=config.settings.development
 
 Development keeps API-key authentication enabled. Tests use separate SQLite settings and are not a substitute for running the server with development or production settings.
 
+### Choose primary images in Django admin
+
+Staff with image and gallery-link change permissions can open **Images → Images → Choose primary images**, select an entity, review its linked thumbnails, and set or clear that gallery's primary image. The picker currently displays all images linked to one entity without filtering or pagination; a searchable entity selector is planned for a later phase.
+
 ### Seed canonical data
 
 Run migrations first. Use the master command for a one-command setup, or run
