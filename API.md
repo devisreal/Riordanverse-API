@@ -90,8 +90,8 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | # | Decision | Choice Made | Reason |
 | --- | --- | --- | --- |
 | 2 | Image storage | **Option B — `Image` model + separate join tables per entity** (`CharacterImage`, `WeaponImage`, etc.) | Full PostgreSQL FK integrity; avoids GenericForeignKey complexity |
-| 3 | Image filtering | **Filterable sub-resource on every entity** | Frontend drives tabs ("Official Art", "Disney+", "Fan Art") purely from query params |
-| 8 | Default sort order | **Per-view defaults and allowlists** — see Section 23 | Titan, Event, and Location lists use curated first-appearance/chronology fields; each exposed sort is explicitly allowlisted |
+| 3 | Image filtering | **Filterable global collection and typed galleries on supported entities** | The global collection is filterable; typed galleries are implemented for Books, Characters, Gods, Titans, Monsters, Weapons, and Locations, using query params for source/category filters |
+| 8 | Default sort order | **Per-view defaults and allowlists** — see Section 23 | Titans use `display_order`, Events use `chronology_order`, and Locations use `location_order`; each exposed sort is explicitly allowlisted |
 | 11 | Slug generation | **`django-autoslug`** per model — source field varies (`name`, `title`, custom callable for Cabin) | Auto-generates slugs on save; handles collisions; slug is not on BaseModel because `populate_from` differs per model |
 | 18 | Soft delete | **Implemented; Admin-only lifecycle** | Default managers and public resource endpoints exclude soft-deleted entities; Admin can restore; no public delete/restore endpoint |
 | 19 | Lore accuracy and provenance | **Implemented** | Shared accuracy metadata plus reusable `LoreSource` citations are available in entity serializers and `lore_accuracy` filters |
@@ -1268,7 +1268,7 @@ Response envelope:
 
 ### Sorting
 
-All list endpoints accept `?sort=<field>&order=asc|desc` to override the default. Example:
+List endpoints that declare `sort` fields in Section 23 accept `?sort=<field>[&order=asc|desc]` to override the default; if omitted, `order` defaults to `asc`. The allowlist is endpoint-specific; image galleries do not declare a `sort`/`order` allowlist. Supplying `order` without `sort` is invalid. Views using DRF's ordering backend may retain legacy `?ordering=` behavior where noted in Section 23. Example:
 
 ```http
 ?sort=name&order=asc
@@ -1394,23 +1394,9 @@ Species are pure reference data. Alphabetical is simplest and most useful for br
 
 ---
 
-#### Default Sort Summary
+#### Current Default Sort Summary
 
-| Model | Default Sort |
-| --- | --- |
-| Books | `book_number` asc |
-| Characters | `name` asc |
-| Gods | `tier` weight, then `name` asc |
-| Titans | `display_order` asc, then `name` asc |
-| Monsters | `first_appearance_book` asc, then `name` asc |
-| Weapons & Items | `name` asc |
-| Locations | `first_appearance_book` asc, then `name` asc |
-| Quests | `book__book_number` asc |
-| Cabins | `number` asc |
-| Prophecies | `books_relevant_to__book_number` asc |
-| Events / Battles | `book__book_number` asc, then `in_universe_timeframe` asc |
-| Factions | `alignment` weight, then `name` asc |
-| Creatures / Species | `name` asc |
+Section 23 is the single source of truth for current defaults and sort allowlists. The curated collection defaults are Titan `display_order`, Event `chronology_order`, and Location `location_order`; the global Image collection defaults to ID ascending. Image galleries retain `display_order` then image PK and do not declare a `sort`/`order` allowlist.
 
 ### Filtering
 
@@ -1472,7 +1458,7 @@ The `include=` query parameter is not supported. Implemented relationships are r
 
 ### Decision: Standalone `Image` Model + Separate Join Tables Per Entity (Option B)
 
-Images are their own first-class model. Rather than storing `image_url` strings directly on Character, Weapon, God, etc., every entity links to the `Image` model through a dedicated join table. This gives full PostgreSQL referential integrity, proper categorisation, multi-image support, and fan art attribution — all without any generic FK complexity.
+Images are their own first-class model. Rather than storing `image_url` strings directly on lore models, each supported gallery entity—Book, Character, God, Titan, Monster, Weapon, and Location—links to the `Image` model through a dedicated join table. Other entities do not have typed image galleries, but their image records may remain available in the global collection. This gives full PostgreSQL referential integrity, proper categorisation, multi-image support, and fan art attribution — all without any generic FK complexity.
 
 ---
 
@@ -1736,7 +1722,7 @@ Add `mythology` enum to most models: `greek`, `roman`, `egyptian`, `norse` (V3)
 - List views that use DRF pagination return `{ "data": [...], "meta": { "total", "page", "limit", "total_pages" } }`; the default page size is 20 and the maximum `limit` is 100. Search has its own `data`/`meta` envelope; detail responses are resource-specific objects.
 - Missing optional scalar values may be `null`; empty relationships are returned as empty arrays. Response fields vary by list/detail serializer; see Section 23.
 - Query choice errors use the standard API error envelope. Invalid choices use `INVALID_FILTER_VALUE` and include `valid_values`; other handled bad requests use `BAD_REQUEST`.
-- Boolean query filters accept exactly lowercase `true` or `false`. List ordering accepts `?sort=<allowlisted-field>&order=asc|desc`; the default direction is ascending, and legacy `?ordering=` remains supported.
+- Boolean query filters accept exactly lowercase `true` or `false`. List ordering accepts `?sort=<allowlisted-field>[&order=asc|desc]`; `order` defaults to ascending when a sort field is supplied alone, while `order` without `sort` is invalid. The default direction is ascending, and legacy `?ordering=` remains supported.
 
 ### Health and access
 
@@ -2035,7 +2021,8 @@ config/settings/
   base.py          # shared apps, REST_FRAMEWORK, auth, filters, pagination, cache/logging
   development.py   # PostgreSQL; local development hosts
   production.py    # PostgreSQL; ALLOWED_HOSTS supplied by environment
-  test.py          # SQLite and test-only settings
+  test.py              # SQLite and test-only settings
+  test_postgresql.py   # PostgreSQL test settings used by CI
 ```
 
 There is no staging settings module. Development and production use PostgreSQL; the default automated test settings use SQLite, while CI also runs the suite with PostgreSQL. Redis is optional: key validation falls back to PostgreSQL, and throttle counters fall back to process-local memory.
@@ -2083,7 +2070,7 @@ CORS_ALLOWED_ORIGINS=
 API_KEY_CUSTOM_HEADER=HTTP_X_API_KEY
 ```
 
-The committed `.env.example` and the four actual settings modules (`base.py`, `development.py`, `production.py`, `test.py`) are authoritative. The earlier `REQUIRED_ENV_VARS` startup-guard snippet is not implemented.
+The committed `.env.example` and all five settings modules (`base.py`, `development.py`, `production.py`, `test.py`, `test_postgresql.py`) are authoritative. The earlier `REQUIRED_ENV_VARS` startup-guard snippet is not implemented.
 
 ---
 
@@ -2994,7 +2981,7 @@ Boolean filters accept exactly lowercase `true` or `false`; omitted parameters d
 
 ### Sort fields and defaults
 
-Use `?sort=<field>&order=asc|desc`; `order` defaults to `asc`. Invalid, repeated, or incomplete pairs return `400`. If neither `sort` nor `order` is supplied, existing `?ordering=` behavior remains available on views using DRF's ordering backend. For Titan, Event, and Location default ordering, records without a curated order sort after ranked records. Sort fields are allowlisted per collection:
+Use `?sort=<field>[&order=asc|desc]`; `order` defaults to `asc` when a sort field is supplied alone. Supplying `order` without `sort`, repeated `sort` or `order` values, invalid directions, and invalid or disallowed sort fields return `400`. If neither `sort` nor `order` is supplied, existing `?ordering=` behavior remains available on views using DRF's ordering backend. For Titan, Event, and Location default ordering, records without a curated order sort after ranked records. Sort fields are allowlisted per collection:
 
 | List | Default ordering | `sort` allowlist |
 | --- | --- | --- |
@@ -3015,7 +3002,7 @@ Use `?sort=<field>&order=asc|desc`; `order` defaults to `asc`. Invalid, repeated
 | Image collection | `id` | `id`, `url`, `source_type`, `category`, `uploaded_at` |
 | Image galleries | `display_order`, image PK | no declared `sort`/`order` allowlist |
 
-Nested list views inherit pagination; the Character Powers subresource additionally supports the filters and sort fields documented above. Titan `display_order`, Event timeline fields, and Location first-appearance metadata are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
+Nested list views inherit pagination; the Character Powers subresource additionally supports the filters and sort fields documented above. Titan `display_order`, Event `chronology_order`, and Location `location_order` are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
 
 ### Image collection and gallery payload
 
