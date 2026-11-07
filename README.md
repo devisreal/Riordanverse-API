@@ -10,7 +10,7 @@ A Django REST API for Riordanverse reference data. The implemented v1 API includ
 - Paginated list responses use `{ "data": [...], "meta": {...} }`.
 - API-key authentication via `X-API-Key`, Redis caching for valid key checks, per-key throttling, and request/security logging.
 - Strict choice filters and lowercase-only boolean filters; invalid values return a structured `400` response.
-- `?sort=<allowed-field>&order=asc|desc` with endpoint-specific allowlists; legacy `?ordering=` remains supported.
+- `?sort=<allowed-field>[&order=asc|desc]` with endpoint-specific allowlists; `order` defaults to `asc` when omitted, and legacy `?ordering=` remains supported.
 - Typed relationships in API responses: Book narrators/cast/antagonists, family graphs, quest participants/casualties, Event casualties, prophecy subjects, faction members, location controllers, and Monster defeat records.
 - Image galleries for books, characters, gods, Titans, monsters, weapons, and locations, plus a paginated global image collection.
 - Global search via django-watson, with a typed result for each supported entity.
@@ -23,7 +23,7 @@ All versioned routes are under `/api/v1/` and use trailing slashes. Public lore 
 | Resource | Routes and subresources |
 | --- | --- |
 | Books | `/books/`, `/books/<slug>/`, `/books/<slug>/characters/`, `/books/<slug>/gods/`, `/books/<slug>/monsters/`, `/books/<slug>/locations/`, `/books/<slug>/quests/`, `/books/<slug>/images/` |
-| Characters | `/characters/`, `/characters/<slug>/`, `/characters/<slug>/images/`, `/characters/<slug>/weapons/`, `/characters/<slug>/quests/` |
+| Characters | `/characters/`, `/characters/<slug>/`, `/characters/<slug>/images/`, `/characters/<slug>/powers/`, `/characters/<slug>/weapons/`, `/characters/<slug>/quests/` |
 | Gods | `/gods/`, `/gods/<slug>/`, `/gods/<slug>/images/`, `/gods/<slug>/children/`, `/gods/<slug>/weapons/` |
 | Titans | `/titans/`, `/titans/<slug>/`, `/titans/<slug>/images/` |
 | Monsters | `/monsters/`, `/monsters/<slug>/`, `/monsters/<slug>/images/` |
@@ -51,7 +51,7 @@ To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`
 
 Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
 
-There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses; Powers are embedded in Character details.
+There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses. Powers are embedded in Character details and available through the Character-scoped `/characters/<slug>/powers/` subresource.
 
 ## Relationship response examples
 
@@ -197,7 +197,7 @@ Examples:
 /api/v1/characters/?sort=name&order=asc
 ```
 
-Choice values are validated; invalid choices return `400` with `code: INVALID_FILTER_VALUE` and a `valid_values` list. Boolean filters accept only lowercase `true` and `false`; other spellings return `400`. `sort` and `order` are validated per list endpoint. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not implemented.
+Choice values are validated; invalid choices return `400` with `code: INVALID_FILTER_VALUE` and a `valid_values` list. Boolean filters accept only lowercase `true` and `false`; other spellings return `400`. `sort` fields are validated per list endpoint; `order` defaults to `asc` when omitted, and sending `order` without `sort` is invalid. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not implemented.
 
 ### API key verification
 
@@ -226,7 +226,7 @@ OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANG
 ## Roadmap
 
 - **Current v1:** implemented/testable routes and seeded Riordanverse reference data described above.
-- **Future:** add approved ordering fields that require new model/data decisions and continue planned story-universe expansions. See [Future Work](API.md#future-work).
+- **Future:** consider additional ordering requirements where new model/data decisions are justified, and continue planned story-universe expansions. Titan, Event, and Location ordering are already implemented. See [Future Work](API.md#future-work).
 
 ## Acknowledgments
 
