@@ -190,8 +190,8 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Percy Jackson Fandom API',
     'DESCRIPTION': (
         'A read-only REST API for the Riordanverse. Protected endpoints require an X-API-Key '
-        'header; health checks and API-key request/verification are public, while self-revocation '
-        'is authenticated.'
+        'header; the /api/v1/ directory, health checks, and API-key request/verification '
+        'are public, while self-revocation is authenticated.'
     ),
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
@@ -222,6 +222,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Cabins', 'description': 'Camp cabin records and campers.'},
         {'name': 'Factions', 'description': 'Faction records and typed members.'},
         {'name': 'Search', 'description': 'Search indexed lore across supported entity types.'},
+        {'name': 'API Directory', 'description': 'Public collection and search URL discovery.'},
     ],
     'ENUM_NAME_OVERRIDES': {
         'CharacterStatusEnum': 'apps.core.choices.STATUS_CHOICES',

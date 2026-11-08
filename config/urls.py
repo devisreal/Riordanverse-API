@@ -6,7 +6,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from apps.core.views import HealthLiveView, HealthReadyView
+from apps.core.views import APIDirectoryView, HealthLiveView, HealthReadyView
 
 urlpatterns = [
     path('health/live/', HealthLiveView.as_view(), name='health-live'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('auth/', include('apps.access.urls')),
+    path('api/v1/', APIDirectoryView.as_view(), name='api-directory'),
     path('api/v1/', include('apps.narrative.urls')),
     path('api/v1/', include('apps.divinities.urls')),
     path('api/v1/', include('apps.characters.urls')),

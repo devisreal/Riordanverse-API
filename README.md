@@ -1,6 +1,6 @@
 # Percy Jackson Fandom API
 
-A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; key request/verification, health-check, and API documentation routes are public.
+A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; the API directory, key request/verification, health-check, and API documentation routes are public.
 
 > **Status:** The versioned API, seed commands, authentication, filtering, pagination, typed relationships, and tests are implemented. OpenAPI schema, Swagger UI, and ReDoc are available at `/api/schema/`, `/api/docs/`, and `/api/redoc/`. See the [API reference](API.md) for routes, filters, response shapes, and examples.
 
@@ -18,7 +18,29 @@ A Django REST API for Riordanverse reference data. The implemented v1 API includ
 
 ## Implemented API routes
 
-All versioned routes are under `/api/v1/` and use trailing slashes. Public lore routes require an API key. The following collections have list and slug-detail routes unless noted:
+All versioned routes are under `/api/v1/` and use trailing slashes. `GET /api/v1/` is a public, JSON-only directory of the 14 collections plus search; it returns a flat object of names to relative URLs without pagination or database/cache access. Following those links requires an API key, and search also requires `?q=<query>`. For example:
+
+```json
+{
+  "books": "/api/v1/books/",
+  "characters": "/api/v1/characters/",
+  "gods": "/api/v1/gods/",
+  "titans": "/api/v1/titans/",
+  "monsters": "/api/v1/monsters/",
+  "creatures": "/api/v1/creatures/",
+  "weapons": "/api/v1/weapons/",
+  "locations": "/api/v1/locations/",
+  "quests": "/api/v1/quests/",
+  "prophecies": "/api/v1/prophecies/",
+  "events": "/api/v1/events/",
+  "cabins": "/api/v1/cabins/",
+  "factions": "/api/v1/factions/",
+  "images": "/api/v1/images/",
+  "search": "/api/v1/search/"
+}
+```
+
+The following collections have list and slug-detail routes unless noted:
 
 | Resource | Routes and subresources |
 | --- | --- |
@@ -159,7 +181,7 @@ curl -X POST http://127.0.0.1:8000/auth/request-key/ \
   -d '{"consumer_name":"My Fan App","email":"dev@example.com"}'
 ```
 
-Use the returned key on v1 requests:
+Use the returned key on v1 resource requests (the `/api/v1/` directory itself is public):
 
 ```bash
 curl 'http://127.0.0.1:8000/api/v1/characters/?type=demigod&is_demigod=true' \
@@ -221,7 +243,7 @@ The default test suite uses SQLite. CI also runs the full suite against PostgreS
 uv run python manage.py test --settings=config.settings.test_postgresql
 ```
 
-OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The schema and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
+OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The `/api/v1/` directory, schema, and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
 
 ## Roadmap
 
