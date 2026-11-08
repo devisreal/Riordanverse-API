@@ -1,0 +1,18 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Percy Jackson Fandom API{% endblock title %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% tailwind_css %}
+    {% block extra_head %}
+    {% endblock extra_head %}
+  </head>
+  <body class="bg-gray-50 text-black font-serif leading-normal tracking-normal">
+    {% block content %}
+    {% endblock content %}
+    {% block extra_js %}
+    {% endblock extra_js %}
+  </body>
+</html>

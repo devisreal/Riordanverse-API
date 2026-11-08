@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from drf_spectacular.views import (
@@ -9,6 +10,7 @@ from drf_spectacular.views import (
 from apps.core.views import APIDirectoryView, HealthLiveView, HealthReadyView
 
 urlpatterns = [
+    path('', include('website.urls')),
     path('health/live/', HealthLiveView.as_view(), name='health-live'),
     path('health/ready/', HealthReadyView.as_view(), name='health-ready'),
     path('admin/', admin.site.urls),
@@ -27,3 +29,9 @@ urlpatterns = [
     path('api/v1/', include('apps.search.urls')),
     path('api/v1/', include('apps.images.urls')),
 ]
+
+if settings.DEBUG:
+    # Include django_browser_reload URLs only in DEBUG mode
+    urlpatterns += [
+        path('__reload__/', include('django_browser_reload.urls')),
+    ]

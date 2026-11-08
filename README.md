@@ -124,6 +124,94 @@ uv run python manage.py runserver --settings=config.settings.development
 
 Development keeps API-key authentication enabled. Tests use separate SQLite settings and are not a substitute for running the server with development or production settings.
 
+### Website and Tailwind workflow
+
+The public homepage at `/` uses Django templates in `website/templates/website/`.
+`home.html` extends `base.html`, which provides `title`, `extra_head`, `content`,
+and `extra_js` blocks. API endpoints remain JSON-only.
+
+The current frontend toolchain uses **Node.js 22+ and npm**. After `uv sync` and
+configuring `.env`, install the locked frontend dependencies from the project root:
+
+```bash
+npm ci --prefix website/static_src
+```
+
+Start Django and the Tailwind CSS watcher together:
+
+```bash
+DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py tailwind dev
+```
+
+This uses `Procfile.tailwind` through Honcho. Alternatively, run
+`uv run python manage.py runserver` and `uv run python manage.py tailwind start`
+in separate terminals; both default to development settings. Browser reload is
+registered only when `DEBUG=True`.
+
+For deployment, install frontend dependencies including dev dependencies (the CSS
+build tools), then compile CSS **before** collecting static files:
+
+```bash
+npm ci --include=dev --prefix website/static_src
+DJANGO_SETTINGS_MODULE=config.settings.production uv run python manage.py tailwind build
+uv run python manage.py collectstatic --noinput --settings=config.settings.production
+```
+
+Production commands require the production environment variables and dependencies
+to be configured. Generated CSS at `website/static/css/dist/styles.css` is
+Git-ignored, so every fresh checkout or deployment needs a build. The production
+server does not run the watcher or `Procfile.tailwind`.
+
+Format and check templates with djLint, and Python with Ruff:
+
+```bash
+uv run djlint website/templates/ --reformat
+uv run djlint website/templates/ --check --lint
+uv run ruff format .
+uv run ruff check .
+uv run ruff format --check .
+git diff --check
+```
+
+Prettier and Bun are not configured in this initial scaffold.
+
+#### Cotton components and Lucide icons
+
+Django Cotton is installed through `uv sync` and registered in `INSTALLED_APPS`.
+It automatically configures the template loader; components live in
+`website/templates/cotton/`, while page templates stay in
+`website/templates/website/`. Tailwind's existing source pattern scans both.
+
+Lucide icons are local, server-rendered Cotton SVG components: no icon font,
+JavaScript initialization, runtime CDN, or npm icon dependency is needed.
+
+```html
+<!-- Decorative beside visible text: hidden from assistive technology by default. -->
+<c-icons.book-open class="size-5 text-emerald-500" />
+
+<!-- Standalone meaningful icon: label supplies its accessible name. -->
+<c-icons.search label="Search" size="20" stroke-width="1.5" />
+
+<!-- Icon-only controls need a name on the control, not just on its icon. -->
+<button type="button" aria-label="Open navigation">
+  <c-icons.menu />
+</button>
+```
+
+Available icons: `arrow-right`, `book-open`, `code`, `copy`, `external-link`,
+`menu`, `search`, and `x`. For example, `<c-icons.book-open />` resolves to
+`website/templates/cotton/icons/book_open.html`. Each delegates to `icons/base.html`
+for `currentColor`, size, stroke width, and accessibility behavior. Additional
+attributes such as `class` and `data-*` are forwarded to the SVG. Interactive
+behavior (for example, opening a menu) is separate from rendering an icon.
+
+The paths are vendored from **lucide-static 1.70.0**. Its full ISC license and
+Feather-derived MIT notices are preserved in
+`website/static/vendor/lucide/LICENSE.txt`, alongside source/version information
+in `README.txt`. These third-party assets retain their upstream licenses. When
+adding an icon, copy its paths from a pinned official Lucide release into a
+Cotton wrapper, retain the license notices, and rebuild Tailwind CSS.
+
 ### Choose primary images in Django admin
 
 Staff with image and gallery-link change permissions can open **Images → Images → Choose primary images**, select an entity, review its linked thumbnails, and set or clear that gallery's primary image. The picker currently displays all images linked to one entity without filtering or pagination; a searchable entity selector is planned for a later phase.
