@@ -157,6 +157,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # * Django REST Framework
 # ---------------------------------------------------------------------------
 REST_FRAMEWORK = {
+    # API responses are JSON-only; interactive documentation lives at /api/docs/ and /api/redoc/.
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
     # Secure by default: every request needs a valid API key.
     # CachedHasAPIKey wraps rest_framework_api_key's HasAPIKey with a
     # Redis-backed lookup so we don't hit Postgres on every request.

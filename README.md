@@ -7,6 +7,7 @@ A Django REST API for Riordanverse reference data. The implemented v1 API includ
 ## Features
 
 - PostgreSQL-backed relational models; no `GenericForeignKey` for typed entity relationships.
+- JSON-only API responses, including in a browser; interactive documentation remains at `/api/docs/` and `/api/redoc/`.
 - Paginated list responses use `{ "data": [...], "meta": {...} }`.
 - API-key authentication via `X-API-Key`, Redis caching for valid key checks, per-key throttling, and request/security logging.
 - Strict choice filters and lowercase-only boolean filters; invalid values return a structured `400` response.
@@ -71,7 +72,7 @@ Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 
 To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`; it revokes only the presented key and requires authentication.
 
-Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
+Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups. Versioned endpoints return JSON rather than the DRF browsable API. Normal browser requests receive JSON; requests accepting only `text/html` receive `406 Not Acceptable`, and `?format=api` is not supported. `/api/schema/` retains its YAML/JSON schema formats.
 
 There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses. Powers are embedded in Character details and available through the Character-scoped `/characters/<slug>/powers/` subresource.
 

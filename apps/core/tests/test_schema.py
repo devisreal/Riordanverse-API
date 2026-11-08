@@ -141,6 +141,8 @@ class SchemaEndpointTests(APITestCase):
 
         self.assertEqual(swagger.status_code, 200)
         self.assertEqual(redoc.status_code, 200)
+        self.assertTrue(swagger['Content-Type'].startswith('text/html'))
+        self.assertTrue(redoc['Content-Type'].startswith('text/html'))
         self.assertIn(b'SwaggerUIBundle', swagger.content)
         self.assertIn(b'tagsSorter": null', swagger.content)
         self.assertIn(b'<redoc', redoc.content.lower())

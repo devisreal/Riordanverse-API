@@ -1718,7 +1718,7 @@ Add `mythology` enum to most models: `greek`, `roman`, `egyptian`, `norse` (V3)
 ### Implemented Conventions
 
 - All versioned resources are mounted under `/api/v1/` and use trailing slashes; health and key-management routes are outside that prefix.
-- Responses use JSON and `snake_case`. Detail URLs use slugs; the Cabin number lookup is `/api/v1/cabins/number/<number>/`.
+- API responses use JSON and `snake_case`, including for normal browser requests; the DRF browsable API renderer is disabled. Requests accepting only `text/html` receive `406 Not Acceptable`; `?format=api` is unsupported. Swagger UI and ReDoc remain HTML, and `/api/schema/` retains its YAML/JSON schema formats. Detail URLs use slugs; the Cabin number lookup is `/api/v1/cabins/number/<number>/`.
 - List views that use DRF pagination return `{ "data": [...], "meta": { "total", "page", "limit", "total_pages" } }`; the default page size is 20 and the maximum `limit` is 100. Search has its own `data`/`meta` envelope; detail responses are resource-specific objects.
 - Missing optional scalar values may be `null`; empty relationships are returned as empty arrays. Response fields vary by list/detail serializer; see Section 23.
 - Query choice errors use the standard API error envelope. Invalid choices use `INVALID_FILTER_VALUE` and include `valid_values`; other handled bad requests use `BAD_REQUEST`.
@@ -2895,6 +2895,8 @@ Unlike the public key request and verification endpoints, `POST /auth/revoke-key
 Subresource paths in the table are appended to the entity detail path shown in the same row. Powers have a Character-scoped list endpoint at `/characters/<slug>/powers/` and are also embedded in Character detail; there is no standalone `/powers/` route. Images have a global paginated `/images/` collection as well as the typed galleries. Book/character role relations, family edges, quest relations, prophecy subjects, and faction members are serialized through resource detail and the listed subresources; these are not relationship CRUD routes.
 
 ### List response and error shapes
+
+Versioned endpoints use only the JSON renderer, so opening a resource URL in a normal browser returns JSON, not a DRF page. This also applies to handled API errors; API-key protection is unchanged. Interactive HTML documentation remains at `/api/docs/` and `/api/redoc/`.
 
 Paginated list views use a default page size of 20 (`page`, `limit`; maximum `limit` 100):
 
