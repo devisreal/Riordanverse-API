@@ -17,7 +17,7 @@
               3 Modules
             </c-ui.badge>
           </div>
-          <div class="lore-grid grid grid-cols-3 gap-8 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-4 max-md:overflow-x-auto max-md:pb-2">
+          <div class="lore-grid grid grid-cols-3 gap-6 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-4 max-md:overflow-x-auto max-md:pb-2">
             {% for card in lore_cards %}<c-landing.lore-card :item="card" />{% endfor %}
           </div>
         </div>
@@ -42,7 +42,7 @@
               <p class="text-sm leading-[1.6] max-md:mt-1 max-md:text-xs max-md:leading-[1.7]">Protected endpoints require the <code class="rounded-[20px] bg-surface px-1.5 py-px text-[11px] font-bold text-accent">X-API-Key</code> header. Directory endpoints provide structured JSON payloads.</p>
             </div>
             <a href="#quick-start"
-               class="desktop-copy ml-auto font-mono text-[11px] leading-[normal] font-semibold whitespace-nowrap text-heading [&_svg]:ml-1.5 max-md:hidden!">Key policy guidelines
+               class="desktop-copy ml-auto font-mono text-[11px] leading-[normal] font-semibold whitespace-nowrap text-heading underline-offset-4 hover:underline focus-visible:underline [&_svg]:ml-1.5 max-md:hidden!">Key policy guidelines
               <c-icons.arrow-right size="15" />
             </a>
           </div>
@@ -79,7 +79,7 @@
                                 title="Engineered for Mythic Scale"
                                 description="Built on standard REST paradigms with deterministic schemas and deep relationship traversal."
                                 mobile-description="Built to give frontend developers and bot makers an unshakeable foundation." />
-          <div class="feature-grid mt-16 grid grid-cols-3 gap-8 md:max-desktop:grid-cols-2 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+          <div class="feature-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:grid-cols-2 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
             {% for feature in features %}
               {% cycle 'teal' 'amber' as feature_tone silent %}
               <c-landing.feature-card :item="feature" :tone="feature_tone" />
@@ -95,7 +95,7 @@
                                 title="Quick Start in 3 Steps"
                                 description="Initialize communication with the Riordanverse archive."
                                 mobile-description="No credit card or demigod pedigree required." />
-          <div class="quick-grid mt-16 grid grid-cols-3 gap-8 md:max-desktop:gap-4 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-5">
+          <div class="quick-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:gap-4 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-5">
             <c-landing.quick-start-step number="01"
                                         title="Request an API Key"
                                         description="Issue a key request specifying your application identifier and developer email.">
@@ -153,7 +153,7 @@
             <h2 class="mobile-copy hidden max-md:block max-md:text-base max-md:leading-[1.6] max-md:tracking-normal">Specs &amp; Tooling</h2>
             <span class="mobile-copy hidden max-md:inline max-md:font-mono max-md:text-[10px] max-md:leading-[normal] max-md:text-accent">Standards</span>
           </div>
-          <div class="tool-grid grid grid-cols-4 gap-6 md:max-desktop:grid-cols-2 max-md:grid-cols-2 max-md:gap-2.5">
+          <div class="tool-grid grid grid-cols-4 gap-4 md:max-desktop:grid-cols-2 max-md:grid-cols-2 max-md:gap-2.5">
             {% for tool in tools %}
               {% cycle 'teal' 'amber' as tool_tone silent %}
               <c-landing.tool-card :item="tool" :tone="tool_tone" />

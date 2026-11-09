@@ -1,7 +1,7 @@
 <header class="site-header fixed inset-x-0 top-0 z-50 border-b border-border bg-header backdrop-blur-xl">
-  <div class="site-container header-inner mx-auto flex h-18.75 w-full max-w-7xl items-center justify-between gap-6 px-8 md:max-desktop:gap-4 max-md:h-16 max-md:gap-2.5 max-md:px-4 max-[360px]:px-3">
+  <div class="site-container header-inner mx-auto flex h-18.75 w-full max-w-7xl items-center justify-between gap-6 px-8 md:max-desktop:gap-3 md:max-desktop:px-6 max-md:h-16 max-md:gap-2.5 max-md:px-4 max-[360px]:px-3">
     <details class="mobile-menu hidden max-md:block" id="site-menu">
-      <summary class="menu-toggle flex size-8.5 list-none items-center justify-center rounded-[99px] border border-border bg-surface text-heading [&::-webkit-details-marker]:hidden"
+      <summary class="menu-toggle flex size-9 list-none items-center justify-center rounded-[99px] border border-border bg-surface text-heading [&::-webkit-details-marker]:hidden"
                aria-label="Open navigation"
                aria-controls="mobile-navigation">
         <span class="menu-closed">
@@ -42,6 +42,7 @@
           GitHub Repository
           <c-icons.external-link size="18" />
         </c-navigation.link>
+        <c-ui.theme-options />
         <div class="menu-actions mt-8 grid gap-3">
           <c-ui.action :href="api_directory_url" trailing="true">
             Explore the API
@@ -53,7 +54,7 @@
       </nav>
     </details>
     <c-brand.mark />
-    <nav class="desktop-nav flex items-center gap-8 text-[14px] font-medium md:max-desktop:gap-4 max-md:hidden [&_a]:inline-flex [&_a]:items-center [&_a]:gap-1.5 [&_a:hover]:text-hero-accent [&_a:focus-visible]:text-hero-accent"
+    <nav class="desktop-nav flex shrink-0 items-center gap-8 text-[14px] font-medium whitespace-nowrap md:max-desktop:gap-3.5 md:max-desktop:text-xs max-md:hidden [&_a]:inline-flex [&_a]:items-center [&_a]:gap-1.5 [&_a:hover]:text-hero-accent [&_a:focus-visible]:text-hero-accent"
          aria-label="Main navigation">
       <c-navigation.link href="#features">
         Features
@@ -72,16 +73,18 @@
         <c-icons.external-link size="14" />
       </a>
     </nav>
-    <div class="header-actions flex items-center gap-2 [&_.action]:px-5 [&_.action]:py-2.25 md:max-desktop:[&_.action]:px-3.5 md:max-desktop:[&_.action]:text-[12px]">
-      <c-ui.action :href="api_directory_url" class="desktop-explore max-md:hidden">
-        Explore the API
+    <div class="header-actions flex shrink-0 items-center gap-3 md:max-desktop:gap-2.5 max-md:gap-2 [&_.action]:px-5 [&_.action]:py-2.25 md:max-desktop:[&_.action]:px-3.5 md:max-desktop:[&_.action]:text-[12px]">
+      <c-ui.theme-toggle />
+      <c-ui.action :href="api_directory_url"
+                   class="desktop-explore whitespace-nowrap max-md:hidden">
+        <span class="max-desktop:hidden">Explore the API</span><span class="desktop:hidden">Explore API</span>
       </c-ui.action>
-      <a class="mobile-shortcut hidden size-8.5 items-center justify-center rounded-[99px] border border-border bg-surface text-heading max-md:flex"
+      <a class="mobile-shortcut hidden size-8 shrink-0 items-center justify-center rounded-[99px] border border-border bg-surface text-heading max-md:flex"
          href="{{ api_directory_url }}"
          aria-label="Explore the API">
         <c-icons.code size="18" />
       </a>
-      <a class="mobile-shortcut hidden size-8.5 items-center justify-center rounded-[99px] border border-border bg-surface text-heading max-md:flex"
+      <a class="mobile-shortcut hidden size-8 shrink-0 items-center justify-center rounded-[99px] border border-border bg-surface text-heading max-md:flex"
          href="#quick-start"
          aria-label="Get an API key">
         <c-icons.users size="18" />

@@ -50,6 +50,7 @@
   --color-button: var(--button);
   --color-button-text: var(--button-text);
   --color-header: var(--header);
+  --color-theme-selected: var(--theme-selected);
   --color-code-bg: var(--code-bg);
   --color-code-panel: var(--code-panel);
   --color-code-top: var(--code-top);
@@ -83,7 +84,8 @@
     --button: #0f172a;
     --button-text: #fff;
     --header: rgb(255 255 255 / 85%);
-    --background: url("../../website/images/background-light.jpg");
+    --theme-selected: #fff;
+    --background: url("../../website/images/background-light.webp");
     --code-bg: #020617;
     --code-panel: #070d1d;
     --code-top: #0f172a;
@@ -114,7 +116,8 @@
       --button: #fff;
       --button-text: #020617;
       --header: rgb(9 13 20 / 85%);
-      --background: url("../../website/images/background-dark.jpg");
+      --theme-selected: rgb(255 255 255 / 12%);
+      --background: url("../../website/images/background-dark.webp");
       --code-bg: #06090e;
       --code-panel: #0b1019;
       --code-top: #0e1522;
@@ -145,7 +148,8 @@
     --button: #fff;
     --button-text: #020617;
     --header: rgb(9 13 20 / 85%);
-    --background: url("../../website/images/background-dark.jpg");
+    --theme-selected: rgb(255 255 255 / 12%);
+    --background: url("../../website/images/background-dark.webp");
     --code-bg: #06090e;
     --code-panel: #0b1019;
     --code-top: #0e1522;

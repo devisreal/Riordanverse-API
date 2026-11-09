@@ -96,6 +96,45 @@ class HomeViewTests(SimpleTestCase):
         self.assertEqual(reverse('website:home'), '/')
         self.assertIs(resolve('/').func, home)
 
+    def test_theme_controls_are_accessible_and_hidden_until_javascript_binds(self):
+        response, page = self.page()
+        toggles = [attrs for tag, attrs in page.elements if 'data-theme-toggle' in attrs]
+        self.assertEqual(len(toggles), 1)
+        self.assertEqual(toggles[0]['type'], 'button')
+        self.assertTrue(toggles[0]['aria-label'])
+        self.assertIn('hidden', toggles[0])
+        options = [attrs for _, attrs in page.elements if 'data-theme-options' in attrs]
+        self.assertEqual(len(options), 1)
+        self.assertIn('hidden', options[0])
+        choices = [attrs for _, attrs in page.elements if 'data-theme-choice' in attrs]
+        self.assertEqual({attrs['data-theme-choice'] for attrs in choices}, {'light', 'dark'})
+        for choice in choices:
+            self.assertEqual(choice['type'], 'button')
+            self.assertEqual(choice['aria-pressed'], 'false')
+        self.assertEqual(
+            {attrs['data-theme-icon'] for _, attrs in page.elements if 'data-theme-icon' in attrs},
+            {'light', 'dark'},
+        )
+        for _, attrs in page.elements:
+            if 'data-theme-icon' in attrs:
+                # Avoid inline SVG baseline/line-height shifting the icon vertically.
+                self.assertTrue(
+                    {'flex', 'items-center', 'justify-center'} <= set(attrs['class'].split())
+                )
+        html = response.content.decode()
+        # Resolve the stored preference before loading CSS, not after the first paint.
+        self.assertLess(
+            html.index(static('website/js/theme.js')), html.index(static('css/dist/styles.css'))
+        )
+        self.assertNotRegex(html, r'\son\w+=')
+
+    def test_tablet_explorer_keeps_real_destination_and_compact_copy(self):
+        response, _ = self.page()
+        header = response.content.decode().split('</header>', 1)[0]
+        self.assertIn('Explore API</span>', header)
+        self.assertIn('Explore the API</span>', header)
+        self.assertIn(f'href="{reverse("api-directory")}"', header)
+
     def test_home_supports_public_head_requests(self):
         response = self.client.head(reverse('website:home'))
         self.assertEqual(response.status_code, 200)
@@ -134,7 +173,16 @@ class HomeViewTests(SimpleTestCase):
                         self.assertIn(unquote(parsed.fragment), page.ids)
                 else:
                     self.assertEqual(parsed.scheme, 'https')
-                    self.assertIn(parsed.netloc, ('github.com', 'riordan.fandom.com'))
+                    self.assertIn(
+                        parsed.netloc,
+                        (
+                            'github.com',
+                            'riordan.fandom.com',
+                            'visitolympus.travel',
+                            'commons.wikimedia.org',
+                            'creativecommons.org',
+                        ),
+                    )
         self.assertNotRegex(response.content.decode(), r'<c-|\{%|\{\{')
 
     def test_document_links_to_real_documentation_and_repository(self):
@@ -205,17 +253,47 @@ class HomeViewTests(SimpleTestCase):
         _, page = self.page()
         images = [attrs for tag, attrs in page.elements if tag == 'img']
         expected = {
-            'website/images/lore-camp.jpg',
-            'website/images/lore-olympus.jpg',
-            'website/images/lore-riptide.jpg',
+            'website/images/lore-camp.webp',
+            'website/images/lore-olympus.webp',
+            'website/images/lore-trident.webp',
         }
         self.assertEqual({image['src'] for image in images}, {static(path) for path in expected})
         self.assertEqual(len(images), 3)
-        for image in images:
-            self.assertTrue(image.get('alt'))
+        context = get_home_context(RequestFactory().get('/'))
+        for image, item in zip(images, context['lore_cards'], strict=True):
+            self.assertEqual(image['alt'], item['image_alt'])
+            self.assertEqual(int(image['width']), item['image_width'])
+            self.assertEqual(int(image['height']), item['image_height'])
+            self.assertEqual(image['loading'], 'lazy')
         for path in expected:
             with self.subTest(path=path):
-                self.assertIsNotNone(finders.find(path))
+                asset = finders.find(path)
+                self.assertIsNotNone(asset)
+                self.assertEqual(Path(asset).read_bytes()[8:12], b'WEBP')
+
+    def test_lore_image_credits_are_visible_and_link_to_sources_and_trident_license(self):
+        response, _ = self.page()
+        credits = re.findall(
+            r'<p class="lore-image-credit(?:\s[^"]*)?">(.*?)</p>',
+            response.content.decode(),
+            re.DOTALL,
+        )
+        self.assertEqual(len(credits), 3)
+        context = get_home_context(RequestFactory().get('/'))
+        for credit, item in zip(credits, context['lore_cards'], strict=True):
+            with self.subTest(image=item['image']):
+                parsed = LandingHTML(credit)
+                self.assertIn(item['image_credit'], ''.join(parsed.text))
+                self.assertIn(item['image_source_url'], parsed.links)
+                self.assertNotIn('hidden', credit)
+                for tag, attrs in parsed.elements:
+                    if tag == 'a':
+                        self.assertEqual(attrs['target'], '_blank')
+                        self.assertTrue({'noopener', 'noreferrer'} <= set(attrs['rel'].split()))
+        self.assertIn('Cropped photo:', credits[2])
+        self.assertIn('Oceancetaceen', credits[2])
+        self.assertIn('CC BY-SA 3.0', credits[2])
+        self.assertIn('https://creativecommons.org/licenses/by-sa/3.0/', credits[2])
 
     def test_runtime_styles_scripts_fonts_and_backgrounds_are_local_and_discoverable(self):
         _, page = self.page()
@@ -241,8 +319,8 @@ class HomeViewTests(SimpleTestCase):
         expected = {
             'website/fonts/plus-jakarta-sans-latin-variable.woff2',
             'website/fonts/jetbrains-mono-latin-variable.woff2',
-            'website/images/background-light.jpg',
-            'website/images/background-dark.jpg',
+            'website/images/background-light.webp',
+            'website/images/background-dark.webp',
         }
         references = set()
         for match in re.finditer(r'url\(\s*[\'"]?([^\s)\'"]+)', css):
@@ -253,6 +331,10 @@ class HomeViewTests(SimpleTestCase):
             with self.subTest(css_asset=path):
                 self.assertIsNotNone(finders.find(path))
         self.assertTrue(expected <= references, expected - references)
+        for theme in ('light', 'dark'):
+            original = f'website/images/background-{theme}.jpg'
+            self.assertIsNotNone(finders.find(original), 'Keep original JPEG backgrounds')
+            self.assertNotIn(original, references)
         self.assertNotRegex(css.lower(), r'@import|fonts\.google|material.symbols|material.icons')
 
     def test_no_placeholder_unsupported_claims_or_external_runtime_loaders(self):
@@ -401,7 +483,18 @@ class LucideIconTests(SimpleTestCase):
             if path.stem != 'base'
         }
         self.assertTrue(
-            {'arrow-right', 'book-open', 'code', 'copy', 'external-link', 'menu', 'search', 'x'}
+            {
+                'arrow-right',
+                'book-open',
+                'code',
+                'copy',
+                'external-link',
+                'menu',
+                'moon',
+                'search',
+                'sun',
+                'x',
+            }
             <= names
         )
         for name in sorted(names):

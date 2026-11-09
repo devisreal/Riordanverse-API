@@ -10,7 +10,7 @@
 {# djlint:on #}
 <article class="utility-card flex min-w-0 gap-5 rounded-3xl border border-border bg-subtle p-7 [&>div]:min-w-0 [&_.icon-tile]:border-border [&_.icon-tile]:bg-surface max-md:gap-3 max-md:bg-surface max-md:p-4 max-md:[&_.icon-tile]:size-10 max-md:[&_.icon-tile]:border-accent-border max-md:[&_.icon-tile]:bg-accent-soft">
   <c-ui.icon-tile :name="icon" :tone="tone" />
-  <div>
+  <div class="flex flex-1 flex-col">
     <div class="utility-heading flex flex-wrap items-center gap-2 max-md:gap-1.5 max-md:[&_.badge]:px-1.5 max-md:[&_.badge]:py-px max-md:[&_.badge]:text-[7px]">
       <h3 class="text-base leading-[1.6] max-md:text-sm">{{ title }}</h3>
       <c-ui.badge :tone="tone">
@@ -18,9 +18,9 @@
       </c-ui.badge>
     </div>
     <p class="mt-2 text-sm leading-[1.65] max-md:mt-1 max-md:text-xs">{{ description }}</p>
-    <div class="utility-endpoint mt-4.5 flex flex-wrap items-center gap-1.5 max-md:mt-2 max-md:[&_.copy-button]:px-1.5 max-md:[&_.copy-button]:py-0.5 max-md:[&_.copy-button]:text-[8px]">
-      <a href="{{ href }}"><code class="rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] wrap-anywhere max-md:border-0 max-md:bg-transparent max-md:p-0 max-md:text-[9px] max-md:text-accent"
-                                 id="{{ id }}">{{ endpoint }}</code></a>
+    <div class="utility-endpoint mt-auto flex flex-wrap items-center gap-1.5 pt-4.5 [&_.copy-button]:py-1.5 max-md:pt-2 max-md:[&_.copy-button]:px-1.5 max-md:[&_.copy-button]:py-0.5 max-md:[&_.copy-button]:text-[8px]">
+      <a href="{{ href }}" class="inline-flex min-w-0 items-center"><code class="block rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] leading-normal wrap-anywhere max-md:border-0 max-md:bg-transparent max-md:p-0 max-md:text-[9px] max-md:text-accent"
+                                                                          id="{{ id }}">{{ endpoint }}</code></a>
       <c-ui.copy-button :target="id" label="Copy endpoint" />
     </div>
   </div>

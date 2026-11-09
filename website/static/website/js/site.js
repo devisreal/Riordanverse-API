@@ -2,6 +2,7 @@
 (() => {
   const menu = document.getElementById("site-menu");
   const summary = menu.querySelector("summary");
+  const header = menu.closest("header");
   const content = document.getElementById("page-content");
   const mobile = window.matchMedia("(max-width: 767px)");
   const status = document.getElementById("copy-status");
@@ -16,7 +17,7 @@
   };
   menu.addEventListener("toggle", syncMenu);
   syncMenu();
-  menu.querySelectorAll("a").forEach((link) => {
+  header.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       menu.open = false;
       syncMenu();
@@ -37,7 +38,10 @@
       syncMenu();
       summary.focus();
     } else if (event.key === "Tab") {
-      const controls = [summary, ...menu.querySelectorAll("a")];
+      // Include the theme choices and still-visible header controls in DOM order.
+      const controls = [...header.querySelectorAll("summary, a, button")].filter(
+        (control) => !control.disabled && control.getClientRects().length > 0,
+      );
       const first = controls[0];
       const last = controls[controls.length - 1];
       if (event.shiftKey && document.activeElement === first) {
@@ -50,7 +54,12 @@
     }
   });
   mobile.addEventListener("change", () => {
-    if (!mobile.matches) menu.open = false;
+    if (!mobile.matches) {
+      const restoreFocus = menu.contains(document.activeElement)
+        || (menu.open && document.activeElement === document.body);
+      menu.open = false;
+      if (restoreFocus) header.querySelector(".brand").focus();
+    }
     syncMenu();
   });
 

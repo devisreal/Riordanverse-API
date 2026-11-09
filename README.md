@@ -135,15 +135,24 @@ fields, and key-request contract. API endpoints remain JSON-only.
 
 The responsive page includes a top mobile menu, request/response tabs, clipboard
 controls with a manual-copy fallback, and reduced-motion support. There is no
-bottom mobile bar or theme-toggle control. JavaScript defaults to light mode and
-honors a saved `localStorage.theme` value of `light` or `dark`; without JavaScript,
-the OS color preference applies. Explicit `html.light`/`html.dark` classes take
-precedence. Theme resolution lives in the shared base template's local script.
+bottom mobile bar. A sun/moon button switches themes at every viewport, with a
+Light/Dark selector inside the mobile menu. The tablet navigation uses compact
+spacing and an “Explore API” label to accommodate the control. JavaScript defaults
+to light mode and honors a saved `localStorage.theme` value of `light` or `dark`;
+without JavaScript, the OS color preference applies and theme controls stay hidden.
+Explicit `html.light`/`html.dark` classes take precedence on initial load. The local
+`website/static/website/js/theme.js` resolves the theme before CSS loads and saves
+later selections when storage is available; controls still work when it is blocked.
+Run its dependency-free behavior tests with `node --test website/tests_js/*.test.mjs`.
 
 Fonts, Lucide SVGs, background images, and archive images are served locally; no
-runtime font, icon, or Tailwind CDN is required. Font licenses and image provenance
-are documented under `website/static/website/`. Image provenance does **not**
-constitute a license grant.
+runtime font, icon, or Tailwind CDN is required. The landing uses WebP backgrounds
+while retaining the original JPEGs, with visible source credits on the three lore
+cards. The cropped trident photograph also links its CC BY-SA 3.0 license. Font
+licenses, image sources, processing details, and asset checksums are documented
+under `website/static/website/`. Credits and provenance do **not** grant rights to
+the Camp/Olympus or original Stitch images; their redistribution rights remain
+unverified.
 
 Author layout, spacing, typography, borders, and responsive states with Tailwind
 utilities in the Django/Cotton templates. `website/static_src/src/styles.css` uses

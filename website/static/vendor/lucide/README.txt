@@ -6,8 +6,8 @@ Repository: https://github.com/lucide-icons/lucide
 
 Vendored icons: arrow-right, book-open, building-2, check, chevron-right, code,
 copy, external-link, file-json, history, image, info, key-round, layers,
-library, list-filter, menu, network, search, shield-check, swords, terminal,
-users, x, zap.
+library, list-filter, menu, moon, network, search, shield-check, sun, swords,
+terminal, users, x, zap.
 
 The pinned lucide-static v1.70.0 release does not include a github icon.
 No GitHub brand icon or additional brand dependency is vendored; use the

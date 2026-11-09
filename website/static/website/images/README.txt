@@ -1,17 +1,17 @@
-Approved Stitch landing image assets
+Landing image assets and provenance
 
 Design sources supplied by the user:
   /tmp/pj-stitch-exports/light-desktop.html
   /tmp/pj-stitch-exports/dark-desktop.html
 
-The two background images are user-supplied generated Stitch assets, copied
-byte-for-byte without recompression. The three lore images were downloaded
-unchanged from the Google aida-public URLs referenced by both design exports:
-Camp Half-Blood Sound, Olympian Pantheons, and Weapons & Regalia, respectively.
+The original two background JPEGs are user-supplied generated Stitch assets,
+copied byte-for-byte without recompression. The three original lore JPEGs were
+downloaded unchanged from the Google aida-public URLs in the design exports.
+All five JPEGs are retained below as originals; the live landing page now uses
+the WebP backgrounds and replacement lore images documented afterward.
 No HTML or scripts from the exports were executed.
 
-All five assets were verified as JPEG; their .jpg extensions match the actual
-format. Source URLs, dimensions and SHA-256 checksums follow.
+Original JPEGs: source URLs, dimensions and SHA-256 checksums follow.
 
 background-light.jpg
   Format: JPEG; dimensions: 1376 x 768
@@ -38,8 +38,60 @@ lore-riptide.jpg
   Source: https://lh3.googleusercontent.com/aida-public/AB6AXuDPe7hNvBPasV9MS0lqO-93rPBdwe1-NnvwwJjQLfy2Y9UA5kxX1ryeb4vkbmxuLNRe_AcOSl66xDhGVclaGbDCEZvm1SscOJAGBxFcYhxatvIqQWS5Kv3dIioop73ewm2EddVdYzoTlDdbZUo6k9ZHqPXvMk2nsWo8GwJ4wRp_riNo2uAUjOSzwQvPYG7HmsEbbO5X88sqg_oZxgQS80EezIWC3yyB6gMwmOhJPC0
   SHA-256: 317c7a0ab25e878643c17d9f3bcf59f5c078d352fb9145dc6b52cff329beddab
 
-Rights/provenance:
-These files are included to implement the user-approved Stitch design.
+Live WebP backgrounds (user-converted, original dimensions retained)
+
+background-light.webp
+  Format: WebP; dimensions: 1376 x 768
+  Source: user-converted derivative of background-light.jpg above
+  SHA-256: 6a2237baddf058fd91cd6883a9ed6b02ca6b360b0d3fbff74d9793ed749506f0
+
+background-dark.webp
+  Format: WebP; dimensions: 1376 x 768
+  Source: user-converted quality-90 derivative of background-dark.jpg above
+  SHA-256: 7290a0af66031eee68cd34be1474a2657f21a4e48b2002e52ccaf74725809e14
+
+Live replacement lore images (local assets, no visitor-side hotlinking)
+
+lore-camp.webp
+  Format: WebP; dimensions: 1000 x 622
+  User-supplied source: https://static.wikia.nocookie.net/olympians/images/8/83/Camp_Half-Blood_IE.jpg/revision/latest?cb=20220925170014
+  Downloaded from: https://static.wikia.nocookie.net/olympians/images/8/83/Camp_Half-Blood_IE.jpg
+  Source/visible credit: https://riordan.fandom.com/wiki/File:Camp_Half-Blood_IE.jpg
+  Processing: source CDN supplied WebP despite .jpg URL; resized to 1000px wide
+    and re-encoded with cwebp quality 90, method 6, metadata stripped.
+  Rights: no image-specific redistribution license or creator credit verified.
+    The Wiki's text license must not be assumed to cover this image.
+  SHA-256: 8cd028c73e91aa6501bc78db7591ff923ceb744ef37688fe28afb235bdbe47a8
+
+lore-olympus.webp
+  Format: WebP; dimensions: 1000 x 667
+  User-supplied source: https://visitolympus.travel/wp-content/uploads/2023/12/a-guide-to-the-gods-and-legends-of-mount-olympus-1.webp
+  Source/visible credit: https://visitolympus.travel/a-guide-to-the-gods-and-legends-of-mount-olympus/
+  Processing: resized from 1760 x 1173; cwebp quality 90, method 6,
+    metadata stripped. Depicts a ceiling fresco, not an API genealogy chart.
+  Rights: source and public availability do not establish a redistribution
+    license; no image-specific license was verified.
+  SHA-256: 8a2a37c7c7a7fd853fffd0522044dc30e7cf94211962ca1b183d363cb0db7367
+
+lore-trident.webp
+  Format: WebP; dimensions: 1000 x 562
+  Title: Neptunbrunnen Detail Dreizack (Alice Chodura).JPG
+  Creator as credited by Commons: Oceancetaceen
+  Source/visible credit: https://commons.wikimedia.org/wiki/File:Neptunbrunnen_Detail_Dreizack_(Alice_Chodura).JPG
+  Original image: https://upload.wikimedia.org/wikipedia/commons/9/98/Neptunbrunnen_Detail_Dreizack_%28Alice_Chodura%29.JPG
+  License: Creative Commons Attribution-ShareAlike 3.0 Unported
+    https://creativecommons.org/licenses/by-sa/3.0/
+  License/creator verified using Wikimedia Commons imageinfo/extmetadata.
+  Changes: cropped original 2304 x 3456 at x=0, y=346 to 2304 x 1296;
+    resized to 1000 x 562, re-encoded WebP quality 90/method 6, metadata stripped.
+  The cropped derivative is offered under the same CC BY-SA 3.0 license.
+    Visible card attribution identifies the crop, creator/source and license.
+  Subject: a bronze Neptune trident; decorative mythology photograph,
+    not an official depiction of a Riordanverse artifact.
+  SHA-256: 4b81b27246a2c943a80a8b7c5017f671a455a0f4c6734ea83a245a752b874c04
+
+Rights/provenance for original Stitch assets and unverified replacements:
+The original files implement the user-approved Stitch design.
 Generation by Stitch, user supply, and public availability of a Google URL
 do not independently establish copyright ownership, a redistribution license,
 or clearance of depicted third-party intellectual property. No separate image
@@ -48,4 +100,6 @@ claimed to be covered by the repository's original-code license, the font OFL,
 or the Lucide licenses. Verify appropriate image rights before redistribution
 or other use beyond the approved implementation.
 
-Acquisition: all referenced image downloads succeeded; no substitute images.
+Acquisition: the two user-selected replacement images were acquired from their
+specified hosts. The trident photograph was selected from Wikimedia Commons.
+Provenance and visible credits do not grant rights to the unverified images.
