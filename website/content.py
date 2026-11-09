@@ -220,6 +220,7 @@ TOOLS = (
         'title': 'Contribute on GitHub',
         'icon': 'code',
         'url': GITHUB_URL,
+        'external': True,
         'description': 'Browse the source, report issues, and contribute to the project.',
     },
 )

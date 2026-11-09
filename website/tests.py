@@ -192,6 +192,23 @@ class HomeViewTests(SimpleTestCase):
                 self.assertIn(reverse(name), page.links)
         self.assertIn('https://github.com/devisreal/Percy-Jackson-Fandom-API', page.links)
 
+    def test_external_links_open_safely_in_new_tabs_and_internal_links_do_not(self):
+        _, page = self.page()
+        external_count = 0
+        for tag, attrs in page.elements:
+            if tag != 'a':
+                continue
+            href = attrs.get('href', '')
+            destination = urlsplit(urljoin('http://testserver/', href))
+            with self.subTest(href=href):
+                if destination.netloc != 'testserver':
+                    external_count += 1
+                    self.assertEqual(attrs.get('target'), '_blank')
+                    self.assertTrue({'noopener', 'noreferrer'} <= set(attrs.get('rel', '').split()))
+                else:
+                    self.assertNotEqual(attrs.get('target'), '_blank')
+        self.assertGreater(external_count, 0)
+
     def test_footer_specifications_have_list_items_and_a_separate_source_link(self):
         response, page = self.page()
         specification_list = re.search(

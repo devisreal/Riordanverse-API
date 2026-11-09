@@ -1,7 +1,8 @@
 <c-vars item tone="teal" />
 <a data-reveal
    class="tool-card flex min-w-0 flex-col gap-4 rounded-3xl border border-border bg-surface p-6 shadow-[0_2px_8px_rgb(15_23_42/3%)] hover:border-muted [&_.icon-tile]:size-10 max-md:gap-1 max-md:rounded-2xl max-md:p-3.5 max-md:[&_.icon-tile]:size-5 max-md:[&_.icon-tile]:rounded-none max-md:[&_.icon-tile]:border-0 max-md:[&_.icon-tile]:bg-transparent"
-   href="{{ item.url }}">
+   href="{{ item.url }}"
+   {% if item.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
   <c-ui.icon-tile :name="item.icon" :tone="tone" />
   <h3 class="text-base leading-[1.4] max-md:mt-1 max-md:text-xs max-md:tracking-[-0.03em]">{{ item.title }}</h3>
   <p class="text-xs leading-[1.65] max-md:text-[11px] max-md:leading-[1.6]">{{ item.description }}</p>

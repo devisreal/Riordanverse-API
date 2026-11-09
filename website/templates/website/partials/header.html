@@ -38,7 +38,10 @@
           Documentation
           <c-icons.external-link size="18" />
         </c-navigation.link>
-        <c-navigation.link :href="github_url" icon="code">
+        <c-navigation.link :href="github_url"
+                           icon="code"
+                           target="_blank"
+                           rel="noopener noreferrer">
           GitHub Repository
           <c-icons.external-link size="18" />
         </c-navigation.link>
@@ -68,7 +71,7 @@
       <c-navigation.link :href="docs_url">
         Docs
       </c-navigation.link>
-      <a href="{{ github_url }}">
+      <a href="{{ github_url }}" target="_blank" rel="noopener noreferrer">
         GitHub
         <c-icons.external-link size="14" />
       </a>
