@@ -5,10 +5,12 @@
   <div id="page-content">
     <main class="pt-20 max-md:pt-16" id="main-content" tabindex="-1">
       {% include "website/partials/hero.html" %}
-      <section class="lore-section border-y border-border bg-subtle/70 py-12 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
+      <section data-reveal-group="scroll"
+               class="lore-section border-y border-border bg-subtle/70 py-12 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
                aria-labelledby="lore-heading">
         <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
-          <div class="lore-heading mobile-copy hidden max-md:mx-1 max-md:mb-4 max-md:flex max-md:items-center max-md:justify-between [&_.badge]:normal-case">
+          <div data-reveal
+               class="lore-heading mobile-copy hidden max-md:mx-1 max-md:mb-4 max-md:flex max-md:items-center max-md:justify-between [&_.badge]:normal-case">
             <div>
               <h2 class="text-lg leading-[1.6]" id="lore-heading">Curated Archives</h2>
               <p class="text-xs leading-[1.6]">Visual endpoints from across Olympus.</p>
@@ -17,12 +19,14 @@
               3 Modules
             </c-ui.badge>
           </div>
-          <div class="lore-grid grid grid-cols-3 gap-6 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-4 max-md:overflow-x-auto max-md:pb-2">
+          <div data-reveal-stagger
+               class="lore-grid grid grid-cols-3 gap-6 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-4 max-md:overflow-x-auto max-md:pb-2">
             {% for card in lore_cards %}<c-landing.lore-card :item="card" />{% endfor %}
           </div>
         </div>
       </section>
-      <section class="resources-section section-space py-20 max-md:pt-0 max-md:pb-12"
+      <section data-reveal-group="scroll"
+               class="resources-section section-space py-20 max-md:pt-0 max-md:pb-12"
                id="resources"
                aria-labelledby="resources-heading">
         <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
@@ -35,7 +39,8 @@
                                   mobile-description="Base URI prefix for all entities:" />
             <div class="base-uri flex max-w-full items-center gap-2 rounded-full border border-border bg-subtle px-4 py-2.5 font-mono text-[11px] leading-[normal] text-muted max-md:mx-1 max-md:mt-2 max-md:rounded-2xl max-md:p-3 max-md:text-[10px]"><span class="status-dot inline-block size-1.5 shrink-0 rounded-full bg-[#14b8a6] max-md:order-1 max-md:ml-auto"></span><span class="desktop-copy max-md:hidden!">Base URI: </span><code class="font-semibold text-heading wrap-anywhere max-md:font-normal max-md:text-muted">{{ api_base_url }}</code></div>
           </div>
-          <div class="auth-banner mb-12 flex items-center gap-4 rounded-3xl border border-border bg-subtle px-7 py-4 [&_.icon-tile]:border-border [&_.icon-tile]:bg-surface max-md:mb-5 max-md:items-start max-md:gap-3 max-md:rounded-[20px] max-md:bg-surface max-md:p-4 max-md:[&_.icon-tile]:h-6 max-md:[&_.icon-tile]:w-5 max-md:[&_.icon-tile]:border-0 max-md:[&_.icon-tile]:bg-transparent">
+          <div data-reveal
+               class="auth-banner mb-12 flex items-center gap-4 rounded-3xl border border-border bg-subtle px-7 py-4 [&_.icon-tile]:border-border [&_.icon-tile]:bg-surface max-md:mb-5 max-md:items-start max-md:gap-3 max-md:rounded-[20px] max-md:bg-surface max-md:p-4 max-md:[&_.icon-tile]:h-6 max-md:[&_.icon-tile]:w-5 max-md:[&_.icon-tile]:border-0 max-md:[&_.icon-tile]:bg-transparent">
             <c-ui.icon-tile name="shield-check" />
             <div>
               <h3 class="text-base leading-[1.6] max-md:text-sm">Authentication Requirements</h3>
@@ -46,13 +51,15 @@
               <c-icons.arrow-right size="15" />
             </a>
           </div>
-          <div class="resource-grid grid grid-cols-4 gap-4.5 md:max-desktop:grid-cols-2 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+          <div data-reveal-stagger
+               class="resource-grid grid grid-cols-4 gap-4.5 md:max-desktop:grid-cols-2 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
             {% for group in resource_groups %}
               {% cycle 'teal' 'amber' as group_tone silent %}
               <c-landing.resource-group :item="group" :tone="group_tone" />
             {% endfor %}
           </div>
-          <div class="utility-grid mt-14 grid grid-cols-2 gap-6 max-md:mt-4 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+          <div data-reveal-stagger
+               class="utility-grid mt-14 grid grid-cols-2 gap-6 max-md:mt-4 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
             <c-landing.utility-card :href="search_url"
                                     title="Global Search Index"
                                     description="Perform full-text search queries across characters, deities, items, and locations in a single unified round-trip."
@@ -71,7 +78,8 @@
           </div>
         </div>
       </section>
-      <section class="features-section section-space border-y border-border bg-subtle/70 py-20 [&_.section-heading_.eyebrow]:inline-block [&_.section-heading_.eyebrow]:rounded-full [&_.section-heading_.eyebrow]:border [&_.section-heading_.eyebrow]:border-accent-border [&_.section-heading_.eyebrow]:bg-accent-soft [&_.section-heading_.eyebrow]:px-3 [&_.section-heading_.eyebrow]:py-0.75 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
+      <section data-reveal-group="scroll"
+               class="features-section section-space border-y border-border bg-subtle/70 py-20 [&_.section-heading_.eyebrow]:inline-block [&_.section-heading_.eyebrow]:rounded-full [&_.section-heading_.eyebrow]:border [&_.section-heading_.eyebrow]:border-accent-border [&_.section-heading_.eyebrow]:bg-accent-soft [&_.section-heading_.eyebrow]:px-3 [&_.section-heading_.eyebrow]:py-0.75 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
                id="features"
                aria-label="Capabilities">
         <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
@@ -79,7 +87,8 @@
                                 title="Engineered for Mythic Scale"
                                 description="Built on standard REST paradigms with deterministic schemas and deep relationship traversal."
                                 mobile-description="Built to give frontend developers and bot makers an unshakeable foundation." />
-          <div class="feature-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:grid-cols-2 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+          <div data-reveal-stagger
+               class="feature-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:grid-cols-2 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
             {% for feature in features %}
               {% cycle 'teal' 'amber' as feature_tone silent %}
               <c-landing.feature-card :item="feature" :tone="feature_tone" />
@@ -87,7 +96,8 @@
           </div>
         </div>
       </section>
-      <section class="quick-start-section section-space py-20 [&_.section-heading_.eyebrow]:inline-block [&_.section-heading_.eyebrow]:rounded-full [&_.section-heading_.eyebrow]:border [&_.section-heading_.eyebrow]:border-accent-border [&_.section-heading_.eyebrow]:bg-accent-soft [&_.section-heading_.eyebrow]:px-3 [&_.section-heading_.eyebrow]:py-0.75 max-md:pt-0 max-md:pb-12"
+      <section data-reveal-group="scroll"
+               class="quick-start-section section-space py-20 [&_.section-heading_.eyebrow]:inline-block [&_.section-heading_.eyebrow]:rounded-full [&_.section-heading_.eyebrow]:border [&_.section-heading_.eyebrow]:border-accent-border [&_.section-heading_.eyebrow]:bg-accent-soft [&_.section-heading_.eyebrow]:px-3 [&_.section-heading_.eyebrow]:py-0.75 max-md:pt-0 max-md:pb-12"
                id="quick-start"
                aria-label="Quick Start">
         <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
@@ -95,7 +105,8 @@
                                 title="Quick Start in 3 Steps"
                                 description="Initialize communication with the Riordanverse archive."
                                 mobile-description="No credit card or demigod pedigree required." />
-          <div class="quick-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:gap-4 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-5">
+          <div data-reveal-stagger
+               class="quick-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:gap-4 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-5">
             <c-landing.quick-start-step number="01"
                                         title="Request an API Key"
                                         description="Issue a key request specifying your application identifier and developer email.">
@@ -145,15 +156,18 @@
           </div>
         </div>
       </section>
-      <section class="tools-section border-y border-border bg-subtle/70 py-20 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
+      <section data-reveal-group="scroll"
+               class="tools-section border-y border-border bg-subtle/70 py-20 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
                aria-label="Specifications and tooling">
         <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
-          <div class="tools-heading mb-10 text-muted max-md:mx-1 max-md:mb-3 max-md:flex max-md:items-center max-md:justify-between">
+          <div data-reveal
+               class="tools-heading mb-10 text-muted max-md:mx-1 max-md:mb-3 max-md:flex max-md:items-center max-md:justify-between">
             <span class="desktop-copy eyebrow font-mono text-[11px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:hidden!">Developer Specifications &amp; Tooling</span>
             <h2 class="mobile-copy hidden max-md:block max-md:text-base max-md:leading-[1.6] max-md:tracking-normal">Specs &amp; Tooling</h2>
             <span class="mobile-copy hidden max-md:inline max-md:font-mono max-md:text-[10px] max-md:leading-[normal] max-md:text-accent">Standards</span>
           </div>
-          <div class="tool-grid grid grid-cols-4 gap-4 md:max-desktop:grid-cols-2 max-md:grid-cols-2 max-md:gap-2.5">
+          <div data-reveal-stagger
+               class="tool-grid grid grid-cols-4 gap-4 md:max-desktop:grid-cols-2 max-md:grid-cols-2 max-md:gap-2.5">
             {% for tool in tools %}
               {% cycle 'teal' 'amber' as tool_tone silent %}
               <c-landing.tool-card :item="tool" :tone="tool_tone" />
@@ -167,4 +181,5 @@
 {% endblock content %}
 {% block extra_js %}
   <script src="{% static 'website/js/site.js' %}" defer></script>
+  <script src="{% static 'website/js/dist/animations.js' %}" defer></script>
 {% endblock extra_js %}

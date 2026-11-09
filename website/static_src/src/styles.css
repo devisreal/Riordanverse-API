@@ -42,6 +42,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-hero-accent: var(--hero-accent);
+  --color-hero-description: var(--hero-description);
   --color-accent-soft: var(--accent-soft);
   --color-accent-border: var(--accent-border);
   --color-amber: var(--amber);
@@ -71,6 +72,8 @@
     --subtle: #f8fafc;
     --heading: #0f172a;
     --text: #475569;
+    --hero-description: var(--text);
+    --hero-description-shadow: none;
     --muted: #64748b;
     --border: #e2e8f0;
     /* Small accent text needs AA contrast; the large headline retains the export hue. */
@@ -104,6 +107,8 @@
       --subtle: #0c121c;
       --heading: #fff;
       --text: #94a3b8;
+      --hero-description: #f1f5f9;
+      --hero-description-shadow: 0 1px 2px rgb(2 6 23 / 90%), 0 0 1px rgb(2 6 23 / 75%);
       --muted: #94a3b8;
       --border: rgb(255 255 255 / 8%);
       --accent: #5eead4;
@@ -136,6 +141,8 @@
     --subtle: #0c121c;
     --heading: #fff;
     --text: #94a3b8;
+    --hero-description: #f1f5f9;
+    --hero-description-shadow: 0 1px 2px rgb(2 6 23 / 90%), 0 0 1px rgb(2 6 23 / 75%);
     --muted: #94a3b8;
     --border: rgb(255 255 255 / 8%);
     --accent: #5eead4;

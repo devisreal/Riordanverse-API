@@ -143,10 +143,24 @@ without JavaScript, the OS color preference applies and theme controls stay hidd
 Explicit `html.light`/`html.dark` classes take precedence on initial load. The local
 `website/static/website/js/theme.js` resolves the theme before CSS loads and saves
 later selections when storage is available; controls still work when it is blocked.
-Run its dependency-free behavior tests with `node --test website/tests_js/*.test.mjs`.
+The hero and section/card groups use locally bundled Motion mini for restrained
+14px, 400ms slide-up reveals. Every card grid (including hero overview stats) uses
+an 80ms stagger in DOM order, with a distinct delay for every card; separate
+observer callbacks do not reset its position. Non-card entrances retain their
+150ms stagger cap. Each target reveals only once per page load; scrolling back, resizing, theme changes, or returning through
+browser history do not replay it. A reload resets the sequence. Pending content is
+not hidden by CSS, so it remains readable without JavaScript or the animation
+bundle. Reduced-motion users get a static page; enabling that preference during a
+reveal cancels effects immediately and keeps the page static until reload. Focusing
+a control also cancels/skips its containing reveal. Third-party notices are in
+`website/static/vendor/motion/`. The documented 3.2KB mini-library figure is not the
+size of our complete animation bundle.
+
+Run the dependency-free theme/reveal behavior tests with
+`node --test website/tests_js/*.test.mjs`.
 
 Fonts, Lucide SVGs, background images, and archive images are served locally; no
-runtime font, icon, or Tailwind CDN is required. The landing uses WebP backgrounds
+runtime font, icon, Tailwind, or Motion CDN is required. The landing uses WebP backgrounds
 while retaining the original JPEGs, with visible source credits on the three lore
 cards. The cropped trident photograph also links its CC BY-SA 3.0 license. Font
 licenses, image sources, processing details, and asset checksums are documented
@@ -168,7 +182,7 @@ configuring `.env`, install the locked frontend dependencies from the project ro
 npm ci --prefix website/static_src
 ```
 
-Start Django and the Tailwind CSS watcher together:
+Start Django, the Tailwind CSS watcher, and the Motion script watcher together:
 
 ```bash
 DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py tailwind dev
@@ -176,11 +190,13 @@ DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py tailw
 
 This uses `Procfile.tailwind` through Honcho. Alternatively, run
 `uv run python manage.py runserver` and `uv run python manage.py tailwind start`
-in separate terminals; both default to development settings. Browser reload is
-registered only when `DEBUG=True`.
+in separate terminals; both default to development settings. In that case, run
+`npm run dev:scripts --prefix website/static_src` in another terminal for animation
+script changes. Browser reload is registered only when `DEBUG=True`.
 
 For deployment, install frontend dependencies including dev dependencies (the CSS
-build tools), then compile CSS **before** collecting static files:
+and JavaScript build tools), then compile CSS and the local Motion bundle **before**
+collecting static files:
 
 ```bash
 npm ci --include=dev --prefix website/static_src
@@ -189,8 +205,9 @@ uv run python manage.py collectstatic --noinput --settings=config.settings.produ
 ```
 
 Production commands require the production environment variables and dependencies
-to be configured. Generated CSS at `website/static/css/dist/styles.css` is
-Git-ignored, so every fresh checkout or deployment needs a build. The production
+to be configured. Generated CSS at `website/static/css/dist/styles.css` and the
+script at `website/static/website/js/dist/animations.js` are Git-ignored, so every
+fresh checkout or deployment needs a build. The production
 server does not run the watcher or `Procfile.tailwind`.
 
 Format and check templates with djLint, and Python with Ruff:
@@ -204,8 +221,8 @@ uv run ruff format --check .
 git diff --check
 ```
 
-The test suites inspect built CSS and its static assets, so build once before
-running tests on a fresh checkout. CI builds CSS before both database test jobs
+The test suites inspect built CSS, JavaScript, and their static assets, so build
+once before running tests on a fresh checkout. CI builds both before database tests
 and checks template formatting/linting. Narrow `H026` suppressions apply only to
 Cotton variable declarations, where empty defaults are component metadata rather
 than empty rendered HTML attributes.

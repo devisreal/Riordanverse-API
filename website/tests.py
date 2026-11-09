@@ -218,6 +218,17 @@ class HomeViewTests(SimpleTestCase):
             if tag == 'a' and 'brand' in attrs.get('class', '').split():
                 self.assertNotIn('footer-source', attrs['class'].split())
 
+    def test_hero_description_has_a_scoped_theme_color(self):
+        _, page = self.page()
+        descriptions = [
+            attrs
+            for tag, attrs in page.elements
+            if tag == 'p' and 'hero-description' in attrs.get('class', '').split()
+        ]
+        self.assertEqual(len(descriptions), 1)
+        self.assertIn('text-hero-description', descriptions[0]['class'].split())
+        self.assertIn('text-shadow-(--hero-description-shadow)', descriptions[0]['class'].split())
+
     def test_every_api_directory_collection_has_a_matching_link(self):
         _, page = self.page()
         linked_paths = {urlsplit(href).path for href in page.links}
@@ -308,6 +319,8 @@ class HomeViewTests(SimpleTestCase):
         self.assertIn(static('css/dist/styles.css'), assets)
         self.assertIn(static('website/js/theme.js'), assets)
         self.assertIn(static('website/js/site.js'), assets)
+        self.assertIn(static('website/js/dist/animations.js'), assets)
+        self.assertIsNotNone(finders.find('vendor/motion/LICENSE.txt'))
         for url in assets:
             with self.subTest(asset=url):
                 self.assertTrue(url.startswith(settings.STATIC_URL), url)
@@ -337,10 +350,47 @@ class HomeViewTests(SimpleTestCase):
             self.assertNotIn(original, references)
         self.assertNotRegex(css.lower(), r'@import|fonts\.google|material.symbols|material.icons')
 
+    def test_reveal_targets_remain_visible_without_the_animation_script(self):
+        _, page = self.page()
+        groups = [
+            attrs['data-reveal-group'] for _, attrs in page.elements if 'data-reveal-group' in attrs
+        ]
+        self.assertEqual(Counter(groups), {'hero': 1, 'scroll': 5})
+        grids = [attrs for _, attrs in page.elements if 'data-reveal-stagger' in attrs]
+        self.assertEqual(len(grids), 7, 'Every card grid, including overview stats, must stagger')
+        self.assertTrue(
+            all('data-reveal' not in attrs for attrs in grids),
+            'Do not animate both grids and their cards',
+        )
+        targets = [attrs for _, attrs in page.elements if 'data-reveal' in attrs]
+        self.assertGreater(len(targets), 25)
+        for attrs in targets:
+            self.assertNotIn('hidden', attrs)
+            self.assertNotIn('aria-hidden', attrs)
+            self.assertNotIn('style', attrs, 'Do not ship hidden initial reveal styles')
+        for _, attrs in page.elements:
+            if {
+                'lore-card',
+                'resource-group',
+                'utility-card',
+                'feature-card',
+                'quick-step',
+                'tool-card',
+            } & set(attrs.get('class', '').split()):
+                self.assertIn('data-reveal', attrs)
+        scripts = [attrs for tag, attrs in page.elements if tag == 'script']
+        animation = next(
+            attrs
+            for attrs in scripts
+            if attrs.get('src') == static('website/js/dist/animations.js')
+        )
+        self.assertIn('defer', animation)
+
     def test_no_placeholder_unsupported_claims_or_external_runtime_loaders(self):
         response, _ = self.page()
         html = response.content.decode().lower()
         for forbidden in (
+            'terminal:query-protocol',
             'django + tailwind',
             'patron_deity',
             'quests_count',
@@ -361,7 +411,7 @@ class HomeViewTests(SimpleTestCase):
         ):
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden, html)
-        for path in ('website/js/theme.js', 'website/js/site.js'):
+        for path in ('website/js/theme.js', 'website/js/site.js', 'website/js/dist/animations.js'):
             found = finders.find(path)
             self.assertIsNotNone(found, path)
             if found:
@@ -443,7 +493,7 @@ class HomeContextTests(SimpleTestCase):
         self.assertNotIn('<script>alert(', html)
         self.assertIn('&lt;script&gt;', html)
         scripts = [attrs for tag, attrs in page.elements if tag == 'script']
-        self.assertEqual(len(scripts), 2)
+        self.assertEqual(len(scripts), 3)
         self.assertTrue(
             all(attrs.get('src', '').startswith(settings.STATIC_URL) for attrs in scripts)
         )

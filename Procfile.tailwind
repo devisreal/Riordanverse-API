@@ -1,2 +1,3 @@
 django: python manage.py runserver
 tailwind: python manage.py tailwind start
+motion: npm --prefix website/static_src run dev:scripts

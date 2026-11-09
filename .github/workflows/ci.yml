@@ -56,7 +56,7 @@ jobs:
       - name: Check website templates
         run: uv run djlint website/templates --check --lint
 
-      - name: Test website theme controls
+      - name: Test website JavaScript enhancements
         run: node --test website/tests_js/*.test.mjs
 
       - name: Ruff lint

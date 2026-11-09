@@ -1,6 +1,7 @@
 {% load static %}
 <c-vars item />
-<article class="lore-card group overflow-hidden rounded-3xl border border-border bg-surface p-3 shadow-[0_2px_8px_rgb(15_23_42/4%)] max-md:w-67.5 max-md:shrink-0 max-md:snap-start">
+<article data-reveal
+         class="lore-card group overflow-hidden rounded-3xl border border-border bg-surface p-3 shadow-[0_2px_8px_rgb(15_23_42/4%)] max-md:w-67.5 max-md:shrink-0 max-md:snap-start">
   <a href="{{ item.url }}"
      class="lore-image-link block overflow-hidden rounded-2xl"
      aria-label="Explore {{ item.title }}">
