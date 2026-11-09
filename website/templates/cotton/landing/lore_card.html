@@ -1,0 +1,38 @@
+{% load static %}
+<c-vars item />
+<article data-reveal
+         class="lore-card group overflow-hidden rounded-3xl border border-border bg-surface p-3 shadow-[0_2px_8px_rgb(15_23_42/4%)] max-md:w-67.5 max-md:shrink-0 max-md:snap-start">
+  <a href="{{ item.url }}"
+     class="lore-image-link block overflow-hidden rounded-2xl"
+     aria-label="Explore {{ item.title }}">
+    <img src="{% static item.image %}"
+         alt="{{ item.image_alt }}"
+         width="{{ item.image_width }}"
+         height="{{ item.image_height }}"
+         loading="lazy"
+         class="lore-image h-48 w-full object-cover transition-transform duration-500 ease-[ease] group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 max-md:h-36" />
+  </a>
+  <div class="lore-copy p-4 max-md:relative max-md:p-3 max-md:[&>.badge]:absolute max-md:[&>.badge]:-top-33 max-md:[&>.badge]:left-3 max-md:[&>.badge]:border-teal-400/20 max-md:[&>.badge]:bg-[#071b25] max-md:[&>.badge]:px-2.5 max-md:[&>.badge]:py-1.5 max-md:[&>.badge]:text-[8px] max-md:[&>.badge]:text-[#5eead4]">
+    <c-ui.badge>
+      {{ item.eyebrow }}
+    </c-ui.badge>
+    <h3 class="mt-1.5 text-lg leading-[1.6] max-md:mt-0 max-md:text-base">{{ item.title }}</h3>
+    <p class="mt-1.5 min-h-17.25 text-sm leading-[1.65] max-md:line-clamp-2 max-md:min-h-0 max-md:text-xs">{{ item.description }}</p>
+    <p class="lore-image-credit mt-2 text-[10px] leading-normal text-muted">
+      {{ item.image_credit_prefix }} <a href="{{ item.image_source_url }}"
+                                        class="underline decoration-current/40 underline-offset-2 hover:text-accent"
+                                        target="_blank"
+                                        rel="noopener noreferrer">{{ item.image_credit }}</a>
+      {% if item.image_license %}
+        · <a href="{{ item.image_license_url }}"
+             class="underline decoration-current/40 underline-offset-2 hover:text-accent"
+             target="_blank"
+             rel="noopener noreferrer">{{ item.image_license }}</a>
+      {% endif %}
+    </p>
+    <a class="lore-endpoint mobile-copy hidden max-md:mt-4 max-md:flex max-md:items-center max-md:justify-between max-md:font-mono max-md:text-[10px] max-md:leading-[normal] max-md:text-accent"
+       href="{{ item.url }}">{{ item.url }}
+      <c-icons.external-link size="14" />
+    </a>
+  </div>
+</article>

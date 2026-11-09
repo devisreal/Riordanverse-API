@@ -1718,7 +1718,7 @@ Add `mythology` enum to most models: `greek`, `roman`, `egyptian`, `norse` (V3)
 ### Implemented Conventions
 
 - All versioned resources are mounted under `/api/v1/` and use trailing slashes; health and key-management routes are outside that prefix.
-- Responses use JSON and `snake_case`. Detail URLs use slugs; the Cabin number lookup is `/api/v1/cabins/number/<number>/`.
+- API responses use JSON and `snake_case`, including for normal browser requests; the DRF browsable API renderer is disabled. Requests accepting only `text/html` receive `406 Not Acceptable`; `?format=api` is unsupported. Swagger UI and ReDoc remain HTML, and `/api/schema/` retains its YAML/JSON schema formats. Detail URLs use slugs; the Cabin number lookup is `/api/v1/cabins/number/<number>/`.
 - List views that use DRF pagination return `{ "data": [...], "meta": { "total", "page", "limit", "total_pages" } }`; the default page size is 20 and the maximum `limit` is 100. Search has its own `data`/`meta` envelope; detail responses are resource-specific objects.
 - Missing optional scalar values may be `null`; empty relationships are returned as empty arrays. Response fields vary by list/detail serializer; see Section 23.
 - Query choice errors use the standard API error envelope. Invalid choices use `INVALID_FILTER_VALUE` and include `valid_values`; other handled bad requests use `BAD_REQUEST`.
@@ -1728,7 +1728,8 @@ Add `mythology` enum to most models: `greek`, `roman`, `egyptian`, `norse` (V3)
 
 - Public health routes: `GET /health/live/` and `GET /health/ready/`. Readiness checks PostgreSQL.
 - Public key routes: `POST /auth/request-key/` and `POST /auth/verify-key/`.
-- Other API routes require the `X-API-Key` header by default. Lore resources are read-only; key management and health routes are exceptions.
+- Public discovery route: `GET /api/v1/` returns a flat JSON object linking the collections and search, without pagination, database/cache access, or API-key throttling.
+- Other API routes require the `X-API-Key` header by default. Lore resources are read-only; the directory, key request/verification, health, and documentation routes are exceptions.
 - API-key rate limits and headers are documented in Section 14. Redis is optional at request time; local fallbacks preserve API availability, but local throttle counters are not shared between workers during a Redis outage.
 
 ### Not implemented
@@ -1741,7 +1742,7 @@ The following remain proposals, not current API contracts: sparse fieldsets, `in
 
 ### API key routes and header
 
-Versioned lore endpoints require `X-API-Key`. Public endpoints outside `/api/v1/` include `GET /api/schema/`, `GET /api/docs/`, `GET /api/redoc/`, `GET /health/live/`, `GET /health/ready/`, `POST /auth/request-key/`, and `POST /auth/verify-key/`.
+Versioned lore endpoints require `X-API-Key`; the `GET /api/v1/` directory is public. Public endpoints outside `/api/v1/` include `GET /api/schema/`, `GET /api/docs/`, `GET /api/redoc/`, `GET /health/live/`, `GET /health/ready/`, `POST /auth/request-key/`, and `POST /auth/verify-key/`.
 
 Request a key with `consumer_name` and `email`:
 
@@ -1778,7 +1779,7 @@ X-Request-ID: 9b0e9d3c...
 
 ### Current permissions
 
-The default DRF permission is cached API-key validation (`CachedHasAPIKey`). Health, key-request, and key-verification views explicitly allow unauthenticated access; `POST /auth/revoke-key/` requires the presented key and revokes only that key. There is no end-user login/account workflow or email-authorized key revocation.
+The default DRF permission is cached API-key validation (`CachedHasAPIKey`). API-directory, health, key-request, and key-verification views explicitly allow unauthenticated access; `POST /auth/revoke-key/` requires the presented key and revokes only that key. There is no end-user login/account workflow or email-authorized key revocation.
 
 ---
 
@@ -2854,6 +2855,7 @@ This section describes routes and behaviors present in the code and test suite. 
 
 | Method | Route | Purpose |
 | --- | --- | --- |
+| `GET` | `/api/v1/` | JSON-only directory of the 14 collections plus search; no API key required |
 | `GET` | `/health/live/` | Liveness; no dependency checks |
 | `GET` | `/health/ready/` | PostgreSQL readiness |
 | `GET` | `/api/schema/` | OpenAPI 3 schema (YAML by default; `?format=json` for JSON) |
@@ -2862,9 +2864,13 @@ This section describes routes and behaviors present in the code and test suite. 
 | `POST` | `/auth/request-key/` | Request a key using `consumer_name` and `email` |
 | `POST` | `/auth/verify-key/` | Verify key from `X-API-Key` header |
 
-These routes are outside `/api/v1/`. The schema and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Key request and verification responses are rate-limited by client IP.
+Except for the directory itself, these routes are outside `/api/v1/`. The directory, schema, and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Key request and verification responses are rate-limited by client IP.
 
 Unlike the public key request and verification endpoints, `POST /auth/revoke-key/` requires `X-API-Key` and revokes only the key used for that request. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
+
+### API directory
+
+`GET /api/v1/` returns a flat object of collection names to relative URLs, such as `"books": "/api/v1/books/"` and `"search": "/api/v1/search/"`. It includes every collection in the table below plus search, with no `data`/`meta` envelope. The directory is JSON-only (including in a browser), performs no database or cache access, and does not consume the API-key throttle. Linked resource endpoints still require `X-API-Key`; search additionally requires `?q=<query>`. HEAD and OPTIONS are supported; write methods return `405`.
 
 ### Versioned resource routes
 
@@ -2889,6 +2895,8 @@ Unlike the public key request and verification endpoints, `POST /auth/revoke-key
 Subresource paths in the table are appended to the entity detail path shown in the same row. Powers have a Character-scoped list endpoint at `/characters/<slug>/powers/` and are also embedded in Character detail; there is no standalone `/powers/` route. Images have a global paginated `/images/` collection as well as the typed galleries. Book/character role relations, family edges, quest relations, prophecy subjects, and faction members are serialized through resource detail and the listed subresources; these are not relationship CRUD routes.
 
 ### List response and error shapes
+
+Versioned endpoints use only the JSON renderer, so opening a resource URL in a normal browser returns JSON, not a DRF page. This also applies to handled API errors; API-key protection is unchanged. Interactive HTML documentation remains at `/api/docs/` and `/api/redoc/`.
 
 Paginated list views use a default page size of 20 (`page`, `limit`; maximum `limit` 100):
 

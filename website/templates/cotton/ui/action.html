@@ -1,0 +1,10 @@
+{# djlint:off H026 #}
+<c-vars href="#" variant="primary" icon="" trailing="" class="" />
+{# djlint:on #}
+<a href="{{ href }}"
+   class="action inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[14px] leading-5.5 font-bold whitespace-nowrap max-md:min-h-12 md:px-7 md:py-3.5 {% if variant == 'primary' %}action-primary border border-transparent bg-button text-button-text hover:shadow-[0_4px_24px_rgb(100_116_139/20%)]{% elif variant == 'secondary' %}action-secondary border border-border bg-surface text-heading hover:border-muted{% endif %} {{ class }}"
+   {{ attrs }}>
+  {% if icon %}<c-ui.icon :name="icon" size="16" />{% endif %}
+  <span>{{ slot }}</span>
+  {% if trailing %}<c-icons.arrow-right size="16" />{% endif %}
+</a>

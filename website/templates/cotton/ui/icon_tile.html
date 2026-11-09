@@ -1,0 +1,6 @@
+{# djlint:off H026 #}
+<c-vars name="" tone="teal" class="" />
+{# djlint:on #}
+<span class="icon-tile inline-flex size-12 shrink-0 items-center justify-center rounded-2xl border {% if tone == 'amber' %}tone-amber border-amber-border bg-amber-soft text-amber{% else %}tone-teal border-accent-border bg-accent-soft text-accent{% endif %} {{ class }}">
+  <c-ui.icon :name="name" />
+</span>

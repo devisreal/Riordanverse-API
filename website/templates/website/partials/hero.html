@@ -1,0 +1,112 @@
+<section data-reveal-group="hero"
+         class="hero pt-18 pb-32 max-md:pt-4 max-md:pb-12"
+         aria-labelledby="hero-heading">
+  <div class="site-container hero-grid mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-8 desktop:grid-cols-2 desktop:gap-16 max-md:px-4 max-[360px]:px-3">
+    <div class="hero-copy flex min-w-0 flex-col items-start gap-8 md:max-desktop:max-w-175 max-md:gap-6">
+      <div data-reveal
+           class="release-badge inline-flex items-center gap-2 rounded-[999px] border border-border bg-subtle px-2 py-1.5 max-md:gap-3.5 max-md:px-1.5 max-md:py-1 [&_.badge]:font-sans [&_.badge]:text-[11px] max-md:[&_.badge]:py-px max-md:[&_.badge]:text-[10px]">
+        <c-ui.badge>
+          <span class="status-dot inline-block size-1.5 shrink-0 rounded-[99px] bg-[#14b8a6]"></span>Read-only REST API
+        </c-ui.badge>
+        <span class="release-version font-mono text-[11px] mr-1 leading-[normal] text-muted max-md:text-[9px]">v1</span>
+      </div>
+      <div data-reveal
+           class="hero-introduction [&_p]:mt-5 [&_p]:text-lg [&_p]:leading-relaxed max-md:[&_p]:text-sm max-md:[&_p]:leading-[1.65] [&_h1]:text-[56px] [&_h1]:leading-[1.08] [&_h1]:font-extrabold [&_h1]:tracking-[-0.04em] md:max-desktop:[&_h1]:text-[48px] max-md:[&_h1]:text-[30px] max-md:[&_h1]:leading-tight max-[360px]:[&_h1]:text-[26px] [&_h1_span]:text-hero-accent max-md:[&_h1_span]:bg-[linear-gradient(90deg,var(--accent),#38bdf8)] max-md:[&_h1_span]:bg-clip-text max-md:[&_h1_span]:text-transparent">
+        <h1 id="hero-heading">
+          The Riordanverse,
+          <br />
+          <span>ready to build with.</span>
+        </h1>
+        <p class="hero-description text-hero-description text-shadow-(--hero-description-shadow)">
+          Explore characters, gods, quests, locations, and the
+          multi-generational relationships connecting them through a structured,
+          read-only REST API built for technical precision.
+        </p>
+      </div>
+      <div data-reveal
+           class="hero-actions flex flex-wrap gap-4 pt-1 max-md:grid max-md:w-full max-md:gap-3 max-md:pt-0">
+        <c-ui.action :href="api_directory_url" trailing="true">
+          Explore the API
+        </c-ui.action>
+        <c-ui.action :href="docs_url" variant="secondary" icon="library">
+          Read the docs
+        </c-ui.action>
+      </div>
+      <div data-reveal
+           class="auth-note flex items-center gap-2 rounded-4xl border border-border bg-subtle px-3.5 py-2 font-mono text-[11px] leading-normal text-muted max-md:rounded-3xl max-md:bg-surface max-md:px-3 max-md:py-2.5 [&_svg]:shrink-0 [&_svg]:text-accent">
+        <c-icons.key-round size="16" />
+        <span>API key required for data; directory and docs are public.</span>
+      </div>
+      <div data-reveal-stagger
+           class="hero-stats grid w-full max-w-md grid-cols-3 gap-4 pt-2 max-md:max-w-none max-md:gap-2 max-md:pt-1 [&>div]:rounded-2xl [&>div]:border [&>div]:border-border [&>div]:bg-surface [&>div]:p-4 max-md:[&>div]:px-2 max-md:[&>div]:py-3.5 max-md:[&>div]:text-center [&_strong]:block [&_strong]:text-[24px] [&_strong]:leading-[1.3] [&_strong]:tracking-tight [&_strong]:text-heading max-md:[&_strong]:text-[20px] [&>div:nth-child(2)_strong]:text-hero-accent [&_span]:mt-1 [&_span]:block [&_span]:font-mono [&_span]:text-[10px] [&_span]:leading-[normal] [&_span]:tracking-[0.06em] [&_span]:text-muted [&_span]:uppercase max-md:[&_span]:text-[8px] max-md:[&_span]:tracking-[0.03em]"
+           aria-label="API overview">
+        <div data-reveal><strong>14</strong><span>Collections</span></div>
+        <div data-reveal><strong>REST</strong><span>Architecture</span></div>
+        <div data-reveal><strong>JSON</strong><span>Responses</span></div>
+      </div>
+    </div>
+    <div data-reveal class="hero-inspect min-w-0 md:max-desktop:w-full">
+      <div class="inspect-heading mobile-copy mx-1 mb-3.5 flex items-center justify-between gap-2 md:hidden [&_h2]:flex [&_h2]:items-center [&_h2]:gap-2 [&_h2]:text-[14px] [&_h2]:tracking-normal [&_svg]:text-accent [&_.badge]:text-[9px]">
+        <h2>
+          <c-icons.terminal size="18" />
+          Interactive Inspect
+        </h2>
+        <c-ui.badge>
+          Example 200 OK
+        </c-ui.badge>
+      </div>
+      <div class="console min-h-0 overflow-hidden rounded-3xl border border-border bg-code-panel text-code-text shadow-[0_25px_40px_-15px_rgb(2_6_23/30%)] desktop:min-h-157 [&_.copy-button]:border-white/10 [&_.copy-button]:bg-white/6 [&_.copy-button]:text-[#cbd5e1] [&_.copy-button:hover]:border-accent [&_.code-panel-label]:mb-3 [&_.code-panel-label]:flex [&_.code-panel-label]:items-center [&_.code-panel-label]:justify-between [&_.code-panel-label]:gap-3 [&_.code-panel-label]:font-mono [&_.code-panel-label]:text-[11px] [&_.code-panel-label]:leading-[normal] [&_.code-panel-label]:text-[#cbd5e1] [&_.code-panel-label>span]:inline-flex [&_.code-panel-label>span]:items-center [&_.code-panel-label>span]:gap-2 [&_.code-panel-label_.badge]:border-[rgb(45_212_191/20%)] [&_.code-panel-label_.badge]:bg-[rgb(45_212_191/12%)] [&_.code-panel-label_.badge]:text-[#5eead4] max-md:[&_.code-block]:rounded-none max-md:[&_.code-block]:border-0 max-md:[&_.code-block]:bg-transparent max-md:[&_.code-block]:p-0 max-md:[&_.code-block]:text-[10px] max-md:[&_.code-block]:leading-[2.2]"
+           data-code-tabs>
+        <div class="console-topbar flex min-w-0 items-center justify-between border-b border-white/8 bg-code-top px-5 py-3.5 font-mono text-[11px] leading-[normal] text-[#94a3b8] max-md:px-4 max-md:py-3 max-md:text-[10px]">
+          <div class="console-title flex min-w-0 items-center gap-4 max-md:gap-3 max-md:overflow-hidden max-md:[&>span:last-child]:truncate">
+            <span class="console-dots flex shrink-0 items-center gap-2 max-md:gap-1.5 [&_i]:size-3 [&_i]:rounded-[99px] [&_i]:bg-[#f43f5e] [&_i]:opacity-80 [&_i:nth-child(2)]:bg-[#f59e0b] [&_i:nth-child(3)]:bg-[#10b981] max-md:[&_i]:size-2.5"><i aria-hidden="true">&nbsp;</i><i aria-hidden="true">&nbsp;</i><i aria-hidden="true">&nbsp;</i></span><span class="mobile-copy md:hidden">{{ origin }}</span>
+          </div>
+          <span class="console-status desktop-copy rounded-[999px] bg-[rgb(16_185_129/15%)] px-2 py-0.75 text-[10px] text-[#34d399] max-md:hidden">EXAMPLE 200</span>
+          <c-ui.copy-button target="request-code"
+                            label="Copy"
+                            class="mobile-copy console-mobile-copy md:hidden" />
+        </div>
+        <div class="code-tabs hidden max-md:m-3 max-md:gap-1 max-md:rounded-[99px] max-md:border max-md:border-white/8 max-md:bg-white/4 max-md:p-1 [&_button]:flex-1 [&_button]:rounded-[99px] [&_button]:p-1 [&_button]:font-mono [&_button]:text-[10px] [&_button]:leading-[normal] [&_button]:font-bold [&_button]:text-[#94a3b8] [&_button[aria-selected=true]]:bg-white/10 [&_button[aria-selected=true]]:text-white"
+             hidden
+             aria-label="Example code">
+          <button type="button"
+                  id="request-tab"
+                  data-tab="request-panel"
+                  aria-controls="request-panel">GET Request</button>
+          <button type="button"
+                  id="response-tab"
+                  data-tab="response-panel"
+                  aria-controls="response-panel">Response JSON</button>
+        </div>
+        <div class="request-panel border-b border-white/6 p-5 max-md:border-b-0 max-md:px-3.5 max-md:py-4 [&_.code-block]:text-[#5eead4]"
+             id="request-panel">
+          <div class="code-panel-label">
+            <span>
+              <c-ui.badge>
+                GET
+              </c-ui.badge>
+            HTTP Request</span>
+            <c-ui.copy-button target="request-code" label="Copy request" />
+          </div>
+          <c-ui.code-block id="request-code" :code="request_code" />
+        </div>
+        <div class="response-panel p-5 max-md:px-3.5 max-md:py-4 [&_.code-block]:max-h-72.5"
+             id="response-panel">
+          <div class="code-panel-label">
+            <span class="response-label font-bold tracking-[0.04em] text-[#fcd34d] uppercase">● Example response excerpt</span>
+            <c-ui.copy-button target="response-code" label="Copy JSON" />
+          </div>
+          <c-ui.code-block id="response-code" :code="response_code" />
+          <p class="code-notice mt-3 font-mono text-[10px] leading-[1.6] text-[#94a3b8] italic max-md:text-[9px]">
+            {{ example_notice }}
+          </p>
+        </div>
+        <div class="console-footer mobile-copy flex justify-between gap-4 border-t border-white/6 px-4 py-3 font-mono text-[9px] leading-[1.6] text-[#94a3b8] md:hidden [&>span]:flex-1">
+          <span>Static example · not live</span><span>Content-Type:
+            <br />
+          application/json</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

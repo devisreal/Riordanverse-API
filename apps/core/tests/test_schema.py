@@ -33,6 +33,38 @@ class SchemaEndpointTests(APITestCase):
             schema['paths']['/api/v1/characters/']['get']['security'],
             [{'ApiKeyAuth': []}],
         )
+        directory = schema['paths']['/api/v1/']['get']
+        self.assertEqual(directory.get('security', []), [])
+        self.assertEqual(directory['tags'], ['API Directory'])
+        self.assertEqual(set(directory['responses']['200']['content']), {'application/json'})
+        self.assertEqual(
+            directory['responses']['200']['content']['application/json']['schema']['$ref'],
+            '#/components/schemas/APIDirectory',
+        )
+        directory_schema = schema['components']['schemas']['APIDirectory']
+        self.assertEqual(
+            set(directory_schema['properties']),
+            {
+                'books',
+                'characters',
+                'gods',
+                'titans',
+                'monsters',
+                'creatures',
+                'weapons',
+                'locations',
+                'quests',
+                'prophecies',
+                'events',
+                'cabins',
+                'factions',
+                'images',
+                'search',
+            },
+        )
+        for field in directory_schema['properties'].values():
+            self.assertEqual(field['type'], 'string')
+        self.assertNotIn('parameters', directory)
         self.assertEqual(schema['paths']['/health/live/']['get'].get('security', []), [])
         self.assertEqual(schema['paths']['/health/ready/']['get'].get('security', []), [])
         self.assertEqual(schema['paths']['/auth/request-key/']['post'].get('security', []), [])
@@ -109,6 +141,8 @@ class SchemaEndpointTests(APITestCase):
 
         self.assertEqual(swagger.status_code, 200)
         self.assertEqual(redoc.status_code, 200)
+        self.assertTrue(swagger['Content-Type'].startswith('text/html'))
+        self.assertTrue(redoc['Content-Type'].startswith('text/html'))
         self.assertIn(b'SwaggerUIBundle', swagger.content)
         self.assertIn(b'tagsSorter": null', swagger.content)
         self.assertIn(b'<redoc', redoc.content.lower())

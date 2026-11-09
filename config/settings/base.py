@@ -44,6 +44,8 @@ THIRD_PARTY_APPS = [
     'drf_spectacular',
     'watson',
     'corsheaders',
+    'tailwind',
+    'django_cotton',
 ]
 
 LOCAL_APPS = [
@@ -58,9 +60,16 @@ LOCAL_APPS = [
     'apps.organizations',
     'apps.search',
     'apps.access',
+    'website',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+if DEBUG:
+    # Add django_browser_reload only in DEBUG mode
+    INSTALLED_APPS += ['django_browser_reload']
+
+TAILWIND_APP_NAME = 'website'
 
 LOGGING = {
     'version': 1,
@@ -97,6 +106,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    # Add django_browser_reload middleware only in DEBUG mode
+    MIDDLEWARE += [
+        'django_browser_reload.middleware.BrowserReloadMiddleware',
+    ]
 
 ROOT_URLCONF = 'config.urls'
 
@@ -157,6 +172,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # * Django REST Framework
 # ---------------------------------------------------------------------------
 REST_FRAMEWORK = {
+    # API responses are JSON-only; interactive documentation lives at /api/docs/ and /api/redoc/.
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
     # Secure by default: every request needs a valid API key.
     # CachedHasAPIKey wraps rest_framework_api_key's HasAPIKey with a
     # Redis-backed lookup so we don't hit Postgres on every request.
@@ -190,8 +209,8 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Percy Jackson Fandom API',
     'DESCRIPTION': (
         'A read-only REST API for the Riordanverse. Protected endpoints require an X-API-Key '
-        'header; health checks and API-key request/verification are public, while self-revocation '
-        'is authenticated.'
+        'header; the /api/v1/ directory, health checks, and API-key request/verification '
+        'are public, while self-revocation is authenticated.'
     ),
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
@@ -222,6 +241,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Cabins', 'description': 'Camp cabin records and campers.'},
         {'name': 'Factions', 'description': 'Faction records and typed members.'},
         {'name': 'Search', 'description': 'Search indexed lore across supported entity types.'},
+        {'name': 'API Directory', 'description': 'Public collection and search URL discovery.'},
     ],
     'ENUM_NAME_OVERRIDES': {
         'CharacterStatusEnum': 'apps.core.choices.STATUS_CHOICES',

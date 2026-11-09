@@ -1,12 +1,13 @@
 # Percy Jackson Fandom API
 
-A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; key request/verification, health-check, and API documentation routes are public.
+A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; the API directory, key request/verification, health-check, and API documentation routes are public.
 
 > **Status:** The versioned API, seed commands, authentication, filtering, pagination, typed relationships, and tests are implemented. OpenAPI schema, Swagger UI, and ReDoc are available at `/api/schema/`, `/api/docs/`, and `/api/redoc/`. See the [API reference](API.md) for routes, filters, response shapes, and examples.
 
 ## Features
 
 - PostgreSQL-backed relational models; no `GenericForeignKey` for typed entity relationships.
+- JSON-only API responses, including in a browser; interactive documentation remains at `/api/docs/` and `/api/redoc/`.
 - Paginated list responses use `{ "data": [...], "meta": {...} }`.
 - API-key authentication via `X-API-Key`, Redis caching for valid key checks, per-key throttling, and request/security logging.
 - Strict choice filters and lowercase-only boolean filters; invalid values return a structured `400` response.
@@ -18,7 +19,29 @@ A Django REST API for Riordanverse reference data. The implemented v1 API includ
 
 ## Implemented API routes
 
-All versioned routes are under `/api/v1/` and use trailing slashes. Public lore routes require an API key. The following collections have list and slug-detail routes unless noted:
+All versioned routes are under `/api/v1/` and use trailing slashes. `GET /api/v1/` is a public, JSON-only directory of the 14 collections plus search; it returns a flat object of names to relative URLs without pagination or database/cache access. Following those links requires an API key, and search also requires `?q=<query>`. For example:
+
+```json
+{
+  "books": "/api/v1/books/",
+  "characters": "/api/v1/characters/",
+  "gods": "/api/v1/gods/",
+  "titans": "/api/v1/titans/",
+  "monsters": "/api/v1/monsters/",
+  "creatures": "/api/v1/creatures/",
+  "weapons": "/api/v1/weapons/",
+  "locations": "/api/v1/locations/",
+  "quests": "/api/v1/quests/",
+  "prophecies": "/api/v1/prophecies/",
+  "events": "/api/v1/events/",
+  "cabins": "/api/v1/cabins/",
+  "factions": "/api/v1/factions/",
+  "images": "/api/v1/images/",
+  "search": "/api/v1/search/"
+}
+```
+
+The following collections have list and slug-detail routes unless noted:
 
 | Resource | Routes and subresources |
 | --- | --- |
@@ -49,7 +72,7 @@ Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 
 To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`; it revokes only the presented key and requires authentication.
 
-Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups.
+Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups. Versioned endpoints return JSON rather than the DRF browsable API. Normal browser requests receive JSON; requests accepting only `text/html` receive `406 Not Acceptable`, and `?format=api` is not supported. `/api/schema/` retains its YAML/JSON schema formats.
 
 There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses. Powers are embedded in Character details and available through the Character-scoped `/characters/<slug>/powers/` subresource.
 
@@ -100,6 +123,149 @@ uv run python manage.py runserver --settings=config.settings.development
 ```
 
 Development keeps API-key authentication enabled. Tests use separate SQLite settings and are not a substitute for running the server with development or production settings.
+
+### Website and Tailwind workflow
+
+The public homepage at `/` uses Django templates in `website/templates/website/`.
+`home.html` extends `base.html`, which provides `title`, `extra_head`, `content`,
+and `extra_js` blocks. It renders a static, database-independent landing page with
+links to the real API directory and documentation. Code examples are illustrative,
+not live requests; they use the current request origin and the API's actual header,
+fields, and key-request contract. API endpoints remain JSON-only.
+
+The responsive page includes a top mobile menu, request/response tabs, clipboard
+controls with a manual-copy fallback, and reduced-motion support. There is no
+bottom mobile bar. A sun/moon button switches themes at every viewport, with a
+Light/Dark selector inside the mobile menu. The tablet navigation uses compact
+spacing and an “Explore API” label to accommodate the control. JavaScript defaults
+to light mode and honors a saved `localStorage.theme` value of `light` or `dark`;
+without JavaScript, the OS color preference applies and theme controls stay hidden.
+Explicit `html.light`/`html.dark` classes take precedence on initial load. The local
+`website/static/website/js/theme.js` resolves the theme before CSS loads and saves
+later selections when storage is available; controls still work when it is blocked.
+The hero and section/card groups use locally bundled Motion mini for restrained
+14px, 400ms slide-up reveals. Every card grid (including hero overview stats) uses
+an 80ms stagger in DOM order, with a distinct delay for every card; separate
+observer callbacks do not reset its position. Non-card entrances retain their
+150ms stagger cap. Each target reveals only once per page load; scrolling back, resizing, theme changes, or returning through
+browser history do not replay it. A reload resets the sequence. Pending content is
+not hidden by CSS, so it remains readable without JavaScript or the animation
+bundle. Reduced-motion users get a static page; enabling that preference during a
+reveal cancels effects immediately and keeps the page static until reload. Focusing
+a control also cancels/skips its containing reveal. Third-party notices are in
+`website/static/vendor/motion/`. The documented 3.2KB mini-library figure is not the
+size of our complete animation bundle.
+
+Run the dependency-free theme/reveal behavior tests with
+`node --test website/tests_js/*.test.mjs`.
+
+Fonts, Lucide SVGs, background images, and archive images are served locally; no
+runtime font, icon, Tailwind, or Motion CDN is required. The landing uses WebP backgrounds
+while retaining the original JPEGs, with visible source credits on the three lore
+cards. The cropped trident photograph also links its CC BY-SA 3.0 license. Font
+licenses, image sources, processing details, and asset checksums are documented
+under `website/static/website/`. Credits and provenance do **not** grant rights to
+the Camp/Olympus or original Stitch images; their redistribution rights remain
+unverified.
+
+Author layout, spacing, typography, borders, and responsive states with Tailwind
+utilities in the Django/Cotton templates. `website/static_src/src/styles.css` uses
+Tailwind v4's CSS-first `@theme` configuration for fonts, breakpoints, and semantic
+color utilities such as `bg-surface` and `text-accent`. Its remaining custom CSS is
+limited to shared theme/global defaults, generated syntax tokens, accessibility,
+and progressive-enhancement behavior—not a parallel component stylesheet.
+
+The current frontend toolchain uses **Node.js 22+ and npm**. After `uv sync` and
+configuring `.env`, install the locked frontend dependencies from the project root:
+
+```bash
+npm ci --prefix website/static_src
+```
+
+Start Django, the Tailwind CSS watcher, and the Motion script watcher together:
+
+```bash
+DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py tailwind dev
+```
+
+This uses `Procfile.tailwind` through Honcho. Alternatively, run
+`uv run python manage.py runserver` and `uv run python manage.py tailwind start`
+in separate terminals; both default to development settings. In that case, run
+`npm run dev:scripts --prefix website/static_src` in another terminal for animation
+script changes. Browser reload is registered only when `DEBUG=True`.
+
+For deployment, install frontend dependencies including dev dependencies (the CSS
+and JavaScript build tools), then compile CSS and the local Motion bundle **before**
+collecting static files:
+
+```bash
+npm ci --include=dev --prefix website/static_src
+DJANGO_SETTINGS_MODULE=config.settings.production uv run python manage.py tailwind build
+uv run python manage.py collectstatic --noinput --settings=config.settings.production
+```
+
+Production commands require the production environment variables and dependencies
+to be configured. Generated CSS at `website/static/css/dist/styles.css` and the
+script at `website/static/website/js/dist/animations.js` are Git-ignored, so every
+fresh checkout or deployment needs a build. The production
+server does not run the watcher or `Procfile.tailwind`.
+
+Format and check templates with djLint, and Python with Ruff:
+
+```bash
+uv run djlint website/templates/ --reformat
+uv run djlint website/templates/ --check --lint
+uv run ruff format .
+uv run ruff check .
+uv run ruff format --check .
+git diff --check
+```
+
+The test suites inspect built CSS, JavaScript, and their static assets, so build
+once before running tests on a fresh checkout. CI builds both before database tests
+and checks template formatting/linting. Narrow `H026` suppressions apply only to
+Cotton variable declarations, where empty defaults are component metadata rather
+than empty rendered HTML attributes.
+
+Prettier and Bun are not configured.
+
+#### Cotton components and Lucide icons
+
+Django Cotton is installed through `uv sync` and registered in `INSTALLED_APPS`.
+It automatically configures the template loader; components live in
+`website/templates/cotton/`, while page templates stay in
+`website/templates/website/`. Tailwind's existing source pattern scans both.
+
+Lucide icons are local, server-rendered Cotton SVG components: no icon font,
+JavaScript initialization, runtime CDN, or npm icon dependency is needed.
+
+```html
+<!-- Decorative beside visible text: hidden from assistive technology by default. -->
+<c-icons.book-open class="size-5 text-emerald-500" />
+
+<!-- Standalone meaningful icon: label supplies its accessible name. -->
+<c-icons.search label="Search" size="20" stroke-width="1.5" />
+
+<!-- Icon-only controls need a name on the control, not just on its icon. -->
+<button type="button" aria-label="Open navigation">
+  <c-icons.menu />
+</button>
+```
+
+Available icons include `arrow-right`, `book-open`, `code`, `copy`, `external-link`,
+`menu`, `search`, and `x`, plus the landing-page subset listed in
+`website/static/vendor/lucide/README.txt`. For example, `<c-icons.book-open />` resolves to
+`website/templates/cotton/icons/book_open.html`. Each delegates to `icons/base.html`
+for `currentColor`, size, stroke width, and accessibility behavior. Additional
+attributes such as `class` and `data-*` are forwarded to the SVG. Interactive
+behavior (for example, opening a menu) is separate from rendering an icon.
+
+The paths are vendored from **lucide-static 1.70.0**. Its full ISC license and
+Feather-derived MIT notices are preserved in
+`website/static/vendor/lucide/LICENSE.txt`, alongside source/version information
+in `README.txt`. These third-party assets retain their upstream licenses. When
+adding an icon, copy its paths from a pinned official Lucide release into a
+Cotton wrapper, retain the license notices, and rebuild Tailwind CSS.
 
 ### Choose primary images in Django admin
 
@@ -159,7 +325,7 @@ curl -X POST http://127.0.0.1:8000/auth/request-key/ \
   -d '{"consumer_name":"My Fan App","email":"dev@example.com"}'
 ```
 
-Use the returned key on v1 requests:
+Use the returned key on v1 resource requests (the `/api/v1/` directory itself is public):
 
 ```bash
 curl 'http://127.0.0.1:8000/api/v1/characters/?type=demigod&is_demigod=true' \
@@ -221,7 +387,7 @@ The default test suite uses SQLite. CI also runs the full suite against PostgreS
 uv run python manage.py test --settings=config.settings.test_postgresql
 ```
 
-OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The schema and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
+OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The `/api/v1/` directory, schema, and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
 
 ## Roadmap
 

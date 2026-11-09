@@ -1,0 +1,15 @@
+<c-vars item tone="teal" />
+<article data-reveal
+         class="resource-group tone-{{ tone }} flex min-w-0 flex-col rounded-3xl border border-border bg-surface p-6 shadow-[0_2px_8px_rgb(15_23_42/3%)] max-md:p-4 max-md:first:[&_.endpoint-row]:py-3 max-md:first:[&_.endpoint-row_small]:block max-md:first:[&_.endpoint-row_small]:mt-1 max-md:first:[&_.endpoint-row_small]:text-[11px] max-md:first:[&_.endpoint-row_small]:text-muted {% if tone == 'amber' %}[&_.endpoint-row_code]:text-amber{% endif %}">
+  <div class="resource-heading flex flex-wrap items-center justify-between gap-4 [&_.icon-tile]:size-10 max-md:flex-nowrap max-md:justify-start max-md:gap-2 max-md:[&_.icon-tile]:size-8 max-md:[&_.icon-tile]:rounded-full">
+    <c-ui.icon-tile :name="item.icon" :tone="tone" />
+    <span class="model-count rounded-full bg-subtle px-2.5 py-1.5 font-mono text-[10px] leading-[normal] font-semibold text-text uppercase max-md:order-2 max-md:ml-auto max-md:px-2 max-md:py-1 max-md:text-[8px] max-md:normal-case max-md:whitespace-nowrap">{{ item.resources|length }} Models</span>
+    <h3 class="w-full text-lg leading-[1.4] max-md:order-1 max-md:w-auto max-md:text-base">{{ item.title }}</h3>
+  </div>
+  <p class="resource-description mt-1.5 mb-5 text-xs leading-[1.65] max-md:hidden">{{ item.description }}</p>
+  <div class="endpoint-list mb-6 grid gap-2 max-md:mt-5 max-md:mb-0 max-md:gap-0">
+    {% for resource in item.resources %}<c-landing.endpoint-row :item="resource" />{% endfor %}
+  </div>
+  <a class="resource-example mt-auto border-t border-border pt-5 pb-0.5 font-mono text-[10px] leading-[1.8] text-muted wrap-anywhere max-md:hidden"
+     href="{{ item.resources.0.example_url }}">Example filter: ?{{ item.example_query }}</a>
+</article>

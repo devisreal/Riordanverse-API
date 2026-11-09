@@ -1,0 +1,14 @@
+<c-vars size="24" stroke-width="2" label="" class="align-middle" />
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="{{ size }}"
+     height="{{ size }}"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="{{ stroke_width }}"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     class="inline-block shrink-0 {{ class }}"
+     focusable="false"
+     {% if label %}role="img" aria-label="{{ label }}"{% else %}aria-hidden="true"{% endif %}
+     {{ attrs }}>{{ slot }}</svg>

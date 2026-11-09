@@ -1,0 +1,6 @@
+<c-vars item />
+<a class="endpoint-row flex items-center justify-between gap-2 rounded-full border border-border bg-subtle p-2.5 font-mono text-[10px] leading-[normal] hover:border-accent max-md:rounded-none max-md:border-0 max-md:border-b max-md:bg-transparent max-md:px-0 max-md:py-2 max-md:font-sans max-md:text-xs max-md:leading-[normal] max-md:last:border-b-0"
+   href="{{ item.url }}">
+  <span>{{ item.label }}{% if item.description %}<small class="hidden">{{ item.description }}</small>{% endif %}</span>
+  <code class="font-bold text-accent max-md:text-[11px]">{{ item.url|cut:"/api/v1" }}</code>
+</a>

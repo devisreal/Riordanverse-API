@@ -1,0 +1,34 @@
+{# djlint:off H026 #}
+<c-vars name="" size="20" class="" />
+{# djlint:on #}
+{% if name == "users" or name == "person_pin" %}
+  <c-icons.users :size="size" :class="class" />
+{% elif name == "library" or name == "auto_stories" or name == "menu_book" or name == "description" %}
+  <c-icons.book-open :size="size" :class="class" />
+{% elif name == "building-2" or name == "apartment" %}
+  <c-icons.building-2 :size="size" :class="class" />
+{% elif name == "swords" %}
+  <c-icons.swords :size="size" :class="class" />
+{% elif name == "network" or name == "hub" %}
+  <c-icons.network :size="size" :class="class" />
+{% elif name == "list-filter" or name == "filter_list" %}
+  <c-icons.list-filter :size="size" :class="class" />
+{% elif name == "layers" or name == "dataset" %}
+  <c-icons.layers :size="size" :class="class" />
+{% elif name == "zap" or name == "bolt" %}
+  <c-icons.zap :size="size" :class="class" />
+{% elif name == "image" or name == "history_edu" %}
+  <c-icons.image :size="size" :class="class" />
+{% elif name == "terminal" %}
+  <c-icons.terminal :size="size" :class="class" />
+{% elif name == "file-json" or name == "data_object" %}
+  <c-icons.file-json :size="size" :class="class" />
+{% elif name == "search" %}
+  <c-icons.search :size="size" :class="class" />
+{% elif name == "shield-check" %}
+  <c-icons.shield-check :size="size" :class="class" />
+{% elif name == "key-round" %}
+  <c-icons.key-round :size="size" :class="class" />
+{% else %}
+  <c-icons.code :size="size" :class="class" />
+{% endif %}

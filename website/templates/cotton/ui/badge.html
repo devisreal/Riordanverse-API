@@ -1,0 +1,5 @@
+{# djlint:off H026 #}
+<c-vars tone="teal" class="" />
+{# djlint:on #}
+<span class="badge inline-flex items-center gap-1.5 rounded-[999px] border px-2 py-0.5 font-mono text-[10px] leading-normal font-semibold tracking-[0.02em] whitespace-nowrap uppercase {% if tone == 'amber' %}badge-amber border-amber-border bg-amber-soft text-amber{% else %}badge-teal border-accent-border bg-accent-soft text-accent{% endif %} {{ class }}"
+      {{ attrs }}>{{ slot }}</span>
