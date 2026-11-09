@@ -1,0 +1,65 @@
+<footer class="site-footer border-t border-border pt-20 max-md:border-0 max-md:pt-0">
+  <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
+    <div class="footer-desktop grid grid-cols-12 items-start gap-12 pb-16 max-desktop:grid-cols-2 max-md:hidden">
+      <div class="footer-about col-span-5 max-desktop:col-auto">
+        <c-brand.mark footer="true" />
+        <p class="mt-5 max-w-md text-sm leading-relaxed">An atmospheric developer platform organizing Camp Half-Blood, Olympian pantheons, demigod genealogies, prophecies, and mythological artifacts through standardized REST endpoints.</p>
+        <a class="footer-source mt-6 inline-flex items-center gap-1.5 border-b border-[color-mix(in_srgb,currentColor_35%,transparent)] pb-0.5 font-mono text-xs/4 font-medium"
+           href="https://riordan.fandom.com/wiki/Riordan_Wiki">Source Canon: Riordan Wiki
+          <c-icons.external-link size="14" />
+        </a>
+      </div>
+      <nav class="col-span-4 max-desktop:col-auto" aria-label="Specifications">
+        <h2 class="mb-4 font-mono text-xs/4 font-bold tracking-[0.04em] uppercase">Interface &amp; Specifications</h2>
+        <ul class="footer-specifications m-0 grid list-none gap-3 p-0">
+          <li class="flex items-center gap-2.5 before:size-1.5 before:flex-[0_0_6px] before:rounded-full before:bg-[light-dark(#14b8a6,#2dd4bf)] before:content-['']">
+            <a class="block font-mono text-xs/4"
+               href="{{ docs_url }}">Interactive API Docs (Swagger UI)</a>
+          </li>
+          <li class="flex items-center gap-2.5 before:size-1.5 before:flex-[0_0_6px] before:rounded-full before:bg-[light-dark(#14b8a6,#2dd4bf)] before:content-['']">
+            <a class="block font-mono text-xs/4" href="{% url 'redoc' %}">API Reference (ReDoc)</a>
+          </li>
+          <li class="flex items-center gap-2.5 before:size-1.5 before:flex-[0_0_6px] before:rounded-full before:bg-[light-dark(#f59e0b,#fbbf24)] before:content-['']">
+            <a class="block font-mono text-xs/4"
+               href="{% url 'schema' %}">OpenAPI Schema (JSON / YAML)</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="col-span-3 max-desktop:col-auto" aria-label="Repository">
+        <h2 class="mb-4 font-mono text-xs/4 font-bold tracking-[0.04em] uppercase">Repository &amp; Code</h2>
+        <a class="mt-3 block font-mono text-xs/4" href="{{ github_url }}#readme">Project README
+          <c-icons.external-link size="12" />
+        </a><a class="mt-3 block font-mono text-xs/4" href="{{ github_url }}">Contribute on GitHub
+          <c-icons.external-link size="12" />
+        </a><a class="mt-3 block font-mono text-xs/4"
+               href="{{ github_url }}/issues">Issue Tracker &amp; Schema Requests
+          <c-icons.external-link size="12" />
+        </a>
+      </nav>
+    </div>
+    <div class="mobile-disclaimer mobile-copy hidden rounded-3xl border border-border bg-surface p-4 max-md:block">
+      <h2 class="flex items-center gap-2 text-xs/[1.6] tracking-normal">
+        <c-icons.info size="17" class="text-accent" />
+        Demigod Disclaimer &amp; Canon
+      </h2>
+      <p class="mt-2 text-xs leading-[1.65]">This is an unofficial fan project cataloging the Riordanverse. Not affiliated with or endorsed by Rick Riordan, Disney Hyperion, or the respective rights holders.</p>
+      <div class="mt-2.5 flex justify-between gap-2 border-t border-border pt-2 font-mono text-[8px] leading-[normal] uppercase"><span>Camp Half-Blood Archive · V1</span><strong class="text-accent">Ready for builders</strong></div>
+    </div>
+    <div class="footer-mobile mobile-copy mt-18 hidden border-t border-border pt-6 pb-12 text-center max-md:block">
+      <nav class="flex flex-wrap justify-center gap-2 [&>a]:rounded-[99px] [&>a]:border [&>a]:border-border [&>a]:bg-surface [&>a]:px-2.5 [&>a]:py-1 [&>a]:font-mono [&>a]:text-[10px] [&>a]:leading-[normal]"
+           aria-label="Footer">
+        <a href="{{ docs_url }}">API Specs</a><a href="{{ api_directory_url }}">Endpoints</a><a href="{{ github_url }}">GitHub</a><a href="{{ github_url }}/blob/develop/LICENSE">License</a>
+      </nav>
+      <p class="mt-4 px-3 text-xs leading-[1.7]">Fandom API built for demigods. Community-curated Riordanverse data and entities. An unofficial fan project.</p>
+      <span class="badge mt-4 inline-flex items-center gap-1.5 rounded-[999px] border border-accent-border bg-accent-soft px-2 py-0.5 font-mono text-[10px]/[1.5] font-normal tracking-[0.02em] whitespace-nowrap text-accent normal-case"><span class="status-dot inline-block size-1.5 shrink-0 rounded-[99px] bg-[#14b8a6]"></span>Read-only REST API</span>
+    </div>
+  </div>
+  <div class="footer-legal border-t border-border pb-8 text-xs/[1.6] text-muted max-md:hidden">
+    <div class="site-container mx-auto flex w-full max-w-7xl flex-wrap justify-between gap-4 px-8 max-md:px-4 max-[360px]:px-3">
+      <p>An unofficial fan project for educational and portfolio purposes. Not affiliated with or endorsed by Rick Riordan or Disney Hyperion.</p>
+      <a class="font-mono text-[10px] underline"
+         href="{{ github_url }}/blob/develop/LICENSE">MIT License Clarification</a>
+      <p class="w-full">Original code and project documentation are MIT licensed. Seed datasets and third-party lore, images, names, and other materials are excluded; their respective rights apply.</p>
+    </div>
+  </div>
+</footer>

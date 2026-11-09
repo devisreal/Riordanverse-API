@@ -1,17 +1,28 @@
-{% load tailwind_tags %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{% block title %}Percy Jackson Fandom API{% endblock title %}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Percy Jackson Fandom API{% endblock title %}</title>
+    <meta name="description"
+          content="A structured, read-only REST API for Riordanverse characters, gods, quests, locations, and the relationships connecting them." />
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{% static 'website/images/favicon.svg' %}" />
+    <script src="{% static 'website/js/theme.js' %}"></script>
     {% tailwind_css %}
     {% block extra_head %}
     {% endblock extra_head %}
   </head>
-  <body class="bg-gray-50 text-black font-serif leading-normal tracking-normal">
+  <body class="website antialiased">
+    <a class="skip-link fixed -top-25 left-4 z-100 rounded-xl bg-button px-5 py-3 text-button-text focus:top-3"
+       href="#main-content">Skip to content</a>
+    <div class="site-background pointer-events-none fixed inset-0 z-[-1] bg-(image:--background) bg-cover bg-center bg-no-repeat"
+         aria-hidden="true"></div>
     {% block content %}
     {% endblock content %}
+    <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
     {% block extra_js %}
     {% endblock extra_js %}
   </body>

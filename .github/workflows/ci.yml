@@ -41,6 +41,21 @@ jobs:
       - name: Install dependencies
         run: uv sync --locked
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: website/static_src/package-lock.json
+
+      - name: Build website CSS
+        run: |
+          npm ci --include=dev --prefix website/static_src
+          npm run build --prefix website/static_src
+
+      - name: Check website templates
+        run: uv run djlint website/templates --check --lint
+
       - name: Ruff lint
         run: uv run ruff check .
 
@@ -102,6 +117,18 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --locked
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: website/static_src/package-lock.json
+
+      - name: Build website CSS
+        run: |
+          npm ci --include=dev --prefix website/static_src
+          npm run build --prefix website/static_src
 
       - name: Django system check
         run: uv run python manage.py check --settings=config.settings.test_postgresql

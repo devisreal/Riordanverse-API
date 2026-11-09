@@ -128,7 +128,29 @@ Development keeps API-key authentication enabled. Tests use separate SQLite sett
 
 The public homepage at `/` uses Django templates in `website/templates/website/`.
 `home.html` extends `base.html`, which provides `title`, `extra_head`, `content`,
-and `extra_js` blocks. API endpoints remain JSON-only.
+and `extra_js` blocks. It renders a static, database-independent landing page with
+links to the real API directory and documentation. Code examples are illustrative,
+not live requests; they use the current request origin and the API's actual header,
+fields, and key-request contract. API endpoints remain JSON-only.
+
+The responsive page includes a top mobile menu, request/response tabs, clipboard
+controls with a manual-copy fallback, and reduced-motion support. There is no
+bottom mobile bar or theme-toggle control. JavaScript defaults to light mode and
+honors a saved `localStorage.theme` value of `light` or `dark`; without JavaScript,
+the OS color preference applies. Explicit `html.light`/`html.dark` classes take
+precedence. Theme resolution lives in the shared base template's local script.
+
+Fonts, Lucide SVGs, background images, and archive images are served locally; no
+runtime font, icon, or Tailwind CDN is required. Font licenses and image provenance
+are documented under `website/static/website/`. Image provenance does **not**
+constitute a license grant.
+
+Author layout, spacing, typography, borders, and responsive states with Tailwind
+utilities in the Django/Cotton templates. `website/static_src/src/styles.css` uses
+Tailwind v4's CSS-first `@theme` configuration for fonts, breakpoints, and semantic
+color utilities such as `bg-surface` and `text-accent`. Its remaining custom CSS is
+limited to shared theme/global defaults, generated syntax tokens, accessibility,
+and progressive-enhancement behavior—not a parallel component stylesheet.
 
 The current frontend toolchain uses **Node.js 22+ and npm**. After `uv sync` and
 configuring `.env`, install the locked frontend dependencies from the project root:
@@ -173,7 +195,13 @@ uv run ruff format --check .
 git diff --check
 ```
 
-Prettier and Bun are not configured in this initial scaffold.
+The test suites inspect built CSS and its static assets, so build once before
+running tests on a fresh checkout. CI builds CSS before both database test jobs
+and checks template formatting/linting. Narrow `H026` suppressions apply only to
+Cotton variable declarations, where empty defaults are component metadata rather
+than empty rendered HTML attributes.
+
+Prettier and Bun are not configured.
 
 #### Cotton components and Lucide icons
 
@@ -198,8 +226,9 @@ JavaScript initialization, runtime CDN, or npm icon dependency is needed.
 </button>
 ```
 
-Available icons: `arrow-right`, `book-open`, `code`, `copy`, `external-link`,
-`menu`, `search`, and `x`. For example, `<c-icons.book-open />` resolves to
+Available icons include `arrow-right`, `book-open`, `code`, `copy`, `external-link`,
+`menu`, `search`, and `x`, plus the landing-page subset listed in
+`website/static/vendor/lucide/README.txt`. For example, `<c-icons.book-open />` resolves to
 `website/templates/cotton/icons/book_open.html`. Each delegates to `icons/base.html`
 for `currentColor`, size, stroke width, and accessibility behavior. Additional
 attributes such as `class` and `data-*` are forwarded to the SVG. Interactive

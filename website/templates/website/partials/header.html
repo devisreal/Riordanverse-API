@@ -1,0 +1,91 @@
+<header class="site-header fixed inset-x-0 top-0 z-50 border-b border-border bg-header backdrop-blur-xl">
+  <div class="site-container header-inner mx-auto flex h-18.75 w-full max-w-7xl items-center justify-between gap-6 px-8 md:max-desktop:gap-4 max-md:h-16 max-md:gap-2.5 max-md:px-4 max-[360px]:px-3">
+    <details class="mobile-menu hidden max-md:block" id="site-menu">
+      <summary class="menu-toggle flex size-8.5 list-none items-center justify-center rounded-[99px] border border-border bg-surface text-heading [&::-webkit-details-marker]:hidden"
+               aria-label="Open navigation"
+               aria-controls="mobile-navigation">
+        <span class="menu-closed">
+          <c-icons.menu size="20" />
+        </span><span class="menu-open hidden">
+          <c-icons.x size="20" />
+        </span>
+      </summary>
+      <nav class="menu-panel fixed inset-x-0 top-16 bottom-0 h-[calc(100dvh-64px)] overflow-auto bg-canvas p-5 [&>a]:flex [&>a]:items-center [&>a]:gap-4 [&>a]:px-3 [&>a]:py-4 [&>a]:text-[16px] [&>a]:text-heading [&>a:hover]:text-hero-accent [&>a:focus-visible]:text-hero-accent [&>a>svg:first-child]:text-accent [&>a[href='#resources']>svg:first-child]:text-amber [&>a>span]:flex [&>a>span]:flex-1 [&>a>span]:items-center [&>a>span]:justify-between [&>a>span>svg]:text-muted"
+           id="mobile-navigation"
+           aria-label="Mobile navigation">
+        <div class="menu-status flex items-center gap-2 rounded-2xl border border-border bg-surface px-3 py-3.5 font-mono text-[11px] leading-[normal] [&_.badge]:ml-auto [&_.badge]:text-2.25">
+          <span class="status-dot inline-block size-1.5 shrink-0 rounded-[99px] bg-[#14b8a6]"></span><strong>Read-only REST API</strong>
+          <c-ui.badge>
+            REST V1
+          </c-ui.badge>
+        </div>
+        <p class="menu-label px-3 pt-6 pb-3 font-mono text-[10px] leading-[normal] font-bold text-muted uppercase">
+          Navigation
+        </p>
+        <c-navigation.link href="#features" icon="network">
+          Features &amp; Capabilities
+          <c-icons.chevron-right size="18" />
+        </c-navigation.link>
+        <c-navigation.link href="#resources" icon="layers">
+          Canonical Resources
+          <c-icons.chevron-right size="18" />
+        </c-navigation.link>
+        <c-navigation.link href="#quick-start" icon="zap">
+          Quick Start Integration
+          <c-icons.chevron-right size="18" />
+        </c-navigation.link>
+        <c-navigation.link :href="docs_url" icon="file-json">
+          Documentation
+          <c-icons.external-link size="18" />
+        </c-navigation.link>
+        <c-navigation.link :href="github_url" icon="code">
+          GitHub Repository
+          <c-icons.external-link size="18" />
+        </c-navigation.link>
+        <div class="menu-actions mt-8 grid gap-3">
+          <c-ui.action :href="api_directory_url" trailing="true">
+            Explore the API
+          </c-ui.action>
+          <c-ui.action :href="docs_url" variant="secondary" icon="library">
+            Read the docs
+          </c-ui.action>
+        </div>
+      </nav>
+    </details>
+    <c-brand.mark />
+    <nav class="desktop-nav flex items-center gap-8 text-[14px] font-medium md:max-desktop:gap-4 max-md:hidden [&_a]:inline-flex [&_a]:items-center [&_a]:gap-1.5 [&_a:hover]:text-hero-accent [&_a:focus-visible]:text-hero-accent"
+         aria-label="Main navigation">
+      <c-navigation.link href="#features">
+        Features
+      </c-navigation.link>
+      <c-navigation.link href="#resources">
+        Resources
+      </c-navigation.link>
+      <c-navigation.link href="#quick-start">
+        Quick Start
+      </c-navigation.link>
+      <c-navigation.link :href="docs_url">
+        Docs
+      </c-navigation.link>
+      <a href="{{ github_url }}">
+        GitHub
+        <c-icons.external-link size="14" />
+      </a>
+    </nav>
+    <div class="header-actions flex items-center gap-2 [&_.action]:px-5 [&_.action]:py-2.25 md:max-desktop:[&_.action]:px-3.5 md:max-desktop:[&_.action]:text-[12px]">
+      <c-ui.action :href="api_directory_url" class="desktop-explore max-md:hidden">
+        Explore the API
+      </c-ui.action>
+      <a class="mobile-shortcut hidden size-8.5 items-center justify-center rounded-[99px] border border-border bg-surface text-heading max-md:flex"
+         href="{{ api_directory_url }}"
+         aria-label="Explore the API">
+        <c-icons.code size="18" />
+      </a>
+      <a class="mobile-shortcut hidden size-8.5 items-center justify-center rounded-[99px] border border-border bg-surface text-heading max-md:flex"
+         href="#quick-start"
+         aria-label="Get an API key">
+        <c-icons.users size="18" />
+      </a>
+    </div>
+  </div>
+</header>

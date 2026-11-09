@@ -1,0 +1,22 @@
+<c-vars footer="" />
+<a class="brand inline-flex shrink-0 items-center text-heading {% if footer %}gap-3{% else %}gap-3.5{% endif %} max-md:mr-auto max-md:gap-2"
+   href="{% url 'website:home' %}"
+   aria-label="Percy Jackson Fandom API home">
+  <span class="brand-symbol inline-flex items-center justify-center rounded-full border border-border bg-[#0f172a] text-[#5eead4] {% if footer %}size-8 [&_svg]:size-4{% else %}size-10{% endif %} max-md:size-8 max-md:rounded-[99px] max-md:bg-accent-soft max-md:text-accent max-md:[&_svg]:h-4.75 max-md:[&_svg]:w-4.25">
+    <svg width="20"
+         height="24"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         aria-hidden="true"
+         focusable="false">
+      <path d="M12 2v20M5 4v5a7 7 0 0 0 14 0V4M3 4h4M17 4h4" />
+      <circle cx="12" cy="15" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  </span>
+  <span class="brand-name text-[18px] font-bold tracking-tight {% if footer %}md:max-desktop:text-[14px]{% else %}md:max-desktop:text-[16px]{% endif %} max-md:text-[14px] max-md:tracking-[-0.03em] max-[360px]:text-[13px]">{% if footer %}Percy Jackson Fandom API{% else %}Percy Jackson{% endif %}</span>
+  {% if not footer %}<span class="brand-api -ml-1.5 rounded-[99px] border border-border bg-subtle px-2 py-1 font-mono text-[11px] leading-[normal] font-semibold tracking-wider text-text max-md:-ml-0.5 max-md:border-accent-border max-md:bg-accent-soft max-md:px-1.5 max-md:py-0.75 max-md:text-[9px] max-md:text-accent max-[360px]:hidden"><span class="desktop-copy max-md:hidden">API</span><span class="mobile-copy md:hidden">API V1</span></span>{% endif %}
+</a>

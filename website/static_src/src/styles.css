@@ -1,10 +1,330 @@
 @import "tailwindcss";
-
-/**
-  * A catch-all path to Django template files, JavaScript, and Python files
-  * that contain Tailwind CSS classes and will be scanned by Tailwind to generate the final CSS file.
-  *
-  * If your final CSS file is not being updated after code changes, you may want to broaden or narrow
-  * the scope of this path.
-  */
 @source "../../../**/*.{html,py,js}";
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../../website/fonts/plus-jakarta-sans-latin-variable.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../website/fonts/jetbrains-mono-latin-variable.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@theme {
+  /* Keep breakpoints in one unit so tablet and desktop variants sort predictably. */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-desktop: 1100px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Utilities resolve semantic colors at runtime in either theme. */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-heading: var(--heading);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-hero-accent: var(--hero-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-amber-border: var(--amber-border);
+  --color-button: var(--button);
+  --color-button-text: var(--button-text);
+  --color-header: var(--header);
+  --color-code-bg: var(--code-bg);
+  --color-code-panel: var(--code-panel);
+  --color-code-top: var(--code-top);
+  --color-code-key: var(--code-key);
+  --color-code-string: var(--code-string);
+  --color-code-number: var(--code-number);
+  --color-code-comment: var(--code-comment);
+  --color-code-text: var(--code-text);
+}
+
+/* One shared palette drives components, syntax, and the fixed background.
+   An explicit class overrides the OS; the OS is the no-JavaScript fallback. */
+@layer base {
+  :root {
+    color-scheme: light;
+    --canvas: #fff;
+    --surface: #fff;
+    --subtle: #f8fafc;
+    --heading: #0f172a;
+    --text: #475569;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    /* Small accent text needs AA contrast; the large headline retains the export hue. */
+    --accent: #0f766e;
+    --hero-accent: #0d9488;
+    --accent-soft: #f0fdfa;
+    --accent-border: #99f6e4;
+    --amber: #b45309;
+    --amber-soft: #fffbeb;
+    --amber-border: #fde68a;
+    --button: #0f172a;
+    --button-text: #fff;
+    --header: rgb(255 255 255 / 85%);
+    --background: url("../../website/images/background-light.jpg");
+    --code-bg: #020617;
+    --code-panel: #070d1d;
+    --code-top: #0f172a;
+    --code-key: #fcd34d;
+    --code-string: #5eead4;
+    --code-number: #67e8f9;
+    --code-comment: #94a3b8;
+    --code-text: #cbd5e1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not(.light) {
+      color-scheme: dark;
+      --canvas: #090d14;
+      --surface: #0f1622;
+      --subtle: #0c121c;
+      --heading: #fff;
+      --text: #94a3b8;
+      --muted: #94a3b8;
+      --border: rgb(255 255 255 / 8%);
+      --accent: #5eead4;
+      --hero-accent: #5eead4;
+      --accent-soft: rgb(45 212 191 / 10%);
+      --accent-border: rgb(45 212 191 / 20%);
+      --amber: #fcd34d;
+      --amber-soft: rgb(245 158 11 / 10%);
+      --amber-border: rgb(245 158 11 / 20%);
+      --button: #fff;
+      --button-text: #020617;
+      --header: rgb(9 13 20 / 85%);
+      --background: url("../../website/images/background-dark.jpg");
+      --code-bg: #06090e;
+      --code-panel: #0b1019;
+      --code-top: #0e1522;
+      --code-key: #5eead4;
+      --code-string: #6ee7b7;
+      --code-number: #2dd4bf;
+      --code-comment: #94a3b8;
+      --code-text: #e2e8f0;
+    }
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --canvas: #090d14;
+    --surface: #0f1622;
+    --subtle: #0c121c;
+    --heading: #fff;
+    --text: #94a3b8;
+    --muted: #94a3b8;
+    --border: rgb(255 255 255 / 8%);
+    --accent: #5eead4;
+    --hero-accent: #5eead4;
+    --accent-soft: rgb(45 212 191 / 10%);
+    --accent-border: rgb(45 212 191 / 20%);
+    --amber: #fcd34d;
+    --amber-soft: rgb(245 158 11 / 10%);
+    --amber-border: rgb(245 158 11 / 20%);
+    --button: #fff;
+    --button-text: #020617;
+    --header: rgb(9 13 20 / 85%);
+    --background: url("../../website/images/background-dark.jpg");
+    --code-bg: #06090e;
+    --code-panel: #0b1019;
+    --code-top: #0e1522;
+    --code-key: #5eead4;
+    --code-string: #6ee7b7;
+    --code-number: #2dd4bf;
+    --code-comment: #94a3b8;
+    --code-text: #e2e8f0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 104px;
+    background: var(--canvas);
+  }
+
+  body.website {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .website h1,
+  .website h2,
+  .website h3 {
+    color: var(--heading);
+    font-weight: 700;
+  }
+
+  .website h2 {
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  .website a,
+  .website button,
+  .website summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .website button,
+  .website summary {
+    cursor: pointer;
+  }
+
+  .website a,
+  .website button {
+    transition:
+      color 180ms,
+      background-color 180ms,
+      border-color 180ms,
+      box-shadow 180ms;
+  }
+
+  .website :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .website [hidden] {
+    display: none !important;
+  }
+
+  .website ::selection {
+    color: var(--heading);
+    background: var(--accent-soft);
+  }
+
+  .website code,
+  .website pre {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Pygments emits these token classes; they are not authored in templates. */
+@layer components {
+  .code-block .syntax-nt,
+  .code-block .syntax-nl,
+  .code-block .syntax-na {
+    color: var(--code-key);
+  }
+
+  .code-block .syntax-nf,
+  .code-block .syntax-nn,
+  .code-block .syntax-s,
+  .code-block .syntax-s1,
+  .code-block .syntax-s2 {
+    color: var(--code-string);
+  }
+
+  .code-block .syntax-l,
+  .code-block .syntax-mi,
+  .code-block .syntax-mf,
+  .code-block .syntax-kc,
+  .code-block .syntax-k,
+  .code-block .syntax-kr,
+  .code-block .syntax-nb {
+    color: var(--code-number);
+  }
+
+  .code-block .syntax-c,
+  .code-block .syntax-c1 {
+    color: var(--code-comment);
+  }
+}
+
+/* Progressive enhancement only: ordinary presentation lives in template utilities. */
+@media (width < 768px) {
+  .mobile-menu[open] .menu-open {
+    display: flex;
+  }
+  .mobile-menu[open] .menu-closed {
+    display: none;
+  }
+  body.menu-visible {
+    overflow: hidden;
+  }
+  .website[data-enhanced] .code-tabs {
+    display: flex;
+  }
+  .website[data-enhanced] .console [data-active="false"],
+  .website[data-enhanced] .console .code-panel-label {
+    display: none;
+  }
+  html {
+    scroll-padding-top: 84px;
+  }
+}
+
+/* Without JS, the disclosure stays in normal flow: links never cover destinations. */
+@media (max-width: 767px) {
+  .website:not([data-enhanced]) {
+    padding-top: 0;
+  }
+  .website:not([data-enhanced]) .site-header {
+    position: relative;
+  }
+  .website:not([data-enhanced]) .header-inner {
+    display: block;
+    height: auto;
+    min-height: 64px;
+    padding-top: 64px;
+  }
+  .website:not([data-enhanced]) .header-inner > .brand {
+    position: absolute;
+    top: 16px;
+    left: 60px;
+  }
+  .website:not([data-enhanced]) .header-actions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  .website:not([data-enhanced]) .menu-toggle {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+  .website:not([data-enhanced]) .menu-panel {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .website *,
+  .website *::before,
+  .website *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .lore-card:hover .lore-image {
+    transform: none;
+  }
+}

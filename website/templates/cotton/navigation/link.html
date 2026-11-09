@@ -1,0 +1,6 @@
+{# djlint:off H026 #}
+<c-vars href="#" icon="" class="" />
+{# djlint:on #}
+<a href="{{ href }}"
+   class="inline-flex items-center gap-1.5 hover:text-hero-accent focus-visible:text-hero-accent {{ class }}"
+   {{ attrs }}>{% if icon %}<c-ui.icon :name="icon" size="20" />{% endif %}<span>{{ slot }}</span></a>

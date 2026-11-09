@@ -1,0 +1,11 @@
+{# djlint:off H026 #}
+<c-vars target="" label="Copy" class="" />
+{# djlint:on #}
+<button type="button"
+        class="copy-button inline-flex items-center gap-1.25 rounded-[999px] border border-border bg-surface px-2.5 py-0.75 font-mono text-[10px] leading-normal whitespace-nowrap text-muted hover:border-accent {{ class }}"
+        data-copy-target="{{ target }}"
+        aria-label="{{ label }}"
+        hidden>
+  <c-icons.copy size="13" />
+  <span data-copy-label>{{ label }}</span>
+</button>
