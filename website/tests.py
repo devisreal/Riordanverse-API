@@ -382,9 +382,9 @@ class HomeViewTests(SimpleTestCase):
             with self.subTest(css_asset=path):
                 self.assertIsNotNone(finders.find(path))
         self.assertTrue(expected <= references, expected - references)
-        for theme in ('light', 'dark'):
-            original = f'website/images/background-{theme}.jpg'
-            self.assertIsNotNone(finders.find(original), 'Keep original JPEG backgrounds')
+        for name in ('background-light', 'background-dark', 'lore-camp', 'lore-olympus'):
+            original = f'website/images/{name}.jpg'
+            self.assertIsNone(finders.find(original), 'Do not ship superseded JPEG assets')
             self.assertNotIn(original, references)
         self.assertNotRegex(css.lower(), r'@import|fonts\.google|material.symbols|material.icons')
 

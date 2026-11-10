@@ -177,8 +177,8 @@ Run the dependency-free theme/reveal behavior tests with
 
 Fonts, Lucide SVGs, background images, and archive images are served locally; no
 runtime font, icon, Tailwind, or Motion CDN is required. The landing uses WebP backgrounds
-while retaining the original JPEGs, with visible source credits on the three lore
-cards. The cropped trident photograph also links its CC BY-SA 3.0 license. Font
+and lore images; superseded background/Camp/Olympus JPEGs are not shipped. Visible
+source credits appear on the three lore cards. The cropped trident photograph also links its CC BY-SA 3.0 license. Font
 licenses, image sources, processing details, and asset checksums are documented
 under `website/static/website/`. Credits and provenance do **not** grant rights to
 the Camp/Olympus or original Stitch images; their redistribution rights remain
@@ -331,6 +331,56 @@ uv run python manage.py seed_images
 ```
 
 The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, 14 Powers, and 2,787 wiki image references from 330 entity pages (2,651 distinct `(url, source_url)` Image records after seeding; 15 pages have no image candidates). Wiki image records use `source_type=wiki`; license fields are null because the source does not expose machine-readable license metadata. These are seed-file record counts; unresolved typed entity references are warned about and skipped by the relevant seed command.
+
+## Production server and static assets
+
+Production uses **Gunicorn (WSGI)** and **WhiteNoise**; Uvicorn is not required.
+`config/wsgi.py` defaults to `config.settings.production`. Set the settings module
+explicitly in your hosting environment so a development override is not inherited.
+
+Install Python dependencies, build the frontend with Node.js 22+, then collect
+static assets. Set the required production environment variables before these
+commands (`SECRET_KEY`, `ALLOWED_HOSTS`, the `DB_*` settings, `REDIS_URL`, and
+`CORS_ALLOWED_ORIGINS`; use an empty value for CORS if cross-origin access is not needed):
+
+```bash
+export DJANGO_SETTINGS_MODULE=config.settings.production
+uv sync --locked --no-dev
+npm ci --prefix website/static_src
+npm run build --prefix website/static_src
+uv run --locked --no-dev python manage.py collectstatic --noinput
+uv run --locked --no-dev python manage.py check --deploy
+```
+
+Run database migrations once as a controlled release step, not inside each worker's
+startup. Seed data separately when appropriate. Start the web process with:
+
+```bash
+uv run --locked --no-dev gunicorn --config gunicorn.conf.py
+```
+
+`gunicorn.conf.py` loads `config.wsgi:application`, listens on `0.0.0.0:$PORT`
+(default `8000`), and uses `WEB_CONCURRENCY` workers (default `1`; size this for
+the hosting plan). Gunicorn errors go to stderr; Django retains its structured
+request logging without duplicate Gunicorn access logs. Do not use `runserver`
+for production.
+
+WhiteNoise runs immediately after Django's security middleware and serves the
+hashed, compressed files from `STATIC_ROOT`. Build assets **before** `collectstatic`;
+generated frontend files are not committed. The default file-storage backend is
+preserved separately; WhiteNoise does not serve user uploads.
+
+Use `/health/live/` for a process health check and `/health/ready/` for PostgreSQL
+readiness. Redis remains optional for availability, but enables shared quotas and
+caching. Configure email delivery for API-key verification before launch.
+
+**Before deployment behind a reverse proxy:** configure Django's trusted HTTPS
+forwarding for the chosen provider, otherwise HTTPS redirects can loop. Do not
+trust arbitrary forwarded headers; Gunicorn's forwarded-header trust and the
+API's client-IP handling also need a provider-specific review. Set the real
+`ALLOWED_HOSTS`, configure `CSRF_TRUSTED_ORIGINS` if needed, and review the existing
+one-year HSTS/subdomain/preload policy before exposing the domain. These commands
+wire the server and assets; they do not provision or deploy a hosting service.
 
 ## Authentication and rate limits
 

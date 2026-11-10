@@ -4,14 +4,17 @@ Design sources supplied by the user:
   /tmp/pj-stitch-exports/light-desktop.html
   /tmp/pj-stitch-exports/dark-desktop.html
 
-The original two background JPEGs are user-supplied generated Stitch assets,
+The original two background JPEGs were user-supplied generated Stitch assets,
 copied byte-for-byte without recompression. The three original lore JPEGs were
 downloaded unchanged from the Google aida-public URLs in the design exports.
-All five JPEGs are retained below as originals; the live landing page now uses
-the WebP backgrounds and replacement lore images documented afterward.
-No HTML or scripts from the exports were executed.
+The background-light, background-dark, lore-camp and lore-olympus JPEGs have been
+removed in favor of the live WebP assets documented below. The Camp and Olympus
+WebPs are replacement images, not conversions of the original Stitch lore JPEGs.
+Their historical source details and checksums are preserved for provenance only.
+lore-riptide.jpg is retained because it has no matching WebP; it is not used by
+the current landing page. No HTML or scripts from the exports were executed.
 
-Original JPEGs: source URLs, dimensions and SHA-256 checksums follow.
+Original JPEG provenance (only lore-riptide.jpg remains in the asset directory):
 
 background-light.jpg
   Format: JPEG; dimensions: 1376 x 768

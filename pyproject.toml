@@ -1,7 +1,7 @@
 [project]
-name = "pj-fandom-api"
+name = "percy-jackson-api"
 version = "0.1.0"
-description = "Add your description here"
+description = "An unofficial Django REST API for Percy Jackson and Riordanverse reference data."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
@@ -19,10 +19,12 @@ dependencies = [
     "djangorestframework==3.18.3",
     "djangorestframework-api-key==3.1.0",
     "drf-spectacular==0.30.0",
+    "gunicorn>=27.0.0",
     "psycopg2-binary==2.9.13",
     "pygments==2.21.0",
     "redis>=8.1.0",
     "tzdata==2026.5",
+    "whitenoise>=6.12.0",
 ]
 
 [dependency-groups]

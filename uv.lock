@@ -468,6 +468,15 @@ wheels = [
 ]
 
 [[package]]
+name = "gunicorn"
+version = "27.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0a/b3/addb4f148b938633977d983b852c82177b6c92d17837102a9a2aca061905/gunicorn-27.0.0.tar.gz", hash = "sha256:88d52e7c60b3af07bc8db431fbb450a94780f2cbe7c420c7cf1891392661c591", size = 932048, upload-time = "2026-11-10T11:20:59.207Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/85/2b/367de7fc2fd4cfd1814b0a31da023195eb4037c1fddc4d9e11cc965e1c00/gunicorn-27.0.0-py3-none-any.whl", hash = "sha256:1380f2f520abc3beb9e72cd2e728bd2d08a19b3ff6ac03ebd8da71d1798a4008", size = 261789, upload-time = "2026-11-10T11:20:57.621Z" },
+]
+
+[[package]]
 name = "honcho"
 version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -660,6 +669,79 @@ wheels = [
 ]
 
 [[package]]
+name = "percy-jackson-api"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "certifi" },
+    { name = "colorlog" },
+    { name = "django" },
+    { name = "django-autoslug" },
+    { name = "django-cors-headers" },
+    { name = "django-cotton" },
+    { name = "django-environ" },
+    { name = "django-filter" },
+    { name = "django-redis" },
+    { name = "django-tailwind" },
+    { name = "django-watson" },
+    { name = "djangorestframework" },
+    { name = "djangorestframework-api-key" },
+    { name = "drf-spectacular" },
+    { name = "gunicorn" },
+    { name = "psycopg2-binary" },
+    { name = "pygments" },
+    { name = "redis" },
+    { name = "tzdata" },
+    { name = "whitenoise" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "django-extensions" },
+    { name = "django-tailwind", extra = ["honcho"] },
+    { name = "djlint" },
+    { name = "pip-audit" },
+    { name = "requests" },
+    { name = "ruff" },
+    { name = "ty" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "certifi", specifier = "==2026.10.19" },
+    { name = "colorlog", specifier = ">=6.12.0" },
+    { name = "django", specifier = "==6.1.2" },
+    { name = "django-autoslug", specifier = ">=1.9.9" },
+    { name = "django-cors-headers", specifier = "==4.9.0" },
+    { name = "django-cotton", specifier = ">=2.9.0,<3" },
+    { name = "django-environ", specifier = "==0.14.0" },
+    { name = "django-filter", specifier = "==26.2" },
+    { name = "django-redis", specifier = ">=7.0.0" },
+    { name = "django-tailwind", specifier = ">=4.6.0" },
+    { name = "django-watson", specifier = "==1.6.3" },
+    { name = "djangorestframework", specifier = "==3.18.3" },
+    { name = "djangorestframework-api-key", specifier = "==3.1.0" },
+    { name = "drf-spectacular", specifier = "==0.30.0" },
+    { name = "gunicorn", specifier = ">=27.0.0" },
+    { name = "psycopg2-binary", specifier = "==2.9.13" },
+    { name = "pygments", specifier = "==2.21.0" },
+    { name = "redis", specifier = ">=8.1.0" },
+    { name = "tzdata", specifier = "==2026.5" },
+    { name = "whitenoise", specifier = ">=6.12.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "django-extensions", specifier = ">=4.1" },
+    { name = "django-tailwind", extras = ["honcho"], specifier = ">=4.6.0" },
+    { name = "djlint", specifier = ">=1.49.10" },
+    { name = "pip-audit", specifier = ">=2.10.1" },
+    { name = "requests", specifier = "==2.34.2" },
+    { name = "ruff", specifier = ">=0.16.3" },
+    { name = "ty", specifier = ">=0.0.73" },
+]
+
+[[package]]
 name = "pip"
 version = "26.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -712,75 +794,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/5e/2a/63b574101850e7f7b306ddbdb02cb294380d37948140eecd468fae392b54/pip-requirements-parser-32.0.1.tar.gz", hash = "sha256:b4fa3a7a0be38243123cf9d1f3518da10c51bdb165a2b2985566247f9155a7d3", size = 209359, upload-time = "2022-12-21T15:25:22.732Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/54/d0/d04f1d1e064ac901439699ee097f58688caadea42498ec9c4b4ad2ef84ab/pip_requirements_parser-32.0.1-py3-none-any.whl", hash = "sha256:4659bc2a667783e7a15d190f6fccf8b2486685b6dba4c19c3876314769c57526", size = 35648, upload-time = "2022-12-21T15:25:21.046Z" },
-]
-
-[[package]]
-name = "pj-fandom-api"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "certifi" },
-    { name = "colorlog" },
-    { name = "django" },
-    { name = "django-autoslug" },
-    { name = "django-cors-headers" },
-    { name = "django-cotton" },
-    { name = "django-environ" },
-    { name = "django-filter" },
-    { name = "django-redis" },
-    { name = "django-tailwind" },
-    { name = "django-watson" },
-    { name = "djangorestframework" },
-    { name = "djangorestframework-api-key" },
-    { name = "drf-spectacular" },
-    { name = "psycopg2-binary" },
-    { name = "pygments" },
-    { name = "redis" },
-    { name = "tzdata" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "django-extensions" },
-    { name = "django-tailwind", extra = ["honcho"] },
-    { name = "djlint" },
-    { name = "pip-audit" },
-    { name = "requests" },
-    { name = "ruff" },
-    { name = "ty" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "certifi", specifier = "==2026.10.19" },
-    { name = "colorlog", specifier = ">=6.12.0" },
-    { name = "django", specifier = "==6.1.2" },
-    { name = "django-autoslug", specifier = ">=1.9.9" },
-    { name = "django-cors-headers", specifier = "==4.9.0" },
-    { name = "django-cotton", specifier = ">=2.9.0,<3" },
-    { name = "django-environ", specifier = "==0.14.0" },
-    { name = "django-filter", specifier = "==26.2" },
-    { name = "django-redis", specifier = ">=7.0.0" },
-    { name = "django-tailwind", specifier = ">=4.6.0" },
-    { name = "django-watson", specifier = "==1.6.3" },
-    { name = "djangorestframework", specifier = "==3.18.3" },
-    { name = "djangorestframework-api-key", specifier = "==3.1.0" },
-    { name = "drf-spectacular", specifier = "==0.30.0" },
-    { name = "psycopg2-binary", specifier = "==2.9.13" },
-    { name = "pygments", specifier = "==2.21.0" },
-    { name = "redis", specifier = ">=8.1.0" },
-    { name = "tzdata", specifier = "==2026.5" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "django-extensions", specifier = ">=4.1" },
-    { name = "django-tailwind", extras = ["honcho"], specifier = ">=4.6.0" },
-    { name = "djlint", specifier = ">=1.49.10" },
-    { name = "pip-audit", specifier = ">=2.10.1" },
-    { name = "requests", specifier = "==2.34.2" },
-    { name = "ruff", specifier = ">=0.16.3" },
-    { name = "ty", specifier = ">=0.0.73" },
 ]
 
 [[package]]
@@ -1222,4 +1235,13 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e3/05/b17359e1cefb4f909b5e40b1b90a496d987258916dbbf88e842c729f510e/urllib3-2.8.0.tar.gz", hash = "sha256:63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63", size = 458972, upload-time = "2026-09-15T19:29:36.253Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl", hash = "sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3", size = 135717, upload-time = "2026-09-15T19:29:34.577Z" },
+]
+
+[[package]]
+name = "whitenoise"
+version = "6.12.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cb/2a/55b3f3a4ec326cd077c1c3defeee656b9298372a69229134d930151acd01/whitenoise-6.12.0.tar.gz", hash = "sha256:f723ebb76a112e98816ff80fcea0a6c9b8ecde835f8ddda25df7a30a3c2db6ad", size = 26841, upload-time = "2026-02-27T00:05:42.028Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/db/eb/d5583a11486211f3ebd4b385545ae787f32363d453c19fffd81106c9c138/whitenoise-6.12.0-py3-none-any.whl", hash = "sha256:fc5e8c572e33ebf24795b47b6a7da8da3c00cff2349f5b04c02f28d0cc5a3cc2", size = 20302, upload-time = "2026-02-27T00:05:40.086Z" },
 ]

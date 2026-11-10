@@ -28,10 +28,15 @@ X_FRAME_OPTIONS = 'DENY'
 
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS')
 
-# Serve static (admin + Swagger UI) assets without a separate web server.
-# Requires `whitenoise` added to requirements/production.txt.
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+# Serve collected assets after SecurityMiddleware, including its HTTPS redirect.
+# Copy the base list so importing production does not mutate other settings.
+MIDDLEWARE = MIDDLEWARE.copy()
+MIDDLEWARE.insert(
+    MIDDLEWARE.index('django.middleware.security.SecurityMiddleware') + 1,
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+)
 STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
     'staticfiles': {
         'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     },

@@ -1,7 +1,7 @@
 {
-  "name": "website",
+  "name": "demigod-api-website",
   "version": "4.6.0",
-  "description": "",
+  "description": "Website and frontend assets for Demigod API, an unofficial Percy Jackson and Riordanverse reference API.",
   "scripts": {
     "start": "npm run dev",
     "build": "npm run build:clean && npm run build:swagger && npm run build:tailwind && npm run build:scripts",
