@@ -2864,7 +2864,7 @@ This section describes routes and behaviors present in the code and test suite. 
 | `POST` | `/auth/request-key/` | Request a key using `consumer_name` and `email` |
 | `POST` | `/auth/verify-key/` | Verify key from `X-API-Key` header |
 
-Except for the directory itself, these routes are outside `/api/v1/`. The directory, schema, and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Key request and verification responses are rate-limited by client IP.
+Except for the directory itself, these routes are outside `/api/v1/`. The directory, schema, and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Swagger UI uses the website's shared light/dark preference and pinned, locally served assets; its Authorize control keeps entered keys in memory only, not across reloads. The official request/response interceptors and CSRF handling are retained, and external schema validation is disabled. ReDoc remains unchanged. Key request and verification responses are rate-limited by client IP.
 
 Unlike the public key request and verification endpoints, `POST /auth/revoke-key/` requires `X-API-Key` and revokes only the key used for that request. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
 

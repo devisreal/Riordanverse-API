@@ -16,11 +16,7 @@ DATABASES = {
 
 # Development helpers belong here, independent of the .env DEBUG value.
 # Copy the base lists so importing development settings does not mutate them.
-INSTALLED_APPS = [*INSTALLED_APPS, 'django_extensions', 'django_browser_reload']
-MIDDLEWARE = [
-    *MIDDLEWARE,
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
-]
+INSTALLED_APPS = [*INSTALLED_APPS, 'django_extensions']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

@@ -206,7 +206,13 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
     'SERVE_AUTHENTICATION': [],
-    'SWAGGER_UI_SETTINGS': {'tagsSorter': None},
+    'SWAGGER_UI_SETTINGS': {
+        'tagsSorter': None,
+        'filter': True,
+        'persistAuthorization': False,
+        # Do not send this schema or API information to a third-party validator.
+        'validatorUrl': None,
+    },
     'SCHEMA_PATH_PREFIX': r'/api/v1',
     'TAGS': [
         {

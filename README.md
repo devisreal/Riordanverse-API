@@ -63,7 +63,7 @@ The following collections have list and slug-detail routes unless noted:
 Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 
 - `GET /api/schema/` — OpenAPI 3 schema (YAML by default; add `?format=json` for JSON).
-- `GET /api/docs/` — Swagger UI.
+- `GET /api/docs/` — branded Swagger UI with shared light/dark theme controls and locally served assets.
 - `GET /api/redoc/` — ReDoc.
 - `GET /health/live/` — process liveness.
 - `GET /health/ready/` — checks PostgreSQL readiness.
@@ -73,6 +73,13 @@ Public health, API-key, and documentation endpoints are outside `/api/v1/`:
 To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`; it revokes only the presented key and requires authentication.
 
 Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups. Versioned endpoints return JSON rather than the DRF browsable API. Normal browser requests receive JSON; requests accepting only `text/html` receive `406 Not Acceptable`, and `?format=api` is not supported. `/api/schema/` retains its YAML/JSON schema formats.
+
+Swagger uses pinned, locally served `swagger-ui-dist` assets (see
+`website/static/vendor/swagger-ui/README.txt` for version and license details).
+Its theme shares the website's saved preference, while API keys entered through
+Authorize remain in memory only; authorization is not persisted across reloads.
+The official drf-spectacular initializer preserves CSRF and request/response
+interceptors. No external schema validator is contacted. ReDoc remains unchanged.
 
 There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses. Powers are embedded in Character details and available through the Character-scoped `/characters/<slug>/powers/` subresource.
 
@@ -192,11 +199,11 @@ This uses `Procfile.tailwind` through Honcho. Alternatively, run
 `uv run python manage.py runserver` and `uv run python manage.py tailwind start`
 in separate terminals; both default to development settings. In that case, run
 `npm run dev:scripts --prefix website/static_src` in another terminal for animation
-script changes. Browser reload is registered only when `DEBUG=True`.
+script changes. Automatic browser reload is not configured.
 
 For deployment, install frontend dependencies including dev dependencies (the CSS
-and JavaScript build tools), then compile CSS and the local Motion bundle **before**
-collecting static files:
+and JavaScript build tools), then compile CSS, the local Motion bundle, and the
+pinned Swagger UI assets **before** collecting static files:
 
 ```bash
 npm ci --include=dev --prefix website/static_src
@@ -206,7 +213,8 @@ uv run python manage.py collectstatic --noinput --settings=config.settings.produ
 
 Production commands require the production environment variables and dependencies
 to be configured. Generated CSS at `website/static/css/dist/styles.css` and the
-script at `website/static/website/js/dist/animations.js` are Git-ignored, so every
+script at `website/static/website/js/dist/animations.js`, along with Swagger's
+`website/static/vendor/swagger-ui/dist/` directory, are Git-ignored, so every
 fresh checkout or deployment needs a build. The production
 server does not run the watcher or `Procfile.tailwind`.
 
@@ -222,7 +230,7 @@ git diff --check
 ```
 
 The test suites inspect built CSS, JavaScript, and their static assets, so build
-once before running tests on a fresh checkout. CI builds both before database tests
+once before running tests on a fresh checkout. CI builds all assets before database tests
 and checks template formatting/linting. Narrow `H026` suppressions apply only to
 Cotton variable declarations, where empty defaults are component metadata rather
 than empty rendered HTML attributes.
