@@ -46,22 +46,27 @@
       </div>
     </div>
     <div data-reveal class="hero-inspect min-w-0 md:max-desktop:w-full">
-      <div class="inspect-heading mobile-copy mx-1 mb-3.5 flex items-center justify-between gap-2 md:hidden [&_h2]:flex [&_h2]:items-center [&_h2]:gap-2 [&_h2]:text-[14px] [&_h2]:tracking-normal [&_svg]:text-accent [&_.badge]:text-[9px]">
+      <div class="inspect-heading mobile-copy mx-1 mb-3.5 flex items-center justify-between gap-2 max-[360px]:flex-wrap md:hidden [&_h2]:flex [&_h2]:items-center [&_h2]:gap-2 [&_h2]:text-[14px] [&_h2]:tracking-normal [&_svg]:text-accent [&_.badge]:text-[9px]">
         <h2>
           <c-icons.terminal size="18" />
           Interactive Inspect
         </h2>
-        <c-ui.badge>
-          Example 200 OK
-        </c-ui.badge>
+        <c-ui.example-health variant="mobile" />
       </div>
       <div class="console min-h-0 overflow-hidden rounded-3xl border border-border bg-code-panel text-code-text shadow-[0_25px_40px_-15px_rgb(2_6_23/30%)] desktop:min-h-157 [&_.copy-button]:border-white/10 [&_.copy-button]:bg-white/6 [&_.copy-button]:text-[#cbd5e1] [&_.copy-button:hover]:border-accent [&_.code-panel-label]:mb-3 [&_.code-panel-label]:flex [&_.code-panel-label]:items-center [&_.code-panel-label]:justify-between [&_.code-panel-label]:gap-3 [&_.code-panel-label]:font-mono [&_.code-panel-label]:text-[11px] [&_.code-panel-label]:leading-[normal] [&_.code-panel-label]:text-[#cbd5e1] [&_.code-panel-label>span]:inline-flex [&_.code-panel-label>span]:items-center [&_.code-panel-label>span]:gap-2 [&_.code-panel-label_.badge]:border-[rgb(45_212_191/20%)] [&_.code-panel-label_.badge]:bg-[rgb(45_212_191/12%)] [&_.code-panel-label_.badge]:text-[#5eead4] max-md:[&_.code-block]:rounded-none max-md:[&_.code-block]:border-0 max-md:[&_.code-block]:bg-transparent max-md:[&_.code-block]:p-0 max-md:[&_.code-block]:text-[10px] max-md:[&_.code-block]:leading-[2.2]"
            data-code-tabs>
-        <div class="console-topbar flex min-w-0 items-center justify-between border-b border-white/8 bg-code-top px-5 py-3.5 font-mono text-[11px] leading-[normal] text-[#94a3b8] max-md:px-4 max-md:py-3 max-md:text-[10px]">
-          <div class="console-title flex min-w-0 items-center gap-4 max-md:gap-3 max-md:overflow-hidden max-md:[&>span:last-child]:truncate">
+        <div class="console-topbar flex min-w-0 items-center justify-between gap-2 border-b border-white/8 bg-code-top px-5 py-3.5 font-mono text-[11px] leading-[normal] text-[#94a3b8] max-md:px-4 max-md:py-3 max-md:text-[10px]">
+          <div class="console-title flex min-w-0 items-center gap-4 md:max-xl:gap-2 max-md:gap-3 max-md:overflow-hidden max-md:[&>span:last-child]:truncate">
             <span class="console-dots flex shrink-0 items-center gap-2 max-md:gap-1.5 [&_i]:size-3 [&_i]:rounded-[99px] [&_i]:bg-[#f43f5e] [&_i]:opacity-80 [&_i:nth-child(2)]:bg-[#f59e0b] [&_i:nth-child(3)]:bg-[#10b981] max-md:[&_i]:size-2.5"><i aria-hidden="true">&nbsp;</i><i aria-hidden="true">&nbsp;</i><i aria-hidden="true">&nbsp;</i></span><span class="mobile-copy md:hidden">{{ origin }}</span>
+            <div class="hidden md:block">
+              <c-ui.example-health />
+            </div>
           </div>
-          <span class="console-status desktop-copy rounded-[999px] bg-[rgb(16_185_129/15%)] px-2 py-0.75 text-[10px] text-[#34d399] max-md:hidden">EXAMPLE 200</span>
+          <div class="desktop-copy flex shrink-0 items-center gap-2 whitespace-nowrap max-md:hidden"
+               aria-label="Illustrative response status and timing">
+            <span class="console-status rounded-full bg-emerald-500/20 px-2 py-0.5 font-semibold text-emerald-400">STATUS 200</span>
+            <span>18.4ms</span>
+          </div>
           <c-ui.copy-button target="request-code"
                             label="Copy"
                             class="mobile-copy console-mobile-copy md:hidden" />
