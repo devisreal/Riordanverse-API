@@ -14,8 +14,13 @@ DATABASES = {
     }
 }
 
-# Handy for `manage.py shell_plus`, etc. — optional, dev-only dependency
-INSTALLED_APPS += ['django_extensions']
+# Development helpers belong here, independent of the .env DEBUG value.
+# Copy the base lists so importing development settings does not mutate them.
+INSTALLED_APPS = [*INSTALLED_APPS, 'django_extensions', 'django_browser_reload']
+MIDDLEWARE = [
+    *MIDDLEWARE,
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
