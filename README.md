@@ -119,6 +119,15 @@ uv sync
 cp .env.example .env
 ```
 
+`pyproject.toml` declares direct dependencies and development tools; `uv.lock` pins
+both direct and transitive dependencies. `requirements.txt` is an export of that
+same environment, including the development group. Regenerate it after dependency
+changes rather than deleting required transitive packages by hand:
+
+```bash
+uv export --locked --no-hashes --no-annotate --no-emit-project --no-header --output-file requirements.txt
+```
+
 Configure the database and `SECRET_KEY` in `.env`. The development settings connect to PostgreSQL using `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`. Set `REDIS_URL` to your Redis instance; the example file provides a local URL. The API-key header defaults to `X-API-Key` (`API_KEY_CUSTOM_HEADER=HTTP_X_API_KEY`).
 
 Apply migrations, create an admin user if needed, then run the server:
