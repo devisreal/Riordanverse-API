@@ -192,7 +192,7 @@ class HomeViewTests(SimpleTestCase):
                 self.assertIn(reverse(name), page.links)
         self.assertIn('https://github.com/devisreal/Percy-Jackson-Fandom-API', page.links)
 
-    def test_external_links_open_safely_in_new_tabs_and_internal_links_do_not(self):
+    def test_external_links_open_safely_in_new_tabs_and_internal_navigation_does_not(self):
         _, page = self.page()
         external_count = 0
         for tag, attrs in page.elements:
@@ -205,9 +205,30 @@ class HomeViewTests(SimpleTestCase):
                     external_count += 1
                     self.assertEqual(attrs.get('target'), '_blank')
                     self.assertTrue({'noopener', 'noreferrer'} <= set(attrs.get('rel', '').split()))
+                elif 'example-health' in attrs.get('class', '').split():
+                    self.assertEqual(href, reverse('health-live'))
+                    self.assertEqual(attrs.get('target'), '_blank')
+                    self.assertTrue({'noopener', 'noreferrer'} <= set(attrs.get('rel', '').split()))
                 else:
                     self.assertNotEqual(attrs.get('target'), '_blank')
         self.assertGreater(external_count, 0)
+
+    def test_example_header_health_links_and_timing_remain_illustrative(self):
+        response, page = self.page()
+        health_links = [
+            attrs
+            for tag, attrs in page.elements
+            if tag == 'a' and 'example-health' in attrs.get('class', '').split()
+        ]
+        self.assertEqual(len(health_links), 2)
+        for attrs in health_links:
+            self.assertEqual(attrs['href'], reverse('health-live'))
+            self.assertIn('illustrative, not live measurements', attrs['title'])
+        self.assertContains(response, 'Health: Operational', count=2)
+        self.assertContains(response, 'STATUS 200', count=1)
+        self.assertContains(response, '18.4ms', count=1)
+        self.assertContains(response, 'Static example · not live')
+        self.assertNotContains(response, 'api.pjo.archive.org')
 
     def test_footer_specifications_have_list_items_and_a_separate_source_link(self):
         response, page = self.page()

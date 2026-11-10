@@ -79,14 +79,15 @@ class BrowserReloadSettingsTests(SimpleTestCase):
                         self.assertFalse(snapshot['debug'])
                         self.assertIsNone(snapshot['reload_view'])
 
-    def test_development_enables_reload_regardless_of_environment_debug(self):
+    def test_development_excludes_reload_regardless_of_environment_debug(self):
         for debug in (False, True):
             with self.subTest(environment_debug=debug):
                 snapshot = self.snapshot('development', debug)
                 self.assertTrue(snapshot['debug'])
-                self.assertEqual(snapshot['apps'].count(RELOAD_APP), 1)
-                self.assertEqual(snapshot['middleware'].count(RELOAD_MIDDLEWARE), 1)
-                self.assertEqual(snapshot['reload_view'], 'django_browser_reload:events')
+                self.assertNotIn(RELOAD_APP, snapshot['apps'])
+                self.assertNotIn(RELOAD_MIDDLEWARE, snapshot['middleware'])
+                self.assertIsNone(snapshot['reload_view'])
+                self.assertEqual(snapshot['apps'].count('django_extensions'), 1)
                 self.assertNotIn(RELOAD_APP, snapshot['base_apps'])
                 self.assertNotIn('django_extensions', snapshot['base_apps'])
                 self.assertNotIn(RELOAD_MIDDLEWARE, snapshot['base_middleware'])
