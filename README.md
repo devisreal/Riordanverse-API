@@ -1,504 +1,320 @@
 # Percy Jackson Fandom API
 
-A Django REST API for Riordanverse reference data. The implemented v1 API includes books and their typed casts, characters, gods, Titans, monsters, creatures, weapons, locations, quests, prophecies, events, cabins, factions, images, and global search. Public lore endpoints are read-only and require an API key; the API directory, key request/verification, health-check, and API documentation routes are public.
+A RESTful API for the Riordanverse. [Visit the website](https://percy-jackson-fandom.up.railway.app/).
 
-> **Status:** The versioned API, seed commands, authentication, filtering, pagination, typed relationships, and tests are implemented. OpenAPI schema, Swagger UI, and ReDoc are available at `/api/schema/`, `/api/docs/`, and `/api/redoc/`. See the [API reference](API.md) for routes, filters, response shapes, and examples.
+> **Hosted availability:** The linked address was used for the test deployment and
+> returned HTTP 404 when checked on November 11, 2026. Until a permanent hosted
+> address is confirmed, the examples below use a locally running instance.
 
-## Features
+## Table of contents
 
-- PostgreSQL-backed relational models; no `GenericForeignKey` for typed entity relationships.
-- JSON-only API responses, including in a browser; interactive documentation remains at `/api/docs/` and `/api/redoc/`.
-- Paginated list responses use `{ "data": [...], "meta": {...} }`.
-- API-key authentication via `X-API-Key`, Redis caching for valid key checks, per-key throttling, and request/security logging.
-- Strict choice filters and lowercase-only boolean filters; invalid values return a structured `400` response.
-- `?sort=<allowed-field>[&order=asc|desc]` with endpoint-specific allowlists; `order` defaults to `asc` when omitted, and legacy `?ordering=` remains supported.
-- Typed relationships in API responses: Book narrators/cast/antagonists, family graphs, quest participants/casualties, Event casualties, prophecy subjects, faction members, location controllers, and Monster defeat records.
-- Image galleries for books, characters, gods, Titans, monsters, weapons, and locations, plus a paginated global image collection.
-- Global search via django-watson, with a typed result for each supported entity.
-- Idempotent seed commands for canonical data and relationships.
+- [Use the API](#use-the-api)
+  - [Define the base URL](#define-the-base-url)
+  - [Get an API key](#get-an-api-key)
+  - [Make your first request](#make-your-first-request)
+  - [Filter and paginate results](#filter-and-paginate-results)
+  - [Understand the response](#understand-the-response)
+  - [Authentication, limits, and errors](#authentication-limits-and-errors)
+- [API features](#api-features)
+- [Setup](#setup)
+- [Database setup](#database-setup)
+- [Run the project](#run-the-project)
+- [Docker and Compose](#docker-and-compose)
+- [Contributing](#contributing)
+- [Deployment](#deployment)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
-## Implemented API routes
+## Use the API
 
-All versioned routes are under `/api/v1/` and use trailing slashes. `GET /api/v1/` is a public, JSON-only directory of the 14 collections plus search; it returns a flat object of names to relative URLs without pagination or database/cache access. Following those links requires an API key, and search also requires `?q=<query>`. For example:
+You do not need to clone the project to use a hosted instance. For self-hosting or
+local development, follow [Setup](#setup) first. All examples use trailing slashes.
 
-```json
-{
-  "books": "/api/v1/books/",
-  "characters": "/api/v1/characters/",
-  "gods": "/api/v1/gods/",
-  "titans": "/api/v1/titans/",
-  "monsters": "/api/v1/monsters/",
-  "creatures": "/api/v1/creatures/",
-  "weapons": "/api/v1/weapons/",
-  "locations": "/api/v1/locations/",
-  "quests": "/api/v1/quests/",
-  "prophecies": "/api/v1/prophecies/",
-  "events": "/api/v1/events/",
-  "cabins": "/api/v1/cabins/",
-  "factions": "/api/v1/factions/",
-  "images": "/api/v1/images/",
-  "search": "/api/v1/search/"
-}
-```
+Documentation: [API reference](API.md) · [Swagger UI](http://127.0.0.1:8000/api/docs/)
+· [ReDoc](http://127.0.0.1:8000/api/redoc/)
+· [OpenAPI schema](http://127.0.0.1:8000/api/schema/).
+The browser links above target a local server; on a hosted instance, use the same
+paths under that instance's origin.
 
-The following collections have list and slug-detail routes unless noted:
+### Define the base URL
 
-| Resource | Routes and subresources |
-| --- | --- |
-| Books | `/books/`, `/books/<slug>/`, `/books/<slug>/characters/`, `/books/<slug>/gods/`, `/books/<slug>/monsters/`, `/books/<slug>/locations/`, `/books/<slug>/quests/`, `/books/<slug>/images/` |
-| Characters | `/characters/`, `/characters/<slug>/`, `/characters/<slug>/images/`, `/characters/<slug>/powers/`, `/characters/<slug>/weapons/`, `/characters/<slug>/quests/` |
-| Gods | `/gods/`, `/gods/<slug>/`, `/gods/<slug>/images/`, `/gods/<slug>/children/`, `/gods/<slug>/weapons/` |
-| Titans | `/titans/`, `/titans/<slug>/`, `/titans/<slug>/images/` |
-| Monsters | `/monsters/`, `/monsters/<slug>/`, `/monsters/<slug>/images/` |
-| Creatures | `/creatures/`, `/creatures/<slug>/`, `/creatures/<slug>/members/` |
-| Weapons | `/weapons/`, `/weapons/<slug>/`, `/weapons/<slug>/images/` |
-| Locations | `/locations/`, `/locations/<slug>/`, `/locations/<slug>/images/` |
-| Quests | `/quests/`, `/quests/<slug>/`, `/quests/<slug>/participants/` |
-| Prophecies and Events | `/prophecies/`, `/prophecies/<slug>/`, `/events/`, `/events/<slug>/` |
-| Cabins | `/cabins/`, `/cabins/<slug>/`, `/cabins/number/<number>/`, `/cabins/<slug>/campers/` |
-| Factions | `/factions/`, `/factions/<slug>/`, `/factions/<slug>/members/` |
-| Images | `/images/` global collection; nested galleries are listed with their entities |
-| Search | `/search/?q=<query>`; optional `type=<entity-type>` |
-
-Public health, API-key, and documentation endpoints are outside `/api/v1/`:
-
-- `GET /api/schema/` — OpenAPI 3 schema (YAML by default; add `?format=json` for JSON).
-- `GET /api/docs/` — branded Swagger UI with shared light/dark theme controls and locally served assets.
-- `GET /api/redoc/` — ReDoc.
-- `GET /health/live/` — process liveness.
-- `GET /health/ready/` — checks PostgreSQL readiness.
-- `POST /auth/request-key/` — request a key with `consumer_name` and `email`.
-- `POST /auth/verify-key/` — verify a key passed in the configured API-key header.
-
-To revoke a key, send `POST /auth/revoke-key/` with that same key in `X-API-Key`; it revokes only the presented key and requires authentication.
-
-Swagger UI and ReDoc list Authentication and Health first, followed by the resource groups. Versioned endpoints return JSON rather than the DRF browsable API. Normal browser requests receive JSON; requests accepting only `text/html` receive `406 Not Acceptable`, and `?format=api` is not supported. `/api/schema/` retains its YAML/JSON schema formats.
-
-Swagger uses pinned, locally served `swagger-ui-dist` assets (see
-`website/static/vendor/swagger-ui/README.txt` for version and license details).
-Its theme shares the website's saved preference, while API keys entered through
-Authorize remain in memory only; authorization is not persisted across reloads.
-The official drf-spectacular initializer preserves CSRF and request/response
-interceptors. No external schema validator is contacted. ReDoc remains unchanged.
-
-There is no standalone family/divine-relationship or Power collection endpoint. The global `/images/` collection and typed entity galleries return image metadata and URLs; the API does not proxy or host the image bytes. Family graphs are embedded in God, Titan, Character, Monster, and Creature detail responses. Powers are embedded in Character details and available through the Character-scoped `/characters/<slug>/powers/` subresource.
-
-## Relationship response examples
-
-God, Titan, Character, Monster, and Creature detail responses include `type` and a nested `family` object. Each family group contains typed `{ "name", "type", "slug" }` references:
-
-```json
-{
-  "type": "monster",
-  "family": {
-    "parents": [{"name": "Pasiphaë", "type": "character", "slug": "pasiphae"}],
-    "siblings": [],
-    "consorts": [],
-    "children": []
-  }
-}
-```
-
-Book details expose typed `narrators`, `main_characters`, and `antagonists` references, while `/books/<slug>/characters/` and `/books/<slug>/gods/` list the linked characters and gods. Quest details provide typed participant and casualty references; Event details expose typed casualties and per-entity participant slug lists; Prophecy details expose typed subjects; Faction details and member subresources expose typed members. These are response relationships, not separate relationship CRUD endpoints.
-
-## Quick start
-
-### Requirements
-
-- Python **3.14+**.
-- PostgreSQL for the development and production settings.
-- Redis is recommended for shared API-key caching and rate-limit counters. The API continues if Redis is unavailable, using PostgreSQL for key validation and process-local counters as a fallback.
-- [`uv`](https://docs.astral.sh/uv/) for dependency and virtual-environment management.
-
-### Install and configure
+In your terminal, set the server origin **without** `/api/v1` or a trailing slash:
 
 ```bash
-git clone <repo-url>
-cd pj-fandom-api
-uv sync
-cp .env.example .env
+export BASE_URL="http://127.0.0.1:8000"
 ```
 
-`pyproject.toml` declares direct dependencies and development tools; `uv.lock` pins
-both direct and transitive dependencies. `requirements.txt` is an export of that
-same environment, including the development group. Regenerate it after dependency
-changes rather than deleting required transitive packages by hand:
+Replace it with the confirmed HTTPS website origin when using a hosted instance.
+The public directory lists the available collections without requiring a key:
 
 ```bash
-uv export --locked --no-hashes --no-annotate --no-emit-project --no-header --output-file requirements.txt
+curl "$BASE_URL/api/v1/"
 ```
 
-Configure the database and `SECRET_KEY` in `.env`. The development settings connect to PostgreSQL using `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`. Set `REDIS_URL` to your Redis instance; the example file provides a local URL. The API-key header defaults to `X-API-Key` (`API_KEY_CUSTOM_HEADER=HTTP_X_API_KEY`).
+### Get an API key
 
-Apply migrations, create an admin user if needed, then run the server:
+Request a key using your application name and contact email:
 
 ```bash
-uv run python manage.py migrate --settings=config.settings.development
-uv run python manage.py createsuperuser --settings=config.settings.development
-uv run python manage.py runserver --settings=config.settings.development
-```
-
-Development keeps API-key authentication enabled. Tests use separate SQLite settings and are not a substitute for running the server with development or production settings.
-
-### Website and Tailwind workflow
-
-The public homepage at `/` uses Django templates in `website/templates/website/`.
-`home.html` extends `base.html`, which provides `title`, `extra_head`, `content`,
-and `extra_js` blocks. It renders a static, database-independent landing page with
-links to the real API directory and documentation. Code examples are illustrative,
-not live requests; they use the current request origin and the API's actual header,
-fields, and key-request contract. API endpoints remain JSON-only.
-
-The responsive page includes a top mobile menu, request/response tabs, clipboard
-controls with a manual-copy fallback, and reduced-motion support. There is no
-bottom mobile bar. A sun/moon button switches themes at every viewport, with a
-Light/Dark selector inside the mobile menu. The tablet navigation uses compact
-spacing and an “Explore API” label to accommodate the control. JavaScript defaults
-to light mode and honors a saved `localStorage.theme` value of `light` or `dark`;
-without JavaScript, the OS color preference applies and theme controls stay hidden.
-Explicit `html.light`/`html.dark` classes take precedence on initial load. The local
-`website/static/website/js/theme.js` resolves the theme before CSS loads and saves
-later selections when storage is available; controls still work when it is blocked.
-The hero and section/card groups use locally bundled Motion mini for restrained
-14px, 400ms slide-up reveals. Every card grid (including hero overview stats) uses
-an 80ms stagger in DOM order, with a distinct delay for every card; separate
-observer callbacks do not reset its position. Non-card entrances retain their
-150ms stagger cap. Each target reveals only once per page load; scrolling back, resizing, theme changes, or returning through
-browser history do not replay it. A reload resets the sequence. Pending content is
-not hidden by CSS, so it remains readable without JavaScript or the animation
-bundle. Reduced-motion users get a static page; enabling that preference during a
-reveal cancels effects immediately and keeps the page static until reload. Focusing
-a control also cancels/skips its containing reveal. Third-party notices are in
-`website/static/vendor/motion/`. The documented 3.2KB mini-library figure is not the
-size of our complete animation bundle.
-
-Run the dependency-free theme/reveal behavior tests with
-`node --test website/tests_js/*.test.mjs`.
-
-Fonts, Lucide SVGs, background images, and archive images are served locally; no
-runtime font, icon, Tailwind, or Motion CDN is required. The landing uses WebP backgrounds
-and lore images; superseded background/Camp/Olympus JPEGs are not shipped. Visible
-source credits appear on the three lore cards. The cropped trident photograph also links its CC BY-SA 3.0 license. Font
-licenses, image sources, processing details, and asset checksums are documented
-under `website/static/website/`. Credits and provenance do **not** grant rights to
-the Camp/Olympus or original Stitch images; their redistribution rights remain
-unverified.
-
-Author layout, spacing, typography, borders, and responsive states with Tailwind
-utilities in the Django/Cotton templates. `website/static_src/src/styles.css` uses
-Tailwind v4's CSS-first `@theme` configuration for fonts, breakpoints, and semantic
-color utilities such as `bg-surface` and `text-accent`. Its remaining custom CSS is
-limited to shared theme/global defaults, generated syntax tokens, accessibility,
-and progressive-enhancement behavior—not a parallel component stylesheet.
-
-The current frontend toolchain uses **Node.js 22+ and npm**. After `uv sync` and
-configuring `.env`, install the locked frontend dependencies from the project root:
-
-```bash
-npm ci --prefix website/static_src
-```
-
-Start Django, the Tailwind CSS watcher, and the Motion script watcher together:
-
-```bash
-DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py tailwind dev
-```
-
-This uses `Procfile.tailwind` through Honcho. Alternatively, run
-`uv run python manage.py runserver` and `uv run python manage.py tailwind start`
-in separate terminals; both default to development settings. In that case, run
-`npm run dev:scripts --prefix website/static_src` in another terminal for animation
-script changes. Automatic browser reload is not configured.
-
-For deployment, install frontend dependencies including dev dependencies (the CSS
-and JavaScript build tools), then compile CSS, the local Motion bundle, and the
-pinned Swagger UI assets **before** collecting static files:
-
-```bash
-npm ci --include=dev --prefix website/static_src
-DJANGO_SETTINGS_MODULE=config.settings.production uv run python manage.py tailwind build
-uv run python manage.py collectstatic --noinput --settings=config.settings.production
-```
-
-Production commands require the production environment variables and dependencies
-to be configured. Generated CSS at `website/static/css/dist/styles.css` and the
-script at `website/static/website/js/dist/animations.js`, along with Swagger's
-`website/static/vendor/swagger-ui/dist/` directory, are Git-ignored, so every
-fresh checkout or deployment needs a build. The production
-server does not run the watcher or `Procfile.tailwind`.
-
-Format and check templates with djLint, and Python with Ruff:
-
-```bash
-uv run djlint website/templates/ --reformat
-uv run djlint website/templates/ --check --lint
-uv run ruff format .
-uv run ruff check .
-uv run ruff format --check .
-git diff --check
-```
-
-The test suites inspect built CSS, JavaScript, and their static assets, so build
-once before running tests on a fresh checkout. CI builds all assets before database tests
-and checks template formatting/linting. Narrow `H026` suppressions apply only to
-Cotton variable declarations, where empty defaults are component metadata rather
-than empty rendered HTML attributes.
-
-Prettier and Bun are not configured.
-
-#### Cotton components and Lucide icons
-
-Django Cotton is installed through `uv sync` and registered in `INSTALLED_APPS`.
-It automatically configures the template loader; components live in
-`website/templates/cotton/`, while page templates stay in
-`website/templates/website/`. Tailwind's existing source pattern scans both.
-
-Lucide icons are local, server-rendered Cotton SVG components: no icon font,
-JavaScript initialization, runtime CDN, or npm icon dependency is needed.
-
-```html
-<!-- Decorative beside visible text: hidden from assistive technology by default. -->
-<c-icons.book-open class="size-5 text-emerald-500" />
-
-<!-- Standalone meaningful icon: label supplies its accessible name. -->
-<c-icons.search label="Search" size="20" stroke-width="1.5" />
-
-<!-- Icon-only controls need a name on the control, not just on its icon. -->
-<button type="button" aria-label="Open navigation">
-  <c-icons.menu />
-</button>
-```
-
-Available icons include `arrow-right`, `book-open`, `code`, `copy`, `external-link`,
-`menu`, `search`, and `x`, plus the landing-page subset listed in
-`website/static/vendor/lucide/README.txt`. For example, `<c-icons.book-open />` resolves to
-`website/templates/cotton/icons/book_open.html`. Each delegates to `icons/base.html`
-for `currentColor`, size, stroke width, and accessibility behavior. Additional
-attributes such as `class` and `data-*` are forwarded to the SVG. Interactive
-behavior (for example, opening a menu) is separate from rendering an icon.
-
-The paths are vendored from **lucide-static 1.70.0**. Its full ISC license and
-Feather-derived MIT notices are preserved in
-`website/static/vendor/lucide/LICENSE.txt`, alongside source/version information
-in `README.txt`. These third-party assets retain their upstream licenses. When
-adding an icon, copy its paths from a pinned official Lucide release into a
-Cotton wrapper, retain the license notices, and rebuild Tailwind CSS.
-
-### Choose primary images in Django admin
-
-Staff with image and gallery-link change permissions can open **Images → Images → Choose primary images**, select an entity, review its linked thumbnails, and set or clear that gallery's primary image. The picker currently displays all images linked to one entity without filtering or pagination; a searchable entity selector is planned for a later phase.
-
-### Seed canonical data
-
-Run migrations first. Use the master command for a one-command setup, or run
-the individual commands below if you prefer step-by-step control. All seed
-commands are idempotent; use them only against the database you intend to
-populate.
-
-#### One-command setup
-
-```bash
-uv run python manage.py seed_all --settings=config.settings.development
-```
-
-`seed_all` runs every canonical seed command in dependency order and stops if
-a command fails. You can safely rerun it after correcting a seed issue.
-
-#### Step-by-step setup
-
-Run these commands in order if you want to seed individual datasets or inspect
-each command's output:
-
-```bash
-uv run python manage.py seed_books
-uv run python manage.py seed_gods
-uv run python manage.py seed_titans
-uv run python manage.py seed_characters
-uv run python manage.py seed_items
-uv run python manage.py seed_monsters
-uv run python manage.py seed_creatures
-uv run python manage.py seed_divine_relationships
-uv run python manage.py seed_book_relationships
-uv run python manage.py seed_powers
-uv run python manage.py seed_locations
-uv run python manage.py seed_cabins
-uv run python manage.py seed_factions
-uv run python manage.py seed_prophecies
-uv run python manage.py seed_events
-uv run python manage.py seed_quests
-uv run python manage.py seed_monster_defeats
-uv run python manage.py seed_images
-```
-
-Curated primary images are recorded per entity in
-`data/image_gallery_overrides.json` using `primary_file_title`. Running
-`seed_images` (also included in `seed_all`) restores these choices on a fresh
-or existing database and clears competing primary flags. Admin changes remain
-database-only until the corresponding seed override is updated.
-
-The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, 14 Powers, and 2,787 wiki image references from 330 entity pages (2,651 distinct `(url, source_url)` Image records after seeding; 15 pages have no image candidates). Wiki image records use `source_type=wiki`; license fields are null because the source does not expose machine-readable license metadata. These are seed-file record counts; unresolved typed entity references are warned about and skipped by the relevant seed command.
-
-## Local Docker Compose
-
-`compose.yaml` runs the application, PostgreSQL, and Redis locally using the
-same application Dockerfile intended for Railway. Create `.env` from
-`.env.example` if needed and set `SECRET_KEY`, then run:
-
-```bash
-docker compose up --build -d
-docker compose exec app python manage.py migrate --noinput
-```
-
-Open **http://localhost:8000**. The local-only `config.settings.compose` keeps
-WhiteNoise and Gunicorn but disables HTTPS redirects and secure-cookie requirements
-for localhost HTTP. Railway must continue to use `config.settings.production`.
-
-The database and cache are private to the Compose network. Database credentials
-come from the `DB_NAME`, `DB_USER`, and `DB_PASSWORD` values in `.env`, with local
-fallbacks defined in `compose.yaml`. Named volumes preserve their data between
-restarts. Migrations and seeding never run automatically during startup.
-
-Optional setup and useful commands:
-
-```bash
-docker compose exec app python manage.py seed_all
-docker compose exec app python manage.py createsuperuser
-docker compose logs -f app
-docker compose down
-```
-
-Rebuild after source changes; this setup does not use source bind mounts or
-auto-reload. `docker compose down` retains the named data volumes; adding `-v`
-would delete them. Do not use the Compose fallback credentials in production.
-
-## Production server and static assets
-
-Production uses **Gunicorn (WSGI)** and **WhiteNoise**; Uvicorn is not required.
-`config/wsgi.py` defaults to `config.settings.production`. Set the settings module
-explicitly in your hosting environment so a development override is not inherited.
-
-Install Python dependencies, build the frontend with Node.js 22+, then collect
-static assets. Set the required production environment variables before these
-commands (`SECRET_KEY`, `ALLOWED_HOSTS`, the `DB_*` settings, `REDIS_URL`, and
-`CORS_ALLOWED_ORIGINS`; use an empty value for CORS if cross-origin access is not needed):
-
-```bash
-export DJANGO_SETTINGS_MODULE=config.settings.production
-uv sync --locked --no-dev
-npm ci --prefix website/static_src
-npm run build --prefix website/static_src
-uv run --locked --no-dev python manage.py collectstatic --noinput
-uv run --locked --no-dev python manage.py check --deploy
-```
-
-Run database migrations once as a controlled release step, not inside each worker's
-startup. Seed data separately when appropriate. Start the web process with:
-
-```bash
-uv run --locked --no-dev gunicorn --config gunicorn.conf.py
-```
-
-`gunicorn.conf.py` loads `config.wsgi:application`, listens on `0.0.0.0:$PORT`
-(default `8000`), and uses `WEB_CONCURRENCY` workers (default `1`; size this for
-the hosting plan). Gunicorn errors go to stderr; Django retains its structured
-request logging without duplicate Gunicorn access logs. Do not use `runserver`
-for production.
-
-WhiteNoise runs immediately after Django's security middleware and serves the
-hashed, compressed files from `STATIC_ROOT`. Build assets **before** `collectstatic`;
-generated frontend files are not committed. The default file-storage backend is
-preserved separately; WhiteNoise does not serve user uploads.
-
-Use `/health/live/` for a process health check and `/health/ready/` for PostgreSQL
-readiness. Redis remains optional for availability, but enables shared quotas and
-caching. Configure email delivery for API-key verification before launch.
-
-**Before deployment behind a reverse proxy:** configure Django's trusted HTTPS
-forwarding for the chosen provider, otherwise HTTPS redirects can loop. Do not
-trust arbitrary forwarded headers; Gunicorn's forwarded-header trust and the
-API's client-IP handling also need a provider-specific review. Set the real
-`ALLOWED_HOSTS`, configure `CSRF_TRUSTED_ORIGINS` if needed, and review the existing
-one-year HSTS/subdomain/preload policy before exposing the domain. These commands
-wire the server and assets; they do not provision or deploy a hosting service.
-
-## Authentication and rate limits
-
-Request a key (shown only once):
-
-```bash
-curl -X POST http://127.0.0.1:8000/auth/request-key/ \
+curl -X POST "$BASE_URL/auth/request-key/" \
   -H 'Content-Type: application/json' \
   -d '{"consumer_name":"My Fan App","email":"dev@example.com"}'
 ```
 
-Use the returned key on v1 resource requests (the `/api/v1/` directory itself is public):
+The response's `api_key` is shown **only once**. Store it securely, then set it in
+your current terminal for the examples:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/characters/?type=demigod&is_demigod=true' \
-  -H 'X-API-Key: <your-key>'
+export API_KEY="<paste-your-key-here>"
 ```
 
-Authenticated requests are limited to **1,000 per key per fixed one-hour window**. Responses include `RateLimit-Limit`, `RateLimit-Remaining`, and `RateLimit-Reset`; throttled responses include `Retry-After`. Key request and verification routes are separately limited to **5 requests per hour per client IP**. If Redis is down, counters are process-local and are not shared between workers. `X-Request-ID` is returned on responses for request correlation.
+- Send the key in `X-API-Key`, not a URL query parameter.
+- Do not commit keys, include them in screenshots, or publish them in frontend bundles.
+- Browser JavaScript cannot keep a key secret. Use a server-side integration when
+  the key must stay private. Cross-origin browser calls also need an allowed CORS
+  origin **and** explicit permission for the `X-API-Key` request header; the current
+  default CORS header allowlist does not include it. See [browser access configuration](DEPLOYMENT.md#https-health-checks-and-browser-access).
+- Key issuance is immediate; there is no email-verification step. Key verification
+  below checks whether a key is valid, not whether an email address belongs to you.
 
-## Responses and query parameters
+### Make your first request
 
-List routes use the default page size of 20, configurable by `page` and `limit` (`limit` maximum 100):
+Fetch Percy Jackson by slug:
+
+```bash
+curl "$BASE_URL/api/v1/characters/percy-jackson/" \
+  -H "X-API-Key: $API_KEY"
+```
+
+For a server-side JavaScript application, the equivalent is:
+
+```javascript
+const baseUrl = process.env.BASE_URL;
+const apiKey = process.env.API_KEY;
+const response = await fetch(`${baseUrl}/api/v1/characters/percy-jackson/`, {
+  headers: { "X-API-Key": apiKey },
+});
+if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+const percy = await response.json();
+console.log(percy.name);
+```
+
+This example uses Node.js environment variables; do not copy a private key into
+client-side source code.
+
+### Filter and paginate results
+
+List Poseidon's children, requesting five results on the first page:
+
+```bash
+curl "$BASE_URL/api/v1/characters/?divine_parent=poseidon&limit=5&page=1" \
+  -H "X-API-Key: $API_KEY"
+```
+
+List routes default to 20 results per page. Use `page` and `limit` (maximum 100).
+Filters are endpoint-specific; see the [full filter reference](API.md#list-filters).
+Sorting uses `sort` and optional `order=asc|desc`:
+
+```bash
+curl "$BASE_URL/api/v1/characters/?sort=name&order=asc&limit=5" \
+  -H "X-API-Key: $API_KEY"
+```
+
+### Understand the response
+
+A detail route returns one resource object. This is a **verified excerpt** of the
+seeded Percy Jackson detail response; additional fields are omitted:
+
+```json
+{
+  "name": "Percy Jackson",
+  "slug": "percy-jackson"
+}
+```
+
+List routes instead wrap results in `data` and pagination information in `meta`.
+For example, an empty list on the first page with the default page size has this
+shape (this is not the response to the Poseidon query above):
 
 ```json
 {
   "data": [],
-  "meta": {"total": 0, "page": 1, "limit": 20, "total_pages": 1}
+  "meta": {
+    "total": 0,
+    "page": 1,
+    "limit": 20,
+    "total_pages": 1
+  }
 }
 ```
 
-Search returns `data` and `meta` containing `total`, `query`, and `type_filter`. Detail routes return a resource-specific object, not the list envelope.
+`total` counts all matching records, not just the current page. Search is
+unpaginated (`page` and `limit` do not apply) and has its own metadata containing
+`total`, `query`, and `type_filter`. See [response and error
+shapes](API.md#list-response-and-error-shapes) for the full contracts.
 
-Examples:
+### Authentication, limits, and errors
 
-```text
-/api/v1/books/?series=percy_jackson_and_the_olympians
-/api/v1/books/?parent-collection=the-demigod-files
-/api/v1/characters/?divine_parent=poseidon&status=alive
-/api/v1/gods/?tier=olympian
-/api/v1/monsters/?type=gorgon&can_reform=true
-/api/v1/weapons/?type=sword&owner_character=percy-jackson
-/api/v1/events/?type=battle&book=the-last-olympian
-/api/v1/search/?q=riptide&type=weapon
-/api/v1/characters/percy-jackson/images/?source_type=fan_art&category=portrait
-/api/v1/images/?source_type=wiki&source_url=https%3A%2F%2Friordan.fandom.com%2Fwiki%2FPercy_Jackson
-/api/v1/characters/?sort=name&order=asc
-```
+Lore endpoints are **read-only** and require an API key. The homepage, API
+directory, schema, Swagger, ReDoc, health checks, key requests, and key verification
+are public. Documentation pages are exempt from API request throttling; executing
+a data request through Swagger still requires a key and consumes the data quota.
 
-Choice values are validated; invalid choices return `400` with `code: INVALID_FILTER_VALUE` and a `valid_values` list. Boolean filters accept only lowercase `true` and `false`; other spellings return `400`. `sort` fields are validated per list endpoint; `order` defaults to `asc` when omitted, and sending `order` without `sort` is invalid. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not implemented.
+- Authenticated requests: **1,000 per key per fixed one-hour window**.
+- Key requests and key verification: separate limits of **5 per hour per client IP**.
+- Data responses include `RateLimit-Limit`, `RateLimit-Remaining`, and
+  `RateLimit-Reset`; throttled responses include `Retry-After`.
+- If Redis is unavailable, quota counters are process-local, not shared across workers.
+- `X-Request-ID` supports request correlation when reporting problems.
+- Invalid choice filters or non-lowercase boolean values return `400`; booleans
+  must be `true` or `false`. Missing/invalid keys on protected routes return `403`,
+  missing resources return `404`, and exhausted quotas return `429`.
 
-### API key verification
-
-```bash
-curl -X POST http://127.0.0.1:8000/auth/verify-key/ \
-  -H 'Content-Type: application/json' \
-  -H 'X-API-Key: <your-key>'
-```
-
-The response contains `valid` and `consumer_name`. API keys can be revoked by an authorized administrator or by calling `POST /auth/revoke-key/` with the same `X-API-Key`; the endpoint revokes only the presented key. Revocation clears cached validation after the database transaction commits. If Redis is unavailable, invalidation failures are logged and any stale cache entry expires by its five-minute TTL. Plaintext keys are not recoverable after creation.
-
-## Tests
+Verify your key:
 
 ```bash
-uv run python manage.py test --settings=config.settings.test
+curl -X POST "$BASE_URL/auth/verify-key/" -H "X-API-Key: $API_KEY"
 ```
 
-The default test suite uses SQLite. CI also runs the full suite against PostgreSQL using `config.settings.test_postgresql`; locally, configure `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`, then run:
+Revoke the key used in the request (no request body):
 
 ```bash
-uv run python manage.py test --settings=config.settings.test_postgresql
+curl -X POST "$BASE_URL/auth/revoke-key/" -H "X-API-Key: $API_KEY"
 ```
 
-OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The `/api/v1/` directory, schema, and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
+Revocation does not accept an email address as authorization. Plaintext keys cannot
+be recovered after creation. See [authentication and security](API.md#14-authentication--security)
+for caching and revocation details.
 
-## Roadmap
+## API features
 
-- **Current v1:** implemented/testable routes and seeded Riordanverse reference data described above.
-- **Future:** consider additional ordering requirements where new model/data decisions are justified, and continue planned story-universe expansions. Titan, Event, and Location ordering are already implemented. See [Future Work](API.md#future-work).
+- Books, characters, gods, Titans, monsters, creatures, weapons, locations, quests,
+  prophecies, events, cabins, factions, and images.
+- Slug-based resource lookups, filters, pagination, and endpoint-specific sorting.
+- Typed family graphs, Book casts, quest participants/casualties, and other lore relationships.
+- Character powers and nested resources for related entities.
+- Image metadata, curated primary images, and entity galleries. Image URLs point
+  to external sources; the API does not host or proxy the image bytes.
+- Global search across supported resources.
+- JSON data responses and interactive OpenAPI documentation.
+
+A few entry points:
+
+| Resource | Example |
+| --- | --- |
+| Characters | `/api/v1/characters/percy-jackson/` |
+| Books | `/api/v1/books/the-lightning-thief/` |
+| Gods | `/api/v1/gods/poseidon/` |
+| Images | `/api/v1/characters/percy-jackson/images/` |
+| Search | `/api/v1/search/?q=riptide` |
+
+See the [complete endpoint reference](API.md#7-api-endpoints-v1),
+[implemented API contracts](API.md#23-current-implemented-api-reference), or
+`/api/docs/` and `/api/redoc/` on your instance for all resources and subresources.
+
+## Setup
+
+For local development, install Python **3.14+**, [uv](https://docs.astral.sh/uv/),
+PostgreSQL, and **Node.js 22+ with npm** for website assets. Redis is recommended
+for shared caching and quotas, but its absence does not prevent API requests.
+If you prefer containers, skip to [Docker and Compose](#docker-and-compose).
+
+```bash
+git clone https://github.com/devisreal/Percy-Jackson-Fandom-API.git
+cd Percy-Jackson-Fandom-API
+uv sync --locked
+cp .env.example .env
+npm ci --prefix website/static_src
+npm run build --prefix website/static_src
+```
+
+Create a local PostgreSQL database and user first; editing `.env` does not create
+those resources. Set `SECRET_KEY`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`,
+and `DB_PORT` in `.env` for that database; configure `REDIS_URL` if using Redis.
+Development keeps API-key authentication enabled. Never commit `.env` or real keys.
+
+## Database setup
+
+Apply migrations, then populate the lore data in dependency order:
+
+```bash
+uv run python manage.py migrate --settings=config.settings.development
+uv run python manage.py seed_all --settings=config.settings.development
+```
+
+Create an optional admin account:
+
+```bash
+uv run python manage.py createsuperuser --settings=config.settings.development
+```
+
+Seed commands are idempotent but can update existing records. Confirm the target
+database before running them. Unlike a database backup, seeds do not restore
+consumers or API keys. Curated image choices in `data/image_gallery_overrides.json`
+are restored by `seed_images`, which runs as part of `seed_all`.
+See [seed maintenance](CONTRIBUTING.md#seed-canonical-data) for individual commands.
+
+## Run the project
+
+```bash
+uv run python manage.py runserver --settings=config.settings.development
+```
+
+Open [the website](http://127.0.0.1:8000/),
+[Swagger UI](http://127.0.0.1:8000/api/docs/), or
+[the API directory](http://127.0.0.1:8000/api/v1/).
+For website work, start Django and the CSS/JavaScript watchers together instead:
+
+```bash
+uv run python manage.py tailwind dev --settings=config.settings.development
+```
+
+This does not require Docker. If a Compose app is already using port 8000, stop it
+first or use a different local port. See [the frontend workflow](CONTRIBUTING.md#website-and-tailwind-workflow)
+for components, asset conventions, and test commands.
+
+## Docker and Compose
+
+The local Compose stack runs the application, PostgreSQL 17, and Redis 7. With
+Docker and Compose installed, create `.env` from `.env.example`, set `SECRET_KEY`,
+then run from the repository root:
+
+```bash
+docker compose up --build -d
+docker compose exec app /opt/venv/bin/python manage.py migrate --noinput
+docker compose exec app /opt/venv/bin/python manage.py seed_all
+```
+
+Open **http://localhost:8000**. Optionally create an admin account:
+
+```bash
+docker compose exec app /opt/venv/bin/python manage.py createsuperuser
+```
+
+The local-only `config.settings.compose` disables HTTPS redirects and secure-cookie
+requirements for local HTTP. The production image must use production settings.
+Migrations and seeding are manual; rebuilding the image does not perform them.
+
+```bash
+docker compose logs -f app
+docker compose down
+```
+
+Named volumes preserve local database/cache data between restarts. **Do not add
+`-v` to `down` unless you intend to delete those volumes.** Compose uses its own
+database, not your ordinary local development database. It has no source bind
+mounts or automatic reload; rebuild after source changes. See [deployment](DEPLOYMENT.md)
+for Railway and production hosting; Railway does not use this Compose file.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full development workflow, dependency
+updates, seed maintenance, frontend conventions, tests, and pull-request guidance.
+
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for Docker/Railway configuration, Gunicorn,
+WhiteNoise, static builds, HTTPS/proxy checks, release commands, and backup safety.
 
 ## Acknowledgments
 
