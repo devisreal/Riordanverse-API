@@ -18,7 +18,7 @@ environ.Env.read_env(BASE_DIR / '.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-APP_VERSION = env('APP_VERSION', default='0.1.0')
+APP_VERSION = env('APP_VERSION', default='1.0.0')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')

@@ -1015,7 +1015,7 @@ Example liveness response:
 ```json
 {
   "status": "ok",
-  "version": "0.1.0"
+  "version": "1.0.0"
 }
 ```
 
@@ -1027,7 +1027,7 @@ Example readiness response:
   "checks": {
     "database": "connected"
   },
-  "version": "0.1.0"
+  "version": "1.0.0"
 }
 ```
 
@@ -2091,7 +2091,7 @@ uv run python manage.py test --settings=config.settings.test
 
 ```bash
 SECRET_KEY=
-APP_VERSION=0.1.0
+APP_VERSION=1.0.0
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 DB_NAME=
