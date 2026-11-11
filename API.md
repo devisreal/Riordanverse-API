@@ -1,10 +1,12 @@
 # Percy Jackson Fandom API — Reference & Planning Notes
 
+**Last updated:** 2026-11-11 (UTC)
+
 **Project:** Percy Jackson Fandom Platform
 
 **API Version:** 1.0 (`/api/v1/`; current routes cover the records in the canonical seed corpus)
 
-**Source Reference:** [Riordan Wiki (Fandom)](https://riordan.fandom.com/wiki/Riordan_Wiki)
+**Source References:** [Riordan Wiki on Fandom](https://riordan.fandom.com/wiki/Riordan_Wiki) and Rick Riordan’s Riordanverse books.
 
 **Status:** Implemented API details are documented in Sections 13–15 and 23. Sections explicitly labeled proposed are not current contracts.
 **Future Versions:** Additional Riordanverse coverage is a future expansion; see the final Future Work section.
@@ -67,7 +69,7 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | # | Decision | Choice Made | Reason |
 | --- | --- | --- | --- |
 | 1 | Backend stack | **Python 3.14+ / Django / DRF + PostgreSQL; dependencies managed with `uv`** | Relational ORM, Django Admin, DRF serializers/filtering, and migration support; test settings use SQLite |
-| 21 | Environments | **`base.py`, `development.py`, `production.py`, `test.py`, and `test_postgresql.py`**; development/production use PostgreSQL, SQLite is the default test backend, and CI also runs the full suite against PostgreSQL | Redis is optional and has outage fallbacks; see Section 19 |
+| 21 | Environments | **`base.py`, `development.py`, `production.py`, `compose.py`, `test.py`, and `test_postgresql.py`**; development/production use PostgreSQL, SQLite is the default test backend, and CI also runs the full suite against PostgreSQL | Redis is optional and has outage fallbacks; see Section 19 |
 | 14 | Caching | **Redis is optional** — caches successful API-key validation and shares rate-limit counters when available | PostgreSQL and process-local fallbacks keep requests available during a Redis outage; lore responses are not generally cached |
 
 ### API Design & Conventions
@@ -82,8 +84,8 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | 6 | HTTP status codes | **Full DRF `status` library** — 200, 400, 401, 403, 404, 429, 500 mapped to correct triggers | See Section 14 for full status code map |
 | 7 | Health checks | **`GET /health/live/`** and **`GET /health/ready/`** outside the API prefix | Liveness checks process responsiveness; readiness checks PostgreSQL |
 | 9 | Filter validation | **`StrictChoiceFilter` returns `INVALID_FILTER_VALUE`; booleans accept only lowercase `true`/`false`** | Invalid choice values include `valid_values`; other invalid query values use `BAD_REQUEST` rather than silently broadening results |
-| 10 | Character encoding | **Explicit `UTF8` in PostgreSQL config + DRF automatic `charset=utf-8` headers** | Greek names (Zoë, Ἀχιλλεύς) require full Unicode; DRF handles headers automatically |
-| 13 | Rate limiting | **1,000 requests/hour per API-key prefix** using `PerAPIKeyRateThrottle`; 100/day anonymous fallback; 5/hour/IP on public key routes | Redis-backed fixed-window counters with process-local fallback during Redis outage |
+| 10 | Character encoding | **UTF-8 JSON responses and PostgreSQL Unicode support** | Greek names (Zoë, Ἀχιλλεύς) require full Unicode; JSON responses use `application/json` without requiring a `charset` parameter |
+| 13 | Rate limiting | **1,000 requests/hour per API-key prefix** using `PerAPIKeyRateThrottle`; 100/day anonymous fallback; 5/hour/IP per public key endpoint | Redis-backed fixed-window counters with process-local fallback during Redis outage |
 
 ### Data & Models
 
@@ -91,7 +93,7 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | --- | --- | --- | --- |
 | 2 | Image storage | **Option B — `Image` model + separate join tables per entity** (`CharacterImage`, `WeaponImage`, etc.) | Full PostgreSQL FK integrity; avoids GenericForeignKey complexity |
 | 3 | Image filtering | **Filterable global collection and typed galleries on supported entities** | The global collection is filterable; typed galleries are implemented for Books, Characters, Gods, Titans, Monsters, Weapons, and Locations, using query params for source/category filters |
-| 8 | Default sort order | **Per-view defaults and allowlists** — see Section 23 | Titans use `display_order`, Events use `chronology_order`, and Locations use `location_order`; each exposed sort is explicitly allowlisted |
+| 8 | Default sort order | **Per-view defaults and allowlists** — see Section 23 | Titans use `display_order`, Events use `chronology_order`, and Locations use `location_order`; collection sort fields are explicitly allowlisted; some nested views derive valid fields from their serializers |
 | 11 | Slug generation | **`django-autoslug`** per model — source field varies (`name`, `title`, custom callable for Cabin) | Auto-generates slugs on save; handles collisions; slug is not on BaseModel because `populate_from` differs per model |
 | 18 | Soft delete | **Implemented; Admin-only lifecycle** | Default managers and public resource endpoints exclude soft-deleted entities; Admin can restore; no public delete/restore endpoint |
 | 19 | Lore accuracy and provenance | **Implemented** | Shared accuracy metadata plus reusable `LoreSource` citations are available in entity serializers and `lore_accuracy` filters |
@@ -104,16 +106,16 @@ A running record of project decisions. Some earlier rows were proposals and are 
 | # | Decision | Choice Made | Reason |
 | --- | --- | --- | --- |
 | 12 | API authentication | **`djangorestframework-api-key` + `ConsumerAPIKey`; `X-API-Key`; 5-minute positive validation cache** | Cache is keyed by public prefix but stores a settings-salted fingerprint of the full key, so a different secret with the same prefix is not accepted; validation falls back to PostgreSQL, and admin/self-revocation invalidates after commit |
-| 12 (flow) | Key lifecycle | **Public key request/verification** at `POST /auth/request-key/` and `/auth/verify-key/`; key holders can revoke only the presented key at `POST /auth/revoke-key/` | Request and verification require `consumer_name` and `email` as applicable and use IP-based throttles; revocation requires `X-API-Key`, not an email address |
+| 12 (flow) | Key lifecycle | **Public key request/verification** at `POST /auth/request-key/` and `/auth/verify-key/`; key holders can revoke only the presented key at `POST /auth/revoke-key/` | Issuance requires `consumer_name` and `email`; verification checks `X-API-Key` without a body. Each public endpoint has an independent IP throttle; revocation requires `X-API-Key`, not an email address |
 | 15 | Search | **`django-watson`** with custom adapters per model | Mature, PostgreSQL-native full-text search; custom adapters handle aliases, `true_name`, `disguise_form` |
-| 16 | Alias search | **Included in watson custom adapters via `get_search_text()`** | Flattens `aliases` array, `true_name`, `disguise_form` into indexed text; "Aunty Em" finds Medusa |
+| 16 | Alias search | **Included in watson custom adapters via `get_content()` and `get_additional_fields()`** | Flattens `aliases` array, `true_name`, `disguise_form` into indexed text; "Aunty Em" finds Medusa |
 | 17 | API documentation | **Public OpenAPI, Swagger UI, and ReDoc routes are registered with `drf-spectacular==0.30.0`** | `/api/schema/` serves the schema; `/api/docs/` and `/api/redoc/` serve public interactive documentation. The schema declares `X-API-Key` for protected operations |
 
 ---
 
 ## 1. Project Vision
 
-The Percy Jackson Fandom API is an implemented, read-only REST API serving canonical Riordanverse reference data. The v1 API exposes books, characters, divinities, monsters, creatures, weapons, locations, quests, prophecies, events, organizations, images, and search through typed relations. The web and mobile clients remain consumers of this API; they are not part of this backend.
+The Percy Jackson Fandom API is an implemented, read-only REST API serving canonical Riordanverse reference data. The v1 API exposes books, characters, divinities, monsters, creatures, weapons, locations, quests, prophecies, events, organizations, images, and search through typed relations. The repository includes a Django-rendered developer website and API documentation; external web and mobile applications consume the API.
 
 **Current V1 data scope:** the canonical JSON seed corpus currently contains 12 Book records, including core books and child companion-story records, plus seeded characters, Gods, Titans, Monsters, Creatures, Weapons, Locations, Quests, Prophecies, Events, Cabins, and Factions. See Section 23 for implemented API routes and Section 10 for current seed-file counts. This is the current corpus, not a promise that every Riordanverse entity has been added.
 
@@ -170,7 +172,7 @@ Gods exist in both Greek and Roman aspects (e.g. Ares/Mars, Athena/Minerva). The
 
 ### Monster Reformation
 
-Monsters do not permanently die — they dissolve into dust (Tartarus) and reform. The time to reform varies. The `Monster` model exposes `can_reform` and `regeneration_time`; see the current serializer fields in Section 23.
+Monsters do not permanently die — they dissolve into dust (Tartarus) and reform. The time to reform varies. The `Monster` model exposes `can_reform` and `reform_time`; see the current serializer fields in Section 23.
 
 ### Spoils of War
 
@@ -920,9 +922,11 @@ Quest ──────── prophecy / book ───────────
 Event ──────── participants / casualties ──────────────▶ Character, God, Titan, Monster
 
 Prophecy ───── subjects ────────────────────────────────▶ Character, God, Titan, Monster
-Faction ────── members / leader ────────────────────────▶ Character, God, Titan, Monster
+Faction ────── members ────────────────────────────────▶ Character, God, Titan, Monster
+Faction ────── leader ─────────────────────────────────▶ Character, God
 Location ───── controlled_by ───────────────────────────▶ God, Titan, Character, Monster
-Weapon ─────── owner_primary / forged_by ───────────────▶ Character, God, Titan
+Weapon ─────── owner_primary ──────────────────────────▶ Character, God, Titan
+Weapon ─────── forged_by ──────────────────────────────▶ Character, God
 Monster ────── defeat records ──────────────────────────▶ Character (MonsterDefeat) and God links
 Image ──────── typed image join ────────────────────────▶ Book, Character, God, Titan, Monster, Weapon, Location
 ```
@@ -1088,7 +1092,7 @@ GET    /characters?status=deceased
 ```http
 GET    /gods                         List all gods
 GET    /gods/:slug                   Get a single god
-GET    /gods/:slug/children          All demigod children
+GET    /gods/:slug/children          Character children linked through the family graph
 GET    /gods/:slug/weapons           Divine weapons/items
 GET    /gods?tier=olympian
 GET    /gods?tier=minor
@@ -1268,7 +1272,7 @@ Response envelope:
 
 ### Sorting
 
-List endpoints that declare `sort` fields in Section 23 accept `?sort=<field>[&order=asc|desc]` to override the default; if omitted, `order` defaults to `asc`. The allowlist is endpoint-specific; image galleries do not declare a `sort`/`order` allowlist. Supplying `order` without `sort` is invalid. Views using DRF's ordering backend may retain legacy `?ordering=` behavior where noted in Section 23. Example:
+List endpoints that declare `sort` fields in Section 23 accept `?sort=<field>[&order=asc|desc]` to override the default; if omitted, `order` defaults to `asc`. Valid fields are endpoint-specific; image galleries derive them from the Image serializer rather than declaring an explicit allowlist (for example, `sort=id&order=desc`). Supplying `order` without `sort` is invalid. Views using DRF's ordering backend may retain legacy `?ordering=` behavior where noted in Section 23. Example:
 
 ```http
 ?sort=name&order=asc
@@ -1396,7 +1400,7 @@ Species are pure reference data. Alphabetical is simplest and most useful for br
 
 #### Current Default Sort Summary
 
-Section 23 is the single source of truth for current defaults and sort allowlists. The curated collection defaults are Titan `display_order`, Event `chronology_order`, and Location `location_order`; the global Image collection defaults to ID ascending. Image galleries retain `display_order` then image PK and do not declare a `sort`/`order` allowlist.
+Section 23 is the single source of truth for current defaults and sort allowlists. The curated collection defaults are Titan `display_order`, Event `chronology_order`, and Location `location_order`; the global Image collection defaults to ID ascending. Image galleries default to join-row `display_order` then image PK; explicit sorting uses serializer-derived Image fields, not the join-row `display_order`.
 
 ### Filtering
 
@@ -1556,7 +1560,7 @@ BookImage        → book (FK)      + image (FK) + is_primary + display_order
 
 ### Image Filtering via the API
 
-Images are filterable as a sub-resource on the supported entities listed in Section 23. The API accepts the strict `source_type` and `category` choice filters.
+Images are filterable as a sub-resource on the supported entities listed in Section 23. The API accepts the strict `source_type` and `category` choice filters plus exact `source_url` and `wiki_url` filters.
 
 ```http
 GET /api/v1/characters/<slug>/images/
@@ -1613,8 +1617,11 @@ uv run python manage.py audit_wiki_images \
 
 `--request-delay` defaults to 0.25 seconds. The current seed contains 2,787 per-page image references from 330 pages; `seed_images` upserts these into 2,651 unique Image rows by `(url, source_url)`. Fifteen pages have no image candidates. The audit follows MediaWiki page redirects when resolving page images, including unaccented aliases such as `Zoe_Nightshade`. Import after entity seeds with `uv run python manage.py seed_images --settings=config.settings.development` or use `seed_all`. Imported rows use `source_type='wiki'`; license fields remain null. Characters, Gods, Titans, Monsters, and Weapons receive a gallery link only when the decoded image URL filename contains the entity name or slug, except for entity-specific `include_file_titles` and `exclude_file_titles` overrides in `data/image_gallery_overrides.json`; excluded images remain in the global collection, and curated entries retain their original `source_url` provenance even when sourced from a related page. A per-entity `primary_file_title` override can set one included link as primary, clearing any other primary for that entity. Book galleries include explicit cover/CVR/Bookpic files or portrait image filenames matching the book title; those Image rows use `category='book_cover'`. Other imported images use `category='other'` and remain available in the global collection, and re-seeding removes stale wiki gallery links that no longer meet the matching rules. Location gallery matching remains page-based. Missing license metadata means reuse rights are unverified, not granted; confirm permissions separately before public reuse.
 
+For a complete canonical import, `seed_all` runs the entity and relationship commands in dependency order, with `seed_images` last. Use `seed_images` alone to refresh image metadata and galleries after referenced entities exist. Both commands write to the configured database; confirm the target settings/database first. In the deployed container, use `/opt/venv/bin/python manage.py seed_all` or `/opt/venv/bin/python manage.py seed_images`; see [DEPLOYMENT.md](DEPLOYMENT.md) for the controlled release workflow.
+
 ### Additional Notes
 
+- Authorized Admin users can choose or clear primary images at `/admin/images/image/primary-picker/`. Viewing requires Image change permission; saving also requires change permission on the selected entity-image join model. Choices update database links, not the checked-in overrides. Rerunning `seed_images` reapplies matching `primary_file_title` selections from `data/image_gallery_overrides.json`, potentially replacing later Admin choices; durable curated choices belong in that JSON file. Stale wiki gallery links are removed only after an error-free import for that entity.
 - The `is_primary` flag is stored on each entity-image join row; a conditional unique constraint enforces at most one primary image per entity.
 - For a Book, `category='book_cover'` is stored on the Image row and identifies cover candidates; the `BookImage` join links only qualifying covers.
 - Requiring `artist_name` for fan art is a future validation-policy decision; the current model allows it to be null.
@@ -1753,18 +1760,19 @@ Content-Type: application/json
 {"consumer_name":"My Fan App","email":"dev@example.com"}
 ```
 
-The successful response is `201 Created` and contains `api_key`, `consumer_name`, `email`, and `message`. The plaintext key is shown once. To verify it, send `POST /auth/verify-key/` with the `X-API-Key` header; the response contains `valid` and `consumer_name`. Neither endpoint accepts `intended_use` or `website_url` in its request body.
+The successful response is `201 Created` and contains `api_key`, `consumer_name`, `email`, and `message`. Issuance is immediate; there is no email-verification flow. The plaintext key is shown once. To verify it, send `POST /auth/verify-key/` with the `X-API-Key` header and no request body; the response contains `valid` and `consumer_name`. Missing, invalid, revoked, or expired keys return `200 OK` with `{"valid": false, "consumer_name": null}`, subject to throttling. The key-request serializer defines only `consumer_name` and `email`; `intended_use` and `website_url` are not supported inputs.
 
-To revoke the key used for the current request, send `POST /auth/revoke-key/` with `X-API-Key` and no request body. It returns `200 OK` with `revoked: true`; repeated requests are idempotent. A caller cannot select another key to revoke.
+To revoke the key used for the current request, send `POST /auth/revoke-key/` with `X-API-Key` and no request body. It returns `200 OK` with `revoked: true` and `message`. Revocation is idempotent as a state change, but after successful cache invalidation, subsequent requests using the revoked key normally receive `403`. A caller cannot select another key to revoke.
 
-The key model is `ConsumerAPIKey`, managed through Django Admin. The API key package stores a hashed key; logs contain neither the plaintext key nor its hash. Revocation is available to administrators and to the holder of the presented key via `POST /auth/revoke-key/`; unverified email cannot authorize revocation. Successful key-validation results are cached for five minutes under the public prefix; the cache value is a settings-salted fingerprint of the full key, not a boolean, and a different secret with that prefix is rejected. Both admin and self-revocation delete the cached prefix after the database transaction commits. If cache invalidation fails because Redis is unavailable, the failure is logged; permission checks fall back to PostgreSQL while Redis is down, and a stale positive can remain until TTL expiry if Redis recovers before the entry expires. A repeated request to the self-revocation route retries cache invalidation.
+The key model is `ConsumerAPIKey`, managed through Django Admin. The API key package stores a hashed key; logs contain neither the plaintext key nor its hash. Revocation is available to administrators and to the holder of the presented key via `POST /auth/revoke-key/`; unverified email cannot authorize revocation. Successful key-validation results are cached for five minutes under the public prefix; the cache value is a settings-salted fingerprint of the full key, not a boolean, and a different secret with that prefix is rejected. Both admin and self-revocation delete the cached prefix after the database transaction commits. If cache invalidation fails because Redis is unavailable, the failure is logged; permission checks fall back to PostgreSQL while Redis is down, and a stale positive can remain until TTL expiry if Redis recovers before the entry expires. An already-revoked key that still passes permission checking through a stale positive cache entry can reach the idempotent handler and retry cache invalidation.
 
 ### Throttling and response headers
 
 - Valid API-key prefixes receive a shared fixed-window limit of **1,000 requests per hour per key**.
-- Requests without an API key use the lower **100 requests/day per client IP** fallback.
-- Request-key and verify-key routes use **5 requests/hour per client IP**.
-- Rate-limited API requests expose `RateLimit-Limit` (including the window), `RateLimit-Remaining`, and `RateLimit-Reset`. A throttled response includes `Retry-After`.
+- The default data throttle has a **100 requests/day per client IP** anonymous fallback; it does not bypass API-key permissions on protected resources.
+- Request-key and verify-key each have an **independent 5 requests/hour per client IP** quota. These use DRF anonymous throttling, not the data throttle's fixed-window counters.
+- Responses checked by the default data throttle expose `RateLimit-Limit` (including the window), `RateLimit-Remaining`, and `RateLimit-Reset`. The public auth throttles do not emit these metadata headers. Throttled DRF responses include `Retry-After`.
+- `/api/schema/`, `/api/docs/`, and `/api/redoc/` disable throttling and remain accessible after the data quota is exhausted. Swagger “Try it out” requests to protected resources still require a key and consume those routes' quotas.
 - Redis provides shared counters when available. During a Redis outage, in-process counters are used and are not shared between workers.
 - `X-Request-ID` is returned for request correlation. Structured logs omit request bodies, query strings, email addresses, API key plaintext, and key hashes.
 
@@ -1791,31 +1799,49 @@ Search uses `django-watson` with custom adapters per model. Watson builds a full
 
 #### Custom Adapters
 
-Each model has a `SearchAdapter` that defines exactly what text gets indexed. Crucially, this flattens array fields like `aliases`, `abilities`, and `true_name` so they are fully searchable:
+Each model has a `SearchAdapter` that defines what text gets indexed. `BaseLoreSearchAdapter` limits live querysets to active records and supplies descriptions. Its `AdditionalFieldsSearchAdapter` subclass combines Watson's indexed `fields` with `get_additional_fields()` output in `get_content()`. Arrays such as `aliases` and `abilities` are flattened; scalars such as Weapon `true_name` are indexed directly. The current pattern in `apps/search/adapters.py` is:
 
 ```python
-class MonsterSearchAdapter(watson.SearchAdapter):
-    def get_search_text(self, obj, language, connection):
-        parts = [obj.name, obj.description or '', obj.physical_description or '']
-        if obj.aliases:
-            parts.extend(obj.aliases)          # "Aunty Em" → finds Medusa
-        if obj.disguise_form:
-            parts.append(obj.disguise_form)
+class AdditionalFieldsSearchAdapter(BaseLoreSearchAdapter):
+    def get_additional_fields(self, obj):
+        return ''
+
+    def get_content(self, obj):
+        content = super().get_content(obj)
+        additional_fields = self.get_additional_fields(obj)
+        return ' '.join(part for part in (content, additional_fields) if part)
+
+
+class MonsterSearchAdapter(AdditionalFieldsSearchAdapter):
+    fields = ['name', 'physical_description', 'description', 'disguise_form']
+
+    def get_additional_fields(self, obj):
+        parts = [*obj.aliases]
+        if obj.parent_entity:
+            parts.append(obj.parent_entity)
+        if obj.spoils_of_war:
+            parts.append(obj.spoils_of_war)
+        return ' '.join(str(part) for part in parts)
+
+
+class WeaponSearchAdapter(AdditionalFieldsSearchAdapter):
+    fields = ['name', 'true_name', 'description', 'origin_story']
+
+    def get_additional_fields(self, obj):
+        parts = [str(ability) for ability in obj.abilities]
+        if obj.transform_trigger:
+            parts.append(obj.transform_trigger)
         return ' '.join(parts)
 
-class WeaponSearchAdapter(watson.SearchAdapter):
-    def get_search_text(self, obj, language, connection):
-        parts = [obj.name, obj.true_name or '', obj.description or '']
-        if obj.abilities:
-            parts.extend(obj.abilities)
-        return ' '.join(parts)                 # "Anaklusmos" → finds Riptide
 
-class CharacterSearchAdapter(watson.SearchAdapter):
-    def get_search_text(self, obj, language, connection):
-        parts = [obj.name, obj.description or '', obj.fatal_flaw or '']
-        if obj.aliases:
-            parts.extend(obj.aliases)          # "Wise Girl" → finds Annabeth
-        return ' '.join(parts)
+class CharacterSearchAdapter(AdditionalFieldsSearchAdapter):
+    fields = ['name', 'description', 'lore_notes', 'quote']
+
+    def get_additional_fields(self, obj):
+        parts = [*obj.aliases]
+        if obj.fatal_flaw:
+            parts.append(obj.fatal_flaw)
+        return ' '.join(str(part) for part in parts)
 ```
 
 #### Alias Search Examples
@@ -1845,7 +1871,7 @@ GET /api/v1/search/?q=riptide
 GET /api/v1/search/?q=poseidon&type=god
 ```
 
-Search requires a nonblank `q`; `type` optionally limits the query to a supported entity type. The current response is:
+Search requires a nonblank `q`; `type` optionally limits the query to `book`, `cabin`, `character`, `creature`, `event`, `faction`, `god`, `location`, `monster`, `prophecy`, `quest`, `titan`, or `weapon`. Both parameters are whitespace-trimmed; blank `type` means no restriction, and unknown nonblank types return `400 INVALID_FILTER_VALUE`. Search is unpaginated: `page` and `limit` are not applied. The current response is:
 
 ```json
 {
@@ -2022,6 +2048,7 @@ config/settings/
   base.py          # shared apps, REST_FRAMEWORK, auth, filters, pagination, cache/logging
   development.py   # PostgreSQL; local development hosts
   production.py    # PostgreSQL; ALLOWED_HOSTS supplied by environment
+  compose.py       # production-derived settings for local Docker Compose over HTTP
   test.py              # SQLite and test-only settings
   test_postgresql.py   # PostgreSQL test settings used by CI
 ```
@@ -2071,7 +2098,13 @@ CORS_ALLOWED_ORIGINS=
 API_KEY_CUSTOM_HEADER=HTTP_X_API_KEY
 ```
 
-The committed `.env.example` and all five settings modules (`base.py`, `development.py`, `production.py`, `test.py`, `test_postgresql.py`) are authoritative. The earlier `REQUIRED_ENV_VARS` startup-guard snippet is not implemented.
+The committed `.env.example` and all six settings modules (`base.py`, `development.py`, `production.py`, `compose.py`, `test.py`, `test_postgresql.py`) are authoritative. The earlier `REQUIRED_ENV_VARS` startup-guard snippet is not implemented.
+
+Cross-origin browser clients require both an allowed origin and an allowed authentication request header. The current default CORS request-header allowlist does not include `X-API-Key`, so setting `CORS_ALLOWED_ORIGINS` alone is insufficient. `CORS_EXPOSE_HEADERS` controls readable response headers, not allowed request headers. See [browser access configuration](DEPLOYMENT.md#https-health-checks-and-browser-access) for the deliberate settings customization required; use a server-side integration for private keys.
+
+Production additionally reads `CSRF_TRUSTED_ORIGINS` (default empty); configure trusted HTTPS origins as needed for Admin forms. Gunicorn serves `config.wsgi:application`, binds to `PORT` (default `8000`), and uses `WEB_CONCURRENCY` workers (default `1`) with four threads each. Production enables HTTPS redirect, secure cookies, and a 300-second HSTS policy; the proxy must supply trusted `X-Forwarded-Proto`. `compose.py` disables these HTTPS-specific settings for local HTTP and is not the public deployment configuration.
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for Docker/Railway and non-Docker procedures. Fresh builds must generate frontend assets before `collectstatic`; the normal frontend build includes pinned Swagger UI 5.34.1 assets served locally. Production uses WhiteNoise compressed manifest static storage. The Docker runtime starts Gunicorn, not migrations or seeds: migrations are a controlled release step, and canonical imports are separate, explicit database writes.
 
 ---
 
@@ -2427,6 +2460,8 @@ A dedicated `Power` model with a FK back to `Character` fixes all of this.
 
 ### The `Power` Model
 
+The code sketch below is **historical and superseded**, not the current schema. The implemented model is in `apps/characters/models.py`: `name` has a 150-character limit, `source` is nullable, and `first_demonstrated_book` targets `narrative.Book`. Accepted source codes are `divine_parent`, `blessing`, `curse`, `training`, `item_granted`, and `creation`; `trained`, `unique`, and `oath` are not current filter choices. See Section 23 for the current serialized fields.
+
 ```python
 # powers/models.py
 
@@ -2547,6 +2582,8 @@ class Power(models.Model):
 
 ### Seed Data Examples
 
+The following tables are historical illustrative proposals, not an inventory of `data/powers.json`. In particular, their `trained` and `unique` source values are not accepted by the current API.
+
 #### Percy Jackson
 
 | name | source | type | is_passive | limitations |
@@ -2584,6 +2621,8 @@ class Power(models.Model):
 
 ### API Response Shape
 
+Illustrative partial Character detail response, not a complete payload or a claim that these exact powers are seeded:
+
 ```json
 {
   "id": 1,
@@ -2612,7 +2651,7 @@ class Power(models.Model):
     },
     {
       "name": "Swordsmanship",
-      "source": "trained",
+      "source": "training",
       "type": "offensive",
       "description": "Expert-level swordsmanship trained under Chiron at Camp Half-Blood.",
       "limitations": null,
@@ -2864,7 +2903,7 @@ This section describes routes and behaviors present in the code and test suite. 
 | `POST` | `/auth/request-key/` | Request a key using `consumer_name` and `email` |
 | `POST` | `/auth/verify-key/` | Verify key from `X-API-Key` header |
 
-Except for the directory itself, these routes are outside `/api/v1/`. The directory, schema, and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Swagger UI uses the website's shared light/dark preference and pinned, locally served assets; its Authorize control keeps entered keys in memory only, not across reloads. The official request/response interceptors and CSRF handling are retained, and external schema validation is disabled. ReDoc remains unchanged. Key request and verification responses are rate-limited by client IP.
+Except for the directory itself, these routes are outside `/api/v1/`. The directory, schema, and UI pages are public; protected versioned resource operations are identified with the `X-API-Key` security scheme. Swagger UI and ReDoc list Authentication and Health first, followed by resource groups. Swagger UI uses the website's shared light/dark preference and pinned, locally served assets; its Authorize control keeps entered keys in memory only, not across reloads. The official request/response interceptors and CSRF handling are retained, and external schema validation is disabled. ReDoc remains unchanged. The three documentation routes bypass API-data throttles even when a key's quota is exhausted; protected “Try it out” calls do not. Key request and verification each have an independent 5/hour/client-IP quota; see Section 14 for header and revocation details.
 
 Unlike the public key request and verification endpoints, `POST /auth/revoke-key/` requires `X-API-Key` and revokes only the key used for that request. Auth request succeeds with `201` and fields `api_key`, `consumer_name`, `email`, `message`; verify returns `valid` and `consumer_name`.
 
@@ -2907,7 +2946,9 @@ Paginated list views use a default page size of 20 (`page`, `limit`; maximum `li
 }
 ```
 
-Detail views return the resource-specific object. Search returns `data` and `meta` with `total`, `query`, and `type_filter`; each result includes `type`, `slug`, `url`, `title`, `description`, and `wiki_url`.
+Detail views return the resource-specific object. Character list responses use a display label for `character_type`; Character detail returns the stored code in `character_type` and its label in `character_type_display`. Filters accept stored choice codes, not list display labels.
+
+Search returns `data` and `meta` with `total`, `query`, and `type_filter`; each result includes `type`, `slug`, `url`, `title`, `description`, and `wiki_url`. It is unpaginated (`page` and `limit` are not applied). Supported types and invalid-type behavior are documented in Section 15.
 
 Handled errors use `{ "error": { "code": "...", "message": "..." } }`. Invalid choices use a more specific payload:
 
@@ -2956,14 +2997,17 @@ Book roles are seeded from `data/book_character_relationships.json` with `seed_b
 - **Quest detail:** `participants` and `casualties` are typed `{type, slug, name}` records for Character, God, Titan, or Monster. Backward-compatible Character slug fields remain. `/quests/<slug>/participants/` returns Character list records only.
 - **Event detail:** participants are exposed as `participant_character_slugs`, `participant_god_slugs`, `participant_titan_slugs`, and `participant_monster_slugs`; `casualties` are typed `{type, slug, name}` for Character, God, Titan, or Monster, with `casualty_slugs` retained for Character compatibility.
 - **Prophecy detail:** `subjects` is typed `{type, slug, name}` for Character, God, Titan, or Monster; `subject_slugs` remains for Character compatibility.
-- **Faction detail and `/factions/<slug>/members/`:** typed member records for Character, God, Titan, or Monster; leaders are also typed.
+- **Faction detail and `/factions/<slug>/members/`:** typed member records for Character, God, Titan, or Monster; leaders are nullable typed Character or God references.
 - **Location list/detail:** `controlled_by` is a typed object for God, Titan, Character, or Monster.
-- **Monster detail:** typed defeat records supplement compatibility slug lists; God defeat links are represented separately.
+- **Monster detail:** `defeats` contains `{defeated_by, book, method, is_myth}` records; `defeated_by` is a Character slug and `book` is a nullable Book slug, not typed objects. Compatibility lists `defeated_by_slugs` and `defeated_by_god_slugs` remain; God defeat links are separate.
+- **Creature detail:** `notable_members` contains typed Character or Monster references; `notable_member_slugs` retains Character slugs only. `/creatures/<slug>/members/` returns Character list records only, not the complete typed membership array.
+- **Weapon list/detail:** `owner_primary` is a nullable typed Character, God, or Titan reference. Detail additionally exposes nullable typed `forged_by` for God or Character, with `forged_by_slug` retained for compatibility.
+- **God `/children/`:** returns Character list records linked through the family graph, including non-demigod Characters; God, Titan, Monster, and Creature children are available in detail's typed `family.children`, not this subresource.
 - **Character detail and `/characters/<slug>/powers/`:** `powers` is embedded in Character detail and the nested list returns Power fields `id`, `name`, `wiki_url`, `description`, `source`, `type`, `scope`, `limitations`, `is_passive`, `is_book_specific`, `first_demonstrated_book`, and `display_order`. The nested list supports `source`, `type`, and `is_passive` filters; no standalone Power endpoint exists.
 
 ### List filters
 
-Parameters below are declared by current filter sets. Every lore entity list also supports strict `lore_accuracy` filtering with the choices documented in Section 16. Choice values are strict; use the model/filter choices rather than assuming that every historical planning value is valid. `type` is an alias only on the resources listed here.
+Parameters below are declared by current filter sets and apply to collection endpoints unless a subresource is explicitly named. Every lore entity collection also supports strict `lore_accuracy` filtering with the choices documented in Section 16. Other nested lists do not inherit their corresponding collection's filter set; for example, `material` does not filter `/characters/<slug>/weapons/`. Choice values are strict; use the model/filter choices rather than assuming that every historical planning value is valid. `type` is an alias only on the resources listed here.
 
 | List | Supported filters |
 | --- | --- |
@@ -2982,7 +3026,7 @@ Parameters below are declared by current filter sets. Every lore entity list als
 | Cabins | `is_honorary`, `is_empty`, `position`, `deity` |
 | Factions | `faction_type`, `alignment`, `book` |
 | Image collection | `source_type`, `category`, exact `source_url`, exact `wiki_url` |
-| Image galleries | `source_type`, `category` |
+| Image galleries | `source_type`, `category`, exact `source_url`, exact `wiki_url` |
 | Search | `q` (required query), optional `type` entity filter |
 
 Boolean filters accept exactly lowercase `true` or `false`; omitted parameters do not filter. Values such as `True`, `1`, `yes`, arbitrary text, empty strings, and repeated boolean values return `400`.
@@ -3008,13 +3052,13 @@ Use `?sort=<field>[&order=asc|desc]`; `order` defaults to `asc` when a sort fiel
 | Cabins | `number` | `number` |
 | Factions | `name` | `name`, `alignment` |
 | Image collection | `id` | `id`, `url`, `source_type`, `category`, `uploaded_at` |
-| Image galleries | `display_order`, image PK | no declared `sort`/`order` allowlist |
+| Image galleries | join-row `display_order`, image PK | serializer-derived Image fields, e.g. `id`, `url`, `source_type`, `category`, `uploaded_at`; not join-row `display_order` |
 
-Nested list views inherit pagination; the Character Powers subresource additionally supports the filters and sort fields documented above. Titan `display_order`, Event `chronology_order`, and Location `location_order` are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
+Nested list views inherit pagination and the default ordering backend, but not the corresponding collection's explicit sort allowlist. Where no allowlist is declared, valid sort fields are derived from serializer fields backed by model attributes; available fields therefore vary by subresource. For example, `/characters/<slug>/weapons/?sort=name` works, while a serializer made entirely of computed fields may expose no sortable fields. Character Powers and image galleries support the filters and sorting documented above. Titan `display_order`, Event `chronology_order`, and Location `location_order` are implemented on their collection endpoints. Sparse fieldsets (`fields=`) and relationship expansion (`include=`) are not supported.
 
 ### Image collection and gallery payload
 
-`GET /api/v1/images/` returns a paginated global collection. It accepts `source_type`, `category`, exact `source_url`, and exact `wiki_url` filters. Its default order is image ID ascending; supported sort fields are listed above. The global collection and gallery serializers return `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `source_type_display`, `category`, `category_display`, `artist_name`, `artist_url`, `source_url`, `license`, `license_url`, `width`, `height`, `file_format`, `wiki_url`, and `uploaded_at`. Embedded primary-image objects include `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `category`, `artist_name`, `artist_url`, `source_url`, `license`, `license_url`, and `wiki_url`. Gallery filters are `source_type` and `category`; order is `display_order`, then image PK. Wiki seed records have both license fields null; the API does not stream image bytes or guarantee runtime placeholder fallback.
+`GET /api/v1/images/` returns a paginated global collection. It accepts `source_type`, `category`, exact `source_url`, and exact `wiki_url` filters. Its default order is image ID ascending; supported sort fields are listed above. The global collection and gallery serializers return `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `source_type_display`, `category`, `category_display`, `artist_name`, `artist_url`, `source_url`, `license`, `license_url`, `width`, `height`, `file_format`, `wiki_url`, and `uploaded_at`. Embedded primary-image objects include `id`, `url`, `thumbnail_url`, `alt_text`, `source_type`, `category`, `artist_name`, `artist_url`, `source_url`, `license`, `license_url`, and `wiki_url`. Galleries accept the same four filters. Their default order is join-row `display_order`, then image PK; `?sort=id&order=desc` or legacy `?ordering=-id` overrides it. Wiki seed records have both license fields null; the API does not stream image bytes or guarantee runtime placeholder fallback.
 
 ---
 

@@ -1,0 +1,153 @@
+# Deployment
+
+This guide covers production hosting. For local development and Docker Compose,
+see the [README](README.md#setup). For contribution and asset-authoring details,
+see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Runtime and configuration
+
+Production uses Gunicorn (WSGI), PostgreSQL, and WhiteNoise for collected static
+assets. Redis provides shared API-key caching and throttling; if unavailable,
+key validation falls back to PostgreSQL and quotas become process-local.
+`config/wsgi.py` defaults to production settings. Set the environment explicitly:
+
+| Variable | Production value |
+| --- | --- |
+| `DJANGO_SETTINGS_MODULE` | `config.settings.production` |
+| `SECRET_KEY` | Stable, randomly generated secret; never commit it |
+| `DEBUG` | `False` |
+| `ALLOWED_HOSTS` | Comma-separated actual hostnames, without schemes or paths |
+| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | Production PostgreSQL connection; port defaults to `5432` |
+| `REDIS_URL` | Private Redis connection URL |
+| `CORS_ALLOWED_ORIGINS` | Explicit allowed browser origins, or an empty value for no cross-origin access |
+| `CSRF_TRUSTED_ORIGINS` | Full HTTPS origins when needed for trusted cross-origin form submissions; defaults to empty |
+| `PORT` | Listening port; defaults to `8000` |
+| `WEB_CONCURRENCY` | Gunicorn worker count; defaults to `1` |
+| `APP_VERSION` | Optional release identifier returned by health endpoints |
+
+The app reads individual `DB_*` variables, not `DATABASE_URL`. A host may expose
+its own database variables; map them to the names above. Never use the Compose
+fallback database password in production. `.env` is local configuration, not a
+file to upload into a public repository or bake into an image.
+
+## Deploy the Docker image
+
+The multi-stage [Dockerfile](Dockerfile) builds frontend assets with Node.js 22,
+installs locked Python dependencies, and collects static files. Its final image
+runs as a non-root user and does not contain frontend build tooling. Build-time
+settings placeholders are not runtime credentials. Database migrations and seeds
+are deliberately not part of the image build or web-process startup.
+
+For Railway, connect the repository and intended branch, select the Dockerfile
+builder, use the repository root, and configure the runtime variables above.
+Railway uses the Dockerfile, **not** `compose.yaml`. Leave the start-command
+override unset to use the image's Gunicorn `CMD`.
+
+Configure a controlled pre-deploy migration command:
+
+```bash
+/opt/venv/bin/python manage.py migrate --noinput
+```
+
+After deployment, use `railway ssh` from your computer to open the running app
+container. From `/app`, run administrative commands only when intended:
+
+```bash
+/opt/venv/bin/python manage.py seed_all
+/opt/venv/bin/python manage.py createsuperuser
+```
+
+These commands modify the deployed database. `railway run` is different: it runs
+commands locally with service variables and may not reach private database hosts.
+The explicit Python path avoids an SSH shell selecting the system Python, which
+does not have Django installed. Do not install another copy of Django in the shell.
+
+## Deploy without Docker
+
+Use Python 3.14+, uv, and Node.js 22+ with npm. Configure production variables first,
+then install runtime dependencies, build frontend assets, and collect static files:
+
+```bash
+export DJANGO_SETTINGS_MODULE=config.settings.production
+uv sync --locked --no-dev
+npm ci --include=dev --prefix website/static_src
+npm run build --prefix website/static_src
+uv run --locked --no-dev python manage.py collectstatic --noinput
+uv run --locked --no-dev python manage.py check --deploy
+```
+
+Node build tools are needed during the build, not in the running web process.
+Generated CSS, Motion JavaScript, and Swagger assets are Git-ignored; every fresh
+build must generate them **before** `collectstatic`. WhiteNoise serves hashed,
+compressed files from `STATIC_ROOT` and does not serve user uploads.
+
+Run migrations as a release step, then start the web process:
+
+```bash
+uv run --locked --no-dev python manage.py migrate --noinput
+uv run --locked --no-dev gunicorn --config gunicorn.conf.py
+```
+
+Seed separately when appropriate. Do not use `runserver` for production.
+Gunicorn binds `0.0.0.0:$PORT`, uses one `gthread` worker by default with four
+threads per worker, and reads the worker count from `WEB_CONCURRENCY`. Size this
+for the hosting plan. Gunicorn errors go to stderr; Django emits structured request
+logs without duplicate Gunicorn access logs.
+
+## HTTPS, health checks, and browser access
+
+Production redirects HTTP to HTTPS and sets secure session/CSRF cookies. It trusts
+`X-Forwarded-Proto` through `SECURE_PROXY_SSL_HEADER`; only deploy behind an edge
+that controls that header and prevents untrusted clients from spoofing it.
+Review Gunicorn's proxy trust and DRF client-IP handling for the provider so
+anonymous quotas do not accidentally group everyone under the proxy address.
+
+The current HSTS policy is 300 seconds, without subdomain inclusion or preload.
+Review it deliberately before changing it. Set the actual domain in `ALLOWED_HOSTS`
+and the appropriate full HTTPS origins in `CSRF_TRUSTED_ORIGINS`. CORS and CSRF are
+separate controls. The current default CORS request-header allowlist does **not**
+include `X-API-Key`: setting `CORS_ALLOWED_ORIGINS` alone is insufficient for a
+cross-origin browser client. If deliberately enabling that use case, add the
+following setting to the appropriate environment settings module, then verify a
+preflight from the intended origin:
+
+```python
+from corsheaders.defaults import default_headers
+
+CORS_ALLOW_HEADERS = (*default_headers, 'x-api-key')
+```
+
+`CORS_EXPOSE_HEADERS` controls which response headers JavaScript can read; it does
+not permit an authentication request header. A browser cannot keep an embedded
+key secret, even when CORS is configured. Prefer server-side integration for private keys.
+
+- `/health/live/` checks process responsiveness.
+- `/health/ready/` checks PostgreSQL; Redis is not a readiness dependency.
+
+Verify the provider's probe hostname is allowed and its HTTPS/proxy headers are
+compatible with the redirect policy. Do not assume an HTTP probe will succeed
+without checking the actual provider configuration.
+
+Before launch, smoke-test the homepage, hashed CSS/JS, Swagger, the API directory,
+an authenticated data request, rate-limit headers, admin login, and readiness.
+API keys are issued immediately by `/auth/request-key/`; there is currently no
+email-verification delivery flow. `/auth/verify-key/` checks key validity, not
+ownership of an email address.
+
+## Backups and release safety
+
+- Take a PostgreSQL backup before risky migrations or deleting a deployment.
+- Configure managed volume/database backups in your hosting provider and test a
+  restore. `compose.yaml` does not provision Railway backups or a backup service.
+- Keep an independent copy of important backups and store secrets separately.
+- Consumer and hashed API-key records live in the database; raw keys cannot be
+  recovered from a backup. Preserve the original key securely.
+- A database restored from backup is distinct from rebuilding lore with seed data.
+  Seeding does not recreate production consumers or their keys.
+- Local PostgreSQL, Compose PostgreSQL, and Railway PostgreSQL are separate unless
+  you explicitly configure them otherwise. Confirm the target before any write.
+- `docker compose down` preserves named local volumes; `down -v` deletes them.
+
+The project license does not grant rights to lore, datasets, wiki image URLs, or
+third-party images. Review the [license scope](LICENSE) and asset provenance before
+redistributing a deployment's content.
