@@ -134,6 +134,33 @@ API keys are issued immediately by `/auth/request-key/`; there is currently no
 email-verification delivery flow. `/auth/verify-key/` checks key validity, not
 ownership of an email address.
 
+## Content Security Policy rollout
+
+Django emits `Content-Security-Policy-Report-Only` on application responses using
+its built-in middleware. This is an observation stage, **not an enforced CSP**:
+violations are logged in browser developer tools but resources are not blocked.
+There is no reporting endpoint or central violation collection yet.
+
+The default policy restricts scripts and connections to the same origin, with a
+fresh nonce for Swagger's official inline initializer; it does not allow inline
+script handlers or `eval`. Inline styles remain allowed for Motion, Swagger, and
+admin widgets. ReDoc alone permits its existing jsDelivr script, Google Fonts,
+ReDoc CDN logo, and blob workers. Those exceptions do not apply to the landing page or Swagger.
+ReDoc is pinned to the compatible `2.5.2` CDN bundle (the upstream `@latest`
+bundle is no longer a drop-in classic script). It is not self-hosted; review
+upgrades and their CSP requirements rather than switching back to `@latest`.
+
+Swagger responses are marked private/no-store so intermediaries must not cache
+nonce-bearing HTML. Do not add a reverse-proxy/CDN cache rule that overrides that
+header. WhiteNoise's static responses need not carry an HTML document policy.
+
+Before promoting a policy to `SECURE_CSP`, check actual production browser reports
+for the landing page, themes, animations, Swagger authorization/Try it out, ReDoc,
+and authenticated admin forms/widgets. Recheck any CDN or separately hosted static
+origin. Add only narrowly justified sources; do not solve reports by allowing
+all scripts, inline scripts, or `unsafe-eval` globally. A CSP supplements escaping
+and safe DOM handling; it does not replace them.
+
 ## Backups and release safety
 
 - Take a PostgreSQL backup before risky migrations or deleting a deployment.

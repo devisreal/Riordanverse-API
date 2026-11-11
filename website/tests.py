@@ -267,6 +267,23 @@ class HomeViewTests(SimpleTestCase):
         self.assertIn('text-hero-description', descriptions[0]['class'].split())
         self.assertIn('text-shadow-(--hero-description-shadow)', descriptions[0]['class'].split())
 
+    def test_mobile_headline_uses_theme_aware_contrasting_gradient(self):
+        _, page = self.page()
+        introductions = [
+            attrs
+            for _, attrs in page.elements
+            if 'hero-introduction' in attrs.get('class', '').split()
+        ]
+        self.assertEqual(len(introductions), 1)
+        self.assertIn(
+            'max-md:[&_h1_span]:bg-[linear-gradient(90deg,var(--accent),var(--hero-gradient-end))]',
+            introductions[0]['class'].split(),
+        )
+        css = Path(finders.find('css/dist/styles.css')).read_text()
+        self.assertRegex(css, r'--hero-gradient-end:\s*#0369a1')
+        # Both explicit dark mode and the no-JavaScript OS fallback retain the approved cyan.
+        self.assertEqual(len(re.findall(r'--hero-gradient-end:\s*#38bdf8', css)), 2)
+
     def test_every_api_directory_collection_has_a_matching_link(self):
         _, page = self.page()
         linked_paths = {urlsplit(href).path for href in page.links}
@@ -314,6 +331,24 @@ class HomeViewTests(SimpleTestCase):
             self.assertEqual(int(image['width']), item['image_width'])
             self.assertEqual(int(image['height']), item['image_height'])
             self.assertEqual(image['loading'], 'lazy')
+            self.assertEqual(
+                image['sizes'],
+                '(width < 768px) 244px, (width < 1280px) calc((100vw - 190px) / 3), 364px',
+            )
+            sources = [source.strip().rsplit(' ', 1) for source in image['srcset'].split(',')]
+            self.assertEqual(
+                [descriptor for _, descriptor in sources], ['256w', '384w', '512w', '768w', '1000w']
+            )
+            self.assertEqual(sources[-1][0], image['src'])
+            for url, descriptor in sources:
+                asset = finders.find(url.removeprefix(settings.STATIC_URL))
+                self.assertIsNotNone(asset)
+                data = Path(asset).read_bytes()
+                self.assertEqual(data[8:12], b'WEBP')
+                # cwebp emits lossy VP8; check actual bitstream width, not the filename.
+                self.assertEqual(data[12:16], b'VP8 ')
+                actual_width = int.from_bytes(data[26:28], 'little') & 0x3FFF
+                self.assertEqual(actual_width, int(descriptor.removesuffix('w')))
         for path in expected:
             with self.subTest(path=path):
                 asset = finders.find(path)
@@ -352,6 +387,8 @@ class HomeViewTests(SimpleTestCase):
                 self.assertTrue(attrs.get('src'), 'Scripts must be external local static files')
                 assets.append(attrs['src'])
             elif tag in ('link', 'img', 'source', 'iframe'):
+                if tag == 'link' and attrs.get('rel') == 'canonical':
+                    continue  # Navigation metadata, not a runtime static asset.
                 if attrs.get('href') or attrs.get('src'):
                     assets.append(attrs.get('href') or attrs['src'])
         self.assertIn(static('css/dist/styles.css'), assets)

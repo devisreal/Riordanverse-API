@@ -37,17 +37,24 @@
                                   mobile-title="Canonical Endpoints"
                                   description="Access comprehensive entities and relational graphs across the Riordan mythology."
                                   mobile-description="Base URI prefix for all entities:" />
-            <div class="base-uri flex max-w-full items-center gap-2 rounded-full border border-border bg-subtle px-4 py-2.5 font-mono text-[11px] leading-[normal] text-muted max-md:mx-1 max-md:mt-2 max-md:rounded-2xl max-md:p-3 max-md:text-[10px]"><span class="status-dot inline-block size-1.5 shrink-0 rounded-full bg-[#14b8a6] max-md:order-1 max-md:ml-auto"></span><span class="desktop-copy max-md:hidden!">Base URI: </span><code class="font-semibold text-heading wrap-anywhere max-md:font-normal max-md:text-muted">{{ api_base_url }}</code></div>
+            <div class="base-uri flex max-w-full items-center gap-2 rounded-full border border-border bg-subtle px-4 py-2.5 font-mono text-[11px] leading-[normal] text-muted max-md:mx-1 max-md:mt-2 max-md:rounded-2xl max-md:p-3 max-md:text-[10px]">
+              <span class="status-dot inline-block size-1.5 shrink-0 rounded-full bg-[#14b8a6] max-md:order-1 max-md:ml-auto"></span><span class="desktop-copy max-md:hidden!">Base URI: </span><code class="font-semibold text-heading wrap-anywhere max-md:font-normal max-md:text-muted">{{ api_base_url }}</code>
+            </div>
           </div>
           <div data-reveal
                class="auth-banner mb-12 flex items-center gap-4 rounded-3xl border border-border bg-subtle px-7 py-4 [&_.icon-tile]:border-border [&_.icon-tile]:bg-surface max-md:mb-5 max-md:items-start max-md:gap-3 max-md:rounded-[20px] max-md:bg-surface max-md:p-4 max-md:[&_.icon-tile]:h-6 max-md:[&_.icon-tile]:w-5 max-md:[&_.icon-tile]:border-0 max-md:[&_.icon-tile]:bg-transparent">
             <c-ui.icon-tile name="shield-check" />
             <div>
               <h3 class="text-base leading-[1.6] max-md:text-sm">Authentication Requirements</h3>
-              <p class="text-sm leading-[1.6] max-md:mt-1 max-md:text-xs max-md:leading-[1.7]">Protected endpoints require the <code class="rounded-[20px] bg-surface px-1.5 py-px text-[11px] font-bold text-accent">X-API-Key</code> header. Directory endpoints provide structured JSON payloads.</p>
+              <p class="text-sm leading-[1.6] max-md:mt-1 max-md:text-xs max-md:leading-[1.7]">
+                Protected endpoints require
+                the <code class="rounded-[20px] bg-surface px-1.5 py-px text-[11px] font-bold text-accent">X-API-Key</code>
+                header. Directory endpoints provide structured JSON payloads.
+              </p>
             </div>
             <a href="#quick-start"
-               class="desktop-copy ml-auto font-mono text-[11px] leading-[normal] font-semibold whitespace-nowrap text-heading underline-offset-4 hover:underline focus-visible:underline [&_svg]:ml-1.5 max-md:hidden!">Key policy guidelines
+               class="desktop-copy ml-auto font-mono text-[11px] leading-[normal] font-semibold whitespace-nowrap text-heading underline-offset-4 hover:underline focus-visible:underline [&_svg]:ml-1.5 max-md:hidden!">Key
+              policy guidelines
               <c-icons.arrow-right size="15" />
             </a>
           </div>
@@ -130,9 +137,14 @@
                   Header
                 </c-ui.badge>
               </c-slot>
-              <div class="header-example rounded-2xl border border-border bg-surface p-4 max-md:bg-subtle max-md:p-3">
-                <span class="eyebrow inline-block p-0 font-mono text-[9px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:text-[10px]">HTTP Security Header</span><code class="mt-1.5 block text-[11px] font-bold text-heading wrap-anywhere max-md:text-accent">{{ header_raw }}</code>
-                <p class="mt-3 text-xs leading-[1.4] text-muted">Tokens must be kept confidential and omitted from public client bundles.</p>
+              <div class="header-example rounded-2xl border border-border bg-surface p-4 py-2.5 max-md:bg-subtle max-md:p-3">
+                <span class="eyebrow inline-block p-0 font-mono text-[9px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:text-[10px]">HTTP
+                Security Header</span>
+                <code class="mt-1 block text-[11px] font-bold text-heading wrap-anywhere max-md:text-accent">{{ header_raw }}</code>
+                <p class="mt-3 text-xs leading-[1.4] text-muted">
+                  Tokens must be kept confidential and omitted from public
+                  client bundles.
+                </p>
               </div>
               <c-slot name="footer">
                 <span>Keep your key on your server, not in browser code.</span>
@@ -147,7 +159,8 @@
               <c-ui.code-block id="curl-code" :code="curl_code" />
               <c-slot name="footer">
                 <a href="{{ docs_url }}"
-                   class="query-docs max-md:flex! max-md:items-center max-md:justify-center max-md:rounded-full max-md:bg-button max-md:p-2.5 max-md:font-sans max-md:text-xs max-md:leading-[normal] max-md:font-bold max-md:text-button-text!">Open interactive docs
+                   class="query-docs max-md:flex! max-md:items-center max-md:justify-center max-md:rounded-full max-md:bg-button max-md:p-2.5 max-md:font-sans max-md:text-xs max-md:leading-[normal] max-md:font-bold max-md:text-button-text!">Open
+                  interactive docs
                   <c-icons.book-open size="15" />
                 </a><a class="desktop-copy max-md:hidden!"
                        href="{{ api_directory_url }}">Browse API resources →</a>
@@ -162,8 +175,12 @@
         <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
           <div data-reveal
                class="tools-heading mb-10 text-muted max-md:mx-1 max-md:mb-3 max-md:flex max-md:items-center max-md:justify-between">
-            <span class="desktop-copy eyebrow font-mono text-[11px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:hidden!">Developer Specifications &amp; Tooling</span>
-            <h2 class="mobile-copy hidden max-md:block max-md:text-base max-md:leading-[1.6] max-md:tracking-normal">Specs &amp; Tooling</h2>
+            <span class="desktop-copy eyebrow font-mono text-[11px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:hidden!">Developer
+            Specifications &amp; Tooling</span>
+            <h2 class="mobile-copy hidden max-md:block max-md:text-base max-md:leading-[1.6] max-md:tracking-normal">
+              Specs
+              &amp; Tooling
+            </h2>
             <span class="mobile-copy hidden max-md:inline max-md:font-mono max-md:text-[10px] max-md:leading-[normal] max-md:text-accent">Standards</span>
           </div>
           <div data-reveal-stagger

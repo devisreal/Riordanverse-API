@@ -1,7 +1,6 @@
 {# djlint:off H026 #}
 <c-vars id="" class="" code="" />
-{# djlint:on #}
-{# A code attribute avoids template-formatting whitespace becoming part of the snippet. #}
+{# djlint:on #} {# A code attribute avoids template-formatting whitespace becoming part of the snippet. #}
 <pre id="{{ id }}"
-     class="code-block max-w-full overflow-auto rounded-3xl border border-white/4 bg-code-bg p-4 font-mono text-[11px] leading-[1.75] whitespace-pre text-code-text tab-2 {{ class }}"
+     class="code-block max-w-full overflow-auto rounded-2xl border border-white/4 bg-code-bg p-4 font-mono text-[11px] leading-[1.75] whitespace-pre text-code-text tab-2 {{ class }}"
      tabindex="0"><code>{{ code|default:slot }}</code></pre>

@@ -1,5 +1,14 @@
 Landing image assets and provenance
 
+social-preview.svg / social-preview.png
+  Original text-and-wave social card authored for this project (2026-11-11).
+  No lore photographs, third-party artwork, or official logos are incorporated.
+  SVG is the editable source; PNG is a 1200 x 630 browser rasterization for
+  social crawlers, which do not reliably accept SVG cards. System Arial/sans-serif
+  is used; no font files are embedded. This original card falls within the
+  repository's original-code/documentation MIT scope, not the exclusions for
+  third-party lore imagery. It identifies the project as unofficial.
+
 Design sources supplied by the user:
   /tmp/pj-stitch-exports/light-desktop.html
   /tmp/pj-stitch-exports/dark-desktop.html
@@ -92,6 +101,18 @@ lore-trident.webp
   Subject: a bronze Neptune trident; decorative mythology photograph,
     not an official depiction of a Riordanverse artifact.
   SHA-256: 4b81b27246a2c943a80a8b7c5017f671a455a0f4c6734ea83a245a752b874c04
+
+Responsive lore derivatives (2026-11-11)
+
+lore-{camp,olympus,trident}-{256,384,512,768}.webp
+  Derived only from the corresponding live 1000px WebPs documented above.
+  Processing: cwebp 1.6.0, quality 85, method 6, metadata stripped; resize to
+    the filename's pixel width with proportional height, no additional crop.
+  Reproduce with: sh website/static_src/build-lore-images.sh
+  The 1000px sources remain available for larger/high-DPR screens and fallback.
+  All source credits and rights caveats above apply to these derivatives too.
+  The trident derivatives retain the same CC BY-SA 3.0 license and attribution.
+  Resizing the Camp/Olympus images does not establish redistribution rights.
 
 Rights/provenance for original Stitch assets and unverified replacements:
 The original files implement the user-approved Stitch design.

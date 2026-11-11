@@ -8,6 +8,7 @@ import json
 from shlex import quote
 from urllib.parse import urlencode
 
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from pygments import highlight
@@ -314,6 +315,15 @@ def _linked(item):
     return result
 
 
+def _lore_card(item):
+    card = _linked(item)
+    stem = item['image'].removesuffix('.webp')
+    card['image_sources'] = [
+        {'path': f'{stem}-{width}.webp', 'width': width} for width in (256, 384, 512, 768)
+    ] + [{'path': item['image'], 'width': item['image_width']}]
+    return card
+
+
 def _code(source, lexer):
     return mark_safe(highlight(source, lexer, HtmlFormatter(nowrap=True, classprefix='syntax-')))
 
@@ -356,6 +366,20 @@ def get_home_context(request):
     images_url = f'{reverse("image-list")}?{urlencode({"source_type": "wiki"})}'
     return {
         'origin': origin,
+        'social': {
+            'title': 'Percy Jackson Fandom API',
+            'description': (
+                'A structured, read-only REST API for Riordanverse characters, gods, quests, '
+                'locations, and the relationships connecting them.'
+            ),
+            # Canonical links omit tracking/query parameters and respect mounted deployments.
+            'url': request.build_absolute_uri(reverse('website:home')),
+            'image_url': request.build_absolute_uri(static('website/images/social-preview.png')),
+            'image_alt': (
+                'Percy Jackson Fandom API — Riordanverse reference data. '
+                'Read-only REST API. Unofficial fan project.'
+            ),
+        },
         'api_base_url': request.build_absolute_uri(reverse('api-directory')),
         'api_directory_url': reverse('api-directory'),
         'docs_url': reverse('swagger-ui'),
@@ -368,7 +392,7 @@ def get_home_context(request):
         'resource_groups': groups,
         'features': FEATURES,
         'tools': [_linked(item) for item in TOOLS],
-        'lore_cards': [_linked(item) for item in LORE_CARDS],
+        'lore_cards': [_lore_card(item) for item in LORE_CARDS],
         'navigation': [_linked(item) for item in NAVIGATION],
         'example_notice': EXAMPLE_NOTICE,
         'character_url': character_url,
