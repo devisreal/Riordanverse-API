@@ -20,6 +20,7 @@ A RESTful API for the Riordanverse. [Visit the website](https://percy-jackson-fa
 - [Database setup](#database-setup)
 - [Run the project](#run-the-project)
 - [Docker and Compose](#docker-and-compose)
+- [Report a lore correction](#report-a-lore-correction)
 - [Contributing](#contributing)
 - [Deployment](#deployment)
 - [Acknowledgments](#acknowledgments)
@@ -305,6 +306,20 @@ Named volumes preserve local database/cache data between restarts. **Do not add
 database, not your ordinary local development database. It has no source bind
 mounts or automatic reload; rebuild after source changes. See [deployment](DEPLOYMENT.md)
 for Railway and production hosting; Railway does not use this Compose file.
+
+## Report a lore correction
+
+Found incorrect or missing reference data? [Report a lore correction](https://github.com/devisreal/Percy-Jackson-Fandom-API/issues/new?template=lore_correction.yml)
+using the GitHub issue form. A GitHub account is required, and submissions are public.
+
+Include the affected API URL, entity name, or slug; the current information; your
+suggested correction; and evidence such as a book title and chapter or a supporting
+reference URL. Describe the evidence in your own words rather than copying lengthy
+copyrighted excerpts. Never include API keys, email addresses, or other personal
+information. Search existing issues first to avoid duplicate reports.
+
+Reports are reviewed manually. Submitting a correction does **not** automatically
+change the dataset, and no on-site submission form or new API endpoint is involved.
 
 ## Contributing
 

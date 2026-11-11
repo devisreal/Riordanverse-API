@@ -16,6 +16,7 @@ from pygments.formatters import HtmlFormatter
 from pygments.lexers import BashLexer, HttpLexer, JsonLexer, TextLexer
 
 GITHUB_URL = 'https://github.com/devisreal/Percy-Jackson-Fandom-API'
+LORE_CORRECTION_URL = f'{GITHUB_URL}/issues/new?{urlencode({"template": "lore_correction.yml"})}'
 
 
 def _resource(label, route_name, description, **filters):
@@ -389,6 +390,7 @@ def get_home_context(request):
         'images_endpoint': f'GET {images_url}',
         'request_key_url': reverse('request-api-key'),
         'github_url': GITHUB_URL,
+        'lore_correction_url': LORE_CORRECTION_URL,
         'resource_groups': groups,
         'features': FEATURES,
         'tools': [_linked(item) for item in TOOLS],
