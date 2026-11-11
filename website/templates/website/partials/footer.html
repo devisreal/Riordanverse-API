@@ -44,6 +44,11 @@
                target="_blank"
                rel="noopener noreferrer">Issue Tracker &amp; Schema Requests
           <c-icons.external-link size="12" />
+        </a><a class="lore-correction-link mt-3 block font-mono text-xs/4"
+               href="{{ lore_correction_url }}"
+               target="_blank"
+               rel="noopener noreferrer">Report a lore correction
+          <c-icons.external-link size="12" />
         </a>
       </nav>
     </div>
@@ -58,9 +63,16 @@
     <div class="footer-mobile mobile-copy mt-18 hidden border-t border-border pt-6 pb-12 text-center max-md:block">
       <nav class="flex flex-wrap justify-center gap-2 [&>a]:rounded-[99px] [&>a]:border [&>a]:border-border [&>a]:bg-surface [&>a]:px-2.5 [&>a]:py-1 [&>a]:font-mono [&>a]:text-[10px] [&>a]:leading-[normal]"
            aria-label="Footer">
-        <a href="{{ docs_url }}">API Specs</a><a href="{{ api_directory_url }}">Endpoints</a><a href="{{ github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a><a href="{{ github_url }}/blob/develop/LICENSE"
-                                                                                                                                                                               target="_blank"
-                                                                                                                                                                               rel="noopener noreferrer">License</a>
+        <a href="{{ docs_url }}">API Specs</a>
+        <a href="{{ api_directory_url }}">Endpoints</a>
+        <a href="{{ github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="{{ github_url }}/blob/develop/LICENSE"
+           target="_blank"
+           rel="noopener noreferrer">License</a>
+        <a class="lore-correction-link"
+           href="{{ lore_correction_url }}"
+           target="_blank"
+           rel="noopener noreferrer">Report a lore correction</a>
       </nav>
       <p class="mt-4 px-3 text-xs leading-[1.7]">Fandom API built for demigods. Community-curated Riordanverse data and entities. An unofficial fan project.</p>
       <span class="badge mt-4 inline-flex items-center gap-1.5 rounded-[999px] border border-accent-border bg-accent-soft px-2 py-0.5 font-mono text-[10px]/[1.5] font-normal tracking-[0.02em] whitespace-nowrap text-accent normal-case"><span class="status-dot inline-block size-1.5 shrink-0 rounded-[99px] bg-[#14b8a6]"></span>Read-only REST API</span>

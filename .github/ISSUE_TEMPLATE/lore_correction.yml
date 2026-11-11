@@ -1,0 +1,54 @@
+name: Lore correction
+description: Report incorrect or missing Riordanverse reference data.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the archive. Search existing issues before submitting a correction.
+
+        This form creates a **public GitHub issue** and requires a GitHub account. Reports are reviewed manually; submitting one does not automatically change the dataset.
+
+        Provide source references in your own words. Do not include API keys, email addresses, other personal information, or lengthy copyrighted excerpts.
+  - type: input
+    id: resource
+    attributes:
+      label: Affected resource
+      description: Provide the API URL, entity name, or slug. For a missing record, name the entity and resource type.
+      placeholder: "Character: Percy Jackson — /api/v1/characters/percy-jackson/"
+    validations:
+      required: true
+  - type: input
+    id: fields
+    attributes:
+      label: Affected fields (optional)
+      description: List the fields or relationships involved, if known.
+      placeholder: aliases, divine_parent, books_appeared_in
+  - type: textarea
+    id: current_information
+    attributes:
+      label: Current information
+      description: Describe what is incorrect or missing. Include a small relevant response excerpt only if useful, with credentials and personal information removed.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_correction
+    attributes:
+      label: Suggested correction
+      description: Explain what the information should say and why. Identify conflicting sources or differences between book editions if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and source references
+      description: Give the book title and chapter (page number and edition if useful), or a supporting reference URL. Explain how the source supports the correction; avoid lengthy quotations.
+      placeholder: "Book title, chapter, and a brief explanation; or a Riordan Wiki/reference URL."
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_submission
+    attributes:
+      label: Public submission
+      options:
+        - label: I have not included API keys, personal information, or lengthy copyrighted excerpts.
+          required: true

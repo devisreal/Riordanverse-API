@@ -17,7 +17,7 @@ from django.urls import get_script_prefix, resolve, reverse, set_script_prefix
 
 from apps.characters.serializers import CharacterDetailSerializer
 from apps.core.views import API_DIRECTORY_ROUTES
-from website.content import get_home_context
+from website.content import LORE_CORRECTION_URL, get_home_context
 from website.views import home
 
 
@@ -255,6 +255,20 @@ class HomeViewTests(SimpleTestCase):
         for tag, attrs in page.elements:
             if tag == 'a' and 'brand' in attrs.get('class', '').split():
                 self.assertNotIn('footer-source', attrs['class'].split())
+
+    def test_desktop_and_mobile_footer_link_directly_to_public_correction_form(self):
+        response, page = self.page()
+        links = [
+            attrs
+            for tag, attrs in page.elements
+            if tag == 'a' and 'lore-correction-link' in attrs.get('class', '').split()
+        ]
+        self.assertEqual(len(links), 2)
+        for attrs in links:
+            self.assertEqual(attrs['href'], LORE_CORRECTION_URL)
+            self.assertEqual(attrs['target'], '_blank')
+            self.assertTrue({'noopener', 'noreferrer'} <= set(attrs['rel'].split()))
+        self.assertContains(response, 'Report a lore correction', count=2)
 
     def test_hero_description_has_a_scoped_theme_color(self):
         _, page = self.page()
