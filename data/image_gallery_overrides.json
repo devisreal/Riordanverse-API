@@ -4,7 +4,188 @@
       "include_file_titles": [
         "File:Huntress_constellation_GN.png",
         "File:Zoe_GN.png"
-      ]
+      ],
+      "primary_file_title": "File:Zoe Nightshade.jpg"
+    },
+    "aeneas": {
+      "primary_file_title": "File:Aeneas.jpg"
+    },
+    "andromeda": {
+      "primary_file_title": "File:Perseus and Andromeda.jpg"
+    },
+    "annabeth-chase": {
+      "primary_file_title": "File:Annabeth Chase-Viria.jpg"
+    },
+    "ariadne": {
+      "primary_file_title": "File:95-ariadne.jpg"
+    },
+    "atalanta": {
+      "primary_file_title": "File:Atalanta.png"
+    },
+    "bellerophon": {
+      "primary_file_title": "File:Bellerophon.png"
+    },
+    "beryl-grace": {
+      "primary_file_title": "File:Beryl Grace.png"
+    },
+    "bianca-di-angelo": {
+      "primary_file_title": "File:Bianca di Angelo.jpeg"
+    },
+    "blackjack": {
+      "primary_file_title": "File:Blackjack-RR.jpg"
+    },
+    "briares": {
+      "primary_file_title": "File:Briares GN.png"
+    },
+    "calypso": {
+      "primary_file_title": "File:Calypso-Viria.jpg"
+    },
+    "castor": {
+      "primary_file_title": "File:Castor and Pollux.jpg"
+    },
+    "charles-beckendorf": {
+      "primary_file_title": "File:Charles Beckendorf-Viria.jpg"
+    },
+    "chiron": {
+      "primary_file_title": "File:Chiron viria.jpg"
+    },
+    "chrysaor": {
+      "primary_file_title": "File:Chrysaor.jpg"
+    },
+    "clarisse-la-rue": {
+      "primary_file_title": "File:Clarisse La Rue.jpg"
+    },
+    "daedalus": {
+      "primary_file_title": "File:Daedalus death GN.jpg"
+    },
+    "ethan-nakamura": {
+      "primary_file_title": "File:Ethan Nakamura.jpeg"
+    },
+    "eurytion": {
+      "primary_file_title": "File:Eurytion GN.jpg"
+    },
+    "frank-zhang": {
+      "primary_file_title": "File:Frank Zhang.jpg"
+    },
+    "frederick-chase": {
+      "primary_file_title": "File:Frederick Chase.jpeg"
+    },
+    "gabe-ugliano": {
+      "primary_file_title": "File:CB Gabe Ugliano.jpg"
+    },
+    "gleeson-hedge": {
+      "primary_file_title": "File:Gleeson Hedge.jpg"
+    },
+    "grover-underwood": {
+      "primary_file_title": "File:Grover Underwood.jpg"
+    },
+    "guido": {
+      "primary_file_title": "File:Blackjack-Guido-Porkpie.jpg"
+    },
+    "hazel-levesque": {
+      "primary_file_title": "File:Hazel Levesque.jpg"
+    },
+    "hippolytus": {
+      "primary_file_title": "File:Hippolytus.jpeg"
+    },
+    "icarus": {
+      "primary_file_title": "File:Daedalus icarus.jpg"
+    },
+    "jake-mason": {
+      "primary_file_title": "File:Jake Mason GN.jpg"
+    },
+    "jason-grace": {
+      "primary_file_title": "File:Jason Grace-Viria.jpg"
+    },
+    "juniper": {
+      "primary_file_title": "File:Juniper.jpg"
+    },
+    "king-minos": {
+      "primary_file_title": "File:King Minos GN.png"
+    },
+    "leneus": {
+      "primary_file_title": "File:Leneus-RR.jpeg"
+    },
+    "leo-valdez": {
+      "primary_file_title": "File:Leo Valdez-Viria.jpg"
+    },
+    "luke-castellan": {
+      "primary_file_title": "File:Luke Castellan-Viria.jpg"
+    },
+    "maria-di-angelo": {
+      "primary_file_title": "File:Maria di Angelo-RR.jpg"
+    },
+    "may-castellan": {
+      "primary_file_title": "File:May Castellan.jpg"
+    },
+    "michael-yew": {
+      "primary_file_title": "File:Michael Yew GN.jpg"
+    },
+    "mrs-oleary": {
+      "primary_file_title": "File:Mrs. O'Leary-RR.jpg"
+    },
+    "nancy-bobofit": {
+      "primary_file_title": "File:Nancy Bobofit IE.jpg"
+    },
+    "nico-di-angelo": {
+      "primary_file_title": "File:Nico di Angelo.jpg"
+    },
+    "oracle-of-delphi": {
+      "primary_file_title": "File:Oracle of Delphi GN.jpg"
+    },
+    "orpheus": {
+      "primary_file_title": "File:Orpheus.png"
+    },
+    "pasiphae": {
+      "primary_file_title": "File:Pasiphaë GN.jpg"
+    },
+    "paul-blofis": {
+      "primary_file_title": "File:Paul Blofis.jpg"
+    },
+    "percy-jackson": {
+      "primary_file_title": "File:Percy Jackson.jpg"
+    },
+    "perseus": {
+      "primary_file_title": "File:Perseus-RR.jpeg"
+    },
+    "phaethon": {
+      "primary_file_title": "File:Phaethon.png"
+    },
+    "piper-mclean": {
+      "primary_file_title": "File:Piper McLean.jpg"
+    },
+    "pollux": {
+      "primary_file_title": "File:Castor and Pollux.jpg"
+    },
+    "porkpie": {
+      "primary_file_title": "File:Blackjack-Guido-Porkpie.jpg"
+    },
+    "psyche": {
+      "primary_file_title": "File:Psyche-RR.jpeg"
+    },
+    "rachel-elizabeth-dare": {
+      "primary_file_title": "File:Rachel Elizabeth Dare-RR.jpg"
+    },
+    "sally-jackson": {
+      "primary_file_title": "File:Sally jackson.jpg"
+    },
+    "silena-beauregard": {
+      "primary_file_title": "File:Silena Beauregard.JPG"
+    },
+    "tantalus": {
+      "primary_file_title": "File:Tantalus-RR.jpeg"
+    },
+    "thalia-grace": {
+      "primary_file_title": "File:Thalia Grace-Viria.jpg"
+    },
+    "theseus": {
+      "primary_file_title": "File:Theseus GH.jpg"
+    },
+    "tyson": {
+      "primary_file_title": "File:Tyson-Viria.jpg"
+    },
+    "will-solace": {
+      "primary_file_title": "File:Will Solace.jpg"
     }
   },
   "monsters": {
@@ -19,18 +200,384 @@
         "File:Manticore - GN (4).jpg",
         "File:Manticore - GN (5).jpg",
         "File:Manticore GN.png"
-      ]
+      ],
+      "primary_file_title": "File:Manticore.jpg"
+    },
+    "alecto": {
+      "primary_file_title": "File:Alecto GN 2.jpg"
+    },
+    "antaeus": {
+      "primary_file_title": "File:Antaeus GN.png"
+    },
+    "cacus": {
+      "primary_file_title": "File:Cacus1111.jpeg"
+    },
+    "cerberus": {
+      "primary_file_title": "File:Hercules and Cerberus.png"
+    },
+    "charybdis": {
+      "primary_file_title": "File:Charybdis.jpg"
+    },
+    "chimera": {
+      "primary_file_title": "File:Chimera 2.jpg"
+    },
+    "echidna": {
+      "primary_file_title": "File:Echidna and Chimera IE.jpg"
+    },
+    "erymanthian-boar": {
+      "primary_file_title": "File:Erymanthian Boar GN.jpg"
+    },
+    "euryale": {
+      "primary_file_title": "File:Euryale.jpg"
+    },
+    "geryon": {
+      "primary_file_title": "File:Geryon.png"
+    },
+    "hydra": {
+      "primary_file_title": "File:Hydra Deluxe.png"
+    },
+    "kampe": {
+      "primary_file_title": "File:Kampe.jpg"
+    },
+    "kelli": {
+      "primary_file_title": "File:Kelli GN.png"
+    },
+    "ladon": {
+      "primary_file_title": "File:LadonGG.jpg"
+    },
+    "lydian-drakon": {
+      "primary_file_title": "File:Lydian Drakon GN 2.jpg"
+    },
+    "medusa": {
+      "primary_file_title": "File:Medusa and Statues.jpg"
+    },
+    "minotaur": {
+      "primary_file_title": "File:Minotaur-RR.jpg"
+    },
+    "nemean-lion": {
+      "primary_file_title": "File:Nemean Lion.jpg"
+    },
+    "ophiotaurus": {
+      "primary_file_title": "File:Ophiotaurus.jpg"
+    },
+    "polyphemus": {
+      "primary_file_title": "File:Polyphemus-RR.jpeg"
+    },
+    "scylla": {
+      "primary_file_title": "File:Scylla-RR.jpeg"
+    },
+    "sphinx": {
+      "primary_file_title": "File:Sphinx.jpg"
+    },
+    "stheno": {
+      "primary_file_title": "File:SthenoSON.jpg"
+    },
+    "talos": {
+      "primary_file_title": "File:Talos PJGH.jpg"
+    },
+    "tammi": {
+      "primary_file_title": "File:Tammi GN.png"
+    },
+    "typhon": {
+      "primary_file_title": "File:Typhon.jpg"
     }
   },
   "books": {
     "percy-jacksons-greek-heroes": {
-      "include_file_titles": ["File:Greekheroes.jpg"],
+      "include_file_titles": [
+        "File:Greekheroes.jpg"
+      ],
       "primary_file_title": "File:Greekheroes.jpg"
+    },
+    "percy-jackson-and-the-singer-of-apollo": {
+      "primary_file_title": "File:Singer of Apollo Cover.jpg"
+    },
+    "percy-jacksons-greek-gods": {
+      "primary_file_title": "File:Percy Jackson's Greek Gods.png"
+    },
+    "the-battle-of-the-labyrinth": {
+      "primary_file_title": "File:Pjbl englishcover.png"
+    },
+    "the-demigod-files": {
+      "primary_file_title": "File:Demigodfiles113.jpg"
+    },
+    "the-last-olympian": {
+      "primary_file_title": "File:Pjlo english cover.png"
+    },
+    "the-lightning-thief": {
+      "primary_file_title": "File:The Lightning Thief-1.jpg"
+    },
+    "the-sea-of-monsters": {
+      "primary_file_title": "File:SoM Cover 2.1.jpg"
+    },
+    "the-titans-curse": {
+      "primary_file_title": "File:The Titan's Curse-1.jpg"
     }
   },
   "locations": {
     "ogygia": {
-      "exclude_file_titles": ["File:Calypso-Viria.jpg", "File:Moonlace.png"]
+      "exclude_file_titles": [
+        "File:Calypso-Viria.jpg",
+        "File:Moonlace.png"
+      ]
+    },
+    "alcatraz": {
+      "primary_file_title": "File:Alcatraz GN.jpg"
+    },
+    "camp-half-blood": {
+      "primary_file_title": "File:CHB map.png"
+    },
+    "crustys-waterbed-palace": {
+      "primary_file_title": "File:Crusty's Water Bed Palace-Disney+.jpg"
+    },
+    "doa-recording-studios": {
+      "primary_file_title": "File:DOAGN.jpg"
+    },
+    "garden-of-the-hesperides": {
+      "primary_file_title": "File:Garden of the Hesperides GN.jpg"
+    },
+    "gateway-arch": {
+      "primary_file_title": "File:St. Louis.jpg"
+    },
+    "hoover-dam": {
+      "primary_file_title": "File:Hoover Dam GN.jpg"
+    },
+    "land-without-rain": {
+      "primary_file_title": "File:Illumicrate endpaper-Talos.jpg"
+    },
+    "lotus-hotel-and-casino": {
+      "primary_file_title": "File:Lotus Hotel and Casino GN.jpg"
+    },
+    "manhattan": {
+      "primary_file_title": "File:Manhattan Protective dome GN.jpg"
+    },
+    "mount-olympus": {
+      "primary_file_title": "File:Illumicrate endpaper-Olympus.jpg"
+    },
+    "mount-st-helens": {
+      "primary_file_title": "File:280px-MSH82 st helens plume from harrys ridge 05-19-82.jpg"
+    },
+    "mount-tamalpais": {
+      "primary_file_title": "File:MtTam.jpg"
+    },
+    "polyphemuses-island": {
+      "primary_file_title": "File:Illumicrate endpaper-Polyphemus.jpg"
+    },
+    "poseidons-undersea-palace": {
+      "primary_file_title": "File:Poseidon's Palace.jpg"
+    },
+    "princess-andromeda": {
+      "primary_file_title": "File:Princessandromeda.jpg"
+    },
+    "tartarus": {
+      "primary_file_title": "File:The Pit of Tartarus.jpg"
+    },
+    "the-labyrinth": {
+      "primary_file_title": "File:Labyrinth.jpg"
+    },
+    "the-sea-of-monsters": {
+      "primary_file_title": "File:SoM Map.jpg"
+    },
+    "the-underworld": {
+      "primary_file_title": "File:Illumicrate endpaper-Underworld.jpg"
+    },
+    "triple-g-ranch": {
+      "primary_file_title": "File:Geryon - GN (3).jpg"
+    },
+    "waterland": {
+      "primary_file_title": "File:Waterland-Disney+.jpg"
+    },
+    "westover-hall": {
+      "primary_file_title": "File:Westover Hall GN.jpg"
+    }
+  },
+  "gods": {
+    "amphitrite": {
+      "primary_file_title": "File:Amphitrite-RR.jpg"
+    },
+    "aphrodite": {
+      "primary_file_title": "File:Aphrodite-RR.jpeg"
+    },
+    "apollo": {
+      "primary_file_title": "File:Apollo Viria.jpg"
+    },
+    "ares": {
+      "primary_file_title": "File:Ares.jpg"
+    },
+    "artemis": {
+      "primary_file_title": "File:Artemis-RR.jpeg"
+    },
+    "athena": {
+      "primary_file_title": "File:Athena.jpg"
+    },
+    "boreas": {
+      "primary_file_title": "File:Boreas GN.jpg"
+    },
+    "chaos": {
+      "primary_file_title": "File:Chaos.png"
+    },
+    "circe": {
+      "primary_file_title": "File:Circe-RR.jpeg"
+    },
+    "demeter": {
+      "primary_file_title": "File:Demeter-Viria.png"
+    },
+    "dionysus": {
+      "primary_file_title": "File:DionysusGG.jpg"
+    },
+    "gaea": {
+      "primary_file_title": "File:Gaea-RR.jpeg"
+    },
+    "hades": {
+      "primary_file_title": "File:Hades-RR.jpg"
+    },
+    "hebe": {
+      "primary_file_title": "File:Hebe-RR.jpg"
+    },
+    "hecate": {
+      "primary_file_title": "File:Hecate-RR.jpg"
+    },
+    "hephaestus": {
+      "primary_file_title": "File:Hephaestus.jpg"
+    },
+    "hera": {
+      "primary_file_title": "File:Hera.png"
+    },
+    "hermes": {
+      "primary_file_title": "File:Hermes.jpg"
+    },
+    "hestia": {
+      "primary_file_title": "File:Hestia.png"
+    },
+    "hypnos": {
+      "primary_file_title": "File:Hypnos-RR.jpeg"
+    },
+    "iris": {
+      "primary_file_title": "File:Iris-RR2.jpg"
+    },
+    "janus": {
+      "primary_file_title": "File:Janus GN.jpg"
+    },
+    "khione": {
+      "primary_file_title": "File:Khione-RR2.jpg"
+    },
+    "melinoe": {
+      "primary_file_title": "File:Melinoe.jpg"
+    },
+    "morpheus": {
+      "primary_file_title": "File:Morpheus.jpg"
+    },
+    "nemesis": {
+      "primary_file_title": "File:Nemesis-RR2.jpeg"
+    },
+    "nike": {
+      "primary_file_title": "File:Nike.png"
+    },
+    "pan": {
+      "primary_file_title": "File:Pan-RR.jpg"
+    },
+    "persephone": {
+      "primary_file_title": "File:Persephone-RR2.jpg"
+    },
+    "phorcys": {
+      "primary_file_title": "File:Phorcys.jpg"
+    },
+    "poseidon": {
+      "primary_file_title": "File:Poseidon.jpg"
+    },
+    "tartarus": {
+      "primary_file_title": "File:Tartarus face.jpg"
+    },
+    "triton": {
+      "primary_file_title": "File:220px-Tritonbrunnen rom.jpg"
+    },
+    "tyche": {
+      "primary_file_title": "File:Tyche.jpg"
+    },
+    "zeus": {
+      "primary_file_title": "File:Zeus-deluxe edition.jpeg"
+    }
+  },
+  "titans": {
+    "atlas": {
+      "primary_file_title": "File:Atlas-RR.jpeg"
+    },
+    "epimetheus": {
+      "primary_file_title": "File:Epimetheus.jpg"
+    },
+    "helios": {
+      "primary_file_title": "File:Helios EM.png"
+    },
+    "hyperion": {
+      "primary_file_title": "File:Hyperion.jpg"
+    },
+    "iapetus": {
+      "primary_file_title": "File:Iapetus-RR2.jpg"
+    },
+    "koios": {
+      "primary_file_title": "File:Koios GN.jpg"
+    },
+    "krios": {
+      "primary_file_title": "File:Krios.jpg"
+    },
+    "kronos": {
+      "primary_file_title": "File:Kronos-RR.jpeg"
+    },
+    "leto": {
+      "primary_file_title": "File:Leto.jpg"
+    },
+    "mnemosyne": {
+      "primary_file_title": "File:Mnemosyne.jpg"
+    },
+    "oceanus": {
+      "primary_file_title": "File:Oceanus.jpg"
+    },
+    "prometheus": {
+      "primary_file_title": "File:Prometheus.jpg"
+    },
+    "rhea": {
+      "primary_file_title": "File:Rhea viria.jpg"
+    },
+    "selene": {
+      "primary_file_title": "File:Selene.jpg"
+    },
+    "themis": {
+      "primary_file_title": "File:Themis.jpg"
+    }
+  },
+  "weapons": {
+    "aegis": {
+      "primary_file_title": "File:Aegis Demigod Diaries.jpg"
+    },
+    "backbiter": {
+      "primary_file_title": "File:Backbiter-Disney+.jpg"
+    },
+    "daedalus-laptop": {
+      "primary_file_title": "File:Annabeth's trunk Daedalus' laptop.png"
+    },
+    "golden-fleece": {
+      "primary_file_title": "File:The-Golden-Fleece.jpg"
+    },
+    "helm-of-darkness": {
+      "primary_file_title": "File:Helm of Darkness-Disney+.jpg"
+    },
+    "hermes-multivitamins": {
+      "primary_file_title": "File:Hermes' Multivitamins.png"
+    },
+    "medusas-head": {
+      "primary_file_title": "File:Medusa's Head.jpg"
+    },
+    "persephones-pearls": {
+      "primary_file_title": "File:Persephone's Pearls.jpg"
+    },
+    "poseidons-trident": {
+      "primary_file_title": "File:PoseidonsTrident.png"
+    },
+    "riptide": {
+      "primary_file_title": "File:Riptide Percy Jackson.jpg"
+    },
+    "winged-shoes": {
+      "primary_file_title": "File:Winged Shoes IE.png"
     }
   }
 }
