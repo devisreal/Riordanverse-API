@@ -15,9 +15,7 @@ from urllib.request import Request, urlopen
 import certifi
 
 MAX_TITLES_PER_QUERY = 50
-DEFAULT_USER_AGENT = (
-    'RiordanverseImageAudit/1.0 (https://github.com/devisreal/Percy-Jackson-Fandom-API)'
-)
+DEFAULT_USER_AGENT = 'RiordanverseImageAudit/1.0 (https://github.com/devisreal/Riordanverse-API)'
 
 _ALLOWED_LICENSE_PATHS = (
     re.compile(r'^/licenses/by/(?:1\.0|2\.0|2\.5|3\.0|4\.0)/?$'),

@@ -1,15 +1,21 @@
-# Percy Jackson Fandom API — Reference & Planning Notes
+# Riordanverse API — Reference & Planning Notes
 
 **Last updated:** 2026-11-11 (UTC)
 
-**Project:** Percy Jackson Fandom Platform
+**Project:** Riordanverse API — an unofficial reference API for the entire Riordanverse
 
 **API Version:** 1.0 (`/api/v1/`; current routes cover the records in the canonical seed corpus)
 
 **Source References:** [Riordan Wiki on Fandom](https://riordan.fandom.com/wiki/Riordan_Wiki) and Rick Riordan’s Riordanverse books.
 
 **Status:** Implemented API details are documented in Sections 13–15 and 23. Sections explicitly labeled proposed are not current contracts.
-**Future Versions:** Additional Riordanverse coverage is a future expansion; see the final Future Work section.
+**Future Versions:** Entire-Riordanverse coverage is the scope ambition, not the current dataset: the seeds currently focus on Greek/Roman lore. Additional coverage is a future expansion; see the final Future Work section.
+
+**Intended public URLs:** Website `https://riordanverse.cc`, API `https://riordanverse.cc/api/v1/`, interactive docs `https://riordanverse.cc/api/docs/`. The domain is registered; these URLs do not confirm configured DNS, hosting, or working HTTPS. Use a confirmed deployment or `http://127.0.0.1:8000` locally until availability is verified. Relative endpoint examples below apply to either origin without changing paths or contracts.
+
+**Repository:** `https://github.com/devisreal/Riordanverse-API` (currently private; authorized access required). Package names: Python `riordanverse-api`, frontend `riordanverse-api-website`.
+
+**Contact:** `hello@riordanverse.cc` for general inquiries; `support@riordanverse.cc` for API support and application emails. The mailboxes exist, but do not by themselves enable outbound SMTP or application delivery. Provider credentials, a verified sending identity/domain, and delivery testing are required; see [application email](DEPLOYMENT.md#application-email). Key issuance remains immediate without email verification.
 
 ---
 
@@ -115,9 +121,9 @@ A running record of project decisions. Some earlier rows were proposals and are 
 
 ## 1. Project Vision
 
-The Percy Jackson Fandom API is an implemented, read-only REST API serving canonical Riordanverse reference data. The v1 API exposes books, characters, divinities, monsters, creatures, weapons, locations, quests, prophecies, events, organizations, images, and search through typed relations. The repository includes a Django-rendered developer website and API documentation; external web and mobile applications consume the API.
+The Riordanverse API is an implemented, unofficial, read-only REST API serving canonical Riordanverse reference data, with the ambition of covering the entire Riordanverse. The v1 API exposes books, characters, divinities, monsters, creatures, weapons, locations, quests, prophecies, events, organizations, images, and search through typed relations. The repository includes a Django-rendered developer website and API documentation; external web and mobile applications consume the API.
 
-**Current V1 data scope:** the canonical JSON seed corpus currently contains 12 Book records, including core books and child companion-story records, plus seeded characters, Gods, Titans, Monsters, Creatures, Weapons, Locations, Quests, Prophecies, Events, Cabins, and Factions. See Section 23 for implemented API routes and Section 10 for current seed-file counts. This is the current corpus, not a promise that every Riordanverse entity has been added.
+**Current V1 data scope:** the Greek/Roman-focused canonical JSON seed corpus currently contains 12 Book records, including core books and child companion-story records, plus seeded characters, Gods, Titans, Monsters, Creatures, Weapons, Locations, Quests, Prophecies, Events, Cabins, and Factions. See Section 23 for implemented API routes and Section 10 for current seed-file counts. This is the current corpus, not a promise that every Riordanverse entity has been added.
 
 ---
 

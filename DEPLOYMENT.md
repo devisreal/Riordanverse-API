@@ -1,8 +1,28 @@
-# Deployment
+# Riordanverse API — Deployment
 
-This guide covers production hosting. For local development and Docker Compose,
+This guide covers production hosting for the unofficial Riordanverse reference API.
+Entire-Riordanverse coverage is the ambition; the current dataset focuses on
+Greek/Roman lore. For local development and Docker Compose,
 see the [README](README.md#setup). For contribution and asset-authoring details,
 see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Intended public deployment
+
+The intended website is `https://riordanverse.cc`, with the API at
+`https://riordanverse.cc/api/v1/` and Swagger UI at
+`https://riordanverse.cc/api/docs/`. The domain is registered, but this does **not**
+confirm configured DNS, hosting, a valid HTTPS certificate, or public availability.
+Configure the provider's custom domain and DNS, provision HTTPS, then verify the
+routes before treating these URLs as live. Local workflows retain
+`http://127.0.0.1:8000` (or `http://localhost:8000` for Compose).
+
+The repository is `https://github.com/devisreal/Riordanverse-API`. It is currently
+private; authorize hosting integrations and Git access accordingly. Website,
+issue-template, and image-audit links use the renamed repository. Package names
+are `riordanverse-api` (Python) and `riordanverse-api-website` (frontend); runtime
+module paths and API contracts are unchanged by branding. Verify hosting
+integrations after the repository rename; this branch does not configure those
+integrations or change repository visibility.
 
 ## Runtime and configuration
 
@@ -29,6 +49,36 @@ The app reads individual `DB_*` variables, not `DATABASE_URL`. A host may expose
 its own database variables; map them to the names above. Never use the Compose
 fallback database password in production. `.env` is local configuration, not a
 file to upload into a public repository or bake into an image.
+
+For the intended domain, set `ALLOWED_HOSTS=riordanverse.cc` once the host is
+configured. Add other hostnames only when actually needed (for example, a
+provider health-check hostname). If trusted cross-origin forms require it, use
+`CSRF_TRUSTED_ORIGINS=https://riordanverse.cc`; do not add unrelated origins.
+Same-origin website/API access does not require a CORS entry. Enable only actual
+external consumer origins in `CORS_ALLOWED_ORIGINS`.
+
+## Application email
+
+The mailboxes `hello@riordanverse.cc` (general inquiries) and
+`support@riordanverse.cc` (API support and application emails) exist. This is not
+confirmation of outbound SMTP or working application email delivery. The default
+application sender is `Riordanverse API <support@riordanverse.cc>` and the server
+error sender is `support@riordanverse.cc`; override them with `DEFAULT_FROM_EMAIL`
+and `SERVER_EMAIL` as needed. These settings define identities, not mail delivery.
+
+Before sending application emails from `support@riordanverse.cc`:
+
+- Configure an application email backend and a transactional provider or SMTP
+  service, with its host/port, TLS requirements, and provider credentials stored
+  as deployment secrets. A mailbox alone is not a sending integration.
+- Verify the sending address/domain with the provider and publish the required
+  DNS authentication records (SPF/DKIM and an appropriate DMARC policy).
+- Confirm sender/reply-to settings, any sandbox or recipient restrictions, and
+  test real delivery and failure handling before enabling a sending flow.
+
+These are deployment prerequisites, not a claim that an email backend or sending
+flow is implemented. API keys are still returned immediately by
+`/auth/request-key/`, not emailed; no email-verification requirement is added.
 
 ## Deploy the Docker image
 

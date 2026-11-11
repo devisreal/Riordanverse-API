@@ -1,15 +1,25 @@
-# Percy Jackson Fandom API
+# Riordanverse API
 
-A RESTful API for the Riordanverse. [Visit the website](https://percy-jackson-fandom.up.railway.app/).
+An unofficial reference API for the entire Riordanverse. That is the project's
+scope ambition: the current dataset focuses on Greek/Roman lore and is not
+complete coverage of every series.
+
+Intended website: [riordanverse.cc](https://riordanverse.cc) ·
+[API directory](https://riordanverse.cc/api/v1/) ·
+[Swagger UI](https://riordanverse.cc/api/docs/).
 
 This is an unofficial fan project for educational and portfolio purposes, not
 affiliated with or endorsed by Rick Riordan, Disney Hyperion, or the respective
 rights holders. Riordanverse works, characters, and third-party artwork remain
 the property of their respective owners.
 
-> **Hosted availability:** The linked address was used for the test deployment and
-> returned HTTP 404 when checked on November 11, 2026. Until a permanent hosted
-> address is confirmed, the examples below use a locally running instance.
+> **Availability:** `riordanverse.cc` is registered, but the intended URLs in this
+> guide are not confirmation of configured DNS, hosting, or working HTTPS. Use a
+> confirmed deployment or a local instance until public availability is verified.
+>
+> **Repository:** [devisreal/Riordanverse-API](https://github.com/devisreal/Riordanverse-API).
+> It is currently private; repository links and issue forms require authorized
+> access until the repository is made public.
 
 ## Table of contents
 
@@ -26,6 +36,7 @@ the property of their respective owners.
 - [Run the project](#run-the-project)
 - [Docker and Compose](#docker-and-compose)
 - [Report a lore correction](#report-a-lore-correction)
+- [Contact](#contact)
 - [Contributing](#contributing)
 - [Deployment](#deployment)
 - [Acknowledgments](#acknowledgments)
@@ -36,21 +47,23 @@ the property of their respective owners.
 You do not need to clone the project to use a hosted instance. For self-hosting or
 local development, follow [Setup](#setup) first. All examples use trailing slashes.
 
-Documentation: [API reference](API.md) · [Swagger UI](http://127.0.0.1:8000/api/docs/)
-· [ReDoc](http://127.0.0.1:8000/api/redoc/)
-· [OpenAPI schema](http://127.0.0.1:8000/api/schema/).
-The browser links above target a local server; on a hosted instance, use the same
-paths under that instance's origin.
+Documentation: [API reference](API.md) · [Swagger UI](https://riordanverse.cc/api/docs/)
+· [ReDoc](https://riordanverse.cc/api/redoc/)
+· [OpenAPI schema](https://riordanverse.cc/api/schema/).
+These links use the intended public origin, subject to the availability caveat
+above. For local use, keep the same paths under `http://127.0.0.1:8000`.
 
 ### Define the base URL
 
 In your terminal, set the server origin **without** `/api/v1` or a trailing slash:
 
 ```bash
-export BASE_URL="http://127.0.0.1:8000"
+export BASE_URL="https://riordanverse.cc"
 ```
 
-Replace it with the confirmed HTTPS website origin when using a hosted instance.
+This is the intended public origin, not a guarantee of availability. Until it is
+verified, use a confirmed deployment or set `BASE_URL="http://127.0.0.1:8000"`
+for a locally running instance.
 The public directory lists the available collections without requiring a key:
 
 ```bash
@@ -93,8 +106,8 @@ it directly. Supply a disposable or user-provided key; never embed a private
 shared key in a public bundle:
 
 ```javascript
-// Browser example: replace the URL with the API instance you are using.
-const baseUrl = "http://127.0.0.1:8000";
+// Intended public origin; use a confirmed instance until availability is verified.
+const baseUrl = "https://riordanverse.cc";
 async function loadBooks(apiKey) {
   const response = await fetch(`${baseUrl}/api/v1/books/`, {
     headers: { "X-API-Key": apiKey },
@@ -251,9 +264,12 @@ PostgreSQL, and **Node.js 22+ with npm** for website assets. Redis is recommende
 for shared caching and quotas, but its absence does not prevent API requests.
 If you prefer containers, skip to [Docker and Compose](#docker-and-compose).
 
+Clone the repository into a local `riordanverse-api` directory (authorized GitHub
+access is required while the repository is private).
+
 ```bash
-git clone https://github.com/devisreal/Percy-Jackson-Fandom-API.git
-cd Percy-Jackson-Fandom-API
+git clone https://github.com/devisreal/Riordanverse-API.git riordanverse-api
+cd riordanverse-api
 uv sync --locked
 cp .env.example .env
 npm ci --prefix website/static_src
@@ -340,8 +356,10 @@ for Railway and production hosting; Railway does not use this Compose file.
 
 ## Report a lore correction
 
-Found incorrect or missing reference data? [Report a lore correction](https://github.com/devisreal/Percy-Jackson-Fandom-API/issues/new?template=lore_correction.yml)
-using the GitHub issue form. A GitHub account is required, and submissions are public.
+Found incorrect or missing reference data? [Report a lore correction](https://github.com/devisreal/Riordanverse-API/issues/new?template=lore_correction.yml)
+using the GitHub issue form. A GitHub account with repository access is required
+while the repository is private. Treat submissions as public-facing: they may
+become public when the repository is made public.
 
 Include the affected API URL, entity name, or slug; the current information; your
 suggested correction; and evidence such as a book title and chapter or a supporting
@@ -351,6 +369,16 @@ information. Search existing issues first to avoid duplicate reports.
 
 Reports are reviewed manually. Submitting a correction does **not** automatically
 change the dataset, and no on-site submission form or new API endpoint is involved.
+
+## Contact
+
+- General inquiries: [hello@riordanverse.cc](mailto:hello@riordanverse.cc).
+- API support and application emails: [support@riordanverse.cc](mailto:support@riordanverse.cc).
+
+These mailboxes exist, but mailbox availability alone does not configure outbound
+application email. Sending requires provider credentials, verified sending
+identity/domain, and tested delivery; see [email deployment requirements](DEPLOYMENT.md#application-email).
+API-key issuance remains immediate, without email verification.
 
 ## Contributing
 

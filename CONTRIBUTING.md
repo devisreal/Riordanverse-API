@@ -1,8 +1,30 @@
-# Contributing
+# Contributing to Riordanverse API
 
 Thanks for helping improve the Riordanverse API. For API usage, start with the
 [README](README.md#use-the-api) and [API reference](API.md). Production hosting
 instructions are in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+This is an unofficial reference API with the ambition of covering the entire
+Riordanverse; the current dataset focuses on Greek/Roman lore. Keep that distinction
+clear in documentation and contributions, and preserve historical book, character,
+source, and lore names rather than rebranding them.
+
+The intended website is `https://riordanverse.cc`, the API is at `/api/v1/`, and
+interactive docs are at `/api/docs/` under that origin. The domain is registered,
+but DNS, hosting, HTTPS, and public availability are not confirmed by that fact.
+Retain localhost URLs for local workflows.
+
+The repository is `https://github.com/devisreal/Riordanverse-API`. It is currently
+private; clones, issues, and PRs require authorized GitHub access until it is made public.
+The Python package name is `riordanverse-api`; the frontend package name is
+`riordanverse-api-website`. These branding names do not change Python module paths,
+API routes, payloads, authentication, or other contracts.
+
+For general inquiries, use `hello@riordanverse.cc`; for API support and application
+emails, use `support@riordanverse.cc`. These mailboxes exist, but outbound application
+email still requires provider credentials, a verified sending identity/domain,
+and tested delivery—not just a mailbox. See [application email](DEPLOYMENT.md#application-email).
+Key issuance remains immediate without email verification.
 
 ## Development setup
 

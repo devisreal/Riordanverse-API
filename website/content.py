@@ -15,7 +15,7 @@ from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import BashLexer, HttpLexer, JsonLexer, TextLexer
 
-GITHUB_URL = 'https://github.com/devisreal/Percy-Jackson-Fandom-API'
+GITHUB_URL = 'https://github.com/devisreal/Riordanverse-API'
 LORE_CORRECTION_URL = f'{GITHUB_URL}/issues/new?{urlencode({"template": "lore_correction.yml"})}'
 
 
@@ -368,7 +368,7 @@ def get_home_context(request):
     return {
         'origin': origin,
         'social': {
-            'title': 'Percy Jackson Fandom API',
+            'title': 'Riordanverse API',
             'description': (
                 'A structured, read-only REST API for Riordanverse characters, gods, quests, '
                 'locations, and the relationships connecting them.'
@@ -377,7 +377,7 @@ def get_home_context(request):
             'url': request.build_absolute_uri(reverse('website:home')),
             'image_url': request.build_absolute_uri(static('website/images/social-preview.png')),
             'image_alt': (
-                'Percy Jackson Fandom API — Riordanverse reference data. '
+                'Riordanverse API — Riordanverse reference data. '
                 'Read-only REST API. Unofficial fan project.'
             ),
         },
