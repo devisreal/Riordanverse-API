@@ -314,6 +314,15 @@ def _linked(item):
     return result
 
 
+def _lore_card(item):
+    card = _linked(item)
+    stem = item['image'].removesuffix('.webp')
+    card['image_sources'] = [
+        {'path': f'{stem}-{width}.webp', 'width': width} for width in (256, 384, 512, 768)
+    ] + [{'path': item['image'], 'width': item['image_width']}]
+    return card
+
+
 def _code(source, lexer):
     return mark_safe(highlight(source, lexer, HtmlFormatter(nowrap=True, classprefix='syntax-')))
 
@@ -368,7 +377,7 @@ def get_home_context(request):
         'resource_groups': groups,
         'features': FEATURES,
         'tools': [_linked(item) for item in TOOLS],
-        'lore_cards': [_linked(item) for item in LORE_CARDS],
+        'lore_cards': [_lore_card(item) for item in LORE_CARDS],
         'navigation': [_linked(item) for item in NAVIGATION],
         'example_notice': EXAMPLE_NOTICE,
         'character_url': character_url,

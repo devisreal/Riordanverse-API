@@ -72,6 +72,13 @@ under `website/static/website/`. Credits and provenance do **not** grant rights 
 the Camp/Olympus or original Stitch images; their redistribution rights remain
 unverified.
 
+Lore cards use committed 256/384/512/768px WebP derivatives plus the original
+1000px source in `srcset`. The `sizes` attribute mirrors the 244px mobile strip
+and three-column desktop layout; update it if that layout changes. Regenerate
+derivatives with `sh website/static_src/build-lore-images.sh` when changing a
+source image (requires the optional libwebp `cwebp` tool). Normal npm/Docker
+builds use the committed images and do not need an image encoder.
+
 Author layout, spacing, typography, borders, and responsive states with Tailwind
 utilities in the Django/Cotton templates. `website/static_src/src/styles.css` uses
 Tailwind v4's CSS-first `@theme` configuration for fonts, breakpoints, and semantic

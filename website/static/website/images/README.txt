@@ -93,6 +93,18 @@ lore-trident.webp
     not an official depiction of a Riordanverse artifact.
   SHA-256: 4b81b27246a2c943a80a8b7c5017f671a455a0f4c6734ea83a245a752b874c04
 
+Responsive lore derivatives (2026-11-11)
+
+lore-{camp,olympus,trident}-{256,384,512,768}.webp
+  Derived only from the corresponding live 1000px WebPs documented above.
+  Processing: cwebp 1.6.0, quality 85, method 6, metadata stripped; resize to
+    the filename's pixel width with proportional height, no additional crop.
+  Reproduce with: sh website/static_src/build-lore-images.sh
+  The 1000px sources remain available for larger/high-DPR screens and fallback.
+  All source credits and rights caveats above apply to these derivatives too.
+  The trident derivatives retain the same CC BY-SA 3.0 license and attribution.
+  Resizing the Camp/Olympus images does not establish redistribution rights.
+
 Rights/provenance for original Stitch assets and unverified replacements:
 The original files implement the user-approved Stitch design.
 Generation by Stitch, user supply, and public availability of a Google URL
