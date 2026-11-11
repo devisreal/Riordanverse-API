@@ -23,7 +23,7 @@ dependencies = [
     "psycopg2-binary==2.9.13",
     "pygments==2.21.0",
     "redis>=8.1.0",
-    "tzdata==2026.5",
+    "tzdata==2026.6",
     "whitenoise>=6.12.0",
 ]
 
