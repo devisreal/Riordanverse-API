@@ -1,6 +1,7 @@
 """Ensure checked-in primary selections survive fresh imports and reseeding."""
 
 import json
+from collections import defaultdict
 from io import StringIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -68,7 +69,10 @@ class CuratedPrimarySeedTests(TestCase):
                         )
                     )
                     selected_records.append(record)
-        self.assertTrue(expected, 'The dataset must contain curated primary selections')
+        self.assertEqual(len(expected), 181, 'Keep all curated primary selections covered')
+        expected_by_type = defaultdict(list)
+        for link_model, foreign_key, entity, url, source_url in expected:
+            expected_by_type[link_model, foreign_key].append((entity, url, source_url))
 
         with TemporaryDirectory() as directory:
             data_file = Path(directory) / 'images.json'
@@ -79,25 +83,40 @@ class CuratedPrimarySeedTests(TestCase):
                     call_command('seed_images', stdout=stdout, stderr=stderr)
                     self.assertEqual(stderr.getvalue(), '')
                     self.assertIn('0 errors.', stdout.getvalue())
-                    for link_model, foreign_key, entity, url, source_url in expected:
-                        with self.subTest(run=run, entity=entity.slug):
-                            primaries = link_model.objects.filter(
-                                **{foreign_key: entity}, is_primary=True
+                    for (link_model, foreign_key), entities in expected_by_type.items():
+                        expected_images = {
+                            entity.pk: (url, source_url) for entity, url, source_url in entities
+                        }
+                        links = link_model.objects.filter(
+                            **{f'{foreign_key}_id__in': expected_images}
+                        )
+                        primaries = defaultdict(list)
+                        alternates = {}
+                        # One joined read per type covers primary checks and alternate choices.
+                        for entity_id, link_id, is_primary, url, source_url in links.order_by(
+                            'display_order', 'pk'
+                        ).values_list(
+                            f'{foreign_key}_id',
+                            'pk',
+                            'is_primary',
+                            'image__url',
+                            'image__source_url',
+                        ):
+                            if is_primary:
+                                primaries[entity_id].append((url, source_url))
+                            if (url, source_url) != expected_images[entity_id]:
+                                alternates.setdefault(entity_id, link_id)
+                        for entity, url, source_url in entities:
+                            with self.subTest(run=run, entity=entity.slug):
+                                self.assertEqual(primaries[entity.pk], [(url, source_url)])
+                        if run == 0:
+                            # Simulate a different admin choice for every entity that has one.
+                            # Entities without alternates must also regain their cleared primary.
+                            links.update(is_primary=False)
+                            link_model.objects.filter(pk__in=alternates.values()).update(
+                                is_primary=True
                             )
-                            self.assertEqual(primaries.count(), 1)
-                            self.assertEqual(primaries.get().image.url, url)
-                            self.assertEqual(primaries.get().image.source_url, source_url)
                     if run == 0:
                         image_count = Image.objects.count()
-                        # Simulate a different admin choice; reseeding must restore the dataset.
-                        for link_model, foreign_key, entity, url, source_url in expected:
-                            links = link_model.objects.filter(**{foreign_key: entity})
-                            links.update(is_primary=False)
-                            alternate = links.exclude(
-                                image__url=url, image__source_url=source_url
-                            ).first()
-                            if alternate:
-                                alternate.is_primary = True
-                                alternate.save(update_fields=['is_primary'])
                     else:
                         self.assertEqual(Image.objects.count(), image_count)

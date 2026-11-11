@@ -8,6 +8,7 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from apps.narrative.models import Quest, QuestCasualty, QuestParticipant
+from tests.makers import make_quest
 
 
 class SeedQuestsCommandTests(TestCase):
@@ -90,12 +91,24 @@ class SeedQuestsCommandTests(TestCase):
         self.assertIn('12 updated', rerun.getvalue())
 
     def test_null_wiki_url_does_not_clear_existing_quest_url(self):
-        self.seed_all()
-        quest = Quest.objects.get(slug='quest-of-bellerophon')
-        quest.wiki_url = 'https://riordan.fandom.com/wiki/Existing_Quest'
-        quest.save(update_fields=['wiki_url'])
+        quest = make_quest(
+            title='Quest of Bellerophon',
+            wiki_url='https://riordan.fandom.com/wiki/Existing_Quest',
+        )
+        entry = {
+            'title': quest.title,
+            'expected_slug': quest.slug,
+            'wiki_url': None,
+        }
+        with TemporaryDirectory() as directory:
+            data_file = Path(directory) / 'quests.json'
+            data_file.write_text(json.dumps([entry]), encoding='utf-8')
+            output = StringIO()
+            with patch('apps.narrative.management.commands.seed_quests.DATA_FILE', data_file):
+                call_command('seed_quests', stdout=output)
 
-        call_command('seed_quests', stdout=StringIO())
+        self.assertIn('Quests seeded: 0 created, 1 updated, 0 errors.', output.getvalue())
+        self.assertNotIn('[WARN]', output.getvalue())
 
         quest.refresh_from_db()
         self.assertEqual(quest.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Quest')

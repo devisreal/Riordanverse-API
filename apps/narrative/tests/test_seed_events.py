@@ -8,6 +8,7 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from apps.narrative.models import Event, EventCasualty
+from tests.makers import make_event
 
 
 class SeedEventsCommandTests(TestCase):
@@ -77,12 +78,25 @@ class SeedEventsCommandTests(TestCase):
         self.assertIn('23 updated', rerun.getvalue())
 
     def test_null_wiki_url_does_not_clear_existing_event_url(self):
-        self.seed_all()
-        event = Event.objects.get(slug='first-titanomachy')
-        event.wiki_url = 'https://riordan.fandom.com/wiki/Existing_Event'
-        event.save(update_fields=['wiki_url'])
+        event = make_event(
+            name='First Titanomachy',
+            wiki_url='https://riordan.fandom.com/wiki/Existing_Event',
+        )
+        entry = {
+            'name': event.name,
+            'expected_slug': event.slug,
+            'event_type': 'battle',
+            'wiki_url': None,
+        }
+        with TemporaryDirectory() as directory:
+            data_file = Path(directory) / 'events.json'
+            data_file.write_text(json.dumps([entry]), encoding='utf-8')
+            output = StringIO()
+            with patch('apps.narrative.management.commands.seed_events.DATA_FILE', data_file):
+                call_command('seed_events', stdout=output)
 
-        call_command('seed_events', stdout=StringIO())
+        self.assertIn('Events seeded: 0 created, 1 updated, 0 errors.', output.getvalue())
+        self.assertNotIn('[WARN]', output.getvalue())
 
         event.refresh_from_db()
         self.assertEqual(event.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Event')

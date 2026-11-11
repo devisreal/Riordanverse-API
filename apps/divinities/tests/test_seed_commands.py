@@ -87,7 +87,13 @@ class DivinitySeedCommandTests(TestCase):
         )
         self.assertEqual(helios.sacred_animals, ['rooster', 'white horses'])
         self.assertEqual(helios.sacred_plants, ['heliotrope'])
-        self.assertEqual(Titan.objects.get(slug='rhea').sacred_animals, ['lion'])
+        rhea = Titan.objects.get(slug='rhea')
+        self.assertEqual(rhea.sacred_animals, ['lion'])
+        self.assertEqual(
+            rhea.relationships_as_from.filter(relationship_type='parent_of').count(),
+            6,
+        )
+        self.assertFalse(rhea.relationships_as_from.filter(relationship_type='child_of').exists())
         self.assertEqual(Titan.objects.get(slug='epimetheus').generation, 'younger_titan')
         self.assertEqual(Titan.objects.get(slug='epimetheus').alignment, 'kronos_army')
         for slug in ('metis', 'clymene', 'pleione', 'eurynome'):
@@ -178,26 +184,6 @@ class DivinitySeedCommandTests(TestCase):
         titan.refresh_from_db()
         self.assertEqual(titan.wiki_url, 'https://riordan.fandom.com/wiki/Existing_Atlas')
         self.assertEqual(titan.home, 'Existing home')
-
-    def test_seeded_rhea_relationships_are_typed_as_titan(self):
-        for command in (
-            'seed_books',
-            'seed_gods',
-            'seed_titans',
-            'seed_characters',
-            'seed_items',
-            'seed_monsters',
-            'seed_creatures',
-            'seed_divine_relationships',
-        ):
-            call_command(command, stdout=StringIO())
-
-        rhea = Titan.objects.get(slug='rhea')
-        self.assertEqual(
-            rhea.relationships_as_from.filter(relationship_type='parent_of').count(),
-            6,
-        )
-        self.assertFalse(rhea.relationships_as_from.filter(relationship_type='child_of').exists())
 
 
 class MissingRelationshipEntityWarningTests(TestCase):
