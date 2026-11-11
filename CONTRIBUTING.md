@@ -257,6 +257,31 @@ The default test suite uses SQLite. CI also runs the full suite against PostgreS
 uv run python manage.py test --settings=config.settings.test_postgresql
 ```
 
+For a faster full run, use two isolated test workers (the CI configuration):
+
+```bash
+uv run python manage.py test --settings=config.settings.test --parallel 2 --timing --durations 20
+uv run python manage.py test --settings=config.settings.test_postgresql --parallel 2 --timing --durations 20
+```
+
+PostgreSQL parallel runs create separate test database clones; the test role needs
+permission to create databases. Use only a dedicated test server/role. The development
+`tblib` dependency preserves failure tracebacks between workers; rerun with
+`--parallel 1` for simpler debugging. During repeated local runs, `--keepdb`
+can avoid recreating databases; CI deliberately starts with fresh databases so
+migration setup remains covered. Do not disable migrations to improve timings.
+
+Keep full-data seed integration/idempotency tests, but use small patched JSON
+inputs for narrow behavior tests rather than reseeding unrelated dependencies.
+Historical migration assertions should share a migration cycle where practical,
+without replacing historical-state checks with current-model checks.
+
+CI still runs the complete suite on SQLite and PostgreSQL. It caches compiled
+website assets by their build inputs (without a stale-key fallback), cancels
+superseded runs, and runs the dependency audit independently rather than waiting
+for both database suites. Changes to asset inputs invalidate the cache; a cold
+cache still runs the normal locked npm install and build.
+
 OpenAPI generation is configured with `drf-spectacular`; validate it with `DJANGO_SETTINGS_MODULE=config.settings.development uv run python manage.py spectacular --validate`. The `/api/v1/` directory, schema, and documentation pages are public; API resource endpoints continue to require `X-API-Key`.
 
 ## Submitting a change
