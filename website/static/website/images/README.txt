@@ -1,5 +1,14 @@
 Landing image assets and provenance
 
+social-preview.svg / social-preview.png
+  Original text-and-wave social card authored for this project (2026-11-11).
+  No lore photographs, third-party artwork, or official logos are incorporated.
+  SVG is the editable source; PNG is a 1200 x 630 browser rasterization for
+  social crawlers, which do not reliably accept SVG cards. System Arial/sans-serif
+  is used; no font files are embedded. This original card falls within the
+  repository's original-code/documentation MIT scope, not the exclusions for
+  third-party lore imagery. It identifies the project as unofficial.
+
 Design sources supplied by the user:
   /tmp/pj-stitch-exports/light-desktop.html
   /tmp/pj-stitch-exports/dark-desktop.html

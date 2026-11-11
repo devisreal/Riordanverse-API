@@ -387,6 +387,8 @@ class HomeViewTests(SimpleTestCase):
                 self.assertTrue(attrs.get('src'), 'Scripts must be external local static files')
                 assets.append(attrs['src'])
             elif tag in ('link', 'img', 'source', 'iframe'):
+                if tag == 'link' and attrs.get('rel') == 'canonical':
+                    continue  # Navigation metadata, not a runtime static asset.
                 if attrs.get('href') or attrs.get('src'):
                     assets.append(attrs.get('href') or attrs['src'])
         self.assertIn(static('css/dist/styles.css'), assets)
