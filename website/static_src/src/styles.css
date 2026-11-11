@@ -79,6 +79,7 @@
     /* Small accent text needs AA contrast; the large headline retains the export hue. */
     --accent: #0f766e;
     --hero-accent: #0d9488;
+    --hero-gradient-end: #0369a1;
     --accent-soft: #f0fdfa;
     --accent-border: #99f6e4;
     --amber: #b45309;
@@ -113,6 +114,7 @@
       --border: rgb(255 255 255 / 8%);
       --accent: #5eead4;
       --hero-accent: #5eead4;
+      --hero-gradient-end: #38bdf8;
       --accent-soft: rgb(45 212 191 / 10%);
       --accent-border: rgb(45 212 191 / 20%);
       --amber: #fcd34d;
@@ -147,6 +149,7 @@
     --border: rgb(255 255 255 / 8%);
     --accent: #5eead4;
     --hero-accent: #5eead4;
+    --hero-gradient-end: #38bdf8;
     --accent-soft: rgb(45 212 191 / 10%);
     --accent-border: rgb(45 212 191 / 20%);
     --amber: #fcd34d;

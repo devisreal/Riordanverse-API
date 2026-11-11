@@ -267,6 +267,23 @@ class HomeViewTests(SimpleTestCase):
         self.assertIn('text-hero-description', descriptions[0]['class'].split())
         self.assertIn('text-shadow-(--hero-description-shadow)', descriptions[0]['class'].split())
 
+    def test_mobile_headline_uses_theme_aware_contrasting_gradient(self):
+        _, page = self.page()
+        introductions = [
+            attrs
+            for _, attrs in page.elements
+            if 'hero-introduction' in attrs.get('class', '').split()
+        ]
+        self.assertEqual(len(introductions), 1)
+        self.assertIn(
+            'max-md:[&_h1_span]:bg-[linear-gradient(90deg,var(--accent),var(--hero-gradient-end))]',
+            introductions[0]['class'].split(),
+        )
+        css = Path(finders.find('css/dist/styles.css')).read_text()
+        self.assertRegex(css, r'--hero-gradient-end:\s*#0369a1')
+        # Both explicit dark mode and the no-JavaScript OS fallback retain the approved cyan.
+        self.assertEqual(len(re.findall(r'--hero-gradient-end:\s*#38bdf8', css)), 2)
+
     def test_every_api_directory_collection_has_a_matching_link(self):
         _, page = self.page()
         linked_paths = {urlsplit(href).path for href in page.links}
