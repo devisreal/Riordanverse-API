@@ -2,6 +2,8 @@ from pathlib import Path
 
 import environ
 
+from config.csp import DEFAULT_POLICY
+
 # ---------------------------------------------------------------------------
 # * Paths & environment loading
 # ---------------------------------------------------------------------------
@@ -94,6 +96,7 @@ MIDDLEWARE = [
     'apps.core.middleware.RequestLoggingMiddleware',
     'apps.core.middleware.RateLimitHeadersMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.csp.ContentSecurityPolicyMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -102,6 +105,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Observation stage only: violations are visible in browser developer tools.
+# No report endpoint is configured; this does not centrally collect reports.
+SECURE_CSP_REPORT_ONLY = DEFAULT_POLICY
 
 ROOT_URLCONF = 'config.urls'
 
@@ -116,6 +123,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.csp',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -206,6 +214,8 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
     'SERVE_AUTHENTICATION': [],
+    # ReDoc 3's @latest bundle is not a drop-in classic script for the official template.
+    'REDOC_DIST': 'https://cdn.jsdelivr.net/npm/redoc@2.5.2',
     'SWAGGER_UI_SETTINGS': {
         'tagsSorter': None,
         'filter': True,

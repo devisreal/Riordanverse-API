@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csp import csp_report_only_override
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -7,6 +9,7 @@ from drf_spectacular.views import (
 )
 
 from apps.core.views import APIDirectoryView, HealthLiveView, HealthReadyView
+from config.csp import REDOC_POLICY
 
 urlpatterns = [
     path('', include('website.urls')),
@@ -17,14 +20,18 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(throttle_classes=[]), name='schema'),
     path(
         'api/docs/',
-        SpectacularSwaggerView.as_view(
-            url_name='schema', template_name='website/swagger_ui.html', throttle_classes=[]
+        never_cache(
+            SpectacularSwaggerView.as_view(
+                url_name='schema', template_name='website/swagger_ui.html', throttle_classes=[]
+            )
         ),
         name='swagger-ui',
     ),
     path(
         'api/redoc/',
-        SpectacularRedocView.as_view(url_name='schema', throttle_classes=[]),
+        csp_report_only_override(REDOC_POLICY)(
+            SpectacularRedocView.as_view(url_name='schema', throttle_classes=[])
+        ),
         name='redoc',
     ),
     path('auth/', include('apps.access.urls')),

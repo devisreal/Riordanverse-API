@@ -68,7 +68,7 @@
         <a href="{% url 'website:home' %}">Back to the website</a>
       </footer>
       <script src="{% static 'vendor/swagger-ui/dist/swagger-ui-bundle.js' %}"></script>
-      <script>{% include template_name_js %}</script>
+      <script nonce="{{ csp_nonce }}">{% include template_name_js %}</script>
     {% endblock body %}
   </body>
 </html>
