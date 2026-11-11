@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import environ
+from corsheaders.defaults import default_headers
 
 from config.csp import DEFAULT_POLICY
 
@@ -285,6 +286,7 @@ CACHES = {
 # * CORS
 # ---------------------------------------------------------------------------
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS')
+CORS_ALLOW_HEADERS = (*default_headers, 'x-api-key')
 CORS_EXPOSE_HEADERS = [
     'RateLimit-Limit',
     'RateLimit-Remaining',

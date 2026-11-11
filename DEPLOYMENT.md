@@ -105,21 +105,45 @@ anonymous quotas do not accidentally group everyone under the proxy address.
 The current HSTS policy is 300 seconds, without subdomain inclusion or preload.
 Review it deliberately before changing it. Set the actual domain in `ALLOWED_HOSTS`
 and the appropriate full HTTPS origins in `CSRF_TRUSTED_ORIGINS`. CORS and CSRF are
-separate controls. The current default CORS request-header allowlist does **not**
-include `X-API-Key`: setting `CORS_ALLOWED_ORIGINS` alone is insufficient for a
-cross-origin browser client. If deliberately enabling that use case, add the
-following setting to the appropriate environment settings module, then verify a
-preflight from the intended origin:
+separate controls. Cross-origin browser access supports `X-API-Key` in addition
+to the standard CORS request headers. Enable only the intended frontend origins
+in the API deployment's environment (scheme, hostname, and port must match):
 
-```python
-from corsheaders.defaults import default_headers
-
-CORS_ALLOW_HEADERS = (*default_headers, 'x-api-key')
+```dotenv
+CORS_ALLOWED_ORIGINS=https://your-frontend.example,http://localhost:8080
 ```
+
+An empty value disables cross-origin access. All origins are **not** allowed by
+default, and cookies/cross-origin credentials remain disabled. No code change is
+needed to add an origin. Verify a real browser request and its preflight; for an
+initial preflight inspection:
+
+```bash
+curl -i -X OPTIONS "$BASE_URL/api/v1/books/" \
+  -H "Origin: http://localhost:8080" \
+  -H "Access-Control-Request-Method: GET" \
+  -H "Access-Control-Request-Headers: x-api-key"
+```
+
+Expect the allowed origin and `x-api-key` in the corresponding allow headers.
+An unapproved origin must not receive `Access-Control-Allow-Origin`. Curl does
+not enforce CORS; also test from a page served at the approved origin. Use a
+disposable key and revoke it afterward.
+
+Use an HTTPS API URL from an HTTPS frontend to avoid mixed-content blocking. If
+the frontend serves its own Content Security Policy, its `connect-src` directive
+must allow the API origin. That is a setting on the consuming website, not a
+reason to loosen this API's CSP. API-key requests do not need cookies or
+`credentials: 'include'`, and enabling CORS does not require adding frontend
+origins to `CSRF_TRUSTED_ORIGINS` for these read-only requests.
 
 `CORS_EXPOSE_HEADERS` controls which response headers JavaScript can read; it does
 not permit an authentication request header. A browser cannot keep an embedded
-key secret, even when CORS is configured. Prefer server-side integration for private keys.
+key secret, even when CORS is configured. **Keys shipped to browsers are visible
+to users** in bundles, developer tools, and network requests; frontend build-time
+environment variables do not hide them. Copied keys can consume the owner's
+quota. Prefer a backend/serverless proxy for private keys. CORS is not an access
+control substitute; authentication and API quotas still apply.
 
 - `/health/live/` checks process responsiveness.
 - `/health/ready/` checks PostgreSQL; Redis is not a readiness dependency.

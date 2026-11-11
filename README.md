@@ -2,6 +2,11 @@
 
 A RESTful API for the Riordanverse. [Visit the website](https://percy-jackson-fandom.up.railway.app/).
 
+This is an unofficial fan project for educational and portfolio purposes, not
+affiliated with or endorsed by Rick Riordan, Disney Hyperion, or the respective
+rights holders. Riordanverse works, characters, and third-party artwork remain
+the property of their respective owners.
+
 > **Hosted availability:** The linked address was used for the test deployment and
 > returned HTTP 404 when checked on November 11, 2026. Until a permanent hosted
 > address is confirmed, the examples below use a locally running instance.
@@ -71,12 +76,38 @@ export API_KEY="<paste-your-key-here>"
 
 - Send the key in `X-API-Key`, not a URL query parameter.
 - Do not commit keys, include them in screenshots, or publish them in frontend bundles.
-- Browser JavaScript cannot keep a key secret. Use a server-side integration when
-  the key must stay private. Cross-origin browser calls also need an allowed CORS
-  origin **and** explicit permission for the `X-API-Key` request header; the current
-  default CORS header allowlist does not include it. See [browser access configuration](DEPLOYMENT.md#https-health-checks-and-browser-access).
+- **Keys shipped to browsers are visible to users**, including through JavaScript
+  bundles and developer tools. Build-time frontend environment variables do not
+  keep them secret. Someone who copies a key can consume its quota. Prefer a
+  backend/serverless proxy when a key must stay private.
+- Cross-origin browser requests support `X-API-Key` for origins explicitly enabled
+  by the API operator in `CORS_ALLOWED_ORIGINS`. Origins are not automatically
+  approved. See [browser access configuration](DEPLOYMENT.md#https-health-checks-and-browser-access).
 - Key issuance is immediate; there is no email-verification step. Key verification
   below checks whether a key is valid, not whether an email address belongs to you.
+
+### Browser integrations
+
+Once the API operator allows your frontend's origin, browser JavaScript can call
+it directly. Supply a disposable or user-provided key; never embed a private
+shared key in a public bundle:
+
+```javascript
+// Browser example: replace the URL with the API instance you are using.
+const baseUrl = "http://127.0.0.1:8000";
+async function loadBooks(apiKey) {
+  const response = await fetch(`${baseUrl}/api/v1/books/`, {
+    headers: { "X-API-Key": apiKey },
+    credentials: "omit",
+  });
+  if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+  return response.json();
+}
+```
+
+Use HTTPS API URLs from HTTPS frontends to avoid mixed-content blocking. CORS is
+not authentication: requests still require a valid key and consume its quota.
+The exposed `RateLimit-*` and `Retry-After` headers can be read by JavaScript.
 
 ### Make your first request
 
