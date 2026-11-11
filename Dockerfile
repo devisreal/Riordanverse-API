@@ -12,8 +12,7 @@ WORKDIR /app/website/static_src
 # Cache npm dependencies separately from application source.
 COPY website/static_src/package.json website/static_src/package-lock.json ./
 
-RUN --mount=type=cache,target=/root/.npm \
-  npm ci
+RUN npm ci
 
 # Tailwind scans the Django templates and application source.
 WORKDIR /app
@@ -43,8 +42,7 @@ WORKDIR /app
 # Cache locked Python dependencies separately from source changes.
 COPY pyproject.toml uv.lock ./
 
-RUN --mount=type=cache,target=/root/.cache/uv \
-  uv sync --locked --no-dev --no-install-project
+RUN uv sync --locked --no-dev --no-install-project
 
 COPY . .
 
