@@ -95,6 +95,10 @@ class SwaggerViewTests(SimpleTestCase):
         package = json.loads((settings.BASE_DIR / 'website/static_src/package.json').read_text())
         self.assertIs(package['scarfSettings']['enabled'], False)
         self.assertIn('.swagger-ui', css, 'Swagger descendant utilities must be compiled')
+        # Tailwind treats unescaped underscores as spaces in arbitrary variants.
+        self.assertIn('.swagger-ui .authorization__btn svg', css)
+        self.assertIn('.swagger-ui .authorization__btn.authorized', css)
+        self.assertNotIn('.swagger-ui .authorization btn', css)
         self.assertIsNone(finders.find('website/css/swagger.css'))
         references = set()
         for match in re.finditer(r'url\(\s*[\'"]?([^\s)\'"]+)', css):
