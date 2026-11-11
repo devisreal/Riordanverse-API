@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <title>API documentation | Riordanverse API</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description"
+            content="Explore the Riordanverse API, authorize with your API key, and try documented requests." />
+      <link rel="icon"
+            type="image/svg+xml"
+            href="{% static 'website/images/favicon.svg' %}" />
+      <script src="{% static 'website/js/theme.js' %}"></script>
+      <link rel="stylesheet"
+            href="{% static 'vendor/swagger-ui/dist/swagger-ui.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}" />
+    {% endblock head %}
+  </head>
+  <body class="swagger-page m-0 bg-canvas font-sans leading-relaxed text-text **:[[hidden]]:hidden! [&_a]:underline-offset-4 [&_a:hover]:text-accent **:focus-visible:outline-2 **:focus-visible:outline-offset-4 **:focus-visible:outline-accent">
+    {% block body %}
+      <a class="docs-skip-link sr-only z-50 rounded-lg bg-surface p-3 font-semibold text-accent focus:fixed focus:top-3 focus:left-3 focus:not-sr-only"
+         href="#main-content">Skip to API documentation</a>
+      <header class="docs-header border-b border-border bg-canvas">
+        <div class="docs-header-inner mx-auto flex h-18.75 max-w-7xl items-center justify-between gap-6 px-8 max-md:h-16 max-md:gap-3 max-md:px-4">
+          <c-brand.mark />
+          <nav class="docs-nav flex min-w-0 items-center gap-6 text-[13px] font-semibold max-md:gap-3"
+               aria-label="Documentation navigation">
+            <a href="{% url 'website:home' %}">Home</a>
+            <a class="docs-secondary max-[601px]:hidden"
+               href="{% url 'api-directory' %}">API directory</a>
+            <a class="docs-secondary max-[601px]:hidden" href="{% url 'redoc' %}">ReDoc</a>
+            <c-ui.theme-toggle />
+          </nav>
+        </div>
+      </header>
+      <main id="main-content"
+            class="mx-auto min-w-0 max-w-7xl px-8 pt-12 pb-16 max-md:px-4 max-md:pt-8"
+            tabindex="-1">
+        <section class="docs-intro mb-9" aria-labelledby="docs-title">
+          <p class="docs-eyebrow mb-3 font-mono text-[11px] font-semibold tracking-widest text-accent">RIORDANVERSE · DEVELOPER REFERENCE</p>
+          <h1 id="docs-title"
+              class="mb-4 text-[clamp(30px,4vw,44px)] leading-tight font-extrabold tracking-tight text-heading">Explore the API</h1>
+          <p class="mb-4 max-w-180">
+            Browse the endpoints, inspect response models, and try requests below.
+            Protected data requires an <code>X-API-Key</code> header—use <strong>Authorize</strong> to enter your key.
+            Keys entered here are kept in memory, not saved across reloads.
+          </p>
+          <div class="docs-links flex flex-wrap gap-x-6 gap-y-2.5 text-[13px] font-semibold text-accent [&_a]:inline-flex [&_a]:items-center [&_a]:gap-1 [&_a]:underline">
+            <a href="{% url 'website:home' %}#quick-start">Quick start <c-icons.arrow-right size="16" /></a>
+            <a href="{% url 'schema' %}">OpenAPI schema</a>
+            <a href="{% url 'api-directory' %}">Public API directory</a>
+          </div>
+        </section>
+        <noscript>
+          <p class="docs-intro mb-9 [&_a]:text-accent [&_a]:underline">
+            Interactive documentation requires JavaScript. You can still read the
+            <a href="{% url 'schema' %}">OpenAPI schema</a> or visit the
+            <a href="{% url 'website:home' %}#quick-start">quick start</a>.
+          </p>
+        </noscript>
+        <c-swagger.panel>
+          <div id="swagger-ui"></div>
+        </c-swagger.panel>
+      </main>
+      <footer class="docs-footer mx-auto max-w-7xl border-t border-border px-8 py-6 text-xs text-muted wrap-anywhere max-md:px-4 [&_a]:text-accent [&_a]:underline">
+        <p>An unofficial fan-built reference. Not affiliated with Rick Riordan or Disney.</p>
+        <a href="{% url 'website:home' %}">Back to the website</a>
+      </footer>
+      <script src="{% static 'vendor/swagger-ui/dist/swagger-ui-bundle.js' %}"></script>
+      <script nonce="{{ csp_nonce }}">{% include template_name_js %}</script>
+    {% endblock body %}
+  </body>
+</html>

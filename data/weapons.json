@@ -1,0 +1,1713 @@
+[
+  {
+    "name": "Riptide",
+    "expected_slug": "riptide",
+    "wiki_url": "https://riordan.fandom.com/wiki/Riptide",
+    "true_name": "Anaklusmos",
+    "weapon_type": "sword",
+    "material": "celestial_bronze",
+    "form": [
+      "ballpoint pen",
+      "medium-sized leaf-shaped double-edged sword"
+    ],
+    "abilities": [
+      "returns to owner's pocket when lost",
+      "bypasses mortals without harming them",
+      "emits faint bronze light in darkness"
+    ],
+    "transforms": true,
+    "transform_trigger": "uncapping the pen",
+    "passes_through_mortals": true,
+    "owner_history": [
+      "heracles",
+      "zoe-nightshade",
+      "chiron",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Forged in Tartarus by Cyclopes; cooled in the River Lethe",
+    "origin_story": "Given by Zoë Nightshade to Heracles to distract the dragon Ladon. Later passed down through Chiron to Percy Jackson.",
+    "description": "Percy Jackson's signature Celestial Bronze sword. Disguised as a disposable ballpoint pen, it uncaps into a three-foot leaf-shaped blade that automatically reappears in Percy's pocket.",
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files",
+      "percy-jackson-and-the-singer-of-apollo",
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Annabeth's Dagger",
+    "expected_slug": "annabeths-dagger",
+    "wiki_url": "https://riordan.fandom.com/wiki/Annabeth%27s_Knife",
+    "true_name": null,
+    "weapon_type": "dagger",
+    "material": "celestial_bronze",
+    "form": [
+      "double-edged dagger"
+    ],
+    "abilities": [
+      "sharp Celestial Bronze edge",
+      "prophetic significance as the cursed blade"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": true,
+    "owner_history": [
+      "luke-castellan",
+      "annabeth-chase"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Given to seven-year-old Annabeth Chase by Luke Castellan when they met on the run. Revealed in Book 5 to be the 'cursed blade' that Luke used to strike his own mortal Achilles mark.",
+    "description": "Celestial Bronze dagger given to Annabeth by Luke. Used as her primary defensive weapon and fulfilled the Great Prophecy as the cursed blade.",
+    "owner_primary_character_slug": "annabeth-chase",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Aegis",
+    "expected_slug": "aegis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Aegis",
+    "true_name": "Aegis",
+    "weapon_type": "shield",
+    "material": "silver",
+    "form": [
+      "silver wrist bracelet",
+      "terrifying shield stamped with Medusa's face"
+    ],
+    "abilities": [
+      "radiates paralyzing aura of fear",
+      "deflects heavy attacks",
+      "frightens monsters and demigods"
+    ],
+    "transforms": true,
+    "transform_trigger": "pressing the catch on the silver bracelet",
+    "passes_through_mortals": false,
+    "owner_history": [
+      "zeus",
+      "athena",
+      "thalia-grace"
+    ],
+    "forged_by_notes": "Forged by Hephaestus for Zeus and Athena",
+    "origin_story": "A gift from Zeus to his daughter Thalia. Disguised as a silver bracelet that expands into a fear-inducing shield embossed with Medusa's head.",
+    "description": "Thalia Grace's collapsible silver shield featuring a bronze relief of Medusa's head that causes intense fear in enemies.",
+    "owner_primary_character_slug": "thalia-grace",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Nico's Stygian Iron Sword",
+    "expected_slug": "nicos-stygian-iron-sword",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nico%27s_Sword",
+    "true_name": null,
+    "weapon_type": "sword",
+    "material": "stygian_iron",
+    "form": [
+      "black 3-foot double-edged sword"
+    ],
+    "abilities": [
+      "absorbs monster essences",
+      "summons and controls souls/undead",
+      "causes cold paralyzing fear"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "nico-di-angelo"
+    ],
+    "forged_by_notes": "Forged in the Underworld and tempered in the River Styx",
+    "origin_story": "Acquired by Nico di Angelo during his solitary travels through the Underworld after his sister Bianca's death.",
+    "description": "Nico di Angelo's three-foot sword forged from dark Stygian iron. It absorbs the life energy and souls of defeated foes.",
+    "owner_primary_character_slug": "nico-di-angelo",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Master Lightning Bolt",
+    "expected_slug": "master-lightning-bolt",
+    "wiki_url": "https://riordan.fandom.com/wiki/Master_Bolt",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "composite",
+    "form": [
+      "2-foot cylinder of bronze",
+      "massive crackling lightning bolt"
+    ],
+    "abilities": [
+      "unmatched destructive power",
+      "creates hydrogen-bomb-level blast waves",
+      "controls weather and lightning"
+    ],
+    "transforms": true,
+    "transform_trigger": "channeling Zeus's divine will",
+    "passes_through_mortals": false,
+    "owner_history": [
+      "zeus",
+      "luke-castellan",
+      "ares",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Forged by the Elder Cyclopes in Tartarus during the First Titanomachy",
+    "origin_story": "Forged by the Elder Cyclopes to overthrow Kronos. Stolen by Luke Castellan and Ares to provoke a divine war in Book 1.",
+    "description": "Zeus's primary weapon and symbol of absolute authority. The archetype for all mortal lightning, capable of immense destruction.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "zeus",
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Helm of Darkness",
+    "expected_slug": "helm-of-darkness",
+    "wiki_url": "https://riordan.fandom.com/wiki/Helm_of_Darkness",
+    "true_name": null,
+    "weapon_type": "helm",
+    "material": "stygian_iron",
+    "form": [
+      "ski-cap / helmet made of woven darkness and Stygian iron"
+    ],
+    "abilities": [
+      "grants absolute physical invisibility",
+      "allows wearer to pass through walls",
+      "radiates intense terror that drives mortals and demigods mad"
+    ],
+    "transforms": true,
+    "transform_trigger": "putting on the cap/helmet",
+    "passes_through_mortals": false,
+    "owner_history": [
+      "hades",
+      "luke-castellan",
+      "ares",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Forged by the Elder Cyclopes in Tartarus",
+    "origin_story": "Forged for Hades during the Titanomachy. Stolen along with Zeus's bolt in Book 1 and recovered by Percy Jackson.",
+    "description": "Hades's symbol of power. Grants invisibility and radiates terror that can melt minds and stop hearts.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hades",
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Poseidon's Trident",
+    "expected_slug": "poseidons-trident",
+    "wiki_url": "https://riordan.fandom.com/wiki/Poseidon%27s_Trident",
+    "true_name": null,
+    "weapon_type": "trident",
+    "material": "celestial_bronze",
+    "form": [
+      "three-pronged divine trident"
+    ],
+    "abilities": [
+      "controls ocean tides and sea storms",
+      "causes massive earthquakes",
+      "summons water spouts and marine life"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "poseidon"
+    ],
+    "forged_by_notes": "Forged by the Elder Cyclopes in Tartarus",
+    "origin_story": "Forged by the Elder Cyclopes for Poseidon during the First Titanomachy to defeat Kronos.",
+    "description": "Poseidon's three-pronged divine weapon used to command the seas, summon storms, and shatter earth.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "poseidon",
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Yankees Cap",
+    "expected_slug": "yankees-cap",
+    "wiki_url": "https://riordan.fandom.com/wiki/Annabeth%27s_Yankees_Cap",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "blue New York Yankees baseball cap"
+    ],
+    "abilities": [
+      "renders the wearer completely invisible"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "athena",
+      "annabeth-chase"
+    ],
+    "forged_by_notes": "Enchanted by Athena",
+    "origin_story": "Given to Annabeth Chase by her mother Athena as a 12th birthday present.",
+    "description": "Annabeth's magical blue Yankees cap that turns anyone who wears it completely invisible.",
+    "owner_primary_character_slug": "annabeth-chase",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Backbiter",
+    "expected_slug": "backbiter",
+    "wiki_url": "https://riordan.fandom.com/wiki/Backbiter",
+    "true_name": null,
+    "weapon_type": "sword",
+    "material": "composite",
+    "form": [
+      "3-foot leaf-shaped double-edged sword"
+    ],
+    "abilities": [
+      "harms both mortals and immortals/demigods",
+      "opens dimensional shadows for teleportation"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "luke-castellan"
+    ],
+    "forged_by_notes": "Forged by Telekhines under Kronos's directions",
+    "origin_story": "Forged under Kronos's instructions by fusing Celestial Bronze and mortal steel. Used by Luke until reforged into Kronos's Scythe.",
+    "description": "Luke's terrifying double-edged blade forged from Celestial Bronze and mortal steel, capable of striking both mortals and demigods.",
+    "owner_primary_character_slug": "luke-castellan",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Kronos's Scythe",
+    "expected_slug": "kronos-scythe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kronos%27_Scythe",
+    "true_name": null,
+    "weapon_type": "scythe",
+    "material": "composite",
+    "form": [
+      "6-foot scythe with rowan wood handle and composite blade"
+    ],
+    "abilities": [
+      "severs the soul from the body",
+      "manipulates time",
+      "cuts through divine armor and mortals alike"
+    ],
+    "transforms": true,
+    "transform_trigger": "reforged from Backbiter / shape-shifts into sword",
+    "passes_through_mortals": false,
+    "owner_history": [
+      "kronos",
+      "luke-castellan"
+    ],
+    "forged_by_notes": "Reforged by Telekhines in Mount St. Helens",
+    "origin_story": "Reforged from Luke's sword Backbiter in Mount St. Helens by Telekhines to serve as Kronos's weapon upon awakening.",
+    "description": "The formidable scythe wielded by Kronos/Luke, capable of severing souls and tearing through reality.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": "kronos",
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Clarisse's Electric Spear",
+    "expected_slug": "clarisses-electric-spear",
+    "wiki_url": "https://riordan.fandom.com/wiki/Clarisse%27s_Spear",
+    "true_name": "Maimer",
+    "weapon_type": "spear",
+    "material": "celestial_bronze",
+    "form": [
+      "electric spear that crackles with high-voltage energy"
+    ],
+    "abilities": [
+      "shocks targets with high voltage upon strike",
+      "channels Ares's combat frenzy"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": true,
+    "owner_history": [
+      "ares",
+      "clarisse-la-rue"
+    ],
+    "forged_by_notes": "Forged by Hephaestus for Ares",
+    "origin_story": "Gifted by Ares to Clarisse La Rue. Snapped by Percy in Book 1, then replaced by Maimer II.",
+    "description": "Clarisse's electric spear that delivers intense shocks. Nicknamed 'Lamer' by Percy.",
+    "owner_primary_character_slug": "clarisse-la-rue",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Zoë's Silver Bow",
+    "expected_slug": "zoes-silver-bow",
+    "wiki_url": "https://riordan.fandom.com/wiki/Silver_Bow",
+    "true_name": null,
+    "weapon_type": "bow",
+    "material": "silver",
+    "form": [
+      "silver recurve bow"
+    ],
+    "abilities": [
+      "never runs out of silver arrows",
+      "shoots beams of moonlight and celestial silver energy"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": true,
+    "owner_history": [
+      "zoe-nightshade"
+    ],
+    "forged_by_notes": "Blessed by Artemis",
+    "origin_story": "Crafted by Artemis for Zoë Nightshade upon her becoming Lieutenant of the Hunters.",
+    "description": "Zoë Nightshade's silver bow, capable of launching lethal arrows of moonlight.",
+    "owner_primary_character_slug": "zoe-nightshade",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ]
+  },
+  {
+    "name": "Adamantine Scythe",
+    "expected_slug": "adamantine-scythe",
+    "wiki_url": null,
+    "true_name": null,
+    "weapon_type": "scythe",
+    "material": "flint",
+    "form": [
+      "curved 6-foot adamantine/flint scythe"
+    ],
+    "abilities": [
+      "capable of harming and severing immortal primordials",
+      "indestructible sharp edge"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "gaea",
+      "kronos"
+    ],
+    "forged_by_notes": "Forged by Gaea from flint in the Earth's depths",
+    "origin_story": "Created by Gaea and given to Kronos to defeat and overthrow Ouranos.",
+    "description": "Gaea's ancient flint scythe used by Kronos during the overthrow of Ouranos.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": "kronos",
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ]
+  },
+  {
+    "name": "Harpe",
+    "expected_slug": "harpe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Harpe",
+    "true_name": null,
+    "weapon_type": "sword",
+    "material": "other",
+    "form": [
+      "sickle-sword with a hooked protrusion near the tip"
+    ],
+    "abilities": [
+      "bypasses monster regeneration",
+      "permanently severing magical wounds"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "hermes",
+      "perseus"
+    ],
+    "forged_by_notes": "Forged by Hephaestus",
+    "origin_story": "Lent by Hermes to Perseus to decapitate Medusa.",
+    "description": "Hermes's adamantine sword lent to Perseus to slay Medusa.",
+    "owner_primary_character_slug": "perseus",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Kibisis",
+    "expected_slug": "kibisis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kibisis",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "other",
+    "form": [
+      "magic knapsack / pouch"
+    ],
+    "abilities": [
+      "expands to contain hazardous artifacts",
+      "blocks petrifying gaze from inside"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "nymphs",
+      "perseus"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Given to Perseus by Nymphs to safely contain Medusa's severed head.",
+    "description": "Magical knapsack used by Perseus to carry Medusa's head safely.",
+    "owner_primary_character_slug": "perseus",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Golden Celedon",
+    "expected_slug": "golden-celedon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Celedon",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "gold",
+    "form": [
+      "life-sized golden automaton statue of a singing maiden"
+    ],
+    "abilities": [
+      "singing voice induces hypnotic musical trance and incapacitates listeners"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "hephaestus",
+      "apollo",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Forged by Hephaestus for Apollo",
+    "origin_story": "Forged by Hephaestus for Apollo. Escaped to Times Square before Percy and Grover recaptured her.",
+    "description": "Apollo's golden singing automaton that escaped to New York City.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "apollo",
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jackson-and-the-singer-of-apollo",
+    "books_appeared_in_slugs": [
+      "percy-jackson-and-the-singer-of-apollo"
+    ]
+  },
+  {
+    "name": "Golden Fleece",
+    "expected_slug": "golden-fleece",
+    "wiki_url": "https://riordan.fandom.com/wiki/Golden_Fleece",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "gold",
+    "form": [
+      "golden sheepskin fleece radiating a warm amber glow"
+    ],
+    "abilities": [
+      "cures all disease, poison, and decay within range",
+      "restores nature and life force",
+      "attracts monsters"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "chrysomallus",
+      "polyphemus",
+      "clarisse-la-rue"
+    ],
+    "forged_by_notes": "Naturally produced by Chrysomallus",
+    "origin_story": "Recovered from Polyphemus's island by Clarisse, Percy, and Annabeth to heal Thalia's pine tree.",
+    "description": "The legendary golden sheepskin that heals nature and cures all ailments.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Ariadne's String",
+    "expected_slug": "ariadnes-string",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ariadne%27s_String",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "gold",
+    "form": [
+      "ball of glowing golden thread"
+    ],
+    "abilities": [
+      "navigates the Labyrinth by glowing and revealing the optimal path to any destination"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "ariadne",
+      "theseus",
+      "daedalus",
+      "luke-castellan"
+    ],
+    "forged_by_notes": "Created by Daedalus",
+    "origin_story": "Invented by Daedalus for Ariadne to help Theseus navigate the Labyrinth.",
+    "description": "Glowing golden thread created by Daedalus to navigate the Labyrinth.",
+    "owner_primary_character_slug": "daedalus",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": "daedalus",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Daedalus's Laptop",
+    "expected_slug": "daedalus-laptop",
+    "wiki_url": "https://riordan.fandom.com/wiki/Daedalus%27_Laptop",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "silver",
+    "form": [
+      "blue silver 3D laptop with a delta symbol logo"
+    ],
+    "abilities": [
+      "contains Daedalus's complete lifetime blueprints, automaton designs, and holographic simulations"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "daedalus",
+      "annabeth-chase"
+    ],
+    "forged_by_notes": "Built by Daedalus",
+    "origin_story": "Created by Daedalus and bequeathed to Annabeth Chase at the end of Book 4.",
+    "description": "Daedalus's silver laptop containing thousands of advanced inventions, bequeathed to Annabeth.",
+    "owner_primary_character_slug": "annabeth-chase",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": "daedalus",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Grover's Reed Pipes",
+    "expected_slug": "grovers-reed-pipes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Reed_Pipes",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "wood",
+    "form": [
+      "set of wooden pan pipes bound with string"
+    ],
+    "abilities": [
+      "casts wood-magic spells",
+      "causes plants and vines to grow",
+      "channels Pan's Panic scream"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "grover-underwood"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Standard satyr pipes played by Grover Underwood to channel nature magic and Pan's spirit.",
+    "description": "Grover Underwood's wooden pan pipes used for casting satyr wood-magic.",
+    "owner_primary_character_slug": "grover-underwood",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ]
+  },
+  {
+    "name": "Winged Shoes",
+    "expected_slug": "winged-shoes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Winged_Shoes",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "red-and-white Converse sneakers with tiny white wings at the heels"
+    ],
+    "abilities": [
+      "grants flight when the user speaks the command word 'Maia'"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "hermes",
+      "luke-castellan",
+      "percy-jackson",
+      "grover-underwood"
+    ],
+    "forged_by_notes": "Enchanted by Hermes",
+    "origin_story": "Gifted by Hermes to Luke, passed to Percy, and worn by Grover in Book 1.",
+    "description": "Flying red Converse sneakers enchanted by Hermes.",
+    "owner_primary_character_slug": "grover-underwood",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ]
+  },
+  {
+    "name": "Medusa's Severed Head",
+    "expected_slug": "medusas-head",
+    "wiki_url": "https://riordan.fandom.com/wiki/Medusa%27s_Head",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "other",
+    "form": [
+      "severed head of Medusa wrapped in a plastic bag"
+    ],
+    "abilities": [
+      "permanently turns anyone who looks directly at it into solid stone"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "medusa",
+      "percy-jackson",
+      "sally-jackson"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Decapitated by Percy Jackson in Book 1 and later used by Sally Jackson to petrify Gabe Ugliano.",
+    "description": "Medusa's severed head, which retains its petrifying gaze.",
+    "owner_primary_character_slug": "sally-jackson",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Sword of Hades",
+    "expected_slug": "sword-of-hades",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hades%27_Sword",
+    "true_name": null,
+    "weapon_type": "sword",
+    "material": "stygian_iron",
+    "form": [
+      "3-foot Stygian iron blade set with a magical golden key in the hilt"
+    ],
+    "abilities": [
+      "controls the dead",
+      "can unlock or lock the gates of Death/Elysium/Tartarus",
+      "summons souls directly from the Underworld"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "persephone",
+      "krios",
+      "ethan-nakamura",
+      "percy-jackson",
+      "hades"
+    ],
+    "forged_by_notes": "Forged by Persephone in secret",
+    "origin_story": "Forged in secret by Persephone in The Demigod Files. Recovered by Percy, Thalia, and Nico.",
+    "description": "Hades's secret Stygian Iron blade set with a golden key that controls the gates of Death.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hades",
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ]
+  },
+  {
+    "name": "Golden Bridle",
+    "expected_slug": "golden-bridle",
+    "wiki_url": "https://riordan.fandom.com/wiki/Golden_Bridle",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "gold",
+    "form": [
+      "golden jeweled horse bridle"
+    ],
+    "abilities": [
+      "tames and controls Pegasus and any winged equine creature instantly"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "athena",
+      "bellerophon"
+    ],
+    "forged_by_notes": "Created by Athena",
+    "origin_story": "Given by Athena to Bellerophon in Percy Jackson and the Greek Heroes to tame Pegasus.",
+    "description": "Athena's golden bridle used by Bellerophon to tame Pegasus.",
+    "owner_primary_character_slug": "bellerophon",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "athena",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Nemean Lion Skin Coat",
+    "expected_slug": "nemean-lion-skin",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemean_Lion%27s_Pelt",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "other",
+    "form": [
+      "golden lion-skin coat / cape"
+    ],
+    "abilities": [
+      "completely invulnerable to all weapons, claws, arrows, and elemental attacks"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "heracles",
+      "percy-jackson"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Slain by Heracles in myth, and by Percy at the Smithsonian in Book 3. Sacrificed to Poseidon.",
+    "description": "Invulnerable golden pelt of the Nemean Lion.",
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Bow of Heracles",
+    "expected_slug": "bow-of-heracles",
+    "wiki_url": null,
+    "true_name": null,
+    "weapon_type": "bow",
+    "material": "composite",
+    "form": [
+      "massive composite longbow"
+    ],
+    "abilities": [
+      "shoots arrows tipped with lethal Hydra venom that inflict fatal unhealable wounds"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": true,
+    "owner_history": [
+      "heracles",
+      "philoctetes"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Wielded by Heracles during his Twelve Labors in Percy Jackson and the Greek Heroes.",
+    "description": "Heracles's bow, firing arrows poisoned with Hydra blood.",
+    "owner_primary_character_slug": "heracles",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Club of Heracles",
+    "expected_slug": "club-of-heracles",
+    "wiki_url": null,
+    "true_name": null,
+    "weapon_type": "club",
+    "material": "wood",
+    "form": [
+      "massive gnarled wild-olive wood club"
+    ],
+    "abilities": [
+      "bludgeoning force capable of breaking mountains and killing giant monsters"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "heracles"
+    ],
+    "forged_by_notes": "Carved by Heracles",
+    "origin_story": "Carved by Heracles from an olive tree near Nemea during his First Labor.",
+    "description": "Heracles's wild-olive wood club.",
+    "owner_primary_character_slug": "heracles",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ]
+  },
+  {
+    "name": "Persephone's Pearls",
+    "expected_slug": "persephones-pearls",
+    "wiki_url": "https://riordan.fandom.com/wiki/Persephone%27s_Pearls",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "other",
+    "form": [
+      "three glowing green pearls"
+    ],
+    "abilities": [
+      "encases the user in a protective bubble and teleports them from the Underworld to the sea"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "persephone",
+      "nereid",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Enchanted by Persephone / Poseidon",
+    "origin_story": "Given to Percy by a Nereid to escape the Underworld in Book 1.",
+    "description": "Green pearls that transport users safely out of the Underworld.",
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ]
+  },
+  {
+    "name": "Hermes's Multivitamins",
+    "expected_slug": "hermes-multivitamins",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hermes%27_Multivitamins",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "plastic bottle of chewable gummy multivitamins"
+    ],
+    "abilities": [
+      "instantly cures poisons, curses, transformations, and magical ailments"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "hermes",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Created by Hermes",
+    "origin_story": "Given by Hermes to Percy in Book 2 to cure Circe's pig transformation.",
+    "description": "Hermes's chewable vitamins that cure curses and magical transformations.",
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "hermes",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "Hermes's Thermos",
+    "expected_slug": "hermes-thermos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Thermos_of_Winds",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "silver metal thermos with a red cap"
+    ],
+    "abilities": [
+      "releases trapped ocean winds (North, South, East, West) to propel ships or blast enemies"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_history": [
+      "hermes",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Created by Hermes",
+    "origin_story": "Given by Hermes to Percy in Book 2 to power their ship across the ocean.",
+    "description": "Metal thermos containing trapped winds, given to Percy by Hermes.",
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": "hermes",
+    "forged_by_character_slug": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ]
+  },
+  {
+    "name": "Tyson's Shield",
+    "expected_slug": "tysons-shield",
+    "wiki_url": "https://riordan.fandom.com/wiki/Wristwatch_Shield",
+    "true_name": null,
+    "weapon_type": "shield",
+    "material": "celestial_bronze",
+    "form": [
+      "extra-thick sports wristwatch",
+      "large bronze shield engraved with scenes of Percy's quests"
+    ],
+    "abilities": [
+      "expands instantly into a shield",
+      "deflects heavy attacks",
+      "commemorates heroic deeds"
+    ],
+    "transforms": true,
+    "transform_trigger": "pressing the winding stem on the wristwatch",
+    "passes_through_mortals": true,
+    "owner_history": [
+      "tyson",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Forged by Tyson at Camp Half-Blood",
+    "origin_story": "Forged by Tyson as a gift for Percy at the end of Book 2.",
+    "description": "Percy's wristwatch shield forged by Tyson, engraved with scenes from their quest.",
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_primary_titan_slug": null,
+    "forged_by_god_slug": null,
+    "forged_by_character_slug": "tyson",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Ariadne's Thread",
+    "expected_slug": "ariadnes-thread",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ariadne%27s_String",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "gold",
+    "form": [
+      "ball of glowing golden thread"
+    ],
+    "abilities": [
+      "navigates the Labyrinth by glowing and revealing the optimal path to any destination"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "daedalus",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "ariadne",
+      "theseus",
+      "daedalus",
+      "luke-castellan"
+    ],
+    "forged_by_notes": "Created by Daedalus",
+    "origin_story": "Invented by Daedalus for Ariadne to help Theseus navigate the Labyrinth.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Glowing golden thread created by Daedalus to navigate the Labyrinth.",
+    "forged_by_character_slug": "daedalus"
+  },
+  {
+    "name": "Bronze Dragon Head (Festus Core)",
+    "expected_slug": "bronze-dragon-head",
+    "wiki_url": "https://riordan.fandom.com/wiki/Festus",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "celestial_bronze",
+    "form": [
+      "mechanical dragon head"
+    ],
+    "abilities": [
+      "breathes Greek fire",
+      "controls mechanical dragon limbs"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "charles-beckendorf",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "hephaestus-cabin",
+      "charles-beckendorf"
+    ],
+    "forged_by_notes": "Built by Nine Cabin demigods in ancient Camp Half-Blood.",
+    "origin_story": "The core control head of Camp Half-Blood's lost Bronze Dragon automaton, reassembled by Charles Beckendorf.",
+    "first_appearance_book_slug": "percy-jackson-and-the-bronze-dragon",
+    "books_appeared_in_slugs": [
+      "percy-jackson-and-the-bronze-dragon"
+    ],
+    "description": "The golden-bronze head of the Camp Half-Blood dragon automaton, containing its elemental fiery heart."
+  },
+  {
+    "name": "Polished Bronze Shield",
+    "expected_slug": "bronze-shield",
+    "wiki_url": null,
+    "true_name": null,
+    "weapon_type": "shield",
+    "material": "celestial_bronze",
+    "form": [
+      "mirror-polished round shield"
+    ],
+    "abilities": [
+      "provides clear mirror reflection to bypass petrifying gazes"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "perseus",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "athena",
+      "perseus"
+    ],
+    "forged_by_notes": "Polished to a mirror sheen by Athena.",
+    "origin_story": "Gifted by Athena to Perseus so he could view Medusa's reflection without turning to stone.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "A polished bronze shield so mirror-bright it functions as a crystal-clear reflector in battle.",
+    "forged_by_god_slug": "athena"
+  },
+  {
+    "name": "Cap of Invisibility",
+    "expected_slug": "cap-of-invisibility",
+    "wiki_url": "https://riordan.fandom.com/wiki/Annabeth%27s_Yankees_Cap",
+    "true_name": "Helm of Darkness Prototype",
+    "weapon_type": "helm",
+    "material": "divine_material",
+    "form": [
+      "dark dog-skin cap"
+    ],
+    "abilities": [
+      "renders the wearer completely invisible"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hades",
+    "owner_history": [
+      "hades",
+      "perseus"
+    ],
+    "forged_by_notes": "Forged during the First Titanomachy.",
+    "origin_story": "Lent to Perseus by Hermes and the Nymphs to allow him to sneak into the Gorgons' lair unnoticed.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Hades's legendary cap of darkness, capable of cloaking the wearer in absolute shadow."
+  },
+  {
+    "name": "Flying Sneakers (Hermes' Winged Shoes)",
+    "expected_slug": "flying-sneakers",
+    "wiki_url": "https://riordan.fandom.com/wiki/Winged_Shoes",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "red-and-white Converse sneakers with tiny white wings at the heels"
+    ],
+    "abilities": [
+      "grants flight when the user speaks the command word 'Maia'"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "grover-underwood",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "hermes",
+      "luke-castellan",
+      "percy-jackson",
+      "grover-underwood"
+    ],
+    "forged_by_notes": "Enchanted by Hermes",
+    "origin_story": "Gifted by Hermes to Luke, passed to Percy, and worn by Grover in Book 1.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "description": "Flying red Converse sneakers enchanted by Hermes."
+  },
+  {
+    "name": "Bellerophon's Lead-Tipped Spear",
+    "expected_slug": "lead-tipped-spear",
+    "wiki_url": null,
+    "true_name": null,
+    "weapon_type": "spear",
+    "material": "mortal_steel",
+    "form": [
+      "spear tipped with a block of soft lead"
+    ],
+    "abilities": [
+      "melts into liquid fire in a monster's mouth to suffocate it"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": true,
+    "owner_primary_character_slug": "bellerophon",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "bellerophon"
+    ],
+    "forged_by_notes": "Crafted by Bellerophon before fighting the Chimera.",
+    "origin_story": "Invented by Bellerophon to defeat the Chimera; when thrust into her throat, her fire melted the lead, choking her.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "A custom spear capped with soft lead, designed to exploit fire-breathing monsters.",
+    "forged_by_character_slug": "bellerophon"
+  },
+  {
+    "name": "Nemean Lion Pelt",
+    "expected_slug": "lion-pelt",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemean_Lion%27s_Pelt",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "other",
+    "form": [
+      "golden lion-skin coat / cape"
+    ],
+    "abilities": [
+      "completely invulnerable to all weapons, claws, arrows, and elemental attacks"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "heracles",
+      "percy-jackson"
+    ],
+    "forged_by_notes": null,
+    "origin_story": "Slain by Heracles in myth, and by Percy at the Smithsonian in Book 3. Sacrificed to Poseidon.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Invulnerable golden pelt of the Nemean Lion."
+  },
+  {
+    "name": "Thermos of Winds",
+    "expected_slug": "thermos-of-winds",
+    "wiki_url": "https://riordan.fandom.com/wiki/Thermos_of_Winds",
+    "true_name": null,
+    "weapon_type": "magical_item",
+    "material": "other",
+    "form": [
+      "silver metal thermos with a red cap"
+    ],
+    "abilities": [
+      "releases trapped ocean winds (North, South, East, West) to propel ships or blast enemies"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": "percy-jackson",
+    "owner_primary_god_slug": null,
+    "owner_history": [
+      "hermes",
+      "percy-jackson"
+    ],
+    "forged_by_notes": "Created by Hermes",
+    "origin_story": "Given by Hermes to Percy in Book 2 to power their ship across the ocean.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "description": "Metal thermos containing trapped winds, given to Percy by Hermes.",
+    "forged_by_god_slug": "hermes"
+  },
+  {
+    "name": "Ares's War Chariot",
+    "expected_slug": "war-chariot",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ares%27_War_Chariot",
+    "true_name": null,
+    "weapon_type": "artifact",
+    "material": "imperial_gold",
+    "form": [
+      "crimson war chariot"
+    ],
+    "abilities": [
+      "drives at extreme speed",
+      "radiates a terror aura"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "ares",
+    "owner_history": [
+      "ares",
+      "clarisse-la-rue"
+    ],
+    "forged_by_notes": "Forged in Hephaestus's volcanic armories for Ares.",
+    "origin_story": "Ares's divine war chariot, stolen by Phobos and Deimos and recovered by Clarisse La Rue and Percy Jackson.",
+    "first_appearance_book_slug": "percy-jackson-and-the-stolen-chariot",
+    "books_appeared_in_slugs": [
+      "percy-jackson-and-the-stolen-chariot"
+    ],
+    "description": "A dark red war chariot belonging to Ares, capable of generating waves of divine fear.",
+    "forged_by_god_slug": "hephaestus"
+  },
+  {
+    "name": "Circe's Wand",
+    "expected_slug": "circes-wand",
+    "true_name": "Circe's Wand",
+    "weapon_type": "magical_item",
+    "material": "enchanted",
+    "form": [
+      "wooden wand"
+    ],
+    "abilities": [
+      "transforms humans into guinea pigs or animals",
+      "weaves illusion magic",
+      "transmutation"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "circe",
+    "owner_history": [
+      "circe"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Crafted by Circe on Aeaea",
+    "origin_story": "Wielded by the sorceress Circe to transform visiting sailors and demigods into animals on her resort island of Aeaea.",
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The magical wand wielded by Circe to transform men into guinea pigs and cast sorcery spells."
+  },
+  {
+    "name": "Conch Shell Trumpet",
+    "expected_slug": "conch-shell-trumpet",
+    "true_name": "Triton's Conch",
+    "weapon_type": "artifact",
+    "material": "enchanted",
+    "form": [
+      "large spiral conch shell"
+    ],
+    "abilities": [
+      "stirs up oceanic storms or calms giant waves",
+      "frightens away sea monsters with sonic blast",
+      "summons marine creatures"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "triton",
+    "owner_history": [
+      "triton"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Naturally formed in the ocean depths and enchanted by Poseidon",
+    "origin_story": "Wielded by Poseidon's son Triton to signal the sea armies and control wave currents.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The enchanted conch shell trumpet carried by Triton to command the sea forces and direct ocean current sound waves."
+  },
+  {
+    "name": "Golden Sickle",
+    "expected_slug": "golden-sickle",
+    "true_name": "Sickle of Demeter",
+    "weapon_type": "scythe",
+    "material": "imperial_gold",
+    "form": [
+      "curved golden harvesting sickle"
+    ],
+    "abilities": [
+      "accelerates plant growth or harvest death",
+      "slices through wood and stone",
+      "channels agricultural magic"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "demeter",
+    "owner_history": [
+      "demeter"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Forged by Hephaestus for Demeter",
+    "origin_story": "Demeter's sacred golden harvesting tool used in agriculture and battle.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "the-last-olympian"
+    ],
+    "description": "Demeter's golden sickle, symbolizing the harvest and used as her primary divine tool and weapon."
+  },
+  {
+    "name": "Hammer of Hephaestus",
+    "expected_slug": "hammer-of-hephaestus",
+    "true_name": "Smith's Hammer of Hephaestus",
+    "weapon_type": "artifact",
+    "material": "divine_material",
+    "form": [
+      "heavy blacksmithing sledgehammer"
+    ],
+    "abilities": [
+      "sparks intense volcanic flames",
+      "forges and shapes any divine metal",
+      "delivers earth-shattering concussive strikes"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hephaestus",
+    "owner_history": [
+      "hephaestus"
+    ],
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_notes": "Forged by Hephaestus himself in his volcanic forge under Mount Etna",
+    "origin_story": "The primary divine smithing tool and weapon crafted by Hephaestus to forge the weapons of the gods.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The massive blacksmithing hammer of Hephaestus used to forge divine weapons like the Master Bolt and Trident."
+  },
+  {
+    "name": "Ice Sword of Boreas",
+    "expected_slug": "ice-sword-of-boreas",
+    "true_name": "Glacial Blade of Boreas",
+    "weapon_type": "sword",
+    "material": "enchanted",
+    "form": [
+      "translucent frozen ice broadsword"
+    ],
+    "abilities": [
+      "freezes targets instantly on contact",
+      "summons blizzard wind gusts",
+      "never melts in heat"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "boreas",
+    "owner_history": [
+      "boreas"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Condensed from the North Wind in Quebec",
+    "origin_story": "Wielded by Boreas, God of the North Wind, to freeze opponents and unleash arctic blizzards.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "A razor-sharp sword made of magical, unmelting glacier ice carried by Boreas, the North Wind."
+  },
+  {
+    "name": "Lotus Staff",
+    "expected_slug": "lotus-staff",
+    "true_name": "Scepter of Hera",
+    "weapon_type": "staff",
+    "material": "imperial_gold",
+    "form": [
+      "golden royal staff topped with a lotus flower"
+    ],
+    "abilities": [
+      "projects divine royal authority and command",
+      "summons peacocks or royal storms",
+      "channels peacock feather energy blasts"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hera",
+    "owner_history": [
+      "hera"
+    ],
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_notes": "Forged by Hephaestus for the Queen of Olympus",
+    "origin_story": "The ceremonial golden staff and scepter carried by Queen Hera as a sign of her sovereignty on Mount Olympus.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "Hera's golden royal scepter topped with a carved lotus flower, symbolizing her position as Queen of Olympus."
+  },
+  {
+    "name": "Mirror of Aphrodite",
+    "expected_slug": "mirror-of-aphrodite",
+    "true_name": "Looking Glass of Beauty",
+    "weapon_type": "magical_item",
+    "material": "celestial_bronze",
+    "form": [
+      "handheld polished bronze mirror"
+    ],
+    "abilities": [
+      "reflects glamour magic and reveals illusions",
+      "blinds enemies with dazzling beauty light",
+      "allows scrying across distances"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "aphrodite",
+    "owner_history": [
+      "aphrodite"
+    ],
+    "forged_by_god_slug": "hephaestus",
+    "forged_by_notes": "Forged by Hephaestus as a gift for Aphrodite",
+    "origin_story": "Aphrodite's handheld mirror, used to alter appearances, scry on mortals, and reflect divine light.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "A magical bronze mirror used by Aphrodite to control her charm glamour and scry across the world."
+  },
+  {
+    "name": "Strophalos",
+    "expected_slug": "strophalos",
+    "true_name": "Wheel of Hecate",
+    "weapon_type": "magical_item",
+    "material": "stygian_iron",
+    "form": [
+      "spinning wheel emblem with a triple-headed serpent"
+    ],
+    "abilities": [
+      "channels Mist illusions and necromancy",
+      "opens dimensional doorways",
+      "spins to release blinding magical pulses"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "hecate",
+    "owner_history": [
+      "hecate"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Crafted in the Underworld by Hecate",
+    "origin_story": "Hecate's ancient spinning wheel artifact used to manipulate the Mist and invoke crossroad magic.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The sacred spinning wheel of Hecate, used to weave the Mist and command magic at the crossroads."
+  },
+  {
+    "name": "Sword of Nemesis",
+    "expected_slug": "sword-of-nemesis",
+    "true_name": "Blade of Retribution",
+    "weapon_type": "sword",
+    "material": "stygian_iron",
+    "form": [
+      "double-edged black bronze spatha"
+    ],
+    "abilities": [
+      "strikes with force proportional to the victim's hubris",
+      "exacts retribution and balances karma",
+      "cuts through dark magic"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "nemesis",
+    "owner_history": [
+      "nemesis"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Forged in the Underworld from Stygian Bronze",
+    "origin_story": "The blade carried by Nemesis, Goddess of Revenge, to punish mortals and gods who exhibit excessive pride.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The dark Stygian Bronze sword wielded by Nemesis to punish hubris and deliver exact retribution."
+  },
+  {
+    "name": "Thyrsus",
+    "expected_slug": "thyrsus",
+    "true_name": "Pinecone Staff of Dionysus",
+    "weapon_type": "staff",
+    "material": "enchanted",
+    "form": [
+      "giant fennel stalk wrapped in ivy vines and topped with a pinecone"
+    ],
+    "abilities": [
+      "causes instant madness or hysteria in enemies",
+      "sprouts grapevines and wine springs on command",
+      "channels bacchic energy blasts"
+    ],
+    "transforms": false,
+    "transform_trigger": null,
+    "passes_through_mortals": false,
+    "owner_primary_character_slug": null,
+    "owner_primary_god_slug": "dionysus",
+    "owner_history": [
+      "dionysus"
+    ],
+    "forged_by_god_slug": null,
+    "forged_by_notes": "Nurtured by Nymphs of Nysa",
+    "origin_story": "The wand and staff carried by Dionysus and his maenads, dripping with honey and ivy, capable of inducing madness.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "the-last-olympian"
+    ],
+    "description": "The staff of Dionysus, wrapped in ivy vines and topped with a giant pinecone, used to induce madness and sprout vines."
+  }
+]

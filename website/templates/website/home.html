@@ -1,0 +1,202 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block content %}
+  {% include "website/partials/header.html" %}
+  <div id="page-content">
+    <main class="pt-20 max-md:pt-16" id="main-content" tabindex="-1">
+      {% include "website/partials/hero.html" %}
+      <section data-reveal-group="scroll"
+               class="lore-section border-y border-border bg-subtle/70 py-12 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
+               aria-labelledby="lore-heading">
+        <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
+          <div data-reveal
+               class="lore-heading mobile-copy hidden max-md:mx-1 max-md:mb-4 max-md:flex max-md:items-center max-md:justify-between [&_.badge]:normal-case">
+            <div>
+              <h2 class="text-lg leading-[1.6]" id="lore-heading">Curated Archives</h2>
+              <p class="text-xs leading-[1.6]">Visual endpoints from across Olympus.</p>
+            </div>
+            <c-ui.badge>
+              3 Modules
+            </c-ui.badge>
+          </div>
+          <div data-reveal-stagger
+               class="lore-grid grid grid-cols-3 gap-6 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-4 max-md:overflow-x-auto max-md:pb-2">
+            {% for card in lore_cards %}<c-landing.lore-card :item="card" />{% endfor %}
+          </div>
+        </div>
+      </section>
+      <section data-reveal-group="scroll"
+               class="resources-section section-space py-20 max-md:pt-0 max-md:pb-12"
+               id="resources"
+               aria-labelledby="resources-heading">
+        <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
+          <div class="directory-heading mb-12 flex items-end justify-between gap-6 [&_.section-heading]:flex-1 md:max-desktop:flex-col md:max-desktop:items-start max-md:mb-4 max-md:block">
+            <c-ui.section-heading heading-id="resources-heading"
+                                  eyebrow="Directory Catalog / REST Entities"
+                                  title="Structured Lore Architecture"
+                                  mobile-title="Canonical Endpoints"
+                                  description="Access comprehensive entities and relational graphs across the Riordan mythology."
+                                  mobile-description="Base URI prefix for all entities:" />
+            <div class="base-uri flex max-w-full items-center gap-2 rounded-full border border-border bg-subtle px-4 py-2.5 font-mono text-[11px] leading-[normal] text-muted max-md:mx-1 max-md:mt-2 max-md:rounded-2xl max-md:p-3 max-md:text-[10px]">
+              <span class="status-dot inline-block size-1.5 shrink-0 rounded-full bg-[#14b8a6] max-md:order-1 max-md:ml-auto"></span><span class="desktop-copy max-md:hidden!">Base URI: </span><code class="font-semibold text-heading wrap-anywhere max-md:font-normal max-md:text-muted">{{ api_base_url }}</code>
+            </div>
+          </div>
+          <div data-reveal
+               class="auth-banner mb-12 flex items-center gap-4 rounded-3xl border border-border bg-subtle px-7 py-4 [&_.icon-tile]:border-border [&_.icon-tile]:bg-surface max-md:mb-5 max-md:items-start max-md:gap-3 max-md:rounded-[20px] max-md:bg-surface max-md:p-4 max-md:[&_.icon-tile]:h-6 max-md:[&_.icon-tile]:w-5 max-md:[&_.icon-tile]:border-0 max-md:[&_.icon-tile]:bg-transparent">
+            <c-ui.icon-tile name="shield-check" />
+            <div>
+              <h3 class="text-base leading-[1.6] max-md:text-sm">Authentication Requirements</h3>
+              <p class="text-sm leading-[1.6] max-md:mt-1 max-md:text-xs max-md:leading-[1.7]">
+                Protected endpoints require
+                the <code class="rounded-[20px] bg-surface px-1.5 py-px text-[11px] font-bold text-accent">X-API-Key</code>
+                header. Directory endpoints provide structured JSON payloads.
+              </p>
+            </div>
+            <a href="#quick-start"
+               class="desktop-copy ml-auto font-mono text-[11px] leading-[normal] font-semibold whitespace-nowrap text-heading underline-offset-4 hover:underline focus-visible:underline [&_svg]:ml-1.5 max-md:hidden!">Key
+              policy guidelines
+              <c-icons.arrow-right size="15" />
+            </a>
+          </div>
+          <div data-reveal-stagger
+               class="resource-grid grid grid-cols-4 gap-4.5 md:max-desktop:grid-cols-2 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+            {% for group in resource_groups %}
+              {% cycle 'teal' 'amber' as group_tone silent %}
+              <c-landing.resource-group :item="group" :tone="group_tone" />
+            {% endfor %}
+          </div>
+          <div data-reveal-stagger
+               class="utility-grid mt-14 grid grid-cols-2 gap-6 max-md:mt-4 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+            <c-landing.utility-card :href="search_url"
+                                    title="Global Search Index"
+                                    description="Perform full-text search queries across characters, deities, items, and locations in a single unified round-trip."
+                                    icon="search"
+                                    badge="Cross-Resource"
+                                    :endpoint="search_endpoint"
+                                    id="search-endpoint" />
+            <c-landing.utility-card :href="images_url"
+                                    title="Media Provenance & Images"
+                                    description="Structured image references with attribution fields, source links, and Riordan Wiki provenance. Image rights remain unverified where no license is recorded."
+                                    icon="image"
+                                    tone="amber"
+                                    badge="Archival Assets"
+                                    :endpoint="images_endpoint"
+                                    id="images-endpoint" />
+          </div>
+        </div>
+      </section>
+      <section data-reveal-group="scroll"
+               class="features-section section-space border-y border-border bg-subtle/70 py-20 [&_.section-heading_.eyebrow]:inline-block [&_.section-heading_.eyebrow]:rounded-full [&_.section-heading_.eyebrow]:border [&_.section-heading_.eyebrow]:border-accent-border [&_.section-heading_.eyebrow]:bg-accent-soft [&_.section-heading_.eyebrow]:px-3 [&_.section-heading_.eyebrow]:py-0.75 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
+               id="features"
+               aria-label="Capabilities">
+        <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
+          <c-ui.section-heading eyebrow="Capabilities"
+                                title="Engineered for Mythic Scale"
+                                description="Built on standard REST paradigms with deterministic schemas and deep relationship traversal."
+                                mobile-description="Built to give frontend developers and bot makers an unshakeable foundation." />
+          <div data-reveal-stagger
+               class="feature-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:grid-cols-2 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-3">
+            {% for feature in features %}
+              {% cycle 'teal' 'amber' as feature_tone silent %}
+              <c-landing.feature-card :item="feature" :tone="feature_tone" />
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      <section data-reveal-group="scroll"
+               class="quick-start-section section-space py-20 [&_.section-heading_.eyebrow]:inline-block [&_.section-heading_.eyebrow]:rounded-full [&_.section-heading_.eyebrow]:border [&_.section-heading_.eyebrow]:border-accent-border [&_.section-heading_.eyebrow]:bg-accent-soft [&_.section-heading_.eyebrow]:px-3 [&_.section-heading_.eyebrow]:py-0.75 max-md:pt-0 max-md:pb-12"
+               id="quick-start"
+               aria-label="Quick Start">
+        <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
+          <c-ui.section-heading eyebrow="Integration Protocol"
+                                title="Quick Start in 3 Steps"
+                                description="Initialize communication with the Riordanverse archive."
+                                mobile-description="No credit card or demigod pedigree required." />
+          <div data-reveal-stagger
+               class="quick-grid mt-16 grid grid-cols-3 gap-6 md:max-desktop:gap-4 max-md:mt-5 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-5">
+            <c-landing.quick-start-step number="01"
+                                        title="Request an API Key"
+                                        description="Issue a key request specifying your application identifier and developer email.">
+              <c-slot name="badge">
+                <c-ui.badge>
+                  Key request
+                </c-ui.badge>
+              </c-slot>
+              <c-ui.code-block id="key-request-code" :code="request_key_code" />
+              <c-slot name="footer">
+                <a href="{{ docs_url }}">Learn how to request a key
+                  <c-icons.arrow-right size="15" />
+                </a>
+              </c-slot>
+            </c-landing.quick-start-step>
+            <c-landing.quick-start-step number="02"
+                                        title="Configure the Header"
+                                        description="Append your issued token to each outbound request in the dedicated security header.">
+              <c-slot name="badge">
+                <c-ui.badge tone="amber">
+                  Header
+                </c-ui.badge>
+              </c-slot>
+              <div class="header-example rounded-2xl border border-border bg-surface p-4 py-2.5 max-md:bg-subtle max-md:p-3">
+                <span class="eyebrow inline-block p-0 font-mono text-[9px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:text-[10px]">HTTP
+                Security Header</span>
+                <code class="mt-1 block text-[11px] font-bold text-heading wrap-anywhere max-md:text-accent">{{ header_raw }}</code>
+                <p class="mt-3 text-xs leading-[1.4] text-muted">
+                  Tokens must be kept confidential and omitted from public
+                  client bundles.
+                </p>
+              </div>
+              <c-slot name="footer">
+                <span>Keep your key on your server, not in browser code.</span>
+              </c-slot>
+            </c-landing.quick-start-step>
+            <c-landing.quick-start-step number="03"
+                                        title="Make your first query"
+                                        description="Execute your initial character lookup via cURL, fetch, or Axios.">
+              <c-slot name="badge">
+                <c-ui.copy-button target="curl-code" label="Copy curl" />
+              </c-slot>
+              <c-ui.code-block id="curl-code" :code="curl_code" />
+              <c-slot name="footer">
+                <a href="{{ docs_url }}"
+                   class="query-docs max-md:flex! max-md:items-center max-md:justify-center max-md:rounded-full max-md:bg-button max-md:p-2.5 max-md:font-sans max-md:text-xs max-md:leading-[normal] max-md:font-bold max-md:text-button-text!">Open
+                  interactive docs
+                  <c-icons.book-open size="15" />
+                </a><a class="desktop-copy max-md:hidden!"
+                       href="{{ api_directory_url }}">Browse API resources →</a>
+              </c-slot>
+            </c-landing.quick-start-step>
+          </div>
+        </div>
+      </section>
+      <section data-reveal-group="scroll"
+               class="tools-section border-y border-border bg-subtle/70 py-20 max-md:border-0 max-md:bg-transparent max-md:pt-0 max-md:pb-12"
+               aria-label="Specifications and tooling">
+        <div class="site-container mx-auto w-full max-w-7xl px-8 max-md:px-4 max-[360px]:px-3">
+          <div data-reveal
+               class="tools-heading mb-10 text-muted max-md:mx-1 max-md:mb-3 max-md:flex max-md:items-center max-md:justify-between">
+            <span class="desktop-copy eyebrow font-mono text-[11px] leading-normal font-bold tracking-[0.06em] text-muted uppercase max-md:hidden!">Developer
+            Specifications &amp; Tooling</span>
+            <h2 class="mobile-copy hidden max-md:block max-md:text-base max-md:leading-[1.6] max-md:tracking-normal">
+              Specs
+              &amp; Tooling
+            </h2>
+            <span class="mobile-copy hidden max-md:inline max-md:font-mono max-md:text-[10px] max-md:leading-[normal] max-md:text-accent">Standards</span>
+          </div>
+          <div data-reveal-stagger
+               class="tool-grid grid grid-cols-4 gap-4 md:max-desktop:grid-cols-2 max-md:grid-cols-2 max-md:gap-2.5">
+            {% for tool in tools %}
+              {% cycle 'teal' 'amber' as tool_tone silent %}
+              <c-landing.tool-card :item="tool" :tone="tool_tone" />
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </main>
+    {% include "website/partials/footer.html" %}
+  </div>
+{% endblock content %}
+{% block extra_js %}
+  <script src="{% static 'website/js/site.js' %}" defer></script>
+  <script src="{% static 'website/js/dist/animations.js' %}" defer></script>
+{% endblock extra_js %}

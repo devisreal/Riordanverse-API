@@ -1,0 +1,880 @@
+[
+  {
+    "name": "The Minotaur",
+    "expected_slug": "minotaur",
+    "wiki_url": "https://riordan.fandom.com/wiki/Minotaur",
+    "aliases": [
+      "Asterion",
+      "Pasiphaë's Son",
+      "The Cretan Bull-Man"
+    ],
+    "monster_type": "bovine_humanoid",
+    "allegiance": "kronos_army",
+    "origin_myth": "Born to Pasiphaë, Queen of Crete, after she was cursed by Poseidon to fall in love with the Cretan Bull. Imprisoned in Daedalus's Labyrinth until slain by Theseus.",
+    "physical_description": "Nine-foot-tall creature with the muscular body of a man and the head, horns, and hooves of a colossal bull. Wears tight white briefs in his Book 1 manifestation.",
+    "abilities": [
+      "Superhuman strength",
+      "Charge attack",
+      "Gore with horns",
+      "Tracking demigod scent"
+    ],
+    "weaknesses": [
+      "Poor eyesight",
+      "Predictable linear charging pattern",
+      "Horns can be snapped off and used as weapons"
+    ],
+    "notable_victims": [
+      "Sally Jackson (temporarily petrified/captured)",
+      "Numerous demigods across history"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Minotaur Horn",
+    "parent_entity": "Pasiphaë and Cretan Bull",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "The iconic Cretan bull-man. Percy Jackson defeats him barehanded on Half-Blood Hill in Book 1 by tearing off his horn. He reforms in Tartarus and leads Kronos's vanguard at the Williamsburg Bridge in Book 5."
+  },
+  {
+    "name": "Medusa",
+    "expected_slug": "medusa",
+    "wiki_url": "https://riordan.fandom.com/wiki/Medusa",
+    "aliases": [
+      "Aunty Em",
+      "The Gorgon"
+    ],
+    "monster_type": "gorgon",
+    "allegiance": "independent",
+    "origin_myth": "Originally a beautiful priestess of Athena who was transformed into a snake-haired Gorgon by Athena after being seduced by Poseidon in Athena's temple.",
+    "physical_description": "Appears disguised in black veil and abaya as a Middle Eastern woman. Beneath the veil, she possesses live squirming venomous snakes for hair, fangs, and a face so hideous it turns viewers to stone.",
+    "abilities": [
+      "Petrifying gaze (turns living flesh to stone)",
+      "Venomous snake hair",
+      "Stealth via disguise"
+    ],
+    "weaknesses": [
+      "Reflective surfaces (can be viewed safely via mirror or polished shield)",
+      "Decapitation"
+    ],
+    "notable_victims": [
+      "Gabe Ugliano (via her severed head)",
+      "Countless mortals turned to garden statues"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Medusa's Severed Head",
+    "parent_entity": "Phorcys and Ceto",
+    "disguise_form": "Aunty Em, owner of Aunty Em's Garden Gnome Emporium",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "The mortal Gorgon sister. Runs a statue emporium in New Jersey under the alias Aunty Em. Decapitated by Percy Jackson using his polished bronze cell phone reflection and Riptide. Her head is mailed to Olympus and later used by Sally Jackson to petrify Gabe Ugliano."
+  },
+  {
+    "name": "Alecto",
+    "expected_slug": "alecto",
+    "wiki_url": "https://riordan.fandom.com/wiki/Alecto",
+    "aliases": [
+      "Mrs. Dodds",
+      "Head Fury",
+      "The Kindly One"
+    ],
+    "monster_type": "fury",
+    "allegiance": "hades_servant",
+    "origin_myth": "One of the three Erinyes (Furies) born from the blood of Ouranos when he was castrated by Kronos. Serves Hades as minister of vengeance and Underworld tormentor.",
+    "physical_description": "Disguised as a leather-jacket-wearing algebra teacher at Yancy Academy. True form is a hideous hag with bat wings, yellow eyes, fangs, and a whip dripping with molten fire.",
+    "abilities": [
+      "Flight",
+      "Fiery whip combat",
+      "Sensing guilt and demigod aura",
+      "Underworld tracking"
+    ],
+    "weaknesses": [
+      "Celestial Bronze",
+      "Underworld jurisdiction limits"
+    ],
+    "notable_victims": [
+      "Tormented souls in Fields of Punishment"
+    ],
+    "can_reform": true,
+    "reform_time": "months",
+    "reform_location": "Tartarus / Underworld",
+    "spoils_of_war": null,
+    "parent_entity": "Ouranos's blood and Gaea",
+    "disguise_form": "Mrs. Dodds, Yancy Academy math teacher",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian"
+    ],
+    "description": "Head of the three Furies and faithful lieutenant of Hades. Attacks Percy at the Metropolitan Museum in Chapter 1 of Book 1 disguised as Mrs. Dodds. Later escorting Percy and Nico in the Underworld in Book 5."
+  },
+  {
+    "name": "Echidna",
+    "expected_slug": "echidna",
+    "wiki_url": "https://riordan.fandom.com/wiki/Echidna",
+    "aliases": [
+      "Mother of All Monsters"
+    ],
+    "monster_type": "chimeric",
+    "allegiance": "kronos_army",
+    "origin_myth": "Ancient half-woman, half-snake mother of Greek mythology's most horrific beasts (Cerberus, Hydra, Chimera, Nemean Lion).",
+    "physical_description": "Appears as a rotund, heavy-set woman in a denim dress carrying a Chihuahua in a handbag. True form reveals a scaly snake body from the waist down and reptile eyes.",
+    "abilities": [
+      "Spawning monstrous offspring",
+      "Acidic bite",
+      "Immunity to fire"
+    ],
+    "weaknesses": [
+      "Celestial Bronze",
+      "Protective divine intervention"
+    ],
+    "notable_victims": [
+      "Percy Jackson (poisoned at St. Louis Arch)"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Tartarus and Gaea",
+    "disguise_form": "Overweight tourist woman carrying a Chihuahua bag",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "description": "The Mother of Monsters, half-woman and half-snake. Accompanied by her child the Chimera, she attacked Percy Jackson at the Gateway Arch in St. Louis."
+  },
+  {
+    "name": "Chimera",
+    "expected_slug": "chimera",
+    "wiki_url": "https://riordan.fandom.com/wiki/Chimera",
+    "aliases": [
+      "The St. Louis Arch Monster"
+    ],
+    "monster_type": "chimeric",
+    "allegiance": "kronos_army",
+    "origin_myth": "Spawn of Echidna and Typhon, famous for terrorizing Lycia until slain by Bellerophon riding Pegasus.",
+    "physical_description": "Initially disguised as a harmless Chihuahua. Transforms into a ten-foot beast with the head and mane of a lion, body of a goat, and a ten-foot venomous serpent tail.",
+    "abilities": [
+      "Fire breathing",
+      "Deadly venomous tail sting",
+      "Superhuman agility"
+    ],
+    "weaknesses": [
+      "Lead or metal swallowed during fire breathing",
+      "Celestial Bronze"
+    ],
+    "notable_victims": [
+      "Percy Jackson (poisoned tail strike in Book 1)"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Echidna and Typhon",
+    "disguise_form": "Chihuahua dog",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Fire-breathing monster offspring of Echidna and Typhon with the head of a lion, body of a goat, and tail of a poisonous serpent."
+  },
+  {
+    "name": "Procrustes",
+    "expected_slug": "procrustes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Procrustes",
+    "aliases": [
+      "Crusty",
+      "The Stretcher"
+    ],
+    "monster_type": "giant",
+    "allegiance": "independent",
+    "origin_myth": "Rogue giant son of Poseidon who ambushed travelers on the road to Athens and stretched or chopped them to fit his iron beds until stopped by Theseus.",
+    "physical_description": "Seven-foot tall, ugly giant running 'Crusty's Waterbed Palace' in West Hollywood. Has greyish skin, slicked hair, and wears a leisure suit.",
+    "abilities": [
+      "Magical bed trapping (snaps cords to bind victims)",
+      "Superhuman size"
+    ],
+    "weaknesses": [
+      "Easily tricked into lying on his own beds"
+    ],
+    "notable_victims": [
+      "Annabeth Chase and Grover Underwood (trapped on beds in Book 1)"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Poseidon",
+    "disguise_form": "Crusty, waterbed salesman in West Hollywood",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "The Stretcher giant. Guards the secret entrance to the Underworld in West Hollywood. Tricked by Percy into lying on one of his own beds, where Percy decapitates him."
+  },
+  {
+    "name": "Cerberus",
+    "expected_slug": "cerberus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Cerberus",
+    "aliases": [
+      "The Three-Headed Guard Dog",
+      "Spot"
+    ],
+    "monster_type": "underworld_creature",
+    "allegiance": "hades_servant",
+    "origin_myth": "Three-headed giant hound offspring of Echidna and Typhon stationed at the gates of Erebos to prevent the dead from escaping.",
+    "physical_description": "Massive three-headed hound twice the size of a rhinoceros, with a serpent tail and razor-sharp teeth.",
+    "abilities": [
+      "Three independent biting heads",
+      "Sensing living intruders",
+      "Overwhelming size"
+    ],
+    "weaknesses": [
+      "Red rubber ball / Playing fetch (pacified by Annabeth)",
+      "Music (Orpheus)"
+    ],
+    "notable_victims": [
+      "Escaping souls of the Underworld"
+    ],
+    "can_reform": false,
+    "reform_time": null,
+    "reform_location": "Underworld (Immortal Guardian)",
+    "spoils_of_war": null,
+    "parent_entity": "Echidna and Typhon",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Massive three-headed guard dog of the Underworld who guards the entrance to Erebos. Befriended by Annabeth Chase with a red rubber ball."
+  },
+  {
+    "name": "Polyphemus",
+    "expected_slug": "polyphemus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Polyphemus",
+    "aliases": [
+      "The Island Cyclops"
+    ],
+    "monster_type": "cyclops",
+    "allegiance": "independent",
+    "origin_myth": "Son of Poseidon and the nymph Thoosa. Famous for capturing Odysseus in his cave before being blinded by a sharpened olive stake.",
+    "physical_description": "Colossal fifteen-foot blind Cyclops with a milky, scarred single eye socket, wearing sheepskins and wielding a massive tree-trunk club.",
+    "abilities": [
+      "Immense physical strength",
+      "Acute sense of smell and hearing",
+      "Commands man-eating sheep"
+    ],
+    "weaknesses": [
+      "Blindness (easily tricked by sounds/imitations)",
+      "Overconfidence"
+    ],
+    "notable_victims": [
+      "Grover Underwood (captured as bride)",
+      "Clarisse La Rue"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Golden Fleece (recovered from his island)",
+    "parent_entity": "Poseidon and Thoosa",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Blind elder Cyclops son of Poseidon who guarded the Golden Fleece on his island in the Sea of Monsters."
+  },
+  {
+    "name": "Lernean Hydra",
+    "expected_slug": "hydra",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hydra",
+    "aliases": [
+      "The Nine-Headed Swamp Hydra"
+    ],
+    "monster_type": "swamp_hydra",
+    "allegiance": "kronos_army",
+    "origin_myth": "Ancient serpent beast of Lerna slain by Heracles as his Second Labor.",
+    "physical_description": "Nine-headed reptilian swamp monster with acid-spitting heads and venomous blood.",
+    "abilities": [
+      "Multiplication (grows two heads for every head severed)",
+      "Acidic poison breath"
+    ],
+    "weaknesses": [
+      "Fire / Cauterization of neck stumps",
+      "Cannon fire / Complete incineration"
+    ],
+    "notable_victims": [
+      "Monster Donut franchise workers"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Hydra teeth / Venom",
+    "parent_entity": "Echidna and Typhon",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Nine-headed dragon monster encountered by Percy, Annabeth, Tyson, and Clarisse at a Monster Donut shop in Florida. Obliterated by Clarisse's CSS Birmingham cannon fire."
+  },
+  {
+    "name": "Scylla",
+    "expected_slug": "scylla",
+    "wiki_url": "https://riordan.fandom.com/wiki/Scylla",
+    "aliases": [
+      "The Six-Headed Cliff Monster"
+    ],
+    "monster_type": "sea_monster",
+    "allegiance": "independent",
+    "origin_myth": "Once a nymph transformed by Circe into a six-headed sea monster occupying a cliff opposite Charybdis.",
+    "physical_description": "Six long serpentine necks extending from a cliff cave, each ending in a reptilian head with triple rows of shark teeth.",
+    "abilities": [
+      "Lightning-fast lunges to scoop sailors from ship decks"
+    ],
+    "weaknesses": [
+      "Fixed position on cliff face"
+    ],
+    "notable_victims": [
+      "Six sailors from Clarisse's Confederate ironclad ship"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Phorcys and Hecate",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "description": "Six-headed sea monster who eats sailors passing through the Straits of Messina opposite Charybdis."
+  },
+  {
+    "name": "Charybdis",
+    "expected_slug": "charybdis",
+    "wiki_url": "https://riordan.fandom.com/wiki/Charybdis",
+    "aliases": [
+      "The Maw of the Ocean"
+    ],
+    "monster_type": "sea_monster",
+    "allegiance": "independent",
+    "origin_myth": "Nymph daughter of Poseidon turned into a colossal whirlpool sea monster by Zeus.",
+    "physical_description": "Giant underwater maw with slimy teeth and iron braces, creating a massive whirlpool three times a day.",
+    "abilities": [
+      "Sucking entire ships into her gullet and spitting out flaming debris"
+    ],
+    "weaknesses": [
+      "Inflexible digestion cycle"
+    ],
+    "notable_victims": [
+      "CSS Birmingham ironclad ship"
+    ],
+    "can_reform": true,
+    "reform_time": "immortal",
+    "reform_location": "Sea of Monsters",
+    "spoils_of_war": null,
+    "parent_entity": "Poseidon and Gaea",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "description": "Colossal whirlpool monster opposite Scylla. Destroys Clarisse's ironclad ship CSS Birmingham by overheating its boilers."
+  },
+  {
+    "name": "Dr. Thorn",
+    "expected_slug": "dr-thorn",
+    "wiki_url": "https://riordan.fandom.com/wiki/Dr._Thorn",
+    "aliases": [
+      "The Manticore"
+    ],
+    "monster_type": "manticore",
+    "allegiance": "kronos_army",
+    "origin_myth": "Persian and Greek myth beast with a human face, lion body, and scorpion tail capable of shooting poisonous spikes.",
+    "physical_description": "Disguised as Vice Principal Dr. Thorn at Westover Hall (heterochromatic eyes: one blue, one brown). True form is a lion-like monster with a scorpion tail shooting iron spikes.",
+    "abilities": [
+      "Shooting deadly poisonous tail spikes",
+      "Human speech and tactical command"
+    ],
+    "weaknesses": [
+      "Celestial Bronze",
+      "Artemis silver arrows"
+    ],
+    "notable_victims": [
+      "Annabeth Chase (captured at Westover Hall)"
+    ],
+    "can_reform": true,
+    "reform_time": "months",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Manticore tail spike",
+    "parent_entity": "Unknown Tartarus spawn",
+    "disguise_form": "Dr. Thorn, Vice Principal at Westover Hall",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "description": "Manticore serving Kronos. Ambushes Percy, Thalia, Annabeth, and Grover at Westover Hall to kidnap Bianca and Nico di Angelo. Knocks Annabeth off a cliff before being driven off by the Hunters of Artemis."
+  },
+  {
+    "name": "The Nemean Lion",
+    "expected_slug": "nemean-lion",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nemean_Lion",
+    "aliases": [
+      "The Invulnerable Lion"
+    ],
+    "monster_type": "mythic_beast",
+    "allegiance": "kronos_army",
+    "origin_myth": "Vicious lion with impenetrable golden fur slain by Heracles as his First Labor.",
+    "physical_description": "Colossal lion with glittering golden pelt and steel-sharp claws.",
+    "abilities": [
+      "Invulnerable golden hide (reflects all blades, arrows, and weapons)",
+      "Roar that shatters glass"
+    ],
+    "weaknesses": [
+      "Unprotected soft interior throat/mouth"
+    ],
+    "notable_victims": [
+      "Mortals in Nemea"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Nemean Lion Pelt Coat",
+    "parent_entity": "Orthrus and Chimera / Echidna",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Invulnerable lion deployed by Luke at the National Air and Space Museum. Defeated when Percy, Zoë, and Grover force astronaut freeze-dried food into its mouth, causing it to gag and exposing its soft throat to Percy's blade. Percy claims its pelt as a protective coat."
+  },
+  {
+    "name": "Erymanthian Boar",
+    "expected_slug": "erymanthian-boar",
+    "wiki_url": "https://riordan.fandom.com/wiki/Erymanthian_Boar",
+    "aliases": [
+      "The Giant Pink Boar"
+    ],
+    "monster_type": "mythic_beast",
+    "allegiance": "independent",
+    "origin_myth": "Gigantic wild boar that terrorized Arcadia until captured alive by Heracles.",
+    "physical_description": "Thirty-foot-tall wild boar with pink skin, tusks as large as canoes, and reeking of sewage.",
+    "abilities": [
+      "Tearing through mountains and forests",
+      "Trampling everything in its path"
+    ],
+    "weaknesses": [
+      "Deep snow (tires easily)"
+    ],
+    "notable_victims": [
+      "Geryon's livestock"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Gaea",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Giant boar summoned by Grover's pan pipes in Cloudcroft, New Mexico. The quest group rides its back across the Southwest into California."
+  },
+  {
+    "name": "Ophiotaurus",
+    "expected_slug": "ophiotaurus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ophiotaurus",
+    "aliases": [
+      "Bessie",
+      "The Serpent-Bull"
+    ],
+    "monster_type": "mythic_beast",
+    "allegiance": "olympian_ally",
+    "origin_myth": "Prophetic creature whose entrails, if burned in sacred fire, give the offerer the power to overthrow the gods.",
+    "physical_description": "Sea creature with the head and torso of a black calf and the long scaly tail of a serpent.",
+    "abilities": [
+      "Granting divine overthrow power if slain and burned"
+    ],
+    "weaknesses": [
+      "Gentle, defenseless nature"
+    ],
+    "notable_victims": [
+      "None (gentle creature)"
+    ],
+    "can_reform": false,
+    "reform_time": null,
+    "reform_location": null,
+    "spoils_of_war": "Entrails (power to destroy Olympus)",
+    "parent_entity": "Gaea and Chaos",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "the-last-olympian"
+    ],
+    "description": "Half-cow, half-serpent sea creature rescued by Percy in Long Island Sound and named 'Bessie'. Protected in a water sphere on Mount Olympus to prevent Kronos from burning its entrails."
+  },
+  {
+    "name": "Ladon",
+    "expected_slug": "ladon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ladon",
+    "aliases": [
+      "Dragon of the Hesperides"
+    ],
+    "monster_type": "sea_monster",
+    "allegiance": "kronos_army",
+    "origin_myth": "Hundred-headed dragon assigned by Hera to guard the Golden Apples in the Garden of the Hesperides.",
+    "physical_description": "Colossal copper dragon coiled around the Golden Apple tree with one hundred snapping heads, each speaking with different voices.",
+    "abilities": [
+      "Poisonous bite",
+      "Hundred-eyed vigilance",
+      "Fire breath"
+    ],
+    "weaknesses": [
+      "Heracles' poisoned arrows"
+    ],
+    "notable_victims": [
+      "Zoë Nightshade (mortally poisoned by his bite in Book 3)"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Golden Apples",
+    "parent_entity": "Phorcys and Ceto",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Hundred-headed dragon that guards the golden apple tree in the Garden of the Hesperides. Poisoned Luke Castellan and fatally wounded Zoë Nightshade."
+  },
+  {
+    "name": "Kampê",
+    "expected_slug": "kampe",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kamp%C3%AA",
+    "aliases": [
+      "Jailer of Tartarus"
+    ],
+    "monster_type": "ancient_dragon_jailer",
+    "allegiance": "kronos_army",
+    "origin_myth": "Monstrous dragon-woman appointed by Kronos to guard the Cyclopes and Hekatonkheires in Tartarus until slain by Zeus during the Titanomachy.",
+    "physical_description": "Terrifying woman's torso with dragon wings, a serpent body below, fifty animal heads sprouting from her waist, and venomous whip swords.",
+    "abilities": [
+      "Venomous whip swords",
+      "Summoning snakes",
+      "Terror gaze"
+    ],
+    "weaknesses": [
+      "Crushed under massive volleys of boulders"
+    ],
+    "notable_victims": [
+      "Imprisoned Cyclopes and Hekatonkheires"
+    ],
+    "can_reform": true,
+    "reform_time": "centuries",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Tartarus and Gaea",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "description": "Fearsome ancient jailer of Tartarus guarding Briares in Alcatraz. Slain during the Battle of the Labyrinth when Briares crushes her under a barrage of boulders."
+  },
+  {
+    "name": "Kelli",
+    "expected_slug": "kelli",
+    "wiki_url": "https://riordan.fandom.com/wiki/Kelli",
+    "aliases": [
+      "Empousa Senior"
+    ],
+    "monster_type": "empousa",
+    "allegiance": "kronos_army",
+    "origin_myth": "Vampiric demon daughter of Hecate with one bronze leg and one donkey leg, seducing young men to drink their blood.",
+    "physical_description": "Disguised as a blonde cheerleader at Goode High. True form reveals fiery hair, fangs, one donkey leg, and one leg forged of bronze.",
+    "abilities": [
+      "Illusion magic / Charmspeak",
+      "Vampiric blood draining",
+      "Flaming hair attack"
+    ],
+    "weaknesses": [
+      "Celestial Bronze",
+      "Insults that shatter her illusion"
+    ],
+    "notable_victims": [
+      "Goode High freshman students"
+    ],
+    "can_reform": true,
+    "reform_time": "months",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Hecate",
+    "disguise_form": "Kelli, Goode High freshman cheerleader",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "description": "Lead Empousa demon serving Kronos. Ambushes Percy at Goode High orientation before being stabbed from behind by Annabeth Chase."
+  },
+  {
+    "name": "Geryon",
+    "expected_slug": "geryon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Geryon",
+    "aliases": [
+      "Owner of Triple G Ranch"
+    ],
+    "monster_type": "giant",
+    "allegiance": "kronos_army",
+    "origin_myth": "Three-bodied giant who owned a herd of red cattle on Erytheia until slain by Heracles as his Tenth Labor.",
+    "physical_description": "Giant with three attached human chests, one set of legs, wearing three matching western shirts.",
+    "abilities": [
+      "Three hearts (survives single torso chest wounds)"
+    ],
+    "weaknesses": [
+      "An arrow shot sideways through all three hearts simultaneously"
+    ],
+    "notable_victims": [
+      "Nico di Angelo (captured at Triple G Ranch)"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Red Cattle herd",
+    "parent_entity": "Chrysaor and Callirrhoe",
+    "disguise_form": "Ranch owner in cowboy hat and boots",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Three-bodied rancher giant who managed the Triple-G Ranch in Texas and sold flesh-eating cattle to Kronos's army before Percy shot him through all three hearts."
+  },
+  {
+    "name": "Typhon",
+    "expected_slug": "typhon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Typhon",
+    "aliases": [
+      "Father of All Monsters",
+      "Storm Giant"
+    ],
+    "monster_type": "giant",
+    "allegiance": "kronos_army",
+    "origin_myth": "The deadliest monster of Greek mythology, born to Gaea and Tartarus to destroy Olympus after the Titanomachy.",
+    "physical_description": "Colossal storm giant towering into the clouds with a human upper body, snake legs, dark hurricane clouds for hair, and eyes flashing lightning.",
+    "abilities": [
+      "Generating megatsunamis, volcanic eruptions, and country-spanning tornadoes",
+      "Overwhelming divine force"
+    ],
+    "weaknesses": [
+      "Chained under Mount Saint Helens / Poseidon's water forces pushing him into Tartarus abyss"
+    ],
+    "notable_victims": [
+      "Multiple Olympian gods wounded during his cross-country rampage"
+    ],
+    "can_reform": true,
+    "reform_time": "centuries",
+    "reform_location": "Tartarus",
+    "spoils_of_war": null,
+    "parent_entity": "Gaea and Tartarus",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "description": "The Father of All Monsters. Awakened by the Mount St. Helens eruption in Book 4, he marches across America in Book 5, occupying all twelve Olympians until Poseidon and the Cyclopes drag him into Tartarus."
+  },
+  {
+    "name": "Lydian Drakon",
+    "expected_slug": "lydian-drakon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Lydian_Drakon",
+    "aliases": [
+      "The Great Manhattan Drakon"
+    ],
+    "monster_type": "drakon",
+    "allegiance": "kronos_army",
+    "origin_myth": "Ancient giant serpent monster foretold to be slain only by a child of Ares.",
+    "physical_description": "Two-hundred-foot long giant serpent with green chitinous scales, yellow eyes, and spitting corrosive acid.",
+    "abilities": [
+      "Corrosive paralyzing acid spray",
+      "Scales impervious to all weapons except an Ares demigod"
+    ],
+    "weaknesses": [
+      "Prophesied vulnerability to a child of Ares (Clarisse La Rue)"
+    ],
+    "notable_victims": [
+      "Silena Beauregard (mortally wounded)"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Drakon leather and teeth",
+    "parent_entity": "Tartarus",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "description": "Massive drakon unleashed in Manhattan. Kills Silena Beauregard before Clarisse La Rue arrives in a divine Ares rage, spearing it through the eye."
+  },
+  {
+    "name": "Cacus",
+    "expected_slug": "cacus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Cacus",
+    "aliases": [
+      "The Caduceus Thief"
+    ],
+    "monster_type": "giant",
+    "allegiance": "independent",
+    "origin_myth": "Fire-breathing giant son of Hephaestus who lived in a cave on Mount Aventine until slain by Heracles.",
+    "physical_description": "Fifteen-foot fire-breathing giant wearing a counterfeit designer warm-up suit.",
+    "abilities": [
+      "Fire breathing",
+      "Forging counterfeit divine items"
+    ],
+    "weaknesses": [
+      "Celestial Bronze"
+    ],
+    "notable_victims": [
+      "Stolen caduceus of Hermes"
+    ],
+    "can_reform": true,
+    "reform_time": "years",
+    "reform_location": "Tartarus",
+    "spoils_of_war": "Hermes Caduceus (recovered)",
+    "parent_entity": "Hephaestus",
+    "disguise_form": null,
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files",
+      "percy-jacksons-greek-heroes"
+    ],
+    "description": "Fire-breathing giant who steals Hermes's caduceus in 'The Staff of Serapis' / 'The Demigod Files'. Slain by Percy Jackson and Annabeth Chase."
+  },
+  {
+    "name": "Bronze Dragon",
+    "expected_slug": "bronze-dragon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Festus",
+    "aliases": [],
+    "monster_type": "mechanical",
+    "allegiance": "olympian_ally",
+    "can_reform": false,
+    "reform_time": null,
+    "reform_location": null,
+    "abilities": [
+      "mechanical strength",
+      "Greek fire breath"
+    ],
+    "weaknesses": [
+      "damage to its mechanical components"
+    ],
+    "description": "A bronze dragon automaton found in the Camp Half-Blood woods and restored by demigods."
+  },
+  {
+    "name": "Talos",
+    "expected_slug": "talos",
+    "wiki_url": "https://riordan.fandom.com/wiki/Talos",
+    "aliases": [
+      "Talos Automaton"
+    ],
+    "monster_type": "mechanical",
+    "allegiance": "independent",
+    "can_reform": false,
+    "reform_time": null,
+    "reform_location": null,
+    "abilities": [
+      "immense mechanical strength",
+      "bronze armor"
+    ],
+    "weaknesses": [
+      "the plug in its ankle that regulates its ichor"
+    ],
+    "description": "A rogue prototype Talos automaton destroyed by Bianca di Angelo in the Junkyard of the Gods."
+  },
+  {
+    "name": "Tammi",
+    "expected_slug": "tammi",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tammi",
+    "aliases": [],
+    "monster_type": "empousa",
+    "allegiance": "kronos_army",
+    "can_reform": true,
+    "abilities": [
+      "seduction illusion magic",
+      "vampiric blood-draining",
+      "pyrokinesis"
+    ],
+    "weaknesses": [
+      "celestial bronze",
+      "illusions broken by insult or cold water"
+    ],
+    "description": "An Empousa associated with Kelli and the forces of Kronos."
+  },
+  {
+    "name": "Antaeus",
+    "expected_slug": "antaeus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Antaeus",
+    "monster_type": "giant",
+    "description": "Giant son of Poseidon and Gaea who gained invulnerability while touching the earth. He ran a gladiatorial arena in the Labyrinth where he forced demigods to fight to the death before being defeated by Percy Jackson.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ]
+  },
+  {
+    "name": "Sphinx",
+    "expected_slug": "sphinx",
+    "monster_type": "chimeric",
+    "description": "Monster with the head of a woman and body of a lion. Guarded an intersection in the Labyrinth administering standardized tests to demigods.",
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Sphinx"
+  },
+  {
+    "name": "Stheno",
+    "expected_slug": "stheno",
+    "monster_type": "gorgon",
+    "description": "Immortal Gorgon, sister of Medusa and Euryale, with brass hands, sharp fangs, and living green snakes for hair.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Stheno"
+  },
+  {
+    "name": "Euryale",
+    "expected_slug": "euryale",
+    "monster_type": "gorgon",
+    "description": "Immortal Gorgon, sister of Medusa and Stheno, known for her bellowing brass roar and venomous serpent hair.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/Euryale"
+  }
+]

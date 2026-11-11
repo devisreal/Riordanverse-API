@@ -1,0 +1,182 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "feature/**"
+      - "ci/**"
+      - "chore/**"
+      - "fix/**"
+  pull_request:
+    branches: [main, develop]
+
+# A newer commit supersedes queued/running checks for the same PR or branch.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-26.04
+    env:
+      DJANGO_SETTINGS_MODULE: config.settings.test
+      SECRET_KEY: ci-only-dummy-secret-key-not-for-production
+      DEBUG: "False"
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      DB_NAME: ci_db
+      DB_USER: ci_user
+      DB_PASSWORD: ci_password
+      DB_HOST: localhost
+      DB_PORT: "5432"
+      REDIS_URL: redis://127.0.0.1:6379/1
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      API_KEY_CUSTOM_HEADER: HTTP_API_KEY
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: website/static_src/package-lock.json
+
+      - name: Restore compiled website assets
+        id: website-assets
+        uses: actions/cache@v5
+        with:
+          path: |
+            website/static/css/dist
+            website/static/website/js/dist
+            website/static/vendor/swagger-ui/dist
+          # Tailwind scans HTML, Python, and JavaScript across the project.
+          # No prefix fallback: stale CSS must never satisfy a changed source key.
+          key: website-${{ runner.os }}-node22-v2-${{ hashFiles('**/.gitignore', 'website/static_src/package*.json', 'website/static_src/src/**', '**/*.html', '**/*.py', '**/*.js', '**/*.mjs', '!**/.venv/**', '!**/node_modules/**', '!website/static/css/dist/**', '!website/static/website/js/dist/**', '!website/static/vendor/swagger-ui/dist/**') }}
+
+      - name: Build website assets on cache miss
+        if: steps.website-assets.outputs.cache-hit != 'true'
+        run: |
+          npm ci --include=dev --prefix website/static_src
+          npm run build --prefix website/static_src
+
+      - name: Check website templates
+        run: uv run djlint website/templates --check --lint
+
+      - name: Test website JavaScript enhancements
+        run: node --test website/tests_js/*.test.mjs
+
+      - name: Ruff lint
+        run: uv run ruff check .
+
+      - name: Ruff format
+        run: uv run ruff format --check .
+
+      - name: Django system check
+        run: uv run python manage.py check --settings=config.settings.test
+
+      - name: Check for missing migrations
+        run: uv run python manage.py makemigrations --check --dry-run --settings=config.settings.test
+
+      - name: Validate OpenAPI schema
+        env:
+          DJANGO_SETTINGS_MODULE: config.settings.development
+        run: uv run python manage.py spectacular --file /tmp/openapi.yaml --validate --skip-checks
+
+      - name: Run tests
+        run: uv run python manage.py test --settings=config.settings.test --parallel 2 --timing --durations 20
+
+  postgres-test:
+    name: PostgreSQL tests
+    runs-on: ubuntu-26.04
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: ci_db
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ci_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ci_user -d ci_db"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DJANGO_SETTINGS_MODULE: config.settings.test_postgresql
+      SECRET_KEY: ci-only-dummy-secret-key-not-for-production
+      DEBUG: "False"
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      DB_NAME: ci_db
+      DB_USER: ci_user
+      DB_PASSWORD: ci_password
+      DB_HOST: localhost
+      DB_PORT: "5432"
+      REDIS_URL: redis://127.0.0.1:6379/1
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      API_KEY_CUSTOM_HEADER: HTTP_API_KEY
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: website/static_src/package-lock.json
+
+      - name: Restore compiled website assets
+        id: website-assets
+        uses: actions/cache@v5
+        with:
+          path: |
+            website/static/css/dist
+            website/static/website/js/dist
+            website/static/vendor/swagger-ui/dist
+          key: website-${{ runner.os }}-node22-v2-${{ hashFiles('**/.gitignore', 'website/static_src/package*.json', 'website/static_src/src/**', '**/*.html', '**/*.py', '**/*.js', '**/*.mjs', '!**/.venv/**', '!**/node_modules/**', '!website/static/css/dist/**', '!website/static/website/js/dist/**', '!website/static/vendor/swagger-ui/dist/**') }}
+
+      - name: Build website assets on cache miss
+        if: steps.website-assets.outputs.cache-hit != 'true'
+        run: |
+          npm ci --include=dev --prefix website/static_src
+          npm run build --prefix website/static_src
+
+      - name: Django system check
+        run: uv run python manage.py check --settings=config.settings.test_postgresql
+
+      - name: Check for missing migrations
+        run: uv run python manage.py makemigrations --check --dry-run --settings=config.settings.test_postgresql
+
+      - name: Run tests against PostgreSQL
+        run: uv run python manage.py test --settings=config.settings.test_postgresql --parallel 2 --timing --durations 20
+
+  audit:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v8.1.0
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run pip-audit

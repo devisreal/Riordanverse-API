@@ -1,0 +1,93 @@
+.primary-picker .entity-picker-form {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0 2rem;
+}
+
+.primary-picker .entity-picker-form select {
+  min-width: min(32rem, 100%);
+}
+
+.primary-picker .gallery-section {
+  margin-top: 2rem;
+}
+
+.primary-picker-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  margin: 1rem 0;
+}
+
+.primary-picker-card {
+  border: 1px solid var(--hairline-color, #ddd);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.75rem;
+}
+
+.primary-picker-card:has(input:checked),
+.primary-picker-card.is-current-primary {
+  border-color: var(--primary, #417690);
+  box-shadow: 0 0 0 2px var(--primary, #417690);
+}
+
+.primary-picker-choice {
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.primary-picker-preview {
+  align-items: center;
+  background: var(--darkened-bg, #f8f8f8);
+  display: flex;
+  height: 190px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.primary-picker-preview img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.primary-picker-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  overflow-wrap: anywhere;
+}
+
+.primary-picker-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.primary-picker-card input[type='radio'],
+.clear-primary-option input[type='radio'] {
+  align-self: flex-start;
+  margin: 0;
+}
+
+.primary-badge {
+  color: var(--primary, #417690);
+  font-weight: 700;
+}
+
+.clear-primary-option {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}

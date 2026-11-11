@@ -1,0 +1,9 @@
+<c-vars item tone="teal" />
+<article data-reveal
+         class="feature-card rounded-3xl border border-border bg-surface p-8 shadow-[0_2px_8px_rgb(15_23_42/3%)] max-md:flex max-md:items-start max-md:gap-4 max-md:p-4 max-md:[&_.icon-tile]:size-10">
+  <c-ui.icon-tile :name="item.icon" :tone="tone" />
+  <div>
+    <h3 class="mt-5 mb-3 text-lg leading-[1.6] max-md:mt-0 max-md:mb-1 max-md:text-sm max-md:leading-normal">{{ item.title }}</h3>
+    <p class="text-sm leading-[1.65] max-md:text-xs">{{ item.description }}</p>
+  </div>
+</article>

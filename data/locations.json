@@ -1,0 +1,723 @@
+[
+  {
+    "name": "Camp Half-Blood",
+    "expected_slug": "camp-half-blood",
+    "wiki_url": "https://riordan.fandom.com/wiki/Camp_Half-Blood",
+    "location_type": "camp",
+    "real_world_location": "Long Island, New York (Strawberry fields)",
+    "mythological_significance": "Primary sanctuary and training ground for Greek demigods in North America.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "40.9200, -72.6500",
+    "notable_events": [
+      "Capture the Flag games",
+      "Defense of Thalia's Tree",
+      "Battle of the Labyrinth"
+    ],
+    "controlled_by_god_slug": "dionysus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 5",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 20,
+    "description": "The secret Greek demigod training sanctuary located on Long Island, featuring strawberry fields, magical protective borders from Thalia's pine tree, 20 cabins, an armory, an amphitheater, and Big House.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Mount Olympus",
+    "expected_slug": "mount-olympus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Olympus",
+    "location_type": "olympus",
+    "real_world_location": "Empire State Building 600th Floor, New York City",
+    "mythological_significance": "Divine citadel and home of the twelve Olympian gods.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "40.7484, -73.9857",
+    "notable_events": [
+      "Annual Winter Solstice Council",
+      "Final Battle of Manhattan"
+    ],
+    "controlled_by_god_slug": "zeus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-titans-curse",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 21",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 100,
+    "description": "The floating palace city of the gods sitting atop the Empire State Building, accessible via a special key in the elevator to the 600th floor.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "The Underworld",
+    "expected_slug": "the-underworld",
+    "wiki_url": "https://riordan.fandom.com/wiki/Underworld",
+    "location_type": "underworld",
+    "real_world_location": "Entrance at DOA Recording Studios, Los Angeles, California",
+    "mythological_significance": "Realm of the dead ruled by Hades.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "34.0522, -118.2437",
+    "notable_events": [
+      "Master Bolt retrieval",
+      "Stygian Iron sword forged",
+      "Percy bathes in the River Styx"
+    ],
+    "controlled_by_god_slug": "hades",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "the-demigod-files",
+      "percy-jacksons-greek-gods"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 18",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 80,
+    "description": "The massive subterranean realm of the dead featuring the River Styx, Judgment Pavilion, Fields of Asphodel, Elysium, Tartarus, and Hades's obsidian palace.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "The Labyrinth",
+    "expected_slug": "the-labyrinth",
+    "wiki_url": "https://riordan.fandom.com/wiki/Labyrinth",
+    "location_type": "labyrinth",
+    "real_world_location": "Subterranean network spanning North America",
+    "mythological_significance": "Sentient subterranean maze built by Daedalus.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Quest through the Labyrinth",
+      "Battle of the Labyrinth at Camp Half-Blood"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": "daedalus",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 4",
+    "earlier_mention_book_slug": "the-battle-of-the-labyrinth",
+    "location_order": 200,
+    "description": "An ancient, living subterranean maze created by Daedalus that grows underneath the entire continent, shifting locations and warping time and space.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Lotus Hotel and Casino",
+    "expected_slug": "lotus-hotel-and-casino",
+    "wiki_url": "https://riordan.fandom.com/wiki/Lotus_Hotel_and_Casino",
+    "location_type": "hotel_or_building",
+    "real_world_location": "Las Vegas, Nevada",
+    "mythological_significance": "Modern lair of the Lotus Eaters, where time slows down for trapped guests.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "36.1699, -115.1398",
+    "notable_events": [
+      "Percy, Annabeth, and Grover trapped for 5 days while thinking it was 1 hour",
+      "Nico and Bianca di Angelo hidden here by Hades for decades"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-titans-curse"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 16",
+    "earlier_mention_book_slug": null,
+    "location_order": 50,
+    "description": "A glittering Las Vegas casino trap where guests consume lotus flowers and play endless games, losing all track of time.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Gateway Arch",
+    "expected_slug": "gateway-arch",
+    "wiki_url": "https://riordan.fandom.com/wiki/Gateway_Arch",
+    "location_type": "hotel_or_building",
+    "real_world_location": "St. Louis, Missouri",
+    "mythological_significance": "Site of Percy's battle with Echidna and the Chimera.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "38.6247, -90.1848",
+    "notable_events": [
+      "Percy leaps into the Mississippi River to survive Chimera poison"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 13",
+    "earlier_mention_book_slug": null,
+    "location_order": 30,
+    "description": "Iconic 630-foot steel monument in St. Louis where Percy was ambushed at the observation deck by Echidna and her Chimera.",
+    "controlled_by_monster_slug": "echidna"
+  },
+  {
+    "name": "Waterland",
+    "expected_slug": "waterland",
+    "wiki_url": "https://riordan.fandom.com/wiki/Waterland",
+    "location_type": "hotel_or_building",
+    "real_world_location": "Denver, Colorado",
+    "mythological_significance": "Abandoned amusement park containing Hephaestus's trap for Ares and Aphrodite.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "39.7392, -104.9903",
+    "notable_events": [
+      "Percy and Annabeth retrieve Ares's shield from a tunnel-of-love trap"
+    ],
+    "controlled_by_god_slug": "hephaestus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 15",
+    "earlier_mention_book_slug": null,
+    "location_order": 40,
+    "description": "An abandoned water theme park in Denver engineered by Hephaestus with mechanical spider traps and broadcast cameras.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "DOA Recording Studios",
+    "expected_slug": "doa-recording-studios",
+    "wiki_url": "https://riordan.fandom.com/wiki/DOA_Recording_Studios",
+    "location_type": "hotel_or_building",
+    "real_world_location": "West Hollywood, Los Angeles, California",
+    "mythological_significance": "Mortal front and entrance lobby for the Underworld.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "34.0900, -118.3617",
+    "notable_events": [
+      "Percy bribes Charon with golden drachmas to cross the River Styx"
+    ],
+    "controlled_by_god_slug": "hades",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 18",
+    "earlier_mention_book_slug": null,
+    "location_order": 70,
+    "description": "A dreary music studio office in Los Angeles that serves as the waiting room for dead souls before Charon ferries them into the Underworld.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Crusty's Waterbed Palace",
+    "expected_slug": "crustys-waterbed-palace",
+    "wiki_url": "https://riordan.fandom.com/wiki/Crusty%27s_Water_Bed_Palace",
+    "location_type": "hotel_or_building",
+    "real_world_location": "West Hollywood, California",
+    "mythological_significance": "Lair of Procrustes (Crusty the Stretcher).",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "34.0900, -118.3617",
+    "notable_events": [
+      "Percy tricks Procrustes onto his own stretching bed"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 17",
+    "earlier_mention_book_slug": null,
+    "location_order": 60,
+    "description": "A shady waterbed showroom block from DOA Recording Studios where Procrustes traps travelers to fit 6-foot beds.",
+    "controlled_by_monster_slug": "procrustes"
+  },
+  {
+    "name": "The Sea of Monsters",
+    "expected_slug": "the-sea-of-monsters",
+    "wiki_url": "https://riordan.fandom.com/wiki/Sea_of_Monsters",
+    "location_type": "sea",
+    "real_world_location": "Bermuda Triangle (Atlantic Ocean)",
+    "mythological_significance": "Mythological sea zone containing mythical islands and hazards.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "25.0000, -71.0000",
+    "notable_events": [
+      "Quest for the Golden Fleece",
+      "CSS Birmingham battle with Scylla and Charybdis"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 11",
+    "earlier_mention_book_slug": "the-sea-of-monsters",
+    "location_order": 120,
+    "description": "A treacherous supernatural sea shifting through the Bermuda Triangle, filled with sirens, sea monsters, and enchantress resorts.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Polyphemus's Island",
+    "expected_slug": "polyphemuses-island",
+    "wiki_url": "https://riordan.fandom.com/wiki/Polyphemus%27_Island",
+    "location_type": "mythical_island",
+    "real_world_location": "Sea of Monsters (Bermuda Triangle)",
+    "mythological_significance": "Island lair of Polyphemus the Cyclops and location of the Golden Fleece.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Retrieval of the Golden Fleece",
+      "Rescue of Grover and Clarisse"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 14",
+    "earlier_mention_book_slug": "the-sea-of-monsters",
+    "location_order": 140,
+    "description": "A lush tropical island surrounded by carnivorous sheep, guarded by the blind Cyclops Polyphemus and housing the Golden Fleece in an oak tree.",
+    "controlled_by_monster_slug": "polyphemus"
+  },
+  {
+    "name": "C.C.'s Spa and Resort",
+    "expected_slug": "ccs-spa-and-resort",
+    "wiki_url": "https://riordan.fandom.com/wiki/C.C.%27s_Spa_%26_Resort",
+    "location_type": "mythical_island",
+    "real_world_location": "Island of Aiaia, Sea of Monsters",
+    "mythological_significance": "Island resort run by the sorceress Circe.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Percy transformed into a guinea pig by Circe",
+      "Annabeth uses Hermes's multivitamins to rescue Percy and release Blackbeard's crew"
+    ],
+    "controlled_by_god_slug": "circe",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters"
+    ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 12",
+    "earlier_mention_book_slug": null,
+    "location_order": 130,
+    "description": "A luxurious island pampering spa where Circe turns men into guinea pigs and keeps them in cages.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Princess Andromeda",
+    "expected_slug": "princess-andromeda",
+    "wiki_url": "https://riordan.fandom.com/wiki/Princess_Andromeda",
+    "location_type": "hotel_or_building",
+    "real_world_location": "Floating in Atlantic / Hudson River",
+    "mythological_significance": "Flagship luxury cruise ship of Kronos's army.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Percy and Annabeth escape in Book 2",
+      "Percy and Beckendorf blow up the ship with Greek fire in Book 5"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": "kronos",
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-sea-of-monsters",
+      "the-last-olympian"
+    ],
+    "first_appearance_book_slug": "the-sea-of-monsters",
+    "first_appearance_locator": "Chapter 9",
+    "earlier_mention_book_slug": null,
+    "location_order": 110,
+    "description": "A massive, zombified luxury cruise ship operating under a spell where mortal passengers wander in a trance alongside monsters and Titan soldiers.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Westover Hall",
+    "expected_slug": "westover-hall",
+    "wiki_url": "https://riordan.fandom.com/wiki/Westover_Hall",
+    "location_type": "hotel_or_building",
+    "real_world_location": "Bar Harbor, Maine",
+    "mythological_significance": "Boarding school where Bianca and Nico di Angelo were discovered.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "44.3876, -68.2039",
+    "notable_events": [
+      "Battle with Dr. Thorn the Manticore",
+      "Arrival of the Hunters of Artemis",
+      "Annabeth falls off cliff"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 1",
+    "earlier_mention_book_slug": null,
+    "location_order": 150,
+    "description": "A somber, castle-like military prep school in Maine overlooking the freezing ocean.",
+    "controlled_by_monster_slug": "dr-thorn"
+  },
+  {
+    "name": "Mount Tamalpais",
+    "expected_slug": "mount-tamalpais",
+    "wiki_url": "https://riordan.fandom.com/wiki/Mount_Tamalpais",
+    "location_type": "mountain",
+    "real_world_location": "Marin County, California",
+    "mythological_significance": "Site of rebuilt Mount Othrys, Garden of Hesperides, and the Sky Burden.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "37.9235, -122.5965",
+    "notable_events": [
+      "Atlas holds the sky",
+      "Percy takes sky burden from Artemis",
+      "Battle of Mount Tamalpais"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": "atlas",
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 15",
+    "earlier_mention_book_slug": "the-titans-curse",
+    "location_order": 190,
+    "description": "A fog-shrouded mountain north of San Francisco where the Titans rebuilt Mount Othrys and Atlas was trapped under the weight of the heavens.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Garden of the Hesperides",
+    "expected_slug": "garden-of-the-hesperides",
+    "wiki_url": "https://riordan.fandom.com/wiki/Garden_of_the_Hesperides",
+    "location_type": "divine_realm",
+    "real_world_location": "Mount Tamalpais, California",
+    "mythological_significance": "Sacred orchard containing Hera's golden apple tree guarded by Ladon.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "37.9235, -122.5965",
+    "notable_events": [
+      "Zoë Nightshade fatal bite from Ladon",
+      "Perseus and Heracles quests (Greek Heroes)"
+    ],
+    "controlled_by_god_slug": "hera",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-titans-curse",
+      "percy-jacksons-greek-heroes"
+    ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 15",
+    "earlier_mention_book_slug": "the-titans-curse",
+    "location_order": 180,
+    "description": "A tranquil garden atop Mount Tamalpais containing the golden apple tree, tended by the Hesperides nymphs and guarded by the 100-headed dragon Ladon.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Hoover Dam",
+    "expected_slug": "hoover-dam",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hoover_Dam",
+    "location_type": "hotel_or_building",
+    "real_world_location": "Nevada/Arizona border",
+    "mythological_significance": "Mortal engineering feat where Percy meets Rachel Elizabeth Dare.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "36.0161, -114.7377",
+    "notable_events": [
+      "Percy meets Rachel Elizabeth Dare",
+      "Skeleton warriors battle inside generator room"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 12",
+    "earlier_mention_book_slug": null,
+    "location_order": 170,
+    "description": "Colossal concrete dam on the Colorado River where Percy encountered Clear-Sighted mortal Rachel Dare while fleeing Kronos's skeleton warriors.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Ogygia",
+    "expected_slug": "ogygia",
+    "wiki_url": "https://riordan.fandom.com/wiki/Ogygia",
+    "location_type": "mythical_island",
+    "real_world_location": "Phantom island in unknown sea",
+    "mythological_significance": "Calypso's enchanted island prison.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Percy recovers here after Mount St. Helens eruption",
+      "Calypso offers Percy immortality"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": "calypso",
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 13",
+    "earlier_mention_book_slug": null,
+    "location_order": 240,
+    "description": "A paradise island where Calypso is punished by the gods to fall in love with heroes who can never stay.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Mount St. Helens",
+    "expected_slug": "mount-st-helens",
+    "wiki_url": "https://riordan.fandom.com/wiki/Mount_Saint_Helens",
+    "location_type": "mountain",
+    "real_world_location": "Skamania County, Washington State",
+    "mythological_significance": "Forge of the Telekhines and prison of the monster Typhon.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "46.1914, -122.1956",
+    "notable_events": [
+      "Percy erupts the volcano using hydrokinesis to kill Telekhines",
+      "Typhon partially awakened"
+    ],
+    "controlled_by_god_slug": "hephaestus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 12",
+    "earlier_mention_book_slug": null,
+    "location_order": 230,
+    "description": "Active stratovolcano housing secret Telekhine foundries deep within its magmatic roots.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Triple G Ranch",
+    "expected_slug": "triple-g-ranch",
+    "wiki_url": "https://riordan.fandom.com/wiki/Triple_G_Ranch",
+    "location_type": "hotel_or_building",
+    "real_world_location": "Texas (near San Antonio)",
+    "mythological_significance": "Ranch operated by three-bodied giant Geryon feeding flesh-eating cattle.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "29.4241, -98.4936",
+    "notable_events": [
+      "Percy cleans flesh-eating cow stables using river hydrokinesis",
+      "Geryon killed by Percy's arrow"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 10",
+    "earlier_mention_book_slug": null,
+    "location_order": 220,
+    "description": "Sprawling Texas cattle ranch housing flesh-eating red cows and Hippalektryons.",
+    "controlled_by_monster_slug": "geryon"
+  },
+  {
+    "name": "Alcatraz Island",
+    "expected_slug": "alcatraz",
+    "wiki_url": "https://riordan.fandom.com/wiki/Alcatraz_Island",
+    "location_type": "hotel_or_building",
+    "real_world_location": "San Francisco Bay, California",
+    "mythological_significance": "Tartarus prison outpost guarded by Kampê holding Briares.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "37.8267, -122.4233",
+    "notable_events": [
+      "Rescue of Briares the Hekatonkheir from Kampê"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-battle-of-the-labyrinth"
+    ],
+    "first_appearance_book_slug": "the-battle-of-the-labyrinth",
+    "first_appearance_locator": "Chapter 9",
+    "earlier_mention_book_slug": null,
+    "location_order": 210,
+    "description": "Historic island prison in San Francisco Bay serving as a supernatural cell for Briares.",
+    "controlled_by_monster_slug": "kampe"
+  },
+  {
+    "name": "Manhattan",
+    "expected_slug": "manhattan",
+    "wiki_url": "https://riordan.fandom.com/wiki/Manhattan",
+    "location_type": "mortal_city",
+    "real_world_location": "New York City, New York",
+    "mythological_significance": "Primary battleground for the Second Titanomachy.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "40.7831, -73.9712",
+    "notable_events": [
+      "Morphius puts mortal population to sleep",
+      "Battle of Manhattan across bridges and tunnels"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
+      "percy-jackson-and-the-singer-of-apollo"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 1",
+    "earlier_mention_book_slug": null,
+    "location_order": 10,
+    "description": "The densely populated NYC borough beneath Mount Olympus, put into a magical trance during the Titan Siege.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Tartarus",
+    "expected_slug": "tartarus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Tartarus",
+    "location_type": "underworld",
+    "real_world_location": "Abyss below the Underworld",
+    "mythological_significance": "Primordial abyss where defeated Titans and monsters are cast.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Imprisonment of Kronos and Elder Titans",
+      "Reformation domain of monsters"
+    ],
+    "controlled_by_god_slug": "tartarus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "first_appearance_book_slug": "the-lightning-thief",
+    "first_appearance_locator": "Chapter 19",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 90,
+    "description": "A pitch-black, agonizing primordial abyss beneath Hades where monsters reform and Titans were bound.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Undersea Palace of Poseidon",
+    "expected_slug": "poseidons-undersea-palace",
+    "wiki_url": "https://riordan.fandom.com/wiki/Atlantis",
+    "location_type": "divine_realm",
+    "real_world_location": "Atlantic Ocean seabed",
+    "mythological_significance": "Divine seat of Poseidon's ocean kingdom.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": null,
+    "notable_events": [
+      "Besieged by Oceanus during the Second Titan War"
+    ],
+    "controlled_by_god_slug": "poseidon",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "first_appearance_book_slug": "the-last-olympian",
+    "first_appearance_locator": "Chapter 3",
+    "earlier_mention_book_slug": "the-lightning-thief",
+    "location_order": 250,
+    "description": "A magnificent coral and pearl underwater fortress kingdom governed by Poseidon and Queen Amphitrite.",
+    "controlled_by_monster_slug": null
+  },
+  {
+    "name": "Brooklyn Zoo",
+    "expected_slug": "brooklyn-zoo",
+    "wiki_url": null,
+    "location_type": "mortal_city",
+    "real_world_location": "Prospect Park, Brooklyn, New York City",
+    "mythological_significance": "Hiding site chosen by Phobos and Deimos to conceal Ares's stolen war chariot among wild animal enclosures.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "40.6655, -73.9632",
+    "notable_events": [
+      "Recovery of Ares's Stolen War Chariot"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "controlled_by_monster_slug": null,
+    "books_appeared_in_slugs": [
+      "the-demigod-files",
+      "percy-jackson-and-the-stolen-chariot"
+    ],
+    "first_appearance_book_slug": "percy-jackson-and-the-stolen-chariot",
+    "first_appearance_locator": "Section 1",
+    "earlier_mention_book_slug": null,
+    "location_order": 260,
+    "description": "The mortal zoo in Prospect Park, Brooklyn, where Ares's sons Phobos and Deimos hid their father's stolen war chariot, ambushing Clarisse La Rue and Percy Jackson."
+  },
+  {
+    "name": "Seriphos",
+    "expected_slug": "seriphos",
+    "wiki_url": null,
+    "location_type": "mythical_island",
+    "real_world_location": "Serifos Island, Cyclades, Greece",
+    "mythological_significance": "Ancient Aegean island kingdom ruled by King Polydectes where Danaë and Perseus washed ashore in a chest.",
+    "is_hidden_from_mortals": false,
+    "coordinates_approx": "37.1500, 24.5000",
+    "notable_events": [
+      "Perseus and Danaë wash ashore",
+      "Polydectes challenges Perseus to retrieve Medusa's head",
+      "Perseus turns Polydectes to stone with Medusa's head"
+    ],
+    "controlled_by_god_slug": null,
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "controlled_by_monster_slug": null,
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "first_appearance_locator": "Chapter on Perseus",
+    "earlier_mention_book_slug": null,
+    "location_order": 270,
+    "description": "The rocky Aegean island ruled by King Polydectes where Dictys fished Perseus and Danaë out of the sea, and where Perseus later returned with Medusa's head to petrify the tyrant king."
+  },
+  {
+    "name": "Land Without Rain (Junkyard of the Gods)",
+    "expected_slug": "land-without-rain",
+    "wiki_url": "https://riordan.fandom.com/wiki/Junkyard_of_the_Gods",
+    "location_type": "crossroads",
+    "real_world_location": "Mojave Desert, California",
+    "mythological_significance": "Disposal grounds for discarded divine items, magical scrap, and failed prototypes created by Hephaestus.",
+    "is_hidden_from_mortals": true,
+    "coordinates_approx": "35.0110, -115.4734",
+    "notable_events": [
+      "Quest to Rescue Artemis",
+      "Destruction of the Talos Automaton",
+      "Sacrifice of Bianca di Angelo"
+    ],
+    "controlled_by_god_slug": "hephaestus",
+    "controlled_by_titan_slug": null,
+    "controlled_by_character_slug": null,
+    "controlled_by_monster_slug": null,
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "first_appearance_book_slug": "the-titans-curse",
+    "first_appearance_locator": "Chapter 10",
+    "earlier_mention_book_slug": null,
+    "location_order": 160,
+    "description": "A vast desert junkyard where the gods discard ancient artifacts, magical scrap, and prototype automatons like Talos. Taking any item without permission awakens lethal guardians."
+  }
+]

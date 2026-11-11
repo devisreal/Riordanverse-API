@@ -1,0 +1,668 @@
+[
+  {
+    "name": "Kronos",
+    "expected_slug": "kronos",
+    "display_order": 10,
+    "wiki_url": "https://riordan.fandom.com/wiki/Kronos",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "imprisoned",
+    "alignment": "kronos_army",
+    "domains": [
+      "time",
+      "harvest",
+      "king of titans"
+    ],
+    "weapon_or_power": [
+      "adamantine scythe",
+      "time manipulation",
+      "golden dust aura"
+    ],
+    "role_in_series": "Overarching antagonist of the First Demigod War (V1). Orchestrates the theft of the Master Bolt, reforms from Tartarus, and possesses Luke Castellan to attack Mount Olympus.",
+    "prison_location": "Tartarus (formerly) / Luke Castellan's body",
+    "description": "Titan Lord of Time and King of Titans who overthrew Ouranos with an adamantine scythe. Defeated by his children in the First Titan War and scattered in Tartarus; rises again in Percy Jackson and the Olympians.",
+    "first_appearance_book_slug": "the-lightning-thief",
+    "books_appeared_in_slugs": [
+      "the-lightning-thief",
+      "the-sea-of-monsters",
+      "the-titans-curse",
+      "the-battle-of-the-labyrinth",
+      "the-last-olympian",
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": [
+      "kronos-scythe",
+      "adamantine-scythe",
+      "backbiter"
+    ]
+  },
+  {
+    "name": "Atlas",
+    "expected_slug": "atlas",
+    "display_order": 130,
+    "wiki_url": "https://riordan.fandom.com/wiki/Atlas",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "imprisoned",
+    "alignment": "kronos_army",
+    "domains": [
+      "endurance",
+      "heavens",
+      "astronomy"
+    ],
+    "weapon_or_power": [
+      "javelin",
+      "immense physical strength",
+      "holding the sky"
+    ],
+    "role_in_series": "General of the Titan Army in Book 3. Tricks Artemis into holding the sky until Percy forces Atlas back under the weight.",
+    "prison_location": "Mount Tamalpais (holding up the sky)",
+    "description": "Elder Titan of Endurance and Astronomy. Father of Zoë Nightshade and Calypso. Condemned to hold up the sky.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Hyperion",
+    "expected_slug": "hyperion",
+    "display_order": 40,
+    "wiki_url": "https://riordan.fandom.com/wiki/Hyperion",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "transformed",
+    "alignment": "kronos_army",
+    "domains": [
+      "light",
+      "the east",
+      "sunlight"
+    ],
+    "weapon_or_power": [
+      "golden armor",
+      "flame sword",
+      "solar radiation combustion"
+    ],
+    "role_in_series": "Titan general who commands Kronos's vanguard forces during the Battle of Manhattan. Defeated by Percy and Grover's nature magic.",
+    "prison_location": "Central Park (turned into a maple tree)",
+    "description": "Elder Titan of Light and the East. Encased in blazing golden armor; turned into a large maple tree by Grover Underwood's satyr song.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Iapetus",
+    "expected_slug": "iapetus",
+    "display_order": 50,
+    "wiki_url": "https://riordan.fandom.com/wiki/Iapetus",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "alive",
+    "alignment": "neutral",
+    "domains": [
+      "mortality",
+      "the west"
+    ],
+    "weapon_or_power": [
+      "spear",
+      "life force drain"
+    ],
+    "role_in_series": "Attacks Percy and Thalia in the Underworld in The Demigod Files. After falling into the River Lethe, loses his memory and becomes friendly janitor 'Bob'.",
+    "prison_location": null,
+    "description": "Elder Titan of Mortality ('The Piercer'). Memory-wiped by the River Lethe in The Demigod Files and renamed 'Bob'.",
+    "first_appearance_book_slug": "the-demigod-files",
+    "books_appeared_in_slugs": [
+      "the-demigod-files"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Oceanus",
+    "expected_slug": "oceanus",
+    "display_order": 30,
+    "wiki_url": "https://riordan.fandom.com/wiki/Oceanus",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "alive",
+    "alignment": "kronos_army",
+    "domains": [
+      "ocean",
+      "encircling sea"
+    ],
+    "weapon_or_power": [
+      "serpent horn",
+      "tsunami creation"
+    ],
+    "role_in_series": "Leads the underwater campaign against Poseidon's realm in Book 5, forcing Poseidon to defend his palace instead of helping Olympus.",
+    "prison_location": null,
+    "description": "Elder Titan of the Ocean. Has a bull-horned head and fish-tail body. Retreated into the deep ocean after Kronos fell.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Prometheus",
+    "expected_slug": "prometheus",
+    "display_order": 150,
+    "wiki_url": "https://riordan.fandom.com/wiki/Prometheus",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "alive",
+    "alignment": "kronos_army",
+    "domains": [
+      "forethought",
+      "crafty counsel",
+      "fire for humanity"
+    ],
+    "weapon_or_power": [
+      "foresight",
+      "diplomacy",
+      "Pandora's Pithos"
+    ],
+    "role_in_series": "Serves as parley envoy for Kronos in Book 5. Offers Percy Pandora's Jar (Elpis) to surrender Manhattan.",
+    "prison_location": null,
+    "description": "Younger Titan of Forethought who gave fire to mankind. Sided cautiously with Kronos in V1 as a diplomat.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Koios",
+    "expected_slug": "koios",
+    "display_order": 70,
+    "wiki_url": "https://riordan.fandom.com/wiki/Koios",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "imprisoned",
+    "alignment": "kronos_army",
+    "domains": [
+      "intellect",
+      "the north",
+      "heavenly axis"
+    ],
+    "weapon_or_power": [
+      "celestial power",
+      "prophecy"
+    ],
+    "role_in_series": "Mentioned as escaping Tartarus during Kronos's rise.",
+    "prison_location": "Tartarus",
+    "description": "Elder Titan of Intellect and the North ('Polus'). Grandfather of Apollo and Artemis.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Krios",
+    "expected_slug": "krios",
+    "display_order": 60,
+    "wiki_url": "https://riordan.fandom.com/wiki/Krios",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "alive",
+    "alignment": "kronos_army",
+    "domains": [
+      "constellations",
+      "the south"
+    ],
+    "weapon_or_power": [
+      "ram horn armor",
+      "starry aura"
+    ],
+    "role_in_series": "Guarded Mount Othrys in San Francisco while Atlas and Kronos marched east.",
+    "prison_location": null,
+    "description": "Elder Titan of Constellations and the South. Wears ram horn armor.",
+    "first_appearance_book_slug": "the-last-olympian",
+    "books_appeared_in_slugs": [
+      "the-last-olympian"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Rhea",
+    "expected_slug": "rhea",
+    "display_order": 20,
+    "wiki_url": "https://riordan.fandom.com/wiki/Rhea",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "olympian_allied",
+    "domains": [
+      "motherhood",
+      "fertility",
+      "earth",
+      "generation"
+    ],
+    "weapon_or_power": [
+      "maternal earth magic",
+      "prophetic wisdom",
+      "deception"
+    ],
+    "role_in_series": "Mother of the original six Olympians who tricked Kronos with the swaddled rock to save baby Zeus.",
+    "prison_location": null,
+    "description": "Elder Titaness of Motherhood and Queen of the Titans. Saved baby Zeus by giving Kronos a swaddled rock to swallow instead.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "roman_name": "Ops / Magna Mater",
+    "symbols": [
+      "turret crown",
+      "chariot drawn by lions",
+      "swaddled stone"
+    ],
+    "sacred_animals": [
+      "lion"
+    ],
+    "sacred_plants": [
+      "oak tree"
+    ],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Helios",
+    "expected_slug": "helios",
+    "display_order": 140,
+    "wiki_url": "https://riordan.fandom.com/wiki/Helios",
+    "roman_name": "Sol",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "faded",
+    "alignment": "neutral",
+    "domains": [
+      "sun",
+      "sight",
+      "sun chariot"
+    ],
+    "symbols": [
+      "sun chariot",
+      "golden crown of rays",
+      "aureole"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Drove the sun chariot across the sky for ages before fading and surrendering the sun domain to Apollo.",
+    "prison_location": null,
+    "description": "Original Titan of the Sun, son of Hyperion and Theia. Surrendered the sun chariot to Apollo and faded after his son Phaethon crashed the chariot. Father of Phaethon and Circe.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "percy-jacksons-greek-heroes"
+    ],
+    "sacred_animals": [
+      "rooster",
+      "white horses"
+    ],
+    "sacred_plants": [
+      "heliotrope"
+    ],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Tethys",
+    "expected_slug": "tethys",
+    "display_order": 110,
+    "wiki_url": "https://riordan.fandom.com/wiki/Tethys",
+    "roman_name": "Tethys",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "fresh water",
+      "rivers",
+      "springs",
+      "nursing"
+    ],
+    "symbols": [
+      "winged brow",
+      "water vessel"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of fresh water and wife of Oceanus. Mother of the Potamoi (river gods) and Oceanids.",
+    "prison_location": null,
+    "description": "Elder Titaness of fresh water and wife of Oceanus. Mother of the Potamoi (river gods) and Oceanids.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Theia",
+    "expected_slug": "theia",
+    "display_order": 120,
+    "wiki_url": "https://riordan.fandom.com/wiki/Theia",
+    "roman_name": "Theia",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "sight",
+      "shining light",
+      "glittering gems",
+      "gold"
+    ],
+    "symbols": [
+      "shining eye",
+      "golden crown"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of sight and bright sky light. Wife of Hyperion and mother of Helios, Selene, and Eos.",
+    "prison_location": null,
+    "description": "Elder Titaness of sight and bright sky light. Wife of Hyperion and mother of Helios, Selene, and Eos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Themis",
+    "expected_slug": "themis",
+    "display_order": 80,
+    "wiki_url": "https://riordan.fandom.com/wiki/Themis",
+    "roman_name": "Justitia",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "divine law",
+      "natural order",
+      "justice",
+      "custom"
+    ],
+    "symbols": [
+      "scales of justice",
+      "cornucopia"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of divine law and custom. Served as an early counselor to Zeus and guardian of the Delphic Oracle before Apollo.",
+    "prison_location": null,
+    "description": "Elder Titaness of divine law and custom. Served as an early counselor to Zeus and guardian of the Delphic Oracle before Apollo.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Mnemosyne",
+    "expected_slug": "mnemosyne",
+    "display_order": 90,
+    "wiki_url": "https://riordan.fandom.com/wiki/Mnemosyne",
+    "roman_name": "Moneta",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "memory",
+      "remembrance",
+      "rote learning"
+    ],
+    "symbols": [
+      "pool of memory",
+      "scroll"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of memory. Mother of the Nine Muses by Zeus.",
+    "prison_location": null,
+    "description": "Elder Titaness of memory. Mother of the Nine Muses by Zeus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Phoebe",
+    "expected_slug": "phoebe",
+    "display_order": 100,
+    "wiki_url": "https://riordan.fandom.com/wiki/Phoebe",
+    "roman_name": "Phoebe",
+    "mythology": "greek",
+    "generation": "elder_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "prophecy",
+      "intellect",
+      "bright moon"
+    ],
+    "symbols": [
+      "oracle tripod",
+      "golden crown"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Elder Titaness of prophetic intellect and third mistress of the Oracle of Delphi. Mother of Leto and Asteria.",
+    "prison_location": null,
+    "description": "Elder Titaness of prophetic intellect and third mistress of the Oracle of Delphi. Mother of Leto and Asteria.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Selene",
+    "expected_slug": "selene",
+    "display_order": 160,
+    "wiki_url": "https://riordan.fandom.com/wiki/Selene",
+    "roman_name": "Luna",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "faded",
+    "alignment": "neutral",
+    "domains": [
+      "moon",
+      "night sky",
+      "lunar chariot"
+    ],
+    "symbols": [
+      "crescent moon",
+      "silver chariot"
+    ],
+    "weapon_or_power": [
+      "silver moon chariot"
+    ],
+    "role_in_series": "Original Titaness of the Moon, sister of Helios. Faded after worship shifted to Artemis.",
+    "prison_location": null,
+    "description": "Original Titaness of the Moon, sister of Helios. Faded after worship shifted to Artemis.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [
+      "white bulls"
+    ],
+    "sacred_plants": [],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Leto",
+    "expected_slug": "leto",
+    "display_order": 170,
+    "wiki_url": "https://riordan.fandom.com/wiki/Leto",
+    "roman_name": "Latona",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "immortal",
+    "alignment": "olympian_allied",
+    "domains": [
+      "motherhood",
+      "modesty",
+      "protection of young"
+    ],
+    "symbols": [
+      "veil",
+      "date palm"
+    ],
+    "weapon_or_power": [],
+    "role_in_series": "Titaness daughter of Coeus and Phoebe. Hounded across the earth by Hera before giving birth to Apollo and Artemis on Delos.",
+    "prison_location": null,
+    "description": "Titaness daughter of Coeus and Phoebe. Hounded across the earth by Hera before giving birth to Apollo and Artemis on Delos.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "sacred_animals": [
+      "rooster"
+    ],
+    "sacred_plants": [
+      "date palm",
+      "olive tree"
+    ],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Epimetheus",
+    "expected_slug": "epimetheus",
+    "display_order": 180,
+    "wiki_url": "https://riordan.fandom.com/wiki/Epimetheus",
+    "roman_name": null,
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "immortal",
+    "alignment": "kronos_army",
+    "domains": [
+      "afterthought",
+      "excuses"
+    ],
+    "symbols": [
+      "pandoras_jar"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_or_power": [
+      "Pandora's Pithos"
+    ],
+    "home": "Mount Othrys / Earth",
+    "role_in_series": null,
+    "prison_location": null,
+    "description": "Titan of Afterthought and excuses. Brother of Prometheus and Atlas, husband of Pandora.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods",
+      "the-last-olympian"
+    ],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Eos",
+    "expected_slug": "eos",
+    "display_order": 190,
+    "wiki_url": "https://riordan.fandom.com/wiki/Eos",
+    "roman_name": "Aurora",
+    "mythology": "greek",
+    "generation": "younger_titan",
+    "status": "immortal",
+    "alignment": "neutral",
+    "domains": [
+      "dawn"
+    ],
+    "symbols": [
+      "saffron_cloak",
+      "morning_star"
+    ],
+    "sacred_animals": [],
+    "sacred_plants": [],
+    "weapon_or_power": [],
+    "home": "Sky / Palace of the Sun",
+    "role_in_series": null,
+    "prison_location": null,
+    "description": "Titaness of Dawn. Daughter of Hyperion and Theia, sister of Helios and Selene, and mother of the Four Winds.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "weapon_slugs": []
+  },
+  {
+    "name": "Metis",
+    "expected_slug": "metis",
+    "display_order": 200,
+    "description": "Titaness of Wisdom and first wife of Zeus. Mother of Athena.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal",
+    "wiki_url": "https://riordan.fandom.com/wiki/Metis"
+  },
+  {
+    "name": "Clymene",
+    "expected_slug": "clymene",
+    "display_order": 210,
+    "description": "Oceanid Titaness. Wife of Iapetus and mother of Atlas, Prometheus, and Epimetheus.",
+    "first_appearance_book_slug": "percy-jacksons-greek-gods",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-gods"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal"
+  },
+  {
+    "name": "Pleione",
+    "expected_slug": "pleione",
+    "display_order": 220,
+    "description": "Oceanid nymph/Titaness, wife of Atlas, and mother of Zoë Nightshade and Calypso.",
+    "first_appearance_book_slug": "the-titans-curse",
+    "books_appeared_in_slugs": [
+      "the-titans-curse"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal"
+  },
+  {
+    "name": "Eurynome",
+    "expected_slug": "eurynome",
+    "display_order": 230,
+    "description": "Oceanid Titaness and mother of Bellerophon by Poseidon.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "generation": "younger_titan",
+    "alignment": "neutral",
+    "status": "immortal"
+  }
+]

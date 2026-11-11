@@ -1,0 +1,2683 @@
+[
+  {
+    "from_type": "character",
+    "from_slug": "acrisius",
+    "to_type": "character",
+    "to_slug": "danae",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "aethra",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "aethra",
+    "to_type": "character",
+    "to_slug": "theseus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "alcmene",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "alcmene",
+    "to_type": "character",
+    "to_slug": "heracles",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "anchises",
+    "to_type": "god",
+    "to_slug": "aphrodite",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "andromeda",
+    "to_type": "character",
+    "to_slug": "perseus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "annabeth-chase",
+    "to_type": "character",
+    "to_slug": "percy-jackson",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "annabeth-chase",
+    "to_type": "character",
+    "to_slug": "daedalus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "annabeth-chase",
+    "to_type": "character",
+    "to_slug": "malcolm-pace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ariadne",
+    "to_type": "character",
+    "to_slug": "theseus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ariadne",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ariadne",
+    "to_type": "character",
+    "to_slug": "castor",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ariadne",
+    "to_type": "character",
+    "to_slug": "pollux",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ariadne",
+    "to_type": "character",
+    "to_slug": "phaedra",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ariadne",
+    "to_type": "monster",
+    "to_slug": "minotaur",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "bellerophon",
+    "to_type": "character",
+    "to_slug": "percy-jackson",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "bellerophon",
+    "to_type": "character",
+    "to_slug": "theseus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "bellerophon",
+    "to_type": "character",
+    "to_slug": "tyson",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "bellerophon",
+    "to_type": "monster",
+    "to_slug": "antaeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "bellerophon",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "beryl-grace",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "beryl-grace",
+    "to_type": "character",
+    "to_slug": "thalia-grace",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "bianca-di-angelo",
+    "to_type": "character",
+    "to_slug": "nico-di-angelo",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "callirhoe",
+    "to_type": "monster",
+    "to_slug": "geryon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "calypso",
+    "to_type": "character",
+    "to_slug": "zoe-nightshade",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "castor",
+    "to_type": "character",
+    "to_slug": "pollux",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chariclo",
+    "to_type": "character",
+    "to_slug": "chiron",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "charles-beckendorf",
+    "to_type": "character",
+    "to_slug": "jake-mason",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chiron",
+    "to_type": "god",
+    "to_slug": "demeter",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chiron",
+    "to_type": "god",
+    "to_slug": "hades",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chiron",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chiron",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chiron",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chiron",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chris-rodriguez",
+    "to_type": "character",
+    "to_slug": "connor-stoll",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chris-rodriguez",
+    "to_type": "character",
+    "to_slug": "luke-castellan",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chris-rodriguez",
+    "to_type": "character",
+    "to_slug": "travis-stoll",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "chrysaor",
+    "to_type": "monster",
+    "to_slug": "geryon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "clarisse-la-rue",
+    "to_type": "character",
+    "to_slug": "eurytion",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "connor-stoll",
+    "to_type": "character",
+    "to_slug": "luke-castellan",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "connor-stoll",
+    "to_type": "character",
+    "to_slug": "travis-stoll",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "daedalus",
+    "to_type": "character",
+    "to_slug": "icarus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "daedalus",
+    "to_type": "character",
+    "to_slug": "malcolm-pace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "danae",
+    "to_type": "character",
+    "to_slug": "king-polydectes",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "danae",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "danae",
+    "to_type": "character",
+    "to_slug": "perseus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "deianira",
+    "to_type": "character",
+    "to_slug": "heracles",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "europa",
+    "to_type": "character",
+    "to_slug": "king-minos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "frederick-chase",
+    "to_type": "god",
+    "to_slug": "athena",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "frederick-chase",
+    "to_type": "character",
+    "to_slug": "annabeth-chase",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "grover-underwood",
+    "to_type": "character",
+    "to_slug": "juniper",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "heracles",
+    "to_type": "character",
+    "to_slug": "megara",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "heracles",
+    "to_type": "god",
+    "to_slug": "hebe",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "heracles",
+    "to_type": "character",
+    "to_slug": "king-minos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "heracles",
+    "to_type": "character",
+    "to_slug": "perseus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "heracles",
+    "to_type": "character",
+    "to_slug": "tantalus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "heracles",
+    "to_type": "character",
+    "to_slug": "thalia-grace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-acrisius",
+    "to_type": "character",
+    "to_slug": "danae",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-minos",
+    "to_type": "character",
+    "to_slug": "pasiphae",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-minos",
+    "to_type": "character",
+    "to_slug": "ariadne",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-minos",
+    "to_type": "character",
+    "to_slug": "phaedra",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-minos",
+    "to_type": "character",
+    "to_slug": "perseus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-minos",
+    "to_type": "character",
+    "to_slug": "tantalus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "king-minos",
+    "to_type": "character",
+    "to_slug": "thalia-grace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "lee-fletcher",
+    "to_type": "character",
+    "to_slug": "michael-yew",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "lee-fletcher",
+    "to_type": "character",
+    "to_slug": "will-solace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "luke-castellan",
+    "to_type": "character",
+    "to_slug": "travis-stoll",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "maria-di-angelo",
+    "to_type": "god",
+    "to_slug": "hades",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "maria-di-angelo",
+    "to_type": "character",
+    "to_slug": "bianca-di-angelo",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "maria-di-angelo",
+    "to_type": "character",
+    "to_slug": "nico-di-angelo",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "may-castellan",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "may-castellan",
+    "to_type": "character",
+    "to_slug": "luke-castellan",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "michael-yew",
+    "to_type": "character",
+    "to_slug": "will-solace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ms-beauregard",
+    "to_type": "god",
+    "to_slug": "aphrodite",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ms-beckendorf",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ms-la-rue",
+    "to_type": "god",
+    "to_slug": "ares",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ms-mason",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ms-rodriguez",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "ms-stoll",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "pasiphae",
+    "to_type": "creature",
+    "to_slug": "cretan-bull",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "pasiphae",
+    "to_type": "character",
+    "to_slug": "ariadne",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "pasiphae",
+    "to_type": "character",
+    "to_slug": "phaedra",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "pasiphae",
+    "to_type": "monster",
+    "to_slug": "minotaur",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "pasiphae",
+    "to_type": "god",
+    "to_slug": "circe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "percy-jackson",
+    "to_type": "character",
+    "to_slug": "theseus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "percy-jackson",
+    "to_type": "character",
+    "to_slug": "tyson",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "percy-jackson",
+    "to_type": "god",
+    "to_slug": "triton",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "percy-jackson",
+    "to_type": "monster",
+    "to_slug": "antaeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "percy-jackson",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "perseus",
+    "to_type": "character",
+    "to_slug": "tantalus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "perseus",
+    "to_type": "character",
+    "to_slug": "thalia-grace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "phaedra",
+    "to_type": "character",
+    "to_slug": "theseus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "phaedra",
+    "to_type": "monster",
+    "to_slug": "minotaur",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "philyra",
+    "to_type": "character",
+    "to_slug": "chiron",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "sally-jackson",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "sally-jackson",
+    "to_type": "character",
+    "to_slug": "percy-jackson",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "semele",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "semele",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "tantalus",
+    "to_type": "character",
+    "to_slug": "thalia-grace",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "theseus",
+    "to_type": "character",
+    "to_slug": "hippolytus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "theseus",
+    "to_type": "character",
+    "to_slug": "tyson",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "theseus",
+    "to_type": "monster",
+    "to_slug": "antaeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "theseus",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "thoosa",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "thoosa",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "tyson",
+    "to_type": "god",
+    "to_slug": "triton",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "tyson",
+    "to_type": "monster",
+    "to_slug": "antaeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "character",
+    "from_slug": "tyson",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "creature",
+    "from_slug": "cretan-bull",
+    "to_type": "monster",
+    "to_slug": "minotaur",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "amphitrite",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "amphitrite",
+    "to_type": "god",
+    "to_slug": "triton",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "aphrodite",
+    "to_type": "god",
+    "to_slug": "ares",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "aphrodite",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "aphrodite",
+    "to_type": "character",
+    "to_slug": "aeneas",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "aphrodite",
+    "to_type": "character",
+    "to_slug": "piper-mclean",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "aphrodite",
+    "to_type": "character",
+    "to_slug": "silena-beauregard",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "god",
+    "to_slug": "calliope",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "character",
+    "to_slug": "lee-fletcher",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "character",
+    "to_slug": "michael-yew",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "character",
+    "to_slug": "orpheus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "character",
+    "to_slug": "will-solace",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "god",
+    "to_slug": "ares",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "god",
+    "to_slug": "artemis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "god",
+    "to_slug": "athena",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "apollo",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "character",
+    "to_slug": "clarisse-la-rue",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "character",
+    "to_slug": "eurytion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "character",
+    "to_slug": "frank-zhang",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "deimos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "phobos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "artemis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "athena",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "hebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ares",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "artemis",
+    "to_type": "god",
+    "to_slug": "athena",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "artemis",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "artemis",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "character",
+    "to_slug": "annabeth-chase",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "character",
+    "to_slug": "daedalus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "character",
+    "to_slug": "malcolm-pace",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "god",
+    "to_slug": "hebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "athena",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "boreas",
+    "to_type": "god",
+    "to_slug": "khione",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ceto",
+    "to_type": "monster",
+    "to_slug": "echidna",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ceto",
+    "to_type": "monster",
+    "to_slug": "ladon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ceto",
+    "to_type": "monster",
+    "to_slug": "medusa",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ceto",
+    "to_type": "monster",
+    "to_slug": "scylla",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "character",
+    "to_slug": "katie-gardner",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "persephone",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "hades",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "demeter",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "dionysus",
+    "to_type": "character",
+    "to_slug": "castor",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "dionysus",
+    "to_type": "character",
+    "to_slug": "pollux",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "dionysus",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "dionysus",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "monster",
+    "to_slug": "antaeus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "monster",
+    "to_slug": "kampe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "monster",
+    "to_slug": "typhon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "hyperion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "god",
+    "to_slug": "ouranos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "gaea",
+    "to_type": "god",
+    "to_slug": "tartarus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "persephone",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "character",
+    "to_slug": "bianca-di-angelo",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "character",
+    "to_slug": "hazel-levesque",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "character",
+    "to_slug": "nico-di-angelo",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "melinoe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hades",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hebe",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hephaestus",
+    "to_type": "character",
+    "to_slug": "charles-beckendorf",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hephaestus",
+    "to_type": "character",
+    "to_slug": "jake-mason",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hephaestus",
+    "to_type": "character",
+    "to_slug": "leo-valdez",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hephaestus",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "ares",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "hebe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hera",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hermes",
+    "to_type": "character",
+    "to_slug": "chris-rodriguez",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hermes",
+    "to_type": "character",
+    "to_slug": "connor-stoll",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hermes",
+    "to_type": "character",
+    "to_slug": "luke-castellan",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hermes",
+    "to_type": "character",
+    "to_slug": "travis-stoll",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hermes",
+    "to_type": "god",
+    "to_slug": "pan",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hestia",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "hestia",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "maia",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "maia",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "nemesis",
+    "to_type": "character",
+    "to_slug": "ethan-nakamura",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "god",
+    "to_slug": "aphrodite",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "hyperion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "ouranos",
+    "to_type": "god",
+    "to_slug": "tartarus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "persephone",
+    "to_type": "god",
+    "to_slug": "melinoe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "phorcys",
+    "to_type": "monster",
+    "to_slug": "echidna",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "phorcys",
+    "to_type": "monster",
+    "to_slug": "ladon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "phorcys",
+    "to_type": "monster",
+    "to_slug": "medusa",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "phorcys",
+    "to_type": "monster",
+    "to_slug": "scylla",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "monster",
+    "to_slug": "medusa",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "titan",
+    "to_slug": "eurynome",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "character",
+    "to_slug": "bellerophon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "character",
+    "to_slug": "chrysaor",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "character",
+    "to_slug": "percy-jackson",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "character",
+    "to_slug": "theseus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "character",
+    "to_slug": "tyson",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "creature",
+    "to_slug": "pegasus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "god",
+    "to_slug": "triton",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "monster",
+    "to_slug": "antaeus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "poseidon",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "tartarus",
+    "to_type": "monster",
+    "to_slug": "kampe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "tartarus",
+    "to_type": "monster",
+    "to_slug": "typhon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "titan",
+    "to_slug": "leto",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "titan",
+    "to_slug": "metis",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "character",
+    "to_slug": "heracles",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "character",
+    "to_slug": "jason-grace",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "character",
+    "to_slug": "king-minos",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "character",
+    "to_slug": "perseus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "character",
+    "to_slug": "tantalus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "character",
+    "to_slug": "thalia-grace",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "apollo",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "ares",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "artemis",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "athena",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "dionysus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "hebe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "hephaestus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "god",
+    "from_slug": "zeus",
+    "to_type": "god",
+    "to_slug": "hermes",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "antaeus",
+    "to_type": "monster",
+    "to_slug": "kampe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "antaeus",
+    "to_type": "monster",
+    "to_slug": "polyphemus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "antaeus",
+    "to_type": "monster",
+    "to_slug": "typhon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "cerberus",
+    "to_type": "monster",
+    "to_slug": "chimera",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "cerberus",
+    "to_type": "monster",
+    "to_slug": "hydra",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "cerberus",
+    "to_type": "monster",
+    "to_slug": "nemean-lion",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "cerberus",
+    "to_type": "monster",
+    "to_slug": "sphinx",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "chimera",
+    "to_type": "monster",
+    "to_slug": "hydra",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "chimera",
+    "to_type": "monster",
+    "to_slug": "nemean-lion",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "chimera",
+    "to_type": "monster",
+    "to_slug": "sphinx",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "typhon",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "cerberus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "chimera",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "hydra",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "nemean-lion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "sphinx",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "ladon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "echidna",
+    "to_type": "monster",
+    "to_slug": "scylla",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "euryale",
+    "to_type": "monster",
+    "to_slug": "medusa",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "hydra",
+    "to_type": "monster",
+    "to_slug": "nemean-lion",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "hydra",
+    "to_type": "monster",
+    "to_slug": "sphinx",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "kampe",
+    "to_type": "monster",
+    "to_slug": "typhon",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "ladon",
+    "to_type": "monster",
+    "to_slug": "scylla",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "medusa",
+    "to_type": "character",
+    "to_slug": "chrysaor",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "medusa",
+    "to_type": "creature",
+    "to_slug": "pegasus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "medusa",
+    "to_type": "monster",
+    "to_slug": "stheno",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "typhon",
+    "to_type": "monster",
+    "to_slug": "cerberus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "typhon",
+    "to_type": "monster",
+    "to_slug": "chimera",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "typhon",
+    "to_type": "monster",
+    "to_slug": "hydra",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "typhon",
+    "to_type": "monster",
+    "to_slug": "nemean-lion",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "monster",
+    "from_slug": "typhon",
+    "to_type": "monster",
+    "to_slug": "sphinx",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "titan",
+    "to_slug": "pleione",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "character",
+    "to_slug": "calypso",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "character",
+    "to_slug": "zoe-nightshade",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "titan",
+    "to_slug": "epimetheus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "atlas",
+    "to_type": "titan",
+    "to_slug": "prometheus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "clymene",
+    "to_type": "titan",
+    "to_slug": "atlas",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "clymene",
+    "to_type": "titan",
+    "to_slug": "epimetheus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "clymene",
+    "to_type": "titan",
+    "to_slug": "prometheus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "eos",
+    "to_type": "titan",
+    "to_slug": "helios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "eos",
+    "to_type": "titan",
+    "to_slug": "selene",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "epimetheus",
+    "to_type": "titan",
+    "to_slug": "prometheus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "eurynome",
+    "to_type": "character",
+    "to_slug": "bellerophon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "character",
+    "to_slug": "pasiphae",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "character",
+    "to_slug": "phaethon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "god",
+    "to_slug": "circe",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "helios",
+    "to_type": "titan",
+    "to_slug": "selene",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "helios",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "iapetus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "koios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "krios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "hyperion",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "atlas",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "epimetheus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "prometheus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "koios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "krios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "iapetus",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "krios",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "koios",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "kronos",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "krios",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "consort_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "character",
+    "to_slug": "chiron",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "god",
+    "to_slug": "demeter",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "god",
+    "to_slug": "hades",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "mnemosyne",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "kronos",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "leto",
+    "to_type": "god",
+    "to_slug": "apollo",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "leto",
+    "to_type": "god",
+    "to_slug": "artemis",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "metis",
+    "to_type": "god",
+    "to_slug": "athena",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "oceanus",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "mnemosyne",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "phoebe",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "oceanus",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "rhea",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "phoebe",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "pleione",
+    "to_type": "character",
+    "to_slug": "calypso",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "pleione",
+    "to_type": "character",
+    "to_slug": "zoe-nightshade",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "god",
+    "to_slug": "demeter",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "god",
+    "to_slug": "hades",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "god",
+    "to_slug": "hera",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "god",
+    "to_slug": "hestia",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "god",
+    "to_slug": "poseidon",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "god",
+    "to_slug": "zeus",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "titan",
+    "to_slug": "tethys",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "rhea",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "tethys",
+    "to_type": "titan",
+    "to_slug": "theia",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "tethys",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "theia",
+    "to_type": "titan",
+    "to_slug": "helios",
+    "relationship_type": "parent_of"
+  },
+  {
+    "from_type": "titan",
+    "from_slug": "theia",
+    "to_type": "titan",
+    "to_slug": "themis",
+    "relationship_type": "sibling_of"
+  }
+]

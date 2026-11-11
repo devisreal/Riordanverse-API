@@ -1,0 +1,428 @@
+[
+  {
+    "name": "Satyr",
+    "expected_slug": "satyr",
+    "wiki_url": "https://riordan.fandom.com/wiki/Satyr",
+    "description": "Nature spirits with the upper body of a human and lower body of a goat. Serving as Camp Half-Blood protectors who locate demigods and search for the lost god Pan.",
+    "origin": "Greek wilderness spirits associated with Dionysus and Pan.",
+    "alignment": "olympian",
+    "habitat": "Forests, Camp Half-Blood, Council of Cloven Elders, Wild Woods",
+    "abilities": [
+      "nature magic",
+      "empathy link with demigods",
+      "smelling demigods and monsters",
+      "woodwind music spells"
+    ],
+    "weaknesses": [
+      "vulnerable to physical combat",
+      "easily distracted by food and nature"
+    ],
+    "notable_members": [
+      {
+        "type": "character",
+        "slug": "grover-underwood"
+      },
+      {
+        "type": "character",
+        "slug": "silenus"
+      },
+      {
+        "type": "character",
+        "slug": "leneus"
+      },
+      {
+        "type": "character",
+        "slug": "maron"
+      },
+      {
+        "type": "character",
+        "slug": "gleeson-hedge"
+      }
+    ]
+  },
+  {
+    "name": "Centaur",
+    "expected_slug": "centaur",
+    "wiki_url": "https://riordan.fandom.com/wiki/Centaur",
+    "description": "Beings with the upper body of a human and the lower body of a horse. Civilized centaurs like Chiron excel in medicine and archery, while wild Party Ponies hail from the American West.",
+    "origin": "Ancient Thessaly in Greek myth; offspring of Ixion or Centaurus.",
+    "alignment": "olympian",
+    "habitat": "Camp Half-Blood, American West, Wilderness",
+    "abilities": [
+      "archery mastery",
+      "wisdom and prophecy",
+      "battle tactics",
+      "healing arts"
+    ],
+    "weaknesses": [
+      "wild centaurs easily susceptible to alcohol and impulse"
+    ],
+    "notable_members": [
+      {
+        "type": "character",
+        "slug": "chiron"
+      }
+    ]
+  },
+  {
+    "name": "Nymph",
+    "expected_slug": "nymph",
+    "wiki_url": "https://riordan.fandom.com/wiki/Nymph",
+    "description": "Female nature spirits bound to natural elements, including dryads (tree nymphs), naiads (freshwater nymphs), and nereids (sea nymphs).",
+    "origin": "Greek myth spirits of natural phenomena.",
+    "alignment": "olympian",
+    "habitat": "Forests, rivers, lakes, oceans, Camp Half-Blood strawberry fields",
+    "abilities": [
+      "elemental control over assigned natural feature",
+      "fading into trees/water",
+      "plant cultivation magic"
+    ],
+    "weaknesses": [
+      "life force bound to their specific tree or body of water"
+    ],
+    "notable_members": [
+      {
+        "type": "character",
+        "slug": "juniper"
+      }
+    ]
+  },
+  {
+    "name": "Pegasus",
+    "expected_slug": "pegasus",
+    "wiki_url": "https://riordan.fandom.com/wiki/Pegasus_%28species%29",
+    "description": "Winged equine steeds endowed with high intelligence, flight, and speech with children of Poseidon.",
+    "origin": "Born from Medusa's neck when severed by Perseus.",
+    "alignment": "olympian",
+    "habitat": "Camp Half-Blood Armory Stables, Mount Olympus",
+    "abilities": [
+      "high-speed aerial flight",
+      "telepathic speech with Poseidon's offspring",
+      "exceptional carrying capacity"
+    ],
+    "weaknesses": [
+      "vulnerable to physical weapons and monster fire"
+    ],
+    "notable_members": [
+      {
+        "type": "character",
+        "slug": "blackjack"
+      },
+      {
+        "type": "character",
+        "slug": "guido"
+      },
+      {
+        "type": "character",
+        "slug": "porkpie"
+      }
+    ]
+  },
+  {
+    "name": "Fury",
+    "expected_slug": "fury",
+    "wiki_url": "https://riordan.fandom.com/wiki/Furies",
+    "description": "Bat-winged chthonic ministers of vengeance serving Hades, tasked with punishing crimes and guarding the Underworld.",
+    "origin": "Primordial Erinyes born from the blood of Ouranos.",
+    "alignment": "independent",
+    "habitat": "Underworld, Palace of Hades, Fields of Punishment",
+    "abilities": [
+      "flight",
+      "whip combat",
+      "shape-shifting into mortals",
+      "inducing terror and guilt"
+    ],
+    "weaknesses": [
+      "vulnerable to Celestial Bronze and Stygian Iron",
+      "bound to the direct orders of Hades"
+    ],
+    "notable_members": [
+      {
+        "type": "monster",
+        "slug": "alecto"
+      }
+    ]
+  },
+  {
+    "name": "Hellhound",
+    "expected_slug": "hellhound",
+    "wiki_url": "https://riordan.fandom.com/wiki/Hellhound",
+    "description": "Massive canine beasts from the Underworld with abyssal black fur and red glowing eyes, capable of traveling through shadows.",
+    "origin": "Underworld predatory beasts.",
+    "alignment": "varies",
+    "habitat": "Underworld, Fields of Punishment, Camp Half-Blood Woods",
+    "abilities": [
+      "shadow-travel",
+      "razor claws and fangs",
+      "stealth in darkness"
+    ],
+    "weaknesses": [
+      "vulnerable to Celestial Bronze",
+      "bright sunlight reduces shadow mobility"
+    ],
+    "notable_members": [
+      {
+        "type": "character",
+        "slug": "mrs-oleary"
+      }
+    ]
+  },
+  {
+    "name": "Skeleton Warrior",
+    "expected_slug": "skeleton-warrior",
+    "wiki_url": "https://riordan.fandom.com/wiki/Skeleton_Warrior",
+    "description": "Undead infantry raised from the ground, frequently summoned by Hades or sowed from dragon teeth (Spartoi).",
+    "origin": "Cadmus's mythic dragon teeth sowing.",
+    "alignment": "independent",
+    "habitat": "Underworld, battlefields, catacombs",
+    "abilities": [
+      "relentless tireless combat",
+      "resistance to non-magical strikes",
+      "reassembling severed bones"
+    ],
+    "weaknesses": [
+      "susceptible to Stygian Iron",
+      "destroyed completely by consecrated sacred fire"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Cyclops",
+    "expected_slug": "cyclops",
+    "wiki_url": "https://riordan.fandom.com/wiki/Cyclops",
+    "description": "One-eyed giants. Immune to fire; split between civilized divine forge-workers of Poseidon and aggressive feral island-dwelling man-eaters.",
+    "origin": "Elder Cyclopes born of Ouranos & Gaea / Sea Cyclopes fathered by Poseidon.",
+    "alignment": "varies",
+    "habitat": "Underwater Poseidon Forges, Sea of Monsters, Islands",
+    "abilities": [
+      "immense physical strength",
+      "immunity to extreme heat and fire",
+      "master forging ability",
+      "mimicking voices"
+    ],
+    "weaknesses": [
+      "single eye blind spot",
+      "susceptible to tricks and hubris"
+    ],
+    "notable_members": [
+      {
+        "type": "character",
+        "slug": "tyson"
+      },
+      {
+        "type": "monster",
+        "slug": "polyphemus"
+      }
+    ]
+  },
+  {
+    "name": "Dracaena",
+    "expected_slug": "dracaena",
+    "wiki_url": "https://riordan.fandom.com/wiki/Scythian_Dracaena",
+    "description": "Reptilian humanoid women with two serpent trunks in place of legs, wielding spears and shields as officers in Kronos's army.",
+    "origin": "Scythian serpent-women of Greek mythology.",
+    "alignment": "titan",
+    "habitat": "Princess Andromeda, Titan Vanguard Encampments, Labyrinth",
+    "abilities": [
+      "dual spear combat",
+      "heavy armor resistance",
+      "commanding monster infantry"
+    ],
+    "weaknesses": [
+      "sluggish on cold surfaces",
+      "vulnerable to Celestial Bronze and Imperial Gold"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Laistrygonian Giant",
+    "expected_slug": "laistrygonian-giant",
+    "wiki_url": "https://riordan.fandom.com/wiki/Laistrygonian_Giant",
+    "description": "Eight-foot-tall cannibalistic northern giants with tattooed skin and bronze armor, specializing in throwing fiery dodgeballs.",
+    "origin": "Odysseus's encounter in Homer's Odyssey.",
+    "alignment": "titan",
+    "habitat": "Northern Wilderness, Titan Army, Mortal prep schools in disguise",
+    "abilities": [
+      "superhuman strength",
+      "throwing explosive magma/bronze balls",
+      "endurance"
+    ],
+    "weaknesses": [
+      "low tactical intellect",
+      "vulnerable to Celestial Bronze"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Empousa",
+    "expected_slug": "empousa",
+    "wiki_url": "https://riordan.fandom.com/wiki/Empousa",
+    "description": "Shape-shifting vampiric demonesses created by Hecate, having fangs, fiery hair, one bronze leg, and one donkey leg.",
+    "origin": "Minions of Hecate in Greek folklore.",
+    "alignment": "titan",
+    "habitat": "Underworld, Goode High School, Titan Outposts",
+    "abilities": [
+      "seduction illusion magic",
+      "vampiric blood-draining",
+      "pyrokinesis"
+    ],
+    "weaknesses": [
+      "vulnerable to Celestial Bronze",
+      "illusions break under direct insult or cold water"
+    ],
+    "notable_members": [
+      {
+        "type": "monster",
+        "slug": "kelli"
+      },
+      {
+        "type": "monster",
+        "slug": "tammi"
+      }
+    ]
+  },
+  {
+    "name": "Telekhine",
+    "expected_slug": "telekhine",
+    "wiki_url": "https://riordan.fandom.com/wiki/Telekhine",
+    "description": "Dog-faced sea demons with flipper hands, master metalworkers who forged Poseidon's trident and Kronos's scythe in Mount St. Helens.",
+    "origin": "Ancient Rhodes mythic smiths.",
+    "alignment": "titan",
+    "habitat": "Mount St. Helens, Depths of the Ocean, Titan Forge Camps",
+    "abilities": [
+      "master weaponsmithing",
+      "lava throwing",
+      "cursing weapons"
+    ],
+    "weaknesses": [
+      "vulnerable to burst water surges and Celestial Bronze"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Gorgon",
+    "expected_slug": "gorgon",
+    "wiki_url": "https://riordan.fandom.com/wiki/Gorgon",
+    "description": "Snake-haired female monsters whose gaze turns living beings to stone.",
+    "origin": "Daughters of Phorcys and Ceto in ancient myth.",
+    "alignment": "independent",
+    "habitat": "Lair of Medusa, Western Caverns",
+    "abilities": [
+      "petrifying stone gaze",
+      "venomous snake hair",
+      "sharp brass claws"
+    ],
+    "weaknesses": [
+      "gaze can be reflected with polished bronze surfaces",
+      "vulnerable to decapitation"
+    ],
+    "notable_members": [
+      {
+        "type": "monster",
+        "slug": "medusa"
+      }
+    ]
+  },
+  {
+    "name": "Harpy",
+    "expected_slug": "harpy",
+    "wiki_url": "https://riordan.fandom.com/wiki/Harpy",
+    "description": "Avian-human female scavengers with bird claws and wings, acting as Camp Half-Blood's strict kitchen and curfew enforcement unit.",
+    "origin": "Greek storm spirits and wind demons.",
+    "alignment": "olympian",
+    "habitat": "Camp Half-Blood Dining Pavilion, Underworld",
+    "abilities": [
+      "aerial swooping attacks",
+      "claw tearing",
+      "tracking food scraps"
+    ],
+    "weaknesses": [
+      "easily distracted by cooked meats",
+      "vulnerable to archery"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Siren",
+    "expected_slug": "siren",
+    "wiki_url": "https://riordan.fandom.com/wiki/Siren",
+    "description": "Bird-like sea enchantresses whose hypnotic songs lure sailors to shipwreck by projecting irresistible visions of their tragic flaws.",
+    "origin": "Homeric Odyssey sea monsters.",
+    "alignment": "independent",
+    "habitat": "Sea of Monsters, Rocky Shoals",
+    "abilities": [
+      "hypnotic flaw-projecting song",
+      "illusion weaving",
+      "flight"
+    ],
+    "weaknesses": [
+      "earplugs / wax deafening neutralizes song effect"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Automaton",
+    "expected_slug": "automaton",
+    "wiki_url": "https://riordan.fandom.com/wiki/Automaton",
+    "description": "Enchanted metallic artificial constructs forged by Hephaestus or Daedalus, animated by divine magic or celestial bronze mechanisms.",
+    "origin": "Hephaestian divine craftsmanship.",
+    "alignment": "varies",
+    "habitat": "Mount Olympus, Camp Half-Blood Woods, Crete, Labyrinth",
+    "abilities": [
+      "impenetrable metallic armor",
+      "superhuman mechanical force",
+      "programmed combat instincts"
+    ],
+    "weaknesses": [
+      "internal gear sabotage",
+      "maintenance hatch vulnerability"
+    ],
+    "notable_members": [
+      {
+        "type": "monster",
+        "slug": "talos"
+      },
+      {
+        "type": "monster",
+        "slug": "bronze-dragon"
+      },
+      {
+        "type": "character",
+        "slug": "celedon"
+      }
+    ]
+  },
+  {
+    "name": "Myrmekes",
+    "expected_slug": "myrmekes",
+    "wiki_url": "https://riordan.fandom.com/wiki/Myrmekes",
+    "description": "Giant, blood-red armored ant monsters about the size of German Shepherds. Living in underground nest colonies in deep woods, they spit toxic acid, possess venomous bites, and compulsively hoard gold and shiny metals.",
+    "origin": "Ancient Greek myth, originating on the island of Aegina before being transformed by Zeus into the Myrmidons.",
+    "alignment": "independent",
+    "habitat": "Camp Half-Blood woods, subterranean nests",
+    "abilities": [
+      "acid spitting",
+      "poisonous bite",
+      "armored exoskeleton",
+      "swarm tactics"
+    ],
+    "weaknesses": [
+      "vulnerable to fire and intense heat",
+      "easily distracted by gold and shiny metal objects"
+    ],
+    "notable_members": []
+  },
+  {
+    "name": "Cretan Bull",
+    "expected_slug": "cretan-bull",
+    "alignment": "neutral",
+    "abilities": [],
+    "weaknesses": [],
+    "description": "Sacred white bull sent by Poseidon to King Minos of Crete. Father of the Minotaur through Pasiphaë.",
+    "first_appearance_book_slug": "percy-jacksons-greek-heroes",
+    "books_appeared_in_slugs": [
+      "percy-jacksons-greek-heroes"
+    ],
+    "wiki_url": "https://riordan.fandom.com/wiki/The_Marathonian_Bull"
+  }
+]

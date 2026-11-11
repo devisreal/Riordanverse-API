@@ -1,0 +1,25 @@
+<div class="menu-theme mt-6 flex items-center justify-between gap-3 rounded-2xl border border-border bg-surface/60 p-3.5 shadow-sm"
+     data-theme-options
+     hidden>
+  <span class="flex items-center gap-2.5 text-xs font-semibold text-text">
+    <span class="text-muted [html.dark_&]:hidden">
+      <c-icons.moon size="18" />
+    </span>
+    <span class="text-accent [html.light_&]:hidden">
+      <c-icons.sun size="18" />
+    </span>
+    Theme
+  </span>
+  <div class="flex rounded-full border border-border bg-subtle p-0.5 text-[11px] leading-normal"
+       role="group"
+       aria-label="Color theme">
+    <button class="rounded-full px-2.5 py-1 text-muted aria-pressed:bg-theme-selected aria-pressed:font-semibold aria-pressed:text-heading aria-pressed:shadow-xs"
+            type="button"
+            data-theme-choice="light"
+            aria-pressed="false">Light</button>
+    <button class="rounded-full px-2.5 py-1 text-muted aria-pressed:bg-theme-selected aria-pressed:font-semibold aria-pressed:text-heading aria-pressed:shadow-xs"
+            type="button"
+            data-theme-choice="dark"
+            aria-pressed="false">Dark</button>
+  </div>
+</div>

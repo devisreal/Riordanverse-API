@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Riordan Wiki
+    url: https://riordan.fandom.com/wiki/Riordan_Wiki
+    about: Check here first for lore accuracy before raising a correction
+  - name: API Documentation
+    url: https://github.com/devisreal/Riordanverse-API/blob/main/API.md
+    about: Full endpoint and data model reference

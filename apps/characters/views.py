@@ -1,0 +1,130 @@
+from django.db.models import OuterRef, Subquery
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
+
+from apps.characters.filters import CharacterFilter, PowerFilter
+from apps.characters.models import Character, CharacterImage, Power
+from apps.characters.serializers import (
+    CharacterDetailSerializer,
+    CharacterListSerializer,
+    PowerSerializer,
+)
+from apps.core.filters import SortOrderingFilter
+from apps.divinities.family import prefetch_family
+from apps.images.filters import ImageFilter
+from apps.images.models import Image
+from apps.images.serializers import ImageSerializer
+
+
+class CharacterListView(generics.ListAPIView):
+    """GET /api/v1/characters/"""
+
+    queryset = Character.objects.prefetch_related(
+        'images__image',
+        'books_appeared_in',
+        'weapons',
+        'powers__first_demonstrated_book',
+    ).select_related('empathy_link', 'first_appearance_book')
+    serializer_class = CharacterListSerializer
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
+    filterset_class = CharacterFilter
+    ordering_fields = ('name', 'status', 'age_first_appearance')
+    ordering = ('name',)
+
+
+class CharacterDetailView(generics.RetrieveAPIView):
+    """GET /api/v1/characters/<slug>/"""
+
+    queryset = prefetch_family(
+        Character.objects.prefetch_related(
+            'images__image',
+            'books_appeared_in',
+            'weapons',
+            'powers__first_demonstrated_book',
+        )
+        .select_related('empathy_link', 'first_appearance_book')
+        .all()
+    )
+    serializer_class = CharacterDetailSerializer
+    lookup_field = 'slug'
+
+
+class CharacterImageListView(generics.ListAPIView):
+    """GET /api/v1/characters/<slug>/images/"""
+
+    serializer_class = ImageSerializer
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
+    filterset_class = ImageFilter
+
+    def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Image.objects.none()
+        get_object_or_404(Character, slug=self.kwargs['slug'])
+        links = CharacterImage.objects.filter(character__slug=self.kwargs['slug'])
+        gallery_order = Subquery(links.filter(image_id=OuterRef('pk')).values('display_order')[:1])
+        return (
+            Image.objects.filter(pk__in=links.values('image_id'))
+            .annotate(_gallery_order=gallery_order)
+            .order_by('_gallery_order', 'pk')
+        )
+
+
+class CharacterPowerListView(generics.ListAPIView):
+    """GET /api/v1/characters/<slug>/powers/"""
+
+    serializer_class = PowerSerializer
+    filter_backends = (DjangoFilterBackend, SortOrderingFilter)
+    filterset_class = PowerFilter
+    ordering_fields = (
+        'display_order',
+        'name',
+        'source',
+        'type',
+        'is_passive',
+        'is_book_specific',
+    )
+
+    def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Power.objects.none()
+        character = get_object_or_404(Character, slug=self.kwargs['slug'])
+        return Power.objects.filter(character=character).select_related('first_demonstrated_book')
+
+
+class CharacterWeaponListView(generics.ListAPIView):
+    """GET /api/v1/characters/<slug>/weapons/"""
+
+    def get_queryset(self):
+        from apps.items.models import Weapon
+
+        if getattr(self, 'swagger_fake_view', False):
+            return Weapon.objects.none()
+        get_object_or_404(Character, slug=self.kwargs['slug'])
+        return Weapon.objects.filter(wielded_by__slug=self.kwargs['slug']).distinct()
+
+    def get_serializer_class(self):
+        from apps.items.serializers import WeaponListSerializer
+
+        return WeaponListSerializer
+
+
+class CharacterQuestListView(generics.ListAPIView):
+    """GET /api/v1/characters/<slug>/quests/"""
+
+    def get_queryset(self):
+        from apps.narrative.models import Quest
+
+        if getattr(self, 'swagger_fake_view', False):
+            return Quest.objects.none()
+        get_object_or_404(Character, slug=self.kwargs['slug'])
+        return (
+            Quest.objects.filter(participants__slug=self.kwargs['slug'])
+            .select_related('book', 'led_by')
+            .distinct()
+        )
+
+    def get_serializer_class(self):
+        from apps.narrative.serializers import QuestListSerializer
+
+        return QuestListSerializer

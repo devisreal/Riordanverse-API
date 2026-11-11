@@ -1,0 +1,96 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'images/primary-picker.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div id="content-main" class="primary-picker">
+    <h1>Choose a primary image</h1>
+    <p>Select an entity to see its current image gallery, then choose one primary image.</p>
+
+    <form method="get" action="{{ picker_url }}" class="entity-picker-form">
+      <label for="id_entity">Entity</label>
+      <select id="id_entity" name="entity" required>
+        <option value="">Choose an entity</option>
+        {% for group in gallery_groups %}
+          <optgroup label="{{ group.label }}">
+            {% for option in group.options %}
+              <option value="{{ option.value }}"{% if selected_entity_key == option.value %} selected{% endif %}>
+                {{ option.label }}
+              </option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+      <button type="submit" class="button">Show gallery</button>
+    </form>
+
+    {% if selected_entity_label %}
+      <section class="gallery-section" aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading">{{ selected_entity_label }}</h2>
+        {% if links %}
+          <form method="post" action="{{ picker_url }}" class="primary-image-form">
+            {% csrf_token %}
+            <input type="hidden" name="entity" value="{{ selected_entity_key }}">
+            <fieldset>
+              <legend>Choose the primary image</legend>
+              <div class="primary-picker-grid">
+                {% for link in links %}
+                  <article class="primary-picker-card{% if link.is_primary %} is-current-primary{% endif %}">
+                    <label class="primary-picker-choice" for="primary-image-{{ link.pk }}">
+                      <input
+                        id="primary-image-{{ link.pk }}"
+                        type="radio"
+                        name="primary_link_id"
+                        value="{{ link.pk }}"
+                        {% if link.pk == current_primary_id %}checked{% endif %}
+                      >
+                      <span class="primary-picker-preview">
+                        <img
+                          src="{{ link.image.thumbnail_url|default:link.image.url }}"
+                          alt="{{ link.image.alt_text|default:'Gallery image' }}"
+                          loading="lazy"
+                        >
+                      </span>
+                      <span class="primary-picker-details">
+                        <strong>{{ link.image.alt_text|default:'Untitled image' }}</strong>
+                        <span>{{ link.image.category|default:'Image' }}</span>
+                        <span>Display order: {{ link.display_order }}</span>
+                        {% if link.is_primary %}<span class="primary-badge">Current primary</span>{% endif %}
+                      </span>
+                    </label>
+                    <div class="primary-picker-links">
+                      <a href="{{ link.image.url }}" target="_blank" rel="noopener noreferrer">
+                        Open full image
+                      </a>
+                      <a href="{{ link.image.source_url }}" target="_blank" rel="noopener noreferrer">
+                        Source page
+                      </a>
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+            </fieldset>
+            <label class="clear-primary-option">
+              <input
+                type="radio"
+                name="primary_link_id"
+                value=""
+                {% if not current_primary_id %}checked{% endif %}
+              >
+              No primary image
+            </label>
+            <div class="submit-row">
+              <button type="submit" class="default">Save primary image</button>
+            </div>
+          </form>
+        {% else %}
+          <p>This entity has no linked images yet.</p>
+        {% endif %}
+      </section>
+    {% endif %}
+  </div>
+{% endblock %}

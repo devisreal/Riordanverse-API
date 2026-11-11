@@ -1,0 +1,12 @@
+<c-vars variant="desktop" />
+<a href="{% url 'health-live' %}"
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Open API health endpoint. The status and timing in this preview are illustrative, not live measurements."
+   class="example-health inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[11px] leading-normal whitespace-nowrap transition-colors {% if variant == 'mobile' %}border-emerald-500/20 bg-emerald-500/10 font-semibold text-accent hover:bg-emerald-500/20 max-[374px]:px-2 max-[374px]:text-[10px]{% else %}border-slate-700/60 bg-slate-800/80 text-emerald-400 hover:bg-slate-800{% endif %}">
+  <span aria-hidden="true"
+        class="size-1.5 shrink-0 rounded-full bg-emerald-400"></span>
+  <span>Health: Operational</span>
+  {% if variant != "mobile" %}<span class="text-slate-500">/health</span>{% endif %}
+  <c-icons.external-link size="12" />
+</a>

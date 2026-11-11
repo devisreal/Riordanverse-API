@@ -1,0 +1,55 @@
+# Local application stack. Railway uses the Dockerfile, not this file.
+services:
+  cache:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ${DB_NAME:-percy_jackson}
+      POSTGRES_USER: ${DB_USER:-percy_jackson}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-local-only-password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.compose
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      PORT: "8000"
+      WEB_CONCURRENCY: "1"
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: ${DB_NAME:-percy_jackson}
+      DB_USER: ${DB_USER:-percy_jackson}
+      DB_PASSWORD: ${DB_PASSWORD:-local-only-password}
+      REDIS_URL: redis://cache:6379/0
+      CORS_ALLOWED_ORIGINS: ""
+      CSRF_TRUSTED_ORIGINS: ""
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  redis_data:
