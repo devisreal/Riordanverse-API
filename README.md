@@ -4,7 +4,7 @@ An unofficial reference API for the entire Riordanverse. That is the project's
 scope ambition: the current dataset focuses on Greek/Roman lore and is not
 complete coverage of every series.
 
-Intended website: [riordanverse.cc](https://riordanverse.cc) ·
+Website: [riordanverse.cc](https://riordanverse.cc) ·
 [API directory](https://riordanverse.cc/api/v1/) ·
 [Swagger UI](https://riordanverse.cc/api/docs/).
 
@@ -12,14 +12,6 @@ This is an unofficial fan project for educational and portfolio purposes, not
 affiliated with or endorsed by Rick Riordan, Disney Hyperion, or the respective
 rights holders. Riordanverse works, characters, and third-party artwork remain
 the property of their respective owners.
-
-> **Availability:** `riordanverse.cc` is registered, but the intended URLs in this
-> guide are not confirmation of configured DNS, hosting, or working HTTPS. Use a
-> confirmed deployment or a local instance until public availability is verified.
->
-> **Repository:** [devisreal/Riordanverse-API](https://github.com/devisreal/Riordanverse-API).
-> It is currently private; repository links and issue forms require authorized
-> access until the repository is made public.
 
 ## Table of contents
 
@@ -31,6 +23,7 @@ the property of their respective owners.
   - [Understand the response](#understand-the-response)
   - [Authentication, limits, and errors](#authentication-limits-and-errors)
 - [API features](#api-features)
+- [Data sources and version scope](#data-sources-and-version-scope)
 - [Setup](#setup)
 - [Database setup](#database-setup)
 - [Run the project](#run-the-project)
@@ -256,6 +249,41 @@ A few entry points:
 See the [complete endpoint reference](API.md#7-api-endpoints-v1),
 [implemented API contracts](API.md#23-current-implemented-api-reference), or
 `/api/docs/` and `/api/redoc/` on your instance for all resources and subresources.
+
+## Data sources and version scope
+
+The **Version 1 (V1) source scope** covers the five original *Percy Jackson and
+the Olympians* novels and the companion works below, supplemented by secondary
+reference data. [`data/books.json`](data/books.json) contains **12 book records**:
+the collection *The Demigod Files* and its three individual stories are recorded
+separately. This is not a count of 12 independently published books.
+
+The version column identifies the dataset scope in which a source is included;
+it is not a claim of exhaustive coverage or a published release tag. Extend this
+table as later dataset versions add sources, retaining earlier scope entries.
+
+| Dataset scope | Source | Publication | Role |
+| --- | --- | --- | --- |
+| V1 | *The Lightning Thief* | 2005 | Core PJO novel — Book 1 |
+| V1 | *The Sea of Monsters* | 2006 | Core PJO novel — Book 2 |
+| V1 | *The Titan's Curse* | 2007 | Core PJO novel — Book 3 |
+| V1 | *The Battle of the Labyrinth* | 2008 | Core PJO novel — Book 4 |
+| V1 | *The Last Olympian* | 2009 | Core PJO novel — Book 5 |
+| V1 | *The Demigod Files* | 2009 | Companion collection containing the three stories below |
+| V1 | *Percy Jackson and the Stolen Chariot* | 2009 collection edition | Short story in *The Demigod Files* |
+| V1 | *Percy Jackson and the Bronze Dragon* | 2009 collection edition | Short story in *The Demigod Files* |
+| V1 | *Percy Jackson and the Sword of Hades* | 2009 collection edition | Short story in *The Demigod Files* |
+| V1 | *Percy Jackson's Greek Gods* | 2014 | Mythology companion |
+| V1 | *Percy Jackson's Greek Heroes* | 2015 | Mythology companion |
+| V1 | *Percy Jackson and the Singer of Apollo* | 2013; standalone edition 2016 | Companion short story; seeded publication date uses 2013 |
+| V1 | [Riordan Wiki on Fandom](https://riordan.fandom.com/) | Continuously updated | Secondary reference for entity URL matching and cross-checking |
+| V1 | [V1 seed corpus](data/) (`data/*.json`) | Repository-maintained | Curated dataset and relationships used by the seed commands, not an independent canonical source |
+
+Entity relationships, event chronologies, and location appearances are curated
+with reference to this scope. The books are the primary sources; the wiki is a
+secondary reference. Inclusion here does not certify that every field has been
+independently checked against every text. Corrections should cite the relevant
+book and chapter or a supporting reference; see [Report a lore correction](#report-a-lore-correction).
 
 ## Setup
 
