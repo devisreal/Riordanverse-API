@@ -1,0 +1,68 @@
+# Git metadata and repository-only tooling
+.git/
+.github/
+.gitignore
+.gitleaksignore
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+**/*.pem
+**/*.key
+
+# Python virtual environments, caches, and build artifacts
+**/.venv/
+**/venv/
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.ty_cache/
+**/.tox/
+**/.nox/
+/build/
+/dist/
+
+# Test reports and runtime logs
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+junit*.xml
+**/*.log
+
+# Local databases, Redis snapshots, and uploaded files
+**/*.sqlite3
+**/*.sqlite3-journal
+**/*.sqlite3-shm
+**/*.sqlite3-wal
+**/*.rdb
+**/*.aof
+/media/
+
+# Node dependencies are installed from the tracked npm lockfile in the image
+**/node_modules/
+**/npm-debug.log*
+
+# Generated assets must be built inside the image, not copied from the host
+/staticfiles/
+/website/static/css/dist/
+/website/static/website/js/dist/
+/website/static/vendor/swagger-ui/dist/
+
+# Editor, OS, and local AI/design tooling
+.idea/
+.vscode/
+.agents/
+.codex/
+.pi/
+**/.DS_Store
+**/._*
+**/*~
+DESIGN.md
+
+# Internal project drafts; canonical seed data remains available under data/
+/docs/

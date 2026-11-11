@@ -87,6 +87,45 @@ class DeploymentTests(SimpleTestCase):
             snapshot['http_static_redirect'], 'https://testserver/static/css/dist/styles.css'
         )
 
+    def test_compose_settings_allow_local_http_without_changing_production(self):
+        result = self.run_probe(
+            [
+                '-c',
+                """
+import json
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings.compose'
+import django
+django.setup()
+from django.conf import settings
+from django.test import Client
+from config.settings import production
+response = Client().get('/health/live/')
+print(json.dumps({
+    'status': response.status_code,
+    'redirect': settings.SECURE_SSL_REDIRECT,
+    'session_secure': settings.SESSION_COOKIE_SECURE,
+    'csrf_secure': settings.CSRF_COOKIE_SECURE,
+    'hsts': settings.SECURE_HSTS_SECONDS,
+    'proxy_header': settings.SECURE_PROXY_SSL_HEADER,
+    'production_redirect': production.SECURE_SSL_REDIRECT,
+    'production_session_secure': production.SESSION_COOKIE_SECURE,
+    'production_csrf_secure': production.CSRF_COOKIE_SECURE,
+}))
+""",
+            ]
+        )
+        snapshot = json.loads(result.stdout)
+        self.assertEqual(snapshot['status'], 200)
+        self.assertFalse(snapshot['redirect'])
+        self.assertFalse(snapshot['session_secure'])
+        self.assertFalse(snapshot['csrf_secure'])
+        self.assertEqual(snapshot['hsts'], 0)
+        self.assertIsNone(snapshot['proxy_header'])
+        self.assertTrue(snapshot['production_redirect'])
+        self.assertTrue(snapshot['production_session_secure'])
+        self.assertTrue(snapshot['production_csrf_secure'])
+
     def test_gunicorn_defaults(self):
         with patch.dict(os.environ):
             os.environ.pop('PORT', None)
@@ -95,6 +134,8 @@ class DeploymentTests(SimpleTestCase):
         self.assertEqual(config['wsgi_app'], 'config.wsgi:application')
         self.assertEqual(config['bind'], '0.0.0.0:8000')
         self.assertEqual(config['workers'], 1)
+        self.assertEqual(config['worker_class'], 'gthread')
+        self.assertEqual(config['threads'], 4)
         self.assertIsNone(config['accesslog'])
         self.assertEqual(config['errorlog'], '-')
 

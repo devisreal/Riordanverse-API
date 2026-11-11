@@ -332,6 +332,39 @@ uv run python manage.py seed_images
 
 The current JSON seeds contain 12 books, 96 characters, 41 gods, 23 Titans, 29 monsters, 18 creatures, 50 weapons, 27 locations, 12 quests, 11 prophecies, 23 events, 20 cabins, 8 factions, 383 family relationship records, 12 Book cast relationship records, 27 Monster defeat records, 14 Powers, and 2,787 wiki image references from 330 entity pages (2,651 distinct `(url, source_url)` Image records after seeding; 15 pages have no image candidates). Wiki image records use `source_type=wiki`; license fields are null because the source does not expose machine-readable license metadata. These are seed-file record counts; unresolved typed entity references are warned about and skipped by the relevant seed command.
 
+## Local Docker Compose
+
+`compose.yaml` runs the application, PostgreSQL, and Redis locally using the
+same application Dockerfile intended for Railway. Create `.env` from
+`.env.example` if needed and set `SECRET_KEY`, then run:
+
+```bash
+docker compose up --build -d
+docker compose exec app python manage.py migrate --noinput
+```
+
+Open **http://localhost:8000**. The local-only `config.settings.compose` keeps
+WhiteNoise and Gunicorn but disables HTTPS redirects and secure-cookie requirements
+for localhost HTTP. Railway must continue to use `config.settings.production`.
+
+The database and cache are private to the Compose network. Database credentials
+come from the `DB_NAME`, `DB_USER`, and `DB_PASSWORD` values in `.env`, with local
+fallbacks defined in `compose.yaml`. Named volumes preserve their data between
+restarts. Migrations and seeding never run automatically during startup.
+
+Optional setup and useful commands:
+
+```bash
+docker compose exec app python manage.py seed_all
+docker compose exec app python manage.py createsuperuser
+docker compose logs -f app
+docker compose down
+```
+
+Rebuild after source changes; this setup does not use source bind mounts or
+auto-reload. `docker compose down` retains the named data volumes; adding `-v`
+would delete them. Do not use the Compose fallback credentials in production.
+
 ## Production server and static assets
 
 Production uses **Gunicorn (WSGI)** and **WhiteNoise**; Uvicorn is not required.
