@@ -205,9 +205,10 @@ REST_FRAMEWORK = {
 # ---------------------------------------------------------------------------
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Percy Jackson Fandom API',
+    'TITLE': 'Riordanverse API',
     'DESCRIPTION': (
-        'A read-only REST API for the Riordanverse. Protected endpoints require an X-API-Key '
+        'An unofficial reference API for Rick Riordan’s Riordanverse. '
+        'Protected endpoints require an X-API-Key '
         'header; the /api/v1/ directory, health checks, and API-key request/verification '
         'are public, while self-revocation is authenticated.'
     ),
@@ -268,6 +269,12 @@ SPECTACULAR_SETTINGS = {
         },
     },
 }
+
+# ---------------------------------------------------------------------------
+# * Application email identities (delivery backend/provider configured separately)
+# ---------------------------------------------------------------------------
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='Riordanverse API <support@riordanverse.cc>')
+SERVER_EMAIL = env('SERVER_EMAIL', default='support@riordanverse.cc')
 
 # ---------------------------------------------------------------------------
 # * API key header + Redis cache (used by CachedHasAPIKey)

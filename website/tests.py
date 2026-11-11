@@ -72,7 +72,7 @@ class HomeViewTests(SimpleTestCase):
         self.assertEqual(response['Content-Type'], 'text/html; charset=utf-8')
         self.assertTemplateUsed(response, 'website/home.html')
         self.assertTemplateUsed(response, 'website/base.html')
-        self.assertContains(response, '<title>Percy Jackson Fandom API</title>')
+        self.assertContains(response, '<title>Riordanverse API</title>')
         text = ' '.join(' '.join(page.text).split())
         for heading in (
             'The Riordanverse,',
@@ -190,7 +190,7 @@ class HomeViewTests(SimpleTestCase):
         for name in ('api-directory', 'swagger-ui', 'redoc', 'schema'):
             with self.subTest(route=name):
                 self.assertIn(reverse(name), page.links)
-        self.assertIn('https://github.com/devisreal/Percy-Jackson-Fandom-API', page.links)
+        self.assertIn('https://github.com/devisreal/Riordanverse-API', page.links)
 
     def test_external_links_open_safely_in_new_tabs_and_internal_navigation_does_not(self):
         _, page = self.page()

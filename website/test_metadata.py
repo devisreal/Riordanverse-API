@@ -31,7 +31,7 @@ class SocialMetadataTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
         metadata = self.metadata(response)
         self.assertEqual(metadata['og:type'], 'website')
-        self.assertEqual(metadata['og:title'], 'Percy Jackson Fandom API')
+        self.assertEqual(metadata['og:title'], 'Riordanverse API')
         self.assertEqual(metadata['og:site_name'], metadata['og:title'])
         self.assertEqual(metadata['twitter:title'], metadata['og:title'])
         self.assertEqual(metadata['description'], metadata['og:description'])
