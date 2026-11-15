@@ -65,7 +65,7 @@ tblib==3.2.2
 tomli==2.5.0
 tomli-w==1.2.0
 ty==0.0.88
-tzdata==2026.5
+tzdata==2026.6
 uritemplate==4.2.0
 urllib3==2.8.0
 whitenoise==6.12.0
