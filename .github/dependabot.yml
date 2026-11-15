@@ -21,6 +21,19 @@ updates:
       - "dependencies"
       - "python"
 
+  # Website dependencies (package.json / package-lock.json)
+  - package-ecosystem: "npm"
+    directory: "/website/static_src"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/London"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "javascript"
+
   # GitHub Actions themselves
   - package-ecosystem: "github-actions"
     directory: "/"
