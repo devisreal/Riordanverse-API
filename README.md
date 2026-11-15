@@ -18,6 +18,7 @@ the property of their respective owners.
 - [Use the API](#use-the-api)
   - [Define the base URL](#define-the-base-url)
   - [Get an API key](#get-an-api-key)
+  - [Browser integrations](#browser-integrations)
   - [Make your first request](#make-your-first-request)
   - [Filter and paginate results](#filter-and-paginate-results)
   - [Understand the response](#understand-the-response)
@@ -43,8 +44,6 @@ local development, follow [Setup](#setup) first. All examples use trailing slash
 Documentation: [API reference](API.md) · [Swagger UI](https://riordanverse.cc/api/docs/)
 · [ReDoc](https://riordanverse.cc/api/redoc/)
 · [OpenAPI schema](https://riordanverse.cc/api/schema/).
-These links use the intended public origin, subject to the availability caveat
-above. For local use, keep the same paths under `http://127.0.0.1:8000`.
 
 ### Define the base URL
 
@@ -54,9 +53,8 @@ In your terminal, set the server origin **without** `/api/v1` or a trailing slas
 export BASE_URL="https://riordanverse.cc"
 ```
 
-This is the intended public origin, not a guarantee of availability. Until it is
-verified, use a confirmed deployment or set `BASE_URL="http://127.0.0.1:8000"`
-for a locally running instance.
+The API is live at this origin. The examples also work against any instance by
+changing `BASE_URL`, for example to `http://127.0.0.1:8000` for local development.
 The public directory lists the available collections without requiring a key:
 
 ```bash
@@ -65,12 +63,13 @@ curl "$BASE_URL/api/v1/"
 
 ### Get an API key
 
-Request a key using your application name and contact email:
+Request a key using your application name and contact email. Replace
+`<your-contact-email>` with your own address before running this command:
 
 ```bash
 curl -X POST "$BASE_URL/auth/request-key/" \
   -H 'Content-Type: application/json' \
-  -d '{"consumer_name":"My Fan App","email":"dev@example.com"}'
+  -d '{"consumer_name":"My Fan App","email":"<your-contact-email>"}'
 ```
 
 The response's `api_key` is shown **only once**. Store it securely, then set it in
@@ -99,7 +98,7 @@ it directly. Supply a disposable or user-provided key; never embed a private
 shared key in a public bundle:
 
 ```javascript
-// Intended public origin; use a confirmed instance until availability is verified.
+// Use your instance's origin if self-hosting.
 const baseUrl = "https://riordanverse.cc";
 async function loadBooks(apiKey) {
   const response = await fetch(`${baseUrl}/api/v1/books/`, {
@@ -149,7 +148,8 @@ curl "$BASE_URL/api/v1/characters/?divine_parent=poseidon&limit=5&page=1" \
   -H "X-API-Key: $API_KEY"
 ```
 
-List routes default to 20 results per page. Use `page` and `limit` (maximum 100).
+Paginated list routes default to 20 results per page. Use `page` and `limit`
+(maximum 100); search is unpaginated.
 Filters are endpoint-specific; see the [full filter reference](API.md#list-filters).
 Sorting uses `sort` and optional `order=asc|desc`:
 
@@ -170,7 +170,7 @@ seeded Percy Jackson detail response; additional fields are omitted:
 }
 ```
 
-List routes instead wrap results in `data` and pagination information in `meta`.
+Paginated list routes instead wrap results in `data` and pagination information in `meta`.
 For example, an empty list on the first page with the default page size has this
 shape (this is not the response to the Poseidon query above):
 
@@ -198,10 +198,14 @@ directory, schema, Swagger, ReDoc, health checks, key requests, and key verifica
 are public. Documentation pages are exempt from API request throttling; executing
 a data request through Swagger still requires a key and consumes the data quota.
 
-- Authenticated requests: **1,000 per key per fixed one-hour window**.
+- Protected data requests and key revocation share **1,000 per key per fixed
+  one-hour window**.
 - Key requests and key verification: separate limits of **5 per hour per client IP**.
-- Data responses include `RateLimit-Limit`, `RateLimit-Remaining`, and
-  `RateLimit-Reset`; throttled responses include `Retry-After`.
+  This does not apply to key revocation, which requires the key being revoked.
+- Responses that reach the per-key quota check include `RateLimit-Limit`,
+  `RateLimit-Remaining`, and `RateLimit-Reset`; requests rejected before that check
+  do not. Key-request and verification responses do not include these quota
+  headers. Throttled responses include `Retry-After`.
 - If Redis is unavailable, quota counters are process-local, not shared across workers.
 - `X-Request-ID` supports request correlation when reporting problems.
 - Invalid choice filters or non-lowercase boolean values return `400`; booleans
@@ -287,13 +291,14 @@ book and chapter or a supporting reference; see [Report a lore correction](#repo
 
 ## Setup
 
-For local development, install Python **3.14+**, [uv](https://docs.astral.sh/uv/),
-PostgreSQL, and **Node.js 22+ with npm** for website assets. Redis is recommended
-for shared caching and quotas, but its absence does not prevent API requests.
+For local development, install Python **3.14**, [uv](https://docs.astral.sh/uv/),
+PostgreSQL, and **Node.js 22 with npm** for website assets. The project permits
+Python 3.14+; `.python-version`, Docker, and CI select 3.14. Docker and CI use Node.js
+22. Redis is recommended for shared caching and quotas, but its absence does not
+prevent API requests.
 If you prefer containers, skip to [Docker and Compose](#docker-and-compose).
 
-Clone the repository into a local `riordanverse-api` directory (authorized GitHub
-access is required while the repository is private).
+Clone the public repository into a local `riordanverse-api` directory:
 
 ```bash
 git clone https://github.com/devisreal/Riordanverse-API.git riordanverse-api
@@ -304,10 +309,19 @@ npm ci --prefix website/static_src
 npm run build --prefix website/static_src
 ```
 
+`pyproject.toml` declares Python dependencies and `uv.lock` pins their resolution.
+`requirements.txt` is currently an identical export of the lock, including
+development dependencies. CI installs with `uv sync --locked`; Docker uses
+`uv sync --locked --no-dev --no-install-project`. Dependabot's Python updates use
+the `uv` ecosystem, not `requirements.txt`; it also checks GitHub Actions. See
+[dependency updates](CONTRIBUTING.md#dependency-management) for the export workflow.
+
 Create a local PostgreSQL database and user first; editing `.env` does not create
 those resources. Set `SECRET_KEY`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`,
 and `DB_PORT` in `.env` for that database; configure `REDIS_URL` if using Redis.
-Development keeps API-key authentication enabled. Never commit `.env` or real keys.
+Development keeps API-key authentication enabled, but allows all CORS origins
+for local work; production uses the explicit origin allowlist. Never commit
+`.env` or real keys.
 
 ## Database setup
 
@@ -385,9 +399,8 @@ for Railway and production hosting; Railway does not use this Compose file.
 ## Report a lore correction
 
 Found incorrect or missing reference data? [Report a lore correction](https://github.com/devisreal/Riordanverse-API/issues/new?template=lore_correction.yml)
-using the GitHub issue form. A GitHub account with repository access is required
-while the repository is private. Treat submissions as public-facing: they may
-become public when the repository is made public.
+using the GitHub issue form. A GitHub account is required to submit a report.
+Submissions are public GitHub issues.
 
 Include the affected API URL, entity name, or slug; the current information; your
 suggested correction; and evidence such as a book title and chapter or a supporting
