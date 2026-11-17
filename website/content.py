@@ -8,12 +8,13 @@ import json
 from shlex import quote
 from urllib.parse import urlencode
 
-from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import BashLexer, HttpLexer, JsonLexer, TextLexer
+
+from website.seo import metadata, structured_data
 
 GITHUB_URL = 'https://github.com/devisreal/Riordanverse-API'
 LORE_CORRECTION_URL = f'{GITHUB_URL}/issues/new?{urlencode({"template": "lore_correction.yml"})}'
@@ -365,22 +366,12 @@ def get_home_context(request):
 
     search_url = f'{reverse("search")}?{urlencode({"q": "percy"})}'
     images_url = f'{reverse("image-list")}?{urlencode({"source_type": "wiki"})}'
+    social = metadata(request)
     return {
         'origin': origin,
-        'social': {
-            'title': 'Riordanverse API',
-            'description': (
-                'A structured, read-only REST API for Riordanverse characters, gods, quests, '
-                'locations, and the relationships connecting them.'
-            ),
-            # Canonical links omit tracking/query parameters and respect mounted deployments.
-            'url': request.build_absolute_uri(reverse('website:home')),
-            'image_url': request.build_absolute_uri(static('website/images/social-preview.png')),
-            'image_alt': (
-                'Riordanverse API — Riordanverse reference data. '
-                'Read-only REST API. Unofficial fan project.'
-            ),
-        },
+        'social': social,
+        'structured_data': structured_data(request, social, GITHUB_URL),
+        'getting_started_url': reverse('website:getting-started'),
         'api_base_url': request.build_absolute_uri(reverse('api-directory')),
         'api_directory_url': reverse('api-directory'),
         'docs_url': reverse('swagger-ui'),

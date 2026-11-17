@@ -1,0 +1,174 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block title %}{{ social.page_title }}{% endblock title %}
+{% block content %}
+  {% include "website/partials/header.html" %}
+  <div id="page-content">
+    <main class="bg-canvas pt-20 max-md:pt-16" id="main-content" tabindex="-1">
+      <article class="mx-auto w-full max-w-3xl px-8 py-12 text-base leading-relaxed max-md:px-4">
+        <header class="mb-10">
+          <p class="font-mono text-sm text-accent">Developer guide</p>
+          <h1 class="mt-3 text-3xl font-bold text-heading">Riordanverse API: getting started</h1>
+          <p class="mt-4">
+            Build a character reference, lore browser, or other integration with structured JSON.
+            The Riordanverse API is a read-only REST API whose current coverage focuses on
+            Percy Jackson and related Greek and Roman stories, not every Riordanverse series.
+            Lore endpoints support reading data, not creating or editing it.
+          </p>
+          <p class="mt-4">
+            Base URL: <code class="font-mono text-sm text-heading wrap-anywhere">{{ api_base_url }}</code>
+          </p>
+        </header>
+        <section class="mb-10" id="resources" aria-labelledby="resources-heading">
+          <h2 class="text-2xl font-bold text-heading"
+              id="resources-heading">Explore the resources</h2>
+          <p class="mt-4">
+            Browse characters, divinities, creatures, items, locations, organizations, and narrative
+            resources such as books and quests. List endpoints return collections; detail endpoints
+            use slugs to identify individual records. Consult the
+            <a class="text-accent underline underline-offset-4"
+               href="{{ api_directory_url }}">API directory</a>
+            and <a class="text-accent underline underline-offset-4"
+                   href="{{ docs_url }}">endpoint documentation</a>
+            for the available routes, fields, and relationships.
+          </p>
+        </section>
+        <section class="mb-10"
+                 id="rate-limiting"
+                 aria-labelledby="rate-limiting-heading">
+          <h2 class="text-2xl font-bold text-heading" id="rate-limiting-heading">Rate limiting</h2>
+          <p class="mt-4">
+            To keep Riordanverse API available and prevent abuse, protected data requests are
+            limited to <strong class="font-semibold text-heading">1,000 requests per hour per API key</strong>
+            in a fixed one-hour window. Key revocation shares this quota.
+          </p>
+          <p class="mt-4">
+            Requesting an API key and verifying a key each have a separate limit of
+            <strong class="font-semibold text-heading">5 requests per hour per client IP address</strong>.
+          </p>
+          <p class="mt-4">
+            When a limit is exceeded, the API returns <code>429 Too Many Requests</code>.
+            Wait for the duration indicated by the <code>Retry-After</code> response header
+            before retrying. Responses that reach the API-key quota check include
+            <code>RateLimit-Limit</code>, <code>RateLimit-Remaining</code>, and
+            <code>RateLimit-Reset</code>; requests rejected before that check do not.
+            Key-request and verification responses do not include these quota headers.
+          </p>
+          <p class="mt-4">
+            Public pages, the API directory, documentation, and health checks do not consume
+            these quotas. Executing a protected data request through Swagger still consumes
+            the API-key quota. If Redis is unavailable, quota counters fall back to process-local
+            memory and are not shared across workers.
+          </p>
+        </section>
+        <section class="mb-10" id="quick-start" aria-labelledby="auth-heading">
+          <h2 class="text-2xl font-bold text-heading" id="auth-heading">1. Request an API key</h2>
+          <p class="mt-4">
+            Send a JSON POST request to
+            <code class="font-mono text-sm text-heading wrap-anywhere">{{ request_key_url }}</code>
+            with your application's <code>consumer_name</code> and a valid <code>email</code>.
+            No existing API key is needed to request one. Replace the example identity with your own.
+          </p>
+          <pre class="mt-4 max-w-full overflow-auto rounded-2xl border border-border bg-code-bg p-4 font-mono text-sm text-code-text"
+               tabindex="0"><code>{{ guide_request_key_raw }}</code></pre>
+          <p class="mt-4">
+            A successful request returns HTTP 201 with <code>api_key</code>, <code>consumer_name</code>,
+            <code>email</code>, and <code>message</code>. Save the <code>api_key</code> securely:
+            its plaintext value is shown only once.
+          </p>
+          <p class="mt-4">
+            Protected data endpoints require the <code>X-API-Key</code> header on every request.
+            Set <code>API_KEY</code> to your issued key in your shell before running these examples.
+            Keys embedded in browser JavaScript or sent by a browser are public to its users;
+            they cannot be kept secret in a client bundle. Keep confidential keys on your server
+            and out of public repositories.
+          </p>
+          <h3 class="mt-6 text-xl font-bold text-heading">Verify your key</h3>
+          <p class="mt-3">Send a POST request with the same header and no request body:</p>
+          <pre class="mt-4 max-w-full overflow-auto rounded-2xl border border-border bg-code-bg p-4 font-mono text-sm text-code-text" tabindex="0"><code>curl -X POST '{{ origin }}{% url 'verify-api-key' %}' \
+  -H "X-API-Key: $API_KEY"</code></pre>
+          <p class="mt-3">
+            Verification returns HTTP 200 with <code>valid</code> and
+            <code>consumer_name</code>. For an invalid or missing key, <code>valid</code> is
+            <code>false</code> and <code>consumer_name</code> is <code>null</code>.
+            Check <code>valid</code>, not just the HTTP status. Key requests and verification
+            are each limited to five attempts per hour per IP; HTTP 429 indicates throttling.
+          </p>
+        </section>
+        <section class="mb-10" aria-labelledby="query-heading">
+          <h2 class="text-2xl font-bold text-heading"
+              id="query-heading">2. Make a filtered request</h2>
+          <p class="mt-4">This curl example reads the character collection with your API key:</p>
+          <pre class="mt-4 max-w-full overflow-auto rounded-2xl border border-border bg-code-bg p-4 font-mono text-sm text-code-text"
+               tabindex="0"><code>{{ guide_request_raw }}</code></pre>
+          <p class="mt-4">
+            For example, append
+            <code class="font-mono text-sm text-heading wrap-anywhere">?divine_parent=poseidon&amp;is_demigod=true&amp;sort=name&amp;order=asc&amp;page=1&amp;limit=20</code>
+            to the <code>characters/</code> collection URL. The <code>divine_parent</code> filter
+            accepts a god or titan slug, such as <code>poseidon</code>, and matches parent relationships.
+            Boolean filters such as <code>is_demigod</code> accept only lowercase
+            <code>true</code> or <code>false</code>.
+          </p>
+          <p class="mt-4">
+            Character lists accept <code>sort=name</code>, <code>sort=status</code>, or
+            <code>sort=age_first_appearance</code>. Use <code>order=asc</code> or
+            <code>order=desc</code>; the direction defaults to ascending when a sort field is given.
+            Supply <code>sort</code> whenever you supply <code>order</code>.
+            Other endpoints have their own supported filters and sort fields, listed in the docs.
+          </p>
+        </section>
+        <section class="mb-10" id="features" aria-labelledby="pagination-heading">
+          <h2 class="text-2xl font-bold text-heading"
+              id="pagination-heading">3. Read the paginated response</h2>
+          <p class="mt-4">
+            Paginated lists contain a <code>data</code> array and a <code>meta</code> object with
+            <code>total</code>, <code>page</code>, <code>limit</code>, and <code>total_pages</code>.
+            The default page size is 20. Set <code>limit</code> to request another page size,
+            up to a maximum of 100, and use <code>page=2</code> for the next page.
+            Keep the same filters and sorting as you move between pages. An empty filtered
+            collection does not guarantee that a particular character or relationship is available.
+          </p>
+        </section>
+        <section class="mb-10" aria-labelledby="reference-heading">
+          <h2 class="text-2xl font-bold text-heading"
+              id="reference-heading">Reference and source code</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6">
+            <li>
+              <a class="text-accent underline underline-offset-4"
+                 href="{% url 'swagger-ui' %}">Swagger UI</a>
+              — inspect endpoint schemas and authentication requirements.
+            </li>
+            <li>
+              <a class="text-accent underline underline-offset-4"
+                 href="{% url 'redoc' %}">ReDoc API reference</a>
+              — browse request parameters and response fields.
+            </li>
+            <li>
+              <a class="text-accent underline underline-offset-4"
+                 href="{{ github_url }}">GitHub repository</a>
+              — read the project documentation, inspect implementation, or report an issue.
+            </li>
+          </ul>
+        </section>
+        <section aria-labelledby="rights-heading">
+          <h2 class="text-2xl font-bold text-heading"
+              id="rights-heading">Unofficial project and content rights</h2>
+          <p class="mt-4">
+            This is an unofficial fan project, not affiliated with or endorsed by Rick Riordan,
+            Disney Hyperion, or the respective rights holders. Lore references draw on Rick Riordan’s books and the
+            <a class="text-accent underline underline-offset-4"
+               href="https://riordan.fandom.com/wiki/Riordan_Wiki">Riordan Wiki</a>.
+            Original code and project documentation are MIT licensed; seed datasets and third-party
+            lore, names, images, and other materials are excluded. Their respective rights apply.
+            An API response or image link does not grant permission to reuse third-party material;
+            check source attribution and licensing before publishing it.
+          </p>
+        </section>
+      </article>
+    </main>
+    {% include "website/partials/footer.html" %}
+  </div>
+{% endblock content %}
+{% block extra_js %}
+  <script src="{% static 'website/js/site.js' %}" defer></script>
+{% endblock extra_js %}

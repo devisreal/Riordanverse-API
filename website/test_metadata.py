@@ -6,6 +6,7 @@ from django.templatetags.static import static
 from django.test import RequestFactory, SimpleTestCase, override_settings
 from django.urls import get_script_prefix, reverse, set_script_prefix
 
+from website.seo import HOME_TITLE
 from website.tests import LandingHTML
 from website.views import home
 
@@ -31,8 +32,8 @@ class SocialMetadataTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
         metadata = self.metadata(response)
         self.assertEqual(metadata['og:type'], 'website')
-        self.assertEqual(metadata['og:title'], 'Riordanverse API')
-        self.assertEqual(metadata['og:site_name'], metadata['og:title'])
+        self.assertEqual(metadata['og:title'], HOME_TITLE)
+        self.assertEqual(metadata['og:site_name'], 'Riordanverse API')
         self.assertEqual(metadata['twitter:title'], metadata['og:title'])
         self.assertEqual(metadata['description'], metadata['og:description'])
         self.assertEqual(metadata['twitter:description'], metadata['og:description'])

@@ -4,12 +4,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Riordanverse API{% endblock title %}</title>
+    <title>{% block title %}{{ social.page_title }}{% endblock title %}</title>
     <meta name="description" content="{{ social.description }}" />
     <link rel="canonical" href="{{ social.url }}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ social.title }}" />
-    <meta property="og:title" content="{{ social.title }}" />
+    <meta property="og:title" content="{{ social.page_title }}" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:description" content="{{ social.description }}" />
     <meta property="og:url" content="{{ social.url }}" />
     <meta property="og:image" content="{{ social.image_url }}" />
@@ -18,10 +19,11 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="{{ social.image_alt }}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ social.title }}" />
+    <meta name="twitter:title" content="{{ social.page_title }}" />
     <meta name="twitter:description" content="{{ social.description }}" />
     <meta name="twitter:image" content="{{ social.image_url }}" />
     <meta name="twitter:image:alt" content="{{ social.image_alt }}" />
+    <script type="application/ld+json" nonce="{{ csp_nonce }}">{{ structured_data }}</script>
     <link rel="icon"
           type="image/svg+xml"
           href="{% static 'website/images/favicon.svg' %}" />

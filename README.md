@@ -198,6 +198,10 @@ directory, schema, Swagger, ReDoc, health checks, key requests, and key verifica
 are public. Documentation pages are exempt from API request throttling; executing
 a data request through Swagger still requires a key and consumes the data quota.
 
+#### Rate limiting
+
+To keep Riordanverse API available and prevent abuse, the following quotas apply:
+
 - Protected data requests and key revocation share **1,000 per key per fixed
   one-hour window**.
 - Key requests and key verification: separate limits of **5 per hour per client IP**.
@@ -205,8 +209,16 @@ a data request through Swagger still requires a key and consumes the data quota.
 - Responses that reach the per-key quota check include `RateLimit-Limit`,
   `RateLimit-Remaining`, and `RateLimit-Reset`; requests rejected before that check
   do not. Key-request and verification responses do not include these quota
-  headers. Throttled responses include `Retry-After`.
+  headers.
 - If Redis is unavailable, quota counters are process-local, not shared across workers.
+
+When a limit is exceeded, the API returns **`429 Too Many Requests`**. Wait for the
+duration indicated by the **`Retry-After`** response header before retrying.
+Public pages, the API directory, documentation, and health checks do not consume
+these quotas. The hourly API-key quota does not imply a separate per-minute limit.
+
+#### Errors and key management
+
 - `X-Request-ID` supports request correlation when reporting problems.
 - Invalid choice filters or non-lowercase boolean values return `400`; booleans
   must be `true` or `false`. Missing/invalid keys on protected routes return `403`,
