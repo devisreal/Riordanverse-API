@@ -20,6 +20,10 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY')
 APP_VERSION = env('APP_VERSION', default='1.0.0')
 
+# Local/test deployments are not search targets. Production supplies official defaults.
+SEO_PUBLIC_ORIGIN = env('SEO_PUBLIC_ORIGIN', default='')
+SEO_INDEXING_ENABLED = env.bool('SEO_INDEXING_ENABLED', default=False)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
@@ -97,6 +101,7 @@ MIDDLEWARE = [
     'apps.core.middleware.RequestLoggingMiddleware',
     'apps.core.middleware.RateLimitHeadersMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'website.seo.SearchIndexingMiddleware',
     'django.middleware.csp.ContentSecurityPolicyMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -6,18 +6,16 @@ Greek/Roman lore. For local development and Docker Compose,
 see the [README](README.md#setup). For contribution and asset-authoring details,
 see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Intended public deployment
+## Public deployment
 
-The intended website is `https://riordanverse.cc`, with the API at
+The public website is `https://riordanverse.cc`, with the API at
 `https://riordanverse.cc/api/v1/` and Swagger UI at
-`https://riordanverse.cc/api/docs/`. The domain is registered, but this does **not**
-confirm configured DNS, hosting, a valid HTTPS certificate, or public availability.
-Configure the provider's custom domain and DNS, provision HTTPS, then verify the
-routes before treating these URLs as live. Local workflows retain
+`https://riordanverse.cc/api/docs/`. For another deployment, configure its actual
+custom domain, DNS and HTTPS before advertising its URLs. Local workflows retain
 `http://127.0.0.1:8000` (or `http://localhost:8000` for Compose).
 
-The repository is `https://github.com/devisreal/Riordanverse-API`. It is currently
-private; authorize hosting integrations and Git access accordingly. Website,
+The public repository is `https://github.com/devisreal/Riordanverse-API`.
+Authorize hosting integrations and Git access as required by the provider. Website,
 issue-template, and image-audit links use the renamed repository. Package names
 are `riordanverse-api` (Python) and `riordanverse-api-website` (frontend); runtime
 module paths and API contracts are unchanged by branding. Verify hosting
@@ -44,6 +42,8 @@ key validation falls back to PostgreSQL and quotas become process-local.
 | `PORT` | Listening port; defaults to `8000` |
 | `WEB_CONCURRENCY` | Gunicorn worker count; defaults to `1` |
 | `APP_VERSION` | Optional release identifier returned by health endpoints |
+| `SEO_PUBLIC_ORIGIN` | Canonical HTTP(S) origin, no path/query; production defaults to `https://riordanverse.cc` |
+| `SEO_INDEXING_ENABLED` | Production defaults to `True`; explicitly set `False` on staging/private deployments |
 
 The app reads individual `DB_*` variables, not `DATABASE_URL`. A host may expose
 its own database variables; map them to the names above. Never use the Compose
@@ -56,6 +56,49 @@ provider health-check hostname). If trusted cross-origin forms require it, use
 `CSRF_TRUSTED_ORIGINS=https://riordanverse.cc`; do not add unrelated origins.
 Same-origin website/API access does not require a CORS entry. Enable only actual
 external consumer origins in `CORS_ALLOWED_ORIGINS`.
+
+## Search discovery and indexing
+
+The homepage and `/getting-started/` are the public, server-rendered search landing
+pages. `/sitemap.xml` lists only these pages; `/robots.txt` advertises that sitemap.
+API JSON, authentication, admin, health and interactive reference responses carry
+`X-Robots-Tag: noindex, nofollow`. This does not change authentication or access:
+robots directives are not a security boundary. Production robots allow crawling
+so crawlers can read these response headers. No fictional modification dates,
+ratings or license grants are added to the sitemap or structured data.
+
+Development and Compose default to `SEO_INDEXING_ENABLED=False`: all responses
+are marked noindex and the sitemap is empty. Robots still allow crawling so
+search engines can observe noindex (including when removing an indexed site). Set the
+same override explicitly on Railway staging, which uses production settings.
+For self-hosting, set `SEO_PUBLIC_ORIGIN` to your own public origin, or explicitly
+to an empty value for request-derived URLs. Do not leave the Riordanverse origin
+on an independently hosted public instance. Configuring canonical URLs does not
+create DNS records or redirects; redirect unwanted production host aliases at
+the trusted hosting edge. Do not expose staging without access control merely
+because it has noindex headers.
+
+After deploying:
+
+1. Check HTTPS `/`, `/getting-started/`, `/robots.txt` and `/sitemap.xml` return
+   200, and both editorial pages have the correct canonical URLs and no noindex
+   header. Check API/auth/health remain noindex and keep their existing access
+   controls. Recheck a preview/staging deployment is **not** indexable.
+2. Verify the `riordanverse.cc` Domain property in Google Search Console using
+   its supplied DNS TXT record. This account/DNS step is manual; no verification
+   token is fabricated or stored by the app.
+3. Submit `https://riordanverse.cc/sitemap.xml`, inspect both editorial URLs,
+   run the live URL test, and request indexing. Review Google's actual indexing
+   reason and selected canonical rather than inferring it from a search query.
+4. Validate JSON-LD with Schema.org's validator. WebSite/WebAPI identity does not
+   promise eligibility for a Google rich result or a particular ranking.
+5. Check indexing and search performance over time. Discovery and ranking are
+   controlled by search engines; submission does not guarantee inclusion or
+   immediate visibility. Avoid paid link schemes or artificial keyword pages.
+
+`www.riordanverse.cc` is optional: configure its DNS/certificate and a permanent
+redirect to the apex if you want that alias to work. It is not required for the
+apex website to be indexed.
 
 ## Application email
 

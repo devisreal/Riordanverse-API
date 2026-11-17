@@ -72,7 +72,9 @@ class HomeViewTests(SimpleTestCase):
         self.assertEqual(response['Content-Type'], 'text/html; charset=utf-8')
         self.assertTemplateUsed(response, 'website/home.html')
         self.assertTemplateUsed(response, 'website/base.html')
-        self.assertContains(response, '<title>Riordanverse API</title>')
+        self.assertContains(
+            response, '<title>Riordanverse API | Percy Jackson REST API for Developers</title>'
+        )
         text = ' '.join(' '.join(page.text).split())
         for heading in (
             'The Riordanverse,',
@@ -239,10 +241,15 @@ class HomeViewTests(SimpleTestCase):
         )
         self.assertIsNotNone(specification_list)
         specifications = LandingHTML(specification_list.group(1))
-        self.assertEqual(sum(tag == 'li' for tag, _ in specifications.elements), 3)
+        self.assertEqual(sum(tag == 'li' for tag, _ in specifications.elements), 4)
         self.assertEqual(
             specifications.links,
-            [reverse('swagger-ui'), reverse('redoc'), reverse('schema')],
+            [
+                reverse('website:getting-started'),
+                reverse('swagger-ui'),
+                reverse('redoc'),
+                reverse('schema'),
+            ],
         )
         source_links = [
             attrs
@@ -397,7 +404,7 @@ class HomeViewTests(SimpleTestCase):
         _, page = self.page()
         assets = []
         for tag, attrs in page.elements:
-            if tag == 'script':
+            if tag == 'script' and attrs.get('type') != 'application/ld+json':
                 self.assertTrue(attrs.get('src'), 'Scripts must be external local static files')
                 assets.append(attrs['src'])
             elif tag in ('link', 'img', 'source', 'iframe'):
@@ -581,7 +588,11 @@ class HomeContextTests(SimpleTestCase):
         page = LandingHTML(html)
         self.assertNotIn('<script>alert(', html)
         self.assertIn('&lt;script&gt;', html)
-        scripts = [attrs for tag, attrs in page.elements if tag == 'script']
+        scripts = [
+            attrs
+            for tag, attrs in page.elements
+            if tag == 'script' and attrs.get('type') != 'application/ld+json'
+        ]
         self.assertEqual(len(scripts), 3)
         self.assertTrue(
             all(attrs.get('src', '').startswith(settings.STATIC_URL) for attrs in scripts)

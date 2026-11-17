@@ -1,6 +1,8 @@
 from .base import *
 
 DEBUG = False
+SEO_PUBLIC_ORIGIN = env('SEO_PUBLIC_ORIGIN', default='https://riordanverse.cc')
+SEO_INDEXING_ENABLED = env.bool('SEO_INDEXING_ENABLED', default=True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')  # no default — must be set explicitly
 
 DATABASES = {
