@@ -34,8 +34,13 @@ class SearchDiscoveryTests(SimpleTestCase):
         )
         self.assertNotIn(b'lastmod', response.content)
         for route in ('website:robots', 'website:sitemap'):
-            self.assertEqual(self.client.head(reverse(route)).status_code, 200)
-            self.assertEqual(self.client.post(reverse(route)).status_code, 405)
+            self.assertNotIn('X-Robots-Tag', self.client.get(reverse(route)))
+            head = self.client.head(reverse(route))
+            self.assertEqual(head.status_code, 200)
+            self.assertNotIn('X-Robots-Tag', head)
+            rejected = self.client.post(reverse(route))
+            self.assertEqual(rejected.status_code, 405)
+            self.assertEqual(rejected['X-Robots-Tag'], 'noindex, nofollow')
 
     def test_editorial_pages_are_indexable_but_utility_and_error_responses_are_not(self):
         for route in ('website:home', 'website:getting-started'):
@@ -60,6 +65,8 @@ class SearchDiscoveryTests(SimpleTestCase):
     def test_staging_and_local_pages_are_not_indexable_or_advertised(self):
         self.assertEqual(self.client.get('/robots.txt').content, b'User-agent: *\nAllow: /\n')
         self.assertEqual(len(fromstring(self.client.get('/sitemap.xml').content)), 0)
+        for url in ('/robots.txt', '/sitemap.xml'):
+            self.assertNotIn('X-Robots-Tag', self.client.get(url))
         for url in ('/', '/getting-started/'):
             self.assertEqual(self.client.get(url)['X-Robots-Tag'], 'noindex, nofollow')
 
