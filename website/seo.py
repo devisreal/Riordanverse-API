@@ -21,6 +21,7 @@ GUIDE_DESCRIPTION = (
     'results and use pagination with practical REST API examples.'
 )
 EDITORIAL_ROUTES = ('website:home', 'website:getting-started')
+DISCOVERY_ROUTES = ('website:robots', 'website:sitemap')
 
 
 def public_url(request, path):
@@ -132,7 +133,14 @@ class SearchIndexingMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
         match = request.resolver_match
-        editorial = match and match.view_name in EDITORIAL_ROUTES
-        if not settings.SEO_INDEXING_ENABLED or not editorial or response.status_code != 200:
+        route = match.view_name if match else None
+        # Discovery files should be readable without contradictory noindex headers.
+        if response.status_code == 200 and route in DISCOVERY_ROUTES:
+            return response
+        if (
+            not settings.SEO_INDEXING_ENABLED
+            or route not in EDITORIAL_ROUTES
+            or response.status_code != 200
+        ):
             response['X-Robots-Tag'] = 'noindex, nofollow'
         return response
