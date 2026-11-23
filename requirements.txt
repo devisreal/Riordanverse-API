@@ -60,7 +60,7 @@ rich==15.0.0
 rpds-py==2026.9.1
 ruff==0.17.6
 sortedcontainers==2.4.0
-sqlparse==0.6.0
+sqlparse==0.6.1
 tblib==3.2.2
 tomli==2.5.0
 tomli-w==1.2.0
