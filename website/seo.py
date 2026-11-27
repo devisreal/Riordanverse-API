@@ -22,7 +22,7 @@ GUIDE_DESCRIPTION = (
 )
 EDITORIAL_ROUTES = ('website:home', 'website:getting-started')
 INDEXABLE_ROUTES = (*EDITORIAL_ROUTES, 'swagger-ui', 'redoc')
-SITEMAP_ROUTES = (*EDITORIAL_ROUTES, 'swagger-ui')
+SITEMAP_ROUTES = (*EDITORIAL_ROUTES, 'swagger-ui', 'redoc')
 DISCOVERY_ROUTES = ('website:robots', 'website:sitemap')
 
 
