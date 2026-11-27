@@ -42,6 +42,7 @@ class SearchDiscoveryTests(SimpleTestCase):
                 'https://riordanverse.cc/',
                 'https://riordanverse.cc/getting-started/',
                 'https://riordanverse.cc/api/docs/',
+                'https://riordanverse.cc/api/redoc/',
             ],
         )
         self.assertNotIn(b'lastmod', response.content)
