@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.views.decorators.http import require_safe
 
 from website.content import GITHUB_URL, get_home_context
-from website.seo import EDITORIAL_ROUTES, metadata, public_url, structured_data
+from website.seo import SITEMAP_ROUTES, metadata, public_url, structured_data
 
 
 def home(request):
@@ -49,7 +49,7 @@ def robots(request):
 def sitemap(request):
     root = Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     if settings.SEO_INDEXING_ENABLED:
-        for route in EDITORIAL_ROUTES:
+        for route in SITEMAP_ROUTES:
             entry = SubElement(root, 'url')
             SubElement(entry, 'loc').text = public_url(request, reverse(route))
     response = HttpResponse(
