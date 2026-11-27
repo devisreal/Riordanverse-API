@@ -21,6 +21,8 @@ GUIDE_DESCRIPTION = (
     'results and use pagination with practical REST API examples.'
 )
 EDITORIAL_ROUTES = ('website:home', 'website:getting-started')
+INDEXABLE_ROUTES = (*EDITORIAL_ROUTES, 'swagger-ui', 'redoc')
+SITEMAP_ROUTES = (*EDITORIAL_ROUTES, 'swagger-ui')
 DISCOVERY_ROUTES = ('website:robots', 'website:sitemap')
 
 
@@ -139,7 +141,7 @@ class SearchIndexingMiddleware:
             return response
         if (
             not settings.SEO_INDEXING_ENABLED
-            or route not in EDITORIAL_ROUTES
+            or route not in INDEXABLE_ROUTES
             or response.status_code != 200
         ):
             response['X-Robots-Tag'] = 'noindex, nofollow'

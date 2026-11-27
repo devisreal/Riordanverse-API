@@ -4,15 +4,23 @@ from unittest.mock import patch
 from xml.etree.ElementTree import fromstring
 
 from django.core.exceptions import ImproperlyConfigured
+from django.http import HttpResponse
 from django.test import RequestFactory, SimpleTestCase, override_settings
-from django.urls import reverse
+from django.urls import resolve, reverse
 
-from website.seo import GUIDE_TITLE, HOME_TITLE, metadata, public_url, structured_data
+from website.seo import (
+    GUIDE_TITLE,
+    HOME_TITLE,
+    SearchIndexingMiddleware,
+    metadata,
+    public_url,
+    structured_data,
+)
 
 
 @override_settings(SEO_PUBLIC_ORIGIN='https://riordanverse.cc', SEO_INDEXING_ENABLED=True)
 class SearchDiscoveryTests(SimpleTestCase):
-    def test_robots_and_sitemap_are_public_and_only_list_editorial_pages(self):
+    def test_robots_and_sitemap_are_public_and_list_selected_indexable_pages(self):
         robots = self.client.get(reverse('website:robots'))
         self.assertEqual(robots.status_code, 200)
         self.assertIn('text/plain', robots['Content-Type'])
@@ -30,7 +38,11 @@ class SearchDiscoveryTests(SimpleTestCase):
                 element.text
                 for element in root.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')
             ],
-            ['https://riordanverse.cc/', 'https://riordanverse.cc/getting-started/'],
+            [
+                'https://riordanverse.cc/',
+                'https://riordanverse.cc/getting-started/',
+                'https://riordanverse.cc/api/docs/',
+            ],
         )
         self.assertNotIn(b'lastmod', response.content)
         for route in ('website:robots', 'website:sitemap'):
@@ -42,21 +54,27 @@ class SearchDiscoveryTests(SimpleTestCase):
             self.assertEqual(rejected.status_code, 405)
             self.assertEqual(rejected['X-Robots-Tag'], 'noindex, nofollow')
 
-    def test_editorial_pages_are_indexable_but_utility_and_error_responses_are_not(self):
-        for route in ('website:home', 'website:getting-started'):
-            response = self.client.get(reverse(route))
-            self.assertEqual(response.status_code, 200)
-            self.assertNotIn('X-Robots-Tag', response)
+    def test_selected_public_pages_are_indexable_but_other_routes_are_not(self):
+        for route in ('website:home', 'website:getting-started', 'swagger-ui', 'redoc'):
+            with self.subTest(route=route):
+                response = self.client.get(reverse(route))
+                self.assertEqual(response.status_code, 200)
+                self.assertNotIn('X-Robots-Tag', response)
         for url in (
             '/api/v1/',
-            '/api/docs/',
-            '/api/redoc/',
             '/health/live/',
             '/admin/login/',
             '/missing-seo-route/',
         ):
             with self.subTest(url=url):
                 response = self.client.get(url)
+                self.assertEqual(response['X-Robots-Tag'], 'noindex, nofollow')
+        middleware = SearchIndexingMiddleware(lambda request: HttpResponse())
+        for url in ('/api/v1/creatures/', '/auth/request-key/'):
+            with self.subTest(url=url):
+                request = RequestFactory().get(url)
+                request.resolver_match = resolve(url)
+                response = middleware(request)
                 self.assertEqual(response['X-Robots-Tag'], 'noindex, nofollow')
         response = self.client.get(reverse('website:home'), HTTP_HOST='testserver')
         self.assertContains(response, 'rel="canonical" href="https://riordanverse.cc/"')
@@ -67,8 +85,9 @@ class SearchDiscoveryTests(SimpleTestCase):
         self.assertEqual(len(fromstring(self.client.get('/sitemap.xml').content)), 0)
         for url in ('/robots.txt', '/sitemap.xml'):
             self.assertNotIn('X-Robots-Tag', self.client.get(url))
-        for url in ('/', '/getting-started/'):
-            self.assertEqual(self.client.get(url)['X-Robots-Tag'], 'noindex, nofollow')
+        for route in ('website:home', 'website:getting-started', 'swagger-ui', 'redoc'):
+            response = self.client.get(reverse(route))
+            self.assertEqual(response['X-Robots-Tag'], 'noindex, nofollow')
 
     def test_guide_is_rendered_without_database_or_live_api_requests(self):
         # SimpleTestCase forbids DB access; outbound calls must not be needed either.

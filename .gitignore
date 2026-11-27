@@ -179,3 +179,5 @@ cython_debug/
 docs/
 *.rdb
 .DS_Store
+.agents
+DESIGN.md
